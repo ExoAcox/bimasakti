@@ -5,10 +5,10 @@
 import { useContext, useMemo, useRef } from "react"
 import { Group, MathUtils, Mesh } from "three"
 import { SCALE, TIME_SCALE, type Planet as PlanetType } from "../constant"
-import { useFrame, type ThreeEvent } from "@react-three/fiber"
+import { useFrame, useThree, type ThreeEvent } from "@react-three/fiber"
 import { getPlanetById, getSatelliteById } from "../function";
 import OrbitLine from "./OrbitLine";
-import { useTexture } from "@react-three/drei";
+import { Html, useTexture } from "@react-three/drei";
 import PlanetRing from "./PlanetRing";
 import { ControlContext } from "../context";
 
@@ -33,6 +33,7 @@ const Planet = ({ id, children, isSatellite }: Props) => {
     const objectRef = useRef<Mesh>(null!)
     const overlayRef = useRef<Mesh[]>([])
 
+    const { scene } = useThree()
     const { focus, setControl } = useContext(ControlContext)
 
     const data = useMemo(() => {
@@ -48,6 +49,15 @@ const Planet = ({ id, children, isSatellite }: Props) => {
     const radius = data.radius / SCALE
     const distance = data.distance / SCALE
     const axis = MathUtils.degToRad(data.axis)
+
+    const focusedObject = useMemo(() => {
+        if (!focus) return undefined
+
+        const object = scene.getObjectByName(focus)
+        if (!object) return undefined
+
+        return { current: object }
+    }, [focus, scene])
 
 
     useFrame(() => {
@@ -65,7 +75,7 @@ const Planet = ({ id, children, isSatellite }: Props) => {
 
 
         if (!focus) {
-            orbitRef.current.rotation.y = speed / data.orbit_duration * TIME_SCALE
+            // orbitRef.current.rotation.y = speed / data.orbit_duration * TIME_SCALE
         }
     })
 
@@ -80,6 +90,10 @@ const Planet = ({ id, children, isSatellite }: Props) => {
 
             <group ref={orbitRef}>
                 <group position={[distance, 0, 0]}>
+                    <Html occlude={focusedObject ? [focusedObject] : undefined}>
+                        {focus !== data.id && <button className="p-1 bg-white" onClick={() => setControl({ focus: data.id })}>{data.name}</button>}
+                    </Html>
+
                     <mesh ref={objectRef} name={data.id} onClick={handleClick}>
                         <sphereGeometry args={[radius, 64, 64]} />
                         <meshStandardMaterial wireframe color={data.color} />
