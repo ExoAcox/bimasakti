@@ -1,5 +1,7 @@
-export interface Satellite {
+interface Object {
     id: string
+    type: "star" | "planet" | "satellite"
+    parent: string
     name: string
     radius: number
     distance: number
@@ -11,8 +13,17 @@ export interface Satellite {
     overlay_textures?: string[]
 }
 
-export interface Planet extends Satellite {
-    satellites: Satellite[]
+interface Star extends Omit<Object, "distance" | "orbit_duration"> {
+    type: "star"
+}
+
+export interface Satellite extends Object {
+    type: "satellite",
+}
+
+export interface Planet extends Object {
+    type: "planet",
+    satellites?: Satellite[]
     ring?: Ring
 }
 
@@ -25,6 +36,8 @@ interface Ring {
 export const planets: Planet[] = [
     {
         id: "mercury",
+        type: "planet",
+        parent: "",
         name: "Mercury",
         radius: 2439.7,
         distance: 57910000,
@@ -33,10 +46,12 @@ export const planets: Planet[] = [
         orbit_duration: 87.97,
         rotate_duration: 58.65,
         texture: "mercury.jpg",
-        satellites: []
+        satellites: [],
     },
     {
         id: "venus",
+        type: "planet",
+        parent: "",
         name: "Venus",
         radius: 6051.8,
         distance: 108200000,
@@ -50,6 +65,8 @@ export const planets: Planet[] = [
     },
     {
         id: "earth",
+        type: "planet",
+        parent: "",
         name: "Earth",
         radius: 6371,
         distance: 149000000,
@@ -62,6 +79,8 @@ export const planets: Planet[] = [
         satellites: [
             {
                 id: "moon",
+                type: "satellite",
+                parent: "earth",
                 name: "Moon",
                 radius: 1737,
                 distance: 384400,
@@ -75,6 +94,8 @@ export const planets: Planet[] = [
     },
     {
         id: "mars",
+        type: "planet",
+        parent: "",
         name: "Mars",
         radius: 3389.5,
         distance: 227900000,
@@ -86,6 +107,8 @@ export const planets: Planet[] = [
         satellites: [
             {
                 id: "phobos",
+                type: "satellite",
+                parent: "mars",
                 name: "Phobos",
                 radius: 11.1,
                 distance: 9377,
@@ -97,6 +120,8 @@ export const planets: Planet[] = [
             },
             {
                 id: "deimos",
+                type: "satellite",
+                parent: "mars",
                 name: "Deimos",
                 radius: 6.2,
                 distance: 23460,
@@ -110,6 +135,8 @@ export const planets: Planet[] = [
     },
     {
         id: "jupiter",
+        type: "planet",
+        parent: "",
         name: "Jupiter",
         radius: 69911,
         distance: 778500000,
@@ -121,6 +148,8 @@ export const planets: Planet[] = [
         satellites: [
             {
                 id: "io",
+                type: "satellite",
+                parent: "jupiter",
                 name: "Io",
                 radius: 1821.6,
                 distance: 421700,
@@ -132,6 +161,8 @@ export const planets: Planet[] = [
             },
             {
                 id: "europa",
+                type: "satellite",
+                parent: "jupiter",
                 name: "Europa",
                 radius: 1560.8,
                 distance: 670900,
@@ -143,6 +174,8 @@ export const planets: Planet[] = [
             },
             {
                 id: "ganymede",
+                type: "satellite",
+                parent: "jupiter",
                 name: "Ganymede",
                 radius: 2634.1,
                 distance: 1070400,
@@ -154,6 +187,8 @@ export const planets: Planet[] = [
             },
             {
                 id: "callisto",
+                type: "satellite",
+                parent: "jupiter",
                 name: "Callisto",
                 radius: 2410.3,
                 distance: 1882700,
@@ -165,6 +200,8 @@ export const planets: Planet[] = [
             },
             {
                 id: "amalthea",
+                type: "satellite",
+                parent: "jupiter",
                 name: "Amalthea",
                 radius: 83.5,
                 distance: 181400,
@@ -176,6 +213,8 @@ export const planets: Planet[] = [
             },
             {
                 id: "himalia",
+                type: "satellite",
+                parent: "jupiter",
                 name: "Himalia",
                 radius: 85,
                 distance: 11461000,
@@ -186,6 +225,8 @@ export const planets: Planet[] = [
             },
             {
                 id: "thebe",
+                type: "satellite",
+                parent: "jupiter",
                 name: "Thebe",
                 radius: 49.3,
                 distance: 221900,
@@ -197,6 +238,8 @@ export const planets: Planet[] = [
             },
             {
                 id: "elara",
+                type: "satellite",
+                parent: "jupiter",
                 name: "Elara",
                 radius: 43,
                 distance: 11741000,
@@ -210,6 +253,8 @@ export const planets: Planet[] = [
     },
     {
         id: "saturn",
+        type: "planet",
+        parent: "",
         name: "Saturn",
         radius: 58232,
         distance: 1434000000,
@@ -226,6 +271,8 @@ export const planets: Planet[] = [
         satellites: [
             {
                 id: "titan",
+                type: "satellite",
+                parent: "saturn",
                 name: "Titan",
                 radius: 2574.7,
                 distance: 1221870,
@@ -237,6 +284,8 @@ export const planets: Planet[] = [
             },
             {
                 id: "rhea",
+                type: "satellite",
+                parent: "saturn",
                 name: "Rhea",
                 radius: 763.8,
                 distance: 527040,
@@ -248,6 +297,8 @@ export const planets: Planet[] = [
             },
             {
                 id: "enceladus",
+                type: "satellite",
+                parent: "saturn",
                 name: "Enceladus",
                 radius: 252.1,
                 distance: 237948,
@@ -259,6 +310,8 @@ export const planets: Planet[] = [
             },
             {
                 id: "mimas",
+                type: "satellite",
+                parent: "saturn",
                 name: "Mimas",
                 radius: 198.2,
                 distance: 185539,
@@ -270,6 +323,8 @@ export const planets: Planet[] = [
             },
             {
                 id: "tethys",
+                type: "satellite",
+                parent: "saturn",
                 name: "Tethys",
                 radius: 531.1,
                 distance: 294619,
@@ -281,6 +336,8 @@ export const planets: Planet[] = [
             },
             {
                 id: "dione",
+                type: "satellite",
+                parent: "saturn",
                 name: "Dione",
                 radius: 561.4,
                 distance: 377396,
@@ -292,6 +349,8 @@ export const planets: Planet[] = [
             },
             {
                 id: "iapetus",
+                type: "satellite",
+                parent: "saturn",
                 name: "Iapetus",
                 radius: 734.5,
                 distance: 3560820,
@@ -305,6 +364,8 @@ export const planets: Planet[] = [
     },
     {
         id: "uranus",
+        type: "planet",
+        parent: "",
         name: "Uranus",
         radius: 25362,
         distance: 2871000000,
@@ -316,6 +377,8 @@ export const planets: Planet[] = [
         satellites: [
             {
                 id: "titania",
+                type: "satellite",
+                parent: "uranus",
                 name: "Titania",
                 radius: 788.4,
                 distance: 435910,
@@ -327,6 +390,8 @@ export const planets: Planet[] = [
             },
             {
                 id: "oberon",
+                type: "satellite",
+                parent: "uranus",
                 name: "Oberon",
                 radius: 761.4,
                 distance: 583520,
@@ -338,6 +403,8 @@ export const planets: Planet[] = [
             },
             {
                 id: "ariel",
+                type: "satellite",
+                parent: "uranus",
                 name: "Ariel",
                 radius: 578.9,
                 distance: 191020,
@@ -349,6 +416,8 @@ export const planets: Planet[] = [
             },
             {
                 id: "umbriel",
+                type: "satellite",
+                parent: "uranus",
                 name: "Umbriel",
                 radius: 584.7,
                 distance: 265970,
@@ -360,6 +429,8 @@ export const planets: Planet[] = [
             },
             {
                 id: "miranda",
+                type: "satellite",
+                parent: "uranus",
                 name: "Miranda",
                 radius: 235.8,
                 distance: 129390,
@@ -373,6 +444,8 @@ export const planets: Planet[] = [
     },
     {
         id: "neptune",
+        type: "planet",
+        parent: "",
         name: "Neptune",
         radius: 24622,
         distance: 4495000000,
@@ -384,6 +457,8 @@ export const planets: Planet[] = [
         satellites: [
             {
                 id: "triton",
+                type: "satellite",
+                parent: "neptune",
                 name: "Triton",
                 radius: 1353.4,
                 distance: 354760,
@@ -395,6 +470,8 @@ export const planets: Planet[] = [
             },
             {
                 id: "proteus",
+                type: "satellite",
+                parent: "neptune",
                 name: "Proteus",
                 radius: 210,
                 distance: 117647,
@@ -406,6 +483,8 @@ export const planets: Planet[] = [
             },
             {
                 id: "nereid",
+                type: "satellite",
+                parent: "neptune",
                 name: "Nereid",
                 radius: 170,
                 distance: 5513400,
@@ -419,6 +498,8 @@ export const planets: Planet[] = [
     },
     {
         id: "pluto",
+        type: "planet",
+        parent: "",
         name: "Pluto",
         radius: 1188.3,
         distance: 5906380000,
@@ -430,6 +511,8 @@ export const planets: Planet[] = [
         satellites: [
             {
                 id: "charon",
+                type: "satellite",
+                parent: "pluto",
                 name: "Charon",
                 radius: 606,
                 distance: 19596,
@@ -440,6 +523,8 @@ export const planets: Planet[] = [
             },
             {
                 id: "nix",
+                type: "satellite",
+                parent: "pluto",
                 name: "Nix",
                 radius: 23,
                 distance: 48694,
@@ -450,6 +535,8 @@ export const planets: Planet[] = [
             },
             {
                 id: "hydra",
+                type: "satellite",
+                parent: "pluto",
                 name: "Hydra",
                 radius: 27,
                 distance: 64738,
@@ -460,6 +547,8 @@ export const planets: Planet[] = [
             },
             {
                 id: "kerberos",
+                type: "satellite",
+                parent: "pluto",
                 name: "Kerberos",
                 radius: 9,
                 distance: 57783,
@@ -470,6 +559,8 @@ export const planets: Planet[] = [
             },
             {
                 id: "styx",
+                type: "satellite",
+                parent: "pluto",
                 name: "Styx",
                 radius: 8,
                 distance: 42656,
@@ -482,9 +573,11 @@ export const planets: Planet[] = [
     }
 ]
 
-export const sun = {
+export const sun: Star = {
     id: "sun",
     name: "Sun",
+    type: "star",
+    parent: "",
     radius: 695700,
     color: "yellow",
     axis: 7.25, // obliquity to the ecliptic in degrees

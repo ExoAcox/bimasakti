@@ -44,7 +44,7 @@ const SolarSystem = () => {
                                         <Satellite
                                             key={satellite.id}
                                             id={satellite.id}
-                                            isSatellite
+                                            isSatellite={planet.id}
                                         />
                                     ))}
                                 </Planet>
@@ -53,10 +53,9 @@ const SolarSystem = () => {
                     </Scene>
                 </Bounds>
             </Canvas>
+
+            <Sidebar setControl={handleControl} />
         </ControlContext>
-
-        <Sidebar setControl={handleControl} />
-
     </div>
 }
 

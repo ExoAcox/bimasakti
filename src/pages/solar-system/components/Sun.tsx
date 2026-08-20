@@ -40,9 +40,9 @@ const Sun = ({ children }: { children: React.ReactNode }) => {
     return <>
         <pointLight intensity={100000} color="white" />
 
-        <group rotateZ={axis}>
-            <Html occlude={focusedObject ? [focusedObject] : undefined}>
-                <button className="p-1 bg-white" onClick={() => setControl({ focus: sun.id })}>{sun.name}</button>
+        <group rotation={[0, 0, axis]}>
+            <Html occlude={focusedObject ? [focusedObject] : undefined} zIndexRange={[2, 0]}>
+                {(focus && focus !== sun.id) && <button className="py-1 px-2 rounded-lg text-sm font-semibold bg-white" onClick={() => setControl({ focus: sun.id })}>{sun.name}</button>}
             </Html>
 
 
