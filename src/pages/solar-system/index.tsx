@@ -15,6 +15,7 @@ import SettingPanel from "./components/SettingPanel"
 const SolarSystem = () => {
     const [control, setControl] = useState({
         focus: "",
+        focusIndex: 0,
         speed: 1,
         sizeScale: SCALE,
         distanceScale: SCALE,

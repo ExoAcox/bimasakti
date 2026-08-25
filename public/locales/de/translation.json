@@ -1,0 +1,226 @@
+{
+    "ui": {
+        "speed": "Geschwindigkeit",
+        "radius": "Radius",
+        "rotation_period": "Rotationsperiode",
+        "orbital_period": "Umlaufzeit",
+        "distance_from": "Entfernung von",
+        "parent_planet": "Mutterplanet",
+        "natural_satellites": "Natürliche Satelliten",
+        "days": "Tage",
+        "setting": "Einstellungen",
+        "show_orbit_line": "Umlaufbahnlinien anzeigen",
+        "size_scale": "Größenmaßstab",
+        "distance_scale": "Abstandsmaßstab zur Sonne",
+        "speed_scale": "Geschwindigkeitsmaßstab",
+        "language": "Sprache",
+        "speed_scale_value": "1 Sekunde: {{days}} Tage"
+    },
+    "object": {
+        "sun": {
+            "name": "Sonne",
+            "nickname": "Der Gelbe Zwerg",
+            "description": "Die Sonne ist der Stern im Zentrum unseres Sonnensystems und macht 99,8 % der Gesamtmasse des Systems aus. Sie ist eine fast perfekte Kugel aus heißem Plasma, die durch Kernfusionsreaktionen in ihrem Kern erhitzt wird. Sie strahlt Energie hauptsächlich als Licht, ultraviolette und infrarote Strahlung aus und ist die primäre Energiequelle für das Leben auf der Erde."
+        },
+        "mercury": {
+            "name": "Merkur",
+            "nickname": "Der schnelle Planet",
+            "description": "Merkur ist der kleinste Planet in unserem Sonnensystem und der Sonne am nächsten. Er ist extremen Temperaturschwankungen ausgesetzt, die von sengenden Tagen bis zu eisigen Nächten reichen, und besitzt eine stark verkraterte, uralte Oberfläche ohne Atmosphäre und ohne Monde."
+        },
+        "venus": {
+            "name": "Venus",
+            "nickname": "Der Morgenstern",
+            "description": "Venus ist der zweite Planet von der Sonne und der nächste planetare Nachbar der Erde. Sie ist von einer dichten, giftigen Atmosphäre aus Kohlendioxid und Schwefelsäurewolken umgeben, die die Wärme durch einen unkontrollierten Treibhauseffekt staut. Dies macht ihre Oberfläche heiß genug, um Blei zu schmelzen, und macht sie zum heißesten Planeten im Sonnensystem."
+        },
+        "earth": {
+            "name": "Erde",
+            "nickname": "Der blaue Planet",
+            "description": "Die Erde ist der dritte Planet von der Sonne und das einzige bekannte astronomische Objekt, das Leben beherbergt. Sie zeichnet sich durch ihre flüssigen Wasserozeane aus, die etwa 71 % ihrer Oberfläche bedecken, eine stickstoff- und sauerstoffreiche Atmosphäre sowie ein starkes Magnetfeld, das sie vor schädlicher Sonnenstrahlung schützt."
+        },
+        "moon": {
+            "name": "Mond",
+            "nickname": "Luna",
+            "description": "Der Mond ist der einzige natürliche Satellit der Erde und der fünftgrößte Mond im Sonnensystem. Er ist an die Erde rotationsgebunden, was bedeutet, dass er immer dasselbe Gesicht zeigt. Seine Anziehungskraft ist der Hauptantrieb für die Gezeiten der Ozeane auf der Erde und stabilisiert die Achsenneigung des Planeten."
+        },
+        "mars": {
+            "name": "Mars",
+            "nickname": "Der Rote Planet",
+            "description": "Mars ist der vierte Planet von der Sonne und der zweitkleinste Planet im Sonnensystem. Er wird oft als Roter Planet bezeichnet, da auf seiner Oberfläche Eisenoxid vorherrscht. Er ist eine kalte Wüstenwelt mit einer dünnen Kohlendioxidatmosphäre, jahreszeitlichen polaren Eiskappen und erloschenen Vulkanen wie Olympus Mons."
+        },
+        "phobos": {
+            "name": "Phobos",
+            "nickname": "Der Mond der Furcht",
+            "description": "Phobos ist der größere und nähere der beiden kleinen, unregelmäßig geformten Monde des Mars. Er umkreist den Mars so nah, dass er in einem einzigen Mars-Tag drei Umlaufbahnen vollendet. Gezeitenkräfte ziehen ihn allmählich näher an den Planeten heran, sodass er dazu bestimmt ist, auf den Mars zu stürzen oder in einen Ring zu zerbrechen."
+        },
+        "deimos": {
+            "name": "Deimos",
+            "nickname": "Der Mond des Schreckens",
+            "description": "Deimos ist der kleinere und äußere der beiden Marsmonde. Er hat ein stark verkratertes, aber glattes Aussehen, da eine dichte Schicht aus pulverisiertem Gesteinsstaub (Regolith) seine Krater füllt. Seine Umlaufbahn ist im Gegensatz zu Phobos fast kreisförmig und stabil."
+        },
+        "jupiter": {
+            "name": "Jupiter",
+            "nickname": "Der König der Planeten",
+            "description": "Jupiter ist der fünfte Planet von der Sonne und der größte in unserem Sonnensystem, mit einer Masse, die mehr als doppelt so groß ist wie die aller anderen Planeten zusammen. Als Gasriese besteht er hauptsächlich aus Wasserstoff und Helium, hat keine klar definierte feste Oberfläche und ist berühmt für seine farbenfrohen Wolkenbänder und den Sturm des Großen Roten Flecks."
+        },
+        "io": {
+            "name": "Io",
+            "nickname": "Der vulkanische Mond",
+            "description": "Io ist der innerste der vier Galileischen Monde des Jupiters und der vulkanisch aktivste Körper im Sonnensystem. Seine intensive Aktivität wird durch Gezeitenheizung infolge der gravitativen Reibung mit Jupiter und den benachbarten Monden angetrieben, was zu Hunderten von aktiven Vulkanen führt, die Schwefel und Schwefeldioxid ausstoßen."
+        },
+        "europa": {
+            "name": "Europa",
+            "nickname": "Der Ozeanmond",
+            "description": "Europa ist der kleinste der Galileischen Monde des Jupiters. Seine Oberfläche ist eine stark reflektierende Schicht aus Wassereis, die von Rissen (Lineae) durchzogen ist. Wissenschaftler vermuten darunter einen globalen Ozean aus flüssigem Wasser, der doppelt so viel Wasser enthält wie alle Ozeane der Erde zusammen, was ihn zu einem Hauptziel für die Astrobiologie macht."
+        },
+        "ganymede": {
+            "name": "Ganymed",
+            "nickname": "Der Riesenmond",
+            "description": "Ganymed ist der größte Mond in unserem Sonnensystem und übertrifft sogar den Planeten Merkur an Größe. Er ist der einzige bekannte natürliche Satellit mit einem eigenen Magnetfeld, das durch Konvektion in seinem flüssigen Eisenkern erzeugt wird. Seine Oberfläche zeigt eine Mischung aus dunklem, verkratertem Gelände und helleren, gerillten Regionen."
+        },
+        "callisto": {
+            "name": "Kallisto",
+            "nickname": "Die verkraterte Welt",
+            "description": "Kallisto ist der zweitgrößte Mond des Jupiters und der drittgrößte im Sonnensystem. Er ist das am stärksten verkraterte Objekt im Sonnensystem mit einer uralten Oberfläche, die keine Anzeichen geologischer Aktivität aufweist, obwohl er tief unter seiner Eiskruste einen salzigen Ozean beherbergen könnte."
+        },
+        "amalthea": {
+            "name": "Amalthea",
+            "nickname": "Der rote Mond des Jupiters",
+            "description": "Amalthea ist ein unregelmäßig geformter, rötlicher innerer Mond des Jupiters. Er ist extrem dunkel und porös und strahlt mehr Wärme ab, als er von der Sonne erhält, was möglicherweise auf Gezeitenreibung oder durch das starke Magnetfeld des Jupiters induzierte elektrische Ströme zurückzuführen ist."
+        },
+        "himalia": {
+            "name": "Himalia",
+            "nickname": "Der eingefangene Asteroid",
+            "description": "Himalia ist der größte der unregelmäßigen Satelliten des Jupiters und umkreist ihn in einer viel größeren Entfernung als die Galileischen Monde. Er wurde 1904 entdeckt und hat eine graue Oberfläche ähnlich wie Asteroiden vom Typ C, was darauf hindeutet, dass es sich wahrscheinlich um einen eingefangenen Asteroiden aus dem äußeren Sonnensystem handelt."
+        },
+        "thebe": {
+            "name": "Thebe",
+            "nickname": "Der Ringmacher",
+            "description": "Thebe ist der Entfernung nach der vierte der inneren Monde des Jupiters. Er ist unregelmäßig geformt, umkreist Jupiter knapp außerhalb des Hauptrings und ist stark verkratert mit mehreren großen Einschlagbecken auf seiner Oberfläche, die Staub freisetzen, der die Gossamer-Ringe des Jupiters speist."
+        },
+        "elara": {
+            "name": "Elara",
+            "nickname": "Der jovianische Wanderer",
+            "description": "Elara ist ein rechtläufiger unregelmäßiger Mond des Jupiters. Er umkreist den Planeten in einer durchschnittlichen Entfernung von fast 11,7 Millionen Kilometern und hat einen Durchmesser von etwa 86 Kilometern. Er teilt eine ähnliche Zusammensetzung und Herkunft mit Himalia."
+        },
+        "saturn": {
+            "name": "Saturn",
+            "nickname": "Der Ringplanet",
+            "description": "Saturn is der sechste Planet von der Sonne und der zweitgrößte im Sonnensystem. Er ist ein Gasriese mit einer geringeren Dichte als Wasser, bekannt für sein spektakuläres, ausgedehntes Ringsystem, das aus Milliarden von Eispartikeln, Gesteinstrümmern und Staub besteht."
+        },
+        "titan": {
+            "name": "Titan",
+            "nickname": "Der Methanmond",
+            "description": "Titan ist Saturns größter Mond und der zweitgrößte Mond im Sonnensystem. Er ist einzigartig durch seine dichte, stickstoffreiche Atmosphäre und eine Oberfläche mit stabilen Seen, Flüssen und Meeren aus flüssigem Methan und Ethan, was ihn zum einzigen Himmelskörper außer der Erde mit stabilen Flüssigkeiten auf der Oberfläche macht."
+        },
+        "rhea": {
+            "name": "Rhea",
+            "nickname": "Der gekrönte Mond",
+            "description": "Rhea ist der zweitgrößte Mond des Saturns und besteht hauptsächlich aus Wassereis mit einem geringen Gesteinsanteil. Er hat eine stark verkraterte Oberfläche und eine sehr dünne Atmosphäre, die Sauerstoff und Kohlendioxid enthält, was von der Raumsonde Cassini nachgewiesen wurde."
+        },
+        "enceladus": {
+            "name": "Enceladus",
+            "nickname": "Der Geysirmond",
+            "description": "Enceladus ist ein aktiver, eisiger Mond des Saturns, der fast 100 % des empfangenen Sonnenlichts reflektiert. Unter seiner Kruste befindet sich ein globaler unterirdischer Ozean, der durch Spalten in der südlichen Polarregion als Geysire aus Wasserdampf, Eispartikeln und organischen Verbindungen ausbricht."
+        },
+        "mimas": {
+            "name": "Mimas",
+            "nickname": "Der Todesstern-Mond",
+            "description": "Mimas ist ein kleiner, verkraterter Saturnmond, der hauptsächlich aus Wassereis besteht. Er wird von dem kolossalen Herschel-Einschlagskrater dominiert, der fast ein Drittel des Monddurchmessers einnimmt und ihm ein Aussehen verleiht, das dem Todesstern aus Star Wars verbläffend ähnlich ist."
+        },
+        "tethys": {
+            "name": "Tethys",
+            "nickname": "Der Canyon-Mond",
+            "description": "Tethys ist ein mittelgroßer Saturnmond, der fast vollständig aus Wassereis besteht. Seine Oberfläche ist durch das massive Einschlagbecken Odysseus und Ithaca Chasma gezeichnet, ein riesiges Grabensystem, das sich über drei Viertel des Mondumfangs erstreckt."
+        },
+        "dione": {
+            "name": "Dione",
+            "nickname": "Der wispernde Mond",
+            "description": "Dione ist ein Saturnmond mit einer stark verkraterten führenden Hemisphäre und einer folgenden Hemisphäre, die von hellen, eisigen Klippen bedeckt ist. Er ist rotationsgebunden und teilt seine Umlaufbahn mit den zwei koorbitalen Monden Helene und Polydeuces."
+        },
+        "iapetus": {
+            "name": "Iapetus",
+            "nickname": "Der Yin-Yang-Mond",
+            "description": "Iapetus ist der drittgrößte Mond des Saturns, berühmt für seine dramatische zweifarbige Färbung, bei der eine Hemisphäre kohlschwarz und die andere schneeweiß ist. Er weist zudem einen einzigartigen Äquatorwall auf, der entlang seines Äquators verläuft und Höhen von 20 Kilometern erreicht."
+        },
+        "uranus": {
+            "name": "Uranus",
+            "nickname": "Der seitwärts rotierende Planet",
+            "description": "Uranus ist der siebte Planet von der Sonne, ein Eisriese mit einem blasszyanen Farbton, der durch Methan in seiner Atmosphäre verursacht wird. Er ist einzigartig durch seine extreme Achsenneigung von 97,8 Grad, die dazu führt, dass er sich praktisch auf der Seite dreht, was zu extremen jahreszeitlichen Schwankungen führt."
+        },
+        "titania": {
+            "name": "Titania",
+            "nickname": "Die Königin von Uranus",
+            "description": "Titania ist der größte Mond von Uranus und der achtgrößte Mond im Sonnensystem. Sie besteht zu etwa gleichen Teilen aus Eis und Gestein, und ihre Oberfläche ist von einem Netzwerk aus massiven Verwerfungen, Canyons und Steilhängen geprägt, was auf vergangene geologische Aktivitäten hindeutet."
+        },
+        "oberon": {
+            "name": "Oberon",
+            "nickname": "Der König von Uranus",
+            "description": "Oberon ist der äußerste der Hauptmonde von Uranus und der zweitgrößte. Er hat eine uralte, stark verkraterte Oberfläche, die kaum Anzeichen von innerer Aktivität zeigt, abgesehen von dunklem Material unbekannter Herkunft, das die Böden vieler Krater bedeckt."
+        },
+        "ariel": {
+            "name": "Ariel",
+            "nickname": "Der helle Mond von Uranus",
+            "description": "Ariel ist der hellste und jüngste der Hauptmonde von Uranus. Seine Oberfläche weist komplexe Netzwerke aus sich schneidenden Tälern, Canyons und glatten Ebenen auf, was auf eine Geschichte cryovulkanischer Erneuerung und tektonischer Aktivität hindeutet."
+        },
+        "umbriel": {
+            "name": "Umbriel",
+            "nickname": "Der dunkle Mond von Uranus",
+            "description": "Umbriel ist der dunkelste der Hauptmonde von Uranus und reflektiert nur etwa halb so viel Licht wie Ariel. Er ist stark verkratert und hat eine uralte Oberfläche, deren auffälligstes Merkmal ein heller Ring aus Material (Wunda) in einem Krater ist."
+        },
+        "miranda": {
+            "name": "Miranda",
+            "nickname": "Der Frankenstein-Mond",
+            "description": "Miranda ist der kleinste und innerste der Hauptmonde von Uranus. Sie weist eine unglaublich komplexe und bizarre Geologie mit riesigen Canyons, bis zu 20 Kilometer tiefen Klippen und uneinheitlichen Geländeformen auf, was auf eine chaotische Geschichte von Kollisionen und Gezeitenheizung hindeutet."
+        },
+        "neptune": {
+            "name": "Neptun",
+            "nickname": "Der windige Planet",
+            "description": "Neptun ist der achte und am weitesten von der Sonne entfernte Planet. Er ist ein kalter, dunkler Eisriese, der für seine tiefblaue Farbe, seine dynamische Atmosphäre mit Überschallwinden von bis zu 2.100 km/h und ein schwaches System von Ringen und Ringbögen bekannt ist."
+        },
+        "triton": {
+            "name": "Triton",
+            "nickname": "Der retrograde Mond",
+            "description": "Triton ist der größte Mond des Neptun und der einzige große Mond im Sonnensystem, der sich in entgegengesetzter Richtung zur Rotation seines Planeten bewegt (retrograde Umlaufbahn). Er ist vulkanisch aktiv, wobei Stickstoffgeysire aus seiner gefrorenen Stickstoffeis-Oberfläche ausbrechen."
+        },
+        "proteus": {
+            "name": "Proteus",
+            "nickname": "Der Gestaltwandler-Mond",
+            "description": "Proteus ist der zweitgrößte Mond des Neptun und umkreist den Planeten sehr nah. Er ist ein sehr unregelmäßiger, dunkler Körper mit einer stark verkraterten Oberfläche und ist so massiv, dass er kurz vor der Grenze steht, an der seine eigene Schwerkraft ihn in eine Kugelform ziehen würde."
+        },
+        "nereid": {
+            "name": "Nereid",
+            "nickname": "Der exzentrische Mond",
+            "description": "Nereid ist einer der äußeren Monde des Neptun, der 1949 von Gerard Kuiper entdeckt wurde. Er ist bekannt für eine der exzentrischsten Umlaufbahnen aller Monde im Sonnensystem, die sich zwischen 1,3 und 9,6 Millionen Kilometern von Neptun erstreckt."
+        },
+        "pluto": {
+            "name": "Pluto",
+            "nickname": "Das Herz des Kuipergürtels",
+            "description": "Pluto ist ein Zwergplanet im Kuipergürtel, einer Region eisiger Körper jenseits von Neptun. Einst als neunter Planet klassifiziert, hat er eine komplexe Oberfläche aus Stickstoffeis-Ebenen, Wassereis-Bergen und einer dünnen Atmosphäre aus Stickstoff, Methan und Kohlenmonoxid."
+        },
+        "charon": {
+            "name": "Charon",
+            "nickname": "Der Fährmann-Mond",
+            "description": "Charon ist der größte der fünf Monde von Pluto und halb so groß wie Pluto selbst. Aufgrund ihrer ähnlichen Massen umkreisen Pluto und Charon ein gemeinsames Baryzentrum außerhalb der Oberfläche von Pluto, was sie zu einem binären Zwergplanetensystem macht, und sie sind gegenseitig rotationsgebunden."
+        },
+        "nix": {
+            "name": "Nix",
+            "nickname": "Der Nachtmond",
+            "description": "Nix ist ein kleiner, länglicher Plutomond, der 2005 entdeckt wurde. Er umkreist Pluto in einer chaotischen Taumelbewegung aufgrund der sich schnell ändernden Gravitationskräfte, die durch das Doppelplanetensystem Pluto-Charon ausgeübt werden."
+        },
+        "hydra": {
+            "name": "Hydra",
+            "nickname": "Der Schlangenmond",
+            "description": "Hydra ist der äußerste und zweitgrößte der kleinen Monde von Pluto und wurde 2005 entdeckt. Sie ist mit hochreflektierendem Wassereis bedeckt und besitzt wie Nix keine stabile Rotationsachse, sondern taumelt unvorhersehbar, während sie das Doppelplanetensystem umkreist."
+        },
+        "kerberos": {
+            "name": "Kerberos",
+            "nickname": "Der zweilappige Mond",
+            "description": "Kerberos ist ein winziger, zweilappiger Plutomond, der sich zwischen Nix und Hydra bewegt. Er wurde 2011 mit dem Hubble-Weltraumteleskop entdeckt. Seine Shape deutet darauf hin, dass er durch die Verschmelzung zweier kleinerer, eisiger Körper bei geringer Geschwindigkeit entstanden ist."
+        },
+        "styx": {
+            "name": "Styx",
+            "nickname": "Der Grenzmond",
+            "description": "Styx ist der kleinste Mond von Pluto und wurde 2012 mit dem Hubble-Weltraumteleskop bei der Vorbereitung des Vorbeiflugs von New Horizons entdeckt. Er hat eine sehr unregelmäßige Shape und umkreist Pluto in der Ebene der anderen Monde."
+        }
+    }
+}

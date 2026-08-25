@@ -4,7 +4,17 @@
         "radius": "Radius",
         "rotation_period": "Rotation period",
         "orbital_period": "Orbital period",
-        "distance_from": "Distance from"
+        "distance_from": "Distance from",
+        "parent_planet": "Parent Planet",
+        "natural_satellites": "Natural Satellites",
+        "days": "days",
+        "setting": "Setting",
+        "show_orbit_line": "Show Orbit Line",
+        "size_scale": "Size Scale",
+        "distance_scale": "Distance from Sun Scale",
+        "speed_scale": "Speed Scale",
+        "language": "Language",
+        "speed_scale_value": "1 second: {{days}} days"
     },
     "object": {
         "sun": {

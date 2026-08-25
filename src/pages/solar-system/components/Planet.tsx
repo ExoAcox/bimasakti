@@ -1,11 +1,6 @@
-/* eslint-disable react-hooks/rules-of-hooks */
-
-
-
-
 import { useContext, useMemo, useRef } from "react"
 import { Group, MathUtils, Mesh } from "three"
-import { SCALE, type Planet, type Planet as PlanetType, type Satellite as SatelliteType } from "../constant"
+import { SCALE, type Planet as PlanetType, type Satellite as SatelliteType } from "../constant"
 import { useFrame, useThree, type ThreeEvent } from "@react-three/fiber"
 import { calculateSatelliteDistance, getInitialRotation, getObjectById } from "../function";
 import OrbitLine from "./OrbitLine";
@@ -30,6 +25,26 @@ const PlanetMaterial = ({ texturePath }: PlanetMaterialProps) => {
     return <meshStandardMaterial map={texture} />
 }
 
+interface PlanetOverlayProps {
+    texturePath: string;
+    radius: number;
+    overlayRef: (el: Mesh | null) => void;
+}
+
+const PlanetOverlay = ({ texturePath, radius, overlayRef }: PlanetOverlayProps) => {
+    const texture = useTexture(`/solar-system/textures/${texturePath}`)
+    const overlayRadius = radius / 100 * 1
+
+    return <mesh ref={overlayRef}>
+        <sphereGeometry args={[radius + overlayRadius, 64, 64]} />
+        <meshStandardMaterial
+            alphaMap={texture}
+            transparent={true}
+            depthWrite={false}
+        />
+    </mesh>
+}
+
 
 
 const Planet = ({ id, children }: Props) => {
@@ -44,16 +59,13 @@ const Planet = ({ id, children }: Props) => {
     const data = getObjectById(id) as (PlanetType | SatelliteType)
 
 
-    if (!data) return null
-
-
-
-
-    const isSatellite = data.type === "satellite"
-    const radius = data.radius / sizeScale
+    const isSatellite = data?.type === "satellite"
+    const radius = (data?.radius ?? 0) / sizeScale
     const distance = () => {
+        if (!data) return 0
         if (data.type === "satellite") {
-            const parentPlanet = getObjectById(data.parent) as Planet
+            const parentPlanet = getObjectById(data.parent) as PlanetType
+            if (!parentPlanet || !parentPlanet.satellites) return 0
             const index = parentPlanet.satellites.findIndex((satellite) => satellite.id === data.id)
             return calculateSatelliteDistance(data.distance, distanceScale, parentPlanet.radius / sizeScale, index)
         } else {
@@ -61,23 +73,28 @@ const Planet = ({ id, children }: Props) => {
         }
     }
 
-    const axis = MathUtils.degToRad(data.axis)
+    const axis = MathUtils.degToRad(data?.axis ?? 0)
 
-    if (data.id === "phobos") {
+    if (data?.id === "phobos") {
         console.log(distance, SCALE, sizeScale, (SCALE / sizeScale) / distanceScale)
     }
 
 
-    useFrame(() => {
-        const now = Date.now();
-        const speed = ((now % 60000) / 60000) * Math.PI * 2;
-        objectRef.current.rotation.y = speed / data.rotate_duration * speedScale
+    useFrame((state) => {
+        if (!data) return
+        const elapsedTime = state.clock.getElapsedTime()
+        const speed = ((elapsedTime % 60) / 60) * Math.PI * 2
+        if (objectRef.current) {
+            objectRef.current.rotation.y = speed / data.rotate_duration * speedScale
+        }
 
 
         if (data.overlay_textures) {
-            const speed = ((now % 50000) / 50000) * Math.PI * 2;
+            const speedOverlay = ((elapsedTime % 50) / 50) * Math.PI * 2
             data.overlay_textures?.forEach((_, index) => {
-                overlayRef.current[index].rotation.y = speed / data.rotate_duration * speedScale
+                if (overlayRef.current[index]) {
+                    overlayRef.current[index].rotation.y = speedOverlay / data.rotate_duration * speedScale
+                }
             })
         }
 
@@ -92,13 +109,16 @@ const Planet = ({ id, children }: Props) => {
         setControl({ focus: event.object.name })
     }
 
+    const dataId = data?.id
+    const dataParent = data?.parent
+
     const isLabelVisible = useMemo(() => {
-        if (focus === data.id) return false
+        if (focus === dataId) return false
         if (!isSatellite) return true
-        if (isSatellite && focus === data.parent) return true
+        if (isSatellite && focus === dataParent) return true
 
         return false
-    }, [focus, data.id, data.parent, isSatellite])
+    }, [focus, dataId, dataParent, isSatellite])
 
     const focusedObject = useMemo(() => {
         if (!focus) return undefined
@@ -115,6 +135,8 @@ const Planet = ({ id, children }: Props) => {
 
         return occlude
     }, [focus, scene])
+
+    if (!data) return null
 
     return <>
         <group rotation={[0, 0, axis]}>
@@ -135,19 +157,16 @@ const Planet = ({ id, children }: Props) => {
                         )}
                     </mesh>
 
-                    {data.overlay_textures?.map((texturePath, index) => {
-                        const texture = useTexture(`/solar-system/textures/${texturePath}`)
-                        const overlayRadius = radius / 100 * 1
-
-                        return <mesh ref={(el) => overlayRef.current[index] = el} key={index}>
-                            <sphereGeometry args={[radius + overlayRadius, 64, 64]} />
-                            <meshStandardMaterial
-                                alphaMap={texture}
-                                transparent={true}
-                                depthWrite={false}
-                            />
-                        </mesh>
-                    })}
+                    {data.overlay_textures?.map((texturePath, index) => (
+                        <PlanetOverlay
+                            key={index}
+                            texturePath={texturePath}
+                            radius={radius}
+                            overlayRef={(el) => {
+                                overlayRef.current[index] = el!
+                            }}
+                        />
+                    ))}
 
                     {
                         (data as PlanetType).ring && <PlanetRing data={data as PlanetType} />

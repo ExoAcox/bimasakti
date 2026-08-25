@@ -16,7 +16,7 @@ const Scene = ({ children }: Props) => {
     const sceneRef = useRef<Group>(null!)
 
     const bound = useBounds()
-    const { focus } = useContext(ControlContext)
+    const { focus, focusIndex } = useContext(ControlContext)
 
     const { camera } = useThree()
 
@@ -27,7 +27,7 @@ const Scene = ({ children }: Props) => {
         bound.refresh(target).fit()
 
 
-    }, [bound, focus])
+    }, [bound, focus, focusIndex])
 
     // useFrame((state, delta) => {
     //     if (!focus) return;

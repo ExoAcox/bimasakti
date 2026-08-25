@@ -1,0 +1,226 @@
+{
+    "ui": {
+        "speed": "Kecepatan",
+        "radius": "Radius",
+        "rotation_period": "Periode rotasi",
+        "orbital_period": "Periode orbit",
+        "distance_from": "Jarak dari",
+        "parent_planet": "Planet Induk",
+        "natural_satellites": "Satelit Alami",
+        "days": "hari",
+        "setting": "Pengaturan",
+        "show_orbit_line": "Tampilkan Garis Orbit",
+        "size_scale": "Skala Ukuran",
+        "distance_scale": "Skala Jarak dari Matahari",
+        "speed_scale": "Skala Kecepatan",
+        "language": "Bahasa",
+        "speed_scale_value": "1 detik: {{days}} hari"
+    },
+    "object": {
+        "sun": {
+            "name": "Matahari",
+            "nickname": "Katai Kuning",
+            "description": "Matahari adalah bintang di pusat tata surya kita, yang mencakup 99,8% dari total massa tata surya. Matahari berbentuk bola plasma panas yang hampir sempurna, dipanaskan hingga pijar oleh reaksi fusi nuklir di intinya, memancarkan energi terutama dalam bentuk cahaya, radiasi ultraviolet, dan inframerah, serta menjadi sumber energi utama bagi kehidupan di Bumi."
+        },
+        "mercury": {
+            "name": "Merkurius",
+            "nickname": "Planet Tercepat",
+            "description": "Merkurius adalah planet terkecil di tata surya kita dan yang paling dekat dengan Matahari. Planet ini mengalami fluktuasi suhu yang ekstrem, mulai dari siang hari yang sangat panas hingga malam hari yang membeku, serta memiliki permukaan purba yang sangat berkawah tanpa atmosfer dan tanpa bulan."
+        },
+        "venus": {
+            "name": "Venus",
+            "nickname": "Bintang Kejora",
+            "description": "Venus adalah planet kedua dari Matahari dan tetangga planet terdekat Bumi. Venus diselimuti oleh atmosfer karbon dioksida yang tebal dan beracun serta awan asam sulfat yang memerangkap panas dalam efek rumah kaca yang tidak terkendali, membuat permukaannya cukup panas untuk melelehkan timbal dan menjadikannya planet terpanas di tata surya."
+        },
+        "earth": {
+            "name": "Bumi",
+            "nickname": "Planet Biru",
+            "description": "Bumi adalah planet ketiga dari Matahari dan satu-satunya objek astronomi yang diketahui mendukung kehidupan. Bumi ditandai dengan samudra air cair yang menutupi sekitar 71% permukaannya, atmosfer yang kaya akan nitrogen dan oksigen, serta medan magnet kuat yang melindunginya dari radiasi matahari yang berbahaya."
+        },
+        "moon": {
+            "name": "Bulan",
+            "nickname": "Luna",
+            "description": "Bulan adalah satu-satunya satelit alami Bumi dan bulan terbesar kelima di tata surya. Bulan terkunci secara pasang surut (tidally locked) dengan Bumi, yang berarti ia selalu menunjukkan sisi yang sama, dan gaya tarik gravitasinya merupakan penggerak utama pasang surut samudra di Bumi serta menstabilkan kemiringan sumbu planet."
+        },
+        "mars": {
+            "name": "Mars",
+            "nickname": "Planet Merah",
+            "description": "Mars adalah planet keempat dari Matahari dan planet terkecil kedua di tata surya. Sering disebut Planet Merah karena besi oksida yang melimpah di permukaannya, Mars adalah dunia gurun yang dingin dengan atmosfer karbon dioksida yang tipis, lapisan es kutub musiman, dan gunung berapi mati seperti Olympus Mons."
+        },
+        "phobos": {
+            "name": "Phobos",
+            "nickname": "Bulan Ketakutan",
+            "description": "Phobos adalah yang terbesar dan terdekat dari dua bulan kecil Mars yang berbentuk tidak teratur. Phobos mengorbit sangat dekat dengan Mars sehingga menyelesaikan tiga orbit dalam satu hari Mars, dan gaya pasang surut secara bertahap menariknya lebih dekat ke planet tersebut, ditakdirkan untuk menabrak Mars atau hancur menjadi cincin."
+        },
+        "deimos": {
+            "name": "Deimos",
+            "nickname": "Bulan Kengerian",
+            "description": "Deimos adalah yang lebih kecil dan terluar dari dua bulan Mars. Deimos memiliki permukaan yang sangat berkawah tetapi tampak mulus karena lapisan tebal debu batuan halus (regolit) yang mengisi kawah-kawahnya, dan orbitnya hampir melingkar serta stabil, tidak seperti Phobos."
+        },
+        "jupiter": {
+            "name": "Jupiter",
+            "nickname": "Raja Para Planet",
+            "description": "Jupiter adalah planet kelima dari Matahari dan yang terbesar di tata surya kita, dengan massa lebih dari dua kali lipat dari semua planet lain jika digabungkan. Sebagai raksasa gas, Jupiter sebagian besar terdiri dari hidrogen dan helium, tidak memiliki permukaan padat yang jelas, dan terkenal dengan pita awan berwarna-warni serta badai Bintik Merah Raksasa."
+        },
+        "io": {
+            "name": "Io",
+            "nickname": "Bulan Vulkanik",
+            "description": "Io adalah satelit terdalam dari empat satelit Galilea Jupiter dan merupakan benda paling aktif secara vulkanik di tata surya. Aktivitas intensnya didorong oleh pemanasan pasang surut akibat gesekan gravitasi dengan Jupiter dan bulan-bulan tetangganya, menghasilkan ratusan gunung berapi aktif yang mengeluarkan belerang dan belerang dioksida."
+        },
+        "europa": {
+            "name": "Europa",
+            "nickname": "Bulan Samudra",
+            "description": "Europa adalah satelit terkecil dari bulan-bulan Galilea Jupiter. Permukaannya berupa lapisan es air yang sangat memantulkan cahaya dan bersilangan dengan retakan (lineae), di mana para ilmuwan meyakini adanya samudra air cair global di bawahnya yang menampung air dua kali lebih banyak daripada gabungan semua samudra di Bumi, menjadikannya target utama bagi astrobiologi."
+        },
+        "ganymede": {
+            "name": "Ganymede",
+            "nickname": "Bulan Raksasa",
+            "description": "Ganymede adalah bulan terbesar di tata surya kita, bahkan ukurannya melebihi planet Merkurius. Ganymede adalah satu-satunya satelit alami yang diketahui memiliki medan magnetnya sendiri, yang dihasilkan oleh konveksi di inti besi cairnya, dan memiliki perpaduan antara medan berkawah gelap yang tua dan daerah berjalur terang yang lebih muda."
+        },
+        "callisto": {
+            "name": "Callisto",
+            "nickname": "Dunia Berkawah",
+            "description": "Callisto adalah bulan terbesar kedua di Jupiter dan terbesar ketiga di tata surya. Callisto adalah objek yang paling banyak memiliki kawah di tata surya, dengan permukaan kuno yang tidak menunjukkan tanda-tanda aktivitas geologi, meskipun mungkin menyimpan samudra asin jauh di bawah kerak esnya."
+        },
+        "amalthea": {
+            "name": "Amalthea",
+            "nickname": "Bulan Merah Jupiter",
+            "description": "Amalthea adalah satelit dalam Jupiter berbentuk tidak beraturan dan berwarna kemerahan. Amalthea sangat gelap dan berpori, serta memancarkan lebih banyak panas daripada yang diterimanya dari Matahari, kemungkinan karena gesekan pasang surut atau arus listrik yang diinduksi oleh medan magnet Jupiter yang kuat."
+        },
+        "himalia": {
+            "name": "Himalia",
+            "nickname": "Asteroid yang Terperangkap",
+            "description": "Himalia adalah satelit tidak teratur terbesar milik Jupiter, mengorbit pada jarak yang jauh lebih besar daripada bulan-bulan Galilea. Ditemukan pada tahun 1904, Himalia memiliki permukaan abu-abu yang mirip dengan asteroid tipe C, menunjukkan bahwa ia kemungkinan adalah asteroid yang terperangkap dari luar tata surya."
+        },
+        "thebe": {
+            "name": "Thebe",
+            "nickname": "Pembuat Cincin",
+            "description": "Thebe adalah bulan dalam keempat Jupiter berdasarkan jarak. Berbentuk tidak teratur, mengorbit tepat di luar cincin utama Jupiter, dan sangat berkawah dengan beberapa cekungan dampak besar di permukaannya, melepaskan debu yang memberi makan cincin gossamer Jupiter."
+        },
+        "elara": {
+            "name": "Elara",
+            "nickname": "Pengembara Jovian",
+            "description": "Elara adalah satelit tidak teratur prograde dari Jupiter. Elara mengorbit planet ini pada jarak rata-rata hampir 11,7 million kilometer dan memiliki diameter sekitar 86 kilometer, memiliki komposisi dan asal-usul yang mirip dengan Himalia."
+        },
+        "saturn": {
+            "name": "Saturnus",
+            "nickname": "Planet Bercincin",
+            "description": "Saturnus adalah planet keenam dari Matahari dan terbesar kedua di tata surya. Saturnus adalah raksasa gas dengan kepadatan lebih rendah daripada air, terkenal dengan sistem cincinnya yang spektakuler dan luas yang terdiri dari miliaran partikel es, puing-puing batuan, dan debu."
+        },
+        "titan": {
+            "name": "Titan",
+            "nickname": "Bulan Metana",
+            "description": "Titan adalah bulan terbesar Saturnus dan bulan terbesar kedua di tata surya. Titan unik karena atmosfernya yang padat dan kaya nitrogen serta permukaan yang memiliki danau, sungai, dan laut cair yang stabil dari metana dan etana, menjadikannya satu-satunya benda selain Bumi dengan cairan stabil di permukaannya."
+        },
+        "rhea": {
+            "name": "Rhea",
+            "nickname": "Bulan Bermahkota",
+            "description": "Rhea adalah bulan terbesar kedua di Saturnus, sebagian besar terdiri dari es air dengan sejumlah kecil batuan. Rhea memiliki permukaan yang sangat berkawah dan atmosfer tipis yang mengandung oksigen dan karbon dioksida, yang terdeteksi oleh wahana antariksa Cassini."
+        },
+        "enceladus": {
+            "name": "Enceladus",
+            "nickname": "Bulan Geyser",
+            "description": "Enceladus adalah bulan Saturnus yang aktif dan berselimut es yang memantulkan hampir 100% cahaya matahari yang diterimanya. Enceladus memiliki samudra bawah permukaan global di bawah keraknya, yang meletus melalui retakan di wilayah kutub selatan sebagai geyser uap air, partikel es, dan senyawa organik."
+        },
+        "mimas": {
+            "name": "Mimas",
+            "nickname": "Bulan Death Star",
+            "description": "Mimas adalah bulan kecil berkawah di Saturnus yang sebagian besar terdiri dari es air. Mimas didominasi oleh kawah dampak Herschel yang kolosal, yang membentang hampir sepertiga dari diameter bulan ini, memberikan tampilan yang sangat mirip dengan Death Star dari Star Wars."
+        },
+        "tethys": {
+            "name": "Tethys",
+            "nickname": "Bulan Ngarai",
+            "description": "Tethys adalah bulan Saturnus berukuran sedang yang hampir seluruhnya terdiri dari es air. Permukaannya dihiasi oleh cekungan dampak Odysseus yang masif dan Ithaca Chasma, sistem ngarai raksasa yang membentang sepanjang tiga perempat keliling Bulan."
+        },
+        "dione": {
+            "name": "Dione",
+            "nickname": "Bulan Tipis",
+            "description": "Dione adalah bulan Saturnus dengan belahan depan yang sangat berkawah dan belahan belakang yang ditutupi oleh tebing es yang terang dan tipis. Dione terkunci secara pasang surut dan berbagi orbitnya dengan dua bulan ko-orbital, Helene dan Polydeuces."
+        },
+        "iapetus": {
+            "name": "Iapetus",
+            "nickname": "Bulan Yin-Yang",
+            "description": "Iapetus adalah bulan terbesar ketiga di Saturnus, terkenal dengan warna dua nada yang dramatis, dengan satu belahan gelap seperti batu bara dan belahan lainnya terang seperti salju. Iapetus juga memiliki punggungan khatulistiwa unik yang membentang di sepanjang khatulistiwa, mencapai ketinggian 20 kilometer."
+        },
+        "uranus": {
+            "name": "Uranus",
+            "nickname": "Planet Menyamping",
+            "description": "Uranus adalah planet ketujuh dari Matahari, raksasa es dengan warna sian pucat yang disebabkan oleh metana di atmosfernya. Uranus unik karena kemiringan sumbunya yang ekstrem sebesar 97,8 derajat, menyebabkannya berotasi hampir sepenuhnya di sisinya, menghasilkan variasi musim yang ekstrem."
+        },
+        "titania": {
+            "name": "Titania",
+            "nickname": "Ratu Uranus",
+            "description": "Titania adalah bulan terbesar di Uranus dan bulan terbesar kedelapan di tata surya. Titania terdiri dari es dan batuan dalam jumlah yang hampir sama, dan permukaannya ditandai dengan jaringan patahan besar, ngarai, dan lereng curam yang menunjukkan aktivitas geologi di masa lalu."
+        },
+        "oberon": {
+            "name": "Oberon",
+            "nickname": "Raja Uranus",
+            "description": "Oberon adalah bulan utama terluar dari Uranus dan terbesar kedua. Permukaannya kuno dan sangat berkawah, menunjukkan sedikit tanda aktivitas internal, kecuali material gelap dengan asal yang tidak diketahui yang menutupi dasar banyak kawah."
+        },
+        "ariel": {
+            "name": "Ariel",
+            "nickname": "Bulan Terang Uranus",
+            "description": "Ariel adalah bulan paling terang dan termuda di antara bulan-bulan utama Uranus. Permukaannya menampilkan jaringan kompleks lembah yang saling bersilangan, ngarai, dan dataran halus, menunjukkan sejarah kemunculan kembali kriovulkanik dan aktivitas tektonik."
+        },
+        "umbriel": {
+            "name": "Umbriel",
+            "nickname": "Bulan Gelap Uranus",
+            "description": "Umbriel adalah bulan paling gelap di antara bulan-bulan utama Uranus, hanya memantulkan sekitar setengah cahaya dari yang dipantulkan Ariel. Umbriel sangat berkawah dan memiliki permukaan kuno, dengan fitur paling menonjol berupa cincin material terang (Wunda) di dalam kawah."
+        },
+        "miranda": {
+            "name": "Miranda",
+            "nickname": "Bulan Frankenstein",
+            "description": "Miranda adalah yang terkecil dan terdalam dari bulan-bulan utama Uranus. Miranda memiliki geologi yang sangat kompleks dan aneh dengan ngarai raksasa, tebing sedalam hingga 20 kilometer, dan medan yang tidak cocok yang menunjukkan sejarah kekacauan akibat gangguan tabrakan dan pemanasan pasang surut."
+        },
+        "neptune": {
+            "name": "Neptunus",
+            "nickname": "Planet Berangin",
+            "description": "Neptunus adalah planet kedelapan dan terjauh dari Matahari. Neptunus adalah raksasa es yang dingin dan gelap yang dikenal dengan warna biru tuanya, atmosfer dinamis dengan angin supersonik hingga 2.100 km/jam, dan sistem cincin serta busur cincin yang redup."
+        },
+        "triton": {
+            "name": "Triton",
+            "nickname": "Bulan Retrograde",
+            "description": "Triton adalah bulan terbesar Neptunus dan satu-satunya bulan besar di tata surya yang mengorbit dengan arah berlawanan dari rotasi planetnya (orbit retrograde). Triton aktif secara vulkanik, dengan geyser nitrogen yang meletus dari permukaan es nitrogennya yang membeku."
+        },
+        "proteus": {
+            "name": "Proteus",
+            "nickname": "Bulan Pengubah Bentuk",
+            "description": "Proteus adalah bulan terbesar kedua di Neptunus, mengorbit sangat dekat dengan planet tersebut. Proteus adalah benda gelap yang sangat tidak beraturan dengan permukaan yang banyak berkawah, dan begitu masif sehingga mendekati batas di mana gravitasinya sendiri akan menariknya menjadi sebuah bola."
+        },
+        "nereid": {
+            "name": "Nereid",
+            "nickname": "Bulan Eksentrik",
+            "description": "Nereid adalah salah satu bulan luar Neptunus, ditemukan oleh Gerard Kuiper pada tahun 1949. Nereid terkenal karena memiliki salah satu orbit paling eksentrik dari semua bulan di tata surya, berkisar antara 1,3 juta hingga 9,6 juta kilometer dari Neptunus."
+        },
+        "pluto": {
+            "name": "Pluto",
+            "nickname": "Jantung Sabuk Kuiper",
+            "description": "Pluto adalah planet kerdil di Sabuk Kuiper, wilayah benda-benda es di luar Neptunus. Sempat diklasifikasikan sebagai planet kesembilan, Pluto memiliki permukaan kompleks yang terdiri dari dataran es nitrogen, pegunungan es air, dan atmosfer tipis nitrogen, metana, dan karbon monoksida."
+        },
+        "charon": {
+            "name": "Charon",
+            "nickname": "Bulan Tukang Perahu",
+            "description": "Charon adalah yang terbesar dari lima bulan Pluto, dengan ukuran setengah dari Pluto itu sendiri. Karena massanya yang serupa, Pluto dan Charon mengorbit pusat massa (barisentrum) bersama di luar permukaan Pluto, menjadikannya sistem planet kerdil biner, dan keduanya terkunci secara pasang surut satu sama lain."
+        },
+        "nix": {
+            "name": "Nix",
+            "nickname": "Bulan Malam",
+            "description": "Nix adalah bulan kecil Pluto berbentuk memanjang yang ditemukan pada tahun 2005. Nix mengorbit Pluto dalam rotasi berguling yang kacau karena perubahan cepat gaya gravitasi yang diberikan oleh sistem biner Pluto-Charon."
+        },
+        "hydra": {
+            "name": "Hydra",
+            "nickname": "Bulan Ular",
+            "description": "Hydra adalah bulan terluar dan terbesar kedua dari bulan-bulan kecil Pluto, ditemukan pada tahun 2005. Hydra ditutupi oleh es air yang sangat memantulkan cahaya, dan seperti Nix, ia tidak memiliki sumbu rotasi yang stabil, berguling tak terduga saat mengorbit sistem planet ganda tersebut."
+        },
+        "kerberos": {
+            "name": "Kerberos",
+            "nickname": "Bulan Berlobus Ganda",
+            "description": "Kerberos adalah bulan kecil Pluto berlobus ganda yang mengorbit di antara Nix dan Hydra. Ditemukan pada tahun 2011 oleh Teleskop Luar Angkasa Hubble, bentuknya menunjukkan bahwa ia terbentuk dari penggabungan berkecepatan rendah dua benda es yang lebih kecil."
+        },
+        "styx": {
+            "name": "Styx",
+            "nickname": "Bulan Batas",
+            "description": "Styx adalah bulan terkecil Pluto, ditemukan pada tahun 2012 oleh Teleskop Luar Angkasa Hubble selama persiapan untuk terbang lintas New Horizons. Styx memiliki bentuk yang sangat tidak beraturan dan mengorbit di bidang bulan Pluto lainnya."
+        }
+    }
+}

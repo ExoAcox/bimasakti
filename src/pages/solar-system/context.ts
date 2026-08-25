@@ -3,6 +3,7 @@ import { SCALE, TIME_SCALE } from './constant';
 
 export interface Control {
     focus: string,
+    focusIndex: number,
     speed: number,
     sizeScale: number,
     distanceScale: number,
@@ -13,6 +14,7 @@ export interface Control {
 
 export const ControlContext = createContext<Control>({
     focus: "",
+    focusIndex: 0,
     speed: 1,
     sizeScale: SCALE,
     distanceScale: SCALE,

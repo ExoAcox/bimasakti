@@ -3,7 +3,7 @@
 
 import { useContext, useMemo, useRef } from "react"
 import { Mesh } from "three"
-import { SCALE, sun, TIME_SCALE } from "../constant"
+import { SCALE, sun } from "../constant"
 import { useFrame, useThree } from "@react-three/fiber"
 import { Html, useTexture } from "@react-three/drei"
 import { ControlContext } from "../context"
@@ -15,7 +15,7 @@ const Sun = ({ children }: { children: React.ReactNode }) => {
     const objectRef = useRef<Mesh>(null!)
     const { t } = useTranslation()
 
-    const { focus, distanceScale, setControl } = useContext(ControlContext)
+    const { focus, distanceScale, speedScale, setControl } = useContext(ControlContext)
     const { scene } = useThree()
 
     const radius = sun.radius / SCALE
@@ -35,10 +35,10 @@ const Sun = ({ children }: { children: React.ReactNode }) => {
     }, [focus, scene])
 
 
-    useFrame(() => {
-        const now = Date.now();
-        const speed = ((now % 60000) / 60000) * Math.PI * 2;
-        objectRef.current.rotation.y = speed / sun.rotate_duration * TIME_SCALE
+    useFrame((state) => {
+        const elapsedTime = state.clock.getElapsedTime()
+        const speed = ((elapsedTime % 60) / 60) * Math.PI * 2
+        objectRef.current.rotation.y = speed / sun.rotate_duration * speedScale
     })
 
     return <>
