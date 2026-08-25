@@ -1,0 +1,216 @@
+{
+    "ui": {
+        "speed": "Speed",
+        "radius": "Radius",
+        "rotation_period": "Rotation period",
+        "orbital_period": "Orbital period",
+        "distance_from": "Distance from"
+    },
+    "object": {
+        "sun": {
+            "name": "Sun",
+            "nickname": "The Yellow Dwarf",
+            "description": "The Sun is the star at the center of our solar system, comprising 99.8% of the system's total mass. It is a nearly perfect sphere of hot plasma, heated to incandescence by nuclear fusion reactions in its core, which radiates energy primarily as light, ultraviolet, and infrared radiation, providing the primary source of energy for life on Earth."
+        },
+        "mercury": {
+            "name": "Mercury",
+            "nickname": "The Swift Planet",
+            "description": "Mercury is the smallest planet in our solar system and the closest to the Sun. It experiences extreme temperature fluctuations, ranging from scorching days to freezing nights, and possesses a heavily cratered, ancient surface with no atmosphere and no moons."
+        },
+        "venus": {
+            "name": "Venus",
+            "nickname": "The Morning Star",
+            "description": "Venus is the second planet from the Sun and Earth's closest planetary neighbor. It is enveloped in a thick, toxic atmosphere of carbon dioxide and sulfuric acid clouds that trap heat in a runaway greenhouse effect, making its surface hot enough to melt lead and making it the hottest planet in the solar system."
+        },
+        "earth": {
+            "name": "Earth",
+            "nickname": "The Blue Planet",
+            "description": "Earth is the third planet from the Sun and the only known astronomical object to harbor life. It is characterized by its liquid water oceans, which cover about 71% of its surface, an atmosphere rich in nitrogen and oxygen, and a strong magnetic field that shields it from harmful solar radiation."
+        },
+        "moon": {
+            "name": "Moon",
+            "nickname": "Luna",
+            "description": "The Moon is Earth's only natural satellite and the fifth-largest moon in the solar system. It is tidally locked to Earth, meaning it always shows the same face, and its gravitational pull is the primary driver of Earth's ocean tides and stabilizes the planet's axial tilt."
+        },
+        "mars": {
+            "name": "Mars",
+            "nickname": "The Red Planet",
+            "description": "Mars is the fourth planet from the Sun and the second-smallest planet in the solar system. Often called the Red Planet due to the iron oxide prevalent on its surface, it is a cold desert world with a thin carbon dioxide atmosphere, seasonal polar ice caps, and extinct volcanoes like Olympus Mons."
+        },
+        "phobos": {
+            "name": "Phobos",
+            "nickname": "The Moon of Fear",
+            "description": "Phobos is the larger and closer of Mars' two small, irregularly shaped moons. It orbits so close to Mars that it completes three orbits in a single Martian day, and tidal forces are gradually drawing it closer to the planet, destined to crash into Mars or shatter into a ring."
+        },
+        "deimos": {
+            "name": "Deimos",
+            "nickname": "The Moon of Dread",
+            "description": "Deimos is the smaller and outer of Mars' two moons. It has a heavily cratered but smooth appearance due to a thick layer of pulverised rock dust (regolith) filling its craters, and its orbit is nearly circular and stable, unlike Phobos."
+        },
+        "jupiter": {
+            "name": "Jupiter",
+            "nickname": "The King of Planets",
+            "description": "Jupiter is the fifth planet from the Sun and the largest in our solar system, with a mass more than double that of all other planets combined. As a gas giant, it consists primarily of hydrogen and helium, has no well-defined solid surface, and is famous for its colorful bands of clouds and the Great Red Spot storm."
+        },
+        "io": {
+            "name": "Io",
+            "nickname": "The Volcanic Moon",
+            "description": "Io is the innermost of Jupiter's four Galilean moons and the most volcanically active body in the solar system. Its intense activity is driven by tidal heating from gravitational friction with Jupiter and neighboring moons, resulting in hundreds of active volcanoes venting sulfur and sulfur dioxide."
+        },
+        "europa": {
+            "name": "Europa",
+            "nickname": "The Ocean Moon",
+            "description": "Europa is the smallest of Jupiter's Galilean moons. Its surface is a highly reflective sheet of water ice crisscrossed by cracks (lineae), beneath which scientists believe a global, liquid water ocean exists containing twice as much water as all of Earth's oceans combined, making it a prime target for astrobiology."
+        },
+        "ganymede": {
+            "name": "Ganymede",
+            "nickname": "The Giant Moon",
+            "description": "Ganymede is the largest moon in our solar system, even exceeding the planet Mercury in size. It is the only natural satellite known to possess its own magnetic field, generated by convection in its liquid iron core, and features a mixture of dark, cratered terrain and lighter, grooved regions."
+        },
+        "callisto": {
+            "name": "Callisto",
+            "nickname": "The Cratered World",
+            "description": "Callisto is the second-largest moon of Jupiter and the third-largest in the solar system. It is the most heavily cratered object in the solar system, with an ancient surface showing no signs of geological activity, though it may harbor a salty ocean deep beneath its icy crust."
+        },
+        "amalthea": {
+            "name": "Amalthea",
+            "nickname": "The Red Moon of Jupiter",
+            "description": "Amalthea is an irregularly shaped, reddish inner moon of Jupiter. It is extremely dark and porous, and radiates more heat than it receives from the Sun, possibly due to tidal friction or electric currents induced by Jupiter's powerful magnetic field."
+        },
+        "himalia": {
+            "name": "Himalia",
+            "nickname": "The Captured Asteroid",
+            "description": "Himalia is the largest of Jupiter's irregular satellites, orbiting at a much greater distance than the Galilean moons. Discovered in 1904, it has a grey surface similar to C-type asteroids, indicating it is likely a captured asteroid from the outer solar system."
+        },
+        "thebe": {
+            "name": "Thebe",
+            "nickname": "The Ring Maker",
+            "description": "Thebe is the fourth of Jupiter's inner moons by distance. It is irregularly shaped, orbits just outside Jupiter's main ring, and is heavily cratered with several large impact basins on its surface, releasing dust that feeds Jupiter's gossamer rings."
+        },
+        "elara": {
+            "name": "Elara",
+            "nickname": "The Jovian Wanderer",
+            "description": "Elara is a prograde irregular moon of Jupiter. It orbits the planet at an average distance of nearly 11.7 million kilometers and has a diameter of about 86 kilometers, sharing a similar composition and origin to Himalia."
+        },
+        "saturn": {
+            "name": "Saturn",
+            "nickname": "The Ringed Planet",
+            "description": "Saturn is the sixth planet from the Sun and the second-largest in the solar system. It is a gas giant with a density lower than water, renowned for its spectacular, extensive ring system composed of billions of ice particles, rocky debris, and dust."
+        },
+        "titan": {
+            "name": "Titan",
+            "nickname": "The Methane Moon",
+            "description": "Titan is Saturn's largest moon and the second-largest moon in the solar system. It is unique for its dense nitrogen-rich atmosphere and a surface featuring stable lakes, rivers, and seas of liquid methane and ethane, making it the only body besides Earth with stable liquids on its surface."
+        },
+        "rhea": {
+            "name": "Rhea",
+            "nickname": "The Crowned Moon",
+            "description": "Rhea is the second-largest moon of Saturn, composed primarily of water ice with a small amount of rock. It has a heavily cratered surface and a very thin, tenuous atmosphere containing oxygen and carbon dioxide, detected by the Cassini spacecraft."
+        },
+        "enceladus": {
+            "name": "Enceladus",
+            "nickname": "The Geyser Moon",
+            "description": "Enceladus is an active, icy moon of Saturn that reflects nearly 100% of the sunlight it receives. It features a global subsurface ocean beneath its crust, which erupts through fissures in the south polar region as geysers of water vapor, ice particles, and organic compounds."
+        },
+        "mimas": {
+            "name": "Mimas",
+            "nickname": "The Death Star Moon",
+            "description": "Mimas is a small, cratered moon of Saturn composed mostly of water ice. It is dominated by the colossal Herschel impact crater, which spans nearly a third of the moon's diameter, giving it an appearance strikingly similar to the Death Star from Star Wars."
+        },
+        "tethys": {
+            "name": "Tethys",
+            "nickname": "The Canyon Moon",
+            "description": "Tethys is a mid-sized Saturnian moon composed almost entirely of water ice. Its surface is scarred by the massive Odysseus impact basin and Ithaca Chasma, a giant canyon system that stretches across three-quarters of the moon's circumference."
+        },
+        "dione": {
+            "name": "Dione",
+            "nickname": "The Wispy Moon",
+            "description": "Dione is a Saturnian moon with a heavily cratered leading hemisphere and a trailing hemisphere covered by bright, wispy ice cliffs. It is tidally locked and shares its orbit with two co-orbital moons, Helene and Polydeuces."
+        },
+        "iapetus": {
+            "name": "Iapetus",
+            "nickname": "The Yin-Yang Moon",
+            "description": "Iapetus is the third-largest moon of Saturn, famous for its dramatic two-tone coloration, with one hemisphere dark as coal and the other bright as snow. It also features a unique equatorial ridge that runs along its equator, reaching heights of 20 kilometers."
+        },
+        "uranus": {
+            "name": "Uranus",
+            "nickname": "The Sideways Planet",
+            "description": "Uranus is the seventh planet from the Sun, an ice giant with a pale cyan hue caused by methane in its atmosphere. It is unique for its extreme axial tilt of 97.8 degrees, causing it to rotate virtually on its side, resulting in extreme seasonal variations."
+        },
+        "titania": {
+            "name": "Titania",
+            "nickname": "The Queen of Uranus",
+            "description": "Titania is the largest moon of Uranus and the eighth-largest moon in the solar system. It is composed of roughly equal amounts of ice and rock, and its surface is marked by a network of massive faults, canyons, and scarps indicating past geological activity."
+        },
+        "oberon": {
+            "name": "Oberon",
+            "nickname": "The King of Uranus",
+            "description": "Oberon is the outermost major moon of Uranus and the second-largest. It has an ancient, heavily cratered surface that shows little sign of internal activity, except for dark material of unknown origin covering the floors of many craters."
+        },
+        "ariel": {
+            "name": "Ariel",
+            "nickname": "The Bright Moon of Uranus",
+            "description": "Ariel is the brightest and youngest of Uranus's major moons. Its surface features complex networks of intersecting valleys, canyons, and smooth plains, suggesting a history of cryovolcanic resurfacing and tectonic activity."
+        },
+        "umbriel": {
+            "name": "Umbriel",
+            "nickname": "The Dark Moon of Uranus",
+            "description": "Umbriel is the darkest of Uranus's major moons, reflecting only about half as much light as Ariel. It is heavily cratered and has an ancient surface, with its most prominent feature being a bright ring of material (Wunda) inside a crater."
+        },
+        "miranda": {
+            "name": "Miranda",
+            "nickname": "The Frankenstein Moon",
+            "description": "Miranda is the smallest and innermost of Uranus's major moons. It features an incredibly complex and bizarre geology with giant canyons, cliffs up to 20 kilometers deep, and mismatched terrains that suggest a chaotic history of impact disruption and tidal heating."
+        },
+        "neptune": {
+            "name": "Neptune",
+            "nickname": "The Windy Planet",
+            "description": "Neptune is the eighth and most distant planet from the Sun. It is a cold, dark ice giant known for its deep blue color, dynamic atmosphere with supersonic winds up to 2,100 km/h, and a faint system of rings and ring arcs."
+        },
+        "triton": {
+            "name": "Triton",
+            "nickname": "The Retrograde Moon",
+            "description": "Triton is the largest moon of Neptune and the only large moon in the solar system that orbits in the opposite direction of its planet's rotation (retrograde orbit). It is volcanically active, with nitrogen geysers erupting from its freezing nitrogen-ice surface."
+        },
+        "proteus": {
+            "name": "Proteus",
+            "nickname": "The Shapeshifter Moon",
+            "description": "Proteus is the second-largest moon of Neptune, orbiting very close to the planet. It is a highly irregular, dark body with a heavily cratered surface, and is so massive that it is close to the limit where its own gravity would pull it into a sphere."
+        },
+        "nereid": {
+            "name": "Nereid",
+            "nickname": "The Eccentric Moon",
+            "description": "Nereid is one of Neptune's outer moons, discovered by Gerard Kuiper in 1949. It is famous for having one of the most eccentric orbits of any moon in the solar system, ranging from 1.3 million to 9.6 million kilometers from Neptune."
+        },
+        "pluto": {
+            "name": "Pluto",
+            "nickname": "The Heart of the Kuiper Belt",
+            "description": "Pluto is a dwarf planet in the Kuiper Belt, a region of icy bodies beyond Neptune. Once classified as the ninth planet, it has a complex surface of nitrogen ice plains, water ice mountains, and a thin atmosphere of nitrogen, methane, and carbon monoxide."
+        },
+        "charon": {
+            "name": "Charon",
+            "nickname": "The Ferryman Moon",
+            "description": "Charon is the largest of Pluto's five moons, half the size of Pluto itself. Because of their similar masses, Pluto and Charon orbit a common barycenter outside Pluto's surface, making them a binary dwarf planet system, and they are mutually tidally locked."
+        },
+        "nix": {
+            "name": "Nix",
+            "nickname": "The Night Moon",
+            "description": "Nix is a small, elongated moon of Pluto discovered in 2005. It orbits Pluto in a chaotic, tumbling rotation due to the rapidly changing gravitational forces exerted by the binary Pluto-Charon system."
+        },
+        "hydra": {
+            "name": "Hydra",
+            "nickname": "The Serpent Moon",
+            "description": "Hydra is the outermost and second-largest of Pluto's small moons, discovered in 2005. It is covered in highly reflective water ice, and like Nix, it lacks a stable rotation axis, tumbling unpredictably as it orbits the double-planet system."
+        },
+        "kerberos": {
+            "name": "Kerberos",
+            "nickname": "The Double-Lobed Moon",
+            "description": "Kerberos is a tiny, double-lobed moon of Pluto orbiting between Nix and Hydra. Discovered in 2011 by the Hubble Space Telescope, its shape suggests it was formed by the low-velocity merger of two smaller, icy bodies."
+        },
+        "styx": {
+            "name": "Styx",
+            "nickname": "The Boundary Moon",
+            "description": "Styx is the smallest moon of Pluto, discovered in 2012 by the Hubble Space Telescope during preparations for the New Horizons flyby. It has a highly irregular shape and orbits in the plane of the other Pluto moons."
+        }
+    }
+}

@@ -7,19 +7,23 @@ import { SCALE, sun, TIME_SCALE } from "../constant"
 import { useFrame, useThree } from "@react-three/fiber"
 import { Html, useTexture } from "@react-three/drei"
 import { ControlContext } from "../context"
+import { useTranslation } from "react-i18next"
 
 
 
 const Sun = ({ children }: { children: React.ReactNode }) => {
     const objectRef = useRef<Mesh>(null!)
+    const { t } = useTranslation()
+
+    const { focus, distanceScale, setControl } = useContext(ControlContext)
+    const { scene } = useThree()
 
     const radius = sun.radius / SCALE
     const axis = sun.axis * (Math.PI / 180)
+    const intensity = 1e17 / Math.pow(distanceScale, 2)
 
     const texture = useTexture(`/solar-system/textures/${sun.texture}`)
 
-    const { focus, setControl } = useContext(ControlContext)
-    const { scene } = useThree()
 
     const focusedObject = useMemo(() => {
         if (!focus) return undefined
@@ -38,15 +42,15 @@ const Sun = ({ children }: { children: React.ReactNode }) => {
     })
 
     return <>
-        <pointLight intensity={100000} color="white" />
+        <pointLight intensity={intensity} color="white" />
 
         <group rotation={[0, 0, axis]}>
             <Html occlude={focusedObject ? [focusedObject] : undefined} zIndexRange={[2, 0]}>
-                {(focus && focus !== sun.id) && <button className="py-1 px-2 rounded-lg text-sm font-semibold bg-white" onClick={() => setControl({ focus: sun.id })}>{sun.name}</button>}
+                {(focus && focus !== sun.id) && <button className="py-1 px-2 rounded-lg text-sm font-semibold bg-white" onClick={() => setControl({ focus: sun.id })}>{t(`object.${sun.id}.name`)}</button>}
             </Html>
 
 
-            <mesh ref={objectRef} name={sun.id} >
+            <mesh ref={objectRef} name={sun.id} onClick={() => setControl({ focus: sun.id })}>
                 <sphereGeometry args={[radius, 64, 64]} />
                 <meshBasicMaterial map={texture} />
             </mesh>

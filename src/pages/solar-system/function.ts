@@ -26,3 +26,17 @@ export const getInitialRotation = (id: string) => {
     const deg = Math.abs(hash) % 361
     return MathUtils.degToRad(deg)
 }
+
+export const calculateSatelliteDistance = (distance: number, scale: number, parentRadius: number, index: number) => {
+    const rawVisualDistance = distance / scale;
+    const visualPlanetRadius = parentRadius;
+
+    const orbitGap = 0.25;
+    const safeMinimumDistance = (visualPlanetRadius * 2.0) + (index * orbitGap);
+
+    if (scale <= 1000000) {
+        return Math.max(rawVisualDistance, safeMinimumDistance);
+    }
+
+    return Math.max(rawVisualDistance, safeMinimumDistance);
+}

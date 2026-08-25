@@ -5,15 +5,21 @@ import { useState } from "react"
 import Sidebar from "./components/Sidebar"
 import Scene from "./components/Scene"
 import { ControlContext, type Control } from "./context"
-import { planets } from "./constant"
+import { planets, SCALE, TIME_SCALE } from "./constant"
 import Planet from "./components/Planet"
 import Sun from "./components/Sun"
 import Satellite from "./components/Satellite"
+import PanelDetail from "./components/DetailPanel"
+import SettingPanel from "./components/SettingPanel"
 
 const SolarSystem = () => {
     const [control, setControl] = useState({
         focus: "",
-        speed: 1
+        speed: 1,
+        sizeScale: SCALE,
+        distanceScale: SCALE,
+        speedScale: TIME_SCALE,
+        showOrbitLine: true
     })
 
     const handleControl = (value: Control) => {
@@ -55,6 +61,8 @@ const SolarSystem = () => {
             </Canvas>
 
             <Sidebar setControl={handleControl} />
+            <SettingPanel />
+            <PanelDetail />
         </ControlContext>
     </div>
 }
