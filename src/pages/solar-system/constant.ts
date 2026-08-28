@@ -1,6 +1,6 @@
 interface Object {
     id: string
-    type: "star" | "planet" | "satellite"
+    type: "star" | "planet" | "satellite" | "artificial_satellite"
     parent: string
     radius: number
     distance: number
@@ -21,10 +21,16 @@ export interface Satellite extends Object {
     type: "satellite",
 }
 
+export interface ArtificialSatellite extends Object {
+    type: "artificial_satellite",
+    model: string
+}
+
 export interface Planet extends Object {
     type: "planet",
     icon: string,
     satellites?: Satellite[]
+    artificial_satellites?: ArtificialSatellite[]
     ring?: Ring
 }
 
@@ -90,6 +96,21 @@ export const planets: Planet[] = [
                 rotate_duration: 27.32, // Tidally locked
                 texture: "moon.jpg",
                 icon: "satellite.png"
+            }
+        ],
+        artificial_satellites: [
+            {
+                id: "iss",
+                type: "artificial_satellite",
+                parent: "earth",
+                radius: 0.0545, // ~54.5 meters radius in km
+                distance: 6779, // Distance from Earth center in km (6371 km Earth radius + ~408 km altitude)
+                color: "silver",
+                axis: 51.64, // Orbital inclination in degrees
+                orbit_duration: 0.0645, // ~92.9 minutes orbital period in days
+                rotate_duration: 0.0645, // Earth-facing rotational alignment in days
+                model: "/solar-system/models/iss.glb",
+                icon: "artificial_satellite.png"
             }
         ]
     },

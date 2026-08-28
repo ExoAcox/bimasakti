@@ -74,20 +74,20 @@ const Cube = () => {
             </Canvas>
         </EffectContext>
         <div className="absolute top-4 right-4 z-10 flex flex-col gap-3">
-            <button className="bg-blue-500 text-white px-4 py-2 rounded" onClick={() => setEffects((effect) => ({
+            <button className="bg-blue-500 text-primary px-4 py-2 rounded" onClick={() => setEffects((effect) => ({
                 ...effect,
                 colorIndex: effect.colorIndex + 1
             }))}>
                 Change color
             </button>
-            <button className="bg-blue-500 text-white px-4 py-2 rounded" onClick={() => setEffects((effect) => ({
+            <button className="bg-blue-500 text-primary px-4 py-2 rounded" onClick={() => setEffects((effect) => ({
                 ...effect,
                 isFalling: true,
                 isInitial: false,
             }))}>
                 Falling
             </button>
-            <button className="bg-blue-500 text-white px-4 py-2 rounded" onClick={() => setEffects((effect) => ({
+            <button className="bg-blue-500 text-primary px-4 py-2 rounded" onClick={() => setEffects((effect) => ({
                 ...effect,
                 isFalling: false
             }))}>

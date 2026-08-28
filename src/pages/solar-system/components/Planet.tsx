@@ -1,6 +1,7 @@
-import { useContext, useMemo, useRef } from "react"
-import { Group, MathUtils, Mesh } from "three"
-import { SCALE, type Planet as PlanetType, type Satellite as SatelliteType } from "../constant"
+/* eslint-disable react-hooks/set-state-in-effect */
+import { useContext, useEffect, useMemo, useRef, useState } from "react"
+import { Group, MathUtils, Mesh, Object3D } from "three"
+import { type ArtificialSatellite as ArtificialSatelliteType, type Planet as PlanetType, type Satellite as SatelliteType } from "../constant"
 import { useFrame, useThree, type ThreeEvent } from "@react-three/fiber"
 import { calculateSatelliteDistance, getInitialRotation, getObjectById } from "../function";
 import OrbitLine from "./OrbitLine";
@@ -8,6 +9,8 @@ import { Html, useTexture } from "@react-three/drei";
 import PlanetRing from "./PlanetRing";
 import { ControlContext } from "../context";
 import { useTranslation } from "react-i18next";
+import ArtificialSatellite from "./ArtificialSatellite";
+import { Else, If, Then, When } from "react-if"
 
 
 interface Props {
@@ -33,10 +36,11 @@ interface PlanetOverlayProps {
 
 const PlanetOverlay = ({ texturePath, radius, overlayRef }: PlanetOverlayProps) => {
     const texture = useTexture(`/solar-system/textures/${texturePath}`)
-    const overlayRadius = radius / 100 * 1
+    const overlayRadius = radius / 100 * 0.75
+    const scale = radius + overlayRadius
 
-    return <mesh ref={overlayRef}>
-        <sphereGeometry args={[radius + overlayRadius, 64, 64]} />
+    return <mesh ref={overlayRef} scale={scale} castShadow receiveShadow>
+        <sphereGeometry args={[1, 64, 64]} />
         <meshStandardMaterial
             alphaMap={texture}
             transparent={true}
@@ -52,33 +56,28 @@ const Planet = ({ id, children }: Props) => {
     const objectRef = useRef<Mesh>(null!)
     const overlayRef = useRef<Mesh[]>([])
 
+    const [occlude, setOcclude] = useState<{ current: Object3D }[] | undefined>(undefined)
+
     const { scene } = useThree()
-    const { focus, sizeScale, distanceScale, speedScale, showOrbitLine, setControl } = useContext(ControlContext)
+    const { focus, sizeScale, distanceScale, speedScale, showOrbitLine, ignoreAxis, pauseOrbitWhenFocus, setControl } = useContext(ControlContext)
     const { t } = useTranslation()
 
-    const data = getObjectById(id) as (PlanetType | SatelliteType)
+    const data = getObjectById(id) as (PlanetType | SatelliteType | ArtificialSatelliteType)
+    const focusedObject = getObjectById(focus)
 
-
-    const isSatellite = data?.type === "satellite"
-    const radius = (data?.radius ?? 0) / sizeScale
+    const axis = ignoreAxis ? 0 : MathUtils.degToRad(data?.axis ?? 0)
+    const scale = (data?.radius ?? 0) / sizeScale
     const distance = () => {
         if (!data) return 0
-        if (data.type === "satellite") {
+        if (["satellite", "artificial_satellite"].includes(data.type)) {
             const parentPlanet = getObjectById(data.parent) as PlanetType
-            if (!parentPlanet || !parentPlanet.satellites) return 0
-            const index = parentPlanet.satellites.findIndex((satellite) => satellite.id === data.id)
+            if (!parentPlanet) return 0
+            const index = [...(parentPlanet.artificial_satellites ?? []), ...parentPlanet.satellites].findIndex((satellite) => satellite.id === data.id)
             return calculateSatelliteDistance(data.distance, distanceScale, parentPlanet.radius / sizeScale, index)
         } else {
             return data.distance / distanceScale
         }
     }
-
-    const axis = MathUtils.degToRad(data?.axis ?? 0)
-
-    if (data?.id === "phobos") {
-        console.log(distance, SCALE, sizeScale, (SCALE / sizeScale) / distanceScale)
-    }
-
 
     useFrame((state) => {
         if (!data) return
@@ -98,86 +97,116 @@ const Planet = ({ id, children }: Props) => {
             })
         }
 
+        // if (!focus) {
+        //     return orbitRef.current.rotation.y = speed / data.orbit_duration * speedScale;
+        // }
 
-        if (!focus) {
-            // orbitRef.current.rotation.y = speed / data.orbit_duration * TIME_SCALE
+
+
+        const isSatelliteFocused = ["satellite", "artificial_satellite"].includes(focusedObject?.type);
+        const isParentOfFocused = isSatelliteFocused && data.id === focusedObject?.parent;
+        const isFocused = focus === data.id;
+
+        const shouldPauseOrbit = pauseOrbitWhenFocus && (isFocused || isParentOfFocused);
+
+        if (!shouldPauseOrbit) {
+            orbitRef.current.rotation.y = speed / data.orbit_duration * speedScale;
         }
     })
 
-    const handleClick = (event: ThreeEvent<Mesh>) => {
+    const handleClick = (event: ThreeEvent<MouseEvent>, id: string) => {
         event.stopPropagation()
-        setControl({ focus: event.object.name })
+        setControl({ focus: id })
     }
 
-    const dataId = data?.id
-    const dataParent = data?.parent
+    const dataId = data.id
+    const dataType = data.type
+    const dataParent = data.parent
 
     const isLabelVisible = useMemo(() => {
+        const isSatellite = ["satellite", "artificial_satellite"].includes(dataType)
+
         if (focus === dataId) return false
         if (!isSatellite) return true
         if (isSatellite && focus === dataParent) return true
 
         return false
-    }, [focus, dataId, dataParent, isSatellite])
+    }, [dataType, focus, dataId, dataParent])
 
-    const focusedObject = useMemo(() => {
-        if (!focus) return undefined
-
-        const object = scene.getObjectByName(focus)
-        if (!object) return undefined
+    useEffect(() => {
+        const object = scene.getObjectByName(focus || "sun")
+        if (!object) setOcclude(undefined)
 
         const occlude = [{ current: object }]
-        const objectDetail = getObjectById(focus) as SatelliteType
-        if (objectDetail?.parent) {
-            const parentObject = scene.getObjectByName(objectDetail.parent)
+        if (focusedObject?.parent) {
+            const parentObject = scene.getObjectByName(focusedObject.parent)
             if (parentObject) occlude.push({ current: parentObject })
         }
 
-        return occlude
-    }, [focus, scene])
+        setOcclude(occlude)
+    }, [focus, scene, focusedObject])
 
     if (!data) return null
 
-    return <>
-        <group rotation={[0, 0, axis]}>
-            {showOrbitLine ? <OrbitLine radius={distance()} color={data.color} /> : null}
+    return <group rotation={[0, 0, axis]}>
+        <When condition={showOrbitLine}>
+            <OrbitLine radius={distance()} color={data.color} />
+        </When>
 
-            <group ref={orbitRef} rotation={[0, getInitialRotation(data.id), 0]}>
-                <group position={[distance(), 0, 0]}>
-                    <Html occlude={focusedObject} zIndexRange={[1, 0]}>
-                        {isLabelVisible && <button className="py-1 px-2 rounded-lg text-sm font-semibold bg-white" onClick={() => setControl({ focus: data.id })}>{t(`object.${data.id}.name`)}</button>}
-                    </Html>
+        <group ref={orbitRef} rotation={[0, getInitialRotation(data.id), 0]}>
+            <group position={[distance(), 0, 0]}>
+                <Html occlude={occlude} zIndexRange={[1, 0]}>
+                    <When condition={isLabelVisible}>
+                        <button className="py-1 px-2 whitespace-nowrap rounded-lg text-sm font-semibold bg-white" onClick={() => setControl({ focus: data.id })}>{t(`object.${data.id}.name`)}</button>
+                    </When>
+                </Html>
 
-                    <mesh ref={objectRef} name={data.id} onClick={handleClick}>
-                        <sphereGeometry args={[radius, 64, 64]} />
-                        {data.texture ? (
-                            <PlanetMaterial texturePath={data.texture} />
-                        ) : (
-                            <meshStandardMaterial color={data.color} />
-                        )}
-                    </mesh>
+                <If condition={data.type === "artificial_satellite"}>
+                    <Then>
+                        <group ref={objectRef} name={data.id} scale={scale} onClick={(e) => handleClick(e, data.id)} castShadow receiveShadow>
+                            <ArtificialSatellite data={data as ArtificialSatelliteType} />
+                        </group>
+                    </Then>
+                    <Else>
+                        <mesh ref={objectRef} name={data.id} scale={scale} onClick={(e) => handleClick(e, data.id)} castShadow receiveShadow>
+                            <sphereGeometry args={[1, 64, 64]} />
+                            <If condition={data.texture}>
+                                <Then>
+                                    <PlanetMaterial texturePath={data.texture} />
+                                </Then>
+                                <Else>
+                                    <meshStandardMaterial color={data.color} />
+                                </Else>
+                            </If>
+                        </mesh>
+                    </Else>
+                </If>
 
-                    {data.overlay_textures?.map((texturePath, index) => (
-                        <PlanetOverlay
-                            key={index}
-                            texturePath={texturePath}
-                            radius={radius}
-                            overlayRef={(el) => {
-                                overlayRef.current[index] = el!
-                            }}
-                        />
-                    ))}
+                {data.overlay_textures?.map((texturePath, index) => (
+                    <PlanetOverlay
+                        key={index}
+                        texturePath={texturePath}
+                        radius={scale}
+                        overlayRef={(el) => {
+                            overlayRef.current[index] = el!
+                        }}
+                    />
+                ))}
 
-                    {
-                        (data as PlanetType).ring && <PlanetRing data={data as PlanetType} />
-                    }
+                <When condition={!!(data as PlanetType).ring}>
+                    <PlanetRing data={data as PlanetType} />
+                </When>
 
-                    {children}
-                </group>
+                {/* {
+                        (data as PlanetType).artificial_satellites?.map((satellite) => {
+                            return <ArtificialSatellite key={satellite.id} data={satellite} />
+                        })
+                    } */}
+
+                {children}
             </group>
         </group>
-
-    </>
+    </group>
 }
 
 

@@ -2,7 +2,7 @@ import { useMemo } from 'react';
 import { Line } from '@react-three/drei';
 import { Vector3 } from 'three';
 
-const OrbitLine = ({ radius, segments = 128, color, opacity = 0.5 }) => {
+const OrbitLine = ({ radius, segments = 1280, color, opacity = 0.5 }) => {
     const points = useMemo(() => {
         const pts = [];
         for (let i = 0; i <= segments; i++) {

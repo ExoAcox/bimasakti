@@ -36,7 +36,7 @@ const PlanetRing = ({ data }: Props) => {
 
 
 
-    return <mesh rotation={[-Math.PI / 2, 0, axis]} ref={ringRef}>
+    return <mesh rotation={[-Math.PI / 2, 0, axis]} ref={ringRef} castShadow receiveShadow>
         <ringGeometry
             args={[
                 innerRadius,

@@ -25,27 +25,24 @@ const Sun = ({ children }: { children: React.ReactNode }) => {
     const texture = useTexture(`/solar-system/textures/${sun.texture}`)
 
 
-    const focusedObject = useMemo(() => {
-        if (!focus) return undefined
-
-        const object = scene.getObjectByName(focus)
-        if (!object) return undefined
-
-        return { current: object }
-    }, [focus, scene])
-
-
     useFrame((state) => {
         const elapsedTime = state.clock.getElapsedTime()
         const speed = ((elapsedTime % 60) / 60) * Math.PI * 2
         objectRef.current.rotation.y = speed / sun.rotate_duration * speedScale
     })
 
+    const occlude = useMemo(() => {
+        const object = scene.getObjectByName(focus || "sun")
+        if (!object) return undefined
+
+        return [{ current: object }]
+    }, [focus, scene])
+
     return <>
         <pointLight intensity={intensity} color="white" />
 
         <group rotation={[0, 0, axis]}>
-            <Html occlude={focusedObject ? [focusedObject] : undefined} zIndexRange={[2, 0]}>
+            <Html occlude={occlude} zIndexRange={[2, 0]}>
                 {(focus && focus !== sun.id) && <button className="py-1 px-2 rounded-lg text-sm font-semibold bg-white" onClick={() => setControl({ focus: sun.id })}>{t(`object.${sun.id}.name`)}</button>}
             </Html>
 

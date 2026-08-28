@@ -2,7 +2,7 @@ import { MathUtils } from "three"
 import { planets, sun } from "./constant"
 
 export const getObjectById = (id: string, type?: string) => {
-    const allObjects = [sun, ...planets, ...planets.flatMap(planet => planet.satellites)]
+    const allObjects = [sun, ...planets, ...planets.flatMap(planet => planet.satellites), ...planets.flatMap(planet => planet.artificial_satellites ?? [])]
 
     return allObjects.filter((object) => {
         if (type) {

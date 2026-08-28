@@ -42,6 +42,11 @@
             "nickname": "Luna",
             "description": "Bulan adalah satu-satunya satelit alami Bumi dan bulan terbesar kelima di tata surya. Bulan terkunci secara pasang surut (tidally locked) dengan Bumi, yang berarti ia selalu menunjukkan sisi yang sama, dan gaya tarik gravitasinya merupakan penggerak utama pasang surut samudra di Bumi serta menstabilkan kemiringan sumbu planet."
         },
+        "iss": {
+            "name": "Stasiun Luar Angkasa Internasional",
+            "nickname": "ISS",
+            "description": "Stasiun Luar Angkasa Internasional (ISS) adalah stasiun luar angkasa modular di orbit rendah Bumi. Ini adalah proyek kolaborasi multinasional yang melibatkan lima badan antariksa: NASA, Roscosmos, JAXA, ESA, dan CSA. ISS berfungsi sebagai laboratorium penelitian mikrogravitasi dan lingkungan luar angkasa."
+        },
         "mars": {
             "name": "Mars",
             "nickname": "Planet Merah",

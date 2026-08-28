@@ -42,6 +42,11 @@
             "nickname": "Luna",
             "description": "Der Mond ist der einzige natürliche Satellit der Erde und der fünftgrößte Mond im Sonnensystem. Er ist an die Erde rotationsgebunden, was bedeutet, dass er immer dasselbe Gesicht zeigt. Seine Anziehungskraft ist der Hauptantrieb für die Gezeiten der Ozeane auf der Erde und stabilisiert die Achsenneigung des Planeten."
         },
+        "iss": {
+            "name": "Internationale Raumstation",
+            "nickname": "ISS",
+            "description": "Die Internationale Raumstation (ISS) ist eine modulare Raumstation in der niedrigen Erdumlaufbahn. Sie ist ein multinationales Gemeinschaftsprojekt von fünf Raumfahrtagenturen: NASA, Roscosmos, JAXA, ESA und CSA."
+        },
         "mars": {
             "name": "Mars",
             "nickname": "Der Rote Planet",

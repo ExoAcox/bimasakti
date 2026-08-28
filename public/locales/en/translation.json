@@ -10,6 +10,8 @@
         "days": "days",
         "setting": "Setting",
         "show_orbit_line": "Show Orbit Line",
+        "ignore_axis": "Ignore Axis",
+        "pause_orbit_when_focus": "Pause Orbit When Focus",
         "size_scale": "Size Scale",
         "distance_scale": "Distance from Sun Scale",
         "speed_scale": "Speed Scale",
@@ -41,6 +43,11 @@
             "name": "Moon",
             "nickname": "Luna",
             "description": "The Moon is Earth's only natural satellite and the fifth-largest moon in the solar system. It is tidally locked to Earth, meaning it always shows the same face, and its gravitational pull is the primary driver of Earth's ocean tides and stabilizes the planet's axial tilt."
+        },
+        "iss": {
+            "name": "International Space Station",
+            "nickname": "ISS",
+            "description": "The International Space Station (ISS) is a modular space station in low Earth orbit. It is a multinational collaborative project involving five participating space agencies: NASA, Roscosmos, JAXA, ESA, and CSA. It serves as a microgravity and space environment research laboratory in which scientific tests are conducted."
         },
         "mars": {
             "name": "Mars",

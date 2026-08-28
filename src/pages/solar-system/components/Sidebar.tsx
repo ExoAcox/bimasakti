@@ -9,18 +9,14 @@ import { getObjectById } from "../function"
 import { useTranslation } from "react-i18next"
 
 
-interface Props {
-    setControl: (values: object) => void
-}
+const Sidebar = () => {
 
-const Sidebar = ({ setControl }: Props) => {
-
-    const { focus } = useContext(ControlContext)
+    const { focus, setControl } = useContext(ControlContext)
     const { t } = useTranslation()
 
     console.log(focus)
 
-    return <div className="fixed top-4 left-4 bg-black/50 rounded p-2 z-50 text-white backdrop-blur-sm">
+    return <div className="fixed top-4 left-4 bg-background rounded p-2 z-50 text-primary backdrop-blur-sm">
         <div className="flex flex-col gap-0">
 
             {[sun, ...planets].map((planet: PlanetType) => {
@@ -34,7 +30,7 @@ const Sidebar = ({ setControl }: Props) => {
                 const isSatelliteVisible = (isFocus || isParentFocus) && planet.satellites?.length
 
 
-                const buttonClass = (id: string) => clsx("w-full py-1 px-2 rounded-lg flex items-center", (focus === id) && "bg-blue-400/80 text-white")
+                const buttonClass = (id: string) => clsx("w-full py-1 px-2 rounded-lg flex items-center", (focus === id) && "bg-blue-400/80 text-primary")
 
 
                 return <div className={clsx("p-1", isSatelliteVisible && "bg-gray-800/40 rounded-md my-2")}>

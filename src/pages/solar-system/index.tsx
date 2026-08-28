@@ -1,6 +1,6 @@
 import { Bounds, OrbitControls, Stars } from "@react-three/drei"
 import { Canvas } from "@react-three/fiber"
-import { useState } from "react"
+import { useRef, useState } from "react"
 
 import Sidebar from "./components/Sidebar"
 import Scene from "./components/Scene"
@@ -13,14 +13,18 @@ import PanelDetail from "./components/DetailPanel"
 import SettingPanel from "./components/SettingPanel"
 
 const SolarSystem = () => {
+    const cameraRef = useRef(null!)
+
     const [control, setControl] = useState({
         focus: "",
         focusIndex: 0,
-        speed: 1,
+        showSetting: false,
         sizeScale: SCALE,
         distanceScale: SCALE,
         speedScale: TIME_SCALE,
-        showOrbitLine: true
+        showOrbitLine: true,
+        ignoreAxis: false,
+        pauseOrbitWhenFocus: true
     })
 
     const handleControl = (value: Control) => {
@@ -32,22 +36,22 @@ const SolarSystem = () => {
 
     return <div className="w-dvw h-dvh">
         <ControlContext value={{ ...control, setControl: handleControl }}>
-            <Canvas camera={{ near: 0.000001, far: 10000 }} >
+            <Canvas camera={{ near: 0.000001, far: 10000 }} onPointerMissed={() => setControl({ ...control, showSetting: false })}>
                 <ambientLight intensity={0.5} />
-                <OrbitControls makeDefault />
+                <OrbitControls makeDefault enableDamping ref={cameraRef} />
 
                 <color attach="background" args={['black']} />
                 <Stars radius={200} count={20000} factor={5} />
 
                 <Bounds>
-                    <Scene>
+                    <Scene cameraRef={cameraRef}>
                         <Sun>
                             {planets.map(planet => (
                                 <Planet
                                     key={planet.id}
                                     id={planet.id}
                                 >
-                                    {planet.satellites.map(satellite => (
+                                    {[...planet.satellites, ...(planet?.artificial_satellites || [])].map(satellite => (
                                         <Satellite
                                             key={satellite.id}
                                             id={satellite.id}
@@ -61,7 +65,7 @@ const SolarSystem = () => {
                 </Bounds>
             </Canvas>
 
-            <Sidebar setControl={handleControl} />
+            <Sidebar />
             <SettingPanel />
             <PanelDetail />
         </ControlContext>
