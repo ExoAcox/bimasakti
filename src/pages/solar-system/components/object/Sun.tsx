@@ -3,10 +3,10 @@
 
 import { useContext, useMemo, useRef } from "react"
 import { Mesh } from "three"
-import { SCALE, sun } from "../constant"
+import { SCALE, sun } from "../../constant"
 import { useFrame, useThree } from "@react-three/fiber"
 import { Html, useTexture } from "@react-three/drei"
-import { ControlContext } from "../context"
+import { ControlContext } from "../../context"
 import { useTranslation } from "react-i18next"
 
 

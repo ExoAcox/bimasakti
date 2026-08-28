@@ -1,7 +1,7 @@
 import { useContext } from "react"
-import { ControlContext } from "../context"
-import { getObjectById } from "../function"
-import type { Planet } from "../constant"
+import { ControlContext } from "../../context"
+import { getObjectById } from "../../function"
+import type { Planet } from "../../constant"
 
 import { useTranslation } from "react-i18next";
 import { When } from "react-if";

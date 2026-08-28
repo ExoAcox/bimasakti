@@ -1,8 +1,18 @@
 import { MathUtils } from "three"
 import { planets, sun } from "./constant"
 
+export const randomNumber = () => {
+    const seed = Math.random()
+    const x = Math.sin(seed) * 10000;
+    return x - Math.floor(x);
+}
+
+export const getAllObjects = () => {
+    return [sun, ...planets, ...planets.flatMap(planet => planet.satellites), ...planets.flatMap(planet => planet.artificial_satellites ?? [])]
+}
+
 export const getObjectById = (id: string, type?: string) => {
-    const allObjects = [sun, ...planets, ...planets.flatMap(planet => planet.satellites), ...planets.flatMap(planet => planet.artificial_satellites ?? [])]
+    const allObjects = getAllObjects()
 
     return allObjects.filter((object) => {
         if (type) {

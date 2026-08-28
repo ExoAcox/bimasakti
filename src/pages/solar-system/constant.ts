@@ -40,6 +40,16 @@ interface Ring {
     texture: string
 }
 
+export interface Belt {
+    id: string
+    type: "belt",
+    min_size: number
+    max_size: number
+    inner_radius: number
+    outer_radius: number
+    height: number
+}
+
 export const planets: Planet[] = [
     {
         id: "mercury",
@@ -606,6 +616,18 @@ export const sun: Star = {
     texture: "sun.jpg",
     icon: "sun.png",
 }
+
+export const belts: Belt[] = [
+    {
+        id: "asteriod",
+        type: "belt",
+        min_size: 10,
+        max_size: 500,
+        inner_radius: 329000000,
+        outer_radius: 478000000,
+        height: 150000000
+    }
+]
 
 export const SCALE = 1000000
 export const TIME_SCALE = 6

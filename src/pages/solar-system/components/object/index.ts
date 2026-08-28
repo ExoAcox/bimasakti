@@ -1,0 +1,7 @@
+export { default as ArtificialSatellite } from "./ArtificialSatellite"
+export { default as Asteroid } from "./Asteroid"
+export { default as OrbitLine } from "./OrbitLine"
+export { default as Planet } from "./Planet"
+export { default as PlanetRing } from "./PlanetRing"
+export { default as Satellite } from "./Satellite"
+export { default as Sun } from "./Sun"

@@ -1,5 +1,5 @@
 import { useGLTF } from "@react-three/drei"
-import type { ArtificialSatellite as ArtificialSatelliteType } from "../constant"
+import type { ArtificialSatellite as ArtificialSatelliteType } from "../../constant"
 import { Object3D, Mesh } from "three"
 
 interface Props {

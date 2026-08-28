@@ -1,16 +1,14 @@
 /* eslint-disable react-hooks/set-state-in-effect */
 import { useContext, useEffect, useMemo, useRef, useState } from "react"
 import { Group, MathUtils, Mesh, Object3D } from "three"
-import { type ArtificialSatellite as ArtificialSatelliteType, type Planet as PlanetType, type Satellite as SatelliteType } from "../constant"
+import { type ArtificialSatellite as ArtificialSatelliteType, type Planet as PlanetType, type Satellite as SatelliteType } from "../../constant"
 import { useFrame, useThree, type ThreeEvent } from "@react-three/fiber"
-import { calculateSatelliteDistance, getInitialRotation, getObjectById } from "../function";
-import OrbitLine from "./OrbitLine";
+import { calculateSatelliteDistance, getInitialRotation, getObjectById } from "../../function";
 import { Html, useTexture } from "@react-three/drei";
-import PlanetRing from "./PlanetRing";
-import { ControlContext } from "../context";
+import { ControlContext } from "../../context";
 import { useTranslation } from "react-i18next";
-import ArtificialSatellite from "./ArtificialSatellite";
 import { Else, If, Then, When } from "react-if"
+import { ArtificialSatellite, OrbitLine, PlanetRing } from "./"
 
 
 interface Props {
@@ -66,7 +64,7 @@ const Planet = ({ id, children }: Props) => {
     const focusedObject = getObjectById(focus)
 
     const axis = ignoreAxis ? 0 : MathUtils.degToRad(data?.axis ?? 0)
-    const scale = (data?.radius ?? 0) / sizeScale
+    const scale = data.radius / sizeScale
     const distance = () => {
         if (!data) return 0
         if (["satellite", "artificial_satellite"].includes(data.type)) {

@@ -1,6 +1,6 @@
 
 
-import Planet from "./Planet"
+import { Planet } from "./"
 
 
 

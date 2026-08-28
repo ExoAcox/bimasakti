@@ -3,8 +3,9 @@ import type { Group } from "three"
 import { ControlContext } from "../context"
 import { useBounds } from "@react-three/drei"
 import type { OrbitControls as OrbitControlsImpl } from "three-stdlib"
-import { useFrame, useThree } from "@react-three/fiber"
-import { Vector3, MathUtils } from "three"
+import { useFrame, useLoader, useThree } from "@react-three/fiber"
+import { Vector3, MathUtils, EquirectangularReflectionMapping, SRGBColorSpace } from "three"
+import { TIFFLoader } from 'three/addons/loaders/TIFFLoader.js';
 
 
 
@@ -28,16 +29,13 @@ const Scene = ({ children, cameraRef }: Props) => {
 
     const { scene } = useThree()
 
+
+
     useEffect(() => {
         if (!focus) return;
         const target = sceneRef.current.getObjectByName(focus)
-        console.log(target, focus)
         bound.refresh(target).fit()
-
-
     }, [bound, focus, focusIndex])
-
-
 
     useFrame((state) => {
         if (focus) {

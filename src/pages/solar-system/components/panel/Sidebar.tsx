@@ -1,28 +1,32 @@
 
 import clsx from "clsx"
-import { planets, sun } from "../constant"
+import { planets, sun } from "../../constant"
 import { useContext } from "react"
-import { ControlContext } from "../context"
+import { ControlContext } from "../../context"
 
-import type { Planet as PlanetType } from "../constant"
-import { getObjectById } from "../function"
+import type { Planet as PlanetType } from "../../constant"
+import { getObjectById } from "../../function"
 import { useTranslation } from "react-i18next"
 
 
 const Sidebar = () => {
 
-    const { focus, setControl } = useContext(ControlContext)
+    const { focus, focusIndex, setControl } = useContext(ControlContext)
     const { t } = useTranslation()
 
-    console.log(focus)
+    const handleClick = (id: string) => {
+        if (focus === id) {
+            setControl({ focusIndex: focusIndex + 1 })
+        } else {
+            setControl({ focus: id })
+        }
+
+    }
 
     return <div className="fixed top-4 left-4 bg-background rounded p-2 z-50 text-primary backdrop-blur-sm">
         <div className="flex flex-col gap-0">
 
             {[sun, ...planets].map((planet: PlanetType) => {
-
-
-
                 const isFocus = focus === planet.id
                 const satellite = getObjectById(focus)
                 const isParentFocus = planet.id === satellite?.parent
@@ -34,7 +38,7 @@ const Sidebar = () => {
 
 
                 return <div className={clsx("p-1", isSatelliteVisible && "bg-gray-800/40 rounded-md my-2")}>
-                    <button key={planet.id} className={clsx(buttonClass(planet.id), "gap-3")} onClick={() => setControl({ focus: planet.id })}>
+                    <button key={planet.id} className={clsx(buttonClass(planet.id), "gap-3")} onClick={() => handleClick(planet.id)}>
                         <img alt={planet.icon} src={`/solar-system/icons/${planet.icon}`} className="size-4" />
                         {t(`object.${planet.id}.name`)}
                     </button>
@@ -42,7 +46,7 @@ const Sidebar = () => {
                         <div className="flex flex-col py-1 gap-3 mt-2">
                             {
                                 planet.satellites?.map((satellite) => {
-                                    return <button className={clsx(buttonClass(satellite.id), "pl-4 pr-4 text-sm gap-2")} key={satellite.id} onClick={() => setControl({ focus: satellite.id })}>
+                                    return <button className={clsx(buttonClass(satellite.id), "pl-4 pr-4 text-sm gap-2")} key={satellite.id} onClick={() => handleClick(satellite.id)}>
                                         <img alt={satellite.icon} src={`/solar-system/icons/${satellite.icon}`} className="size-4" />
                                         {t(`object.${satellite.id}.name`)}
                                     </button>

@@ -5,8 +5,8 @@ import { IoIosSettings } from "react-icons/io";
 import { MdClose } from "react-icons/md";
 import { VscDebugRestart } from "react-icons/vsc";
 import { ImCheckboxChecked, ImCheckboxUnchecked } from "react-icons/im";
-import { ControlContext } from "../context";
-import { SCALE, TIME_SCALE } from "../constant";
+import { ControlContext } from "../../context";
+import { SCALE, TIME_SCALE } from "../../constant";
 import clsx from "clsx";
 
 interface Props {

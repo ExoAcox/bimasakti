@@ -1,7 +1,7 @@
 import { useTexture } from "@react-three/drei";
-import type { Planet } from "../constant";
+import type { Planet } from "../../constant";
 
-import { SCALE } from "../constant";
+import { SCALE } from "../../constant";
 import { useEffect, useLayoutEffect, useRef } from "react";
 import { BufferGeometry, Mesh, Vector3 } from "three";
 

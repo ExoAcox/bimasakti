@@ -2,15 +2,11 @@ import { Bounds, OrbitControls, Stars } from "@react-three/drei"
 import { Canvas } from "@react-three/fiber"
 import { useRef, useState } from "react"
 
-import Sidebar from "./components/Sidebar"
 import Scene from "./components/Scene"
 import { ControlContext, type Control } from "./context"
-import { planets, SCALE, TIME_SCALE } from "./constant"
-import Planet from "./components/Planet"
-import Sun from "./components/Sun"
-import Satellite from "./components/Satellite"
-import PanelDetail from "./components/DetailPanel"
-import SettingPanel from "./components/SettingPanel"
+import { belts, planets, SCALE, TIME_SCALE } from "./constant"
+import { Asteroid, Planet, Satellite, Sun } from "./components/object"
+import { DetailPanel as PanelDetail, SettingPanel, Sidebar } from "./components/panel"
 
 const SolarSystem = () => {
     const cameraRef = useRef(null!)
@@ -36,12 +32,12 @@ const SolarSystem = () => {
 
     return <div className="w-dvw h-dvh">
         <ControlContext value={{ ...control, setControl: handleControl }}>
-            <Canvas camera={{ near: 0.000001, far: 10000 }} onPointerMissed={() => setControl({ ...control, showSetting: false })}>
+            <Canvas camera={{ near: 0.000001, far: 100000 }} onPointerMissed={() => setControl({ ...control, showSetting: false })}>
                 <ambientLight intensity={0.5} />
-                <OrbitControls makeDefault enableDamping ref={cameraRef} />
+                <OrbitControls makeDefault enableDamping ref={cameraRef} maxDistance={10000} />
 
                 <color attach="background" args={['black']} />
-                <Stars radius={200} count={20000} factor={5} />
+                <Stars radius={30000} count={10000} factor={600} />
 
                 <Bounds>
                     <Scene cameraRef={cameraRef}>
@@ -60,6 +56,16 @@ const SolarSystem = () => {
                                     ))}
                                 </Planet>
                             ))}
+
+                            {belts.map(belt => {
+                                return Array.from({ length: 10 }, () => {
+                                    return <Asteroid
+                                        key={belt.id}
+                                        data={belt}
+                                        count={1000}
+                                    />
+                                })
+                            })}
                         </Sun>
                     </Scene>
                 </Bounds>
