@@ -1,9 +1,13 @@
 import { useGLTF } from "@react-three/drei"
-import type { ArtificialSatellite as ArtificialSatelliteType } from "../../constant"
+import type { ArtificialSatellite as ArtificialSatelliteType } from "../../constants"
 import { Object3D, Mesh } from "three"
+import { useContext, useRef } from "react"
+import { ControlContext } from "../../context"
+import { getObjectById } from "../../function"
+import { Object } from "."
 
 interface Props {
-    data: ArtificialSatelliteType
+    id: string
 }
 
 const RenderObject = ({ data }: { data: Object3D }) => {
@@ -23,10 +27,31 @@ const RenderObject = ({ data }: { data: Object3D }) => {
     return null
 }
 
-const ArtificialSatellite = ({ data }: Props) => {
+const ArtificialSatellite = ({ id }: Props) => {
+    const objectRef = useRef<Mesh>(null!)
+
+    const data = getObjectById(id) as ArtificialSatelliteType
     const gltf = useGLTF(data.model)
 
-    return <RenderObject data={gltf.scene} />
+    const { sizeScale, setControl } = useContext(ControlContext)
+    const scale = data.radius / sizeScale
+
+    const handleClick = () => {
+        setControl({ focus: id })
+    }
+
+    if (!data) return null
+
+    return <Object data={data} objectRef={objectRef} onClick={handleClick}>
+        <group ref={objectRef} name={data.id} scale={scale} onClick={(e) => {
+            e.stopPropagation()
+            handleClick()
+        }} castShadow receiveShadow>
+            <RenderObject data={gltf.scene} />
+        </group>
+    </Object>
+
+
 }
 
 export default ArtificialSatellite

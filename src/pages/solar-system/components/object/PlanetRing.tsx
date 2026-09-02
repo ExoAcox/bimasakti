@@ -1,9 +1,9 @@
 import { useTexture } from "@react-three/drei";
-import type { Planet } from "../../constant";
+import type { Planet } from "../../constants";
 
-import { SCALE } from "../../constant";
-import { useEffect, useLayoutEffect, useRef } from "react";
-import { BufferGeometry, Mesh, Vector3 } from "three";
+import { SCALE } from "../../constants";
+import { useLayoutEffect, useRef } from "react";
+import { Mesh, Vector3 } from "three";
 
 
 interface Props {
@@ -20,19 +20,19 @@ const PlanetRing = ({ data }: Props) => {
     const innerRadius = data.ring.inner_radius / SCALE
     const outerRadius = data.ring.outer_radius / SCALE
 
-    // useLayoutEffect(() => {
-    //     if (ringRef.current) {
-    //         const pos = ringRef.current.geometry.attributes.position;
-
-    //         const v3 = new Vector3();
-    //         for (let i = 0; i < pos.count; i++) {
-    //             console.log(v3.length())
-    //             v3.fromBufferAttribute(pos, i);
-    //             ringRef.current.geometry.attributes.uv.setXY(i, 1, 1);
-    //         }
-    //         ringRef.current.geometry.attributes.uv.needsUpdate = true;
-    //     }
-    // }, [ringRef])
+    useLayoutEffect(() => {
+        if (ringRef.current) {
+            const geometry_ring = ringRef.current.geometry;
+            const pos = geometry_ring.attributes.position;
+            const mid_point = 0.5 * (innerRadius + outerRadius);
+            const v3 = new Vector3();
+            for (let i = 0; i < pos.count; ++i) {
+                v3.fromBufferAttribute(pos, i);
+                geometry_ring.attributes.uv.setXY(i, v3.length() < mid_point ? 0 : 1, 0);
+            }
+            geometry_ring.attributes.uv.needsUpdate = true;
+        }
+    }, [innerRadius, outerRadius]);
 
 
 

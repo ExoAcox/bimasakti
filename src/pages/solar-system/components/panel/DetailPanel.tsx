@@ -1,7 +1,7 @@
 import { useContext } from "react"
 import { ControlContext } from "../../context"
-import { getObjectById } from "../../function"
-import type { Planet } from "../../constant"
+import { getObjectById, lengthFormat, timeFormat } from "../../function"
+import type { Planet } from "../../constants"
 
 import { useTranslation } from "react-i18next";
 import { When } from "react-if";
@@ -17,12 +17,11 @@ const PanelDetail = () => {
 
     const { t } = useTranslation();
 
-    console.log(data)
 
 
     if (!data) return null
     const parentPlanet = (data.parent ? getObjectById(data.parent) : {}) as Planet
-    console.log(data.parent)
+
     return <div className="flex flex-col fixed top-4 right-4 bottom-4 text-sm text-secondary bg-background min-w-sm max-w-sm rounded-md pb-6 pt-4 px-7 z-50 backdrop-blur-sm max-h-dvh h-fit">
         <div>
             <div className="flex items-center gap-2 justify-between text-primary">
@@ -34,21 +33,21 @@ const PanelDetail = () => {
             </p>
             <div className="mt-4 text-sm text-secondary leading-relaxed border-t border-divider pt-4">
                 <div className="flex justify-between items-center">
-                    <span>{t("ui.radius")}</span>
-                    <span>{data.radius.toLocaleString()} km</span>
+                    <span>{t("ui.diameter")}</span>
+                    <span>{lengthFormat(data.radius * 2)}</span>
                 </div>
                 <div className="flex justify-between items-center">
                     <span>{t("ui.rotation_period")}</span>
-                    <span>{data.rotate_duration.toLocaleString()} {t("ui.days")}</span>
+                    <span>{timeFormat(data.rotate_duration)}</span>
                 </div>
                 <When condition={data.type !== "star"}>
                     <div className="flex justify-between items-center">
                         <span>{t("ui.orbital_period")}</span>
-                        <span>{(data as Planet).orbit_duration?.toLocaleString()} {t("ui.days")}</span>
+                        <span>{timeFormat((data as Planet).orbit_duration)}</span>
                     </div>
                     <div className="flex justify-between items-center">
                         <span>{t("ui.distance_from")} {data.parent ? t(`object.${data.parent}.name`) : t("object.sun.name")}</span>
-                        <span>{(data as Planet).distance?.toLocaleString()} km</span>
+                        <span>{lengthFormat((data as Planet).distance)}</span>
                     </div>
                 </When>
             </div>
@@ -73,20 +72,20 @@ const PanelDetail = () => {
                     </button>
 
                     <div className="flex justify-between items-center">
-                        <span>{t("ui.radius")}</span>
-                        <span>{parentPlanet.radius?.toLocaleString()} km</span>
+                        <span>{t("ui.diameter")}</span>
+                        <span>{lengthFormat(parentPlanet.radius * 2)}</span>
                     </div>
                     <div className="flex justify-between items-center">
                         <span>{t("ui.rotation_period")}</span>
-                        <span>{parentPlanet.rotate_duration?.toLocaleString()} {t("ui.days")}</span>
+                        <span>{timeFormat(parentPlanet.rotate_duration)}</span>
                     </div>
                     <div className="flex justify-between items-center">
                         <span>{t("ui.orbital_period")}</span>
-                        <span>{parentPlanet.orbit_duration?.toLocaleString()} {t("ui.days")}</span>
+                        <span>{timeFormat(parentPlanet.orbit_duration)}</span>
                     </div>
                     <div className="flex justify-between items-center">
                         <span>{t("ui.distance_from")} {t("object.sun.name")}</span>
-                        <span>{parentPlanet.distance?.toLocaleString()} km</span>
+                        <span>{lengthFormat(parentPlanet.distance)}</span>
                     </div>
                 </div>
             </When>
@@ -100,20 +99,20 @@ const PanelDetail = () => {
                             </button>
 
                             <div className="flex justify-between items-center">
-                                <span>{t("ui.radius")}</span>
-                                <span>{satellite.radius.toLocaleString()} km</span>
+                                <span>{t("ui.diameter")}</span>
+                                <span>{lengthFormat(satellite.radius * 2)}</span>
                             </div>
                             <div className="flex justify-between items-center">
                                 <span>{t("ui.rotation_period")}</span>
-                                <span>{satellite.rotate_duration.toLocaleString()} {t("ui.days")}</span>
+                                <span>{timeFormat(satellite.rotate_duration)}</span>
                             </div>
                             <div className="flex justify-between items-center">
                                 <span>{t("ui.orbital_period")}</span>
-                                <span>{satellite.orbit_duration.toLocaleString()} {t("ui.days")}</span>
+                                <span>{timeFormat(satellite.orbit_duration)}</span>
                             </div>
                             <div className="flex justify-between items-center">
                                 <span>{t("ui.distance_from")} {t(`object.${data.id}.name`)}</span>
-                                <span>{satellite.distance.toLocaleString()} km</span>
+                                <span>{lengthFormat(satellite.distance)}</span>
                             </div>
                         </div>
                     })}

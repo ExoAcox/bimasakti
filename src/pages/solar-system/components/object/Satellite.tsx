@@ -1,7 +1,6 @@
 
 
-import { Planet } from "./"
-
+import Planet from "./Planet"
 
 
 const Satellite = Planet

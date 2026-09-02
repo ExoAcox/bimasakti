@@ -5,7 +5,7 @@
     --color-secondary: var(--color-gray-300);
     --color-accent: var(--color-blue-300);
     --color-divider: rgba(255, 255, 255, 0.25);
-    --color-background: rgba(0, 0, 0, 0.5);
+    --color-background: rgba(7, 20, 28, 0.6);
 }
 
 body {

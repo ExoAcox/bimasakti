@@ -2,6 +2,7 @@
     "ui": {
         "speed": "Speed",
         "radius": "Radius",
+        "diameter": "Diameter",
         "rotation_period": "Rotation period",
         "orbital_period": "Orbital period",
         "distance_from": "Distance from",
@@ -16,7 +17,12 @@
         "distance_scale": "Distance from Sun Scale",
         "speed_scale": "Speed Scale",
         "language": "Language",
-        "speed_scale_value": "1 second: {{days}} days"
+        "speed_scale_value": "1 second: {{days}} days",
+        "stars": "Stars",
+        "planets": "Planets",
+        "dwarf_planets": "Dwarf Planets",
+        "satellites": "Satellites",
+        "artificial_satellites": "Artificial Satellites"
     },
     "object": {
         "sun": {
@@ -228,6 +234,61 @@
             "name": "Styx",
             "nickname": "The Boundary Moon",
             "description": "Styx is the smallest moon of Pluto, discovered in 2012 by the Hubble Space Telescope during preparations for the New Horizons flyby. It has a highly irregular shape and orbits in the plane of the other Pluto moons."
+        },
+        "ceres": {
+            "name": "Ceres",
+            "nickname": "The Asteroid Belt Giant",
+            "description": "Ceres is the largest object in the main asteroid belt between Mars and Jupiter and the only dwarf planet located in the inner solar system. It is composed of ice and rock, with evidence of a subsurface ocean and cryovolcanism, such as bright sodium carbonate deposits in Occator Crater."
+        },
+        "haumea": {
+            "name": "Haumea",
+            "nickname": "The Elongated World",
+            "description": "Haumea is a dwarf planet located beyond Neptune's orbit in the Kuiper Belt. Notable for its extremely fast rotation, completing a turn in under four hours, its rapid spin has stretched it into an elongated ellipsoid shape. It also features a thin ring system and a high-albedo icy surface."
+        },
+        "makemake": {
+            "name": "Makemake",
+            "nickname": "The Easter Island Dwarf",
+            "description": "Makemake is the second-brightest Kuiper Belt object after Pluto. Named after the creator deity of the Rapa Nui people of Easter Island, Makemake lacks a substantial atmosphere and is covered by a layer of extremely cold methane and ethane ice, giving it a reddish hue."
+        },
+        "eris": {
+            "name": "Eris",
+            "nickname": "The Discordant World",
+            "description": "Eris is one of the most massive known dwarf planets in the solar system, located in the scattered disc beyond the Kuiper Belt. Its discovery in 2005 sparked the astronomical debate that ultimately led the IAU to redefine the definition of a planet and reclassify Pluto as a dwarf planet."
+        },
+        "alpha_centauri_a": {
+            "name": "Alpha Centauri A",
+            "nickname": "Rigil Kentaurus",
+            "description": "Alpha Centauri A is the principal component of the triple star system Alpha Centauri. It is a solar-type yellow main-sequence star, slightly larger and more luminous than the Sun."
+        },
+        "alpha_centauri_b": {
+            "name": "Alpha Centauri B",
+            "nickname": "Toliman",
+            "description": "Alpha Centauri B is the secondary star of the Alpha Centauri binary system. It is an orange main-sequence star, slightly smaller and cooler than the Sun."
+        },
+        "proxima_centauri": {
+            "name": "Proxima Centauri",
+            "nickname": "Alpha Centauri C",
+            "description": "Proxima Centauri is a small, low-mass red dwarf star located in the constellation of Centaurus. It is the closest known star to the Sun."
+        },
+        "proxima_centauri_b": {
+            "name": "Proxima Centauri b",
+            "nickname": "Proxima b",
+            "description": "Proxima Centauri b is an exoplanet orbiting within the habitable zone of the red dwarf star Proxima Centauri. It is the closest known exoplanet to the Solar System."
+        },
+        "proxima_centauri_c": {
+            "name": "Proxima Centauri c",
+            "nickname": "Proxima c",
+            "description": "Proxima Centauri c is a candidate super-Earth or mini-Neptune orbiting Proxima Centauri at a distance of roughly 1.5 AU."
+        },
+        "proxima_centauri_d": {
+            "name": "Proxima Centauri d",
+            "nickname": "Proxima d",
+            "description": "Proxima Centauri d is a sub-Earth exoplanet orbiting very close to Proxima Centauri, completing an orbit every 5.1 days."
+        },
+        "alpha_centauri_a_b": {
+            "name": "Alpha Centauri A b",
+            "nickname": "Rigil Kentaurus b",
+            "description": "Alpha Centauri A b is a candidate exoplanet orbiting in the habitable zone of Alpha Centauri A."
         }
     }
 }

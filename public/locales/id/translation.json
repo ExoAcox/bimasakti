@@ -226,6 +226,61 @@
             "name": "Styx",
             "nickname": "Bulan Batas",
             "description": "Styx adalah bulan terkecil Pluto, ditemukan pada tahun 2012 oleh Teleskop Luar Angkasa Hubble selama persiapan untuk terbang lintas New Horizons. Styx memiliki bentuk yang sangat tidak beraturan dan mengorbit di bidang bulan Pluto lainnya."
+        },
+        "ceres": {
+            "name": "Ceres",
+            "nickname": "Raksasa Sabuk Asteroid",
+            "description": "Ceres adalah objek terbesar di sabuk asteroid utama antara Mars dan Jupiter serta satu-satunya planet kerdil yang terletak di tata surya bagian dalam. Ceres terdiri dari es dan batuan, dengan bukti adanya samudra bawah permukaan dan kriovulkanisme, seperti endapan natrium karbonat yang terang di Kawah Occator."
+        },
+        "haumea": {
+            "name": "Haumea",
+            "nickname": "Dunia yang Memanjang",
+            "description": "Haumea adalah planet kerdil yang terletak di luar orbit Neptunus di Sabuk Kuiper. Dikenal karena rotasinya yang sangat cepat, menyelesaikan satu putaran dalam kurang dari empat jam, putaran cepat ini menarik bentuknya menjadi elipsoid memanjang. Haumea juga memiliki sistem cincin tipis dan permukaan es ber-albedo tinggi."
+        },
+        "makemake": {
+            "name": "Makemake",
+            "nickname": "Planet Kerdil Pulau Paskah",
+            "description": "Makemake adalah objek Sabuk Kuiper terang kedua setelah Pluto. Dinamai dari dewa pencipta suku Rapa Nui di Pulau Paskah, Makemake tidak memiliki atmosfer yang signifikan dan ditutupi oleh lapisan es metana dan etana yang sangat dingin, memberinya rona kemerahan."
+        },
+        "eris": {
+            "name": "Eris",
+            "nickname": "Dunia Perselisihan",
+            "description": "Eris adalah salah satu planet kerdil paling masif yang diketahui di tata surya, terletak di piringan tersebar (scattered disc) di luar Sabuk Kuiper. Penemuannya pada tahun 2005 memicu perdebatan astronomi yang akhirnya mendorong IAU untuk mendefinisikan ulang istilah planet dan mengklasifikasikan ulang Pluto sebagai planet kerdil."
+        },
+        "alpha_centauri_a": {
+            "name": "Alpha Centauri A",
+            "nickname": "Rigil Kentaurus",
+            "description": "Alpha Centauri A adalah komponen utama dari sistem tiga bintang Alpha Centauri. Ini adalah bintang deret utama kuning tipe matahari, sedikit lebih besar dan lebih terang daripada Matahari."
+        },
+        "alpha_centauri_b": {
+            "name": "Alpha Centauri B",
+            "nickname": "Toliman",
+            "description": "Alpha Centauri B adalah bintang sekunder dari sistem biner Alpha Centauri. Ini adalah bintang deret utama oranye, sedikit lebih kecil dan lebih dingin daripada Matahari."
+        },
+        "proxima_centauri": {
+            "name": "Proxima Centauri",
+            "nickname": "Alpha Centauri C",
+            "description": "Proxima Centauri adalah bintang katai merah berukuran kecil dan bermassa rendah yang terletak di rasi bintang Centaurus. Ini adalah bintang terdekat yang diketahui dari Matahari."
+        },
+        "proxima_centauri_b": {
+            "name": "Proxima Centauri b",
+            "nickname": "Proxima b",
+            "description": "Proxima Centauri b adalah eksoplanet yang mengorbit di dalam zona layak huni dari bintang katai merah Proxima Centauri. Ini adalah eksoplanet terdekat yang diketahui dari Tata Surya."
+        },
+        "proxima_centauri_c": {
+            "name": "Proxima Centauri c",
+            "nickname": "Proxima c",
+            "description": "Proxima Centauri c adalah kandidat super-Bumi atau mini-Neptunus yang mengorbit Proxima Centauri pada jarak sekitar 1,5 AU."
+        },
+        "proxima_centauri_d": {
+            "name": "Proxima Centauri d",
+            "nickname": "Proxima d",
+            "description": "Proxima Centauri d adalah eksoplanet sub-Bumi yang mengorbit sangat dekat dengan Proxima Centauri, menyelesaikan satu orbit setiap 5,1 hari."
+        },
+        "alpha_centauri_a_b": {
+            "name": "Alpha Centauri A b",
+            "nickname": "Rigil Kentaurus b",
+            "description": "Alpha Centauri A b adalah kandidat eksoplanet yang mengorbit di zona layak huni Alpha Centauri A."
         }
     }
 }

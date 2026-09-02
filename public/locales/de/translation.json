@@ -226,6 +226,61 @@
             "name": "Styx",
             "nickname": "Der Grenzmond",
             "description": "Styx ist der kleinste Mond von Pluto und wurde 2012 mit dem Hubble-Weltraumteleskop bei der Vorbereitung des Vorbeiflugs von New Horizons entdeckt. Er hat eine sehr unregelmäßige Shape und umkreist Pluto in der Ebene der anderen Monde."
+        },
+        "ceres": {
+            "name": "Ceres",
+            "nickname": "Der Riese des Asteroidengürtels",
+            "description": "Ceres ist das größte Objekt im Hauptasteroidengürtel zwischen Mars und Jupiter und der einzige Zwergplanet im inneren Sonnensystem. Er besteht aus Eis und Gestein, mit Hinweisen auf einen unterirdischen Ozean und Kryovulkanismus, wie z. B. helle Natriumcarbonat-Ablagerungen im Occator-Krater."
+        },
+        "haumea": {
+            "name": "Haumea",
+            "nickname": "Die langgestreckte Welt",
+            "description": "Haumea ist ein Zwergplanet im Kuipergürtel jenseits der Neptunbahn. Bekannt für seine extrem schnelle Rotation, bei der er eine Drehung in weniger als vier Stunden vollendet, hat seine schnelle Drehung ihn in eine langgestreckte Ellipsoidform gedehnt. Er besitzt auch ein dünnes Ringsystem und eine eisige Oberfläche mit hoher Albedo."
+        },
+        "makemake": {
+            "name": "Makemake",
+            "nickname": "Der Osterinsel-Zwerg",
+            "description": "Makemake ist nach Pluto das zweithellste Objekt im Kuipergürtel. Benannt nach der Schöpfergottheit der Rapa Nui auf der Osterinsel, besitzt Makemake keine nennenswerte Atmosphäre und ist von einer Schicht aus extrem kaltem Methan- und Ethaneis bedeckt, was ihm einen rötlichen Farbton verleiht."
+        },
+        "eris": {
+            "name": "Eris",
+            "nickname": "Die zwieträchtige Welt",
+            "description": "Eris ist einer der massereichsten bekannten Zwergplaneten im Sonnensystem und befindet sich in der gestreuten Scheibe jenseits des Kuipergürtels. Seine Entdeckung im Jahr 2005 löste die astronomische Debatte aus, die letztendlich dazu führte, dass die IAU die Definition eines Planeten neudefinierte und Pluto als Zwergplanet rekategorisierte."
+        },
+        "alpha_centauri_a": {
+            "name": "Alpha Centauri A",
+            "nickname": "Rigil Kentaurus",
+            "description": "Alpha Centauri A ist die Hauptkomponente des Dreifachsternsystems Alpha Centauri. Es ist ein gelber Hauptreihenstern vom Sonnentyp, etwas größer und leuchtstärker als die Sonne."
+        },
+        "alpha_centauri_b": {
+            "name": "Alpha Centauri B",
+            "nickname": "Toliman",
+            "description": "Alpha Centauri B ist der Sekundärstern des Alpha-Centauri-Binärsystems. Es ist ein oranger Hauptreihenstern, etwas kleiner und kühler als die Sonne."
+        },
+        "proxima_centauri": {
+            "name": "Proxima Centauri",
+            "nickname": "Alpha Centauri C",
+            "description": "Proxima Centauri ist ein kleiner, massearmer Roter Zwergstern im Sternbild Zentaur. Er ist der der Sonne nächstgelegene bekannte Stern."
+        },
+        "proxima_centauri_b": {
+            "name": "Proxima Centauri b",
+            "nickname": "Proxima b",
+            "description": "Proxima Centauri b ist ein Exoplanet, der innerhalb der bewohnbaren Zone des Roten Zwergsterns Proxima Centauri kreist. Er ist der dem Sonnensystem nächstgelegene bekannte Exoplanet."
+        },
+        "proxima_centauri_c": {
+            "name": "Proxima Centauri c",
+            "nickname": "Proxima c",
+            "description": "Proxima Centauri c ist eine Kandidat-Supererde oder ein Mini-Neptun, der Proxima Centauri in einem Abstand von etwa 1,5 AE umkreist."
+        },
+        "proxima_centauri_d": {
+            "name": "Proxima Centauri d",
+            "nickname": "Proxima d",
+            "description": "Proxima Centauri d ist ein Sub-Erde-Exoplanet, der Proxima Centauri sehr nahe umkreist und alle 5,1 Tage eine Umlaufbahn vollendet."
+        },
+        "alpha_centauri_a_b": {
+            "name": "Alpha Centauri A b",
+            "nickname": "Rigil Kentaurus b",
+            "description": "Alpha Centauri A b ist ein Exoplanetenkandidat, der in der bewohnbaren Zone von Alpha Centauri A kreist."
         }
     }
 }

@@ -1,7 +1,8 @@
 import { createContext } from 'react';
-import { SCALE, TIME_SCALE } from './constant';
+import { SCALE, TIME_SCALE } from './constants';
 
 export interface Control {
+    universe: string,
     focus: string,
     focusIndex: number,
     showSetting: boolean,
@@ -14,7 +15,8 @@ export interface Control {
     setControl: (values: object) => void
 }
 
-export const ControlContext = createContext<Control>({
+export const defaultValue = {
+    universe: "solar-system",
     focus: "",
     focusIndex: 0,
     showSetting: false,
@@ -24,6 +26,10 @@ export const ControlContext = createContext<Control>({
     showOrbitLine: true,
     ignoreAxis: false,
     pauseOrbitWhenFocus: true,
+}
+
+export const ControlContext = createContext<Control>({
+    ...defaultValue,
     setControl: () => null
 })
 

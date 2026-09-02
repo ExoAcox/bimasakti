@@ -1,23 +1,24 @@
 import { useContext, useEffect, useRef } from "react"
-import type { Group } from "three"
 import { ControlContext } from "../context"
 import { useBounds } from "@react-three/drei"
 import type { OrbitControls as OrbitControlsImpl } from "three-stdlib"
-import { useFrame, useLoader, useThree } from "@react-three/fiber"
-import { Vector3, MathUtils, EquirectangularReflectionMapping, SRGBColorSpace } from "three"
-import { TIFFLoader } from 'three/addons/loaders/TIFFLoader.js';
+import { useFrame, useThree } from "@react-three/fiber"
+import { Vector3, MathUtils } from "three"
 
 
 
 
 interface Props {
     children: React.ReactNode
-    cameraRef: React.RefObject<OrbitControlsImpl>
+    controlRef: React.RefObject<OrbitControlsImpl>
 }
 
-const Scene = ({ children, cameraRef }: Props) => {
-    const sceneRef = useRef<Group>(null!)
+const position = {
+    "solar-system": [3, 3, 3],
+    "alpha-centauri": [0, 3000, 5000]
+}
 
+const Scene = ({ children, controlRef }: Props) => {
     const lastTargetPos = useRef(new Vector3())
     const currentTargetPos = useRef(new Vector3())
     const deltaMove = useRef(new Vector3())
@@ -25,17 +26,25 @@ const Scene = ({ children, cameraRef }: Props) => {
     const isZooming = useRef(false)
 
     const bound = useBounds()
-    const { focus, focusIndex, pauseOrbitWhenFocus } = useContext(ControlContext)
+    const { universe, focus, focusIndex, pauseOrbitWhenFocus } = useContext(ControlContext)
 
-    const { scene } = useThree()
+    const { scene, camera } = useThree()
 
+    useEffect(() => {
+        if (controlRef.current) {
+            const [x, y, z] = position[universe] || [0, 0, 0]
 
+            controlRef.current.target.set(0, 0, 0);
+            camera.position.set(x, y, z);
+            controlRef.current.update();
+        }
+    }, [universe, controlRef, camera.position])
 
     useEffect(() => {
         if (!focus) return;
-        const target = sceneRef.current.getObjectByName(focus)
+        const target = scene.getObjectByName(focus)
         bound.refresh(target).fit()
-    }, [bound, focus, focusIndex])
+    }, [bound, focus, scene, focusIndex])
 
     useFrame((state) => {
         if (focus) {
@@ -72,8 +81,8 @@ const Scene = ({ children, cameraRef }: Props) => {
                 }
             }
 
-            cameraRef.current.target.copy(currentTargetPos.current)
-            cameraRef.current.update()
+            controlRef.current.target.copy(currentTargetPos.current)
+            controlRef.current.update()
 
             lastTargetPos.current.copy(currentTargetPos.current)
         } else {
@@ -82,7 +91,7 @@ const Scene = ({ children, cameraRef }: Props) => {
         }
     })
 
-    return <group ref={sceneRef}>
+    return <group>
         {children}
     </group>
 }

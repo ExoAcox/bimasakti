@@ -1,5 +1,5 @@
 import { MathUtils } from "three"
-import { planets, sun } from "./constant"
+import { artificialSatellite, dwarfPlanets, planets, satellites, sun, stars_ac, planets_ac } from "./constants"
 
 export const randomNumber = () => {
     const seed = Math.random()
@@ -7,8 +7,39 @@ export const randomNumber = () => {
     return x - Math.floor(x);
 }
 
+export const timeFormat = (value: number) => {
+    if (value <= 2) {
+        const hour = Math.floor(value * 24)
+        const minute = Math.round((value * 24 - hour) * 60)
+
+        if (minute) return `${hour} hours ${minute} minutes`
+        return `${hour} hours`
+    } else {
+        // const day = Math.floor(value * 24)
+        // const remain = Math.round(value % 24)
+
+        // if (day > 0 && remain > 0) {
+        //     return `${day} days ${remain} hours`
+        // } else if (day > 0) {
+        //     return `${day} days`
+        // } else if (remain > 0) {
+        //     return `${remain} hours`
+        // }
+
+        return `${value} days`
+    }
+}
+
+export const lengthFormat = (value: number) => {
+    if (value < 1) {
+        return `${(value * 1000)?.toLocaleString()} m`
+    } else {
+        return `${value?.toLocaleString()} km`
+    }
+}
+
 export const getAllObjects = () => {
-    return [sun, ...planets, ...planets.flatMap(planet => planet.satellites), ...planets.flatMap(planet => planet.artificial_satellites ?? [])]
+    return [sun, ...planets, ...dwarfPlanets, ...satellites, ...artificialSatellite, ...stars_ac, ...planets_ac]
 }
 
 export const getObjectById = (id: string, type?: string) => {
@@ -23,17 +54,8 @@ export const getObjectById = (id: string, type?: string) => {
     }).find((object) => object.id === id)
 }
 
-
-export const getParentPlanet = (id: string) => {
-    return planets.find((planet) => planet.satellites.find((satellite) => satellite.id === id))
-}
-
-export const getInitialRotation = (id: string) => {
-    let hash = 0
-    for (let i = 0; i < id.length; i++) {
-        hash = id.charCodeAt(i) + ((hash << 5) - hash)
-    }
-    const deg = Math.abs(hash) % 361
+export const getInitialRotation = () => {
+    const deg = randomNumber() * 360
     return MathUtils.degToRad(deg)
 }
 
