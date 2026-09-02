@@ -6,3 +6,5 @@ export { default as Satellite } from "./Satellite"
 export { default as ArtificialSatellite } from "./ArtificialSatellite"
 export { default as Belt } from "./Belt"
 export { default as OrbitLine } from "./OrbitLine"
+export { default as SkyBox } from "./SkyBox"
+

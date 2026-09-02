@@ -1,4 +1,4 @@
-import { useContext, useEffect, useRef } from "react"
+import { useContext, useEffect, useLayoutEffect, useRef } from "react"
 import { ControlContext } from "../context"
 import { useBounds } from "@react-three/drei"
 import type { OrbitControls as OrbitControlsImpl } from "three-stdlib"
@@ -30,7 +30,7 @@ const Scene = ({ children, controlRef }: Props) => {
 
     const { scene, camera } = useThree()
 
-    useEffect(() => {
+    useLayoutEffect(() => {
         if (controlRef.current) {
             const [x, y, z] = position[universe] || [0, 0, 0]
 
@@ -48,8 +48,6 @@ const Scene = ({ children, controlRef }: Props) => {
 
     useFrame((state) => {
         if (focus) {
-            if (pauseOrbitWhenFocus) return
-
             const object = scene.getObjectByName(focus)
             if (!object) return
 
@@ -59,25 +57,11 @@ const Scene = ({ children, controlRef }: Props) => {
             if (lastFocusedId.current !== focus) {
                 lastFocusedId.current = focus
                 isZooming.current = true
-            }
-
-            if (lastTargetPos.current.lengthSq() > 0) {
+                lastTargetPos.current.copy(currentTargetPos.current)
+            } else {
                 deltaMove.current.subVectors(currentTargetPos.current, lastTargetPos.current)
-                state.camera.position.add(deltaMove.current)
-
-                if (isZooming.current) {
-                    const distanceToTarget = state.camera.position.distanceTo(currentTargetPos.current)
-                    const objectScale = object.getWorldScale(new Vector3()).x
-                    const idealDistance = objectScale * 3.5
-
-                    if (Math.abs(distanceToTarget - idealDistance) > objectScale * 0.1) {
-                        const direction = new Vector3().subVectors(state.camera.position, currentTargetPos.current).normalize()
-                        const lerpedDistance = MathUtils.lerp(distanceToTarget, idealDistance, 0.25)
-                        const targetCameraPos = currentTargetPos.current.clone().add(direction.multiplyScalar(lerpedDistance))
-                        state.camera.position.lerp(targetCameraPos, 0.25)
-                    } else {
-                        isZooming.current = false
-                    }
+                if (!pauseOrbitWhenFocus) {
+                    state.camera.position.add(deltaMove.current)
                 }
             }
 

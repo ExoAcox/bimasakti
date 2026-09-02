@@ -1,6 +1,6 @@
 /* eslint-disable react-hooks/set-state-in-effect */
-import { useContext, useEffect, useMemo, useRef, useState } from "react"
-import { Group, MathUtils, Mesh, Object3D } from "three"
+import { useContext, useEffect, useLayoutEffect, useMemo, useRef, useState } from "react"
+import { Group, MathUtils, Mesh, Object3D, Vector3 } from "three"
 import { type Star as StarType, type ArtificialSatellite as ArtificialSatelliteType, type Planet as PlanetType, type Satellite as SatelliteType, type Dummy } from "../../constants"
 import { useFrame, useThree } from "@react-three/fiber"
 import { calculateSatelliteDistance, getInitialRotation, getObjectById } from "../../function";
@@ -28,6 +28,9 @@ const Object = ({ data, children, childrenComponent, onClick, objectRef, overlay
     const [occlude, setOcclude] = useState<{ current: Object3D }[] | undefined>(undefined)
 
     const orbitRef = useRef<Group>(null!)
+    const internalLabelRef = useRef<HTMLButtonElement>(null!)
+    const targetPos = useRef(new Vector3())
+
     const { scene } = useThree()
     const { universe, focus, sizeScale, distanceScale, speedScale, showOrbitLine, ignoreAxis, pauseOrbitWhenFocus } = useContext(ControlContext)
     const { t } = useTranslation()
@@ -36,7 +39,7 @@ const Object = ({ data, children, childrenComponent, onClick, objectRef, overlay
     const defaultFocus = universe === "solar-system" ? "sun" : ""
 
     const axis = ignoreAxis ? 0 : MathUtils.degToRad(data?.axis ?? 0)
-    // const scale = data.radius / sizeScale
+    const scale = data.radius / sizeScale
     const rotate = useMemo(() => getInitialRotation(), [])
     const distance = useMemo(() => {
         if (!data.distance) return 0
@@ -50,7 +53,14 @@ const Object = ({ data, children, childrenComponent, onClick, objectRef, overlay
         }
     }, [data, distanceScale, sizeScale])
 
-
+    const isAncestorOfFocused = (currentId: string, focusedId: string) => {
+        let curr = getObjectById(focusedId);
+        while (curr && curr.parent) {
+            if (curr.parent === currentId) return true;
+            curr = getObjectById(curr.parent);
+        }
+        return false;
+    };
 
     useFrame((state) => {
         if (!data) return
@@ -72,8 +82,7 @@ const Object = ({ data, children, childrenComponent, onClick, objectRef, overlay
 
         if (!data.orbit_duration) return
 
-        const isSatelliteFocused = ["satellite", "artificial_satellite"].includes(focusedObject?.type);
-        const isParentOfFocused = isSatelliteFocused && data.id === focusedObject?.parent;
+        const isParentOfFocused = focus ? isAncestorOfFocused(data.id, focus) : false;
         const isFocused = focus === data.id;
 
         const shouldPauseOrbit = pauseOrbitWhenFocus && (isFocused || isParentOfFocused);
@@ -83,42 +92,60 @@ const Object = ({ data, children, childrenComponent, onClick, objectRef, overlay
         }
     })
 
+    useFrame((state) => {
+        if (!internalLabelRef.current) return
+
+        const object = scene.getObjectByName(data.id)
+        if (!object) return
+
+        object.getWorldPosition(targetPos.current)
+        const distance = state.camera.position.distanceTo(targetPos.current)
+
+        if (distance > scale * 50) {
+            internalLabelRef.current.style.visibility = "visible"
+        } else {
+            internalLabelRef.current.style.visibility = "hidden"
+        }
+    })
 
     const isLabelVisible = useMemo(() => {
-        const isSatellite = ["satellite", "artificial_satellite"].includes(data.type)
-
         if (universe === "solar-system") {
-            if (!focus && defaultFocus === data.id) return false
-            if (focus === data.id) return false
+            const isSatellite = ["satellite", "artificial_satellite"].includes(data.type)
+
             if (!isSatellite) return true
             if (isSatellite) {
+                if (focus === data.id) return true
                 if (focus === data.parent) return true
                 if (focusedObject?.parent === data.parent) return true
             }
         }
 
         if (universe === "alpha-centauri") {
-
-            console.log(focus, data.id, data.type)
-            if (data.parent === focus) return true
-            if (focus === "proxima_centauri") return false
             if (data.type === "star") return true
+            if (data.parent === focus) return true
 
-            // console.log(focus, data.type)
-
+            if (data.type === "planet") {
+                if (focus === data.id) return true
+                if (focus === data.parent) return true
+                if (focusedObject?.parent === data.parent) return true
+            }
         }
 
         return false
-    }, [data.type, data.id, data.parent, universe, focus, defaultFocus, focusedObject])
+    }, [data.type, data.id, data.parent, universe, focus, focusedObject])
 
-    useEffect(() => {
+    useLayoutEffect(() => {
         if (!focus && !defaultFocus) return setOcclude(undefined);
+
+        if (focus === data.id) return setOcclude(undefined)
+        if (focusedObject?.parent === data.id) return setOcclude(undefined)
 
         const object = scene.getObjectByName(focus || defaultFocus)
         if (!object) return setOcclude(undefined)
 
         const occlude = [{ current: object }]
-        const isSatellite = ["satellite", "artificial_satellite"].includes(data.type)
+
+        const isSatellite = ["satellite", "artificial_satellite"].includes(focusedObject?.type)
 
         if (isSatellite && focusedObject?.parent) {
             const parentObject = scene.getObjectByName(focusedObject.parent)
@@ -126,7 +153,11 @@ const Object = ({ data, children, childrenComponent, onClick, objectRef, overlay
         }
 
         setOcclude(occlude)
-    }, [focus, scene, focusedObject, defaultFocus, data.type])
+    }, [focus, scene, focusedObject, defaultFocus, data.type, data.id])
+
+    if (data.id === "mars") {
+        console.log(occlude)
+    }
 
     return <group rotation={[0, 0, axis]}>
         <When condition={showOrbitLine}>
@@ -137,7 +168,7 @@ const Object = ({ data, children, childrenComponent, onClick, objectRef, overlay
             <group position={[distance, 0, 0]}>
                 <Html occlude={occlude} zIndexRange={[data.type === "star" ? 2 : 1, 0]}>
                     <When condition={isLabelVisible}>
-                        <button ref={labelRef} className="hover:text-accent absolute -translate-x-1/2 -translate-y-full -mt-1 py-1 px-2 whitespace-nowrap rounded-lg text-sm font-semibold text-secondary" onClick={onClick}>{t(`object.${data.id}.name`)}</button>
+                        <button ref={labelRef || internalLabelRef} className="hover:text-accent absolute -translate-x-1/2 -translate-y-full -mt-1 py-1 px-2 whitespace-nowrap rounded-lg text-sm font-semibold text-secondary" onClick={onClick}>{t(`object.${data.id}.name`)}</button>
                     </When>
                 </Html>
 

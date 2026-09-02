@@ -222,6 +222,20 @@ export const dwarfPlanets: Planet[] = [
 
 export const planets_ac: Planet[] = [
     {
+        id: "alpha_centauri_a_b",
+        type: "planet",
+        parent: "alpha_centauri_a",
+        radius: 7000,
+        distance: 164500000,
+        color: "blue",
+        axis: 23.4,
+        orbit_duration: 360,
+        rotate_duration: 1.0,
+        texture: "alpha_centauri_a_b.png",
+        icon: "mars.png",
+        satellites: []
+    },
+    {
         id: "proxima_centauri_b",
         type: "planet",
         parent: "proxima_centauri",
@@ -231,8 +245,9 @@ export const planets_ac: Planet[] = [
         axis: 0,
         orbit_duration: 11.186,
         rotate_duration: 11.186,
-        texture: "mars.jpg",
-        icon: "mars.png",
+        texture: "proxima_centauri_b.png",
+        overlay_textures: ["earth_cloud.jpg"],
+        icon: "earth.png",
         satellites: []
     },
     {
@@ -245,7 +260,7 @@ export const planets_ac: Planet[] = [
         axis: 15,
         orbit_duration: 1928,
         rotate_duration: 1.2,
-        texture: "neptune.jpg",
+        texture: "proxima_centauri_c.png",
         icon: "neptune.png",
         satellites: []
     },
@@ -259,22 +274,8 @@ export const planets_ac: Planet[] = [
         axis: 0,
         orbit_duration: 5.12,
         rotate_duration: 5.12,
-        texture: "mercury.jpg",
+        texture: "proxima_centauri_d.png",
         icon: "mercury.png",
         satellites: []
     },
-    {
-        id: "alpha_centauri_a_b",
-        type: "planet",
-        parent: "alpha_centauri_a",
-        radius: 7000,
-        distance: 164500000,
-        color: "blue",
-        axis: 23.4,
-        orbit_duration: 360,
-        rotate_duration: 1.0,
-        texture: "earth.jpg",
-        icon: "earth.png",
-        satellites: []
-    }
 ]

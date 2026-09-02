@@ -29,7 +29,7 @@ export const stars_ac: Star[] = [
         parent: "",
         radius: 847000,
         distance: 1589000000, // ~10.62 AU from barycenter
-        intensity: 1e17,
+        intensity: 1.519e17,
         color: "#ffe0a0",
         axis: 7.9, // obliquity to the ecliptic in degrees
         rotate_duration: 22.0, // equator sidereal rotation period in days
@@ -47,7 +47,7 @@ export const stars_ac: Star[] = [
         parent: "",
         radius: 598000,
         distance: 1927000000, // ~12.88 AU from barycenter
-        intensity: 1e17,
+        intensity: 0.5e17,
         color: "#ffaa44",
         axis: 7.25,
         rotate_duration: 41.0,
@@ -64,7 +64,7 @@ export const stars_ac: Star[] = [
         parent: "",
         radius: 107200,
         distance: 1930000000000, // ~12,900 AU from barycenter
-        intensity: 1e17,
+        intensity: 1.7e14,
         color: "#ff4411",
         axis: 7.25,
         rotate_duration: 82.6,

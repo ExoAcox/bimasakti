@@ -278,9 +278,9 @@
             "description": "Proxima Centauri d adalah eksoplanet sub-Bumi yang mengorbit sangat dekat dengan Proxima Centauri, menyelesaikan satu orbit setiap 5,1 hari."
         },
         "alpha_centauri_a_b": {
-            "name": "Alpha Centauri A b",
+            "name": "Alpha Centauri Ab",
             "nickname": "Rigil Kentaurus b",
-            "description": "Alpha Centauri A b adalah kandidat eksoplanet yang mengorbit di zona layak huni Alpha Centauri A."
+            "description": "Alpha Centauri Ab adalah kandidat eksoplanet yang mengorbit di zona layak huni Alpha Centauri A."
         }
     }
 }

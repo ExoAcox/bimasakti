@@ -286,9 +286,9 @@
             "description": "Proxima Centauri d is a sub-Earth exoplanet orbiting very close to Proxima Centauri, completing an orbit every 5.1 days."
         },
         "alpha_centauri_a_b": {
-            "name": "Alpha Centauri A b",
+            "name": "Alpha Centauri Ab",
             "nickname": "Rigil Kentaurus b",
-            "description": "Alpha Centauri A b is a candidate exoplanet orbiting in the habitable zone of Alpha Centauri A."
+            "description": "Alpha Centauri Ab is a candidate exoplanet orbiting in the habitable zone of Alpha Centauri A."
         }
     }
 }

@@ -278,9 +278,9 @@
             "description": "Proxima Centauri d ist ein Sub-Erde-Exoplanet, der Proxima Centauri sehr nahe umkreist und alle 5,1 Tage eine Umlaufbahn vollendet."
         },
         "alpha_centauri_a_b": {
-            "name": "Alpha Centauri A b",
+            "name": "Alpha Centauri Ab",
             "nickname": "Rigil Kentaurus b",
-            "description": "Alpha Centauri A b ist ein Exoplanetenkandidat, der in der bewohnbaren Zone von Alpha Centauri A kreist."
+            "description": "Alpha Centauri Ab ist ein Exoplanetenkandidat, der in der bewohnbaren Zone von Alpha Centauri A kreist."
         }
     }
 }

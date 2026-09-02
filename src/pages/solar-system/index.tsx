@@ -7,13 +7,13 @@ import { ControlContext, type Control } from "./context"
 import { SCALE, TIME_SCALE } from "./constants"
 import { Header, DetailPanel, Sidebar } from "./components/panel"
 import { SolarSystem, AlphaCentauri } from "./universe"
-
+import { SkyBox } from "./components/object"
 
 const Universe = () => {
     const controlRef = useRef(null!)
 
     const [control, setControl] = useState({
-        universe: "alpha-centauri",
+        universe: "solar-system",
         focus: "",
         focusIndex: 0,
         showSetting: false,
@@ -43,7 +43,7 @@ const Universe = () => {
             }
         },
         "alpha-centauri": {
-            component: <AlphaCentauri controlRef={controlRef} />,
+            component: <AlphaCentauri />,
             maxDistance: 4000000,
             stars: {
                 radius: 20000 * 1.5,
@@ -63,7 +63,7 @@ const Universe = () => {
                 <OrbitControls makeDefault enableDamping ref={controlRef} maxDistance={universe.maxDistance} zoomSpeed={3} />
 
                 <color attach="background" args={['black']} />
-                <Stars radius={universe.stars.radius} count={universe.stars.count} factor={universe.stars.factor} />
+                <SkyBox />
 
                 <Bounds>
                     <Scene controlRef={controlRef}>
