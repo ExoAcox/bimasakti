@@ -13,6 +13,7 @@
     "@react-spring/three": "^10.1.2",
     "@react-three/drei": "^10.7.7",
     "@react-three/fiber": "^9.6.1",
+    "@react-three/postprocessing": "^3.1.1",
     "@react-three/rapier": "^2.2.0",
     "@tailwindcss/vite": "^4.3.3",
     "clsx": "^2.1.1",
@@ -20,6 +21,7 @@
     "i18next": "^26.4.0",
     "i18next-http-backend": "^4.0.1",
     "leva": "^0.10.1",
+    "postprocessing": "^6.39.4",
     "react": "^19.2.7",
     "react-dom": "^19.2.7",
     "react-i18next": "^17.0.12",
@@ -27,7 +29,8 @@
     "react-if": "^4.1.6",
     "react-router": "^8.2.0",
     "tailwindcss": "^4.3.3",
-    "three": "^0.185.1"
+    "three": "^0.185.1",
+    "three-stdlib": "^2.36.1"
   },
   "devDependencies": {
     "@babel/core": "^7.29.7",

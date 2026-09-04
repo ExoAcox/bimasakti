@@ -4,16 +4,13 @@ import { BrowserRouter, Route, Routes } from "react-router";
 import './index.css'
 import "./i18n";
 
-import Cube from './pages/cube'
-import SolarSystem from './pages/solar-system';
+import Home from './index';
 
 createRoot(document.getElementById('root')!).render(
   <StrictMode>
     <BrowserRouter>
       <Routes>
-        <Route index element={<SolarSystem />} />
-        <Route path="/cube" element={<Cube />} />
-        <Route path="/solar-system" element={<SolarSystem />} />
+        <Route index element={<Home />} />
       </Routes>
     </BrowserRouter>
   </StrictMode>,
