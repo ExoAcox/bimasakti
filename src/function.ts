@@ -2,6 +2,7 @@ import { Camera, MathUtils, Object3D, Vector3 } from "three"
 import { solar_system, alpha_centauri, universes } from "@constants"
 import { useRef } from "react";
 import { useControlStore } from "@state";
+import type { Planet, Star, ArtificialSatellite, Satellite } from "@types";
 
 export const getUniverseById = (id: string) => {
     return universes.find(universe => universe.id === id)
@@ -11,7 +12,7 @@ export const useCelestial = () => {
     const universe = useControlStore((state) => state.universe)
     const targetPos = useRef(new Vector3())
 
-    let objects = []
+    let objects: (Planet | Star | Satellite | ArtificialSatellite)[] = []
     if (universe === "solar_system") {
         const { stars, planets, dwarf_planets, satellites, artificial_satellites } = solar_system
         objects = [...stars, ...planets, ...dwarf_planets, ...satellites, ...artificial_satellites]

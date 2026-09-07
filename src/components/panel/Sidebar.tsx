@@ -77,9 +77,9 @@ const Sidebar = () => {
 
     return <div className="fixed top-0 left-0 bottom-0 min-w-40 flex flex-col bg-background px-3 py-4 z-50 text-primary backdrop-blur-sm">
         <div className="flex-1 flex flex-col gap-4 overflow-y-auto">
-            <Section data={stars}>{t("ui.stars")}</Section>
-            <Section data={planets}>{t("ui.planets")}</Section>
-            <Section data={dwarfPlanets}>{t("ui.dwarf_planets")}</Section>
+            <Section data={stars as Star[]}>{t("ui.stars")}</Section>
+            <Section data={planets as Planet[]}>{t("ui.planets")}</Section>
+            <Section data={dwarfPlanets as Planet[]}>{t("ui.dwarf_planets")}</Section>
         </div>
         <SettingPanel />
     </div>

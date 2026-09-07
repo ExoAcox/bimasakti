@@ -71,7 +71,7 @@ const GordilocksZone = ({ data }: Props) => {
         }
     });
 
-    if (focus && focus !== "sun") return null
+    if (focus && focus !== data.id) return null
 
     return (
         <group ref={groupRef}>

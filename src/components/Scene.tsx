@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import { useEffect, useLayoutEffect, useRef } from "react"
 import { useControlStore } from "@state"
 import { useBounds } from "@react-three/drei"
@@ -73,6 +74,16 @@ const Scene = ({ children, controlRef }: Props) => {
         } else {
             lastFocusedId.current = null
             isZooming.current = false
+        }
+    })
+
+    useFrame(() => {
+        if (controlRef.current && universe !== "milky_way") {
+            const navigationPanel = document.getElementById("navigation-panel")
+            const isMaxZoomOut = controlRef.current.getDistance() >= controlRef.current.maxDistance - 10;
+
+            if (!navigationPanel) return
+            navigationPanel.style.visibility = isMaxZoomOut ? "visible" : "hidden"
         }
     })
 

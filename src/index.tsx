@@ -83,12 +83,11 @@ const UniversePage = () => {
                     />
                 </EffectComposer>
             </Suspense>
-            <NavigationPanel controlRef={controlRef} />
+
         </Canvas>
 
         <Header />
-
-
+        <NavigationPanel />
         <When condition={!isMilkyWay}>
             <UserInterface />
         </When>

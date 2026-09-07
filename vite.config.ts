@@ -11,6 +11,22 @@ export default defineConfig({
     babel({ presets: [reactCompilerPreset()] }),
     tailwindcss(),
   ],
+  build: {
+    rollupOptions: {
+      output: {
+        manualChunks(id: string) {
+          const module = id.split("/node_modules/")[1];
+          if (!module) {
+            return; // void
+          }
+          if (module.match(/^@react-three\/drei\//)) return "drei";
+          if (module.match(/^@react-three\/fiber\//)) return "fiber";
+          if (module.match(/^three\//)) return "three";
+          return; // void
+        },
+      }
+    }
+  },
   resolve: {
     alias: {
       '@components': path.resolve(__dirname, './src/components'),

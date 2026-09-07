@@ -16,6 +16,10 @@ export const stars: Star[] = [
         orbit_duration: 29187, // ~79.91 years in days
         texture: "sun.jpg",
         icon: "sun.png",
+        gordilocks: {
+            inner_radius: 175160000,
+            outer_radius: 307912000,
+        },
         get planets() {
             return planets.filter(planet => planet.parent === this.id)
         }
@@ -35,6 +39,10 @@ export const stars: Star[] = [
         orbit_duration: 29187, // ~79.91 years in days
         texture: "sun.jpg",
         icon: "sun.png",
+        gordilocks: {
+            inner_radius: 100494000,
+            outer_radius: 176658000,
+        },
         get planets() {
             return planets.filter(planet => planet.parent === this.id)
         }
@@ -53,6 +61,10 @@ export const stars: Star[] = [
         orbit_duration: 199790000, // ~547,000 years in days
         texture: "sun.jpg",
         icon: "sun.png",
+        gordilocks: {
+            inner_radius: 5860000,
+            outer_radius: 10300000,
+        },
         get planets() {
             return planets.filter(planet => planet.parent === this.id)
         }

@@ -139,7 +139,7 @@ const Object = ({ data, children, childrenComponent, onClick, objectRef, overlay
         const occlude = [{ current: object }]
         if (focusedObject?.parent === data.id) return setOcclude(occlude)
 
-        const isSatellite = ["satellite", "artificial_satellite"].includes(focusedObject?.type)
+        const isSatellite = ["satellite", "artificial_satellite"].includes(focusedObject?.type ?? "")
 
         if (isSatellite && focusedObject?.parent) {
             const parentObject = scene.getObjectByName(focusedObject.parent)
