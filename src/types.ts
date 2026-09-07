@@ -1,3 +1,5 @@
+import type { Vector3 } from "@react-three/fiber"
+
 export interface Object {
     id: string
     type: "star" | "planet" | "satellite" | "artificial_satellite" | "human_made" | "dummy"
@@ -84,3 +86,14 @@ export const StarClass = {
 
 export type PlanetClass = (typeof PlanetClass)[keyof typeof PlanetClass];
 export type StarClass = (typeof StarClass)[keyof typeof StarClass];
+
+export interface Universe {
+    id: string
+    component: React.ReactNode,
+    stars: Star[]
+    position: Vector3,
+    minDistance: number,
+    maxDistance: number,
+    cameraPosition: Vector3,
+    labelPosition: "top" | "bottom" | "left" | "right"
+}

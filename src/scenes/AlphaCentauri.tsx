@@ -1,25 +1,26 @@
-import { useContext, useMemo, useRef } from "react"
+import { useMemo, useRef } from "react"
 import { Planet, Star } from "@components/object"
 import { alpha_centauri } from "@constants"
-import { ControlContext } from "@context"
+import { useControlStore } from "@state"
 import { useFrame, useThree } from "@react-three/fiber"
 import { Html, useBounds } from "@react-three/drei"
-import { Vector3 } from "three"
+import { useCelestial } from "@function"
 
 
 
 const AlphaCentauri = () => {
-    const { focus, distanceScale, setControl } = useContext(ControlContext)
+    const { focus, distanceScale, setControl } = useControlStore()
     const { stars, planets } = alpha_centauri
 
     const centerRef = useRef(null!)
-    const proximaLabelRef = useRef(null!)
-    const alphaALabelRef = useRef(null!)
-    const alphaBLabelRef = useRef(null!)
-    const targetPos = useRef(new Vector3())
+    const proximaLabelRef = useRef<HTMLButtonElement>(null!)
+    const alphaALabelRef = useRef<HTMLButtonElement>(null!)
+    const alphaBLabelRef = useRef<HTMLButtonElement>(null!)
+    // const targetPos = useRef(new Vector3())
 
     const { scene } = useThree()
     const bound = useBounds()
+    const celestial = useCelestial()
 
     const handleClick = () => {
         setControl({ focus: "" })
@@ -35,10 +36,10 @@ const AlphaCentauri = () => {
         return [{ current: object }]
     }, [focus, scene])
 
-    useFrame((state) => {
+    useFrame(({ camera }) => {
         if (centerRef.current) {
-            centerRef.current.getWorldPosition(targetPos.current)
-            const distance = state.camera.position.distanceTo(targetPos.current)
+            // centerRef.current.getWorldPosition(targetPos.current)
+            const distance = celestial.getCameraDistance(camera, centerRef.current)
             // Atau cara praktis langsung dari OrbitControls:
             // const distance = controlRef.current.getDistance()
             if (distance > 100000) {
@@ -67,12 +68,13 @@ const AlphaCentauri = () => {
                     if (star.id === "alpha_centauri_b") {
                         return star.distance / 2 * 1 / distanceScale
                     }
+                    return 0
                 }
 
                 const labelRef = star.id === "alpha_centauri_a" ? alphaALabelRef : alphaBLabelRef
 
 
-                return <group position={[offset(), 0, 0]}>
+                return <group position={[offset() ?? 0, 0, 0]}>
                     <Star
                         key={star.id}
                         id={star.id}

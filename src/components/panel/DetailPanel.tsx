@@ -1,5 +1,4 @@
-import { useContext } from "react"
-import { ControlContext } from "@context"
+import { useControlStore } from "@state"
 import { useCelestial, lengthFormat, timeFormat } from "@function"
 import type { Planet } from "@types"
 
@@ -12,7 +11,7 @@ import { When } from "react-if";
 
 const PanelDetail = () => {
 
-    const { focus, setControl } = useContext(ControlContext)
+    const { focus, setControl } = useControlStore()
     const celestial = useCelestial()
     const data = celestial.getObjectById(focus)
 
@@ -25,7 +24,7 @@ const PanelDetail = () => {
         <div>
             <div className="flex items-center gap-2 justify-between text-primary">
                 <h1 className="text-xl font-bold">{t(`object.${data?.id}.name`)}</h1>
-                {data.icon ? <img src={`/solar-system/icons/${data.icon}`} className="size-10" /> : ""}
+                {data.icon ? <img src={`/icons/${data.icon}`} className="size-10" /> : ""}
             </div>
             <p className="mt-4 leading-relaxed border-t border-divider pt-4">
                 {t(`object.${data?.id}.description`)}
@@ -66,7 +65,7 @@ const PanelDetail = () => {
             <When condition={["satellite", "artificial_satellite"].includes(data.type)}>
                 <div>
                     <button className="flex gap-2 items-center mb-2" onClick={() => setControl({ focus: parentPlanet.id })}>
-                        <img src={`/solar-system/icons/${parentPlanet.icon}`} className="size-6" alt={parentPlanet.icon} />
+                        <img src={`/icons/${parentPlanet.icon}`} className="size-6" alt={parentPlanet.icon} />
                         <span className="text-lg font-bold">{t(`object.${parentPlanet.id}.name`)}</span>
                     </button>
 
@@ -93,7 +92,7 @@ const PanelDetail = () => {
                     {(data as Planet).artificial_satellites?.map(satellite => {
                         return <div>
                             <button className="flex gap-2 items-center mb-2" onClick={() => setControl({ focus: satellite.id })}>
-                                <img src={`/solar-system/icons/${satellite.icon}`} className="size-6" alt={satellite.icon} />
+                                <img src={`/icons/${satellite.icon}`} className="size-6" alt={satellite.icon} />
                                 <span className="text-lg font-bold">{t(`object.${satellite.id}.name`)}</span>
                             </button>
 

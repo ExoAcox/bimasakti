@@ -1,8 +1,8 @@
 import { useGLTF } from "@react-three/drei"
 import type { ArtificialSatellite as ArtificialSatelliteType } from "@types"
 import { Object3D, Mesh } from "three"
-import { useContext, useRef } from "react"
-import { ControlContext } from "@context"
+import { useRef } from "react"
+import { useControlStore } from "@state"
 import { useCelestial } from "@function"
 import { CelestialBody } from "@components/object"
 
@@ -34,7 +34,7 @@ const ArtificialSatellite = ({ id }: Props) => {
     const data = useCelestial().getObjectById(id) as ArtificialSatelliteType
     const gltf = useGLTF(data.model)
 
-    const { sizeScale, setControl } = useContext(ControlContext)
+    const { sizeScale, setControl } = useControlStore()
     const scale = data.radius / sizeScale
 
     const handleClick = () => {

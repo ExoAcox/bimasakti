@@ -1,9 +1,10 @@
-import { useContext, useEffect, useLayoutEffect, useRef } from "react"
-import { ControlContext } from "@context"
+import { useEffect, useLayoutEffect, useRef } from "react"
+import { useControlStore } from "@state"
 import { useBounds } from "@react-three/drei"
 import type { OrbitControls as OrbitControlsImpl } from "three-stdlib"
 import { useFrame, useThree } from "@react-three/fiber"
 import { Vector3 } from "three"
+import { universes } from "@constants"
 
 
 
@@ -13,10 +14,6 @@ interface Props {
     controlRef: React.RefObject<OrbitControlsImpl>
 }
 
-const position = {
-    "solar-system": [3, 3, 3],
-    "alpha-centauri": [0, 3000, 5000]
-}
 
 const Scene = ({ children, controlRef }: Props) => {
     const lastTargetPos = useRef(new Vector3())
@@ -26,16 +23,20 @@ const Scene = ({ children, controlRef }: Props) => {
     const isZooming = useRef(false)
 
     const bound = useBounds()
-    const { universe, focus, focusIndex, pauseOrbitWhenFocus } = useContext(ControlContext)
+    const { universe, focus, focusIndex, pauseOrbitWhenFocus } = useControlStore()
 
     const { scene, camera } = useThree()
 
     useLayoutEffect(() => {
         if (controlRef.current) {
-            const [x, y, z] = position[universe] || [0, 0, 0]
+            const position = universes.find(({ id }) => universe === id)?.cameraPosition || [0, 0, 0]
 
             controlRef.current.target.set(0, 0, 0);
-            camera.position.set(x, y, z);
+            if (Array.isArray(position)) {
+                camera.position.set(position[0], position[1], position[2]);
+            } else if (position instanceof Vector3) {
+                camera.position.copy(position);
+            }
             controlRef.current.update();
         }
     }, [universe, controlRef, camera.position])

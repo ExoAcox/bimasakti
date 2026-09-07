@@ -13,7 +13,7 @@ const SolarSystem = () => {
                     key={planet.id}
                     id={planet.id}
                 >
-                    {planet.satellites.map(satellite => (
+                    {planet.satellites?.map(satellite => (
                         <Satellite
                             key={satellite.id}
                             id={satellite.id}

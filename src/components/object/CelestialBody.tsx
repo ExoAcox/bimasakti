@@ -1,11 +1,11 @@
 /* eslint-disable react-hooks/set-state-in-effect */
-import { useContext, useLayoutEffect, useMemo, useRef, useState } from "react"
-import { Group, MathUtils, Mesh, Object3D, Vector3 } from "three"
+import { useLayoutEffect, useMemo, useRef, useState } from "react"
+import { Group, MathUtils, Mesh, Object3D } from "three"
 import { type Star as StarType, type ArtificialSatellite as ArtificialSatelliteType, type Planet as PlanetType, type Satellite as SatelliteType, type Dummy } from "@types"
 import { useFrame, useThree } from "@react-three/fiber"
 import { calculateSatelliteDistance, getInitialRotation, useCelestial } from "@function";
 import { Html } from "@react-three/drei";
-import { ControlContext } from "@context";
+import { useControlStore } from "@state";
 import { useTranslation } from "react-i18next";
 import { When } from "react-if"
 import { OrbitLine } from "@components/object"
@@ -26,15 +26,15 @@ const Object = ({ data, children, childrenComponent, onClick, objectRef, overlay
 
     const orbitRef = useRef<Group>(null!)
     const internalLabelRef = useRef<HTMLButtonElement>(null!)
-    const targetPos = useRef(new Vector3())
+    // const targetPos = useRef(new Vector3())
 
     const { scene } = useThree()
-    const { universe, focus, sizeScale, distanceScale, speedScale, showOrbitLine, ignoreAxis, pauseOrbitWhenFocus } = useContext(ControlContext)
+    const { universe, focus, sizeScale, distanceScale, speedScale, showOrbitLine, ignoreAxis, pauseOrbitWhenFocus } = useControlStore()
     const { t } = useTranslation()
 
     const celestial = useCelestial()
     const focusedObject = celestial.getObjectById(focus)
-    const defaultFocus = universe === "solar-system" ? "sun" : ""
+    const defaultFocus = universe === "solar_system" ? "sun" : ""
 
     const axis = ignoreAxis ? 0 : MathUtils.degToRad(data?.axis ?? 0)
     // const scale = data.radius / sizeScale
@@ -44,7 +44,7 @@ const Object = ({ data, children, childrenComponent, onClick, objectRef, overlay
         if (["satellite"].includes(data.type)) {
             const parentPlanet = celestial.getObjectById(data.parent) as PlanetType
             if (!parentPlanet) return 0
-            const index = [...(parentPlanet.artificial_satellites ?? []), ...parentPlanet.satellites].findIndex((satellite) => satellite.id === data.id)
+            const index = [...(parentPlanet.artificial_satellites ?? []), ...(parentPlanet.satellites ?? [])].findIndex((satellite) => satellite.id === data.id)
             return calculateSatelliteDistance(data.distance, distanceScale, parentPlanet.radius / sizeScale, index)
         } else {
             return data.distance / distanceScale
@@ -90,25 +90,27 @@ const Object = ({ data, children, childrenComponent, onClick, objectRef, overlay
         }
     })
 
-    useFrame((state) => {
+    useFrame(({ camera }) => {
         if (!internalLabelRef.current) return
 
         const object = scene.getObjectByName(data.id)
         if (!object) return
 
-        object.getWorldPosition(targetPos.current)
-        const distance = state.camera.position.distanceTo(targetPos.current)
+        // object.getWorldPosition(targetPos.current)
+        const distance = celestial.getCameraDistance(camera, object)
         const scale = Math.max(300, data.radius) / sizeScale * 50
 
         internalLabelRef.current.style.background = focus === data.id ? "rgba(0,0,0,0.75)" : "transparent"
         internalLabelRef.current.style.visibility = distance > scale ? "visible" : "hidden"
 
-        internalLabelRef.current.parentElement.parentElement.style.zIndex = focus === data.id ? "5" : "1"
+        if (internalLabelRef.current.parentElement?.parentElement) {
+            internalLabelRef.current.parentElement.parentElement.style.zIndex = focus === data.id ? "5" : "1"
+        }
     })
 
     const isLabelVisible = useMemo(() => {
         const isSmallestObject = () => {
-            if (universe === "solar-system") {
+            if (universe === "solar_system") {
                 return ["satellite", "artificial_satellite"].includes(data.type)
             } else {
                 return data.type === "planet"

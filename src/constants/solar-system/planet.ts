@@ -141,7 +141,7 @@ export const planets: Planet[] = [
         parent: "sun",
         radius: 24622,
         distance: 4495000000,
-        color: "#274687",
+        color: "#3b72ec",
         axis: 28.32,
         orbit_duration: 60182,
         rotate_duration: 0.67, // 16.1 hours

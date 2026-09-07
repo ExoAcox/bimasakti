@@ -420,7 +420,7 @@ export const artificial_satellites: ArtificialSatellite[] = [
         axis: 51.64, // Orbital inclination in degrees
         orbit_duration: 0.0645, // ~92.9 minutes orbital period in days
         rotate_duration: 0.0645, // Earth-facing rotational alignment in days
-        model: "/solar-system/models/iss.glb",
+        model: "/models/iss.glb",
         icon: "artificial_satellite.png"
     }
 ]

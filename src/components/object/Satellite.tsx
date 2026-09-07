@@ -2,9 +2,9 @@ import { Else, If, Then } from "react-if"
 import { useCelestial } from "@function"
 
 import type { Satellite as SatelliteType } from "@types"
-import { useContext, useMemo, useRef } from "react"
+import { useMemo, useRef } from "react"
 import { BufferAttribute, BufferGeometry, Mesh } from "three"
-import { ControlContext } from "@context"
+import { useControlStore } from "@state"
 import { useTexture } from "@react-three/drei"
 import { CelestialBody } from "@components/object"
 import { useLoader } from "@react-three/fiber"
@@ -35,7 +35,7 @@ const generateSphericalUVs = (geometry: BufferGeometry) => {
 }
 
 const ModelGeometry = ({ path }: { path: string }) => {
-    const geometry = useLoader(PLYLoader, `/solar-system/models/${path}`)
+    const geometry = useLoader(PLYLoader, `/models/${path}`)
 
     useMemo(() => {
         if (geometry) {
@@ -49,7 +49,7 @@ const ModelGeometry = ({ path }: { path: string }) => {
 }
 
 const PlanetMaterial = ({ path }: { path: string }) => {
-    const texture = useTexture(`/solar-system/textures/${path}`)
+    const texture = useTexture(`/textures/${path}`)
     return <meshStandardMaterial map={texture} />
 }
 
@@ -62,7 +62,7 @@ const Planet = ({ id, children }: Props) => {
     const objectRef = useRef<Mesh>(null!)
     const overlayRef = useRef<Mesh[]>([])
 
-    const { sizeScale, setControl } = useContext(ControlContext)
+    const { sizeScale, setControl } = useControlStore()
 
     const data = useCelestial().getObjectById(id) as SatelliteType
     const scale = data.radius / sizeScale
@@ -80,7 +80,7 @@ const Planet = ({ id, children }: Props) => {
         }} castShadow receiveShadow>
             <If condition={(data as SatelliteType).model}>
                 <Then>
-                    <ModelGeometry path={(data as SatelliteType).model} />
+                    <ModelGeometry path={(data as SatelliteType).model!} />
                 </Then>
                 <Else>
                     <sphereGeometry args={[1, 64, 64]} />

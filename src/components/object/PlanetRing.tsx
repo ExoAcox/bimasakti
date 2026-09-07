@@ -13,12 +13,12 @@ interface Props {
 const PlanetRing = ({ data }: Props) => {
     const ringRef = useRef<Mesh>(null!);
 
-    const texture = useTexture(`/solar-system/textures/${data.ring?.texture}`)
+    const texture = useTexture(`/textures/${data.ring?.texture}`)
 
     const axis = data.axis * (Math.PI / 180)
 
-    const innerRadius = data.ring.inner_radius / SCALE
-    const outerRadius = data.ring.outer_radius / SCALE
+    const innerRadius = (data.ring?.inner_radius ?? 0) / SCALE
+    const outerRadius = (data.ring?.outer_radius ?? 0) / SCALE
 
     useLayoutEffect(() => {
         if (ringRef.current) {

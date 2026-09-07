@@ -1,18 +1,23 @@
-import { MathUtils } from "three"
-import { solar_system, alpha_centauri } from "@constants"
-import { useContext } from "react";
-import { ControlContext } from "@context";
+import { Camera, MathUtils, Object3D, Vector3 } from "three"
+import { solar_system, alpha_centauri, universes } from "@constants"
+import { useRef } from "react";
+import { useControlStore } from "@state";
+
+export const getUniverseById = (id: string) => {
+    return universes.find(universe => universe.id === id)
+}
 
 export const useCelestial = () => {
-    const { universe } = useContext(ControlContext)
+    const universe = useControlStore((state) => state.universe)
+    const targetPos = useRef(new Vector3())
 
     let objects = []
-    if (universe === "solar-system") {
+    if (universe === "solar_system") {
         const { stars, planets, dwarf_planets, satellites, artificial_satellites } = solar_system
         objects = [...stars, ...planets, ...dwarf_planets, ...satellites, ...artificial_satellites]
     }
 
-    if (universe === "alpha-centauri") {
+    if (universe === "alpha_centauri") {
         const { stars, planets } = alpha_centauri
         objects = [...stars, ...planets]
     }
@@ -25,8 +30,17 @@ export const useCelestial = () => {
         return objects.filter((object) => object.type === type)
     }
 
-    return { objects, getObjectById, getObjectsByType }
+    const getCameraDistance = (camera: Camera, object: Object3D, targetRef?: { current: Vector3 }) => {
+        object.getWorldPosition(targetRef?.current ?? targetPos.current)
+        return camera.position.distanceTo(targetRef?.current ?? targetPos.current)
+    }
+
+    const getCurrentUniverse = () => getUniverseById(universe)
+
+    return { objects, getObjectById, getObjectsByType, getCameraDistance, getCurrentUniverse }
 }
+
+
 
 export const randomNumber = () => {
     const seed = Math.random()
@@ -72,4 +86,36 @@ export const calculateSatelliteDistance = (distance: number, scale: number, pare
     }
 
     return Math.max(rawVisualDistance, safeMinimumDistance);
+}
+
+export const classPosition = (position: "top" | "bottom" | "left" | "right") => {
+    let root = ""
+    let parent = ""
+    let line = ""
+
+    if (position === "top") {
+        root = "-translate-x-1/2 -translate-y-full"
+        parent = "flex-col items-center"
+        line = "h-3 w-px"
+    }
+
+    if (position === "bottom") {
+        root = "-translate-x-1/2 translate-y-full"
+        parent = "flex-col-reverse items-center"
+        line = "h-3 w-px"
+    }
+
+    if (position === "right") {
+        root = "-translate-y-1/2"
+        parent = "flex-row-reverse items-center"
+        line = "h-px w-3"
+    }
+
+    if (position === "left") {
+        root = "-translate-x-full translate-y-1/2"
+        parent = "flex-row items-center"
+        line = "h-px w-3"
+    }
+
+    return { root, parent, line }
 }

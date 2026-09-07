@@ -1,10 +1,11 @@
-import { useContext, useRef } from 'react';
+import { useRef } from 'react';
 import { useFrame } from '@react-three/fiber';
 import { Vector3, Matrix4, Group, MeshBasicMaterial } from 'three';
 import type { Star } from "@types";
 import { SCALE } from "@constants";
-import { ControlContext } from '@context';
+import { useControlStore } from '@state';
 import { useCelestial } from '@function';
+import { Html } from '@react-three/drei';
 
 interface Props {
     data: Star
@@ -17,12 +18,13 @@ const GordilocksZone = ({ data }: Props) => {
     const groupRef = useRef<Group>(null);
     const innerRef = useRef<MeshBasicMaterial>(null);
     const outerRef = useRef<MeshBasicMaterial>(null);
+    const labelRef = useRef<HTMLDivElement>(null);
 
-    const { focus } = useContext(ControlContext)
+    const { focus } = useControlStore()
     const focusedObject = useCelestial().getObjectById(focus)
 
-    const innerRadius = data.gordilocks.inner_radius / SCALE;
-    const outerRadius = data.gordilocks.outer_radius / SCALE;
+    const innerRadius = (data.gordilocks?.inner_radius ?? 0) / SCALE;
+    const outerRadius = (data.gordilocks?.outer_radius ?? 0) / SCALE;
 
     const innerColor = "#dddd22";
     const outerColor = "#22dddd";
@@ -63,12 +65,21 @@ const GordilocksZone = ({ data }: Props) => {
             outerRef.current.opacity = baseOuterOpacity * smoothRatio;
             outerRef.current.transparent = true;
         }
+
+        if (labelRef.current) {
+            labelRef.current.style.visibility = distToCenter > outerRadius ? "visible" : "hidden";
+        }
     });
 
     if (focus && focus !== "sun") return null
 
     return (
         <group ref={groupRef}>
+            <group position={[0, outerRadius * 1.1, 0]}>
+                <Html zIndexRange={[1, 0]}>
+                    <div ref={labelRef} className='absolute -translate-x-1/2 whitespace-nowrap text-sm font-semibold text-secondary'>Habitable Zone</div>
+                </Html>
+            </group>
             <mesh>
                 <sphereGeometry
                     args={[

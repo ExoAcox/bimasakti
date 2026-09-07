@@ -25,6 +25,24 @@
         "artificial_satellites": "Artificial Satellites"
     },
     "object": {
+        "milky_way": {
+            "name": "Milky Way",
+            "title": "Milky Way Galaxy",
+            "nickname": "The Galaxy",
+            "description": "The Milky Way is a barred spiral galaxy, home to our Solar System. It contains billions of stars, gas, and dust, with a supermassive black hole at its center."
+        },
+        "solar_system": {
+            "name": "Solar System",
+            "title": "Solar System",
+            "nickname": "Our Solar System",
+            "description": "The Solar System is the gravitationally bound system of the Sun and the objects that orbit it, including eight planets, dwarf planets, and countless smaller bodies."
+        },
+        "alpha_centauri": {
+            "name": "Alpha Centauri",
+            "title": "Alpha Centauri System",
+            "nickname": "The Nearest Star System",
+            "description": "Alpha Centauri is the closest star system to our Solar System, located about 4.37 light-years away. It consists of three stars: Alpha Centauri A, Alpha Centauri B, and Proxima Centauri."
+        },
         "sun": {
             "name": "Sun",
             "nickname": "The Yellow Dwarf",

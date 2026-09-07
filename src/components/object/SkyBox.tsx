@@ -11,7 +11,7 @@ interface Props {
 }
 
 const SkyBox = ({
-    texturePath = "/solar-system/textures/milkyway.jpg",
+    texturePath = "/textures/milky_way.jpg",
     size = 1000000,
     followCamera = true,
 }: Props) => {

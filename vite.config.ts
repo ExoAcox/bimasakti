@@ -13,12 +13,12 @@ export default defineConfig({
   ],
   resolve: {
     alias: {
-      '@': path.resolve(__dirname, './src'),
       '@components': path.resolve(__dirname, './src/components'),
       '@constants': path.resolve(__dirname, './src/constants'),
       '@universe': path.resolve(__dirname, './src/universe'),
+      '@scenes': path.resolve(__dirname, './src/scenes'),
       '@function': path.resolve(__dirname, './src/function'),
-      '@context': path.resolve(__dirname, './src/context'),
+      '@state': path.resolve(__dirname, './src/state'),
       '@types': path.resolve(__dirname, './src/types'),
     },
   },

@@ -1,4 +1,3 @@
-import { useContext } from "react"
 import { createPortal } from "react-dom"
 import { useTranslation } from "react-i18next"
 
@@ -6,7 +5,7 @@ import { IoIosSettings } from "react-icons/io";
 import { MdClose } from "react-icons/md";
 import { VscDebugRestart } from "react-icons/vsc";
 import { ImCheckboxChecked, ImCheckboxUnchecked } from "react-icons/im";
-import { ControlContext, defaultValue } from "@context";
+import { useControlStore, defaultControl } from "@state";
 import { SCALE, TIME_SCALE } from "@constants";
 import clsx from "clsx";
 
@@ -23,7 +22,7 @@ const languages = [
 
 const SettingModal = ({ isOpen, close }: Props) => {
 
-    const { sizeScale, distanceScale, speedScale, showOrbitLine, ignoreAxis, pauseOrbitWhenFocus, focusIndex, setControl } = useContext(ControlContext)
+    const { sizeScale, distanceScale, speedScale, showOrbitLine, ignoreAxis, pauseOrbitWhenFocus, focusIndex, setControl } = useControlStore()
     const { t, i18n } = useTranslation()
 
 
@@ -40,11 +39,7 @@ const SettingModal = ({ isOpen, close }: Props) => {
     }
 
     const reset = () => {
-        const value = defaultValue
-        delete value.universe
-        delete value.focus
-
-        setControl(value)
+        setControl(defaultControl)
     }
 
     const setOrbitLine = () => {
@@ -136,7 +131,7 @@ const SettingModal = ({ isOpen, close }: Props) => {
                     <label>{t("ui.language")}</label>
                     <div className="flex gap-4">
                         {languages.map(language => {
-                            return <img src={`/solar-system/icons/${language.icon}`} alt={language.label} className={clsx("py-0.5 px-1 cursor-pointer border rounded-sm", i18n.language === language.id ? "border-accent" : "border-transparent")} onClick={() => i18n.changeLanguage(language.id)} />
+                            return <img src={`/icons/${language.icon}`} alt={language.label} className={clsx("py-0.5 px-1 cursor-pointer border rounded-sm", i18n.language === language.id ? "border-accent" : "border-transparent")} onClick={() => i18n.changeLanguage(language.id)} />
                         })}
                     </div>
                 </div>
@@ -146,7 +141,7 @@ const SettingModal = ({ isOpen, close }: Props) => {
     )
 }
 const SettingPanel = () => {
-    const { showSetting, setControl } = useContext(ControlContext)
+    const { showSetting, setControl } = useControlStore()
     const { t } = useTranslation()
 
     return <>

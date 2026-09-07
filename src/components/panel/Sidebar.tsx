@@ -1,7 +1,6 @@
 
 import clsx from "clsx"
-import { useContext } from "react"
-import { ControlContext } from "@context"
+import { useControlStore } from "@state"
 
 import type { Planet, Star } from "@types"
 import { useCelestial } from "@function"
@@ -16,7 +15,7 @@ interface SectionProps {
 const Section = ({ children, data }: SectionProps) => {
     const { t } = useTranslation()
 
-    const { focus, focusIndex, setControl } = useContext(ControlContext)
+    const { focus, focusIndex, setControl } = useControlStore()
     const celestial = useCelestial()
 
     const handleClick = (id: string) => {
@@ -46,7 +45,7 @@ const Section = ({ children, data }: SectionProps) => {
 
                 return <div className="text-sm">
                     <button key={planet.id} className={clsx(buttonClass(planet.id), "gap-3")} onClick={() => handleClick(planet.id)}>
-                        <img alt={planet.icon} src={`/solar-system/icons/${planet.icon}`} className="size-4" />
+                        <img alt={planet.icon} src={`/icons/${planet.icon}`} className="size-4" />
                         {t(`object.${planet.id}.name`)}
                     </button>
                     {isSatelliteVisible ?
@@ -54,7 +53,7 @@ const Section = ({ children, data }: SectionProps) => {
                             {
                                 (planet as Planet).satellites?.map((satellite) => {
                                     return <button className={clsx(buttonClass(satellite.id), "pl-6 gap-2")} key={satellite.id} onClick={() => handleClick(satellite.id)}>
-                                        <img alt={satellite.icon} src={`/solar-system/icons/${satellite.icon}`} className="size-4" />
+                                        <img alt={satellite.icon} src={`/icons/${satellite.icon}`} className="size-4" />
                                         {t(`object.${satellite.id}.name`)}
                                     </button>
                                 })

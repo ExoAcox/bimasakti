@@ -1,9 +1,9 @@
 import { Instance, Instances } from "@react-three/drei"
-import { useContext, useMemo, useRef } from "react"
+import { useMemo, useRef } from "react"
 import type { Mesh } from "three"
 import { randomNumber } from "@function"
 import type { Belt as BeltType } from "@types"
-import { ControlContext } from "@context"
+import { useControlStore } from "@state"
 import OrbitLine from "@components/object/OrbitLine"
 
 
@@ -43,7 +43,7 @@ const BeltInstance = ({ position, scale, rotation }: BeltInstanceProps) => {
 
 const BeltInstances = ({ data, count }: BeltProps) => {
 
-    const { sizeScale, distanceScale } = useContext(ControlContext)
+    const { sizeScale, distanceScale } = useControlStore()
 
     const height = data.height / distanceScale
     const innerRadius = data.inner_radius / distanceScale
@@ -62,9 +62,9 @@ const BeltInstances = ({ data, count }: BeltProps) => {
                     Math.cos(angle) * r,
                     (randomNumber() - 0.5) * height, // Belt height thickness
                     Math.sin(angle) * r
-                ],
+                ] as [number, number, number],
                 scale: minSize + randomNumber() * (maxSize - minSize),
-                rotation: [randomNumber() * Math.PI, randomNumber() * Math.PI, 0],
+                rotation: [randomNumber() * Math.PI, randomNumber() * Math.PI, 0] as [number, number, number],
                 speed: 0.1 + randomNumber() * 0.3
             });
         }
@@ -81,7 +81,7 @@ const BeltInstances = ({ data, count }: BeltProps) => {
 }
 
 const Belt = ({ data, count }: BeltProps) => {
-    const { distanceScale } = useContext(ControlContext)
+    const { distanceScale } = useControlStore()
 
     const loop = Math.round(count / 1000)
     const innerRadius = data.inner_radius / distanceScale

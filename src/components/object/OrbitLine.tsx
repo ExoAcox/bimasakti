@@ -15,7 +15,7 @@ interface OrbitLineProps {
 const tempMatrix = new Matrix4();
 const tempCamPos = new Vector3();
 
-const OrbitLine = ({ radius, segments = 1280, color, opacity = 0.5 }: OrbitLineProps) => {
+const OrbitLine = ({ radius, segments = 1280, color, opacity = 0.1 }: OrbitLineProps) => {
     const lineRef = useRef<Line2>(null);
 
     const points = useMemo(() => {
@@ -47,7 +47,7 @@ const OrbitLine = ({ radius, segments = 1280, color, opacity = 0.5 }: OrbitLineP
         const distToCircle = Math.sqrt((d_xz - radius) * (d_xz - radius) + ly * ly);
 
         // Fade distance threshold: 50% of orbit radius, capped at 10000 so vast orbits remain visible from far away
-        const targetDist = Math.min(radius * 3, 10000000);
+        const targetDist = Math.min(radius * 2, 10000000);
         const ratioCircle = targetDist > 0 ? distToCircle / targetDist : 1;
 
         // Smoothstep curve for smooth fade transitions

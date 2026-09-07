@@ -26,9 +26,6 @@
     "noFallthroughCasesInSwitch": true,
     /* Path Aliases */
     "paths": {
-      "@/*": [
-        "./src/*"
-      ],
       "@components": [
         "./src/components"
       ],
@@ -41,17 +38,17 @@
       "@constants/*": [
         "./src/constants/*"
       ],
-      "@universe": [
-        "./src/universe"
+      "@scenes": [
+        "./src/scenes"
       ],
-      "@universe/*": [
-        "./src/universe/*"
+      "@scenes/*": [
+        "./src/scenes/*"
       ],
       "@function": [
         "./src/function"
       ],
-      "@context": [
-        "./src/context"
+      "@state": [
+        "./src/state"
       ],
       "@types": [
         "./src/types"
