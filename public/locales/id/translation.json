@@ -17,6 +17,30 @@
         "speed_scale_value": "1 detik: {{days}} hari"
     },
     "object": {
+        "milky_way": {
+            "name": "Bima Sakti",
+            "title": "Galaksi Bima Sakti",
+            "nickname": "Galaksi",
+            "description": "Bima Sakti adalah galaksi spiral berbatang tempat Tata Surya kita berada. Galaksi ini berisi miliaran bintang, gas, dan debu, dengan lubang hitam supermasif di pusatnya."
+        },
+        "solar_system": {
+            "name": "Tata Surya",
+            "title": "Tata Surya",
+            "nickname": "Tata Surya Kita",
+            "description": "Tata Surya adalah sistem terikat secara gravitasi dari Matahari dan objek-objek yang mengorbitnya, termasuk delapan planet, planet kerdil, dan benda-benda kecil lainnya."
+        },
+        "alpha_centauri": {
+            "name": "Alpha Centauri",
+            "title": "Sistem Alpha Centauri",
+            "nickname": "Sistem Bintang Terdekat",
+            "description": "Alpha Centauri adalah sistem bintang terdekat dengan Tata Surya kita, berjarak sekitar 4,37 tahun cahaya. Sistem ini terdiri dari tiga bintang: Alpha Centauri A, Alpha Centauri B, dan Proxima Centauri."
+        },
+        "sagittarius_a": {
+            "name": "Sagittarius A*",
+            "title": "Sagittarius A*",
+            "nickname": "Lubang Hitam Supermasif",
+            "description": "Sagittarius A* adalah lubang hitam supermasif yang terletak di Pusat Galaksi Bima Sakti. Ini adalah sumber radio astronomi yang sangat kompak dan terang."
+        },
         "sun": {
             "name": "Matahari",
             "nickname": "Katai Kuning",

@@ -12,6 +12,8 @@ import { Bloom, EffectComposer } from '@react-three/postprocessing'
 import Loader from "@components/Loader"
 import { When } from "react-if";
 import { getUniverseById } from "@function";
+import { useParams } from "react-router";
+import NotFound from "@components/NotFound";
 
 const UserInterface = () => {
     const { active, progress } = useProgress()
@@ -38,15 +40,19 @@ const UserInterface = () => {
 
 const UniversePage = () => {
     const controlRef = useRef(null!)
+    const { universe } = useParams();
 
-    const { universe: currentUniverse, focus, setControl } = useControlStore()
+
+    const { focus, setControl } = useControlStore()
 
     useEffect(() => {
-        if (focus) track('focus', { object: focus, universe: currentUniverse })
-    }, [focus, currentUniverse])
+        if (focus) track('focus', { object: focus, universe })
+    }, [focus, universe])
 
-    const universe = getUniverseById(currentUniverse)
-    const isMilkyWay = currentUniverse === "milky_way"
+    const data = getUniverseById(universe!)
+    const isMilkyWay = data?.id === "milky_way"
+
+    if (!data) return <NotFound />
 
     return <div className="w-dvw h-dvh">
         <Canvas
@@ -58,8 +64,8 @@ const UniversePage = () => {
                     makeDefault
                     enableDamping
                     ref={controlRef}
-                    minDistance={universe?.minDistance}
-                    maxDistance={universe?.maxDistance}
+                    minDistance={data.minDistance}
+                    maxDistance={data.maxDistance}
                     zoomSpeed={3} />
 
                 <color attach="background" args={['black']} />
@@ -70,7 +76,7 @@ const UniversePage = () => {
 
                 <Bounds>
                     <Scene controlRef={controlRef}>
-                        {universe?.component}
+                        {data.component}
                     </Scene>
                 </Bounds>
 
@@ -83,10 +89,9 @@ const UniversePage = () => {
                     />
                 </EffectComposer>
             </Suspense>
-
         </Canvas>
 
-        <Header />
+        <Header id={data.id} />
         <NavigationPanel />
         <When condition={!isMilkyWay}>
             <UserInterface />

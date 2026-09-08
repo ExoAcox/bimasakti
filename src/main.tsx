@@ -1,6 +1,6 @@
 import { StrictMode } from 'react'
 import { createRoot } from 'react-dom/client'
-import { BrowserRouter, Route, Routes } from "react-router";
+import { BrowserRouter, Navigate, Route, Routes } from "react-router";
 import { Analytics } from "@vercel/analytics/react";
 import './index.css'
 import "./i18n";
@@ -12,7 +12,8 @@ createRoot(document.getElementById('root')!).render(
     <Analytics />
     <BrowserRouter>
       <Routes>
-        <Route index element={<Home />} />
+        <Route index element={<Navigate to="/milky_way" replace={true} />} />
+        <Route path="/:universe" element={<Home />} />
       </Routes>
     </BrowserRouter>
   </StrictMode>,

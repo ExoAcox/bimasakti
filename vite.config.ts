@@ -36,6 +36,7 @@ export default defineConfig({
       '@function': path.resolve(__dirname, './src/function'),
       '@state': path.resolve(__dirname, './src/state'),
       '@types': path.resolve(__dirname, './src/types'),
+      '@shaders': path.resolve(__dirname, './src/shaders'),
     },
   },
 })

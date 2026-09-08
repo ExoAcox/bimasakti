@@ -43,6 +43,12 @@
             "nickname": "The Nearest Star System",
             "description": "Alpha Centauri is the closest star system to our Solar System, located about 4.37 light-years away. It consists of three stars: Alpha Centauri A, Alpha Centauri B, and Proxima Centauri."
         },
+        "sagittarius_a": {
+            "name": "Sagittarius A*",
+            "title": "Sagittarius A*",
+            "nickname": "The Supermassive Black Hole",
+            "description": "Sagittarius A* is a supermassive black hole located at the Galactic Center of the Milky Way galaxy. It is a highly compact and bright astronomical radio source."
+        },
         "sun": {
             "name": "Sun",
             "nickname": "The Yellow Dwarf",

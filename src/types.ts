@@ -1,8 +1,11 @@
 import type { Vector3 } from "@react-three/fiber"
 
+export type CelestialType = "blackhole" | "star" | "planet" | "satellite" | "artificial_satellite" | "human_made" | "dummy"
+export type CelestialObject = Blackhole | Star | Planet | ArtificialSatellite | Satellite | HumanMade | Dummy
+
 export interface Object {
     id: string
-    type: "star" | "planet" | "satellite" | "artificial_satellite" | "human_made" | "dummy"
+    type: CelestialType
     parent: string
     radius: number
     distance: number
@@ -19,6 +22,11 @@ export interface Dummy extends Object {
     type: "dummy"
 }
 
+export interface Blackhole extends Object {
+    type: "blackhole"
+    model?: string
+    stars: Star[]
+}
 
 export interface Star extends Object {
     type: "star"
@@ -82,6 +90,7 @@ export const StarClass = {
     Yellow: "Yellow Dwarf Star",
     Orange: "Orange Dwarf Star",
     Red: "Red Dwarf Star",
+    Blackhole: "Supermassive Blackhole"
 } as const;
 
 export type PlanetClass = (typeof PlanetClass)[keyof typeof PlanetClass];

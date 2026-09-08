@@ -5,7 +5,8 @@ import { useBounds } from "@react-three/drei"
 import type { OrbitControls as OrbitControlsImpl } from "three-stdlib"
 import { useFrame, useThree } from "@react-three/fiber"
 import { Vector3 } from "three"
-import { universes } from "@constants"
+import { useParams } from "react-router"
+import { getUniverseById } from "@function"
 
 
 
@@ -24,13 +25,14 @@ const Scene = ({ children, controlRef }: Props) => {
     const isZooming = useRef(false)
 
     const bound = useBounds()
-    const { universe, focus, focusIndex, pauseOrbitWhenFocus } = useControlStore()
+    const { universe } = useParams()
+    const { focus, focusIndex, pauseOrbitWhenFocus } = useControlStore()
 
     const { scene, camera } = useThree()
 
     useLayoutEffect(() => {
         if (controlRef.current) {
-            const position = universes.find(({ id }) => universe === id)?.cameraPosition || [0, 0, 0]
+            const position = getUniverseById(universe!)?.cameraPosition || [0, 0, 0]
 
             controlRef.current.target.set(0, 0, 0);
             if (Array.isArray(position)) {

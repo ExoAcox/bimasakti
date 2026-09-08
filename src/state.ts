@@ -2,7 +2,6 @@ import { create } from 'zustand'
 import { SCALE, TIME_SCALE } from '@constants'
 
 export interface Control {
-    universe: string
     focus: string
     focusIndex: number
     showDetail: boolean
@@ -17,7 +16,6 @@ export interface Control {
 }
 
 export const defaultControl = {
-    universe: "milky_way",
     focus: "",
     focusIndex: 0,
     showSetting: false,

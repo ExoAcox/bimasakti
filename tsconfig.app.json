@@ -52,6 +52,12 @@
       ],
       "@types": [
         "./src/types"
+      ],
+      "@shaders": [
+        "./src/shaders"
+      ],
+      "@shaders/*": [
+        "./src/shaders/*"
       ]
     }
   },

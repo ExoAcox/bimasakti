@@ -1,31 +1,14 @@
 import { useGLTF } from "@react-three/drei"
 import type { ArtificialSatellite as ArtificialSatelliteType } from "@types"
-import { Object3D, Mesh } from "three"
+import { Mesh } from "three"
 import { useRef } from "react"
 import { useControlStore } from "@state"
 import { useCelestial } from "@function"
-import { CelestialBody } from "@components/object"
+import { CelestialBody, Model } from "@components/object"
 
 
 interface Props {
     id: string
-}
-
-const RenderObject = ({ data }: { data: Object3D }) => {
-    if (data.type === "Group") {
-        return (
-            <group>
-                {data.children.map(child => <RenderObject key={child.uuid} data={child} />)}
-            </group>
-        )
-    }
-
-    if (data.type === "Mesh") {
-        const object = data as Mesh
-        return <mesh castShadow receiveShadow geometry={object.geometry} material={object.material} />
-    }
-
-    return null
 }
 
 const ArtificialSatellite = ({ id }: Props) => {
@@ -48,7 +31,7 @@ const ArtificialSatellite = ({ id }: Props) => {
             e.stopPropagation()
             handleClick()
         }} castShadow receiveShadow>
-            <RenderObject data={gltf.scene} />
+            <Model data={gltf.scene} />
         </group>
         {/* <primitive object={gltf} ref={objectRef} name={data.id} scale={scale} onClick={(e) => {
             e.stopPropagation()

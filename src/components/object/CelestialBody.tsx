@@ -1,7 +1,7 @@
 /* eslint-disable react-hooks/set-state-in-effect */
 import { useLayoutEffect, useMemo, useRef, useState } from "react"
 import { Group, MathUtils, Mesh, Object3D } from "three"
-import { type Star as StarType, type ArtificialSatellite as ArtificialSatelliteType, type Planet as PlanetType, type Satellite as SatelliteType, type Dummy } from "@types"
+import type { CelestialObject, Planet as PlanetType } from "@types"
 import { useFrame, useThree } from "@react-three/fiber"
 import { calculateSatelliteDistance, getInitialRotation, useCelestial } from "@function";
 import { Html } from "@react-three/drei";
@@ -9,10 +9,11 @@ import { useControlStore } from "@state";
 import { useTranslation } from "react-i18next";
 import { When } from "react-if"
 import { OrbitLine } from "@components/object"
+import { useParams } from "react-router";
 
 
 interface Props {
-    data: StarType | PlanetType | SatelliteType | ArtificialSatelliteType | Dummy,
+    data: CelestialObject,
     onClick: () => void,
     children?: React.ReactNode
     objectRef?: React.RefObject<Mesh | null>,
@@ -29,7 +30,8 @@ const Object = ({ data, children, childrenComponent, onClick, objectRef, overlay
     // const targetPos = useRef(new Vector3())
 
     const { scene } = useThree()
-    const { universe, focus, sizeScale, distanceScale, speedScale, showOrbitLine, ignoreAxis, pauseOrbitWhenFocus } = useControlStore()
+    const { universe } = useParams()
+    const { focus, sizeScale, distanceScale, speedScale, showOrbitLine, ignoreAxis, pauseOrbitWhenFocus } = useControlStore()
     const { t } = useTranslation()
 
     const celestial = useCelestial()
@@ -64,12 +66,11 @@ const Object = ({ data, children, childrenComponent, onClick, objectRef, overlay
         if (!data) return
         const elapsedTime = state.clock.getElapsedTime()
         const speed = ((elapsedTime % 60) / 60) * Math.PI * 2
-        if (objectRef?.current?.rotation) {
+        if (data.rotate_duration && objectRef?.current?.rotation) {
             objectRef.current.rotation.y = speed / data.rotate_duration * speedScale
         }
 
-
-        if (data.overlay_textures) {
+        if (data.rotate_duration && data.overlay_textures) {
             const speedOverlay = ((elapsedTime % 50) / 50) * Math.PI * 2
             data.overlay_textures?.forEach((_, index) => {
                 if (overlayRef?.current?.[index]) {

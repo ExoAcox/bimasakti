@@ -1,7 +1,9 @@
+import type { Universe } from "@types"
+import { MilkyWay, AlphaCentauri, SolarSystem } from "@scenes"
+
 import solar_system from "./solar-system"
 import alpha_centauri from "./alpha-centauri"
-import type { Universe } from "@types"
-import { AlphaCentauri, MilkyWay, SolarSystem } from "@scenes"
+import sagittarius_a from "./sagittarius-a"
 
 export const SCALE = 1000000
 export const TIME_SCALE = 6
@@ -18,6 +20,18 @@ const universes: Universe[] = [
         stars: []
 
     },
+    // {
+    //     id: "sagittarius_a",
+    //     component: <SagittariusA />,
+    //     position: [0, 0, 0],
+    //     minDistance: 0.000001,
+    //     maxDistance: 30000,
+    //     cameraPosition: [3, 3, 3],
+    //     labelPosition: "top",
+    //     get stars() {
+    //         return solar_system.stars
+    //     }
+    // },
     {
         id: "solar_system",
         component: <SolarSystem />,
@@ -44,4 +58,4 @@ const universes: Universe[] = [
     }
 ]
 
-export { universes, solar_system, alpha_centauri }
+export { universes, solar_system, alpha_centauri, sagittarius_a }

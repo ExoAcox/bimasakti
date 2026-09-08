@@ -17,6 +17,30 @@
         "speed_scale_value": "1 Sekunde: {{days}} Tage"
     },
     "object": {
+        "milky_way": {
+            "name": "Milchstraße",
+            "title": "Milchstraßengalaxie",
+            "nickname": "Die Galaxie",
+            "description": "Die Milchstraße ist eine Balkenspiralgalaxie, in der sich unser Sonnensystem befindet. Sie enthält Milliarden von Sternen, Gas und Staub sowie ein supermassereiches Schwarzes Loch in ihrem Zentrum."
+        },
+        "solar_system": {
+            "name": "Sonnensystem",
+            "title": "Sonnensystem",
+            "nickname": "Unser Sonnensystem",
+            "description": "Das Sonnensystem ist das gravitationell gebundene System der Sonne und der Objekte, die sie umkreisen, einschließlich acht Planeten, Zwergplaneten und unzähliger kleinerer Körper."
+        },
+        "alpha_centauri": {
+            "name": "Alpha Centauri",
+            "title": "Alpha-Centauri-System",
+            "nickname": "Das nächstgelegene Sternsystem",
+            "description": "Alpha Centauri ist das unserem Sonnensystem am nächsten gelegene Sternsystem, etwa 4,37 Lichtjahre entfernt. Es besteht aus drei Sternen: Alpha Centauri A, Alpha Centauri B und Proxima Centauri."
+        },
+        "sagittarius_a": {
+            "name": "Sagittarius A*",
+            "title": "Sagittarius A*",
+            "nickname": "Supermassereiches Schwarzes Loch",
+            "description": "Sagittarius A* ist ein supermassereiches Schwarzes Loch im galaktischen Zentrum der Milchstraße. Es ist eine sehr kompakte und helle astronomische Radioquelle."
+        },
         "sun": {
             "name": "Sonne",
             "nickname": "Der Gelbe Zwerg",

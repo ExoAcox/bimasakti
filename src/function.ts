@@ -1,18 +1,19 @@
 import { Camera, MathUtils, Object3D, Vector3 } from "three"
-import { solar_system, alpha_centauri, universes } from "@constants"
+import { solar_system, alpha_centauri, sagittarius_a, universes } from "@constants"
 import { useRef } from "react";
-import { useControlStore } from "@state";
-import type { Planet, Star, ArtificialSatellite, Satellite } from "@types";
+import type { CelestialObject } from "@types";
+import { useParams } from "react-router";
 
 export const getUniverseById = (id: string) => {
     return universes.find(universe => universe.id === id)
 }
 
 export const useCelestial = () => {
-    const universe = useControlStore((state) => state.universe)
+    const { universe } = useParams()
     const targetPos = useRef(new Vector3())
 
-    let objects: (Planet | Star | Satellite | ArtificialSatellite)[] = []
+    let objects: CelestialObject[] = []
+
     if (universe === "solar_system") {
         const { stars, planets, dwarf_planets, satellites, artificial_satellites } = solar_system
         objects = [...stars, ...planets, ...dwarf_planets, ...satellites, ...artificial_satellites]
@@ -21,6 +22,11 @@ export const useCelestial = () => {
     if (universe === "alpha_centauri") {
         const { stars, planets } = alpha_centauri
         objects = [...stars, ...planets]
+    }
+
+    if (universe === "sagittarius_a") {
+        const { blackholes } = sagittarius_a
+        objects = [...blackholes]
     }
 
     const getObjectById = (id: string) => {
@@ -36,7 +42,7 @@ export const useCelestial = () => {
         return camera.position.distanceTo(targetRef?.current ?? targetPos.current)
     }
 
-    const getCurrentUniverse = () => getUniverseById(universe)
+    const getCurrentUniverse = () => getUniverseById(universe ?? "milky_way")
 
     return { objects, getObjectById, getObjectsByType, getCameraDistance, getCurrentUniverse }
 }

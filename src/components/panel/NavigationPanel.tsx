@@ -1,16 +1,18 @@
 import { getUniverseById } from "@function"
-import { useControlStore, useGalaxyStore } from "@state"
+import { useGalaxyStore } from "@state"
 import { useTranslation } from "react-i18next"
+import { useNavigate, useParams } from "react-router"
 
 
 
 const NavigationPanel = () => {
     const { t } = useTranslation()
     const { focus, setFocus } = useGalaxyStore()
-    const { universe, setControl } = useControlStore()
+    const { universe } = useParams()
+    const navigate = useNavigate()
 
     const id = universe === "milky_way" ? focus : universe
-    const data = getUniverseById(id)
+    const data = getUniverseById(id!)
 
     const backText = () => {
         if (universe === "milky_way") {
@@ -22,10 +24,10 @@ const NavigationPanel = () => {
 
     const handleClick = () => {
         if (universe === "milky_way") {
-            setControl({ universe: data?.id })
+            navigate(`/${data?.id}`)
         } else {
             setFocus("")
-            setControl({ universe: "milky_way" })
+            navigate(`/milky_way`)
         }
     }
 

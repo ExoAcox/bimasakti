@@ -9,7 +9,7 @@
 }
 
 body {
-    background: white
+    background: black
 }
 
 button {
@@ -24,6 +24,7 @@ button {
     from {
         transform: rotate(0deg);
     }
+
     to {
         transform: rotate(360deg);
     }
@@ -33,16 +34,20 @@ button {
     from {
         transform: rotate(360deg);
     }
+
     to {
         transform: rotate(0deg);
     }
 }
 
 @keyframes cosmic-pulse {
-    0%, 100% {
+
+    0%,
+    100% {
         transform: scale(1);
         opacity: 0.8;
     }
+
     50% {
         transform: scale(1.15);
         opacity: 1;
@@ -53,6 +58,7 @@ button {
     0% {
         transform: translateX(-100%);
     }
+
     100% {
         transform: translateX(100%);
     }
