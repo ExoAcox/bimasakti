@@ -1,97 +1,78 @@
-import { Instance, Instances } from "@react-three/drei"
-import { useMemo, useRef } from "react"
-import type { Mesh } from "three"
+import { useMemo } from "react"
 import { randomNumber } from "@function"
 import type { Belt as BeltType } from "@types"
 import { useControlStore } from "@state"
-import OrbitLine from "@components/object/OrbitLine"
 
 
 interface BeltProps {
     data: BeltType
-    count: number
 }
 
-interface BeltInstanceProps {
-    position: [number, number, number]
-    scale: number
-    rotation: [number, number, number]
-    speed: number
-}
 
-const BeltInstance = ({ position, scale, rotation }: BeltInstanceProps) => {
-    const instanceRef = useRef<Mesh>(null!);
-
-    // useFrame((_, delta) => {
-    //     if (instanceRef.current) {
-    //         instanceRef.current.rotation.y += speed * delta;
-    //         instanceRef.current.rotation.x += (speed / 2) * delta;
-    //     }
-    // });
-
-    return (
-        <Instance
-            ref={instanceRef}
-            position={position}
-            scale={scale}
-            rotation={rotation}
-            castShadow
-            receiveShadow
-        />
-    )
-}
-
-const BeltInstances = ({ data, count }: BeltProps) => {
-
+const Belt = ({ data }: BeltProps) => {
     const { sizeScale, distanceScale } = useControlStore()
 
+    const count = data.count
     const height = data.height / distanceScale
     const innerRadius = data.inner_radius / distanceScale
     const outerRadius = data.outer_radius / distanceScale
     const minSize = data.min_size / sizeScale
     const maxSize = data.max_size / sizeScale
 
-    const chunks = useMemo(() => {
-        const temp = [];
+    const [position, size] = useMemo(() => {
+        const tempPosition = [];
+        const tempSize = []
+
+
         for (let i = 0; i < count; i++) {
             const angle = randomNumber() * Math.PI * 2;
             const r = innerRadius + randomNumber() * (outerRadius - innerRadius);
 
-            temp.push({
-                position: [
-                    Math.cos(angle) * r,
-                    (randomNumber() - 0.5) * height, // Belt height thickness
-                    Math.sin(angle) * r
-                ] as [number, number, number],
-                scale: minSize + randomNumber() * (maxSize - minSize),
-                rotation: [randomNumber() * Math.PI, randomNumber() * Math.PI, 0] as [number, number, number],
-                speed: 0.1 + randomNumber() * 0.3
-            });
+            tempPosition.push([
+                Math.cos(angle) * r,
+                (randomNumber() - 0.5) * height, // Belt height thickness
+                Math.sin(angle) * r
+            ])
+
+            tempSize.push((minSize + randomNumber() * (maxSize - minSize)))
         }
-        return temp;
-    }, [count, height, innerRadius, outerRadius, minSize, maxSize]);
 
-    return <Instances limit={count}>
-        <dodecahedronGeometry />
-        <meshStandardMaterial />
-        {chunks.map((chunk, i) => (
-            <BeltInstance key={i} position={chunk.position} scale={chunk.scale} rotation={chunk.rotation} speed={chunk.speed} />
-        ))}
-    </Instances>
-}
+        const positions = new Float32Array(tempPosition.flat())
+        const sizes = new Float32Array(tempSize)
 
-const Belt = ({ data, count }: BeltProps) => {
-    const { distanceScale } = useControlStore()
+        return [positions, sizes];
+    }, [count, height, innerRadius, maxSize, minSize, outerRadius]);
 
-    const loop = Math.round(count / 1000)
-    const innerRadius = data.inner_radius / distanceScale
-
-    return <>
-        <OrbitLine radius={innerRadius} color={"white"} />
-        {Array.from({ length: loop }, () => {
-            return <BeltInstances data={data} count={1000} />
-        })}
-    </>
+    return <group>
+        {/* <OrbitLine radius={innerRadius} color={"white"} /> */}
+        <points>
+            <bufferGeometry>
+                <bufferAttribute
+                    attach="attributes-position"
+                    args={[position, 3]} // Angka 3 artinya kelompokkan tiap 3 angka (X, Y, Z)
+                />
+                <bufferAttribute
+                    attach="attributes-aSize"
+                    args={[size, 1]}
+                />
+            </bufferGeometry>
+            <pointsMaterial
+                color={"white"}
+                opacity={0.25}
+                transparent
+                sizeAttenuation={true}
+                onBeforeCompile={(shader) => {
+                    shader.vertexShader = shader.vertexShader.replace(
+                        'void main() {',
+                        'attribute float aSize;\nvoid main() {'
+                    ).replace(
+                        'gl_PointSize = size;',
+                        'gl_PointSize = aSize;'
+                    );
+                }}
+            />
+        </points>
+    </group>
 }
 
 export default Belt

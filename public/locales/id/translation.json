@@ -271,6 +271,41 @@
             "nickname": "Dunia Perselisihan",
             "description": "Eris adalah salah satu planet kerdil paling masif yang diketahui di tata surya, terletak di piringan tersebar (scattered disc) di luar Sabuk Kuiper. Penemuannya pada tahun 2005 memicu perdebatan astronomi yang akhirnya mendorong IAU untuk mendefinisikan ulang istilah planet dan mengklasifikasikan ulang Pluto sebagai planet kerdil."
         },
+        "gonggong": {
+            "name": "Gonggong",
+            "nickname": "Dunia Merah Piringan Tersebar",
+            "description": "Gonggong adalah kandidat planet kerdil besar di piringan tersebar di luar Neptunus. Dikenal dengan permukaannya yang kemerahan akibat senyawa organik (tholin) dan es air, Gonggong memiliki satu bulan yang diketahui bernama Xiangliu."
+        },
+        "xiangliu": {
+            "name": "Xiangliu",
+            "nickname": "Bulan Ular Gonggong",
+            "description": "Xiangliu adalah satu-satunya bulan yang diketahui dari planet kerdil Gonggong. Dinamai menurut monster ular berkepala sembilan dalam mitologi Tiongkok, ia mengorbit Gonggong pada jarak sekitar 24.000 kilometer."
+        },
+        "quaoar": {
+            "name": "Quaoar",
+            "nickname": "Dunia Bercincin Sabuk Kuiper",
+            "description": "Quaoar adalah objek Sabuk Kuiper yang terkenal karena memiliki sistem cincin padat yang langka jauh di luar batas Roche-nya. Quaoar didampingi oleh bulan kecilnya, Weywot, dan memiliki permukaan berselimut es air dan metana."
+        },
+        "weywot": {
+            "name": "Weywot",
+            "nickname": "Bulan Dewa Langit",
+            "description": "Weywot adalah satu-satunya satelit Quaoar yang diketahui. Dinamai menurut dewa langit suku Tongva, Weywot diperkirakan merupakan pecahan hasil tabrakan raksasa yang dialami Quaoar di masa lalu."
+        },
+        "sedna": {
+            "name": "Sedna",
+            "nickname": "Pos Terluar yang Jauh",
+            "description": "Sedna adalah salah satu objek paling jauh yang diketahui di Tata Surya, memiliki orbit sangat memanjang yang membutuhkan waktu lebih dari 11.000 tahun untuk menyelesaikannya. Orbitnya membentang dari 76 AU pada titik terdekat hingga hampir 1.000 AU pada titik terjauh."
+        },
+        "orcus": {
+            "name": "Orcus",
+            "nickname": "Anti-Pluto",
+            "description": "Orcus adalah objek Sabuk Kuiper besar yang sering disebut 'anti-Pluto' karena orbitnya memiliki periode dan kemiringan yang sama dengan Pluto, tetapi berorientasi pada fase berlawanan sehingga saat Orcus paling dekat dengan Matahari, Pluto paling jauh."
+        },
+        "salacia": {
+            "name": "Salacia",
+            "nickname": "Dunia Gelap Sabuk Kuiper",
+            "description": "Salacia adalah objek Sabuk Kuiper besar dan kandidat planet kerdil. Salacia memiliki permukaan yang sangat gelap dengan albedo sekitar 4%, menunjukkan kurangnya es volatil terang seperti metana."
+        },
         "alpha_centauri_a": {
             "name": "Alpha Centauri A",
             "nickname": "Rigil Kentaurus",
@@ -305,6 +340,52 @@
             "name": "Alpha Centauri Ab",
             "nickname": "Rigil Kentaurus b",
             "description": "Alpha Centauri Ab adalah kandidat eksoplanet yang mengorbit di zona layak huni Alpha Centauri A."
+        },
+        "halley": {
+            "name": "Halley",
+            "nickname": "1P/Halley",
+            "description": "Komet Halley adalah komet periodik pendek yang terlihat dari Bumi setiap 75–76 tahun. Komet ini adalah satu-satunya komet periodik pendek yang diketahui dan dapat dilihat dengan mata telanjang dari Bumi secara teratur."
+        },
+        "trappist-1": {
+            "name": "TRAPPIST-1",
+            "title": "Sistem TRAPPIST-1",
+            "nickname": "Katai Merah Ultra-Dingin",
+            "description": "TRAPPIST-1 adalah bintang katai merah ultra-dingin yang dikelilingi oleh tujuh planet terestrial seukuran Bumi. Sistem ini memiliki jumlah planet seukuran Bumi terbanyak yang pernah ditemukan dalam satu sistem."
+        },
+        "trappist-1b": {
+            "name": "TRAPPIST-1b",
+            "nickname": "Planet Terdalam",
+            "description": "TRAPPIST-1b adalah planet terdalam di sistem TRAPPIST-1. Mengorbit sangat dekat dengan bintangnya, menjadikannya dunia yang sangat panas."
+        },
+        "trappist-1c": {
+            "name": "TRAPPIST-1c",
+            "nickname": "Planet Terberat",
+            "description": "TRAPPIST-1c adalah eksoplanet berbatu seukuran Bumi yang mengorbit TRAPPIST-1. Ini adalah planet paling masif di sistem tersebut."
+        },
+        "trappist-1d": {
+            "name": "TRAPPIST-1d",
+            "nickname": "Dunia Ringan",
+            "description": "TRAPPIST-1d adalah salah satu planet bermassa paling kecil di sistem TRAPPIST-1 dan mengorbit di dekat tepi dalam zona laik huni."
+        },
+        "trappist-1e": {
+            "name": "TRAPPIST-1e",
+            "nickname": "Kembaran Bumi",
+            "description": "TRAPPIST-1e adalah eksoplanet berbatu yang mengorbit di zona laik huni TRAPPIST-1, menjadikannya salah satu kandidat paling menjanjikan untuk kelayakhunian."
+        },
+        "trappist-1f": {
+            "name": "TRAPPIST-1f",
+            "nickname": "Kandidat Dunia Air",
+            "description": "TRAPPIST-1f adalah eksoplanet seukuran Bumi yang mengorbit di zona laik huni. Diperkirakan planet ini berpotensi memiliki jumlah air yang signifikan."
+        },
+        "trappist-1g": {
+            "name": "TRAPPIST-1g",
+            "nickname": "Planet Laik Huni Terbesar",
+            "description": "TRAPPIST-1g adalah planet terbesar di zona laik huni TRAPPIST-1. Ia menyelesaikan satu orbit sekitar setiap 12 hari."
+        },
+        "trappist-1h": {
+            "name": "TRAPPIST-1h",
+            "nickname": "Planet Terluar",
+            "description": "TRAPPIST-1h adalah planet terluar yang diketahui di sistem TRAPPIST-1. Planet ini juga yang terkecil dan terdingin, mengorbit jauh dari kehangatan bintangnya."
         }
     }
 }

@@ -305,6 +305,52 @@
             "name": "Alpha Centauri Ab",
             "nickname": "Rigil Kentaurus b",
             "description": "Alpha Centauri Ab ist ein Exoplanetenkandidat, der in der bewohnbaren Zone von Alpha Centauri A kreist."
+        },
+        "halley": {
+            "name": "Halley",
+            "nickname": "1P/Halley",
+            "description": "Der Halleysche Komet ist ein kurzperiodischer Komet, der alle 75–76 Jahre von der Erde aus sichtbar ist. Er ist der einzige bekannte kurzperiodische Komet, der regelmäßig mit bloßem Auge von der Erde aus sichtbar ist."
+        },
+        "trappist-1": {
+            "name": "TRAPPIST-1",
+            "title": "TRAPPIST-1 System",
+            "nickname": "Der Ultrakühle Zwerg",
+            "description": "TRAPPIST-1 ist ein ultrakühler Roter Zwerg, der von sieben erdgroßen terrestrischen Planeten umkreist wird. Er hat die größte Anzahl erdgroßer Planeten, die in einem einzigen Planetensystem gefunden wurden."
+        },
+        "trappist-1b": {
+            "name": "TRAPPIST-1b",
+            "nickname": "Der innerste Planet",
+            "description": "TRAPPIST-1b ist der innerste Planet des TRAPPIST-1-Systems. Er kreist sehr nah an seinem Stern und ist daher eine extrem heiße Welt."
+        },
+        "trappist-1c": {
+            "name": "TRAPPIST-1c",
+            "nickname": "Der schwere Planet",
+            "description": "TRAPPIST-1c ist ein erdgroßer Gesteinsplanet, der TRAPPIST-1 umkreist. Er ist der massereichste Planet im System."
+        },
+        "trappist-1d": {
+            "name": "TRAPPIST-1d",
+            "nickname": "Die leichte Welt",
+            "description": "TRAPPIST-1d gehört zu den masseärmsten Planeten im TRAPPIST-1-System und umkreist den Stern nahe dem inneren Rand der habitablen Zone."
+        },
+        "trappist-1e": {
+            "name": "TRAPPIST-1e",
+            "nickname": "Der Erdzwilling",
+            "description": "TRAPPIST-1e ist ein Gesteinsplanet in der habitablen Zone von TRAPPIST-1 und gilt als einer der vielversprechendsten Kandidaten für potenzielle Bewohnbarkeit."
+        },
+        "trappist-1f": {
+            "name": "TRAPPIST-1f",
+            "nickname": "Der Wasserwelt-Kandidat",
+            "description": "TRAPPIST-1f ist ein erdgroßer Exoplanet in der habitablen Zone. Man nimmt an, dass er eine beträchtliche Menge Wasser besitzen könnte."
+        },
+        "trappist-1g": {
+            "name": "TRAPPIST-1g",
+            "nickname": "Der große bewohnbare Planet",
+            "description": "TRAPPIST-1g ist der größte Planet in der habitablen Zone von TRAPPIST-1. Er vollendet einen Umlauf etwa alle 12 Tage."
+        },
+        "trappist-1h": {
+            "name": "TRAPPIST-1h",
+            "nickname": "Der äußerste Planet",
+            "description": "TRAPPIST-1h ist der äußerste bekannte Planet des TRAPPIST-1-Systems. Er ist auch der kleinste und kälteste Planet und kreist weit entfernt von der Wärme des Sterns."
         }
     }
 }

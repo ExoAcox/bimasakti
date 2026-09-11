@@ -357,8 +357,35 @@ export const satellites: Satellite[] = [
         axis: 0,
         orbit_duration: 6.39,
         rotate_duration: 6.39, // Tidally locked
+        texture: "charon.webp",
         icon: "satellite.png"
     },
+    // Gonggong
+    // {
+    //     id: "xiangliu",
+    //     type: "satellite",
+    //     parent: "gonggong",
+    //     radius: 150,
+    //     distance: 24000,
+    //     color: "#9e9e9e",
+    //     axis: 0,
+    //     orbit_duration: 25.2,
+    //     rotate_duration: 25.2, // Tidally locked
+    //     icon: "satellite.png"
+    // },
+    // // Quaoar
+    // {
+    //     id: "weywot",
+    //     type: "satellite",
+    //     parent: "quaoar",
+    //     radius: 85,
+    //     distance: 14500,
+    //     color: "#706d68",
+    //     axis: 0,
+    //     orbit_duration: 12.4,
+    //     rotate_duration: 12.4, // Tidally locked
+    //     icon: "satellite.png"
+    // },
     // {
     //     id: "styx",
     //     type: "satellite",

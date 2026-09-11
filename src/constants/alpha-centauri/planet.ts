@@ -29,7 +29,7 @@ export const planets: Planet[] = [
         orbit_duration: 11.186,
         rotate_duration: 11.186,
         texture: "proxima_centauri_b.png",
-        overlay_textures: ["earth_cloud.jpg"],
+        cloud_texture: "earth_cloud.jpg",
         icon: "earth.png",
         satellites: []
     },

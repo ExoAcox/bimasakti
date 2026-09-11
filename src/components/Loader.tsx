@@ -16,7 +16,7 @@ export const Loader = () => {
 
     return (
         <Html center style={{ width: "100vw", height: "100vh", pointerEvents: "none" }}>
-            <div className="fixed inset-0 z-100 flex flex-col items-center justify-center bg-slate-900 backdrop-blur-xl select-none font-sans text-white pointer-events-auto overflow-hidden">
+            <div className="fixed inset-0 z-100 flex flex-col items-center justify-center select-none font-sans text-white pointer-events-auto overflow-hidden">
                 {/* Background ambient glow */}
                 {/* <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,var(--tw-gradient-stops))] from-blue-950/40 via-slate-950 to-black pointer-events-none" />
                 <div className="absolute -top-32 -left-32 w-96 h-96 bg-cyan-500/10 rounded-full blur-3xl pointer-events-none" />

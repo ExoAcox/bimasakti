@@ -3,25 +3,23 @@ import type { ArtificialSatellite as ArtificialSatelliteType } from "@types"
 import { Mesh } from "three"
 import { useRef } from "react"
 import { useControlStore } from "@state"
-import { useCelestial } from "@function"
 import { CelestialBody, Model } from "@components/object"
 
 
 interface Props {
-    id: string
+    data: ArtificialSatelliteType
 }
 
-const ArtificialSatellite = ({ id }: Props) => {
+const ArtificialSatellite = ({ data }: Props) => {
     const objectRef = useRef<Mesh>(null!)
 
-    const data = useCelestial().getObjectById(id) as ArtificialSatelliteType
     const gltf = useGLTF(data.model)
 
     const { sizeScale, setControl } = useControlStore()
     const scale = data.radius / sizeScale
 
     const handleClick = () => {
-        setControl({ focus: id })
+        setControl({ focus: data.id })
     }
 
     if (!data) return null

@@ -9,34 +9,32 @@ import { useControlStore } from "@state";
 import { useTranslation } from "react-i18next";
 import { When } from "react-if"
 import { OrbitLine } from "@components/object"
-import { useParams } from "react-router";
-
 
 interface Props {
     data: CelestialObject,
     onClick: () => void,
     children?: React.ReactNode
     objectRef?: React.RefObject<Mesh | null>,
-    overlayRef?: React.RefObject<Mesh[]>,
+    cloudRef?: React.RefObject<Mesh | null>,
     labelRef?: React.RefObject<HTMLButtonElement>
     childrenComponent?: React.ReactNode
 }
 
-const Object = ({ data, children, childrenComponent, onClick, objectRef, overlayRef, labelRef }: Props) => {
+const Object = ({ data, children, childrenComponent, onClick, objectRef, cloudRef, labelRef }: Props) => {
     const [occlude, setOcclude] = useState<{ current: Object3D }[] | undefined>(undefined)
 
     const orbitRef = useRef<Group>(null!)
     const internalLabelRef = useRef<HTMLButtonElement>(null!)
-    // const targetPos = useRef(new Vector3())
 
     const { scene } = useThree()
-    const { universe } = useParams()
+
     const { focus, sizeScale, distanceScale, speedScale, showOrbitLine, ignoreAxis, pauseOrbitWhenFocus } = useControlStore()
     const { t } = useTranslation()
 
     const celestial = useCelestial()
+    const universe = celestial.getUniverse()
     const focusedObject = celestial.getObjectById(focus)
-    const defaultFocus = universe === "solar_system" ? "sun" : ""
+    const defaultFocus = universe.defaultFocus
 
     const axis = ignoreAxis ? 0 : MathUtils.degToRad(data?.axis ?? 0)
     // const scale = data.radius / sizeScale
@@ -52,6 +50,11 @@ const Object = ({ data, children, childrenComponent, onClick, objectRef, overlay
             return data.distance / distanceScale
         }
     }, [celestial, data.distance, data.id, data.parent, data.type, distanceScale, sizeScale])
+
+    const longestDistance = useMemo(() => {
+        if (!("longest_distance" in data) || !data.longest_distance) return distance;
+        return data.longest_distance / distanceScale;
+    }, [data, distanceScale, distance]);
 
     const isAncestorOfFocused = (currentId: string, focusedId: string) => {
         let curr = celestial.getObjectById(focusedId);
@@ -70,13 +73,9 @@ const Object = ({ data, children, childrenComponent, onClick, objectRef, overlay
             objectRef.current.rotation.y = speed / data.rotate_duration * speedScale
         }
 
-        if (data.rotate_duration && data.overlay_textures) {
-            const speedOverlay = ((elapsedTime % 50) / 50) * Math.PI * 2
-            data.overlay_textures?.forEach((_, index) => {
-                if (overlayRef?.current?.[index]) {
-                    overlayRef.current[index].rotation.y = speedOverlay / data.rotate_duration * speedScale
-                }
-            })
+        if (data.rotate_duration && data.cloud_texture && cloudRef?.current) {
+            const cloudSpeed = ((elapsedTime % 50) / 50) * Math.PI * 2
+            cloudRef.current.rotation.y = cloudSpeed / data.rotate_duration * speedScale
         }
 
         if (!data.orbit_duration) return
@@ -87,7 +86,19 @@ const Object = ({ data, children, childrenComponent, onClick, objectRef, overlay
         const shouldPauseOrbit = pauseOrbitWhenFocus && (isFocused || isParentOfFocused);
 
         if (!shouldPauseOrbit) {
-            orbitRef.current.rotation.y = rotate + (speed / data.orbit_duration * speedScale);
+            if (longestDistance > distance) {
+                const time = rotate + (speed / data.orbit_duration * speedScale);
+                const a = (longestDistance + distance) / 2;
+                const c = (longestDistance - distance) / 2;
+                const b = Math.sqrt(a * a - c * c);
+
+                const x = a * Math.cos(time) - c;
+                const z = -b * Math.sin(time);
+
+                orbitRef.current.position.set(x, 0, z);
+            } else {
+                orbitRef.current.rotation.y = rotate + (speed / data.orbit_duration * speedScale);
+            }
         }
     })
 
@@ -111,7 +122,7 @@ const Object = ({ data, children, childrenComponent, onClick, objectRef, overlay
 
     const isLabelVisible = useMemo(() => {
         const isSmallestObject = () => {
-            if (universe === "solar_system") {
+            if (universe.defaultFocus) {
                 return ["satellite", "artificial_satellite"].includes(data.type)
             } else {
                 return data.type === "planet"
@@ -134,15 +145,15 @@ const Object = ({ data, children, childrenComponent, onClick, objectRef, overlay
         if (focus === data.id) return setOcclude(undefined)
         // if (defaultFocus === data.id) return setOcclude(undefined)
 
-        const object = scene.getObjectByName(focus || defaultFocus)
+        const object = scene.getObjectByName(focus || defaultFocus!)
         if (!object) return setOcclude(undefined)
 
         const occlude = [{ current: object }]
         if (focusedObject?.parent === data.id) return setOcclude(occlude)
 
-        const isSatellite = ["satellite", "artificial_satellite"].includes(focusedObject?.type ?? "")
+        // const isSatellite = ["satellite", "artificial_satellite"].includes(focusedObject?.type ?? "")
 
-        if (isSatellite && focusedObject?.parent) {
+        if (focusedObject?.parent) {
             const parentObject = scene.getObjectByName(focusedObject.parent)
             if (parentObject) occlude.push({ current: parentObject })
         }
@@ -152,20 +163,22 @@ const Object = ({ data, children, childrenComponent, onClick, objectRef, overlay
 
 
     return <group rotation={[0, 0, axis]}>
-        <When condition={showOrbitLine}>
-            <OrbitLine radius={distance} color={data.color} />
-        </When>
+        <group rotation={[0, rotate, 0]}>
+            <When condition={showOrbitLine}>
+                <OrbitLine radius={distance} longestRadius={longestDistance > distance ? longestDistance : undefined} color={data.color} />
+            </When>
 
-        <group ref={orbitRef} rotation={[0, rotate, 0]}>
-            <group position={[distance, 0, 0]}>
-                <Html occlude={occlude} zIndexRange={[data.type === "star" ? 2 : 1, 0]}>
-                    <When condition={isLabelVisible}>
-                        <button ref={labelRef || internalLabelRef} className="hover:text-accent absolute -translate-x-1/2 -translate-y-full -mt-1 py-1 px-2 whitespace-nowrap rounded-lg text-sm font-semibold text-secondary" onClick={onClick}>{t(`object.${data.id}.name`)}</button>
-                    </When>
-                </Html>
+            <group ref={orbitRef}>
+                <group position={longestDistance > distance ? [0, 0, 0] : [distance, 0, 0]}>
+                    <Html occlude={occlude} zIndexRange={[data.type === "star" ? 2 : 1, 0]}>
+                        <When condition={isLabelVisible}>
+                            <button ref={labelRef || internalLabelRef} className="hover:text-accent absolute -translate-x-1/2 -translate-y-full -mt-1 py-1 px-2 whitespace-nowrap rounded-lg text-sm font-semibold text-secondary" onClick={onClick}>{t(`object.${data.id}.name`)}</button>
+                        </When>
+                    </Html>
 
-                {children}
-                {childrenComponent}
+                    {children}
+                    {childrenComponent}
+                </group>
             </group>
         </group>
     </group>

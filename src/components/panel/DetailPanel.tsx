@@ -89,7 +89,7 @@ const PanelDetail = () => {
             </When>
             <When condition={data.type === "planet" && data.satellites && data.satellites.length}>
                 <div className="flex flex-col gap-4">
-                    {(data as Planet).artificial_satellites?.map(satellite => {
+                    {(data as Planet).satellites?.map(satellite => {
                         return <div>
                             <button className="flex gap-2 items-center mb-2" onClick={() => setControl({ focus: satellite.id })}>
                                 <img src={`/icons/${satellite.icon}`} className="size-6" alt={satellite.icon} />

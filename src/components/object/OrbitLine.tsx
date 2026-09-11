@@ -6,6 +6,7 @@ import type { Line2 } from 'three-stdlib';
 
 interface OrbitLineProps {
     radius: number;
+    longestRadius?: number;
     segments?: number;
     color?: string;
     opacity?: number;
@@ -15,21 +16,25 @@ interface OrbitLineProps {
 const tempMatrix = new Matrix4();
 const tempCamPos = new Vector3();
 
-const OrbitLine = ({ radius, segments = 1280, color, opacity = 0.1 }: OrbitLineProps) => {
+const OrbitLine = ({ radius, longestRadius, segments = 1280, color, opacity = 0.1 }: OrbitLineProps) => {
     const lineRef = useRef<Line2>(null);
 
     const points = useMemo(() => {
         const pts = [];
+        const a = longestRadius ? (longestRadius + radius) / 2 : radius;
+        const c = longestRadius ? (longestRadius - radius) / 2 : 0;
+        const b = Math.sqrt(a * a - c * c);
+
         for (let i = 0; i <= segments; i++) {
             const theta = (i / segments) * Math.PI * 2;
             pts.push(new Vector3(
-                Math.cos(theta) * radius,
+                a * Math.cos(theta) - c,
                 0,
-                Math.sin(theta) * radius
+                b * Math.sin(theta)
             ));
         }
         return pts;
-    }, [radius, segments]);
+    }, [radius, longestRadius, segments]);
 
     useFrame((state) => {
         if (!lineRef.current || !lineRef.current.material || radius <= 0) return;
@@ -43,11 +48,12 @@ const OrbitLine = ({ radius, segments = 1280, color, opacity = 0.1 }: OrbitLineP
         const lz = tempCamPos.z;
 
         const d_xz = Math.sqrt(lx * lx + lz * lz);
-        // Distance from camera to closest point on orbit circle
-        const distToCircle = Math.sqrt((d_xz - radius) * (d_xz - radius) + ly * ly);
+        // Distance from camera to closest point on orbit
+        const a = longestRadius ? (longestRadius + radius) / 2 : radius;
+        const distToCircle = Math.sqrt((d_xz - a) * (d_xz - a) + ly * ly);
 
         // Fade distance threshold: 50% of orbit radius, capped at 10000 so vast orbits remain visible from far away
-        const targetDist = Math.min(radius * 2, 10000000);
+        const targetDist = Math.min(a * 2, 10000000);
         const ratioCircle = targetDist > 0 ? distToCircle / targetDist : 1;
 
         // Smoothstep curve for smooth fade transitions

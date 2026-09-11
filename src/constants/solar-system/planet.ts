@@ -35,7 +35,7 @@ export const planets: Planet[] = [
         rotate_duration: 243.02,
         texture: "venus.jpg",
         icon: "venus.png",
-        overlay_textures: ["venus_cloud.jpg"],
+        cloud_texture: "venus_cloud.jpg",
         get satellites() {
             return satellites.filter((satellite) => satellite.parent === this.id)
         }
@@ -53,7 +53,7 @@ export const planets: Planet[] = [
         rotate_duration: 1.0,
         texture: "earth.jpg",
         icon: "earth.png",
-        overlay_textures: ["earth_cloud.jpg"],
+        cloud_texture: "earth_cloud.jpg",
         get satellites() {
             return satellites.filter((satellite) => satellite.parent === this.id)
         },
@@ -150,10 +150,7 @@ export const planets: Planet[] = [
         get satellites() {
             return satellites.filter((satellite) => satellite.parent === this.id)
         }
-    }
-]
-
-export const dwarf_planets: Planet[] = [
+    },
     {
         id: "pluto",
         type: "planet",
@@ -198,6 +195,7 @@ export const dwarf_planets: Planet[] = [
         orbit_duration: 104210,
         rotate_duration: 0.163,
         texture: "haumea.jpg",
+        model: "haumea.ply",
         icon: "satellite.png",
         satellites: []
     },
@@ -230,5 +228,90 @@ export const dwarf_planets: Planet[] = [
         texture: "eris.jpg",
         icon: "satellite.png",
         satellites: []
-    }
+    },
+    {
+        id: "orcus",
+        type: "planet",
+        class: PlanetClass.Dwarf,
+        parent: "sun",
+        radius: 455,
+        distance: 5900000000,
+        color: "#96999c",
+        axis: 20,
+        orbit_duration: 90250,
+        rotate_duration: 0.549,
+        texture: "orcus.jpg",
+        icon: "satellite.png",
+        satellites: []
+    },
+    {
+        id: "salacia",
+        type: "planet",
+        class: PlanetClass.Dwarf,
+        parent: "sun",
+        radius: 423,
+        distance: 6310000000,
+        color: "#4a4947",
+        axis: 18,
+        orbit_duration: 99640,
+        rotate_duration: 0.25,
+        texture: "salacia.jpg",
+        icon: "satellite.png",
+        satellites: []
+    },
+    {
+        id: "quaoar",
+        type: "planet",
+        class: PlanetClass.Dwarf,
+        parent: "sun",
+        radius: 560,
+        distance: 6470000000,
+        color: "#8c8780",
+        axis: 14,
+        orbit_duration: 104380,
+        rotate_duration: 0.736,
+        texture: "quaoar.jpg",
+        icon: "satellite.png",
+        ring: {
+            inner_radius: 4050,
+            outer_radius: 4250,
+            texture: "saturn_ring.png"
+        },
+        get satellites() {
+            return satellites.filter((satellite) => satellite.parent === this.id)
+        }
+    },
+    {
+        id: "gonggong",
+        type: "planet",
+        class: PlanetClass.Dwarf,
+        parent: "sun",
+        radius: 615,
+        distance: 10070000000,
+        color: "#c85a4b",
+        axis: 30.7,
+        orbit_duration: 202300,
+        rotate_duration: 0.933,
+        texture: "gonggong.jpg",
+        icon: "satellite.png",
+        get satellites() {
+            return satellites.filter((satellite) => satellite.parent === this.id)
+        }
+    },
+    {
+        id: "sedna",
+        type: "planet",
+        class: PlanetClass.Dwarf,
+        parent: "sun",
+        radius: 498,
+        distance: 11370000000,
+        longest_distance: 140170000000,
+        color: "#b84d38",
+        axis: 26,
+        orbit_duration: 4161000,
+        rotate_duration: 0.427,
+        texture: "sedna.jpg",
+        icon: "satellite.png",
+        satellites: []
+    },
 ]

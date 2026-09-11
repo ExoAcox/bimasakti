@@ -2,14 +2,14 @@
 import clsx from "clsx"
 import { useControlStore } from "@state"
 
-import type { Planet, Star } from "@types"
+import { PlanetClass, type Comet, type Planet, type Star } from "@types"
 import { useCelestial } from "@function"
 import { useTranslation } from "react-i18next"
 import SettingPanel from "@components/panel/SettingPanel"
 
 interface SectionProps {
     children: string
-    data: Star[] | Planet[]
+    data: Star[] | Planet[] | Comet[]
 }
 
 const Section = ({ children, data }: SectionProps) => {
@@ -32,7 +32,7 @@ const Section = ({ children, data }: SectionProps) => {
     return <div>
         <label className="text-xs uppercase px-2 mb-1 block">{children}</label>
         <div className="flex flex-col">
-            {data.map((planet: Star | Planet) => {
+            {data.map((planet: Star | Planet | Comet) => {
                 const isFocus = focus === planet.id
                 const satellite = celestial.getObjectById(focus)
                 const isParentFocus = planet.id === satellite?.parent
@@ -71,8 +71,10 @@ const Sidebar = () => {
 
     const celestial = useCelestial()
     const stars = celestial.getObjectsByType("star")
-    const planets = celestial.getObjectsByType("planet")
-    const dwarfPlanets = celestial.getObjectsByType("dwarf_planet")
+    const comets = celestial.getObjectsByType("comet")
+    const allPlanets = celestial.getObjectsByType("planet") as Planet[]
+    const planets = allPlanets.filter(planet => planet.class !== PlanetClass.Dwarf)
+    const dwarfPlanets = allPlanets.filter(planet => planet.class === PlanetClass.Dwarf)
 
 
     return <div className="fixed top-0 left-0 bottom-0 min-w-40 flex flex-col bg-background px-3 py-4 z-50 text-primary backdrop-blur-sm">
@@ -80,6 +82,7 @@ const Sidebar = () => {
             <Section data={stars as Star[]}>{t("ui.stars")}</Section>
             <Section data={planets as Planet[]}>{t("ui.planets")}</Section>
             <Section data={dwarfPlanets as Planet[]}>{t("ui.dwarf_planets")}</Section>
+            <Section data={comets as Comet[]}>{t("ui.comets")}</Section>
         </div>
         <SettingPanel />
     </div>

@@ -16,6 +16,7 @@ import {
     coronaFragmentShader
 } from "@shaders"
 import { When } from "react-if"
+import { INTENSITY_SCALE } from "@constants"
 
 
 const hexToRawColor = (hex: string) => {
@@ -44,7 +45,7 @@ const Star = ({ id, children, labelRef }: Props) => {
     const { distanceScale, sizeScale, setControl } = useControlStore()
 
     const data = useCelestial().getObjectById(id) as StarType
-    const intensity = data.intensity / Math.pow(distanceScale, 2)
+    const intensity = data.intensity / Math.pow(distanceScale, 2) * INTENSITY_SCALE
     const scale = data.radius / sizeScale
     const color = data.color
     const glowColor = data.color
@@ -126,6 +127,7 @@ const Star = ({ id, children, labelRef }: Props) => {
                 receiveShadow>
                 <mesh>
                     <sphereGeometry args={[1, 64, 64]} />
+                    {/* <meshStandardMaterial color={data.color} emissive={data.color} emissiveIntensity={intensity / 20} /> */}
                     <primitive object={surfaceMaterial} ref={surfaceMatRef} attach="material" emissive={data.color} emissiveIntensity={intensity} />
                 </mesh>
 

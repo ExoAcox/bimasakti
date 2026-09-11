@@ -1,15 +1,10 @@
-/* eslint-disable react-hooks/exhaustive-deps */
 import { useEffect, useLayoutEffect, useRef } from "react"
 import { useControlStore } from "@state"
 import { useBounds } from "@react-three/drei"
 import type { OrbitControls as OrbitControlsImpl } from "three-stdlib"
 import { useFrame, useThree } from "@react-three/fiber"
 import { Vector3 } from "three"
-import { useParams } from "react-router"
-import { getUniverseById } from "@function"
-
-
-
+import { useCelestial } from "@function"
 
 interface Props {
     children: React.ReactNode
@@ -25,14 +20,15 @@ const Scene = ({ children, controlRef }: Props) => {
     const isZooming = useRef(false)
 
     const bound = useBounds()
-    const { universe } = useParams()
+
     const { focus, focusIndex, pauseOrbitWhenFocus } = useControlStore()
 
     const { scene, camera } = useThree()
+    const universe = useCelestial().getUniverse()
 
     useLayoutEffect(() => {
         if (controlRef.current) {
-            const position = getUniverseById(universe!)?.cameraPosition || [0, 0, 0]
+            const position = universe.cameraPosition || [0, 0, 0]
 
             controlRef.current.target.set(0, 0, 0);
             if (Array.isArray(position)) {
@@ -80,7 +76,7 @@ const Scene = ({ children, controlRef }: Props) => {
     })
 
     useFrame(() => {
-        if (controlRef.current && universe !== "milky_way") {
+        if (controlRef.current && universe.id !== "milky_way") {
             const navigationPanel = document.getElementById("navigation-panel")
             const isMaxZoomOut = controlRef.current.getDistance() >= controlRef.current.maxDistance - 10;
 

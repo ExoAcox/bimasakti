@@ -19,8 +19,11 @@ const SkyBox = ({
     const texture = useTexture(texturePath)
 
     const material = useMemo(() => {
+        texture.colorSpace = THREE.SRGBColorSpace
+        texture.generateMipmaps = true
+        texture.minFilter = THREE.LinearMipmapLinearFilter
         texture.magFilter = THREE.LinearFilter
-        texture.minFilter = THREE.LinearFilter
+        // texture.minFilter = THREE.LinearFilter
 
         const shader = THREE.ShaderLib.equirect
         const uniforms = THREE.UniformsUtils.clone(shader.uniforms)

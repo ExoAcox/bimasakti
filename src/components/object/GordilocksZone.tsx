@@ -67,7 +67,8 @@ const GordilocksZone = ({ data }: Props) => {
         }
 
         if (labelRef.current) {
-            labelRef.current.style.visibility = distToCenter > outerRadius ? "visible" : "hidden";
+            const isVisible = distToCenter > outerRadius && distToCenter < outerRadius * 6
+            labelRef.current.style.visibility = isVisible ? "visible" : "hidden";
         }
     });
 

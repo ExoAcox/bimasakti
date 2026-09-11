@@ -22,7 +22,8 @@
         "planets": "Planets",
         "dwarf_planets": "Dwarf Planets",
         "satellites": "Satellites",
-        "artificial_satellites": "Artificial Satellites"
+        "artificial_satellites": "Artificial Satellites",
+        "comets": "Comets"
     },
     "object": {
         "milky_way": {
@@ -279,6 +280,41 @@
             "nickname": "The Discordant World",
             "description": "Eris is one of the most massive known dwarf planets in the solar system, located in the scattered disc beyond the Kuiper Belt. Its discovery in 2005 sparked the astronomical debate that ultimately led the IAU to redefine the definition of a planet and reclassify Pluto as a dwarf planet."
         },
+        "gonggong": {
+            "name": "Gonggong",
+            "nickname": "The Red Scattered Disc World",
+            "description": "Gonggong is a large dwarf planet candidate in the scattered disc beyond Neptune. Known for its reddish surface caused by organic compounds (tholins) and water ice, it has a single known moon named Xiangliu."
+        },
+        "xiangliu": {
+            "name": "Xiangliu",
+            "nickname": "The Serpent Moon of Gonggong",
+            "description": "Xiangliu is the only known moon of the dwarf planet Gonggong. Named after a venomous nine-headed serpent monster in Chinese mythology, it orbits Gonggong at a distance of about 24,000 kilometers."
+        },
+        "quaoar": {
+            "name": "Quaoar",
+            "nickname": "The Ringed Kuiper World",
+            "description": "Quaoar is a Kuiper Belt object notable for possessing a rare, dense ring system located far outside its Roche limit. It is accompanied by its small moon, Weywot, and features a surface coated in water ice and methane."
+        },
+        "weywot": {
+            "name": "Weywot",
+            "nickname": "The Sky God Moon",
+            "description": "Weywot is the only known satellite of Quaoar. Named after the Tongva god of the sky, Weywot is thought to be a fragment created from a giant collision that Quaoar experienced in the past."
+        },
+        "sedna": {
+            "name": "Sedna",
+            "nickname": "The Distant Outpost",
+            "description": "Sedna is one of the most distant known objects in the Solar System, possessing an extremely elongated orbit that takes over 11,000 years to complete. Its orbit takes it from 76 AU at its closest point to nearly 1,000 AU at its farthest."
+        },
+        "orcus": {
+            "name": "Orcus",
+            "nickname": "The Anti-Pluto",
+            "description": "Orcus is a large Kuiper Belt object often called the 'anti-Pluto' because its orbit has the same period and inclination as Pluto's, but is oriented in opposite phase so that when Orcus is closest to the Sun, Pluto is farthest."
+        },
+        "salacia": {
+            "name": "Salacia",
+            "nickname": "The Dark Kuiper World",
+            "description": "Salacia is a large Kuiper Belt object and borderline dwarf planet candidate. It has an exceptionally dark surface with an albedo of around 4%, indicating a lack of bright volatile ices like methane."
+        },
         "alpha_centauri_a": {
             "name": "Alpha Centauri A",
             "nickname": "Rigil Kentaurus",
@@ -313,6 +349,52 @@
             "name": "Alpha Centauri Ab",
             "nickname": "Rigil Kentaurus b",
             "description": "Alpha Centauri Ab is a candidate exoplanet orbiting in the habitable zone of Alpha Centauri A."
+        },
+        "halley": {
+            "name": "Halley",
+            "nickname": "1P/Halley",
+            "description": "Halley's Comet is a short-period comet visible from Earth every 75–76 years. It is the only known short-period comet that is regularly visible to the naked eye from Earth."
+        },
+        "trappist-1": {
+            "name": "TRAPPIST-1",
+            "title": "TRAPPIST-1 System",
+            "nickname": "The Ultra-Cool Dwarf",
+            "description": "TRAPPIST-1 is an ultra-cool red dwarf star with seven Earth-sized terrestrial planets orbiting it. It has the largest number of Earth-sized planets found in a single planetary system."
+        },
+        "trappist-1b": {
+            "name": "TRAPPIST-1b",
+            "nickname": "The Innermost Planet",
+            "description": "TRAPPIST-1b is the innermost and most massive planet of the TRAPPIST-1 system. It orbits very close to its star, making it a scorching hot world."
+        },
+        "trappist-1c": {
+            "name": "TRAPPIST-1c",
+            "nickname": "The Heavy Planet",
+            "description": "TRAPPIST-1c is a rocky, Earth-sized exoplanet orbiting the ultra-cool dwarf star TRAPPIST-1. It is the most massive planet in the system."
+        },
+        "trappist-1d": {
+            "name": "TRAPPIST-1d",
+            "nickname": "The Lightweight World",
+            "description": "TRAPPIST-1d is one of the least massive planets in the TRAPPIST-1 system and orbits near the inner edge of the habitable zone."
+        },
+        "trappist-1e": {
+            "name": "TRAPPIST-1e",
+            "nickname": "The Earth Twin",
+            "description": "TRAPPIST-1e is a rocky, Earth-sized exoplanet orbiting within the habitable zone of TRAPPIST-1, making it one of the most promising candidates for potential habitability."
+        },
+        "trappist-1f": {
+            "name": "TRAPPIST-1f",
+            "nickname": "The Water World Candidate",
+            "description": "TRAPPIST-1f is an Earth-sized exoplanet orbiting in the habitable zone. It is thought to potentially possess a significant amount of water."
+        },
+        "trappist-1g": {
+            "name": "TRAPPIST-1g",
+            "nickname": "The Large Habitable Planet",
+            "description": "TRAPPIST-1g is the largest planet in the habitable zone of TRAPPIST-1. It completes an orbit roughly every 12 days."
+        },
+        "trappist-1h": {
+            "name": "TRAPPIST-1h",
+            "nickname": "The Outermost Planet",
+            "description": "TRAPPIST-1h is the outermost known planet of the TRAPPIST-1 system. It is also the smallest and coldest, orbiting far from the star's warmth."
         }
     }
 }
