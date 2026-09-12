@@ -23,7 +23,8 @@
         "dwarf_planets": "Dwarf Planets",
         "satellites": "Satellites",
         "artificial_satellites": "Artificial Satellites",
-        "comets": "Comets"
+        "comets": "Comets",
+        "others": "Others"
     },
     "object": {
         "milky_way": {
@@ -46,7 +47,7 @@
         },
         "sagittarius_a": {
             "name": "Sagittarius A*",
-            "title": "Sagittarius A*",
+            "title": "Sagittarius A* Supermassive Black Hole",
             "nickname": "The Supermassive Black Hole",
             "description": "Sagittarius A* is a supermassive black hole located at the Galactic Center of the Milky Way galaxy. It is a highly compact and bright astronomical radio source."
         },
@@ -265,6 +266,24 @@
             "nickname": "The Asteroid Belt Giant",
             "description": "Ceres is the largest object in the main asteroid belt between Mars and Jupiter and the only dwarf planet located in the inner solar system. It is composed of ice and rock, with evidence of a subsurface ocean and cryovolcanism, such as bright sodium carbonate deposits in Occator Crater."
         },
+        "asteriod": {
+            "name": "Asteroid Belt",
+            "title": "Asteroid Belt",
+            "nickname": "Main Asteroid Belt",
+            "description": "The Asteroid Belt is a torus-shaped region in the Solar System, located roughly between the orbits of the planets Jupiter and Mars."
+        },
+        "kuiper": {
+            "name": "Kuiper Belt",
+            "title": "Kuiper Belt",
+            "nickname": "Edgeworth-Kuiper Belt",
+            "description": "The Kuiper Belt is a circumstellar disc in the outer Solar System, extending from the orbit of Neptune."
+        },
+        "oort": {
+            "name": "Oort Cloud",
+            "title": "Oort Cloud",
+            "nickname": "Comet Reservoir",
+            "description": "The Oort Cloud is a theoretical spherical cloud of predominantly icy planetesimals proposed to surround the Sun at extreme distances in the outer reaches of the Solar System."
+        },
         "haumea": {
             "name": "Haumea",
             "nickname": "The Elongated World",
@@ -395,6 +414,57 @@
             "name": "TRAPPIST-1h",
             "nickname": "The Outermost Planet",
             "description": "TRAPPIST-1h is the outermost known planet of the TRAPPIST-1 system. It is also the smallest and coldest, orbiting far from the star's warmth."
+        },
+        "lich": {
+            "name": "Lich",
+            "title": "Lich (PSR B1257+12) System",
+            "nickname": "The Pulsar System",
+            "description": "PSR B1257+12, designated Lich, is a millisecond pulsar located 2,300 light-years away in the constellation Virgo. It is famous for hosting the first confirmed extrasolar planetary system."
+        },
+        "draugr": {
+            "name": "Draugr",
+            "nickname": "PSR B1257+12 A / b",
+            "description": "Draugr (PSR B1257+12 b) is the innermost exoplanet of the Lich system. With a mass roughly 0.02 times Earth, it is one of the least massive exoplanets ever discovered."
+        },
+        "poltergeist": {
+            "name": "Poltergeist",
+            "nickname": "PSR B1257+12 B / c",
+            "description": "Poltergeist (PSR B1257+12 c) is a super-Earth exoplanet orbiting Lich at 0.36 AU with an orbital period of about 66.3 days."
+        },
+        "phobetor": {
+            "name": "Phobetor",
+            "nickname": "PSR B1257+12 C / d",
+            "description": "Phobetor (PSR B1257+12 d) is a super-Earth exoplanet orbiting Lich at 0.47 AU with an orbital period of about 98.2 days."
+        },
+        "s2": {
+            "name": "S2 (S0-2)",
+            "nickname": "Primary S-Cluster Star",
+            "description": "S2 is a B-type main sequence star orbiting the supermassive black hole Sagittarius A* in a 16.05-year period. Its orbit provided key evidence for Schwarzschild precession and gravitational redshift predicted by Einstein's General Relativity."
+        },
+        "s4716": {
+            "name": "S4716",
+            "nickname": "Fastest Orbiting Star",
+            "description": "S4716 is a star orbiting Sagittarius A* with a period of just 9.9 years, reaching peak velocities of 8,000 km/s (~2.7% the speed of light)."
+        },
+        "s62": {
+            "name": "S62",
+            "nickname": "S-Cluster Star",
+            "description": "S62 is a high-velocity star orbiting Sagittarius A* with an orbital period of approximately 9.9 years."
+        },
+        "s55": {
+            "name": "S55 (S0-102)",
+            "nickname": "S-Cluster Star",
+            "description": "S55 is a star orbiting Sagittarius A* with an orbital period of approximately 12.8 years."
+        },
+        "s14": {
+            "name": "S14 (S0-16)",
+            "nickname": "Close Pericenter Star",
+            "description": "S14 is a star featuring a close pericenter approach to Sagittarius A* down to 45 AU."
+        },
+        "s4711": {
+            "name": "S4711",
+            "nickname": "Short-Period S-Cluster Star",
+            "description": "S4711 is a high-velocity star orbiting Sagittarius A* with a short 7.6-year period."
         }
     }
 }

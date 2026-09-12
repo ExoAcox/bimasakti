@@ -14,7 +14,8 @@
         "distance_scale": "Skala Jarak dari Matahari",
         "speed_scale": "Skala Kecepatan",
         "language": "Bahasa",
-        "speed_scale_value": "1 detik: {{days}} hari"
+        "speed_scale_value": "1 detik: {{days}} hari",
+        "belts": "Sabuk Asteroid"
     },
     "object": {
         "milky_way": {
@@ -256,6 +257,24 @@
             "nickname": "Raksasa Sabuk Asteroid",
             "description": "Ceres adalah objek terbesar di sabuk asteroid utama antara Mars dan Jupiter serta satu-satunya planet kerdil yang terletak di tata surya bagian dalam. Ceres terdiri dari es dan batuan, dengan bukti adanya samudra bawah permukaan dan kriovulkanisme, seperti endapan natrium karbonat yang terang di Kawah Occator."
         },
+        "asteriod": {
+            "name": "Sabuk Asteroid",
+            "title": "Sabuk Asteroid",
+            "nickname": "Sabuk Asteroid Utama",
+            "description": "Sabuk Asteroid adalah wilayah berbentuk torus di Tata Surya yang terletak di antara orbit planet Jupiter dan Mars."
+        },
+        "kuiper": {
+            "name": "Sabuk Kuiper",
+            "title": "Sabuk Kuiper",
+            "nickname": "Sabuk Edgeworth-Kuiper",
+            "description": "Sabuk Kuiper adalah piringan sirkumstellar di Tata Surya bagian luar yang membentang dari orbit Neptunus."
+        },
+        "oort": {
+            "name": "Awan Oort",
+            "title": "Awan Oort",
+            "nickname": "Wadah Komet",
+            "description": "Awan Oort adalah awan teoritis berbentuk bola yang didominasi planetisimal es yang mengelilingi Matahari pada batas luar Tata Surya."
+        },
         "haumea": {
             "name": "Haumea",
             "nickname": "Dunia yang Memanjang",
@@ -386,6 +405,57 @@
             "name": "TRAPPIST-1h",
             "nickname": "Planet Terluar",
             "description": "TRAPPIST-1h adalah planet terluar yang diketahui di sistem TRAPPIST-1. Planet ini juga yang terkecil dan terdingin, mengorbit jauh dari kehangatan bintangnya."
+        },
+        "lich": {
+            "name": "Lich",
+            "title": "Sistem Lich (PSR B1257+12)",
+            "nickname": "Sistem Pulsar",
+            "description": "PSR B1257+12, dinamai Lich, adalah milidetik pulsar yang terletak 2.300 tahun cahaya di rasi bintang Virgo. Sistem ini terkenal karena menjadi rumah bagi sistem eksoplanet pertama yang terkonfirmasi."
+        },
+        "draugr": {
+            "name": "Draugr",
+            "nickname": "PSR B1257+12 A / b",
+            "description": "Draugr (PSR B1257+12 b) adalah eksoplanet terdalam di sistem Lich. Dengan massa sekitar 0,02 kali Bumi, planet ini adalah salah satu eksoplanet terkecil yang pernah ditemukan."
+        },
+        "poltergeist": {
+            "name": "Poltergeist",
+            "nickname": "PSR B1257+12 B / c",
+            "description": "Poltergeist (PSR B1257+12 c) adalah eksoplanet super-Bumi yang mengorbit Lich pada jarak 0,36 AU dengan periode orbit sekitar 66,3 hari."
+        },
+        "phobetor": {
+            "name": "Phobetor",
+            "nickname": "PSR B1257+12 C / d",
+            "description": "Phobetor (PSR B1257+12 d) adalah eksoplanet super-Bumi yang mengorbit Lich pada jarak 0,47 AU dengan periode orbit sekitar 98,2 hari."
+        },
+        "s2": {
+            "name": "S2 (S0-2)",
+            "nickname": "Bintang S-Cluster Utama",
+            "description": "S2 adalah bintang deret utama tipe B yang mengorbit lubang hitam supermasif Sagittarius A* dengan periode 16,05 tahun. Pengamatan orbitnya membuktikan presesi Schwarzschild dan efek pergeseran merah gravitasi dari Teori Relativitas Umum Einstein."
+        },
+        "s4716": {
+            "name": "S4716",
+            "nickname": "Bintang Orbit Tercepat",
+            "description": "S4716 adalah bintang yang mengorbit Sagittarius A* dalam periode hanya 9,9 tahun dengan kecepatan puncak mencapai 8.000 km/s (sekitar 2,7% kecepatan cahaya)."
+        },
+        "s62": {
+            "name": "S62",
+            "nickname": "Bintang S-Cluster",
+            "description": "S62 adalah bintang berkecepatan tinggi yang mengorbit Sagittarius A* dengan periode orbit sekitar 9,9 tahun."
+        },
+        "s55": {
+            "name": "S55 (S0-102)",
+            "nickname": "Bintang S-Cluster",
+            "description": "S55 adalah bintang yang mengorbit Sagittarius A* dengan periode orbit sekitar 12,8 tahun."
+        },
+        "s14": {
+            "name": "S14 (S0-16)",
+            "nickname": "Bintang Periasteon Dekat",
+            "description": "S14 adalah bintang yang memiliki pendekatan sangat dekat dengan Sagittarius A* hingga 45 AU."
+        },
+        "s4711": {
+            "name": "S4711",
+            "nickname": "Bintang S-Cluster Periodik Pendek",
+            "description": "S4711 adalah bintang berkecepatan tinggi dengan periode orbit 7,6 tahun di sekitar Sagittarius A*."
         }
     }
 }

@@ -1,7 +1,7 @@
 import { Camera, MathUtils, Object3D, Vector3 } from "three"
-import { solar_system, alpha_centauri, trappist_1, sagittarius_a, universes } from "@constants"
-import { useRef } from "react";
-import type { CelestialObject } from "@types";
+import { solar_system, alpha_centauri, trappist_1, sagittarius_a, lich, universes } from "@constants"
+import { useEffect, useRef, useState } from "react";
+import type { Belt, CelestialObject } from "@types";
 import { useLocation } from "react-router";
 
 export const getUniverseById = (id: string) => {
@@ -15,11 +15,11 @@ export const useCelestial = () => {
 
     const universe = pathname.split("/")[1]
 
-    let objects: CelestialObject[] = []
+    let objects: (CelestialObject | Belt)[] = []
 
     if (universe === "solar_system") {
-        const { stars, planets, comets, satellites, artificial_satellites } = solar_system
-        objects = [...stars, ...planets, ...comets, ...satellites, ...artificial_satellites]
+        const { stars, planets, comets, belts, satellites, artificial_satellites } = solar_system
+        objects = [...stars, ...planets, ...comets, ...belts, ...satellites, ...artificial_satellites]
     }
 
     if (universe === "alpha_centauri") {
@@ -29,6 +29,11 @@ export const useCelestial = () => {
 
     if (universe === "trappist-1") {
         const { stars, planets } = trappist_1
+        objects = [...stars, ...planets]
+    }
+
+    if (universe === "lich") {
+        const { stars, planets } = lich
         objects = [...stars, ...planets]
     }
 
@@ -56,6 +61,26 @@ export const useCelestial = () => {
 }
 
 
+export function useMobile(breakpoint = 768) {
+    const [isMobile, setMobile] = useState(false);
+
+    useEffect(() => {
+        const mediaQuery = window.matchMedia(`(max-width: ${breakpoint - 1}px)`);
+
+        // eslint-disable-next-line react-hooks/set-state-in-effect
+        setMobile(mediaQuery.matches);
+
+        const handleOnChange = (e: MediaQueryListEvent) => {
+            setMobile(e.matches);
+        };
+
+        mediaQuery.addEventListener("change", handleOnChange);
+        return () => mediaQuery.removeEventListener("change", handleOnChange);
+    }, [breakpoint]);
+
+    return isMobile;
+}
+
 
 export const randomNumber = () => {
     const seed = Math.random()
@@ -64,12 +89,18 @@ export const randomNumber = () => {
 }
 
 export const timeFormat = (value: number) => {
-    if (value > 730) {
+    if (value === Infinity) {
+        return "∞"
+    } else if (value > 730) {
         const year = Math.floor(value / 365)
         const day = Math.round((value / 365 - year) * 365)
 
         if (year) return `${year} years ${day} days`
         return `${year} years`
+    } else if (value <= 0.1) {
+        const minute = Math.round((value * 24 * 60))
+
+        return `${minute} minutes`
     } else if (value <= 2) {
         const hour = Math.floor(value * 24)
         const minute = Math.round((value * 24 - hour) * 60)
@@ -139,4 +170,18 @@ export const classPosition = (position: "top" | "bottom" | "left" | "right") => 
     }
 
     return { root, parent, line }
+}
+
+export const seo = ({ title, description }: { title: string, description: string }) => {
+    return [
+        { title: `${title} | Bimasakti` },
+        {
+            property: "og:title",
+            content: `${title} | Bimasakti`,
+        },
+        {
+            name: "description",
+            content: description,
+        },
+    ];
 }

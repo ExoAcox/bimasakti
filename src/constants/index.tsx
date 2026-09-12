@@ -4,6 +4,7 @@ import solar_system from "./solar-system"
 import alpha_centauri from "./alpha-centauri"
 import sagittarius_a from "./sagittarius-a"
 import trappist_1 from "./trappist-1"
+import lich from "./lich"
 
 export const SCALE = 1000000
 export const TIME_SCALE = 6
@@ -17,19 +18,21 @@ const universes: Universe[] = [
         maxDistance: 30,
         cameraPosition: [2, -12, 5],
         labelPosition: "top",
-        stars: []
+        stars: [],
+        mobile: {
+            cameraPosition: [2, -20, 5]
+        }
 
     },
     {
         id: "sagittarius_a",
         position: [0, 0, 0],
         minDistance: 0.000001,
-        maxDistance: 30000,
-        cameraPosition: [3, 3, 3],
+        maxDistance: 25000,
+        cameraPosition: [200, 100, 500],
         labelPosition: "top",
-        get stars() {
-            return solar_system.stars
-        }
+        stars: [],
+        mobile: {}
     },
     {
         id: "solar_system",
@@ -39,9 +42,8 @@ const universes: Universe[] = [
         cameraPosition: [3, 3, 3],
         labelPosition: "right",
         defaultFocus: "sun",
-        get stars() {
-            return solar_system.stars
-        }
+        stars: solar_system.stars,
+        mobile: {}
     },
     {
         id: "alpha_centauri",
@@ -50,22 +52,31 @@ const universes: Universe[] = [
         maxDistance: 5000000,
         cameraPosition: [0, 3000, 5000],
         labelPosition: "top",
-        get stars() {
-            return alpha_centauri.stars
-        }
+        stars: alpha_centauri.stars,
+        mobile: {}
     },
     {
         id: "trappist-1",
         position: [0.1, -2.5, 0.7],
         minDistance: 0.001,
-        maxDistance: 40,
+        maxDistance: 30,
         cameraPosition: [0.3, 0.3, 0.3],
         labelPosition: "bottom",
         defaultFocus: "trappist-1",
-        get stars() {
-            return trappist_1.stars
-        }
+        stars: trappist_1.stars,
+        mobile: {}
+    },
+    {
+        id: "lich",
+        position: [0.14, -2.4, 0.75],
+        minDistance: 0.001,
+        maxDistance: 300,
+        cameraPosition: [0.1, 0.1, 0.1],
+        labelPosition: "left",
+        defaultFocus: "lich",
+        stars: lich.stars,
+        mobile: {}
     }
 ]
 
-export { universes, solar_system, alpha_centauri, sagittarius_a, trappist_1 }
+export { universes, solar_system, alpha_centauri, sagittarius_a, trappist_1, lich }

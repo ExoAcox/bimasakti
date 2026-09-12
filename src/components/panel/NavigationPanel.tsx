@@ -1,5 +1,6 @@
 import { getUniverseById, useCelestial } from "@function"
 import { defaultControl, useControlStore, useGalaxyStore } from "@state"
+import { useEffect } from "react"
 import { useTranslation } from "react-i18next"
 import { useNavigate } from "react-router"
 
@@ -7,13 +8,12 @@ import { useNavigate } from "react-router"
 
 const NavigationPanel = () => {
     const { t } = useTranslation()
-    const { focus, setFocus } = useGalaxyStore()
     const navigate = useNavigate()
 
+    const { focus, reset } = useGalaxyStore()
     const universe = useCelestial().getUniverse()
-
-
     const id = universe.id === "milky_way" ? focus : universe.id
+
     const data = getUniverseById(id!)
     const { setControl } = useControlStore()
 
@@ -25,29 +25,29 @@ const NavigationPanel = () => {
         }
     }
 
-    console.log(data)
-
     const handleClick = () => {
         if (universe.id === "milky_way") {
-            navigate(`/${data?.id}`)
+            navigate(`/${focus}`)
         } else {
-            setFocus("")
+            reset()
             navigate(`/milky_way`)
         }
 
         setControl(defaultControl)
     }
 
-    // useFrame(() => {
-    //     if (controlRef.current && universe !== "milky_way") {
-    //         const isMaxZoomOut = controlRef.current.getDistance() >= controlRef.current.maxDistance - 10;
-    //         panelRef.current.parentElement.parentElement.style.visibility = isMaxZoomOut ? "visible" : "hidden"
-    //     }
-    // });
+    useEffect(() => {
+        const navigationPanel = document.getElementById("navigation-panel")
+        if (!navigationPanel) return
+
+        console.log(focus)
+
+        navigationPanel.style.visibility = focus ? "visible" : "hidden"
+    }, [id, focus])
 
     if (!data) return null
 
-    return <div id="navigation-panel" className="fixed left-1/2 -translate-x-1/2 bottom-4 flex flex-col text-sm text-secondary bg-background min-w-sm max-w-2xl rounded-md pb-6 pt-4 px-7 z-50 backdrop-blur-sm">
+    return <div id="navigation-panel" className="invisible fixed left-1/2 -translate-x-1/2 bottom-4 flex flex-col text-sm text-secondary bg-background min-w-sm max-w-2xl rounded-md pb-6 pt-4 px-7 z-50 backdrop-blur-sm">
         <div>
             <div className="flex items-center gap-2 justify-between text-primary">
                 <h1 className="text-xl font-bold">{t(`object.${data?.id}.name`)}</h1>
@@ -59,16 +59,6 @@ const NavigationPanel = () => {
             <button className="w-full font-semibold bg-accent text-white p-3 rounded-lg mt-4" onClick={handleClick}>
                 {backText()}
             </button>
-            {/* <div className="mt-4 leading-relaxed border-t border-divider pt-4">
-                <div className="flex justify-between items-center">
-                    <span>{t("ui.diameter")}</span>
-                    <span>{lengthFormat(data.radius * 2)}</span>
-                </div>
-                <div className="flex justify-between items-center">
-                    <span>{t("ui.rotation_period")}</span>
-                    <span>{timeFormat(data.rotate_duration)}</span>
-                </div>
-            </div> */}
         </div>
     </div>
 }

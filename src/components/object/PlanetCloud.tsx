@@ -9,7 +9,7 @@ interface Props {
 
 const CloudRenderer = ({ path, scale, cloudRef }: Props) => {
     const texture = useTexture(`/textures/${path}`)
-    const cloudScale = scale * 1.075
+    const cloudScale = scale * 1.01
 
     return <mesh ref={cloudRef} scale={cloudScale} castShadow receiveShadow>
         <sphereGeometry args={[1, 64, 64]} />

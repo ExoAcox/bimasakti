@@ -2,7 +2,7 @@
 import { useTexture } from "@react-three/drei"
 import { useFrame } from "@react-three/fiber"
 import { useMemo, useRef } from "react"
-import * as THREE from "three"
+import { BackSide, NearestFilter, ShaderLib, ShaderMaterial, SRGBColorSpace, UniformsUtils, type Mesh } from "three"
 
 interface Props {
     texturePath?: string
@@ -11,30 +11,29 @@ interface Props {
 }
 
 const SkyBox = ({
-    texturePath = "/textures/milky_way.jpg",
+    texturePath = "/textures/milkyway.jpg",
     size = 1000000,
     followCamera = true,
 }: Props) => {
-    const meshRef = useRef<THREE.Mesh>(null!)
+    const meshRef = useRef<Mesh>(null!)
     const texture = useTexture(texturePath)
 
     const material = useMemo(() => {
-        texture.colorSpace = THREE.SRGBColorSpace
+        texture.colorSpace = SRGBColorSpace
         texture.generateMipmaps = true
-        texture.minFilter = THREE.LinearMipmapLinearFilter
-        texture.magFilter = THREE.LinearFilter
-        // texture.minFilter = THREE.LinearFilter
+        texture.minFilter = NearestFilter
+        texture.magFilter = NearestFilter
 
-        const shader = THREE.ShaderLib.equirect
-        const uniforms = THREE.UniformsUtils.clone(shader.uniforms)
+        const shader = ShaderLib.equirect
+        const uniforms = UniformsUtils.clone(shader.uniforms)
         uniforms.tEquirect.value = texture
 
-        return new THREE.ShaderMaterial({
+        return new ShaderMaterial({
             fragmentShader: shader.fragmentShader,
             vertexShader: shader.vertexShader,
             uniforms,
             depthWrite: false,
-            side: THREE.BackSide,
+            side: BackSide,
         })
     }, [texture])
 
@@ -46,7 +45,7 @@ const SkyBox = ({
 
     return (
         <mesh ref={meshRef} material={material}>
-            <boxGeometry args={[size, size, size]} />
+            <sphereGeometry args={[size, 64, 64]} />
         </mesh>
     )
 }

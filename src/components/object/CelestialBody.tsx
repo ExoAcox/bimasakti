@@ -33,7 +33,7 @@ const Object = ({ data, children, childrenComponent, onClick, objectRef, cloudRe
 
     const celestial = useCelestial()
     const universe = celestial.getUniverse()
-    const focusedObject = celestial.getObjectById(focus)
+    const focusedObject = celestial.getObjectById(focus) as CelestialObject
     const defaultFocus = universe.defaultFocus
 
     const axis = ignoreAxis ? 0 : MathUtils.degToRad(data?.axis ?? 0)
@@ -57,10 +57,10 @@ const Object = ({ data, children, childrenComponent, onClick, objectRef, cloudRe
     }, [data, distanceScale, distance]);
 
     const isAncestorOfFocused = (currentId: string, focusedId: string) => {
-        let curr = celestial.getObjectById(focusedId);
+        let curr = celestial.getObjectById(focusedId) as CelestialObject
         while (curr && curr.parent) {
             if (curr.parent === currentId) return true;
-            curr = celestial.getObjectById(curr.parent);
+            curr = celestial.getObjectById(curr.parent) as CelestialObject
         }
         return false;
     };
@@ -108,6 +108,10 @@ const Object = ({ data, children, childrenComponent, onClick, objectRef, cloudRe
         const object = scene.getObjectByName(data.id)
         if (!object) return
 
+        // if (["blackhole", "star"].includes(data.type)) {
+        //     console.log(labelRef, internalLabelRef)
+        // }
+
         // object.getWorldPosition(targetPos.current)
         const distance = celestial.getCameraDistance(camera, object)
         const scale = Math.max(300, data.radius) / sizeScale * 50
@@ -140,12 +144,13 @@ const Object = ({ data, children, childrenComponent, onClick, objectRef, cloudRe
     }, [data.type, data.id, data.parent, universe, focus, focusedObject])
 
     useLayoutEffect(() => {
-        if (!focus && !defaultFocus) return setOcclude(undefined);
+        const effectiveFocus = focus || defaultFocus;
+        if (!effectiveFocus) return setOcclude(undefined);
 
-        if (focus === data.id) return setOcclude(undefined)
+        if (effectiveFocus === data.id) return setOcclude(undefined)
         // if (defaultFocus === data.id) return setOcclude(undefined)
 
-        const object = scene.getObjectByName(focus || defaultFocus!)
+        const object = scene.getObjectByName(effectiveFocus)
         if (!object) return setOcclude(undefined)
 
         const occlude = [{ current: object }]
@@ -160,6 +165,15 @@ const Object = ({ data, children, childrenComponent, onClick, objectRef, cloudRe
 
         setOcclude(occlude)
     }, [focus, scene, focusedObject, defaultFocus, data.type, data.id])
+
+
+
+    // useEffect(() => {
+    //     if (["blackhole", "star"].includes(data.type)) {
+    //         console.log(labelRef, internalLabelRef)
+    //     }
+    // }, [labelRef, data.type])
+
 
 
     return <group rotation={[0, 0, axis]}>

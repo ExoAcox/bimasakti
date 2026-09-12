@@ -351,6 +351,57 @@
             "name": "TRAPPIST-1h",
             "nickname": "Der äußerste Planet",
             "description": "TRAPPIST-1h ist der äußerste bekannte Planet des TRAPPIST-1-Systems. Er ist auch der kleinste und kälteste Planet und kreist weit entfernt von der Wärme des Sterns."
+        },
+        "lich": {
+            "name": "Lich",
+            "title": "Lich (PSR B1257+12) System",
+            "nickname": "Das Pulsarsystem",
+            "description": "PSR B1257+12, genannt Lich, ist ein Millisekundenpulsar im Sternbild Jungfrau, etwa 2.300 Lichtjahre entfernt. Es ist berühmt dafür, das erste bestätigte Exoplanetensystem zu beherbergen."
+        },
+        "draugr": {
+            "name": "Draugr",
+            "nickname": "PSR B1257+12 A / b",
+            "description": "Draugr (PSR B1257+12 b) ist der innerste Exoplanet des Lich-Systems. Mit einer Masse von etwa 0,02 Erdmassen ist er einer der kleinsten jemals entdeckten Exoplaneten."
+        },
+        "poltergeist": {
+            "name": "Poltergeist",
+            "nickname": "PSR B1257+12 B / c",
+            "description": "Poltergeist (PSR B1257+12 c) ist eine Supererde, die Lich im Abstand von 0,36 AE mit einer Umlaufzeit von etwa 66,3 Tagen umkreist."
+        },
+        "phobetor": {
+            "name": "Phobetor",
+            "nickname": "PSR B1257+12 C / d",
+            "description": "Phobetor (PSR B1257+12 d) ist eine Supererde, die Lich im Abstand von 0,47 AE mit einer Umlaufzeit von etwa 98,2 Tagen umkreist."
+        },
+        "s2": {
+            "name": "S2 (S0-2)",
+            "nickname": "Haupt-S-Stern",
+            "description": "S2 ist ein B-Typ-Hauptreihenstern, der das supermassereiche Schwarze Loch Sagittarius A* in einem Zeitraum von 16,05 Jahren umkreist."
+        },
+        "s4716": {
+            "name": "S4716",
+            "nickname": "Schnellster Stern",
+            "description": "S4716 ist ein Stern, der Sagittarius A* in einer Periode von nur 9,9 Jahren mit Spitzengeschwindigkeiten von 8.000 km/s umkreist."
+        },
+        "s62": {
+            "name": "S62",
+            "nickname": "S-Stern-Cluster",
+            "description": "S62 ist ein Hochgeschwindigkeitsstern, der Sagittarius A* mit einer Umlaufzeit von etwa 9,9 Jahren umkreist."
+        },
+        "s55": {
+            "name": "S55 (S0-102)",
+            "nickname": "S-Stern-Cluster",
+            "description": "S55 ist ein Stern, der Sagittarius A* mit einer Umlaufzeit von etwa 12,8 Jahren umkreist."
+        },
+        "s14": {
+            "name": "S14 (S0-16)",
+            "nickname": "Nah-Perizentrum-Stern",
+            "description": "S14 ist ein Stern mit einer sehr nahen Annäherung an Sagittarius A* von bis zu 45 AE."
+        },
+        "s4711": {
+            "name": "S4711",
+            "nickname": "Kurzperiodischer S-Stern",
+            "description": "S4711 ist ein Hochgeschwindigkeitsstern mit einer kurzen Umlaufzeit von 7,6 Jahren um Sagittarius A*."
         }
     }
 }

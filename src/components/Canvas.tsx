@@ -6,16 +6,17 @@ import { track } from '@vercel/analytics';
 
 import Scene from "@components/Scene"
 import { useControlStore } from "@state"
-import { Header, DetailPanel, Sidebar, NavigationPanel } from "@components/panel"
+import { Header, DetailPanel, NavigationPanel, Sidebar } from "@components/panel"
 import { SkyBox } from "@components/object"
 import { Bloom, EffectComposer } from '@react-three/postprocessing'
+import BlackholeWrapEffect from "@components/effect/BlackholeWrapEffect"
 import Loader from "@components/Loader"
 import { When } from "react-if";
 import { useCelestial } from "@function";
 import { Outlet } from "react-router";
-import NotFound from "@components/NotFound";
 
-const UserInterface = () => {
+
+const UserInterface = ({ id }: { id: string }) => {
     const { active, progress } = useProgress()
     const [isLoaded, setLoaded] = useState(false)
 
@@ -31,24 +32,26 @@ const UserInterface = () => {
     if (!isLoaded) return null
 
     return (
-        <>
-            {/* <Sidebar /> */}
+        <When condition={id !== "milky_way"}>
+            <When condition={id !== "sagittarius_a"}>
+                <Sidebar />
+            </When>
             <DetailPanel />
-        </>
+        </When>
     )
 }
 
-const UniversePage = () => {
+const CanvasLayout = () => {
     const controlRef = useRef(null!)
 
     const data = useCelestial().getUniverse()
     const { focus, setControl } = useControlStore()
 
+    const skyboxTexture = data.id === "sagittarius_a" ? "/textures/nebula.jpg" : "/textures/milky_way.jpg"
+
     useEffect(() => {
         if (focus) track('focus', { object: focus, universe: data.id })
     }, [focus, data.id])
-
-    const isMilkyWay = data?.id === "milky_way"
 
     const [isMounted, setIsMounted] = useState(false)
     useEffect(() => {
@@ -73,8 +76,8 @@ const UniversePage = () => {
 
                 <color attach="background" args={['black']} />
 
-                <When condition={!isMilkyWay}>
-                    <SkyBox />
+                <When condition={data.id !== "milky_way"}>
+                    <SkyBox texturePath={skyboxTexture} />
                 </When>
 
                 <Bounds>
@@ -84,6 +87,7 @@ const UniversePage = () => {
                 </Bounds>
 
                 <EffectComposer>
+                    <BlackholeWrapEffect />
                     <Bloom
                         intensity={2}
                         luminanceThreshold={1.0}
@@ -97,10 +101,8 @@ const UniversePage = () => {
 
         <Header id={data.id} />
         <NavigationPanel />
-        <When condition={!isMilkyWay}>
-            <UserInterface />
-        </When>
+        <UserInterface id={data.id} />
     </div>
 }
 
-export default UniversePage
+export default CanvasLayout

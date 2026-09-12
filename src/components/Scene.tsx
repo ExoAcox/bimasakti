@@ -4,13 +4,14 @@ import { useBounds } from "@react-three/drei"
 import type { OrbitControls as OrbitControlsImpl } from "three-stdlib"
 import { useFrame, useThree } from "@react-three/fiber"
 import { Vector3 } from "three"
-import { useCelestial } from "@function"
+import { useCelestial, useMobile } from "@function"
 
 interface Props {
     children: React.ReactNode
     controlRef: React.RefObject<OrbitControlsImpl>
 }
 
+const ignoredFocus = ["sagittarius_a"]
 
 const Scene = ({ children, controlRef }: Props) => {
     const lastTargetPos = useRef(new Vector3())
@@ -20,17 +21,20 @@ const Scene = ({ children, controlRef }: Props) => {
     const isZooming = useRef(false)
 
     const bound = useBounds()
+    const isMobile = useMobile()
 
     const { focus, focusIndex, pauseOrbitWhenFocus } = useControlStore()
 
     const { scene, camera } = useThree()
     const universe = useCelestial().getUniverse()
 
+
+
     useLayoutEffect(() => {
         if (controlRef.current) {
-            const position = universe.cameraPosition || [0, 0, 0]
-
+            const position = (isMobile ? universe.mobile?.cameraPosition : universe.cameraPosition) || universe.cameraPosition
             controlRef.current.target.set(0, 0, 0);
+
             if (Array.isArray(position)) {
                 camera.position.set(position[0], position[1], position[2]);
             } else if (position instanceof Vector3) {
@@ -38,12 +42,15 @@ const Scene = ({ children, controlRef }: Props) => {
             }
             controlRef.current.update();
         }
-    }, [universe, controlRef, camera.position])
+    }, [universe, controlRef, camera.position, isMobile])
 
     useEffect(() => {
         if (!focus) return;
-        const target = scene.getObjectByName(focus)
-        bound.refresh(target).fit()
+        if (ignoredFocus.includes(focus)) return
+
+        const object = scene.getObjectByName(focus)
+
+        bound.refresh(object).fit()
     }, [bound, focus, scene, focusIndex])
 
     useFrame((state) => {
@@ -81,6 +88,7 @@ const Scene = ({ children, controlRef }: Props) => {
             const isMaxZoomOut = controlRef.current.getDistance() >= controlRef.current.maxDistance - 10;
 
             if (!navigationPanel) return
+            console.log("render nihh")
             navigationPanel.style.visibility = isMaxZoomOut ? "visible" : "hidden"
         }
     })

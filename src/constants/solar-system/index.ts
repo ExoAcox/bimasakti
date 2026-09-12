@@ -32,7 +32,8 @@ const belts: Belt[] = [
         max_size: 300,
         inner_radius: 329000000,
         outer_radius: 478000000,
-        height: 150000000
+        height: 150000000,
+        icon: "asteroid.png"
     },
     {
         id: "kuiper",
@@ -42,7 +43,8 @@ const belts: Belt[] = [
         max_size: 400,
         inner_radius: 4500000000,
         outer_radius: 7500000000,
-        height: 1500000000
+        height: 1500000000,
+        icon: "asteroid.png"
     }
 ]
 

@@ -19,20 +19,41 @@ const Belt = ({ data }: BeltProps) => {
     const minSize = data.min_size / sizeScale
     const maxSize = data.max_size / sizeScale
 
+    const isSphere = data.shape === "sphere" || data.id === "oort"
+
     const [position, size] = useMemo(() => {
         const tempPosition = [];
         const tempSize = []
 
-
         for (let i = 0; i < count; i++) {
-            const angle = randomNumber() * Math.PI * 2;
-            const r = innerRadius + randomNumber() * (outerRadius - innerRadius);
+            if (isSphere) {
+                // Uniform 3D spherical shell distribution (covers all sides 360x360 deg)
+                const u = randomNumber();
+                const v = randomNumber();
+                const theta = u * Math.PI * 2;
+                const phi = Math.acos(2 * v - 1);
 
-            tempPosition.push([
-                Math.cos(angle) * r,
-                (randomNumber() - 0.5) * height, // Belt height thickness
-                Math.sin(angle) * r
-            ])
+                const r = innerRadius + randomNumber() * (outerRadius - innerRadius);
+
+                tempPosition.push([
+                    r * Math.sin(phi) * Math.cos(theta),
+                    r * Math.cos(phi),
+                    r * Math.sin(phi) * Math.sin(theta)
+                ])
+            } else {
+                // Ring / Disc distribution
+                const angle = randomNumber() * Math.PI * 2;
+                const r = innerRadius + randomNumber() * (outerRadius - innerRadius);
+
+                const normalizedR = (r - innerRadius) / (outerRadius - innerRadius);
+                const heightFactor = 0.25 + 0.75 * Math.pow(Math.sin(normalizedR * Math.PI), 0.7);
+
+                tempPosition.push([
+                    Math.cos(angle) * r,
+                    (randomNumber() - 0.5) * height * heightFactor,
+                    Math.sin(angle) * r
+                ])
+            }
 
             tempSize.push((minSize + randomNumber() * (maxSize - minSize)))
         }
@@ -41,15 +62,15 @@ const Belt = ({ data }: BeltProps) => {
         const sizes = new Float32Array(tempSize)
 
         return [positions, sizes];
-    }, [count, height, innerRadius, maxSize, minSize, outerRadius]);
+    }, [count, height, innerRadius, isSphere, maxSize, minSize, outerRadius]);
 
-    return <group>
-        {/* <OrbitLine radius={innerRadius} color={"white"} /> */}
+    return <group >
+
         <points>
             <bufferGeometry>
                 <bufferAttribute
                     attach="attributes-position"
-                    args={[position, 3]} // Angka 3 artinya kelompokkan tiap 3 angka (X, Y, Z)
+                    args={[position, 3]}
                 />
                 <bufferAttribute
                     attach="attributes-aSize"

@@ -1,8 +1,8 @@
 import { useMemo, useRef } from 'react';
 import { Line } from '@react-three/drei';
 import { Vector3, Matrix4 } from 'three';
-import { useFrame } from '@react-three/fiber';
-import type { Line2 } from 'three-stdlib';
+import { useFrame, useThree } from '@react-three/fiber';
+import type { Line2, OrbitControls } from 'three-stdlib';
 
 interface OrbitLineProps {
     radius: number;
@@ -18,6 +18,8 @@ const tempCamPos = new Vector3();
 
 const OrbitLine = ({ radius, longestRadius, segments = 1280, color, opacity = 0.1 }: OrbitLineProps) => {
     const lineRef = useRef<Line2>(null);
+
+    const controls = useThree((state) => state.controls as OrbitControls);
 
     const points = useMemo(() => {
         const pts = [];
@@ -62,7 +64,9 @@ const OrbitLine = ({ radius, longestRadius, segments = 1280, color, opacity = 0.
 
         const currentOpacity = opacity * smoothRatio;
 
-        lineRef.current.material.opacity = currentOpacity;
+        const isMaxZoomOut = controls?.getDistance() >= controls.maxDistance - 10 ? 0.1 : 0;
+
+        lineRef.current.material.opacity = Math.max(currentOpacity, isMaxZoomOut)
         lineRef.current.material.transparent = true;
     });
 

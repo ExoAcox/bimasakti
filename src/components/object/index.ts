@@ -14,5 +14,6 @@ export { default as Blackhole } from "./Blackhole"
 export { default as ModelRenderer } from "./ModelRenderer"
 export { default as TextureRenderer } from "./TextureRenderer"
 export { default as PlanetCloud } from "./PlanetCloud"
+export { default as Pulsar } from "./Pulsar"
 
 

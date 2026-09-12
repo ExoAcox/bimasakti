@@ -4,9 +4,13 @@ import { alpha_centauri } from "@constants"
 import { useControlStore } from "@state"
 import { useFrame, useThree } from "@react-three/fiber"
 import { Html, useBounds } from "@react-three/drei"
-import { useCelestial } from "@function"
+import { seo, useCelestial } from "@function"
 
 
+export const meta = () => seo({
+    title: "Alpha Centauri",
+    description: "Alpha Centauri"
+})
 
 const AlphaCentauri = () => {
     const { focus, distanceScale, setControl } = useControlStore()

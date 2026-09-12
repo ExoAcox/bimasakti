@@ -13,7 +13,7 @@ const PanelDetail = () => {
 
     const { focus, setControl } = useControlStore()
     const celestial = useCelestial()
-    const data = celestial.getObjectById(focus)
+    const data = celestial.getObjectById(focus) as Planet
 
     const { t } = useTranslation();
 
@@ -38,7 +38,7 @@ const PanelDetail = () => {
                     <span>{t("ui.rotation_period")}</span>
                     <span>{timeFormat(data.rotate_duration)}</span>
                 </div>
-                <When condition={data.type !== "star"}>
+                <When condition={data.parent}>
                     <div className="flex justify-between items-center">
                         <span>{t("ui.orbital_period")}</span>
                         <span>{timeFormat((data as Planet).orbit_duration)}</span>

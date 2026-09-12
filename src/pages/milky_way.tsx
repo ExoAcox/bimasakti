@@ -16,7 +16,7 @@ import type { GLTF } from "three-stdlib"
 import { universes } from "@constants"
 import { useTranslation } from "react-i18next"
 import clsx from "clsx"
-import { classPosition } from "@function"
+import { classPosition, seo, useMobile } from "@function"
 import { useGalaxyStore } from "@state"
 import { pointGlowVertexShader, pointGlowFragmentShader } from "@shaders"
 
@@ -29,6 +29,12 @@ type GLTFResult = GLTF & {
     }
 }
 
+export const meta = () => seo({
+    title: "Milky Way",
+    description: "Milky Way"
+})
+
+
 const MilkyWay = () => {
     const { setFocus } = useGalaxyStore()
 
@@ -38,11 +44,12 @@ const MilkyWay = () => {
 
     const starTexture = useTexture("/textures/star.png")
     const { nodes } = useGLTF("/models/milky_way.glb") as unknown as GLTFResult
+    const isMobile = useMobile()
 
     const { geometry, glowMaterial } = useMemo(() => {
         nodes.Object_2.geometry.center()
         const rawPositions = nodes.Object_2.geometry.attributes.position.array
-        const count = rawPositions.length / 1
+        const count = rawPositions.length / (isMobile ? 3 : 1)
 
         const position = new Float32Array(rawPositions.buffer)
         const colors = new Float32Array(count * 3)
@@ -81,7 +88,8 @@ const MilkyWay = () => {
             fragmentShader: pointGlowFragmentShader,
             uniforms: {
                 u_texture: { value: starTexture },
-                u_time: { value: 0 }
+                u_time: { value: 0 },
+                u_mobile: { value: isMobile }
             },
             blending: AdditiveBlending,
             transparent: true,
@@ -89,7 +97,7 @@ const MilkyWay = () => {
         })
 
         return { geometry: geo, glowMaterial: mat }
-    }, [nodes, starTexture])
+    }, [isMobile, nodes, starTexture])
 
     useFrame((state) => {
         if (materialRef.current) {
@@ -124,10 +132,12 @@ const MilkyWay = () => {
                                         <div className={clsx("bg-background", line)} />
                                     </button>
                                 </Html>
-                                <mesh name={universe.id}>
-                                    <sphereGeometry args={[0.00001]} />
-                                    <meshBasicMaterial color="white" opacity={0} transparent />
-                                </mesh>
+                                <points name={universe.id}>
+                                    <bufferGeometry>
+                                        <bufferAttribute attach="attributes-position" args={[new Float32Array([0, 0, 0]), 3]} />
+                                    </bufferGeometry>
+                                    <pointsMaterial size={0.00001} color="white" />
+                                </points>
                             </group>
                         )
                     })

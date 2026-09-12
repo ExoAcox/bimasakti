@@ -37,9 +37,11 @@ export const useControlStore = create<Control>((set) => ({
 interface Galaxy {
     focus: string
     setFocus: (focus: string) => void
+    reset: () => void
 }
 
 export const useGalaxyStore = create<Galaxy>((set) => ({
     focus: "",
+    reset: () => set((state) => ({ ...state, focus: "" })),
     setFocus: (focus: string) => set((state) => ({ ...state, focus })),
 }))

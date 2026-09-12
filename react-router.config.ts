@@ -10,6 +10,7 @@ export default {
             "/solar_system",
             "/alpha_centauri",
             "/trappist-1",
+            "/lich",
             "/sagittarius_a"
         ];
     },

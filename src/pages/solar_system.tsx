@@ -1,5 +1,12 @@
 import { ArtificialSatellite, Planet, Satellite, Star, Comet, Belt } from "@components/object"
 import { solar_system } from "@constants"
+import { seo } from "@function"
+
+
+export const meta = () => seo({
+    title: "Solar System",
+    description: "Solar System"
+})
 
 const SolarSystem = () => {
     const { planets, comets, belts } = solar_system

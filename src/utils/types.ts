@@ -84,6 +84,8 @@ export interface Belt {
     inner_radius: number
     outer_radius: number
     height: number
+    shape?: "ring" | "sphere"
+    icon?: string
 }
 
 export const PlanetClass = {
@@ -98,7 +100,8 @@ export const StarClass = {
     Yellow: "Yellow Dwarf Star",
     Orange: "Orange Dwarf Star",
     Red: "Red Dwarf Star",
-    Blackhole: "Supermassive Blackhole"
+    Neutron: "Neutron Star",
+    Blue: "Blue Main-Sequence Star"
 } as const;
 
 export type PlanetClass = (typeof PlanetClass)[keyof typeof PlanetClass];
@@ -112,5 +115,6 @@ export interface Universe {
     maxDistance: number,
     cameraPosition: Vector3,
     labelPosition: "top" | "bottom" | "left" | "right",
-    defaultFocus?: string
+    defaultFocus?: string,
+    mobile: Partial<Universe>
 }
