@@ -22,7 +22,6 @@ const universes: Universe[] = [
         mobile: {
             cameraPosition: [2, -20, 5]
         }
-
     },
     {
         id: "sagittarius_a",
@@ -79,4 +78,6 @@ const universes: Universe[] = [
     }
 ]
 
-export { universes, solar_system, alpha_centauri, sagittarius_a, trappist_1, lich }
+const universe_ids = universes.filter(universe => universe.id !== "milky_way").map(universe => universe.id)
+
+export { universes, universe_ids, solar_system, alpha_centauri, sagittarius_a, trappist_1, lich }

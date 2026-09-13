@@ -32,10 +32,8 @@ const GordilocksZone = ({ data }: Props) => {
     const baseInnerOpacity = 0.015;
     const baseOuterOpacity = 0.015;
 
-
-
     useFrame((state) => {
-        if (focus && focusedObject?.type !== "star") return;
+        if (focus && !["star", "belt"].includes(focusedObject?.type ?? "")) return;
         if (!groupRef.current || outerRadius <= 0) return;
 
         // Transform camera position into local space of GordilocksZone
@@ -70,9 +68,10 @@ const GordilocksZone = ({ data }: Props) => {
             const isVisible = distToCenter > outerRadius && distToCenter < outerRadius * 6
             labelRef.current.style.visibility = isVisible ? "visible" : "hidden";
         }
+
     });
 
-    if (focus && focus !== data.id) return null
+    if (focus && !["star", "belt"].includes(focusedObject?.type ?? "")) return null
 
     return (
         <group ref={groupRef}>

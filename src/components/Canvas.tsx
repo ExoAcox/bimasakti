@@ -1,5 +1,5 @@
 /* eslint-disable react-hooks/set-state-in-effect */
-import { Bounds, OrbitControls, useProgress } from "@react-three/drei"
+import { Bounds, OrbitControls, useProgress, useGLTF, Stats } from "@react-three/drei"
 import { Canvas } from "@react-three/fiber"
 import { useRef, useState, useEffect, Suspense } from "react"
 import { track } from '@vercel/analytics';
@@ -13,7 +13,7 @@ import BlackholeWrapEffect from "@components/effect/BlackholeWrapEffect"
 import Loader from "@components/Loader"
 import { When } from "react-if";
 import { useCelestial } from "@function";
-import { Outlet } from "react-router";
+import { Outlet, useSearchParams } from "react-router";
 
 
 const UserInterface = ({ id }: { id: string }) => {
@@ -41,8 +41,11 @@ const UserInterface = ({ id }: { id: string }) => {
     )
 }
 
+useGLTF.setDecoderPath('/draco/')
+
 const CanvasLayout = () => {
     const controlRef = useRef(null!)
+    const [searchParams] = useSearchParams();
 
     const data = useCelestial().getUniverse()
     const { focus, setControl } = useControlStore()
@@ -64,6 +67,11 @@ const CanvasLayout = () => {
         <Canvas
             camera={{ near: 0.000001, far: 10000000 }}
             onPointerMissed={() => setControl({ showSetting: false })}>
+
+            <When condition={import.meta.env.DEV || searchParams.get('dev')}>
+                <Stats className="top-auto! left-auto! bottom-0! right-0!" />
+            </When>
+
             <Suspense fallback={<Loader />}>
                 <ambientLight intensity={0.5} />
                 <OrbitControls

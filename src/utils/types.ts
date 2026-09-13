@@ -73,6 +73,7 @@ export interface Ring {
     inner_radius: number
     outer_radius: number
     texture: string
+    opacity?: number
 }
 
 export interface Belt {

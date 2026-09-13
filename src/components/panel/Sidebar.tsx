@@ -7,12 +7,17 @@ import { useCelestial } from "@function"
 import { useTranslation } from "react-i18next"
 import SettingPanel from "@components/panel/SettingPanel"
 
+import { IoChevronDown, IoChevronUp } from "react-icons/io5";
+import { useState } from "react"
+
 interface SectionProps {
     children: string
     data: (CelestialObject | Belt)[]
+    initialOpen?: boolean
 }
 
-const Section = ({ children, data }: SectionProps) => {
+const Section = ({ children, data, initialOpen }: SectionProps) => {
+    const [isOpen, setOpen] = useState(initialOpen)
     const { t } = useTranslation()
 
     const { focus, focusIndex, setControl } = useControlStore()
@@ -30,8 +35,11 @@ const Section = ({ children, data }: SectionProps) => {
     if (!data?.length) return null
 
     return <div>
-        <label className="text-xs uppercase px-2 mb-1 block">{children}</label>
-        <div className="flex flex-col">
+        <button className="flex items-center" onClick={() => setOpen(!isOpen)}>
+            <span className="text-xs uppercase px-2 block">{children}</span>
+            {isOpen ? <IoChevronUp /> : <IoChevronDown />}
+        </button>
+        <div className={clsx("flex flex-col mt-1", !isOpen && "hidden")}>
             {data.map((planet) => {
                 const isFocus = focus === planet.id
                 const satellite = celestial.getObjectById(focus)
@@ -80,8 +88,8 @@ const Sidebar = () => {
 
     return <div className="fixed top-0 left-0 bottom-0 min-w-40 flex flex-col bg-background px-3 py-4 z-50 text-primary backdrop-blur-sm">
         <div className="flex-1 flex flex-col gap-4 overflow-y-auto">
-            <Section data={stars}>{t("ui.stars")}</Section>
-            <Section data={planets}>{t("ui.planets")}</Section>
+            <Section data={stars} initialOpen>{t("ui.stars")}</Section>
+            <Section data={planets} initialOpen>{t("ui.planets")}</Section>
             <Section data={dwarfPlanets}>{t("ui.dwarf_planets")}</Section>
             <Section data={comets}>{t("ui.comets")}</Section>
             <Section data={belts}>{t("ui.others")}</Section>

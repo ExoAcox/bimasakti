@@ -47,7 +47,7 @@ const PlanetRing = ({ data }: Props) => {
         <meshStandardMaterial map={texture}
             side={2}
             transparent={true}
-            opacity={1}
+            opacity={data.ring?.opacity || 1}
 
         />
     </mesh>

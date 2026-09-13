@@ -1,5 +1,5 @@
 import { Camera, MathUtils, Object3D, Vector3 } from "three"
-import { solar_system, alpha_centauri, trappist_1, sagittarius_a, lich, universes } from "@constants"
+import { solar_system, alpha_centauri, trappist_1, sagittarius_a, lich, universes, universe_ids } from "@constants"
 import { useEffect, useRef, useState } from "react";
 import type { Belt, CelestialObject } from "@types";
 import { useLocation } from "react-router";
@@ -9,38 +9,37 @@ export const getUniverseById = (id: string) => {
     return universe ?? universes[0]
 }
 
+type UniverseMapping = {
+    [key: string]: {
+        [key: string]: (CelestialObject | Belt)[]
+    }
+};
+
+const universeMapping: UniverseMapping = {
+    sagittarius_a,
+    solar_system,
+    alpha_centauri,
+    "trappist-1": trappist_1,
+    lich
+}
+
 export const useCelestial = () => {
     const { pathname } = useLocation()
     const targetPos = useRef(new Vector3())
 
-    const universe = pathname.split("/")[1]
+    const currentUniverse = pathname.split("/")[1]
 
-    let objects: (CelestialObject | Belt)[] = []
+    const objects: (CelestialObject | Belt)[] = []
 
-    if (universe === "solar_system") {
-        const { stars, planets, comets, belts, satellites, artificial_satellites } = solar_system
-        objects = [...stars, ...planets, ...comets, ...belts, ...satellites, ...artificial_satellites]
-    }
+    universe_ids.forEach(universe => {
+        if (universe === currentUniverse) {
+            const keys = Object.keys(universeMapping[currentUniverse])
+            keys.forEach(key => {
+                objects.push(...universeMapping[currentUniverse][key])
+            })
 
-    if (universe === "alpha_centauri") {
-        const { stars, planets } = alpha_centauri
-        objects = [...stars, ...planets]
-    }
-
-    if (universe === "trappist-1") {
-        const { stars, planets } = trappist_1
-        objects = [...stars, ...planets]
-    }
-
-    if (universe === "lich") {
-        const { stars, planets } = lich
-        objects = [...stars, ...planets]
-    }
-
-    if (universe === "sagittarius_a") {
-        const { blackholes } = sagittarius_a
-        objects = [...blackholes]
-    }
+        }
+    })
 
     const getObjectById = (id: string) => {
         return objects.find((object) => object.id === id)
@@ -55,7 +54,7 @@ export const useCelestial = () => {
         return camera.position.distanceTo(targetRef?.current ?? targetPos.current)
     }
 
-    const getUniverse = () => getUniverseById(universe)
+    const getUniverse = () => getUniverseById(currentUniverse)
 
     return { objects, getObjectById, getObjectsByType, getCameraDistance, getUniverse }
 }
@@ -176,12 +175,24 @@ export const seo = ({ title, description }: { title: string, description: string
     return [
         { title: `${title} | Bimasakti` },
         {
+            name: "description",
+            content: description,
+        },
+        {
+            name: "keywords",
+            content: "milky way, galaxy, space, astronomy, solar system",
+        },
+        {
             property: "og:title",
             content: `${title} | Bimasakti`,
         },
         {
-            name: "description",
+            property: "og:description",
             content: description,
+        },
+        {
+            property: "og:type",
+            content: "website",
         },
     ];
 }

@@ -130,6 +130,12 @@ export const planets: Planet[] = [
         rotate_duration: 0.72, // 17.2 hours
         texture: "uranus.jpg",
         icon: "uranus.png",
+        ring: {
+            inner_radius: 41838,
+            outer_radius: 51140,
+            texture: "uranus_ring.png",
+            opacity: 0.5
+        },
         get satellites() {
             return satellites.filter((satellite) => satellite.parent === this.id)
         }

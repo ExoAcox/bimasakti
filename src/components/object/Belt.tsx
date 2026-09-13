@@ -1,7 +1,8 @@
-import { useMemo } from "react"
+import { useMemo, useRef } from "react"
 import { randomNumber } from "@function"
 import type { Belt as BeltType } from "@types"
 import { useControlStore } from "@state"
+import { PointsMaterial } from "three"
 
 
 interface BeltProps {
@@ -10,14 +11,17 @@ interface BeltProps {
 
 
 const Belt = ({ data }: BeltProps) => {
-    const { sizeScale, distanceScale } = useControlStore()
+    const { focus, sizeScale, distanceScale } = useControlStore()
+    const pointRef = useRef<PointsMaterial>(null!)
 
-    const count = data.count
+
+    const count = Math.min(data.count, 1000000)
     const height = data.height / distanceScale
     const innerRadius = data.inner_radius / distanceScale
     const outerRadius = data.outer_radius / distanceScale
     const minSize = data.min_size / sizeScale
     const maxSize = data.max_size / sizeScale
+    const opacity = focus === data.id ? 0.25 : 0.1
 
     const isSphere = data.shape === "sphere" || data.id === "oort"
 
@@ -64,7 +68,15 @@ const Belt = ({ data }: BeltProps) => {
         return [positions, sizes];
     }, [count, height, innerRadius, isSphere, maxSize, minSize, outerRadius]);
 
-    return <group >
+    return <group>
+        <mesh
+            name={data.id}
+            rotation={[-Math.PI / 2, 0, 0]}
+            visible={false}
+        >
+            <ringGeometry args={[innerRadius, outerRadius * 0.9]} />
+            <meshBasicMaterial />
+        </mesh>
 
         <points>
             <bufferGeometry>
@@ -78,8 +90,9 @@ const Belt = ({ data }: BeltProps) => {
                 />
             </bufferGeometry>
             <pointsMaterial
+                ref={pointRef}
                 color={"white"}
-                opacity={0.25}
+                opacity={opacity}
                 transparent
                 sizeAttenuation={true}
                 onBeforeCompile={(shader) => {

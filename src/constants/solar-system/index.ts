@@ -38,7 +38,7 @@ const belts: Belt[] = [
     {
         id: "kuiper",
         type: "belt",
-        count: 1000000,
+        count: 100000000,
         min_size: 100,
         max_size: 400,
         inner_radius: 4500000000,

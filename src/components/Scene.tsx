@@ -88,7 +88,6 @@ const Scene = ({ children, controlRef }: Props) => {
             const isMaxZoomOut = controlRef.current.getDistance() >= controlRef.current.maxDistance - 10;
 
             if (!navigationPanel) return
-            console.log("render nihh")
             navigationPanel.style.visibility = isMaxZoomOut ? "visible" : "hidden"
         }
     })

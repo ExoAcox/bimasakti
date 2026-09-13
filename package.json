@@ -7,7 +7,8 @@
     "dev": "react-router dev",
     "start": "react-router-serve ./build/server/index.js",
     "typecheck": "react-router typegen && tsc",
-    "lint": "eslint ."
+    "lint": "eslint .",
+    "sitemap": "npm sitemap.js"
   },
   "dependencies": {
     "@react-spring/three": "^10.1.2",
