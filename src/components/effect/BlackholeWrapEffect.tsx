@@ -3,7 +3,7 @@ import { Effect } from "postprocessing"
 import { Uniform, Vector2, Vector3 } from "three"
 import { useFrame, useThree } from "@react-three/fiber"
 import { wrapEffect } from "@react-three/postprocessing"
-import { blackHoleLensingFragmentShader } from "@shaders"
+import { blackHoleLensingFragmentShader } from "@shaders/blackhole"
 import { useCelestial } from "@function"
 
 export class BlackHoleLensingEffectImpl extends Effect {

@@ -117,5 +117,6 @@ export interface Universe {
     cameraPosition: Vector3,
     labelPosition: "top" | "bottom" | "left" | "right",
     defaultFocus?: string,
+    assetCount?: number,
     mobile: Partial<Universe>
 }

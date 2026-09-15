@@ -14,7 +14,7 @@ import {
     glowVertexShader,
     glowFragmentShader,
     coronaFragmentShader
-} from "@shaders"
+} from "@shaders/star"
 import { When } from "react-if"
 import { INTENSITY_SCALE } from "@constants"
 

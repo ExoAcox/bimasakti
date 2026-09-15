@@ -124,31 +124,3 @@ void main() {
     gl_FragColor = vec4(finalColor, clamp(finalAlpha, 0.0, 1.0));
 }
 `
-
-/**
- * Photon Ring Shaders
- */
-export const photonRingVertexShader = /* glsl */ `
-varying vec3 vNormal;
-
-void main() {
-    vNormal = normalize(normalMatrix * normal);
-    gl_Position = projectionMatrix * modelViewMatrix * vec4(position, 1.0);
-}
-`
-
-export const photonRingFragmentShader = /* glsl */ `
-uniform float u_time;
-uniform vec3 u_color;
-varying vec3 vNormal;
-
-void main() {
-    // Fresnel rim effect: 0.0 at center, 1.0 at outer edge
-    float viewDotNormal = abs(dot(vNormal, vec3(0.0, 0.0, 1.0)));
-    float rim = smoothstep(0.15, 0.95, 1.0 - viewDotNormal);
-    float intensity = pow(rim, 3.5);
-
-    vec3 glow = mix(vec3(1.0, 1.0, 0.95), u_color, 0.3) * intensity * 3.5;
-    gl_FragColor = vec4(glow, clamp(intensity, 0.0, 1.0));
-}
-`

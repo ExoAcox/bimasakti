@@ -10,6 +10,8 @@ export const SCALE = 1000000
 export const TIME_SCALE = 6
 export const INTENSITY_SCALE = 100000000000000
 
+export const LOWREST_SCALE = 10000000
+
 const universes: Universe[] = [
     {
         id: "milky_way",
@@ -18,6 +20,7 @@ const universes: Universe[] = [
         maxDistance: 30,
         cameraPosition: [2, -12, 5],
         labelPosition: "top",
+        assetCount: 3,
         stars: [],
         mobile: {
             cameraPosition: [2, -20, 5]
@@ -30,6 +33,7 @@ const universes: Universe[] = [
         maxDistance: 25000,
         cameraPosition: [200, 100, 500],
         labelPosition: "top",
+        assetCount: 1,
         stars: [],
         mobile: {}
     },
@@ -41,6 +45,7 @@ const universes: Universe[] = [
         cameraPosition: [3, 3, 3],
         labelPosition: "right",
         defaultFocus: "sun",
+        assetCount: 57,
         stars: solar_system.stars,
         mobile: {}
     },
@@ -51,6 +56,7 @@ const universes: Universe[] = [
         maxDistance: 5000000,
         cameraPosition: [0, 3000, 5000],
         labelPosition: "top",
+        assetCount: 6,
         stars: alpha_centauri.stars,
         mobile: {}
     },
@@ -62,6 +68,7 @@ const universes: Universe[] = [
         cameraPosition: [0.3, 0.3, 0.3],
         labelPosition: "bottom",
         defaultFocus: "trappist-1",
+        assetCount: 12,
         stars: trappist_1.stars,
         mobile: {}
     },
@@ -73,6 +80,7 @@ const universes: Universe[] = [
         cameraPosition: [0.1, 0.1, 0.1],
         labelPosition: "left",
         defaultFocus: "lich",
+        assetCount: 4,
         stars: lich.stars,
         mobile: {}
     }

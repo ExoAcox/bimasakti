@@ -1,3 +1,4 @@
+import clsx from "clsx";
 import { useControlStore } from "@state"
 import { useCelestial, lengthFormat, timeFormat } from "@function"
 import type { Belt, CelestialObject, Planet } from "@types"
@@ -6,13 +7,12 @@ import { useTranslation } from "react-i18next";
 import { When } from "react-if";
 import { useState } from "react";
 import { IoChevronDown, IoChevronUp } from "react-icons/io5";
-import clsx from "clsx";
-
-
-
+import { TbLayoutSidebarRightCollapse, TbLayoutSidebarRightExpand } from "react-icons/tb";
 
 const PanelDetail = () => {
+    const [isPanelOpen, setPanelOpen] = useState(true)
     const [isSatelliteOpen, setSatelliteOpen] = useState(true)
+
     const { focus, setControl } = useControlStore()
     const celestial = useCelestial()
     const data = celestial.getObjectById(focus) as CelestialObject
@@ -20,9 +20,17 @@ const PanelDetail = () => {
     const { t } = useTranslation();
 
     if (!data) return null
+
     const parentPlanet = (data.parent ? celestial.getObjectById(data.parent) : {}) as Planet
 
-    return <div className="flex flex-col fixed top-4 right-4 bottom-4 text-sm text-secondary bg-background min-w-sm max-w-sm rounded-md pb-6 pt-4 px-7 z-50 backdrop-blur-sm max-h-dvh h-fit">
+    const handleClick = () => {
+        setPanelOpen(!isPanelOpen)
+    }
+
+    return <div className={clsx(!isPanelOpen && "translate-x-full", "transition fixed top-4 right-4 bottom-4 text-sm text-secondary bg-background min-w-sm max-w-sm rounded-xl pb-5 pt-4 px-6 z-50 backdrop-blur-sm max-h-dvh h-fit")}>
+        <button className="absolute top-0 -left-2 -translate-x-full opacity-90" onClick={handleClick}>
+            {isPanelOpen ? <TbLayoutSidebarRightCollapse className="size-8" /> : <TbLayoutSidebarRightExpand className="size-8" />}
+        </button>
         <div>
             <div className="flex items-center gap-2 justify-between text-primary">
                 <h1 className="text-xl font-bold">{t(`object.${data?.id}.name`)}</h1>

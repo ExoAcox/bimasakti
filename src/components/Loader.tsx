@@ -1,10 +1,12 @@
+import { useCelestial } from "@function"
 import { Html, useProgress } from "@react-three/drei"
 import { useMemo } from "react"
 
 export const Loader = () => {
-    const { progress, item, loaded, total } = useProgress()
+    const { item, loaded, total } = useProgress()
 
-    // Format current item name from path/url
+    const universe = useCelestial().getUniverse()
+
     const itemName = useMemo(() => {
         if (!item) return "Loading solar system assets..."
         const parts = item.split("/")
@@ -12,7 +14,11 @@ export const Loader = () => {
         return file.split("?")[0] || item
     }, [item])
 
-    const formattedProgress = Math.min(100, Math.max(0, Math.round(progress)))
+    const knownTotalAssets = universe?.assetCount || 0
+    const displayTotal = Math.max(total, knownTotalAssets)
+    const formattedProgress = Math.round((loaded / displayTotal) * 100)
+
+    console.log(loaded, item)
 
     return (
         <Html center style={{ width: "100vw", height: "100vh", pointerEvents: "none" }}>
@@ -72,7 +78,7 @@ export const Loader = () => {
                             {itemName}
                         </span>
                         <span className="text-cyan-400/90 font-semibold shrink-0 ml-2">
-                            {loaded} / {total}
+                            {loaded} / {displayTotal}
                         </span>
                     </div>
                 </div>

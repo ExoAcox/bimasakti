@@ -18,7 +18,7 @@ import { useTranslation } from "react-i18next"
 import clsx from "clsx"
 import { classPosition, seo, useMobile } from "@function"
 import { useGalaxyStore } from "@state"
-import { pointGlowVertexShader, pointGlowFragmentShader } from "@shaders"
+import { pointGlowVertexShader, pointGlowFragmentShader } from "@shaders/galaxy"
 
 type GLTFResult = GLTF & {
     nodes: {

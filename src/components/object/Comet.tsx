@@ -5,6 +5,8 @@ import type { Comet as CometType } from "@types"
 import { CelestialBody } from "@components/object"
 import { type Mesh } from "three"
 import { useControlStore } from "@state"
+import { LOWREST_SCALE } from "@constants"
+import { Detailed } from "@react-three/drei"
 
 interface Props {
     data: CometType
@@ -12,9 +14,10 @@ interface Props {
 
 const Comet = ({ data }: Props) => {
     const objectRef = useRef<Mesh>(null!)
-    const { sizeScale, setControl } = useControlStore()
+    const { sizeScale, setControl, distanceScale } = useControlStore()
 
     const geometry = useLoader(PLYLoader, `/models/${data.model}`)
+    const distance = LOWREST_SCALE / distanceScale
     const scale = data.radius / sizeScale
 
     const handleClick = () => {
@@ -37,28 +40,30 @@ const Comet = ({ data }: Props) => {
     if (!data) return null
 
     return <CelestialBody data={data} objectRef={objectRef} onClick={handleClick}>
-        <mesh ref={objectRef} name={data.id} scale={scale} onClick={(e) => {
+        <group ref={objectRef} name={data.id} scale={scale} onClick={(e) => {
             e.stopPropagation()
             handleClick()
-        }} castShadow receiveShadow>
-            <primitive object={geometry} attach="geometry" />
-            <meshStandardMaterial
-                color={data.color}
-                roughness={0.5}
-                onBeforeCompile={(shader) => {
-                    shader.vertexShader = shader.vertexShader.replace(
-                        '#include <common>',
-                        `#include <common>
+        }}>
+            <Detailed distances={[0, distance]}>
+                <mesh castShadow receiveShadow>
+                    <primitive object={geometry} attach="geometry" />
+                    <meshStandardMaterial
+                        color={data.color}
+                        roughness={0.5}
+                        onBeforeCompile={(shader) => {
+                            shader.vertexShader = shader.vertexShader.replace(
+                                '#include <common>',
+                                `#include <common>
                     varying vec3 vLocalPosition;`
-                    );
-                    shader.vertexShader = shader.vertexShader.replace(
-                        '#include <begin_vertex>',
-                        `#include <begin_vertex>
+                            );
+                            shader.vertexShader = shader.vertexShader.replace(
+                                '#include <begin_vertex>',
+                                `#include <begin_vertex>
                     vLocalPosition = position;`
-                    );
-                    shader.fragmentShader = shader.fragmentShader.replace(
-                        '#include <common>',
-                        `#include <common>
+                            );
+                            shader.fragmentShader = shader.fragmentShader.replace(
+                                '#include <common>',
+                                `#include <common>
                     varying vec3 vLocalPosition;
 
                     // 3D Noise for rock texture
@@ -90,18 +95,24 @@ const Comet = ({ data }: Props) => {
                         return v;
                     }
                     `
-                    );
-                    shader.fragmentShader = shader.fragmentShader.replace(
-                        '#include <color_fragment>',
-                        `#include <color_fragment>
+                            );
+                            shader.fragmentShader = shader.fragmentShader.replace(
+                                '#include <color_fragment>',
+                                `#include <color_fragment>
 
                     float n = fbm(vLocalPosition * 2.0);
                     diffuseColor.rgb = mix(diffuseColor.rgb * 0.3, diffuseColor.rgb * 1.5, n);
                     `
-                    );
-                }}
-            />
-        </mesh>
+                            );
+                        }}
+                    />
+                </mesh>
+                <mesh>
+                    <sphereGeometry />
+                    <meshStandardMaterial color={data.color} />
+                </mesh>
+            </Detailed>
+        </group>
     </CelestialBody>
 }
 

@@ -1,5 +1,6 @@
 
 import clsx from "clsx"
+import { useState } from "react"
 import { useControlStore } from "@state"
 
 import { PlanetClass, type Belt, type CelestialObject, type Planet } from "@types"
@@ -8,7 +9,8 @@ import { useTranslation } from "react-i18next"
 import SettingPanel from "@components/panel/SettingPanel"
 
 import { IoChevronDown, IoChevronUp } from "react-icons/io5";
-import { useState } from "react"
+import { TbLayoutSidebarLeftCollapse, TbLayoutSidebarLeftExpand } from "react-icons/tb";
+
 
 interface SectionProps {
     children: string
@@ -76,6 +78,7 @@ const Section = ({ children, data, initialOpen }: SectionProps) => {
 
 const Sidebar = () => {
     const { t } = useTranslation()
+    const [isOpen, setOpen] = useState(true)
 
     const celestial = useCelestial()
     const stars = celestial.getObjectsByType("star")
@@ -85,8 +88,15 @@ const Sidebar = () => {
     const planets = allPlanets.filter(planet => planet.class !== PlanetClass.Dwarf)
     const dwarfPlanets = allPlanets.filter(planet => planet.class === PlanetClass.Dwarf)
 
+    const handleClick = () => {
+        setOpen(!isOpen)
+    }
 
-    return <div className="fixed top-0 left-0 bottom-0 min-w-40 flex flex-col bg-background px-3 py-4 z-50 text-primary backdrop-blur-sm">
+
+    return <div className={clsx(!isOpen && "-translate-x-full", "transition fixed top-0 left-0 bottom-0 min-w-40 flex flex-col bg-background px-3 py-4 z-50 text-primary backdrop-blur-sm")}>
+        <button className="opacity-80 absolute top-2 -right-2 translate-x-full" onClick={handleClick}>
+            {isOpen ? <TbLayoutSidebarLeftCollapse className="size-8" /> : <TbLayoutSidebarLeftExpand className="size-8" />}
+        </button>
         <div className="flex-1 flex flex-col gap-4 overflow-y-auto">
             <Section data={stars} initialOpen>{t("ui.stars")}</Section>
             <Section data={planets} initialOpen>{t("ui.planets")}</Section>

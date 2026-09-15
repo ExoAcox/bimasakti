@@ -5,6 +5,8 @@ import { useRef } from "react"
 import type { Mesh } from "three"
 import { useControlStore } from "@state"
 import { CelestialBody, ModelRenderer, PlanetRing, TextureRenderer, PlanetCloud } from "@components/object"
+import { Detailed } from "@react-three/drei"
+import { LOWREST_SCALE } from "@constants"
 
 
 
@@ -17,7 +19,8 @@ const Planet = ({ data, children }: Props) => {
     const objectRef = useRef<Mesh>(null!)
     const cloudRef = useRef<Mesh>(null!)
 
-    const { sizeScale, setControl } = useControlStore()
+    const { sizeScale, distanceScale, setControl } = useControlStore()
+    const distance = LOWREST_SCALE / distanceScale
     const scale = data.radius / sizeScale
 
     const handleClick = () => {
@@ -27,27 +30,35 @@ const Planet = ({ data, children }: Props) => {
     if (!data) return null
 
     return <CelestialBody data={data} objectRef={objectRef} onClick={handleClick} cloudRef={cloudRef} childrenComponent={children}>
-        <mesh ref={objectRef} name={data.id} scale={scale} onClick={(e) => {
+        <group ref={objectRef} name={data.id} scale={scale} onClick={(e) => {
             e.stopPropagation()
             handleClick()
-        }} castShadow receiveShadow>
-            <If condition={data.model}>
-                <Then>
-                    <ModelRenderer path={data.model!} />
-                </Then>
-                <Else>
-                    <sphereGeometry args={[1, 64, 64]} />
-                </Else>
-            </If>
-            <If condition={data.texture}>
-                <Then>
-                    <TextureRenderer path={data.texture!} />
-                </Then>
-                <Else>
-                    <meshStandardMaterial color={data.color} wireframe />
-                </Else>
-            </If>
-        </mesh>
+        }}>
+            <Detailed distances={[0, distance]}>
+                <mesh castShadow receiveShadow>
+                    <If condition={data.model}>
+                        <Then>
+                            <ModelRenderer path={data.model!} />
+                        </Then>
+                        <Else>
+                            <sphereGeometry args={[1, 64, 64]} />
+                        </Else>
+                    </If>
+                    <If condition={data.texture}>
+                        <Then>
+                            <TextureRenderer path={data.texture!} />
+                        </Then>
+                        <Else>
+                            <meshStandardMaterial color={data.color} wireframe />
+                        </Else>
+                    </If>
+                </mesh>
+                <mesh>
+                    <sphereGeometry />
+                    <meshStandardMaterial color={data.color} />
+                </mesh>
+            </Detailed>
+        </group>
 
         <When condition={data.cloud_texture}>
             <PlanetCloud
