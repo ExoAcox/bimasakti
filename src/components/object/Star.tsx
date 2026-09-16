@@ -117,14 +117,11 @@ const Star = ({ id, children, labelRef }: Props) => {
             <group ref={objectRef}>
                 <group
                     scale={scale}
-
                     name={id}
                     onClick={(e) => {
                         e.stopPropagation()
                         handleClick()
-                    }}
-                    castShadow
-                    receiveShadow>
+                    }}>
                     <mesh>
                         <sphereGeometry args={[1, 64, 64]} />
                         {/* <meshStandardMaterial color={data.color} emissive={data.color} emissiveIntensity={intensity / 20} /> */}

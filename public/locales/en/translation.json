@@ -23,6 +23,7 @@
         "dwarf_planets": "Dwarf Planets",
         "satellites": "Satellites",
         "artificial_satellites": "Artificial Satellites",
+        "space_craft": "Space Craft",
         "comets": "Comets",
         "others": "Others"
     },
@@ -465,6 +466,21 @@
             "name": "S4711",
             "nickname": "Short-Period S-Cluster Star",
             "description": "S4711 is a high-velocity star orbiting Sagittarius A* with a short 7.6-year period."
+        },
+        "voyager_1": {
+            "name": "Voyager 1",
+            "nickname": "First Interstellar Spacecraft",
+            "description": "Voyager 1 is a space probe launched by NASA on September 5, 1977. It became the first human-made object to enter interstellar space in 2012 and remains the most distant human-made object from Earth."
+        },
+        "voyager_2": {
+            "name": "Voyager 2",
+            "nickname": "Explorer of the Grand Tour",
+            "description": "Voyager 2 is a NASA space probe launched on August 20, 1977. It is the only spacecraft to have visited all four gas giant planets of the Solar System (Jupiter, Saturn, Uranus, and Neptune) before crossing into interstellar space in 2018."
+        },
+        "new_horizons": {
+            "name": "New Horizons",
+            "nickname": "Pluto & Kuiper Belt Explorer",
+            "description": "New Horizons is a NASA space probe launched on January 19, 2006. It performed a historic flyby of Pluto and its moons in July 2015, capturing the first high-resolution images of the dwarf planet, and later explored the Kuiper Belt object Arrokoth in 2019."
         }
     }
 }

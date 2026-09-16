@@ -1,4 +1,4 @@
-import { ArtificialSatellite, Planet, Satellite, Star, Comet, Belt } from "@components/object"
+import { Planet, Satellite, Star, Comet, Belt, SpaceCraft } from "@components/object"
 import { solar_system } from "@constants"
 import { seo } from "@function"
 
@@ -26,10 +26,10 @@ const SolarSystem = () => {
                             data={satellite}
                         />
                     ))}
-                    {planet.artificial_satellites?.map(satellite => (
-                        <ArtificialSatellite
-                            key={satellite.id}
-                            data={satellite}
+                    {planet.artificial_satellites?.map(craft => (
+                        <SpaceCraft
+                            key={craft.id}
+                            data={craft}
                         />
                     ))}
                 </Planet>

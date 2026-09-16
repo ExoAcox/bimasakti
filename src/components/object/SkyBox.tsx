@@ -5,18 +5,18 @@ import { useMemo, useRef } from "react"
 import { BackSide, NearestFilter, ShaderLib, ShaderMaterial, SRGBColorSpace, UniformsUtils, type Mesh } from "three"
 
 interface Props {
-    texturePath?: string
+    path: string
     size?: number
     followCamera?: boolean
 }
 
 const SkyBox = ({
-    texturePath = "/textures/milkyway.jpg",
+    path,
     size = 1000000,
     followCamera = true,
 }: Props) => {
     const meshRef = useRef<Mesh>(null!)
-    const texture = useTexture(texturePath)
+    const texture = useTexture(path)
 
     const material = useMemo(() => {
         texture.colorSpace = SRGBColorSpace

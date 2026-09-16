@@ -402,6 +402,21 @@
             "name": "S4711",
             "nickname": "Kurzperiodischer S-Stern",
             "description": "S4711 ist ein Hochgeschwindigkeitsstern mit einer kurzen Umlaufzeit von 7,6 Jahren um Sagittarius A*."
+        },
+        "voyager_1": {
+            "name": "Voyager 1",
+            "nickname": "Erste interstellarer Sonde",
+            "description": "Voyager 1 ist eine Raumsonde der NASA, die am 5. September 1977 gestartet wurde. Sie trat 2012 als erstes von Menschen geschaffenes Objekt in den interstellaren Raum ein."
+        },
+        "voyager_2": {
+            "name": "Voyager 2",
+            "nickname": "Erforscher der vier Gasriesen",
+            "description": "Voyager 2 ist eine NASA-Raumsonde, die am 20. August 1977 gestartet wurde. Sie ist die einzige Raumsonde, die alle vier Gasriesen des Sonnensystems besucht hat."
+        },
+        "new_horizons": {
+            "name": "New Horizons",
+            "nickname": "Pluto- und Kuipergürtel-Sonde",
+            "description": "New Horizons ist eine NASA-Raumsonde, die am 19. Januar 2006 gestartet wurde. Sie führte im Juli 2015 einen historischen Vorbeiflug an Pluto und seinen Monden durch und erkundete 2019 das Kuipergürtel-Objekt Arrokoth."
         }
     }
 }

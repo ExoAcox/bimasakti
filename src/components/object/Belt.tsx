@@ -21,7 +21,7 @@ const Belt = ({ data }: BeltProps) => {
     const outerRadius = data.outer_radius / distanceScale
     const minSize = data.min_size / sizeScale
     const maxSize = data.max_size / sizeScale
-    const opacity = focus === data.id ? 0.25 : 0.1
+    const opacity = focus === data.id ? 0.3 : 0.15
 
     const isSphere = data.shape === "sphere" || data.id === "oort"
 
@@ -31,35 +31,54 @@ const Belt = ({ data }: BeltProps) => {
 
         for (let i = 0; i < count; i++) {
             if (isSphere) {
-                // Uniform 3D spherical shell distribution (covers all sides 360x360 deg)
+                // 3D spherical cloud distribution with organic radial dispersion
                 const u = randomNumber();
                 const v = randomNumber();
                 const theta = u * Math.PI * 2;
                 const phi = Math.acos(2 * v - 1);
 
-                const r = innerRadius + randomNumber() * (outerRadius - innerRadius);
+                // Non-linear radial distribution to prevent uniform hollow shell look
+                const rBias = Math.pow(randomNumber(), 1.3);
+                const r = innerRadius + rBias * (outerRadius - innerRadius);
 
                 tempPosition.push([
                     r * Math.sin(phi) * Math.cos(theta),
                     r * Math.cos(phi),
                     r * Math.sin(phi) * Math.sin(theta)
-                ])
+                ]);
             } else {
-                // Ring / Disc distribution
-                const angle = randomNumber() * Math.PI * 2;
-                const r = innerRadius + randomNumber() * (outerRadius - innerRadius);
+                // Organic Ring / Disc distribution with non-uniform random dispersion
+                const baseAngle = randomNumber() * Math.PI * 2;
 
+                // Combine central density peak (Gaussian-like average) with random scatter
+                const rGaussian = (randomNumber() + randomNumber() + randomNumber()) / 3;
+                const rUniform = randomNumber();
+                const rFactor = randomNumber() > 0.25 ? rGaussian : rUniform;
+
+                const r = innerRadius + rFactor * (outerRadius - innerRadius);
+
+                // Height profile with Gaussian distribution (higher density near ecliptic plane)
                 const normalizedR = (r - innerRadius) / (outerRadius - innerRadius);
-                const heightFactor = 0.25 + 0.75 * Math.pow(Math.sin(normalizedR * Math.PI), 0.7);
+                const edgeEnvelope = Math.sin(normalizedR * Math.PI);
+                const heightFactor = 0.15 + 0.85 * Math.pow(edgeEnvelope, 0.6);
+
+                // Gaussian vertical dispersion (soft edge fading without sharp box boundaries)
+                const yDispersal = (randomNumber() + randomNumber() - 1) * 0.5;
+                const y = yDispersal * height * heightFactor;
+
+                // Subtle angular perturbation for natural organic scattering
+                const scatterAngle = baseAngle + (randomNumber() - 0.5) * 0.05;
 
                 tempPosition.push([
-                    Math.cos(angle) * r,
-                    (randomNumber() - 0.5) * height * heightFactor,
-                    Math.sin(angle) * r
-                ])
+                    Math.cos(scatterAngle) * r,
+                    y,
+                    Math.sin(scatterAngle) * r
+                ]);
             }
 
-            tempSize.push((minSize + randomNumber() * (maxSize - minSize)))
+            // Power-law size distribution: higher frequency of small dust/rocks, fewer large objects
+            const sizeWeight = Math.pow(randomNumber(), 2.2);
+            tempSize.push(minSize + sizeWeight * (maxSize - minSize));
         }
 
         const positions = new Float32Array(tempPosition.flat())

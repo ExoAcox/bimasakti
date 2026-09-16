@@ -127,7 +127,9 @@ const Object = ({ data, children, childrenComponent, onClick, objectRef, cloudRe
     const isLabelVisible = useMemo(() => {
         const isSmallestObject = () => {
             if (universe.defaultFocus) {
-                return ["satellite", "artificial_satellite"].includes(data.type)
+                const isChildren = ["satellite", "space_craft"].includes(data.type)
+                const isOrbiting = data.orbit_duration
+                return isChildren && isOrbiting
             } else {
                 return data.type === "planet"
             }
@@ -141,22 +143,19 @@ const Object = ({ data, children, childrenComponent, onClick, objectRef, cloudRe
         }
 
         return false
-    }, [data.type, data.id, data.parent, universe, focus, focusedObject])
+    }, [universe.defaultFocus, data.type, data.orbit_duration, data.id, data.parent, focus, focusedObject?.parent])
 
     useLayoutEffect(() => {
         const effectiveFocus = focus || defaultFocus;
         if (!effectiveFocus) return setOcclude(undefined);
 
         if (effectiveFocus === data.id) return setOcclude(undefined)
-        // if (defaultFocus === data.id) return setOcclude(undefined)
 
         const object = scene.getObjectByName(effectiveFocus)
         if (!object) return setOcclude(undefined)
 
         const occlude = [{ current: object }]
         if (focusedObject?.parent === data.id) return setOcclude(occlude)
-
-        // const isSatellite = ["satellite", "artificial_satellite"].includes(focusedObject?.type ?? "")
 
         if (focusedObject?.parent) {
             const parentObject = scene.getObjectByName(focusedObject.parent)
@@ -166,29 +165,22 @@ const Object = ({ data, children, childrenComponent, onClick, objectRef, cloudRe
         setOcclude(occlude)
     }, [focus, scene, focusedObject, defaultFocus, data.type, data.id])
 
-
-
-    // useEffect(() => {
-    //     if (["blackhole", "star"].includes(data.type)) {
-    //         console.log(labelRef, internalLabelRef)
-    //     }
-    // }, [labelRef, data.type])
-
-
-
     return <group rotation={[0, 0, axis]}>
         <group rotation={[0, rotate, 0]}>
-            <When condition={showOrbitLine}>
+            <When condition={data.orbit_duration && showOrbitLine}>
                 <OrbitLine radius={distance} longestRadius={longestDistance > distance ? longestDistance : undefined} color={data.color} />
             </When>
 
             <group ref={orbitRef}>
                 <group position={longestDistance > distance ? [0, 0, 0] : [distance, 0, 0]}>
-                    <Html occlude={occlude} zIndexRange={[data.type === "star" ? 2 : 1, 0]}>
-                        <When condition={isLabelVisible}>
+                    <When condition={isLabelVisible}>
+                        <Html
+                            occlude={occlude}
+                            zIndexRange={[data.type === "star" ? 2 : 1, 0]}
+                        >
                             <button ref={labelRef || internalLabelRef} className="hover:text-accent absolute -translate-x-1/2 -translate-y-full -mt-1 py-1 px-2 whitespace-nowrap rounded-lg text-sm font-semibold text-secondary" onClick={onClick}>{t(`object.${data.id}.name`)}</button>
-                        </When>
-                    </Html>
+                        </Html>
+                    </When>
 
                     {children}
                     {childrenComponent}

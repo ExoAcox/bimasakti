@@ -1,5 +1,5 @@
 /* eslint-disable react-hooks/set-state-in-effect */
-import { Bounds, OrbitControls, useProgress, useGLTF, Stats } from "@react-three/drei"
+import { Bounds, OrbitControls, useProgress, useGLTF, Stats, Environment } from "@react-three/drei"
 import { Canvas } from "@react-three/fiber"
 import { useRef, useState, useEffect, Suspense } from "react"
 import { track } from '@vercel/analytics';
@@ -65,12 +65,13 @@ const CanvasLayout = () => {
 
     return <div className="w-dvw h-dvh">
         <Canvas
-            camera={{ near: 0.000001, far: 10000000 }}
+            camera={{ near: 1e-7, far: 1e+7 }}
             onPointerMissed={() => setControl({ showSetting: false })}>
 
             <When condition={import.meta.env.DEV || searchParams.get('dev')}>
                 <Stats className="top-auto! left-auto! bottom-0! right-0!" />
             </When>
+
 
             <Suspense fallback={<Loader />}>
                 <ambientLight intensity={0.5} />
@@ -85,7 +86,7 @@ const CanvasLayout = () => {
                 <color attach="background" args={['black']} />
 
                 <When condition={data.id !== "milky_way"}>
-                    <SkyBox texturePath={skyboxTexture} />
+                    <SkyBox path={skyboxTexture} />
                 </When>
 
                 <Bounds>

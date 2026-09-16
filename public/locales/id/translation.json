@@ -456,6 +456,21 @@
             "name": "S4711",
             "nickname": "Bintang S-Cluster Periodik Pendek",
             "description": "S4711 adalah bintang berkecepatan tinggi dengan periode orbit 7,6 tahun di sekitar Sagittarius A*."
+        },
+        "voyager_1": {
+            "name": "Voyager 1",
+            "nickname": "Penjelajah Antarbintang Pertama",
+            "description": "Voyager 1 adalah wahana antariksa nirkawak yang diluncurkan oleh NASA pada 5 September 1977. Wahana ini menjadi objek buatan manusia pertama yang memasuki ruang antarbintang pada tahun 2012 dan merupakan objek buatan manusia terjauh dari Bumi."
+        },
+        "voyager_2": {
+            "name": "Voyager 2",
+            "nickname": "Penjelajah Empat Raksasa Gas",
+            "description": "Voyager 2 adalah wahana antariksa NASA yang diluncurkan pada 20 Agustus 1977. Wahana ini adalah satu-satunya wahana antariksa yang telah mengunjungi keempat planet raksasa di Tata Surya (Jupiter, Saturnus, Uranus, dan Neptunus) sebelum memasuki ruang antarbintang pada tahun 2018."
+        },
+        "new_horizons": {
+            "name": "New Horizons",
+            "nickname": "Penjelajah Pluto & Sabuk Kuiper",
+            "description": "New Horizons adalah wahana antariksa NASA yang diluncurkan pada 19 Januari 2006. Wahana ini melakukan penerbangan lintas bersejarah di Pluto dan bulan-bulannya pada Juli 2015, mengambil gambar resolusi tinggi pertama dari planet kerdil tersebut, dan kemudian menjelajahi objek Sabuk Kuiper Arrokoth pada tahun 2019."
         }
     }
 }

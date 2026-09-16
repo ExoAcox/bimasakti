@@ -1,7 +1,7 @@
 import type { Vector3 } from "@react-three/fiber"
 
-export type CelestialType = "blackhole" | "star" | "planet" | "comet" | "artificial_satellite" | "satellite" | "human_made" | "dummy"
-export type CelestialObject = Blackhole | Star | Planet | Comet | ArtificialSatellite | Satellite | HumanMade | Dummy
+export type CelestialType = "blackhole" | "star" | "planet" | "comet" | "artificial_satellite" | "satellite" | "space_craft"
+export type CelestialObject = Blackhole | Star | Planet | Comet | Satellite | SpaceCraft
 
 export interface Object {
     id: string
@@ -20,9 +20,9 @@ export interface Object {
     longest_distance?: number
 }
 
-export interface Dummy extends Object {
-    type: "dummy"
-}
+// export interface Dummy extends Object {
+//     type: "dummy"
+// }
 
 export interface Blackhole extends Object {
     type: "blackhole"
@@ -51,21 +51,16 @@ export interface Comet extends Object {
     longest_distance: number
 }
 
-export interface HumanMade extends Object {
-    type: "human_made"
+export interface SpaceCraft extends Object {
+    type: "space_craft"
     model: string
+    class: SpaceCraftClass
 }
-
-export interface ArtificialSatellite extends Object {
-    type: "artificial_satellite"
-    model: string
-}
-
 export interface Planet extends Object {
     type: "planet"
     class: PlanetClass
     satellites?: Satellite[]
-    artificial_satellites?: ArtificialSatellite[]
+    artificial_satellites?: SpaceCraft[]
     ring?: Ring
 }
 
@@ -105,8 +100,16 @@ export const StarClass = {
     Blue: "Blue Main-Sequence Star"
 } as const;
 
+export const SpaceCraftClass = {
+    FlyBy: "Fly-by Probe",
+    Orbiter: "Orbiter Probe",
+    Station: "Space Station",
+    Telescope: "Space Telescope"
+}
+
 export type PlanetClass = (typeof PlanetClass)[keyof typeof PlanetClass];
 export type StarClass = (typeof StarClass)[keyof typeof StarClass];
+export type SpaceCraftClass = (typeof SpaceCraftClass)[keyof typeof SpaceCraftClass];
 
 export interface Universe {
     id: string

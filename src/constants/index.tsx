@@ -6,11 +6,11 @@ import sagittarius_a from "./sagittarius-a"
 import trappist_1 from "./trappist-1"
 import lich from "./lich"
 
-export const SCALE = 1000000
+export const SCALE = 1e+6
 export const TIME_SCALE = 6
-export const INTENSITY_SCALE = 100000000000000
+export const INTENSITY_SCALE = 1e+14
 
-export const LOWREST_SCALE = 10000000
+export const LOWREST_SCALE = 1e+7
 
 const universes: Universe[] = [
     {
@@ -29,7 +29,7 @@ const universes: Universe[] = [
     {
         id: "sagittarius_a",
         position: [0, 0, 0],
-        minDistance: 0.000001,
+        minDistance: 1e-6,
         maxDistance: 25000,
         cameraPosition: [200, 100, 500],
         labelPosition: "top",
@@ -40,7 +40,7 @@ const universes: Universe[] = [
     {
         id: "solar_system",
         position: [0.038105392881217164, -2.745814737039023, 0.7172299984047412],
-        minDistance: 0.000001,
+        minDistance: 3e-7,
         maxDistance: 40000,
         cameraPosition: [3, 3, 3],
         labelPosition: "right",
@@ -52,7 +52,7 @@ const universes: Universe[] = [
     {
         id: "alpha_centauri",
         position: [0.0881, -2.6958, 0.7172], // [0.0383, -2.7455, 0.7169]
-        minDistance: 0.001,
+        minDistance: 1e-3,
         maxDistance: 5000000,
         cameraPosition: [0, 3000, 5000],
         labelPosition: "top",
@@ -63,7 +63,7 @@ const universes: Universe[] = [
     {
         id: "trappist-1",
         position: [0.1, -2.5, 0.7],
-        minDistance: 0.001,
+        minDistance: 1e-3,
         maxDistance: 30,
         cameraPosition: [0.3, 0.3, 0.3],
         labelPosition: "bottom",
@@ -75,9 +75,9 @@ const universes: Universe[] = [
     {
         id: "lich",
         position: [0.14, -2.4, 0.75],
-        minDistance: 0.001,
+        minDistance: 1e-3,
         maxDistance: 300,
-        cameraPosition: [0.1, 0.1, 0.1],
+        cameraPosition: [0.2, 0.2, 0.2],
         labelPosition: "left",
         defaultFocus: "lich",
         assetCount: 4,

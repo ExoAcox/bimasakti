@@ -1,4 +1,5 @@
-import { artificial_satellites, satellites } from "./satellite"
+import { satellites } from "./satellite"
+import { space_craft } from "./space_craft"
 import { PlanetClass, type Planet } from "@types"
 
 
@@ -58,7 +59,7 @@ export const planets: Planet[] = [
             return satellites.filter((satellite) => satellite.parent === this.id)
         },
         get artificial_satellites() {
-            return artificial_satellites.filter((satellite) => satellite.parent === this.id)
+            return space_craft.filter((craft) => craft.parent === this.id)
         }
     },
     {

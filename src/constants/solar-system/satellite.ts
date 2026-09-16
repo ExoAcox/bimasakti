@@ -1,4 +1,4 @@
-import type { ArtificialSatellite, Satellite } from "@types"
+import type { Satellite } from "@types"
 
 export const satellites: Satellite[] = [
     // Earth
@@ -434,20 +434,4 @@ export const satellites: Satellite[] = [
     //     rotate_duration: 0.43, // Chaotic / rapid
     //     icon: "satellite.png"
     // }
-]
-
-export const artificial_satellites: ArtificialSatellite[] = [
-    {
-        id: "iss",
-        type: "artificial_satellite",
-        parent: "earth",
-        radius: 0.0545, // ~54.5 meters radius in km
-        distance: 6779, // Distance from Earth center in km (6371 km Earth radius + ~408 km altitude)
-        color: "#c0c0c0",
-        axis: 51.64, // Orbital inclination in degrees
-        orbit_duration: 0.0645, // ~92.9 minutes orbital period in days
-        rotate_duration: 0.0645, // Earth-facing rotational alignment in days
-        model: "/models/iss.glb",
-        icon: "artificial_satellite.png"
-    }
 ]

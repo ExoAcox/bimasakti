@@ -4,7 +4,7 @@ import type { Planet as PlanetType } from "@types"
 import { useRef } from "react"
 import type { Mesh } from "three"
 import { useControlStore } from "@state"
-import { CelestialBody, ModelRenderer, PlanetRing, TextureRenderer, PlanetCloud } from "@components/object"
+import { CelestialBody, PlyLoader, PlanetRing, TextureLoader, PlanetCloud } from "@components/object"
 import { Detailed } from "@react-three/drei"
 import { LOWREST_SCALE } from "@constants"
 
@@ -38,7 +38,7 @@ const Planet = ({ data, children }: Props) => {
                 <mesh castShadow receiveShadow>
                     <If condition={data.model}>
                         <Then>
-                            <ModelRenderer path={data.model!} />
+                            <PlyLoader path={data.model!} />
                         </Then>
                         <Else>
                             <sphereGeometry args={[1, 64, 64]} />
@@ -46,7 +46,7 @@ const Planet = ({ data, children }: Props) => {
                     </If>
                     <If condition={data.texture}>
                         <Then>
-                            <TextureRenderer path={data.texture!} />
+                            <TextureLoader path={data.texture!} />
                         </Then>
                         <Else>
                             <meshStandardMaterial color={data.color} wireframe />

@@ -26,7 +26,7 @@ const GordilocksZone = ({ data }: Props) => {
     const innerRadius = (data.gordilocks?.inner_radius ?? 0) / SCALE;
     const outerRadius = (data.gordilocks?.outer_radius ?? 0) / SCALE;
 
-    const innerColor = "#dddd22";
+    const innerColor = "#ff0000";
     const outerColor = "#22dddd";
 
     const baseInnerOpacity = 0.015;

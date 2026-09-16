@@ -87,6 +87,7 @@ const Sidebar = () => {
     const allPlanets = celestial.getObjectsByType("planet") as Planet[]
     const planets = allPlanets.filter(planet => planet.class !== PlanetClass.Dwarf)
     const dwarfPlanets = allPlanets.filter(planet => planet.class === PlanetClass.Dwarf)
+    const spaceCraft = celestial.getObjectsByType("space_craft")
 
     const handleClick = () => {
         setOpen(!isOpen)
@@ -101,6 +102,7 @@ const Sidebar = () => {
             <Section data={stars} initialOpen>{t("ui.stars")}</Section>
             <Section data={planets} initialOpen>{t("ui.planets")}</Section>
             <Section data={dwarfPlanets}>{t("ui.dwarf_planets")}</Section>
+            <Section data={spaceCraft}>{t("ui.space_craft")}</Section>
             <Section data={comets}>{t("ui.comets")}</Section>
             <Section data={belts}>{t("ui.others")}</Section>
         </div>
