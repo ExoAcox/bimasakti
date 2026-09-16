@@ -20,50 +20,50 @@
         "milky_way": {
             "name": "Milchstraße",
             "title": "Milchstraßengalaxie",
-            "nickname": "Die Galaxie",
+            "nickname": "Milchstraße",
             "description": "Die Milchstraße ist eine Balkenspiralgalaxie, in der sich unser Sonnensystem befindet. Sie enthält Milliarden von Sternen, Gas und Staub sowie ein supermassereiches Schwarzes Loch in ihrem Zentrum."
         },
         "solar_system": {
             "name": "Sonnensystem",
             "title": "Sonnensystem",
-            "nickname": "Unser Sonnensystem",
+            "nickname": "Sonnensystem",
             "description": "Das Sonnensystem ist das gravitationell gebundene System der Sonne und der Objekte, die sie umkreisen, einschließlich acht Planeten, Zwergplaneten und unzähliger kleinerer Körper."
         },
         "alpha_centauri": {
             "name": "Alpha Centauri",
             "title": "Alpha-Centauri-System",
-            "nickname": "Das nächstgelegene Sternsystem",
+            "nickname": "Alpha Centauri",
             "description": "Alpha Centauri ist das unserem Sonnensystem am nächsten gelegene Sternsystem, etwa 4,37 Lichtjahre entfernt. Es besteht aus drei Sternen: Alpha Centauri A, Alpha Centauri B und Proxima Centauri."
         },
         "sagittarius_a": {
             "name": "Sagittarius A*",
             "title": "Sagittarius A*",
-            "nickname": "Supermassereiches Schwarzes Loch",
+            "nickname": "Sagittarius A*",
             "description": "Sagittarius A* ist ein supermassereiches Schwarzes Loch im galaktischen Zentrum der Milchstraße. Es ist eine sehr kompakte und helle astronomische Radioquelle."
         },
         "sun": {
             "name": "Sonne",
-            "nickname": "Der Gelbe Zwerg",
+            "nickname": "Sonne",
             "description": "Die Sonne ist der Stern im Zentrum unseres Sonnensystems und macht 99,8 % der Gesamtmasse des Systems aus. Sie ist eine fast perfekte Kugel aus heißem Plasma, die durch Kernfusionsreaktionen in ihrem Kern erhitzt wird. Sie strahlt Energie hauptsächlich als Licht, ultraviolette und infrarote Strahlung aus und ist die primäre Energiequelle für das Leben auf der Erde."
         },
         "mercury": {
             "name": "Merkur",
-            "nickname": "Der schnelle Planet",
+            "nickname": "Merkur",
             "description": "Merkur ist der kleinste Planet in unserem Sonnensystem und der Sonne am nächsten. Er ist extremen Temperaturschwankungen ausgesetzt, die von sengenden Tagen bis zu eisigen Nächten reichen, und besitzt eine stark verkraterte, uralte Oberfläche ohne Atmosphäre und ohne Monde."
         },
         "venus": {
             "name": "Venus",
-            "nickname": "Der Morgenstern",
+            "nickname": "Venus",
             "description": "Venus ist der zweite Planet von der Sonne und der nächste planetare Nachbar der Erde. Sie ist von einer dichten, giftigen Atmosphäre aus Kohlendioxid und Schwefelsäurewolken umgeben, die die Wärme durch einen unkontrollierten Treibhauseffekt staut. Dies macht ihre Oberfläche heiß genug, um Blei zu schmelzen, und macht sie zum heißesten Planeten im Sonnensystem."
         },
         "earth": {
             "name": "Erde",
-            "nickname": "Der blaue Planet",
+            "nickname": "Erde",
             "description": "Die Erde ist der dritte Planet von der Sonne und das einzige bekannte astronomische Objekt, das Leben beherbergt. Sie zeichnet sich durch ihre flüssigen Wasserozeane aus, die etwa 71 % ihrer Oberfläche bedecken, eine stickstoff- und sauerstoffreiche Atmosphäre sowie ein starkes Magnetfeld, das sie vor schädlicher Sonnenstrahlung schützt."
         },
         "moon": {
             "name": "Mond",
-            "nickname": "Luna",
+            "nickname": "Mond",
             "description": "Der Mond ist der einzige natürliche Satellit der Erde und der fünftgrößte Mond im Sonnensystem. Er ist an die Erde rotationsgebunden, was bedeutet, dass er immer dasselbe Gesicht zeigt. Seine Anziehungskraft ist der Hauptantrieb für die Gezeiten der Ozeane auf der Erde und stabilisiert die Achsenneigung des Planeten."
         },
         "iss": {
@@ -73,349 +73,349 @@
         },
         "mars": {
             "name": "Mars",
-            "nickname": "Der Rote Planet",
+            "nickname": "Mars",
             "description": "Mars ist der vierte Planet von der Sonne und der zweitkleinste Planet im Sonnensystem. Er wird oft als Roter Planet bezeichnet, da auf seiner Oberfläche Eisenoxid vorherrscht. Er ist eine kalte Wüstenwelt mit einer dünnen Kohlendioxidatmosphäre, jahreszeitlichen polaren Eiskappen und erloschenen Vulkanen wie Olympus Mons."
         },
         "phobos": {
             "name": "Phobos",
-            "nickname": "Der Mond der Furcht",
+            "nickname": "Phobos",
             "description": "Phobos ist der größere und nähere der beiden kleinen, unregelmäßig geformten Monde des Mars. Er umkreist den Mars so nah, dass er in einem einzigen Mars-Tag drei Umlaufbahnen vollendet. Gezeitenkräfte ziehen ihn allmählich näher an den Planeten heran, sodass er dazu bestimmt ist, auf den Mars zu stürzen oder in einen Ring zu zerbrechen."
         },
         "deimos": {
             "name": "Deimos",
-            "nickname": "Der Mond des Schreckens",
+            "nickname": "Deimos",
             "description": "Deimos ist der kleinere und äußere der beiden Marsmonde. Er hat ein stark verkratertes, aber glattes Aussehen, da eine dichte Schicht aus pulverisiertem Gesteinsstaub (Regolith) seine Krater füllt. Seine Umlaufbahn ist im Gegensatz zu Phobos fast kreisförmig und stabil."
         },
         "jupiter": {
             "name": "Jupiter",
-            "nickname": "Der König der Planeten",
+            "nickname": "Jupiter",
             "description": "Jupiter ist der fünfte Planet von der Sonne und der größte in unserem Sonnensystem, mit einer Masse, die mehr als doppelt so groß ist wie die aller anderen Planeten zusammen. Als Gasriese besteht er hauptsächlich aus Wasserstoff und Helium, hat keine klar definierte feste Oberfläche und ist berühmt für seine farbenfrohen Wolkenbänder und den Sturm des Großen Roten Flecks."
         },
         "io": {
             "name": "Io",
-            "nickname": "Der vulkanische Mond",
+            "nickname": "Io",
             "description": "Io ist der innerste der vier Galileischen Monde des Jupiters und der vulkanisch aktivste Körper im Sonnensystem. Seine intensive Aktivität wird durch Gezeitenheizung infolge der gravitativen Reibung mit Jupiter und den benachbarten Monden angetrieben, was zu Hunderten von aktiven Vulkanen führt, die Schwefel und Schwefeldioxid ausstoßen."
         },
         "europa": {
             "name": "Europa",
-            "nickname": "Der Ozeanmond",
+            "nickname": "Europa",
             "description": "Europa ist der kleinste der Galileischen Monde des Jupiters. Seine Oberfläche ist eine stark reflektierende Schicht aus Wassereis, die von Rissen (Lineae) durchzogen ist. Wissenschaftler vermuten darunter einen globalen Ozean aus flüssigem Wasser, der doppelt so viel Wasser enthält wie alle Ozeane der Erde zusammen, was ihn zu einem Hauptziel für die Astrobiologie macht."
         },
         "ganymede": {
             "name": "Ganymed",
-            "nickname": "Der Riesenmond",
+            "nickname": "Ganymed",
             "description": "Ganymed ist der größte Mond in unserem Sonnensystem und übertrifft sogar den Planeten Merkur an Größe. Er ist der einzige bekannte natürliche Satellit mit einem eigenen Magnetfeld, das durch Konvektion in seinem flüssigen Eisenkern erzeugt wird. Seine Oberfläche zeigt eine Mischung aus dunklem, verkratertem Gelände und helleren, gerillten Regionen."
         },
         "callisto": {
             "name": "Kallisto",
-            "nickname": "Die verkraterte Welt",
+            "nickname": "Kallisto",
             "description": "Kallisto ist der zweitgrößte Mond des Jupiters und der drittgrößte im Sonnensystem. Er ist das am stärksten verkraterte Objekt im Sonnensystem mit einer uralten Oberfläche, die keine Anzeichen geologischer Aktivität aufweist, obwohl er tief unter seiner Eiskruste einen salzigen Ozean beherbergen könnte."
         },
         "amalthea": {
             "name": "Amalthea",
-            "nickname": "Der rote Mond des Jupiters",
+            "nickname": "Amalthea",
             "description": "Amalthea ist ein unregelmäßig geformter, rötlicher innerer Mond des Jupiters. Er ist extrem dunkel und porös und strahlt mehr Wärme ab, als er von der Sonne erhält, was möglicherweise auf Gezeitenreibung oder durch das starke Magnetfeld des Jupiters induzierte elektrische Ströme zurückzuführen ist."
         },
         "himalia": {
             "name": "Himalia",
-            "nickname": "Der eingefangene Asteroid",
+            "nickname": "Himalia",
             "description": "Himalia ist der größte der unregelmäßigen Satelliten des Jupiters und umkreist ihn in einer viel größeren Entfernung als die Galileischen Monde. Er wurde 1904 entdeckt und hat eine graue Oberfläche ähnlich wie Asteroiden vom Typ C, was darauf hindeutet, dass es sich wahrscheinlich um einen eingefangenen Asteroiden aus dem äußeren Sonnensystem handelt."
         },
         "thebe": {
             "name": "Thebe",
-            "nickname": "Der Ringmacher",
+            "nickname": "Thebe",
             "description": "Thebe ist der Entfernung nach der vierte der inneren Monde des Jupiters. Er ist unregelmäßig geformt, umkreist Jupiter knapp außerhalb des Hauptrings und ist stark verkratert mit mehreren großen Einschlagbecken auf seiner Oberfläche, die Staub freisetzen, der die Gossamer-Ringe des Jupiters speist."
         },
         "elara": {
             "name": "Elara",
-            "nickname": "Der jovianische Wanderer",
+            "nickname": "Elara",
             "description": "Elara ist ein rechtläufiger unregelmäßiger Mond des Jupiters. Er umkreist den Planeten in einer durchschnittlichen Entfernung von fast 11,7 Millionen Kilometern und hat einen Durchmesser von etwa 86 Kilometern. Er teilt eine ähnliche Zusammensetzung und Herkunft mit Himalia."
         },
         "saturn": {
             "name": "Saturn",
-            "nickname": "Der Ringplanet",
+            "nickname": "Saturn",
             "description": "Saturn is der sechste Planet von der Sonne und der zweitgrößte im Sonnensystem. Er ist ein Gasriese mit einer geringeren Dichte als Wasser, bekannt für sein spektakuläres, ausgedehntes Ringsystem, das aus Milliarden von Eispartikeln, Gesteinstrümmern und Staub besteht."
         },
         "titan": {
             "name": "Titan",
-            "nickname": "Der Methanmond",
+            "nickname": "Titan",
             "description": "Titan ist Saturns größter Mond und der zweitgrößte Mond im Sonnensystem. Er ist einzigartig durch seine dichte, stickstoffreiche Atmosphäre und eine Oberfläche mit stabilen Seen, Flüssen und Meeren aus flüssigem Methan und Ethan, was ihn zum einzigen Himmelskörper außer der Erde mit stabilen Flüssigkeiten auf der Oberfläche macht."
         },
         "rhea": {
             "name": "Rhea",
-            "nickname": "Der gekrönte Mond",
+            "nickname": "Rhea",
             "description": "Rhea ist der zweitgrößte Mond des Saturns und besteht hauptsächlich aus Wassereis mit einem geringen Gesteinsanteil. Er hat eine stark verkraterte Oberfläche und eine sehr dünne Atmosphäre, die Sauerstoff und Kohlendioxid enthält, was von der Raumsonde Cassini nachgewiesen wurde."
         },
         "enceladus": {
             "name": "Enceladus",
-            "nickname": "Der Geysirmond",
+            "nickname": "Enceladus",
             "description": "Enceladus ist ein aktiver, eisiger Mond des Saturns, der fast 100 % des empfangenen Sonnenlichts reflektiert. Unter seiner Kruste befindet sich ein globaler unterirdischer Ozean, der durch Spalten in der südlichen Polarregion als Geysire aus Wasserdampf, Eispartikeln und organischen Verbindungen ausbricht."
         },
         "mimas": {
             "name": "Mimas",
-            "nickname": "Der Todesstern-Mond",
+            "nickname": "Mimas",
             "description": "Mimas ist ein kleiner, verkraterter Saturnmond, der hauptsächlich aus Wassereis besteht. Er wird von dem kolossalen Herschel-Einschlagskrater dominiert, der fast ein Drittel des Monddurchmessers einnimmt und ihm ein Aussehen verleiht, das dem Todesstern aus Star Wars verbläffend ähnlich ist."
         },
         "tethys": {
             "name": "Tethys",
-            "nickname": "Der Canyon-Mond",
+            "nickname": "Tethys",
             "description": "Tethys ist ein mittelgroßer Saturnmond, der fast vollständig aus Wassereis besteht. Seine Oberfläche ist durch das massive Einschlagbecken Odysseus und Ithaca Chasma gezeichnet, ein riesiges Grabensystem, das sich über drei Viertel des Mondumfangs erstreckt."
         },
         "dione": {
             "name": "Dione",
-            "nickname": "Der wispernde Mond",
+            "nickname": "Dione",
             "description": "Dione ist ein Saturnmond mit einer stark verkraterten führenden Hemisphäre und einer folgenden Hemisphäre, die von hellen, eisigen Klippen bedeckt ist. Er ist rotationsgebunden und teilt seine Umlaufbahn mit den zwei koorbitalen Monden Helene und Polydeuces."
         },
         "iapetus": {
             "name": "Iapetus",
-            "nickname": "Der Yin-Yang-Mond",
+            "nickname": "Iapetus",
             "description": "Iapetus ist der drittgrößte Mond des Saturns, berühmt für seine dramatische zweifarbige Färbung, bei der eine Hemisphäre kohlschwarz und die andere schneeweiß ist. Er weist zudem einen einzigartigen Äquatorwall auf, der entlang seines Äquators verläuft und Höhen von 20 Kilometern erreicht."
         },
         "uranus": {
             "name": "Uranus",
-            "nickname": "Der seitwärts rotierende Planet",
+            "nickname": "Uranus",
             "description": "Uranus ist der siebte Planet von der Sonne, ein Eisriese mit einem blasszyanen Farbton, der durch Methan in seiner Atmosphäre verursacht wird. Er ist einzigartig durch seine extreme Achsenneigung von 97,8 Grad, die dazu führt, dass er sich praktisch auf der Seite dreht, was zu extremen jahreszeitlichen Schwankungen führt."
         },
         "titania": {
             "name": "Titania",
-            "nickname": "Die Königin von Uranus",
+            "nickname": "Titania",
             "description": "Titania ist der größte Mond von Uranus und der achtgrößte Mond im Sonnensystem. Sie besteht zu etwa gleichen Teilen aus Eis und Gestein, und ihre Oberfläche ist von einem Netzwerk aus massiven Verwerfungen, Canyons und Steilhängen geprägt, was auf vergangene geologische Aktivitäten hindeutet."
         },
         "oberon": {
             "name": "Oberon",
-            "nickname": "Der König von Uranus",
+            "nickname": "Oberon",
             "description": "Oberon ist der äußerste der Hauptmonde von Uranus und der zweitgrößte. Er hat eine uralte, stark verkraterte Oberfläche, die kaum Anzeichen von innerer Aktivität zeigt, abgesehen von dunklem Material unbekannter Herkunft, das die Böden vieler Krater bedeckt."
         },
         "ariel": {
             "name": "Ariel",
-            "nickname": "Der helle Mond von Uranus",
+            "nickname": "Ariel",
             "description": "Ariel ist der hellste und jüngste der Hauptmonde von Uranus. Seine Oberfläche weist komplexe Netzwerke aus sich schneidenden Tälern, Canyons und glatten Ebenen auf, was auf eine Geschichte cryovulkanischer Erneuerung und tektonischer Aktivität hindeutet."
         },
         "umbriel": {
             "name": "Umbriel",
-            "nickname": "Der dunkle Mond von Uranus",
+            "nickname": "Umbriel",
             "description": "Umbriel ist der dunkelste der Hauptmonde von Uranus und reflektiert nur etwa halb so viel Licht wie Ariel. Er ist stark verkratert und hat eine uralte Oberfläche, deren auffälligstes Merkmal ein heller Ring aus Material (Wunda) in einem Krater ist."
         },
         "miranda": {
             "name": "Miranda",
-            "nickname": "Der Frankenstein-Mond",
+            "nickname": "Miranda",
             "description": "Miranda ist der kleinste und innerste der Hauptmonde von Uranus. Sie weist eine unglaublich komplexe und bizarre Geologie mit riesigen Canyons, bis zu 20 Kilometer tiefen Klippen und uneinheitlichen Geländeformen auf, was auf eine chaotische Geschichte von Kollisionen und Gezeitenheizung hindeutet."
         },
         "neptune": {
             "name": "Neptun",
-            "nickname": "Der windige Planet",
+            "nickname": "Neptun",
             "description": "Neptun ist der achte und am weitesten von der Sonne entfernte Planet. Er ist ein kalter, dunkler Eisriese, der für seine tiefblaue Farbe, seine dynamische Atmosphäre mit Überschallwinden von bis zu 2.100 km/h und ein schwaches System von Ringen und Ringbögen bekannt ist."
         },
         "triton": {
             "name": "Triton",
-            "nickname": "Der retrograde Mond",
+            "nickname": "Triton",
             "description": "Triton ist der größte Mond des Neptun und der einzige große Mond im Sonnensystem, der sich in entgegengesetzter Richtung zur Rotation seines Planeten bewegt (retrograde Umlaufbahn). Er ist vulkanisch aktiv, wobei Stickstoffgeysire aus seiner gefrorenen Stickstoffeis-Oberfläche ausbrechen."
         },
         "proteus": {
             "name": "Proteus",
-            "nickname": "Der Gestaltwandler-Mond",
+            "nickname": "Proteus",
             "description": "Proteus ist der zweitgrößte Mond des Neptun und umkreist den Planeten sehr nah. Er ist ein sehr unregelmäßiger, dunkler Körper mit einer stark verkraterten Oberfläche und ist so massiv, dass er kurz vor der Grenze steht, an der seine eigene Schwerkraft ihn in eine Kugelform ziehen würde."
         },
         "nereid": {
             "name": "Nereid",
-            "nickname": "Der exzentrische Mond",
+            "nickname": "Nereid",
             "description": "Nereid ist einer der äußeren Monde des Neptun, der 1949 von Gerard Kuiper entdeckt wurde. Er ist bekannt für eine der exzentrischsten Umlaufbahnen aller Monde im Sonnensystem, die sich zwischen 1,3 und 9,6 Millionen Kilometern von Neptun erstreckt."
         },
         "pluto": {
             "name": "Pluto",
-            "nickname": "Das Herz des Kuipergürtels",
+            "nickname": "Pluto",
             "description": "Pluto ist ein Zwergplanet im Kuipergürtel, einer Region eisiger Körper jenseits von Neptun. Einst als neunter Planet klassifiziert, hat er eine komplexe Oberfläche aus Stickstoffeis-Ebenen, Wassereis-Bergen und einer dünnen Atmosphäre aus Stickstoff, Methan und Kohlenmonoxid."
         },
         "charon": {
             "name": "Charon",
-            "nickname": "Der Fährmann-Mond",
+            "nickname": "Charon",
             "description": "Charon ist der größte der fünf Monde von Pluto und halb so groß wie Pluto selbst. Aufgrund ihrer ähnlichen Massen umkreisen Pluto und Charon ein gemeinsames Baryzentrum außerhalb der Oberfläche von Pluto, was sie zu einem binären Zwergplanetensystem macht, und sie sind gegenseitig rotationsgebunden."
         },
         "nix": {
             "name": "Nix",
-            "nickname": "Der Nachtmond",
+            "nickname": "Nix",
             "description": "Nix ist ein kleiner, länglicher Plutomond, der 2005 entdeckt wurde. Er umkreist Pluto in einer chaotischen Taumelbewegung aufgrund der sich schnell ändernden Gravitationskräfte, die durch das Doppelplanetensystem Pluto-Charon ausgeübt werden."
         },
         "hydra": {
             "name": "Hydra",
-            "nickname": "Der Schlangenmond",
+            "nickname": "Hydra",
             "description": "Hydra ist der äußerste und zweitgrößte der kleinen Monde von Pluto und wurde 2005 entdeckt. Sie ist mit hochreflektierendem Wassereis bedeckt und besitzt wie Nix keine stabile Rotationsachse, sondern taumelt unvorhersehbar, während sie das Doppelplanetensystem umkreist."
         },
         "kerberos": {
             "name": "Kerberos",
-            "nickname": "Der zweilappige Mond",
+            "nickname": "Kerberos",
             "description": "Kerberos ist ein winziger, zweilappiger Plutomond, der sich zwischen Nix und Hydra bewegt. Er wurde 2011 mit dem Hubble-Weltraumteleskop entdeckt. Seine Shape deutet darauf hin, dass er durch die Verschmelzung zweier kleinerer, eisiger Körper bei geringer Geschwindigkeit entstanden ist."
         },
         "styx": {
             "name": "Styx",
-            "nickname": "Der Grenzmond",
+            "nickname": "Styx",
             "description": "Styx ist der kleinste Mond von Pluto und wurde 2012 mit dem Hubble-Weltraumteleskop bei der Vorbereitung des Vorbeiflugs von New Horizons entdeckt. Er hat eine sehr unregelmäßige Shape und umkreist Pluto in der Ebene der anderen Monde."
         },
         "ceres": {
             "name": "Ceres",
-            "nickname": "Der Riese des Asteroidengürtels",
+            "nickname": "Ceres",
             "description": "Ceres ist das größte Objekt im Hauptasteroidengürtel zwischen Mars und Jupiter und der einzige Zwergplanet im inneren Sonnensystem. Er besteht aus Eis und Gestein, mit Hinweisen auf einen unterirdischen Ozean und Kryovulkanismus, wie z. B. helle Natriumcarbonat-Ablagerungen im Occator-Krater."
         },
         "haumea": {
             "name": "Haumea",
-            "nickname": "Die langgestreckte Welt",
+            "nickname": "Haumea",
             "description": "Haumea ist ein Zwergplanet im Kuipergürtel jenseits der Neptunbahn. Bekannt für seine extrem schnelle Rotation, bei der er eine Drehung in weniger als vier Stunden vollendet, hat seine schnelle Drehung ihn in eine langgestreckte Ellipsoidform gedehnt. Er besitzt auch ein dünnes Ringsystem und eine eisige Oberfläche mit hoher Albedo."
         },
         "makemake": {
             "name": "Makemake",
-            "nickname": "Der Osterinsel-Zwerg",
+            "nickname": "Makemake",
             "description": "Makemake ist nach Pluto das zweithellste Objekt im Kuipergürtel. Benannt nach der Schöpfergottheit der Rapa Nui auf der Osterinsel, besitzt Makemake keine nennenswerte Atmosphäre und ist von einer Schicht aus extrem kaltem Methan- und Ethaneis bedeckt, was ihm einen rötlichen Farbton verleiht."
         },
         "eris": {
             "name": "Eris",
-            "nickname": "Die zwieträchtige Welt",
+            "nickname": "Eris",
             "description": "Eris ist einer der massereichsten bekannten Zwergplaneten im Sonnensystem und befindet sich in der gestreuten Scheibe jenseits des Kuipergürtels. Seine Entdeckung im Jahr 2005 löste die astronomische Debatte aus, die letztendlich dazu führte, dass die IAU die Definition eines Planeten neudefinierte und Pluto als Zwergplanet rekategorisierte."
         },
         "alpha_centauri_a": {
             "name": "Alpha Centauri A",
-            "nickname": "Rigil Kentaurus",
+            "nickname": "Alpha Centauri A",
             "description": "Alpha Centauri A ist die Hauptkomponente des Dreifachsternsystems Alpha Centauri. Es ist ein gelber Hauptreihenstern vom Sonnentyp, etwas größer und leuchtstärker als die Sonne."
         },
         "alpha_centauri_b": {
             "name": "Alpha Centauri B",
-            "nickname": "Toliman",
+            "nickname": "Alpha Centauri B",
             "description": "Alpha Centauri B ist der Sekundärstern des Alpha-Centauri-Binärsystems. Es ist ein oranger Hauptreihenstern, etwas kleiner und kühler als die Sonne."
         },
         "proxima_centauri": {
             "name": "Proxima Centauri",
-            "nickname": "Alpha Centauri C",
+            "nickname": "Proxima Centauri",
             "description": "Proxima Centauri ist ein kleiner, massearmer Roter Zwergstern im Sternbild Zentaur. Er ist der der Sonne nächstgelegene bekannte Stern."
         },
         "proxima_centauri_b": {
             "name": "Proxima Centauri b",
-            "nickname": "Proxima b",
+            "nickname": "Proxima Centauri b",
             "description": "Proxima Centauri b ist ein Exoplanet, der innerhalb der bewohnbaren Zone des Roten Zwergsterns Proxima Centauri kreist. Er ist der dem Sonnensystem nächstgelegene bekannte Exoplanet."
         },
         "proxima_centauri_c": {
             "name": "Proxima Centauri c",
-            "nickname": "Proxima c",
+            "nickname": "Proxima Centauri c",
             "description": "Proxima Centauri c ist eine Kandidat-Supererde oder ein Mini-Neptun, der Proxima Centauri in einem Abstand von etwa 1,5 AE umkreist."
         },
         "proxima_centauri_d": {
             "name": "Proxima Centauri d",
-            "nickname": "Proxima d",
+            "nickname": "Proxima Centauri d",
             "description": "Proxima Centauri d ist ein Sub-Erde-Exoplanet, der Proxima Centauri sehr nahe umkreist und alle 5,1 Tage eine Umlaufbahn vollendet."
         },
         "alpha_centauri_a_b": {
             "name": "Alpha Centauri Ab",
-            "nickname": "Rigil Kentaurus b",
+            "nickname": "Alpha Centauri Ab",
             "description": "Alpha Centauri Ab ist ein Exoplanetenkandidat, der in der bewohnbaren Zone von Alpha Centauri A kreist."
         },
         "halley": {
             "name": "Halley",
-            "nickname": "1P/Halley",
+            "nickname": "Halley",
             "description": "Der Halleysche Komet ist ein kurzperiodischer Komet, der alle 75–76 Jahre von der Erde aus sichtbar ist. Er ist der einzige bekannte kurzperiodische Komet, der regelmäßig mit bloßem Auge von der Erde aus sichtbar ist."
         },
         "trappist-1": {
             "name": "TRAPPIST-1",
             "title": "TRAPPIST-1 System",
-            "nickname": "Der Ultrakühle Zwerg",
+            "nickname": "TRAPPIST-1",
             "description": "TRAPPIST-1 ist ein ultrakühler Roter Zwerg, der von sieben erdgroßen terrestrischen Planeten umkreist wird. Er hat die größte Anzahl erdgroßer Planeten, die in einem einzigen Planetensystem gefunden wurden."
         },
         "trappist-1b": {
             "name": "TRAPPIST-1b",
-            "nickname": "Der innerste Planet",
+            "nickname": "TRAPPIST-1b",
             "description": "TRAPPIST-1b ist der innerste Planet des TRAPPIST-1-Systems. Er kreist sehr nah an seinem Stern und ist daher eine extrem heiße Welt."
         },
         "trappist-1c": {
             "name": "TRAPPIST-1c",
-            "nickname": "Der schwere Planet",
+            "nickname": "TRAPPIST-1c",
             "description": "TRAPPIST-1c ist ein erdgroßer Gesteinsplanet, der TRAPPIST-1 umkreist. Er ist der massereichste Planet im System."
         },
         "trappist-1d": {
             "name": "TRAPPIST-1d",
-            "nickname": "Die leichte Welt",
+            "nickname": "TRAPPIST-1d",
             "description": "TRAPPIST-1d gehört zu den masseärmsten Planeten im TRAPPIST-1-System und umkreist den Stern nahe dem inneren Rand der habitablen Zone."
         },
         "trappist-1e": {
             "name": "TRAPPIST-1e",
-            "nickname": "Der Erdzwilling",
+            "nickname": "TRAPPIST-1e",
             "description": "TRAPPIST-1e ist ein Gesteinsplanet in der habitablen Zone von TRAPPIST-1 und gilt als einer der vielversprechendsten Kandidaten für potenzielle Bewohnbarkeit."
         },
         "trappist-1f": {
             "name": "TRAPPIST-1f",
-            "nickname": "Der Wasserwelt-Kandidat",
+            "nickname": "TRAPPIST-1f",
             "description": "TRAPPIST-1f ist ein erdgroßer Exoplanet in der habitablen Zone. Man nimmt an, dass er eine beträchtliche Menge Wasser besitzen könnte."
         },
         "trappist-1g": {
             "name": "TRAPPIST-1g",
-            "nickname": "Der große bewohnbare Planet",
+            "nickname": "TRAPPIST-1g",
             "description": "TRAPPIST-1g ist der größte Planet in der habitablen Zone von TRAPPIST-1. Er vollendet einen Umlauf etwa alle 12 Tage."
         },
         "trappist-1h": {
             "name": "TRAPPIST-1h",
-            "nickname": "Der äußerste Planet",
+            "nickname": "TRAPPIST-1h",
             "description": "TRAPPIST-1h ist der äußerste bekannte Planet des TRAPPIST-1-Systems. Er ist auch der kleinste und kälteste Planet und kreist weit entfernt von der Wärme des Sterns."
         },
         "lich": {
             "name": "Lich",
             "title": "Lich (PSR B1257+12) System",
-            "nickname": "Das Pulsarsystem",
+            "nickname": "Lich",
             "description": "PSR B1257+12, genannt Lich, ist ein Millisekundenpulsar im Sternbild Jungfrau, etwa 2.300 Lichtjahre entfernt. Es ist berühmt dafür, das erste bestätigte Exoplanetensystem zu beherbergen."
         },
         "draugr": {
             "name": "Draugr",
-            "nickname": "PSR B1257+12 A / b",
+            "nickname": "Draugr",
             "description": "Draugr (PSR B1257+12 b) ist der innerste Exoplanet des Lich-Systems. Mit einer Masse von etwa 0,02 Erdmassen ist er einer der kleinsten jemals entdeckten Exoplaneten."
         },
         "poltergeist": {
             "name": "Poltergeist",
-            "nickname": "PSR B1257+12 B / c",
+            "nickname": "Poltergeist",
             "description": "Poltergeist (PSR B1257+12 c) ist eine Supererde, die Lich im Abstand von 0,36 AE mit einer Umlaufzeit von etwa 66,3 Tagen umkreist."
         },
         "phobetor": {
             "name": "Phobetor",
-            "nickname": "PSR B1257+12 C / d",
+            "nickname": "Phobetor",
             "description": "Phobetor (PSR B1257+12 d) ist eine Supererde, die Lich im Abstand von 0,47 AE mit einer Umlaufzeit von etwa 98,2 Tagen umkreist."
         },
         "s2": {
             "name": "S2 (S0-2)",
-            "nickname": "Haupt-S-Stern",
+            "nickname": "S2 (S0-2)",
             "description": "S2 ist ein B-Typ-Hauptreihenstern, der das supermassereiche Schwarze Loch Sagittarius A* in einem Zeitraum von 16,05 Jahren umkreist."
         },
         "s4716": {
             "name": "S4716",
-            "nickname": "Schnellster Stern",
+            "nickname": "S4716",
             "description": "S4716 ist ein Stern, der Sagittarius A* in einer Periode von nur 9,9 Jahren mit Spitzengeschwindigkeiten von 8.000 km/s umkreist."
         },
         "s62": {
             "name": "S62",
-            "nickname": "S-Stern-Cluster",
+            "nickname": "S62",
             "description": "S62 ist ein Hochgeschwindigkeitsstern, der Sagittarius A* mit einer Umlaufzeit von etwa 9,9 Jahren umkreist."
         },
         "s55": {
             "name": "S55 (S0-102)",
-            "nickname": "S-Stern-Cluster",
+            "nickname": "S55 (S0-102)",
             "description": "S55 ist ein Stern, der Sagittarius A* mit einer Umlaufzeit von etwa 12,8 Jahren umkreist."
         },
         "s14": {
             "name": "S14 (S0-16)",
-            "nickname": "Nah-Perizentrum-Stern",
+            "nickname": "S14 (S0-16)",
             "description": "S14 ist ein Stern mit einer sehr nahen Annäherung an Sagittarius A* von bis zu 45 AE."
         },
         "s4711": {
             "name": "S4711",
-            "nickname": "Kurzperiodischer S-Stern",
+            "nickname": "S4711",
             "description": "S4711 ist ein Hochgeschwindigkeitsstern mit einer kurzen Umlaufzeit von 7,6 Jahren um Sagittarius A*."
         },
         "voyager_1": {
             "name": "Voyager 1",
-            "nickname": "Erste interstellarer Sonde",
+            "nickname": "Voyager 1",
             "description": "Voyager 1 ist eine Raumsonde der NASA, die am 5. September 1977 gestartet wurde. Sie trat 2012 als erstes von Menschen geschaffenes Objekt in den interstellaren Raum ein."
         },
         "voyager_2": {
             "name": "Voyager 2",
-            "nickname": "Erforscher der vier Gasriesen",
+            "nickname": "Voyager 2",
             "description": "Voyager 2 ist eine NASA-Raumsonde, die am 20. August 1977 gestartet wurde. Sie ist die einzige Raumsonde, die alle vier Gasriesen des Sonnensystems besucht hat."
         },
         "new_horizons": {
             "name": "New Horizons",
-            "nickname": "Pluto- und Kuipergürtel-Sonde",
+            "nickname": "New Horizons",
             "description": "New Horizons ist eine NASA-Raumsonde, die am 19. Januar 2006 gestartet wurde. Sie führte im Juli 2015 einen historischen Vorbeiflug an Pluto und seinen Monden durch und erkundete 2019 das Kuipergürtel-Objekt Arrokoth."
         }
     }

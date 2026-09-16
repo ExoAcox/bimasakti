@@ -118,6 +118,7 @@ const Star = ({ id, children, labelRef }: Props) => {
                 <group
                     scale={scale}
                     name={id}
+                    userData={data}
                     onClick={(e) => {
                         e.stopPropagation()
                         handleClick()

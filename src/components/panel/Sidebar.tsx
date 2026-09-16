@@ -3,7 +3,7 @@ import clsx from "clsx"
 import { useState } from "react"
 import { useControlStore } from "@state"
 
-import { PlanetClass, type Belt, type CelestialObject, type Planet } from "@types"
+import { PlanetClass, SpaceCraftClass, type Belt, type CelestialObject, type Planet } from "@types"
 import { useCelestial } from "@function"
 import { useTranslation } from "react-i18next"
 import SettingPanel from "@components/panel/SettingPanel"
@@ -44,10 +44,12 @@ const Section = ({ children, data, initialOpen }: SectionProps) => {
         <div className={clsx("flex flex-col mt-1", !isOpen && "hidden")}>
             {data.map((planet) => {
                 const isFocus = focus === planet.id
-                const satellite = celestial.getObjectById(focus)
-                const isParentFocus = planet.id === (satellite as Planet)?.parent
+                const satellite = celestial.getObjectById(focus) as Planet
+                const isParentFocus = planet.id === satellite?.parent && satellite?.orbit_duration
 
-                const isSatelliteVisible = (isFocus || isParentFocus) && (planet as Planet).satellites?.length
+                const artificialSatellites = (planet as Planet).artificial_satellites?.filter(craft => craft.class !== SpaceCraftClass.FlyBy)
+                const satellites = [...(planet as Planet).satellites ?? [], ...artificialSatellites ?? []]
+                const isSatelliteVisible = (isFocus || isParentFocus) && satellites.length
 
 
                 const buttonClass = (id: string) => clsx("w-full py-2 px-3 flex items-center", (focus === id) && "bg-blue-400/80 text-primary")
@@ -56,15 +58,15 @@ const Section = ({ children, data, initialOpen }: SectionProps) => {
                 return <div className="text-sm">
                     <button key={planet.id} className={clsx(buttonClass(planet.id), "gap-3")} onClick={() => handleClick(planet.id)}>
                         <img alt={planet.icon} src={`/icons/${planet.icon}`} className="size-4" />
-                        {t(`object.${planet.id}.name`)}
+                        <span className="text-left">{t(`object.${planet.id}.nickname`)}</span>
                     </button>
                     {isSatelliteVisible ?
                         <div className="flex flex-col py-1">
                             {
-                                (planet as Planet).satellites?.map((satellite) => {
+                                satellites.map((satellite) => {
                                     return <button className={clsx(buttonClass(satellite.id), "pl-6 gap-2")} key={satellite.id} onClick={() => handleClick(satellite.id)}>
                                         <img alt={satellite.icon} src={`/icons/${satellite.icon}`} className="size-4" />
-                                        {t(`object.${satellite.id}.name`)}
+                                        <span className="text-left">{t(`object.${satellite.id}.nickname`)}</span>
                                     </button>
                                 })
                             }

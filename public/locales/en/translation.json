@@ -31,50 +31,50 @@
         "milky_way": {
             "name": "Milky Way",
             "title": "Milky Way Galaxy",
-            "nickname": "The Galaxy",
+            "nickname": "Milky Way",
             "description": "The Milky Way is a barred spiral galaxy, home to our Solar System. It contains billions of stars, gas, and dust, with a supermassive black hole at its center."
         },
         "solar_system": {
             "name": "Solar System",
             "title": "Solar System",
-            "nickname": "Our Solar System",
+            "nickname": "Solar System",
             "description": "The Solar System is the gravitationally bound system of the Sun and the objects that orbit it, including eight planets, dwarf planets, and countless smaller bodies."
         },
         "alpha_centauri": {
             "name": "Alpha Centauri",
             "title": "Alpha Centauri System",
-            "nickname": "The Nearest Star System",
+            "nickname": "Alpha Centauri",
             "description": "Alpha Centauri is the closest star system to our Solar System, located about 4.37 light-years away. It consists of three stars: Alpha Centauri A, Alpha Centauri B, and Proxima Centauri."
         },
         "sagittarius_a": {
             "name": "Sagittarius A*",
             "title": "Sagittarius A* Supermassive Black Hole",
-            "nickname": "The Supermassive Black Hole",
+            "nickname": "Sagittarius A*",
             "description": "Sagittarius A* is a supermassive black hole located at the Galactic Center of the Milky Way galaxy. It is a highly compact and bright astronomical radio source."
         },
         "sun": {
             "name": "Sun",
-            "nickname": "The Yellow Dwarf",
+            "nickname": "Sun",
             "description": "The Sun is the star at the center of our solar system, comprising 99.8% of the system's total mass. It is a nearly perfect sphere of hot plasma, heated to incandescence by nuclear fusion reactions in its core, which radiates energy primarily as light, ultraviolet, and infrared radiation, providing the primary source of energy for life on Earth."
         },
         "mercury": {
             "name": "Mercury",
-            "nickname": "The Swift Planet",
+            "nickname": "Mercury",
             "description": "Mercury is the smallest planet in our solar system and the closest to the Sun. It experiences extreme temperature fluctuations, ranging from scorching days to freezing nights, and possesses a heavily cratered, ancient surface with no atmosphere and no moons."
         },
         "venus": {
             "name": "Venus",
-            "nickname": "The Morning Star",
+            "nickname": "Venus",
             "description": "Venus is the second planet from the Sun and Earth's closest planetary neighbor. It is enveloped in a thick, toxic atmosphere of carbon dioxide and sulfuric acid clouds that trap heat in a runaway greenhouse effect, making its surface hot enough to melt lead and making it the hottest planet in the solar system."
         },
         "earth": {
             "name": "Earth",
-            "nickname": "The Blue Planet",
+            "nickname": "Earth",
             "description": "Earth is the third planet from the Sun and the only known astronomical object to harbor life. It is characterized by its liquid water oceans, which cover about 71% of its surface, an atmosphere rich in nitrogen and oxygen, and a strong magnetic field that shields it from harmful solar radiation."
         },
         "moon": {
             "name": "Moon",
-            "nickname": "Luna",
+            "nickname": "Moon",
             "description": "The Moon is Earth's only natural satellite and the fifth-largest moon in the solar system. It is tidally locked to Earth, meaning it always shows the same face, and its gravitational pull is the primary driver of Earth's ocean tides and stabilizes the planet's axial tilt."
         },
         "iss": {
@@ -84,402 +84,402 @@
         },
         "mars": {
             "name": "Mars",
-            "nickname": "The Red Planet",
+            "nickname": "Mars",
             "description": "Mars is the fourth planet from the Sun and the second-smallest planet in the solar system. Often called the Red Planet due to the iron oxide prevalent on its surface, it is a cold desert world with a thin carbon dioxide atmosphere, seasonal polar ice caps, and extinct volcanoes like Olympus Mons."
         },
         "phobos": {
             "name": "Phobos",
-            "nickname": "The Moon of Fear",
+            "nickname": "Phobos",
             "description": "Phobos is the larger and closer of Mars' two small, irregularly shaped moons. It orbits so close to Mars that it completes three orbits in a single Martian day, and tidal forces are gradually drawing it closer to the planet, destined to crash into Mars or shatter into a ring."
         },
         "deimos": {
             "name": "Deimos",
-            "nickname": "The Moon of Dread",
+            "nickname": "Deimos",
             "description": "Deimos is the smaller and outer of Mars' two moons. It has a heavily cratered but smooth appearance due to a thick layer of pulverised rock dust (regolith) filling its craters, and its orbit is nearly circular and stable, unlike Phobos."
         },
         "jupiter": {
             "name": "Jupiter",
-            "nickname": "The King of Planets",
+            "nickname": "Jupiter",
             "description": "Jupiter is the fifth planet from the Sun and the largest in our solar system, with a mass more than double that of all other planets combined. As a gas giant, it consists primarily of hydrogen and helium, has no well-defined solid surface, and is famous for its colorful bands of clouds and the Great Red Spot storm."
         },
         "io": {
             "name": "Io",
-            "nickname": "The Volcanic Moon",
+            "nickname": "Io",
             "description": "Io is the innermost of Jupiter's four Galilean moons and the most volcanically active body in the solar system. Its intense activity is driven by tidal heating from gravitational friction with Jupiter and neighboring moons, resulting in hundreds of active volcanoes venting sulfur and sulfur dioxide."
         },
         "europa": {
             "name": "Europa",
-            "nickname": "The Ocean Moon",
+            "nickname": "Europa",
             "description": "Europa is the smallest of Jupiter's Galilean moons. Its surface is a highly reflective sheet of water ice crisscrossed by cracks (lineae), beneath which scientists believe a global, liquid water ocean exists containing twice as much water as all of Earth's oceans combined, making it a prime target for astrobiology."
         },
         "ganymede": {
             "name": "Ganymede",
-            "nickname": "The Giant Moon",
+            "nickname": "Ganymede",
             "description": "Ganymede is the largest moon in our solar system, even exceeding the planet Mercury in size. It is the only natural satellite known to possess its own magnetic field, generated by convection in its liquid iron core, and features a mixture of dark, cratered terrain and lighter, grooved regions."
         },
         "callisto": {
             "name": "Callisto",
-            "nickname": "The Cratered World",
+            "nickname": "Callisto",
             "description": "Callisto is the second-largest moon of Jupiter and the third-largest in the solar system. It is the most heavily cratered object in the solar system, with an ancient surface showing no signs of geological activity, though it may harbor a salty ocean deep beneath its icy crust."
         },
         "amalthea": {
             "name": "Amalthea",
-            "nickname": "The Red Moon of Jupiter",
+            "nickname": "Amalthea",
             "description": "Amalthea is an irregularly shaped, reddish inner moon of Jupiter. It is extremely dark and porous, and radiates more heat than it receives from the Sun, possibly due to tidal friction or electric currents induced by Jupiter's powerful magnetic field."
         },
         "himalia": {
             "name": "Himalia",
-            "nickname": "The Captured Asteroid",
+            "nickname": "Himalia",
             "description": "Himalia is the largest of Jupiter's irregular satellites, orbiting at a much greater distance than the Galilean moons. Discovered in 1904, it has a grey surface similar to C-type asteroids, indicating it is likely a captured asteroid from the outer solar system."
         },
         "thebe": {
             "name": "Thebe",
-            "nickname": "The Ring Maker",
+            "nickname": "Thebe",
             "description": "Thebe is the fourth of Jupiter's inner moons by distance. It is irregularly shaped, orbits just outside Jupiter's main ring, and is heavily cratered with several large impact basins on its surface, releasing dust that feeds Jupiter's gossamer rings."
         },
         "elara": {
             "name": "Elara",
-            "nickname": "The Jovian Wanderer",
+            "nickname": "Elara",
             "description": "Elara is a prograde irregular moon of Jupiter. It orbits the planet at an average distance of nearly 11.7 million kilometers and has a diameter of about 86 kilometers, sharing a similar composition and origin to Himalia."
         },
         "saturn": {
             "name": "Saturn",
-            "nickname": "The Ringed Planet",
+            "nickname": "Saturn",
             "description": "Saturn is the sixth planet from the Sun and the second-largest in the solar system. It is a gas giant with a density lower than water, renowned for its spectacular, extensive ring system composed of billions of ice particles, rocky debris, and dust."
         },
         "titan": {
             "name": "Titan",
-            "nickname": "The Methane Moon",
+            "nickname": "Titan",
             "description": "Titan is Saturn's largest moon and the second-largest moon in the solar system. It is unique for its dense nitrogen-rich atmosphere and a surface featuring stable lakes, rivers, and seas of liquid methane and ethane, making it the only body besides Earth with stable liquids on its surface."
         },
         "rhea": {
             "name": "Rhea",
-            "nickname": "The Crowned Moon",
+            "nickname": "Rhea",
             "description": "Rhea is the second-largest moon of Saturn, composed primarily of water ice with a small amount of rock. It has a heavily cratered surface and a very thin, tenuous atmosphere containing oxygen and carbon dioxide, detected by the Cassini spacecraft."
         },
         "enceladus": {
             "name": "Enceladus",
-            "nickname": "The Geyser Moon",
+            "nickname": "Enceladus",
             "description": "Enceladus is an active, icy moon of Saturn that reflects nearly 100% of the sunlight it receives. It features a global subsurface ocean beneath its crust, which erupts through fissures in the south polar region as geysers of water vapor, ice particles, and organic compounds."
         },
         "mimas": {
             "name": "Mimas",
-            "nickname": "The Death Star Moon",
+            "nickname": "Mimas",
             "description": "Mimas is a small, cratered moon of Saturn composed mostly of water ice. It is dominated by the colossal Herschel impact crater, which spans nearly a third of the moon's diameter, giving it an appearance strikingly similar to the Death Star from Star Wars."
         },
         "tethys": {
             "name": "Tethys",
-            "nickname": "The Canyon Moon",
+            "nickname": "Tethys",
             "description": "Tethys is a mid-sized Saturnian moon composed almost entirely of water ice. Its surface is scarred by the massive Odysseus impact basin and Ithaca Chasma, a giant canyon system that stretches across three-quarters of the moon's circumference."
         },
         "dione": {
             "name": "Dione",
-            "nickname": "The Wispy Moon",
+            "nickname": "Dione",
             "description": "Dione is a Saturnian moon with a heavily cratered leading hemisphere and a trailing hemisphere covered by bright, wispy ice cliffs. It is tidally locked and shares its orbit with two co-orbital moons, Helene and Polydeuces."
         },
         "iapetus": {
             "name": "Iapetus",
-            "nickname": "The Yin-Yang Moon",
+            "nickname": "Iapetus",
             "description": "Iapetus is the third-largest moon of Saturn, famous for its dramatic two-tone coloration, with one hemisphere dark as coal and the other bright as snow. It also features a unique equatorial ridge that runs along its equator, reaching heights of 20 kilometers."
         },
         "uranus": {
             "name": "Uranus",
-            "nickname": "The Sideways Planet",
+            "nickname": "Uranus",
             "description": "Uranus is the seventh planet from the Sun, an ice giant with a pale cyan hue caused by methane in its atmosphere. It is unique for its extreme axial tilt of 97.8 degrees, causing it to rotate virtually on its side, resulting in extreme seasonal variations."
         },
         "titania": {
             "name": "Titania",
-            "nickname": "The Queen of Uranus",
+            "nickname": "Titania",
             "description": "Titania is the largest moon of Uranus and the eighth-largest moon in the solar system. It is composed of roughly equal amounts of ice and rock, and its surface is marked by a network of massive faults, canyons, and scarps indicating past geological activity."
         },
         "oberon": {
             "name": "Oberon",
-            "nickname": "The King of Uranus",
+            "nickname": "Oberon",
             "description": "Oberon is the outermost major moon of Uranus and the second-largest. It has an ancient, heavily cratered surface that shows little sign of internal activity, except for dark material of unknown origin covering the floors of many craters."
         },
         "ariel": {
             "name": "Ariel",
-            "nickname": "The Bright Moon of Uranus",
+            "nickname": "Ariel",
             "description": "Ariel is the brightest and youngest of Uranus's major moons. Its surface features complex networks of intersecting valleys, canyons, and smooth plains, suggesting a history of cryovolcanic resurfacing and tectonic activity."
         },
         "umbriel": {
             "name": "Umbriel",
-            "nickname": "The Dark Moon of Uranus",
+            "nickname": "Umbriel",
             "description": "Umbriel is the darkest of Uranus's major moons, reflecting only about half as much light as Ariel. It is heavily cratered and has an ancient surface, with its most prominent feature being a bright ring of material (Wunda) inside a crater."
         },
         "miranda": {
             "name": "Miranda",
-            "nickname": "The Frankenstein Moon",
+            "nickname": "Miranda",
             "description": "Miranda is the smallest and innermost of Uranus's major moons. It features an incredibly complex and bizarre geology with giant canyons, cliffs up to 20 kilometers deep, and mismatched terrains that suggest a chaotic history of impact disruption and tidal heating."
         },
         "neptune": {
             "name": "Neptune",
-            "nickname": "The Windy Planet",
+            "nickname": "Neptune",
             "description": "Neptune is the eighth and most distant planet from the Sun. It is a cold, dark ice giant known for its deep blue color, dynamic atmosphere with supersonic winds up to 2,100 km/h, and a faint system of rings and ring arcs."
         },
         "triton": {
             "name": "Triton",
-            "nickname": "The Retrograde Moon",
+            "nickname": "Triton",
             "description": "Triton is the largest moon of Neptune and the only large moon in the solar system that orbits in the opposite direction of its planet's rotation (retrograde orbit). It is volcanically active, with nitrogen geysers erupting from its freezing nitrogen-ice surface."
         },
         "proteus": {
             "name": "Proteus",
-            "nickname": "The Shapeshifter Moon",
+            "nickname": "Proteus",
             "description": "Proteus is the second-largest moon of Neptune, orbiting very close to the planet. It is a highly irregular, dark body with a heavily cratered surface, and is so massive that it is close to the limit where its own gravity would pull it into a sphere."
         },
         "nereid": {
             "name": "Nereid",
-            "nickname": "The Eccentric Moon",
+            "nickname": "Nereid",
             "description": "Nereid is one of Neptune's outer moons, discovered by Gerard Kuiper in 1949. It is famous for having one of the most eccentric orbits of any moon in the solar system, ranging from 1.3 million to 9.6 million kilometers from Neptune."
         },
         "pluto": {
             "name": "Pluto",
-            "nickname": "The Heart of the Kuiper Belt",
+            "nickname": "Pluto",
             "description": "Pluto is a dwarf planet in the Kuiper Belt, a region of icy bodies beyond Neptune. Once classified as the ninth planet, it has a complex surface of nitrogen ice plains, water ice mountains, and a thin atmosphere of nitrogen, methane, and carbon monoxide."
         },
         "charon": {
             "name": "Charon",
-            "nickname": "The Ferryman Moon",
+            "nickname": "Charon",
             "description": "Charon is the largest of Pluto's five moons, half the size of Pluto itself. Because of their similar masses, Pluto and Charon orbit a common barycenter outside Pluto's surface, making them a binary dwarf planet system, and they are mutually tidally locked."
         },
         "nix": {
             "name": "Nix",
-            "nickname": "The Night Moon",
+            "nickname": "Nix",
             "description": "Nix is a small, elongated moon of Pluto discovered in 2005. It orbits Pluto in a chaotic, tumbling rotation due to the rapidly changing gravitational forces exerted by the binary Pluto-Charon system."
         },
         "hydra": {
             "name": "Hydra",
-            "nickname": "The Serpent Moon",
+            "nickname": "Hydra",
             "description": "Hydra is the outermost and second-largest of Pluto's small moons, discovered in 2005. It is covered in highly reflective water ice, and like Nix, it lacks a stable rotation axis, tumbling unpredictably as it orbits the double-planet system."
         },
         "kerberos": {
             "name": "Kerberos",
-            "nickname": "The Double-Lobed Moon",
+            "nickname": "Kerberos",
             "description": "Kerberos is a tiny, double-lobed moon of Pluto orbiting between Nix and Hydra. Discovered in 2011 by the Hubble Space Telescope, its shape suggests it was formed by the low-velocity merger of two smaller, icy bodies."
         },
         "styx": {
             "name": "Styx",
-            "nickname": "The Boundary Moon",
+            "nickname": "Styx",
             "description": "Styx is the smallest moon of Pluto, discovered in 2012 by the Hubble Space Telescope during preparations for the New Horizons flyby. It has a highly irregular shape and orbits in the plane of the other Pluto moons."
         },
         "ceres": {
             "name": "Ceres",
-            "nickname": "The Asteroid Belt Giant",
+            "nickname": "Ceres",
             "description": "Ceres is the largest object in the main asteroid belt between Mars and Jupiter and the only dwarf planet located in the inner solar system. It is composed of ice and rock, with evidence of a subsurface ocean and cryovolcanism, such as bright sodium carbonate deposits in Occator Crater."
         },
         "asteriod": {
             "name": "Asteroid Belt",
             "title": "Asteroid Belt",
-            "nickname": "Main Asteroid Belt",
+            "nickname": "Asteroid Belt",
             "description": "The Asteroid Belt is a torus-shaped region in the Solar System, located roughly between the orbits of the planets Jupiter and Mars."
         },
         "kuiper": {
             "name": "Kuiper Belt",
             "title": "Kuiper Belt",
-            "nickname": "Edgeworth-Kuiper Belt",
+            "nickname": "Kuiper Belt",
             "description": "The Kuiper Belt is a circumstellar disc in the outer Solar System, extending from the orbit of Neptune."
         },
         "oort": {
             "name": "Oort Cloud",
             "title": "Oort Cloud",
-            "nickname": "Comet Reservoir",
+            "nickname": "Oort Cloud",
             "description": "The Oort Cloud is a theoretical spherical cloud of predominantly icy planetesimals proposed to surround the Sun at extreme distances in the outer reaches of the Solar System."
         },
         "haumea": {
             "name": "Haumea",
-            "nickname": "The Elongated World",
+            "nickname": "Haumea",
             "description": "Haumea is a dwarf planet located beyond Neptune's orbit in the Kuiper Belt. Notable for its extremely fast rotation, completing a turn in under four hours, its rapid spin has stretched it into an elongated ellipsoid shape. It also features a thin ring system and a high-albedo icy surface."
         },
         "makemake": {
             "name": "Makemake",
-            "nickname": "The Easter Island Dwarf",
+            "nickname": "Makemake",
             "description": "Makemake is the second-brightest Kuiper Belt object after Pluto. Named after the creator deity of the Rapa Nui people of Easter Island, Makemake lacks a substantial atmosphere and is covered by a layer of extremely cold methane and ethane ice, giving it a reddish hue."
         },
         "eris": {
             "name": "Eris",
-            "nickname": "The Discordant World",
+            "nickname": "Eris",
             "description": "Eris is one of the most massive known dwarf planets in the solar system, located in the scattered disc beyond the Kuiper Belt. Its discovery in 2005 sparked the astronomical debate that ultimately led the IAU to redefine the definition of a planet and reclassify Pluto as a dwarf planet."
         },
         "gonggong": {
             "name": "Gonggong",
-            "nickname": "The Red Scattered Disc World",
+            "nickname": "Gonggong",
             "description": "Gonggong is a large dwarf planet candidate in the scattered disc beyond Neptune. Known for its reddish surface caused by organic compounds (tholins) and water ice, it has a single known moon named Xiangliu."
         },
         "xiangliu": {
             "name": "Xiangliu",
-            "nickname": "The Serpent Moon of Gonggong",
+            "nickname": "Xiangliu",
             "description": "Xiangliu is the only known moon of the dwarf planet Gonggong. Named after a venomous nine-headed serpent monster in Chinese mythology, it orbits Gonggong at a distance of about 24,000 kilometers."
         },
         "quaoar": {
             "name": "Quaoar",
-            "nickname": "The Ringed Kuiper World",
+            "nickname": "Quaoar",
             "description": "Quaoar is a Kuiper Belt object notable for possessing a rare, dense ring system located far outside its Roche limit. It is accompanied by its small moon, Weywot, and features a surface coated in water ice and methane."
         },
         "weywot": {
             "name": "Weywot",
-            "nickname": "The Sky God Moon",
+            "nickname": "Weywot",
             "description": "Weywot is the only known satellite of Quaoar. Named after the Tongva god of the sky, Weywot is thought to be a fragment created from a giant collision that Quaoar experienced in the past."
         },
         "sedna": {
             "name": "Sedna",
-            "nickname": "The Distant Outpost",
+            "nickname": "Sedna",
             "description": "Sedna is one of the most distant known objects in the Solar System, possessing an extremely elongated orbit that takes over 11,000 years to complete. Its orbit takes it from 76 AU at its closest point to nearly 1,000 AU at its farthest."
         },
         "orcus": {
             "name": "Orcus",
-            "nickname": "The Anti-Pluto",
+            "nickname": "Orcus",
             "description": "Orcus is a large Kuiper Belt object often called the 'anti-Pluto' because its orbit has the same period and inclination as Pluto's, but is oriented in opposite phase so that when Orcus is closest to the Sun, Pluto is farthest."
         },
         "salacia": {
             "name": "Salacia",
-            "nickname": "The Dark Kuiper World",
+            "nickname": "Salacia",
             "description": "Salacia is a large Kuiper Belt object and borderline dwarf planet candidate. It has an exceptionally dark surface with an albedo of around 4%, indicating a lack of bright volatile ices like methane."
         },
         "alpha_centauri_a": {
             "name": "Alpha Centauri A",
-            "nickname": "Rigil Kentaurus",
+            "nickname": "Alpha Centauri A",
             "description": "Alpha Centauri A is the principal component of the triple star system Alpha Centauri. It is a solar-type yellow main-sequence star, slightly larger and more luminous than the Sun."
         },
         "alpha_centauri_b": {
             "name": "Alpha Centauri B",
-            "nickname": "Toliman",
+            "nickname": "Alpha Centauri B",
             "description": "Alpha Centauri B is the secondary star of the Alpha Centauri binary system. It is an orange main-sequence star, slightly smaller and cooler than the Sun."
         },
         "proxima_centauri": {
             "name": "Proxima Centauri",
-            "nickname": "Alpha Centauri C",
+            "nickname": "Proxima Centauri",
             "description": "Proxima Centauri is a small, low-mass red dwarf star located in the constellation of Centaurus. It is the closest known star to the Sun."
         },
         "proxima_centauri_b": {
             "name": "Proxima Centauri b",
-            "nickname": "Proxima b",
+            "nickname": "Proxima Centauri b",
             "description": "Proxima Centauri b is an exoplanet orbiting within the habitable zone of the red dwarf star Proxima Centauri. It is the closest known exoplanet to the Solar System."
         },
         "proxima_centauri_c": {
             "name": "Proxima Centauri c",
-            "nickname": "Proxima c",
+            "nickname": "Proxima Centauri c",
             "description": "Proxima Centauri c is a candidate super-Earth or mini-Neptune orbiting Proxima Centauri at a distance of roughly 1.5 AU."
         },
         "proxima_centauri_d": {
             "name": "Proxima Centauri d",
-            "nickname": "Proxima d",
+            "nickname": "Proxima Centauri d",
             "description": "Proxima Centauri d is a sub-Earth exoplanet orbiting very close to Proxima Centauri, completing an orbit every 5.1 days."
         },
         "alpha_centauri_a_b": {
             "name": "Alpha Centauri Ab",
-            "nickname": "Rigil Kentaurus b",
+            "nickname": "Alpha Centauri Ab",
             "description": "Alpha Centauri Ab is a candidate exoplanet orbiting in the habitable zone of Alpha Centauri A."
         },
         "halley": {
             "name": "Halley",
-            "nickname": "1P/Halley",
+            "nickname": "Halley",
             "description": "Halley's Comet is a short-period comet visible from Earth every 75–76 years. It is the only known short-period comet that is regularly visible to the naked eye from Earth."
         },
         "trappist-1": {
             "name": "TRAPPIST-1",
             "title": "TRAPPIST-1 System",
-            "nickname": "The Ultra-Cool Dwarf",
+            "nickname": "TRAPPIST-1",
             "description": "TRAPPIST-1 is an ultra-cool red dwarf star with seven Earth-sized terrestrial planets orbiting it. It has the largest number of Earth-sized planets found in a single planetary system."
         },
         "trappist-1b": {
             "name": "TRAPPIST-1b",
-            "nickname": "The Innermost Planet",
+            "nickname": "TRAPPIST-1b",
             "description": "TRAPPIST-1b is the innermost and most massive planet of the TRAPPIST-1 system. It orbits very close to its star, making it a scorching hot world."
         },
         "trappist-1c": {
             "name": "TRAPPIST-1c",
-            "nickname": "The Heavy Planet",
+            "nickname": "TRAPPIST-1c",
             "description": "TRAPPIST-1c is a rocky, Earth-sized exoplanet orbiting the ultra-cool dwarf star TRAPPIST-1. It is the most massive planet in the system."
         },
         "trappist-1d": {
             "name": "TRAPPIST-1d",
-            "nickname": "The Lightweight World",
+            "nickname": "TRAPPIST-1d",
             "description": "TRAPPIST-1d is one of the least massive planets in the TRAPPIST-1 system and orbits near the inner edge of the habitable zone."
         },
         "trappist-1e": {
             "name": "TRAPPIST-1e",
-            "nickname": "The Earth Twin",
+            "nickname": "TRAPPIST-1e",
             "description": "TRAPPIST-1e is a rocky, Earth-sized exoplanet orbiting within the habitable zone of TRAPPIST-1, making it one of the most promising candidates for potential habitability."
         },
         "trappist-1f": {
             "name": "TRAPPIST-1f",
-            "nickname": "The Water World Candidate",
+            "nickname": "TRAPPIST-1f",
             "description": "TRAPPIST-1f is an Earth-sized exoplanet orbiting in the habitable zone. It is thought to potentially possess a significant amount of water."
         },
         "trappist-1g": {
             "name": "TRAPPIST-1g",
-            "nickname": "The Large Habitable Planet",
+            "nickname": "TRAPPIST-1g",
             "description": "TRAPPIST-1g is the largest planet in the habitable zone of TRAPPIST-1. It completes an orbit roughly every 12 days."
         },
         "trappist-1h": {
             "name": "TRAPPIST-1h",
-            "nickname": "The Outermost Planet",
+            "nickname": "TRAPPIST-1h",
             "description": "TRAPPIST-1h is the outermost known planet of the TRAPPIST-1 system. It is also the smallest and coldest, orbiting far from the star's warmth."
         },
         "lich": {
             "name": "Lich",
             "title": "Lich (PSR B1257+12) System",
-            "nickname": "The Pulsar System",
+            "nickname": "Lich",
             "description": "PSR B1257+12, designated Lich, is a millisecond pulsar located 2,300 light-years away in the constellation Virgo. It is famous for hosting the first confirmed extrasolar planetary system."
         },
         "draugr": {
             "name": "Draugr",
-            "nickname": "PSR B1257+12 A / b",
+            "nickname": "Draugr",
             "description": "Draugr (PSR B1257+12 b) is the innermost exoplanet of the Lich system. With a mass roughly 0.02 times Earth, it is one of the least massive exoplanets ever discovered."
         },
         "poltergeist": {
             "name": "Poltergeist",
-            "nickname": "PSR B1257+12 B / c",
+            "nickname": "Poltergeist",
             "description": "Poltergeist (PSR B1257+12 c) is a super-Earth exoplanet orbiting Lich at 0.36 AU with an orbital period of about 66.3 days."
         },
         "phobetor": {
             "name": "Phobetor",
-            "nickname": "PSR B1257+12 C / d",
+            "nickname": "Phobetor",
             "description": "Phobetor (PSR B1257+12 d) is a super-Earth exoplanet orbiting Lich at 0.47 AU with an orbital period of about 98.2 days."
         },
         "s2": {
             "name": "S2 (S0-2)",
-            "nickname": "Primary S-Cluster Star",
+            "nickname": "S2 (S0-2)",
             "description": "S2 is a B-type main sequence star orbiting the supermassive black hole Sagittarius A* in a 16.05-year period. Its orbit provided key evidence for Schwarzschild precession and gravitational redshift predicted by Einstein's General Relativity."
         },
         "s4716": {
             "name": "S4716",
-            "nickname": "Fastest Orbiting Star",
+            "nickname": "S4716",
             "description": "S4716 is a star orbiting Sagittarius A* with a period of just 9.9 years, reaching peak velocities of 8,000 km/s (~2.7% the speed of light)."
         },
         "s62": {
             "name": "S62",
-            "nickname": "S-Cluster Star",
+            "nickname": "S62",
             "description": "S62 is a high-velocity star orbiting Sagittarius A* with an orbital period of approximately 9.9 years."
         },
         "s55": {
             "name": "S55 (S0-102)",
-            "nickname": "S-Cluster Star",
+            "nickname": "S55 (S0-102)",
             "description": "S55 is a star orbiting Sagittarius A* with an orbital period of approximately 12.8 years."
         },
         "s14": {
             "name": "S14 (S0-16)",
-            "nickname": "Close Pericenter Star",
+            "nickname": "S14 (S0-16)",
             "description": "S14 is a star featuring a close pericenter approach to Sagittarius A* down to 45 AU."
         },
         "s4711": {
             "name": "S4711",
-            "nickname": "Short-Period S-Cluster Star",
+            "nickname": "S4711",
             "description": "S4711 is a high-velocity star orbiting Sagittarius A* with a short 7.6-year period."
         },
         "voyager_1": {
             "name": "Voyager 1",
-            "nickname": "First Interstellar Spacecraft",
+            "nickname": "Voyager 1",
             "description": "Voyager 1 is a space probe launched by NASA on September 5, 1977. It became the first human-made object to enter interstellar space in 2012 and remains the most distant human-made object from Earth."
         },
         "voyager_2": {
             "name": "Voyager 2",
-            "nickname": "Explorer of the Grand Tour",
+            "nickname": "Voyager 2",
             "description": "Voyager 2 is a NASA space probe launched on August 20, 1977. It is the only spacecraft to have visited all four gas giant planets of the Solar System (Jupiter, Saturn, Uranus, and Neptune) before crossing into interstellar space in 2018."
         },
         "new_horizons": {
             "name": "New Horizons",
-            "nickname": "Pluto & Kuiper Belt Explorer",
+            "nickname": "New Horizons",
             "description": "New Horizons is a NASA space probe launched on January 19, 2006. It performed a historic flyby of Pluto and its moons in July 2015, capturing the first high-resolution images of the dwarf planet, and later explored the Kuiper Belt object Arrokoth in 2019."
         }
     }

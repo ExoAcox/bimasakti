@@ -1,12 +1,13 @@
 import { Else, If, Then, When } from "react-if"
 
 import type { Planet as PlanetType } from "@types"
-import { useRef } from "react"
-import type { Mesh } from "three"
+import { useMemo, useRef } from "react"
+import { AdditiveBlending, BackSide, Color, ShaderMaterial, type Mesh } from "three"
 import { useControlStore } from "@state"
 import { CelestialBody, PlyLoader, PlanetRing, TextureLoader, PlanetCloud } from "@components/object"
 import { Detailed } from "@react-three/drei"
 import { LOWREST_SCALE } from "@constants"
+import { atmosphereFragmentShader, atmosphereVertexShader } from "@shaders/planet"
 
 
 
@@ -26,6 +27,19 @@ const Planet = ({ data, children }: Props) => {
     const handleClick = () => {
         setControl({ focus: data.id })
     }
+
+    const atmosphereMaterial = useMemo(() => {
+        return new ShaderMaterial({
+            vertexShader: atmosphereVertexShader,
+            fragmentShader: atmosphereFragmentShader,
+            transparent: true,
+            blending: AdditiveBlending,
+            side: BackSide,
+            uniforms: {
+                atmosphereColor: { value: new Color(data.color) }
+            },
+        })
+    }, [data.color])
 
     if (!data) return null
 
@@ -59,6 +73,11 @@ const Planet = ({ data, children }: Props) => {
                 </mesh>
             </Detailed>
         </group>
+
+        <mesh scale={scale * 1.05}>
+            <sphereGeometry args={[1, 64, 64]} />
+            <primitive object={atmosphereMaterial} attach="material" />
+        </mesh>
 
         <When condition={data.cloud_texture}>
             <PlanetCloud

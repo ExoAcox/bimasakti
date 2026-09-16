@@ -72,7 +72,6 @@ const CanvasLayout = () => {
                 <Stats className="top-auto! left-auto! bottom-0! right-0!" />
             </When>
 
-
             <Suspense fallback={<Loader />}>
                 <ambientLight intensity={0.5} />
                 <OrbitControls

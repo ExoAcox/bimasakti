@@ -1,6 +1,7 @@
 import { Planet, Satellite, Star, Comet, Belt, SpaceCraft } from "@components/object"
 import { solar_system } from "@constants"
 import { seo } from "@function"
+import { When } from "react-if"
 
 
 export const meta = () => seo({
@@ -9,12 +10,11 @@ export const meta = () => seo({
 })
 
 const SolarSystem = () => {
-    const { planets, comets, belts } = solar_system
+    const { planets, comets, belts, space_craft } = solar_system
 
 
     return <Star id="sun">
         {planets.map(planet => {
-
             return (
                 <Planet
                     key={planet.id}
@@ -49,6 +49,8 @@ const SolarSystem = () => {
                 data={belt}
             />
         ))}
+
+
     </Star>
 }
 

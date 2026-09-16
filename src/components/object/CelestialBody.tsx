@@ -138,6 +138,7 @@ const Object = ({ data, children, childrenComponent, onClick, objectRef, cloudRe
         if (!isSmallestObject()) return true
         if (isSmallestObject()) {
             if (focus === data.id) return true
+            if (data.type === "space_craft") return false
             if (focus === data.parent) return true
             if (focusedObject?.parent === data.parent) return true
         }
