@@ -4,7 +4,7 @@
 import { useMemo, useRef } from "react"
 import { Color, ShaderMaterial, AdditiveBlending, BackSide, Mesh } from "three"
 import { useFrame } from "@react-three/fiber"
-import { useControlStore } from "@state"
+import { useSettingStore, useControlStore } from "@state"
 import { StarClass, type Star as StarType } from "@types"
 import { CelestialBody, GordilocksZone, Pulsar } from "@components/object"
 import { useCelestial } from "@function"
@@ -42,7 +42,8 @@ const Star = ({ id, children, labelRef }: Props) => {
     const glowMatRef = useRef<ShaderMaterial>(null!)
     const coronaMatRef = useRef<ShaderMaterial>(null!)
 
-    const { distanceScale, sizeScale, setControl } = useControlStore()
+    const { distanceScale, sizeScale } = useSettingStore()
+    const { setControl } = useControlStore()
 
     const data = useCelestial().getObjectById(id) as StarType
     const intensity = data.intensity / Math.pow(distanceScale, 2) * INTENSITY_SCALE

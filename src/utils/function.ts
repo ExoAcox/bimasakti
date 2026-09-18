@@ -1,7 +1,7 @@
 import { Camera, MathUtils, Object3D, Vector3 } from "three"
 import { solar_system, alpha_centauri, trappist_1, sagittarius_a, lich, universes, universe_ids } from "@constants"
 import { useEffect, useRef, useState } from "react";
-import type { Belt, CelestialObject } from "@types";
+import type { Belt, CelestialObject, Landmark } from "@types";
 import { useLocation } from "react-router";
 
 export const getUniverseById = (id: string) => {
@@ -11,7 +11,7 @@ export const getUniverseById = (id: string) => {
 
 type UniverseMapping = {
     [key: string]: {
-        [key: string]: (CelestialObject | Belt)[]
+        [key: string]: (CelestialObject | Belt | Landmark)[]
     }
 };
 
@@ -29,13 +29,13 @@ export const useCelestial = () => {
 
     const currentUniverse = pathname.split("/")[1]
 
-    const objects: (CelestialObject | Belt)[] = []
+    const objects: (CelestialObject | Belt | Landmark)[] = []
 
     universe_ids.forEach(universe => {
         if (universe === currentUniverse) {
             const keys = Object.keys(universeMapping[currentUniverse])
             keys.forEach(key => {
-                objects.push(...universeMapping[currentUniverse][key])
+                objects.push(...(universeMapping[currentUniverse][key] as (CelestialObject | Belt | Landmark)[]))
             })
 
         }
@@ -46,7 +46,7 @@ export const useCelestial = () => {
     }
 
     const getObjectsByType = (type: string) => {
-        return objects.filter((object) => object.type === type)
+        return objects.filter((object) => "type" in object && object.type === type)
     }
 
     const getCameraDistance = (camera: Camera, object: Object3D, targetRef?: { current: Vector3 }) => {

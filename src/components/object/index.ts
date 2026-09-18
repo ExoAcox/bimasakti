@@ -14,5 +14,5 @@ export { default as TextureLoader } from "./TextureLoader"
 export { default as PlanetCloud } from "./PlanetCloud"
 export { default as Pulsar } from "./Pulsar"
 export { default as SpaceCraft } from "./SpaceCraft"
-
-
+export { default as Earth } from "./Earth"
+export { default as LandmarkMarker } from "./LandmarkMarker"

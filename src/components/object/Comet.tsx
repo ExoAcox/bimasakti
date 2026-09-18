@@ -1,12 +1,12 @@
+import { Detailed } from "@react-three/drei"
 import { useLoader } from "@react-three/fiber"
 import { useMemo, useRef } from "react"
 import { PLYLoader } from "three-stdlib"
 import type { Comet as CometType } from "@types"
 import { CelestialBody } from "@components/object"
 import { type Mesh } from "three"
-import { useControlStore } from "@state"
+import { useSettingStore, useControlStore } from "@state"
 import { LOWREST_SCALE } from "@constants"
-import { Detailed } from "@react-three/drei"
 
 interface Props {
     data: CometType
@@ -14,7 +14,8 @@ interface Props {
 
 const Comet = ({ data }: Props) => {
     const objectRef = useRef<Mesh>(null!)
-    const { sizeScale, setControl, distanceScale } = useControlStore()
+    const { sizeScale, distanceScale } = useSettingStore()
+    const { setControl } = useControlStore()
 
     const geometry = useLoader(PLYLoader, `/models/${data.model}`)
     const distance = LOWREST_SCALE / distanceScale
@@ -28,12 +29,6 @@ const Comet = ({ data }: Props) => {
         if (geometry) {
             geometry.center()
             geometry.computeVertexNormals()
-
-            // Putar geometry di sini untuk menyesuaikan arah awal (base orientation) model
-            // Silakan ubah nilai Math.PI / 2 sesuai kebutuhan (misal: Math.PI untuk 180 derajat)
-            // geometry.rotateX(Math.PI / 2) // Ubah orientasi pada sumbu X
-            // geometry.rotateY(MathUtils.degToRad(90)) // Ubah orientasi pada sumbu Y
-            // geometry.rotateZ(Math.PI / 2) // Ubah orientasi pada sumbu Z
         }
     }, [geometry])
 

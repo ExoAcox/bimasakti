@@ -16,7 +16,7 @@ export const Loader = () => {
 
     const knownTotalAssets = universe?.assetCount || 0
     const displayTotal = Math.max(total, knownTotalAssets)
-    const formattedProgress = Math.round((loaded / displayTotal) * 100)
+    const formattedProgress = Math.min(Math.round((loaded / displayTotal) * 100), 99)
 
     console.log(loaded, item)
 

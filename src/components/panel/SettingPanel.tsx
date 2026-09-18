@@ -5,7 +5,7 @@ import { IoIosSettings } from "react-icons/io";
 import { MdClose } from "react-icons/md";
 import { VscDebugRestart } from "react-icons/vsc";
 import { ImCheckboxChecked, ImCheckboxUnchecked } from "react-icons/im";
-import { useControlStore, defaultControl } from "@state";
+import { useSettingStore, useControlStore, defaultSetting } from "@state";
 import { SCALE, TIME_SCALE } from "@constants";
 import clsx from "clsx";
 
@@ -22,7 +22,8 @@ const languages = [
 
 const SettingModal = ({ isOpen, close }: Props) => {
 
-    const { sizeScale, distanceScale, speedScale, showOrbitLine, ignoreAxis, pauseOrbitWhenFocus, focusIndex, setControl } = useControlStore()
+    const { sizeScale, distanceScale, speedScale, showOrbitLine, ignoreAxis, pauseOrbitWhenFocus, setSetting } = useSettingStore()
+    const { focusIndex, setControl } = useControlStore()
     const { t, i18n } = useTranslation()
 
 
@@ -39,34 +40,36 @@ const SettingModal = ({ isOpen, close }: Props) => {
     }
 
     const reset = () => {
-        setControl(defaultControl)
+        setSetting(defaultSetting)
     }
 
     const setOrbitLine = () => {
-        setControl({ showOrbitLine: !showOrbitLine })
+        setSetting({ showOrbitLine: !showOrbitLine })
     }
 
     const setIgnoreAxis = () => {
-        setControl({ ignoreAxis: !ignoreAxis, focusIndex: focusIndex + 1 })
+        setSetting({ ignoreAxis: !ignoreAxis })
+        setControl({ focusIndex: focusIndex + 1 })
     }
 
     const setPauseOrbitWhenFocus = () => {
-        setControl({ pauseOrbitWhenFocus: !pauseOrbitWhenFocus })
+        setSetting({ pauseOrbitWhenFocus: !pauseOrbitWhenFocus })
     }
 
     const handleControl = (data: object) => {
-        setControl({ ...data, focusIndex: focusIndex + 1 })
+        setSetting(data)
+        setControl({ focusIndex: focusIndex + 1 })
     }
 
     if (!isOpen) return null
     return createPortal(
-        <div className="w-sm fixed left-1/2 top-1/2 -translate-x-1/2 -translate-y-2/3 p-4 bg-background backdrop-blur-sm text-primary rounded-md z-100">
+        <div className="w-sm fixed left-1/2 top-1/2 -translate-x-1/2 -translate-y-2/3 p-4 bg-background backdrop-blur-sm text-white rounded-md z-100">
             <div className="flex items-center gap-4 pb-4 mb-4 border-b border-divider">
                 <h5 className="text-lg font-bold mr-auto">{t("ui.setting")}</h5>
                 {isModified() ? <VscDebugRestart onClick={reset} className="cursor-pointer size-5" /> : null}
                 <MdClose onClick={close} className="cursor-pointer size-6" />
             </div>
-            <div className="text-secondary flex flex-col gap-4">
+            <div className=" flex flex-col gap-4">
                 <button className="flex items-center justify-between w-full text-left" onClick={setOrbitLine}>
                     <label className="cursor-pointer">{t("ui.show_orbit_line")}</label>
                     {showOrbitLine ? <ImCheckboxChecked className="cursor-pointer" /> : <ImCheckboxUnchecked className="cursor-pointer" />}
@@ -123,7 +126,7 @@ const SettingModal = ({ isOpen, close }: Props) => {
                         min={TIME_SCALE}
                         max={TIME_SCALE * 100}
                         value={speedScale}
-                        onChange={(e) => setControl({ speedScale: Number(e.target.value) })}
+                        onChange={(e) => setSetting({ speedScale: Number(e.target.value) })}
                         className="slider"
                     />
                 </div>
@@ -131,7 +134,7 @@ const SettingModal = ({ isOpen, close }: Props) => {
                     <label>{t("ui.language")}</label>
                     <div className="flex gap-4">
                         {languages.map(language => {
-                            return <img src={`/icons/${language.icon}`} alt={language.label} className={clsx("py-0.5 px-1 cursor-pointer border rounded-sm", i18n.language === language.id ? "border-accent" : "border-transparent")} onClick={() => i18n.changeLanguage(language.id)} />
+                            return <img src={`/icons/${language.icon}`} alt={language.label} className={clsx("py-0.5 px-1 cursor-pointer border rounded-sm", i18n.language === language.id ? "border-primary" : "border-transparent")} onClick={() => i18n.changeLanguage(language.id)} />
                         })}
                     </div>
                 </div>
@@ -141,16 +144,16 @@ const SettingModal = ({ isOpen, close }: Props) => {
     )
 }
 const SettingPanel = () => {
-    const { showSetting, setControl } = useControlStore()
+    const { showSetting, setSetting } = useSettingStore()
     const { t } = useTranslation()
 
     return <>
-        <button onClick={() => setControl({ showSetting: !showSetting })} className="flex items-center gap-3 fixed bottom-4 left-4 rounded-md z-50 py-2 px-3">
+        <button onClick={() => setSetting({ showSetting: !showSetting })} className="flex items-center gap-3 fixed bottom-4 left-4 rounded-md z-50 py-2 px-3">
             <IoIosSettings />
             {t("ui.setting")}
         </button>
 
-        <SettingModal isOpen={showSetting} close={() => setControl({ showSetting: false })} />
+        <SettingModal isOpen={showSetting} close={() => setSetting({ showSetting: false })} />
     </>
 }
 

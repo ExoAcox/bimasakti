@@ -1,4 +1,5 @@
 import type { Satellite } from "@types"
+import { landmarks } from "./landmark"
 
 export const satellites: Satellite[] = [
     // Earth
@@ -13,7 +14,10 @@ export const satellites: Satellite[] = [
         orbit_duration: 27.32,
         rotate_duration: 27.32, // Tidally locked
         texture: "moon.jpg",
-        icon: "satellite.png"
+        icon: "satellite.png",
+        get landmarks() {
+            return landmarks.filter((landmark) => landmark.parent === this.id)
+        }
     },
     // Mars
     {

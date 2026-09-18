@@ -32,6 +32,7 @@ const GordilocksZone = ({ data }: Props) => {
     const baseInnerOpacity = 0.015;
     const baseOuterOpacity = 0.015;
 
+
     useFrame((state) => {
         if (focus && !["star", "belt"].includes(focusedObject?.type ?? "")) return;
         if (!groupRef.current || outerRadius <= 0) return;
@@ -77,7 +78,7 @@ const GordilocksZone = ({ data }: Props) => {
         <group ref={groupRef}>
             <group position={[0, outerRadius * 1.1, 0]}>
                 <Html zIndexRange={[1, 0]}>
-                    <div ref={labelRef} className='absolute -translate-x-1/2 whitespace-nowrap text-sm font-semibold text-secondary'>Habitable Zone</div>
+                    <div ref={labelRef} className='absolute -translate-x-1/2 whitespace-nowrap text-sm font-semibold '>Habitable Zone</div>
                 </Html>
             </group>
             <mesh>

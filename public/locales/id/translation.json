@@ -15,7 +15,8 @@
         "speed_scale": "Skala Kecepatan",
         "language": "Bahasa",
         "speed_scale_value": "1 detik: {{days}} hari",
-        "belts": "Sabuk Asteroid"
+        "belts": "Sabuk Asteroid",
+        "landmarks": "Landmark"
     },
     "object": {
         "milky_way": {
@@ -471,6 +472,108 @@
             "name": "New Horizons",
             "nickname": "New Horizons",
             "description": "New Horizons adalah wahana antariksa NASA yang diluncurkan pada 19 Januari 2006. Wahana ini melakukan penerbangan lintas bersejarah di Pluto dan bulan-bulannya pada Juli 2015, mengambil gambar resolusi tinggi pertama dari planet kerdil tersebut, dan kemudian menjelajahi objek Sabuk Kuiper Arrokoth pada tahun 2019."
+        }
+    },
+    "landmark": {
+        "mount_everest": {
+            "name": "Gunung Everest",
+            "description": "Puncak tertinggi di Bumi di atas permukaan laut (8.848 m), terletak di pegunungan Himalaya di perbatasan Nepal dan Tibet."
+        },
+        "point_nemo": {
+            "name": "Point Nemo",
+            "description": "Titik kutub tidak terjangkau samudra (Oceanic Pole of Inaccessibility), lokasi paling terisolasi di lautan Bumi yang terletak di Samudra Pasifik Selatan."
+        },
+        "amazon_rainforest": {
+            "name": "Hutan Hujan Amazon",
+            "description": "Hutan hujan tropis terbesar di dunia yang membentang di sebagian besar cekungan Amazon di Amerika Selatan, menghasilkan persentase besar oksigen Bumi."
+        },
+        "chicxulub_crater": {
+            "name": "Bekas Meteor Mexico (Kawah Chicxulub)",
+            "description": "Kawah tumbukan asteroid kuno di Semenanjung Yucatán, Meksiko. Tumbukan raksasa ini memicu kepunahan massal dinosaurus 66 juta tahun lalu."
+        },
+        "sahara_desert": {
+            "name": "Gurun Sahara",
+            "description": "Gurun panas terbesar di dunia yang mencakup sebagian besar Afrika Utara, terkenal dengan hamparan bukit pasir raksasa dan iklim yang sangat kering."
+        },
+        "nile_river": {
+            "name": "Sungai Nil",
+            "description": "Sungai terpanjang di Afrika dan salah satu sungai terpanjang di dunia, mengalir ke utara menuju Laut Tengah dan mendukung peradaban Mesir Kuno."
+        },
+        "grand_canyon": {
+            "name": "Grand Canyon",
+            "description": "Ngarai raksasa yang terukir oleh Sungai Colorado di Arizona, AS, menampilkan lapisan batuan geologi miliaran tahun."
+        },
+        "mariana_trench": {
+            "name": "Palung Mariana",
+            "description": "Palung laut terdalam yang diketahui di Bumi, mencapai kedalaman hampir 11.000 meter di Challenger Deep di Samudra Pasifik Barat."
+        },
+        "pyramids_giza": {
+            "name": "Piramida Giza",
+            "description": "Kompleks monumen piramida kuno di Mesir yang dibangun sebagai makam firaun, termasuk Piramida Agung Giza yang megah."
+        },
+        "great_barrier_reef": {
+            "name": "Karang Penghalang Besar",
+            "description": "Sistem terumbu karang terbesar di dunia yang terletak di Laut Koral lepas pantai Queensland, Australia."
+        },
+        "mount_olympus": {
+            "name": "Olympus Mons",
+            "description": "Gunung berapi perisai raksasa di Mars, merupakan gunung berapi dan puncak tertinggi yang diketahui di seluruh Tata Surya (ketinggian ±21,9 km)."
+        },
+        "valles_marineris": {
+            "name": "Valles Marineris",
+            "description": "Sistem ngarai raksasa di Mars yang membentang lebih dari 4.000 km, jauh melampaui ukuran Grand Canyon di Bumi."
+        },
+        "gale_crater": {
+            "name": "Kawah Gale",
+            "description": "Kawah dampak besar di Mars dan lokasi pendaratan penjelajah Curiosity NASA, memiliki gunung berlapis Gunung Sharp di pusatnya."
+        },
+        "jezero_crater": {
+            "name": "Kawah Jezero",
+            "description": "Bekas danau dan delta sungai kuno di Mars tempat pendaratan penjelajah Perseverance NASA untuk mencari tanda-tanda kehidupan mikroba purba."
+        },
+        "hellas_planitia": {
+            "name": "Hellas Planitia",
+            "description": "Cekungan dampak raksasa berdiameter sekitar 2.300 km di belahan selatan Mars, salah satu kawah dampak terbesar di Tata Surya."
+        },
+        "giant_red_spot": {
+            "name": "Bintik Merah Raksasa",
+            "description": "Badai antisisklon raksasa di atmosfer Jupiter yang berukuran lebih besar dari Bumi dan telah berlangsung selama ratusan tahun."
+        },
+        "tranquility_base": {
+            "name": "Base Tranquillitatis",
+            "description": "Lokasi pendaratan bersejarah Apollo 11 pada tahun 1969 di Bulan, tempat manusia pertama (Neil Armstrong & Buzz Aldrin) menginjakkan kaki."
+        },
+        "tycho_crater": {
+            "name": "Kawah Tycho",
+            "description": "Kawah dampak muda yang sangat menonjol di belahan selatan Bulan, memiliki sistem pancaran sinar terang (bright rays) yang membentang luas."
+        },
+        "copernicus_crater": {
+            "name": "Kawah Copernicus",
+            "description": "Kawah dampak besar nan indah di Oceanus Procellarum Bulan dengan puncak tengah yang menjulang tinggi."
+        },
+        "south_pole_aitken": {
+            "name": "Cekungan Kutub Selatan-Aitken",
+            "description": "Cekungan kawah dampak tertua dan terbesar di Bulan (diameter 2.500 km), terletak di sisi jauh Bulan."
+        },
+        "maat_mons": {
+            "name": "Maat Mons",
+            "description": "Gunung berapi tertinggi di planet Venus (ketinggian 8 km), menunjukkan tanda-tanda aktivitas vulkanik yang relatif baru."
+        },
+        "ishtar_terra": {
+            "name": "Ishtar Terra",
+            "description": "Salah satu dari dua wilayah benua utama di Venus, terletak dekat kutub utara dan menampung pegunungan Maxwell Montes."
+        },
+        "caloris_basin": {
+            "name": "Cekungan Caloris",
+            "description": "Cekungan dampak kolosal di Merkurius berdiameter 1.550 km, dikelilingi oleh pegunungan berbatu tinggi akibat hantaman asteroid raksasa."
+        },
+        "tombaugh_regio": {
+            "name": "Tombaugh Regio",
+            "description": "Fitur dataran es berbentuk hati yang terkenal di permukaan planet kerdil Pluto, sebagian besar terdiri dari es nitrogen."
+        },
+        "occator_crater": {
+            "name": "Kawah Occator",
+            "description": "Kawah di planet kerdil Ceres yang terkenal dengan bintik-bintik terang misterius (Cerealia Facula) yang kaya akan natrium karbonat."
         }
     }
 }

@@ -3,7 +3,7 @@ import clsx from "clsx"
 import { useState } from "react"
 import { useControlStore } from "@state"
 
-import { PlanetClass, SpaceCraftClass, type Belt, type CelestialObject, type Planet } from "@types"
+import { PlanetClass, SpaceCraftClass, type Belt, type CelestialObject, type Comet, type Planet, type SpaceCraft, type Star } from "@types"
 import { useCelestial } from "@function"
 import { useTranslation } from "react-i18next"
 import SettingPanel from "@components/panel/SettingPanel"
@@ -52,7 +52,7 @@ const Section = ({ children, data, initialOpen }: SectionProps) => {
                 const isSatelliteVisible = (isFocus || isParentFocus) && satellites.length
 
 
-                const buttonClass = (id: string) => clsx("w-full py-2 px-3 flex items-center", (focus === id) && "bg-blue-400/80 text-primary")
+                const buttonClass = (id: string) => clsx("w-full py-2 px-3 flex items-center", (focus === id) && "bg-blue-400/80 text-white")
 
 
                 return <div className="text-sm">
@@ -83,33 +83,40 @@ const Sidebar = () => {
     const [isOpen, setOpen] = useState(true)
 
     const celestial = useCelestial()
-    const stars = celestial.getObjectsByType("star")
-    const comets = celestial.getObjectsByType("comet")
-    const belts = celestial.getObjectsByType("belt")
+    const stars = celestial.getObjectsByType("star") as Star[]
+    const comets = celestial.getObjectsByType("comet") as Comet[]
+    const belts = celestial.getObjectsByType("belt") as Belt[]
     const allPlanets = celestial.getObjectsByType("planet") as Planet[]
     const planets = allPlanets.filter(planet => planet.class !== PlanetClass.Dwarf)
     const dwarfPlanets = allPlanets.filter(planet => planet.class === PlanetClass.Dwarf)
-    const spaceCraft = celestial.getObjectsByType("space_craft")
+    const spaceCraft = celestial.getObjectsByType("space_craft") as SpaceCraft[]
 
     const handleClick = () => {
         setOpen(!isOpen)
     }
 
 
-    return <div className={clsx(!isOpen && "-translate-x-full", "transition fixed top-0 left-0 bottom-0 min-w-40 flex flex-col bg-background px-3 py-4 z-50 text-primary backdrop-blur-sm")}>
-        <button className="opacity-80 absolute top-2 -right-2 translate-x-full" onClick={handleClick}>
-            {isOpen ? <TbLayoutSidebarLeftCollapse className="size-8" /> : <TbLayoutSidebarLeftExpand className="size-8" />}
-        </button>
-        <div className="flex-1 flex flex-col gap-4 overflow-y-auto">
-            <Section data={stars} initialOpen>{t("ui.stars")}</Section>
-            <Section data={planets} initialOpen>{t("ui.planets")}</Section>
-            <Section data={dwarfPlanets}>{t("ui.dwarf_planets")}</Section>
-            <Section data={spaceCraft}>{t("ui.space_craft")}</Section>
-            <Section data={comets}>{t("ui.comets")}</Section>
-            <Section data={belts}>{t("ui.others")}</Section>
+    return (
+        <div className={clsx("fixed top-0 left-0 bottom-0 z-50 transition-transform duration-300", !isOpen && "-translate-x-full")}>
+            <button
+                className="absolute top-3 -right-10 bg-background/90 p-2 rounded-r-xl border border-l-0 border-white/10 shadow-lg cursor-pointer hover:bg-neutral-800 transition-colors opacity-90"
+                onClick={handleClick}
+            >
+                {isOpen ? <TbLayoutSidebarLeftCollapse className="size-6" /> : <TbLayoutSidebarLeftExpand className="size-6" />}
+            </button>
+            <div className="bg-background min-w-44 h-full flex flex-col px-3 py-4 text-white backdrop-blur-sm border-r border-white/10">
+                <div className="flex-1 flex flex-col gap-4 overflow-y-auto pr-1">
+                    <Section data={stars} initialOpen>{t("ui.stars")}</Section>
+                    <Section data={planets} initialOpen>{t("ui.planets")}</Section>
+                    <Section data={dwarfPlanets}>{t("ui.dwarf_planets")}</Section>
+                    <Section data={spaceCraft}>{t("ui.space_craft")}</Section>
+                    <Section data={comets}>{t("ui.comets")}</Section>
+                    <Section data={belts}>{t("ui.others")}</Section>
+                </div>
+                <SettingPanel />
+            </div>
         </div>
-        <SettingPanel />
-    </div>
+    )
 }
 
 

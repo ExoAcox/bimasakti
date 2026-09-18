@@ -1,11 +1,11 @@
 /* eslint-disable react-hooks/set-state-in-effect */
 import { useLayoutEffect, useMemo, useRef, useState } from "react"
-import { Group, MathUtils, Mesh, Object3D } from "three"
+import { Group, MathUtils, Matrix4, Mesh, Object3D, Vector3 } from "three"
 import type { CelestialObject, Planet as PlanetType } from "@types"
 import { useFrame, useThree } from "@react-three/fiber"
 import { calculateSatelliteDistance, getInitialRotation, useCelestial } from "@function";
 import { Html } from "@react-three/drei";
-import { useControlStore } from "@state";
+import { useSettingStore, useControlStore } from "@state";
 import { useTranslation } from "react-i18next";
 import { When } from "react-if"
 import { OrbitLine } from "@components/object"
@@ -18,9 +18,10 @@ interface Props {
     cloudRef?: React.RefObject<Mesh | null>,
     labelRef?: React.RefObject<HTMLButtonElement>
     childrenComponent?: React.ReactNode
+    orbitLineVisible?: boolean
 }
 
-const Object = ({ data, children, childrenComponent, onClick, objectRef, cloudRef, labelRef }: Props) => {
+const Object = ({ data, children, childrenComponent, onClick, objectRef, cloudRef, labelRef, orbitLineVisible = true }: Props) => {
     const [occlude, setOcclude] = useState<{ current: Object3D }[] | undefined>(undefined)
 
     const orbitRef = useRef<Group>(null!)
@@ -28,7 +29,8 @@ const Object = ({ data, children, childrenComponent, onClick, objectRef, cloudRe
 
     const { scene } = useThree()
 
-    const { focus, sizeScale, distanceScale, speedScale, showOrbitLine, ignoreAxis, pauseOrbitWhenFocus } = useControlStore()
+    const { sizeScale, distanceScale, speedScale, showOrbitLine, ignoreAxis, pauseOrbitWhenFocus } = useSettingStore()
+    const { focus, focusLandmark, rotateSpeed } = useControlStore()
     const { t } = useTranslation()
 
     const celestial = useCelestial()
@@ -65,17 +67,34 @@ const Object = ({ data, children, childrenComponent, onClick, objectRef, cloudRe
         return false;
     };
 
+    const virtualTimeRef = useRef(0)
+    const lastElapsedTimeRef = useRef<number | null>(null)
+
     useFrame((state) => {
         if (!data) return
         const elapsedTime = state.clock.getElapsedTime()
-        const speed = ((elapsedTime % 60) / 60) * Math.PI * 2
+
+        if (lastElapsedTimeRef.current === null) {
+            lastElapsedTimeRef.current = elapsedTime
+        }
+        const deltaT = elapsedTime - lastElapsedTimeRef.current
+        lastElapsedTimeRef.current = elapsedTime
+
+        virtualTimeRef.current += deltaT * rotateSpeed
+
+        const speed = ((virtualTimeRef.current % 60) / 60) * Math.PI * 2
+
+        if (focusLandmark) {
+            return;
+        }
+
         if (data.rotate_duration && objectRef?.current?.rotation) {
-            objectRef.current.rotation.y = speed / data.rotate_duration * speedScale
+            objectRef.current.rotation.y = (speed / data.rotate_duration) * speedScale
         }
 
         if (data.rotate_duration && data.cloud_texture && cloudRef?.current) {
-            const cloudSpeed = ((elapsedTime % 50) / 50) * Math.PI * 2
-            cloudRef.current.rotation.y = cloudSpeed / data.rotate_duration * speedScale
+            const cloudSpeed = ((virtualTimeRef.current % 50) / 50) * Math.PI * 2
+            cloudRef.current.rotation.y = (cloudSpeed / data.rotate_duration) * speedScale
         }
 
         if (!data.orbit_duration) return
@@ -108,21 +127,18 @@ const Object = ({ data, children, childrenComponent, onClick, objectRef, cloudRe
         const object = scene.getObjectByName(data.id)
         if (!object) return
 
-        // if (["blackhole", "star"].includes(data.type)) {
-        //     console.log(labelRef, internalLabelRef)
-        // }
-
-        // object.getWorldPosition(targetPos.current)
         const distance = celestial.getCameraDistance(camera, object)
         const scale = Math.max(300, data.radius) / sizeScale * 50
 
         internalLabelRef.current.style.background = focus === data.id ? "rgba(0,0,0,0.75)" : "transparent"
         internalLabelRef.current.style.visibility = distance > scale ? "visible" : "hidden"
 
+
         if (internalLabelRef.current.parentElement?.parentElement) {
             internalLabelRef.current.parentElement.parentElement.style.zIndex = focus === data.id ? "5" : "1"
         }
     })
+
 
     const isLabelVisible = useMemo(() => {
         const isSmallestObject = () => {
@@ -168,7 +184,7 @@ const Object = ({ data, children, childrenComponent, onClick, objectRef, cloudRe
 
     return <group rotation={[0, 0, axis]}>
         <group rotation={[0, rotate, 0]}>
-            <When condition={data.orbit_duration && showOrbitLine}>
+            <When condition={data.orbit_duration && showOrbitLine && orbitLineVisible}>
                 <OrbitLine radius={distance} longestRadius={longestDistance > distance ? longestDistance : undefined} color={data.color} />
             </When>
 
@@ -179,7 +195,7 @@ const Object = ({ data, children, childrenComponent, onClick, objectRef, cloudRe
                             occlude={occlude}
                             zIndexRange={[data.type === "star" ? 2 : 1, 0]}
                         >
-                            <button ref={labelRef || internalLabelRef} className="hover:text-accent absolute -translate-x-1/2 -translate-y-full -mt-1 py-1 px-2 whitespace-nowrap rounded-lg text-sm font-semibold text-secondary" onClick={onClick}>{t(`object.${data.id}.name`)}</button>
+                            <button ref={labelRef || internalLabelRef} className="hover:text-primary absolute -translate-x-1/2 -translate-y-full -mt-1 py-1 px-2 whitespace-nowrap rounded-lg text-sm font-semibold " onClick={onClick}>{t(`object.${data.id}.name`)}</button>
                         </Html>
                     </When>
 

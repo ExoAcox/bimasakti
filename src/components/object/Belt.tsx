@@ -1,7 +1,7 @@
 import { useMemo, useRef } from "react"
 import { randomNumber } from "@function"
 import type { Belt as BeltType } from "@types"
-import { useControlStore } from "@state"
+import { useSettingStore, useControlStore } from "@state"
 import { PointsMaterial } from "three"
 
 
@@ -11,7 +11,8 @@ interface BeltProps {
 
 
 const Belt = ({ data }: BeltProps) => {
-    const { focus, sizeScale, distanceScale } = useControlStore()
+    const { sizeScale, distanceScale } = useSettingStore()
+    const { focus } = useControlStore()
     const pointRef = useRef<PointsMaterial>(null!)
 
 

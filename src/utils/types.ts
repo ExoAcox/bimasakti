@@ -13,11 +13,14 @@ export interface Object {
     axis: number
     orbit_duration: number
     rotate_duration: number
+    min_zoom?: number
     texture?: string
+    texture_hd?: string
     cloud_texture?: string
     model?: string
     icon?: string
     longest_distance?: number
+    landmarks?: Landmark[]
 }
 
 // export interface Dummy extends Object {
@@ -110,6 +113,14 @@ export const SpaceCraftClass = {
 export type PlanetClass = (typeof PlanetClass)[keyof typeof PlanetClass];
 export type StarClass = (typeof StarClass)[keyof typeof StarClass];
 export type SpaceCraftClass = (typeof SpaceCraftClass)[keyof typeof SpaceCraftClass];
+
+export interface Landmark {
+    id: string
+    type?: "landmark"
+    latitude: number
+    longitude: number
+    parent: string
+}
 
 export interface Universe {
     id: string

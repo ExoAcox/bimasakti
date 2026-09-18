@@ -1,7 +1,5 @@
 import { useTexture } from "@react-three/drei";
 import type { Planet } from "@types";
-
-import { SCALE } from "@constants";
 import { useLayoutEffect, useRef } from "react";
 import { Mesh, Vector3 } from "three";
 
@@ -15,10 +13,8 @@ const PlanetRing = ({ data }: Props) => {
 
     const texture = useTexture(`/textures/${data.ring?.texture}`)
 
-    const axis = data.axis * (Math.PI / 180)
-
-    const innerRadius = (data.ring?.inner_radius ?? 0) / SCALE
-    const outerRadius = (data.ring?.outer_radius ?? 0) / SCALE
+    const innerRadius = (data.ring?.inner_radius ?? 0) / data.radius
+    const outerRadius = (data.ring?.outer_radius ?? 0) / data.radius
 
     useLayoutEffect(() => {
         if (ringRef.current) {
@@ -34,9 +30,7 @@ const PlanetRing = ({ data }: Props) => {
         }
     }, [innerRadius, outerRadius]);
 
-
-
-    return <mesh rotation={[-Math.PI / 2, 0, axis]} ref={ringRef} castShadow receiveShadow>
+    return <mesh rotation={[-Math.PI / 2, 0, 0]} ref={ringRef} castShadow receiveShadow>
         <ringGeometry
             args={[
                 innerRadius,

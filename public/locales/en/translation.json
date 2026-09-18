@@ -25,7 +25,8 @@
         "artificial_satellites": "Artificial Satellites",
         "space_craft": "Space Craft",
         "comets": "Comets",
-        "others": "Others"
+        "others": "Others",
+        "landmarks": "Landmarks"
     },
     "object": {
         "milky_way": {
@@ -481,6 +482,108 @@
             "name": "New Horizons",
             "nickname": "New Horizons",
             "description": "New Horizons is a NASA space probe launched on January 19, 2006. It performed a historic flyby of Pluto and its moons in July 2015, capturing the first high-resolution images of the dwarf planet, and later explored the Kuiper Belt object Arrokoth in 2019."
+        }
+    },
+    "landmark": {
+        "mount_everest": {
+            "name": "Mount Everest",
+            "description": "Earth's highest mountain above sea level (8,848 m), located in the Himalayas on the border between Nepal and Tibet."
+        },
+        "point_nemo": {
+            "name": "Point Nemo",
+            "description": "The oceanic pole of inaccessibility, the most remote place on Earth's oceans, located in the South Pacific Ocean."
+        },
+        "amazon_rainforest": {
+            "name": "Amazon Rainforest",
+            "description": "The world's largest tropical rainforest, spanning across much of the Amazon basin in South America and producing a vast percentage of Earth's oxygen."
+        },
+        "chicxulub_crater": {
+            "name": "Chicxulub Crater",
+            "description": "An ancient asteroid impact crater buried beneath the Yucatán Peninsula in Mexico. The colossal impact triggered the mass extinction of dinosaurs 66 million years ago."
+        },
+        "sahara_desert": {
+            "name": "Sahara Desert",
+            "description": "The world's largest hot desert covering most of Northern Africa, renowned for its massive sand dunes and hyper-arid climate."
+        },
+        "nile_river": {
+            "name": "Nile River",
+            "description": "The longest river in Africa and one of the longest in the world, flowing northward into the Mediterranean Sea and sustaining ancient Egyptian civilization."
+        },
+        "grand_canyon": {
+            "name": "Grand Canyon",
+            "description": "A immense steep-sided canyon carved by the Colorado River in Arizona, USA, revealing billions of years of geological rock layers."
+        },
+        "mariana_trench": {
+            "name": "Mariana Trench",
+            "description": "The deepest known oceanic trench on Earth, reaching nearly 11,000 meters deep at Challenger Deep in the Western Pacific Ocean."
+        },
+        "pyramids_giza": {
+            "name": "Pyramids of Giza",
+            "description": "An ancient pyramid complex in Egypt built as royal tombs for pharaohs, including the iconic Great Pyramid of Giza."
+        },
+        "great_barrier_reef": {
+            "name": "Great Barrier Reef",
+            "description": "The world's largest coral reef system, located in the Coral Sea off the coast of Queensland, Australia."
+        },
+        "mount_olympus": {
+            "name": "Olympus Mons",
+            "description": "A gigantic shield volcano on Mars, the highest volcano and planetary mountain known in the entire Solar System (~21.9 km tall)."
+        },
+        "valles_marineris": {
+            "name": "Valles Marineris",
+            "description": "A vast canyon system on Mars stretching over 4,000 km, dwarfing Earth's Grand Canyon."
+        },
+        "gale_crater": {
+            "name": "Gale Crater",
+            "description": "A large impact crater on Mars and the landing site for NASA's Curiosity rover, featuring Mount Sharp at its center."
+        },
+        "jezero_crater": {
+            "name": "Jezero Crater",
+            "description": "An ancient lake and river delta on Mars, landing site for NASA's Perseverance rover searching for signs of ancient microbial life."
+        },
+        "hellas_planitia": {
+            "name": "Hellas Planitia",
+            "description": "A colossal impact basin roughly 2,300 km in diameter located in Mars' southern hemisphere, one of the largest impact craters in the Solar System."
+        },
+        "giant_red_spot": {
+            "name": "Great Red Spot",
+            "description": "A persistent giant anticyclonic storm in Jupiter's atmosphere that is larger than Earth and has raged for centuries."
+        },
+        "tranquility_base": {
+            "name": "Statio Tranquillitatis (Apollo 11)",
+            "description": "The historic landing site of Apollo 11 in 1969 on the Moon, where humans (Neil Armstrong & Buzz Aldrin) first stepped on another world."
+        },
+        "tycho_crater": {
+            "name": "Tycho Crater",
+            "description": "A prominent young impact crater in the southern lunar highlands with an extensive bright ray system visible from Earth."
+        },
+        "copernicus_crater": {
+            "name": "Copernicus Crater",
+            "description": "A dramatic lunar impact crater located in Oceanus Procellarum, featuring a prominent central peak."
+        },
+        "south_pole_aitken": {
+            "name": "South Pole-Aitken Basin",
+            "description": "The oldest and largest impact basin on the Moon (2,500 km diameter), located on the lunar far side."
+        },
+        "maat_mons": {
+            "name": "Maat Mons",
+            "description": "The highest volcano on planet Venus (8 km high), exhibiting signs of relatively recent volcanic activity."
+        },
+        "ishtar_terra": {
+            "name": "Ishtar Terra",
+            "description": "One of two main continental highlands on Venus, located near the north pole and home to the Maxwell Montes range."
+        },
+        "caloris_basin": {
+            "name": "Caloris Basin",
+            "description": "A colossal 1,550 km wide impact basin on Mercury, surrounded by high mountain rings formed by a giant asteroid impact."
+        },
+        "tombaugh_regio": {
+            "name": "Tombaugh Regio",
+            "description": "The famous heart-shaped icy plain feature on Pluto's surface, largely composed of nitrogen ice."
+        },
+        "occator_crater": {
+            "name": "Occator Crater",
+            "description": "A crater on the dwarf planet Ceres famous for mysterious bright sodium carbonate spots (Cerealia Facula)."
         }
     }
 }

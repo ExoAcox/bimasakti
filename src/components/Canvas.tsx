@@ -5,8 +5,8 @@ import { useRef, useState, useEffect, Suspense } from "react"
 import { track } from '@vercel/analytics';
 
 import Scene from "@components/Scene"
-import { useControlStore } from "@state"
-import { Header, DetailPanel, NavigationPanel, Sidebar } from "@components/panel"
+import { useSettingStore, useControlStore } from "@state"
+import { Header, DetailPanel, NavigationPanel, Sidebar, ControlPanel } from "@components/panel"
 import { SkyBox } from "@components/object"
 import { Bloom, EffectComposer } from '@react-three/postprocessing'
 import BlackholeWrapEffect from "@components/effect/BlackholeWrapEffect"
@@ -19,6 +19,7 @@ import { Outlet, useSearchParams } from "react-router";
 const UserInterface = ({ id }: { id: string }) => {
     const { active, progress } = useProgress()
     const [isLoaded, setLoaded] = useState(false)
+    const { focus } = useControlStore()
 
     useEffect(() => {
         if (active) {
@@ -36,6 +37,9 @@ const UserInterface = ({ id }: { id: string }) => {
             <When condition={id !== "sagittarius_a"}>
                 <Sidebar />
             </When>
+            <When condition={focus}>
+                <ControlPanel id={focus} />
+            </When>
             <DetailPanel />
         </When>
     )
@@ -48,7 +52,8 @@ const CanvasLayout = () => {
     const [searchParams] = useSearchParams();
 
     const data = useCelestial().getUniverse()
-    const { focus, setControl } = useControlStore()
+    const { setSetting } = useSettingStore()
+    const { focus } = useControlStore()
 
     const skyboxTexture = data.id === "sagittarius_a" ? "/textures/nebula.jpg" : "/textures/milky_way.jpg"
 
@@ -66,7 +71,7 @@ const CanvasLayout = () => {
     return <div className="w-dvw h-dvh">
         <Canvas
             camera={{ near: 1e-7, far: 1e+7 }}
-            onPointerMissed={() => setControl({ showSetting: false })}>
+            onPointerMissed={() => setSetting({ showSetting: false })}>
 
             <When condition={import.meta.env.DEV || searchParams.get('dev')}>
                 <Stats className="top-auto! left-auto! bottom-0! right-0!" />

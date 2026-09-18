@@ -7,7 +7,7 @@ import trappist_1 from "./trappist-1"
 import lich from "./lich"
 
 export const SCALE = 1e+6
-export const TIME_SCALE = 6
+export const TIME_SCALE = 3
 export const INTENSITY_SCALE = 1e+14
 
 export const LOWREST_SCALE = 1e+7
@@ -42,7 +42,7 @@ const universes: Universe[] = [
         position: [0.038105392881217164, -2.745814737039023, 0.7172299984047412],
         minDistance: 3e-7,
         maxDistance: 40000,
-        cameraPosition: [3, 3, 3],
+        cameraPosition: [100, 100, 100],
         labelPosition: "right",
         defaultFocus: "sun",
         assetCount: 57,

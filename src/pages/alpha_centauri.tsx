@@ -1,7 +1,7 @@
 import { useMemo, useRef } from "react"
 import { Planet, Star } from "@components/object"
 import { alpha_centauri } from "@constants"
-import { useControlStore } from "@state"
+import { useSettingStore, useControlStore } from "@state"
 import { useFrame, useThree } from "@react-three/fiber"
 import { Html, useBounds } from "@react-three/drei"
 import { seo, useCelestial } from "@function"
@@ -14,7 +14,8 @@ export const meta = () => seo({
 })
 
 const AlphaCentauri = () => {
-    const { focus, distanceScale, setControl } = useControlStore()
+    const { distanceScale, sizeScale } = useSettingStore()
+    const { focus, setControl } = useControlStore()
     const { stars, planets } = alpha_centauri
 
     const centerRef = useRef(null!)
@@ -26,7 +27,6 @@ const AlphaCentauri = () => {
     const { scene } = useThree()
     const bound = useBounds()
     const celestial = useCelestial()
-    const { sizeScale } = useControlStore()
 
     const handleClick = () => {
         setControl({ focus: "" })
@@ -70,7 +70,7 @@ const AlphaCentauri = () => {
     return <group>
         <group ref={centerRef}>
             <Html occlude={occlude} zIndexRange={[2, 0]}>
-                <button ref={alphaLabelRef} className="hover:text-accent absolute -translate-x-1/2 -translate-y-full -mt-1 py-1 px-2 whitespace-nowrap rounded-lg text-sm font-semibold text-secondary" onClick={handleClick}>Alpha Centauri</button>
+                <button ref={alphaLabelRef} className="hover:text-primary absolute -translate-x-1/2 -translate-y-full -mt-1 py-1 px-2 whitespace-nowrap rounded-lg text-sm font-semibold " onClick={handleClick}>Alpha Centauri</button>
             </Html>
 
             {stars.filter(star => star.id.includes("alpha_centauri")).map(star => {

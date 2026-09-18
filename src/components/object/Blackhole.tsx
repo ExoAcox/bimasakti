@@ -1,6 +1,6 @@
 import { useRef } from "react"
 import type { Blackhole as BlackholeType } from "@types"
-import { useControlStore } from "@state"
+import { useSettingStore, useControlStore } from "@state"
 import { useCelestial } from "@function"
 import { Html } from "@react-three/drei"
 import { useFrame, useThree } from "@react-three/fiber"
@@ -16,7 +16,8 @@ const Blackhole = ({ id }: Props) => {
 
     const controls = useThree((state) => state.controls as OrbitControls);
 
-    const { sizeScale, setControl } = useControlStore()
+    const { sizeScale } = useSettingStore()
+    const { setControl } = useControlStore()
     const data = useCelestial().getObjectById(id) as BlackholeType
     const scale = data.radius / sizeScale
 
@@ -35,7 +36,7 @@ const Blackhole = ({ id }: Props) => {
     return (
         <group name={data.id} scale={scale}>
             <Html>
-                <label ref={labelRef} className="invisible absolute -translate-x-1/2 -translate-y-full -mt-10 text-sm font-semibold text-secondary">Wormhole</label>
+                <label ref={labelRef} className="invisible absolute -translate-x-1/2 -translate-y-full -mt-10 text-sm font-semibold ">Wormhole</label>
             </Html>
             <mesh
                 renderOrder={10}

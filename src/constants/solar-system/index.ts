@@ -2,6 +2,7 @@ import { StarClass, type Belt, type Comet, type Star } from "@types"
 import { planets } from "./planet"
 import { satellites } from "./satellite"
 import { space_craft } from "./space_craft"
+import { landmarks } from "./landmark"
 
 const stars: Star[] = [{
     id: "sun",
@@ -66,4 +67,5 @@ const comets: Comet[] = [
     }
 ]
 
-export default { stars, belts, comets, planets, satellites, space_craft }
+export default { stars, belts, comets, planets, satellites, space_craft, landmarks }
+
