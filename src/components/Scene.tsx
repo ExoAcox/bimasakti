@@ -61,6 +61,7 @@ const Scene = ({ children, controlRef }: Props) => {
             } else if (position instanceof Vector3) {
                 targetResetCamPos.current.copy(position);
             }
+
             targetResetControlsTarget.current.set(0, 0, 0);
             isResettingCamera.current = true;
         }
@@ -119,13 +120,13 @@ const Scene = ({ children, controlRef }: Props) => {
                     normalVec.current.subVectors(landmarkWorldPos, currentTargetPos.current).normalize()
 
                     const planetRadius = (focusedPlanet.radius || 1000) / sizeScale
-                    const targetDist = Math.max(planetRadius * 1.25, 0.002)
+                    const targetDist = Math.max(planetRadius * 1.5, 0.002)
 
                     targetCamPos.current.copy(currentTargetPos.current).add(normalVec.current.multiplyScalar(targetDist))
 
                     const distSq = state.camera.position.distanceToSquared(targetCamPos.current)
                     if (distSq > 0.0001) {
-                        state.camera.position.lerp(targetCamPos.current, 0.08)
+                        state.camera.position.lerp(targetCamPos.current, 1)
                     } else {
                         state.camera.position.copy(targetCamPos.current)
                         isLerpingLandmark.current = false

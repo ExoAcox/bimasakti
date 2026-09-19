@@ -18,7 +18,8 @@ export const planets: Planet[] = [
         axis: 0.034,
         orbit_duration: 87.97,
         rotate_duration: 58.65,
-        texture: "mercury.jpg",
+        texture: "mercury.ktx2",
+        texture_hd: "mercury_hd.ktx2",
         icon: "mercury.png",
         get satellites() {
             return satellites.filter((satellite) => satellite.parent === this.id)
@@ -38,9 +39,10 @@ export const planets: Planet[] = [
         axis: 177.3,
         orbit_duration: 224.7,
         rotate_duration: 243.02,
-        texture: "venus.jpg",
-        icon: "venus.png",
+        texture: "venus.ktx2",
+        texture_hd: "venus_hd.ktx2",
         cloud_texture: "venus_cloud.jpg",
+        icon: "venus.png",
         get satellites() {
             return satellites.filter((satellite) => satellite.parent === this.id)
         },
@@ -59,8 +61,8 @@ export const planets: Planet[] = [
         axis: 23.4,
         orbit_duration: 365.26,
         rotate_duration: 1.0,
-        texture: "earth.jpg",
-        texture_hd: "earth_hd.jpg",
+        texture: "earth.ktx2",
+        texture_hd: "earth_hd.ktx2",
         cloud_texture: "earth_cloud.jpg",
         icon: "earth.png",
         get satellites() {
@@ -84,8 +86,8 @@ export const planets: Planet[] = [
         axis: 25.19,
         orbit_duration: 686.98,
         rotate_duration: 1.03,
-        texture: "mars.jpg",
-        texture_hd: "mars_hd.jpg",
+        texture: "mars.ktx2",
+        texture_hd: "mars_hd.ktx2",
         icon: "mars.png",
         get satellites() {
             return satellites.filter((satellite) => satellite.parent === this.id)
@@ -105,7 +107,8 @@ export const planets: Planet[] = [
         axis: 3.13,
         orbit_duration: 4332.59,
         rotate_duration: 0.41, // 9.9 hours
-        texture: "jupiter.jpg",
+        texture: "jupiter.ktx2",
+        texture_hd: "jupiter_hd.ktx2",
         icon: "jupiter.png",
         get satellites() {
             return satellites.filter((satellite) => satellite.parent === this.id)
@@ -126,7 +129,7 @@ export const planets: Planet[] = [
         axis: 26.73,
         orbit_duration: 10759.22,
         rotate_duration: 0.44, // 10.6 hours
-        texture: "saturn.jpg",
+        texture: "saturn.ktx2",
         icon: "saturn.png",
         ring: {
             inner_radius: 66900,
@@ -148,7 +151,7 @@ export const planets: Planet[] = [
         axis: 97.77,
         orbit_duration: 30688.5,
         rotate_duration: 0.72, // 17.2 hours
-        texture: "uranus.jpg",
+        texture: "uranus.ktx2",
         icon: "uranus.png",
         ring: {
             inner_radius: 41838,
@@ -171,7 +174,7 @@ export const planets: Planet[] = [
         axis: 28.32,
         orbit_duration: 60182,
         rotate_duration: 0.67, // 16.1 hours
-        texture: "neptune.jpg",
+        texture: "neptune.ktx2",
         icon: "neptune.png",
         get satellites() {
             return satellites.filter((satellite) => satellite.parent === this.id)

@@ -1,12 +1,12 @@
 /* eslint-disable react-hooks/immutability */
-import { useTexture } from "@react-three/drei"
+import { useKTX2 } from "@react-three/drei"
 import { useFrame } from "@react-three/fiber"
 import { atmosphereFragmentShader, atmosphereVertexShader, earthFragmentShader, earthVertexShader } from "@shaders/earth"
 import { useControlStore } from "@state"
 import type { Planet } from "@types"
 import { useMemo, useRef } from "react"
 import { When } from "react-if"
-import { AdditiveBlending, BackSide, Color, MeshStandardMaterial, ShaderMaterial, SRGBColorSpace, Vector3 } from "three"
+import { AdditiveBlending, BackSide, Color, ShaderMaterial, SRGBColorSpace, Vector3 } from "three"
 
 interface EarthMaterialProps {
     textures: [string, string]
@@ -19,7 +19,7 @@ const EarthMaterial = ({
 }: EarthMaterialProps) => {
     const materialRef = useRef<ShaderMaterial>(null!)
 
-    const [dayTexture, nightTexture] = useTexture(textures)
+    const [dayTexture, nightTexture] = useKTX2(textures)
     const { dayNightMode } = useControlStore()
 
     dayTexture.colorSpace = SRGBColorSpace
@@ -92,8 +92,8 @@ const Earth = ({ data, hd }: Props) => {
             <sphereGeometry args={[1, 64, 64]} />
             <EarthMaterial
                 textures={[
-                    `/textures/${hd ? "earth_hd.jpg" : "earth.jpg"}`,
-                    `/textures/${hd ? "earth_night_hd.jpg" : "earth_night.jpg"}`,
+                    `/textures/${hd ? "earth_hd.ktx2" : "earth.ktx2"}`,
+                    `/textures/${hd ? "earth_night_hd.ktx2" : "earth_night.ktx2"}`,
                 ]}
                 nightIntensity={1}
             />
