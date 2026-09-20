@@ -9,6 +9,7 @@ import { When } from "react-if";
 import { useEffect, useState } from "react";
 import { IoChevronDown, IoChevronUp } from "react-icons/io5";
 import { TbLayoutSidebarRightCollapse, TbLayoutSidebarRightExpand } from "react-icons/tb";
+import { BiArrowBack } from "react-icons/bi";
 
 const PanelDetail = () => {
     const [isPanelOpen, setPanelOpen] = useState(true)
@@ -23,7 +24,6 @@ const PanelDetail = () => {
     useEffect(() => {
         setActiveSection("")
     }, [focus])
-
 
     if (!data) return null
 
@@ -42,6 +42,7 @@ const PanelDetail = () => {
     }
 
 
+
     return (
         <div className={clsx("fixed top-4 right-4 z-50 transition-transform duration-300", !isPanelOpen && "translate-x-[calc(100%)]")}>
             <button
@@ -50,154 +51,168 @@ const PanelDetail = () => {
             >
                 {isPanelOpen ? <TbLayoutSidebarRightCollapse className="size-6" /> : <TbLayoutSidebarRightExpand className="size-6" />}
             </button>
+
             <div className="bg-background min-w-sm max-w-sm rounded-xl pb-5 pt-4 px-6 backdrop-blur-sm max-h-[calc(100vh-2rem)] h-fit overflow-y-auto text-sm border border-white/10">
-                <div className="flex items-center gap-2 justify-between text-white">
-                    <h1 className="text-xl font-bold">{t(`object.${data?.id}.name`)}</h1>
-                    {data.icon ? <img src={`/icons/${data.icon}`} className="size-10" /> : ""}
-                </div>
-                <p className="mt-4 leading-relaxed border-t border-divider pt-4">
-                    {t(`object.${data?.id}.description`)}
-                </p>
-                <div className="mt-4 text-sm  leading-relaxed border-t border-divider pt-4">
-                    <When condition={data.radius}>
-                        <div className="flex justify-between items-center">
-                            <span>{t("ui.diameter")}</span>
-                            <span>{lengthFormat(data.radius * 2)}</span>
-                        </div>
-                        <div className="flex justify-between items-center">
-                            <span>{t("ui.rotation_period")}</span>
-                            <span>{timeFormat(data.rotate_duration)}</span>
-                        </div>
-                    </When>
-
-                    <When condition={(data as unknown as Belt).type === "belt"}>
-                        <div className="flex justify-between items-center">
-                            <span>{t("ui.object_count")}</span>
-                            <span>± {(data as unknown as Belt).count?.toLocaleString()}</span>
-                        </div>
-                        <div className="flex justify-between items-center">
-                            <span>{t("ui.inner_radius")}</span>
-                            <span>{lengthFormat((data as unknown as Belt).inner_radius)}</span>
-                        </div>
-                        <div className="flex justify-between items-center">
-                            <span>{t("ui.outer_radius")}</span>
-                            <span>{lengthFormat((data as unknown as Belt).outer_radius)}</span>
-                        </div>
-                    </When>
-
-
-                    <When condition={data.parent}>
-                        <div className="flex justify-between items-center">
-                            <span>{t("ui.orbital_period")}</span>
-                            <span>{timeFormat((data as Planet).orbit_duration)}</span>
-                        </div>
-                        <div className="flex justify-between items-center">
-                            <span>{t("ui.distance_from")} {data.parent ? t(`object.${data.parent}.name`) : t("object.sun.name")}</span>
-                            <span>{lengthFormat((data as Planet).distance)}</span>
-                        </div>
-                    </When>
-                </div>
-
-                {/* Parent Section */}
-                <When condition={["satellite", "artificial_satellite"].includes(data.type)}>
-                    <div className="mt-4 mb-2 leading-relaxed border-t border-divider pt-4">
-                        <label className="font-bold text-blue-300">{t("ui.parent_planet")}</label>
-                        <button className="flex gap-2 items-center mb-2" onClick={() => setControl({ focus: parentPlanet.id })}>
-                            <img src={`/icons/${parentPlanet.icon}`} className="size-6" alt={parentPlanet.icon} />
-                            <span className="text-lg font-bold">{t(`object.${parentPlanet.id}.name`)}</span>
-                        </button>
-
-                        <div className="flex justify-between items-center">
-                            <span>{t("ui.diameter")}</span>
-                            <span>{lengthFormat(parentPlanet.radius * 2)}</span>
-                        </div>
-                        <div className="flex justify-between items-center">
-                            <span>{t("ui.rotation_period")}</span>
-                            <span>{timeFormat(parentPlanet.rotate_duration)}</span>
-                        </div>
-                        <div className="flex justify-between items-center">
-                            <span>{t("ui.orbital_period")}</span>
-                            <span>{timeFormat(parentPlanet.orbit_duration)}</span>
-                        </div>
-                        <div className="flex justify-between items-center">
-                            <span>{t("ui.distance_from")} {t("object.sun.name")}</span>
-                            <span>{lengthFormat(parentPlanet.distance)}</span>
-                        </div>
+                <When condition={!focusLandmark}>
+                    <div className="flex items-center gap-2 justify-between text-white">
+                        <h1 className="text-xl font-bold">{t(`object.${data?.id}.name`)}</h1>
+                        {data.icon ? <img src={`/icons/${data.icon}`} className="size-10" /> : ""}
                     </div>
+                    <p className="mt-4 leading-relaxed border-t border-divider pt-4">
+                        {t(`object.${data?.id}.description`)}
+                    </p>
+                    <div className="mt-4 text-sm  leading-relaxed border-t border-divider pt-4">
+                        <When condition={data.radius}>
+                            <div className="flex justify-between items-center">
+                                <span>{t("ui.diameter")}</span>
+                                <span>{lengthFormat(data.radius * 2)}</span>
+                            </div>
+                            <div className="flex justify-between items-center">
+                                <span>{t("ui.rotation_period")}</span>
+                                <span>{timeFormat(data.rotate_duration)}</span>
+                            </div>
+                        </When>
+
+                        <When condition={(data as unknown as Belt).type === "belt"}>
+                            <div className="flex justify-between items-center">
+                                <span>{t("ui.object_count")}</span>
+                                <span>± {(data as unknown as Belt).count?.toLocaleString()}</span>
+                            </div>
+                            <div className="flex justify-between items-center">
+                                <span>{t("ui.inner_radius")}</span>
+                                <span>{lengthFormat((data as unknown as Belt).inner_radius)}</span>
+                            </div>
+                            <div className="flex justify-between items-center">
+                                <span>{t("ui.outer_radius")}</span>
+                                <span>{lengthFormat((data as unknown as Belt).outer_radius)}</span>
+                            </div>
+                        </When>
+
+
+                        <When condition={data.parent}>
+                            <div className="flex justify-between items-center">
+                                <span>{t("ui.orbital_period")}</span>
+                                <span>{timeFormat((data as Planet).orbit_duration)}</span>
+                            </div>
+                            <div className="flex justify-between items-center">
+                                <span>{t("ui.distance_from")} {data.parent ? t(`object.${data.parent}.name`) : t("object.sun.name")}</span>
+                                <span>{lengthFormat((data as Planet).distance)}</span>
+                            </div>
+                        </When>
+                    </div>
+
+                    {/* Parent Section */}
+                    <When condition={["satellite", "artificial_satellite"].includes(data.type)}>
+                        <div className="mt-4 mb-2 leading-relaxed border-t border-divider pt-4">
+                            <label className="font-bold text-blue-300">{t("ui.parent_planet")}</label>
+                            <button className="flex gap-2 items-center mb-2" onClick={() => setControl({ focus: parentPlanet.id })}>
+                                <img src={`/icons/${parentPlanet.icon}`} className="size-6" alt={parentPlanet.icon} />
+                                <span className="text-lg font-bold">{t(`object.${parentPlanet.id}.name`)}</span>
+                            </button>
+
+                            <div className="flex justify-between items-center">
+                                <span>{t("ui.diameter")}</span>
+                                <span>{lengthFormat(parentPlanet.radius * 2)}</span>
+                            </div>
+                            <div className="flex justify-between items-center">
+                                <span>{t("ui.rotation_period")}</span>
+                                <span>{timeFormat(parentPlanet.rotate_duration)}</span>
+                            </div>
+                            <div className="flex justify-between items-center">
+                                <span>{t("ui.orbital_period")}</span>
+                                <span>{timeFormat(parentPlanet.orbit_duration)}</span>
+                            </div>
+                            <div className="flex justify-between items-center">
+                                <span>{t("ui.distance_from")} {t("object.sun.name")}</span>
+                                <span>{lengthFormat(parentPlanet.distance)}</span>
+                            </div>
+                        </div>
+                    </When>
+
+                    {/* Satellites Section */}
+                    <When condition={data.type === "planet" && data.satellites && data.satellites.length}>
+                        <div className="mt-4 leading-relaxed border-t border-divider pt-4 overflow-auto">
+                            <button className="flex items-center gap-2 font-bold text-blue-300" onClick={() => handleClickSection("satellite")}>
+                                <span>{t("ui.natural_satellites")} ({(data as Planet).satellites?.length})</span>
+                                {activeSection === "satellite" ? <IoChevronUp /> : <IoChevronDown />}
+                            </button>
+                            <div className={clsx("flex flex-col gap-4 mt-3", activeSection !== "satellite" && "hidden")}>
+                                {(data as Planet).satellites?.map(satellite => {
+                                    return <div>
+                                        <button className="flex gap-2 items-center mb-2" onClick={() => setControl({ focus: satellite.id })}>
+                                            <img src={`/icons/${satellite.icon}`} className="size-6" alt={satellite.icon} />
+                                            <span className="text-lg font-bold">{t(`object.${satellite.id}.name`)}</span>
+                                        </button>
+
+                                        <div className="flex justify-between items-center">
+                                            <span>{t("ui.diameter")}</span>
+                                            <span>{lengthFormat(satellite.radius * 2)}</span>
+                                        </div>
+                                        <div className="flex justify-between items-center">
+                                            <span>{t("ui.rotation_period")}</span>
+                                            <span>{timeFormat(satellite.rotate_duration)}</span>
+                                        </div>
+                                        <div className="flex justify-between items-center">
+                                            <span>{t("ui.orbital_period")}</span>
+                                            <span>{timeFormat(satellite.orbit_duration)}</span>
+                                        </div>
+                                        <div className="flex justify-between items-center">
+                                            <span>{t("ui.distance_from")} {t(`object.${data.id}.name`)}</span>
+                                            <span>{lengthFormat(satellite.distance)}</span>
+                                        </div>
+                                    </div>
+                                })}
+                            </div>
+                        </div>
+                    </When>
+
+                    {/* Artificial Satellites Section */}
+                    <When condition={data.type === "planet" && data.artificial_satellites && data.artificial_satellites.length}>
+                        <div className="mt-4 leading-relaxed border-t border-divider pt-4 overflow-auto">
+                            <button className="flex items-center gap-2 font-bold text-blue-300" onClick={() => handleClickSection("artificial_satellite")}>
+                                <span>{t("ui.artificial_satellites")} ({(data as Planet).artificial_satellites?.filter(craft => craft.orbit_duration).length})</span>
+                                {activeSection === "artificial_satellite" ? <IoChevronUp /> : <IoChevronDown />}
+                            </button>
+                            <div className={clsx("flex flex-col gap-4 mt-3", activeSection !== "artificial_satellite" && "hidden")}>
+                                {(data as Planet).artificial_satellites?.filter(craft => craft.orbit_duration)?.map(satellite => {
+                                    return <div>
+                                        <button className="flex gap-2 items-center mb-2" onClick={() => setControl({ focus: satellite.id })}>
+                                            <img src={`/icons/${satellite.icon}`} className="size-6" alt={satellite.icon} />
+                                            <span className="text-lg font-bold">{t(`object.${satellite.id}.name`)}</span>
+                                        </button>
+
+                                        <div className="flex justify-between items-center">
+                                            <span>{t("ui.diameter")}</span>
+                                            <span>{lengthFormat(satellite.radius * 2)}</span>
+                                        </div>
+                                        <div className="flex justify-between items-center">
+                                            <span>{t("ui.rotation_period")}</span>
+                                            <span>{timeFormat(satellite.rotate_duration)}</span>
+                                        </div>
+                                        <div className="flex justify-between items-center">
+                                            <span>{t("ui.orbital_period")}</span>
+                                            <span>{timeFormat(satellite.orbit_duration)}</span>
+                                        </div>
+                                        <div className="flex justify-between items-center">
+                                            <span>{t("ui.distance_from")} {t(`object.${data.id}.name`)}</span>
+                                            <span>{lengthFormat(satellite.distance)}</span>
+                                        </div>
+                                    </div>
+                                })}
+                            </div>
+                        </div>
+                    </When>
                 </When>
 
-                {/* Satellites Section */}
-                <When condition={data.type === "planet" && data.satellites && data.satellites.length}>
-                    <div className="mt-4 leading-relaxed border-t border-divider pt-4 overflow-auto">
-                        <button className="flex items-center gap-2 font-bold text-blue-300" onClick={() => handleClickSection("satellite")}>
-                            <span>{t("ui.natural_satellites")} ({(data as Planet).satellites?.length})</span>
-                            {activeSection === "satellite" ? <IoChevronUp /> : <IoChevronDown />}
-                        </button>
-                        <div className={clsx("flex flex-col gap-4 mt-3", activeSection !== "satellite" && "hidden")}>
-                            {(data as Planet).satellites?.map(satellite => {
-                                return <div>
-                                    <button className="flex gap-2 items-center mb-2" onClick={() => setControl({ focus: satellite.id })}>
-                                        <img src={`/icons/${satellite.icon}`} className="size-6" alt={satellite.icon} />
-                                        <span className="text-lg font-bold">{t(`object.${satellite.id}.name`)}</span>
-                                    </button>
-
-                                    <div className="flex justify-between items-center">
-                                        <span>{t("ui.diameter")}</span>
-                                        <span>{lengthFormat(satellite.radius * 2)}</span>
-                                    </div>
-                                    <div className="flex justify-between items-center">
-                                        <span>{t("ui.rotation_period")}</span>
-                                        <span>{timeFormat(satellite.rotate_duration)}</span>
-                                    </div>
-                                    <div className="flex justify-between items-center">
-                                        <span>{t("ui.orbital_period")}</span>
-                                        <span>{timeFormat(satellite.orbit_duration)}</span>
-                                    </div>
-                                    <div className="flex justify-between items-center">
-                                        <span>{t("ui.distance_from")} {t(`object.${data.id}.name`)}</span>
-                                        <span>{lengthFormat(satellite.distance)}</span>
-                                    </div>
-                                </div>
-                            })}
-                        </div>
+                {/* Landmark Detail */}
+                <When condition={focusLandmark}>
+                    <div className="flex items-center gap-4 text-white">
+                        <button className="text-white" onClick={() => setControl({ focusLandmark: "" })}><BiArrowBack className="size-4" /></button>
+                        <h1 className="text-xl font-bold">{t(`landmark.${focusLandmark}.name`)}</h1>
                     </div>
-                </When>
-
-                {/* Artificial Satellites Section */}
-                <When condition={data.type === "planet" && data.artificial_satellites && data.artificial_satellites.length}>
-                    <div className="mt-4 leading-relaxed border-t border-divider pt-4 overflow-auto">
-                        <button className="flex items-center gap-2 font-bold text-blue-300" onClick={() => handleClickSection("artificial_satellite")}>
-                            <span>{t("ui.artificial_satellites")} ({(data as Planet).artificial_satellites?.filter(craft => craft.orbit_duration).length})</span>
-                            {activeSection === "artificial_satellite" ? <IoChevronUp /> : <IoChevronDown />}
-                        </button>
-                        <div className={clsx("flex flex-col gap-4 mt-3", activeSection !== "artificial_satellite" && "hidden")}>
-                            {(data as Planet).artificial_satellites?.filter(craft => craft.orbit_duration)?.map(satellite => {
-                                return <div>
-                                    <button className="flex gap-2 items-center mb-2" onClick={() => setControl({ focus: satellite.id })}>
-                                        <img src={`/icons/${satellite.icon}`} className="size-6" alt={satellite.icon} />
-                                        <span className="text-lg font-bold">{t(`object.${satellite.id}.name`)}</span>
-                                    </button>
-
-                                    <div className="flex justify-between items-center">
-                                        <span>{t("ui.diameter")}</span>
-                                        <span>{lengthFormat(satellite.radius * 2)}</span>
-                                    </div>
-                                    <div className="flex justify-between items-center">
-                                        <span>{t("ui.rotation_period")}</span>
-                                        <span>{timeFormat(satellite.rotate_duration)}</span>
-                                    </div>
-                                    <div className="flex justify-between items-center">
-                                        <span>{t("ui.orbital_period")}</span>
-                                        <span>{timeFormat(satellite.orbit_duration)}</span>
-                                    </div>
-                                    <div className="flex justify-between items-center">
-                                        <span>{t("ui.distance_from")} {t(`object.${data.id}.name`)}</span>
-                                        <span>{lengthFormat(satellite.distance)}</span>
-                                    </div>
-                                </div>
-                            })}
-                        </div>
-                    </div>
+                    <p className="mt-4 leading-relaxed border-t border-divider pt-4">
+                        {t(`landmark.${focusLandmark}.description`)}
+                    </p>
                 </When>
 
                 {/* Landmarks Section */}

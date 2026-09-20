@@ -7,7 +7,7 @@ import { useFrame, useThree } from "@react-three/fiber"
 import { Vector3 } from "three"
 import { useCelestial, useMobile } from "@function"
 import { latLongToVector3 } from "@components/object/LandmarkMarker"
-import type { Belt, CelestialObject, Planet } from "@types"
+import type { Belt, CelestialObject, Landmark, Planet } from "@types"
 
 interface Props {
     children: React.ReactNode
@@ -39,22 +39,16 @@ const Scene = ({ children, controlRef }: Props) => {
     const celestial = useCelestial()
     const universe = celestial.getUniverse()
 
-    useEffect(() => {
-        if (focusLandmark) {
-            isLerpingLandmark.current = true
-        } else {
-            isLerpingLandmark.current = false
-        }
-    }, [focusLandmark])
 
     useEffect(() => {
-        setControl({ focusLandmark: "" })
-
         if (focus) {
             const object = celestial.getObjectById(focus) as CelestialObject | Belt
             resetControl(object)
+
             isResettingCamera.current = false
         } else if (lastFocusedId.current) {
+            setControl({ focusLandmark: "" })
+
             const position = ((isMobile ? universe.mobile?.cameraPosition : universe.cameraPosition) || universe.cameraPosition)
             if (Array.isArray(position)) {
                 targetResetCamPos.current.set(position[0], position[1], position[2]);
@@ -67,6 +61,7 @@ const Scene = ({ children, controlRef }: Props) => {
         }
     }, [focus])
 
+    // Focus to default position
     useLayoutEffect(() => {
         if (controlRef.current) {
             const position = (isMobile ? universe.mobile?.cameraPosition : universe.cameraPosition) || universe.cameraPosition
@@ -81,6 +76,7 @@ const Scene = ({ children, controlRef }: Props) => {
         }
     }, [universe, controlRef, camera.position, isMobile])
 
+    // Focus to object
     useEffect(() => {
         if (!focus) return;
         if (ignoredFocus.includes(focus)) return
@@ -89,6 +85,31 @@ const Scene = ({ children, controlRef }: Props) => {
 
         bound.refresh(object).fit()
     }, [bound, focus, scene, focusIndex])
+
+    // Focus to landmark
+    useEffect(() => {
+        if (!focusLandmark) return setControl({ focusIndex: focusIndex + 1 })
+
+        setControl({
+            rotateSpeed: 0,
+            cloudVisible: false
+        })
+
+        const object = scene.getObjectByName(focus)
+        const planet = celestial.getObjectById(focus) as Planet
+        const landmark = celestial.getObjectById(focusLandmark) as Landmark
+        if (!object || !planet || !landmark) return
+
+        const localPos = latLongToVector3(landmark.latitude, landmark.longitude, 1.0)
+        const landmarkWorldPos = localPos.applyMatrix4(object.matrixWorld)
+        normalVec.current.subVectors(landmarkWorldPos, currentTargetPos.current).normalize()
+
+        const planetRadius = (planet.radius || 1000) / sizeScale
+        const targetDist = Math.max(planetRadius * 1.5, 0.002)
+
+        targetCamPos.current.copy(currentTargetPos.current).add(normalVec.current.multiplyScalar(targetDist))
+        camera.position.copy(targetCamPos.current)
+    }, [focusLandmark])
 
     useFrame((state) => {
         if (focus) {
@@ -110,29 +131,29 @@ const Scene = ({ children, controlRef }: Props) => {
                 }
             }
 
-            if (focusLandmark && isLerpingLandmark.current) {
-                const focusedPlanet = celestial.getObjectById(focus) as Planet
-                const targetLandmark = focusedPlanet?.landmarks?.find(l => l.id === focusLandmark)
+            // if (focusLandmark && isLerpingLandmark.current) {
+            //     const focusedPlanet = celestial.getObjectById(focus) as Planet
+            //     const targetLandmark = focusedPlanet?.landmarks?.find(l => l.id === focusLandmark)
 
-                if (targetLandmark) {
-                    const localPos = latLongToVector3(targetLandmark.latitude, targetLandmark.longitude, 1.0)
-                    const landmarkWorldPos = localPos.applyMatrix4(object.matrixWorld)
-                    normalVec.current.subVectors(landmarkWorldPos, currentTargetPos.current).normalize()
+            //     if (targetLandmark) {
+            //         const localPos = latLongToVector3(targetLandmark.latitude, targetLandmark.longitude, 1.0)
+            //         const landmarkWorldPos = localPos.applyMatrix4(object.matrixWorld)
+            //         normalVec.current.subVectors(landmarkWorldPos, currentTargetPos.current).normalize()
 
-                    const planetRadius = (focusedPlanet.radius || 1000) / sizeScale
-                    const targetDist = Math.max(planetRadius * 1.5, 0.002)
+            //         const planetRadius = (focusedPlanet.radius || 1000) / sizeScale
+            //         const targetDist = Math.max(planetRadius * 1.5, 0.002)
 
-                    targetCamPos.current.copy(currentTargetPos.current).add(normalVec.current.multiplyScalar(targetDist))
+            //         targetCamPos.current.copy(currentTargetPos.current).add(normalVec.current.multiplyScalar(targetDist))
 
-                    const distSq = state.camera.position.distanceToSquared(targetCamPos.current)
-                    if (distSq > 0.0001) {
-                        state.camera.position.lerp(targetCamPos.current, 1)
-                    } else {
-                        state.camera.position.copy(targetCamPos.current)
-                        isLerpingLandmark.current = false
-                    }
-                }
-            }
+            //         const distSq = state.camera.position.distanceToSquared(targetCamPos.current)
+            //         if (distSq > 0.0001) {
+            //             state.camera.position.lerp(targetCamPos.current, 1)
+            //         } else {
+            //             state.camera.position.copy(targetCamPos.current)
+            //             isLerpingLandmark.current = false
+            //         }
+            //     }
+            // }
 
 
             controlRef.current.target.copy(currentTargetPos.current)
@@ -142,6 +163,7 @@ const Scene = ({ children, controlRef }: Props) => {
             if (isResettingCamera.current && controlRef.current) {
                 state.camera.position.lerp(targetResetCamPos.current, 0.05)
                 controlRef.current.target.lerp(targetResetControlsTarget.current, 0.05)
+                controlRef.current.enabled = false
                 controlRef.current.update()
 
                 const distSqCam = state.camera.position.distanceToSquared(targetResetCamPos.current)
@@ -150,7 +172,9 @@ const Scene = ({ children, controlRef }: Props) => {
                 if (distSqCam < 0.0001 && distSqTarget < 0.0001) {
                     state.camera.position.copy(targetResetCamPos.current)
                     controlRef.current.target.copy(targetResetControlsTarget.current)
+                    controlRef.current.enabled = true
                     controlRef.current.update()
+
                     isResettingCamera.current = false
                     lastFocusedId.current = null
                     isZooming.current = false

@@ -479,6 +479,98 @@
             "name": "Gunung Everest",
             "description": "Puncak tertinggi di Bumi di atas permukaan laut (8.848 m), terletak di pegunungan Himalaya di perbatasan Nepal dan Tibet."
         },
+        "mount_aconcagua": {
+            "name": "Aconcagua",
+            "description": "Puncak tertinggi di benua Amerika Selatan (6.961 m), terletak di Pegunungan Andes di Argentina."
+        },
+        "mount_denali": {
+            "name": "Gunung Denali",
+            "description": "Puncak tertinggi di benua Amerika Utara (6.190 m), terletak di Pegunungan Alaska, AS."
+        },
+        "mount_kilimanjaro": {
+            "name": "Gunung Kilimanjaro",
+            "description": "Gunung berapi berdiri bebas tertinggi di dunia dan puncak tertinggi di Afrika (5.895 m), terletak di Tanzania."
+        },
+        "mount_elbrus": {
+            "name": "Gunung Elbrus",
+            "description": "Gunung berapi dorman dan puncak tertinggi di benua Eropa (5.642 m), terletak di Pegunungan Kaukasus, Rusia."
+        },
+        "mount_vinson": {
+            "name": "Vinson Massif",
+            "description": "Puncak tertinggi di benua Antartika (4.892 m), terletak di Pegunungan Ellsworth."
+        },
+        "mount_cartenz": {
+            "name": "Puncak Carstensz (Puncak Jaya)",
+            "description": "Puncak tertinggi di benua Oceania/Australasia (4.884 m), terletak di Pegunungan Jayawijaya, Papua, Indonesia."
+        },
+        "mount_k2": {
+            "name": "Gunung K2",
+            "description": "Puncak tertinggi kedua di Bumi (8.611 m), terletak di Pegunungan Karakoram di perbatasan Pakistan dan Tiongkok."
+        },
+        "mont_blanc": {
+            "name": "Mont Blanc",
+            "description": "Puncak tertinggi di Pegunungan Alpen dan Eropa Barat (4.807 m), terletak di perbatasan Prancis dan Italia."
+        },
+        "mauna_loa": {
+            "name": "Mauna Loa",
+            "description": "Gunung berapi perisai terbesar di Bumi yang aktif berdasarkan volume dan luas permukaan, terletak di Hawaii."
+        },
+        "patagonian_desert": {
+            "name": "Gurun Patagonia",
+            "description": "Gurun terbesar di benua Amerika Selatan yang membentang di wilayah Patagonia, Argentina dan Chile."
+        },
+        "atacama_desert": {
+            "name": "Gurun Atacama",
+            "description": "Tempat non-polar paling kering di Bumi yang terletak di Chile, terkenal dengan pemandangan mirip permukaan Mars dan lokasi observatorium astronomi."
+        },
+        "gobi_desert": {
+            "name": "Gurun Gobi",
+            "description": "Gurun dingin raksasa di Asia Tengah yang membentang di Tiongkok dan Mongolia, terkenal dengan situs fosil dinosaurus dan rute Jalur Sutra."
+        },
+        "arabian_desert": {
+            "name": "Gurun Arabia",
+            "description": "Gurun luas di Semenanjung Arab yang menampung padang pasir Rub' al Khali (Empty Quarter)."
+        },
+        "great_basin_desert": {
+            "name": "Gurun Great Basin",
+            "description": "Gurun terbesar di benua Amerika Utara yang merupakan bagian dari wilayah cekungan Great Basin, AS."
+        },
+        "kalahari_desert": {
+            "name": "Gurun Kalahari",
+            "description": "Gurun sabana semi-kering raksasa yang membentang di Botswana, Namibia, dan Afrika Selatan."
+        },
+        "great_victoria_desert": {
+            "name": "Gurun Besar Victoria",
+            "description": "Gurun terbesar di benua Australia yang didominasi pasir merah dan bukit pasir kecil."
+        },
+        "caspian_sea": {
+            "name": "Laut Kaspia",
+            "description": "Danau atau perairan pedalaman terbesar di dunia berdasarkan luas wilayahnya, terletak di antara Eropa dan Asia."
+        },
+        "dead_sea": {
+            "name": "Laut Mati",
+            "description": "Danau garam daratan dengan titik elevasi terendah di permukaan daratan Bumi (-430 m) dan kadar garam sangat tinggi."
+        },
+        "mcmurdo_dry_valleys": {
+            "name": "Lembah Kering McMurdo",
+            "description": "Wilayah di Antartika yang diakui sebagai lokasi paling kering di Bumi, hampir tidak pernah mengalami curah hujan selama jutaan tahun."
+        },
+        "antarctic_desert": {
+            "name": "Gurun Antartika",
+            "description": "Gurun terbesar dan terdingin di dunia yang mencakup seluruh benua Antartika dengan tingkat kelembapan udara yang sangat rendah."
+        },
+        "mawsynram": {
+            "name": "Mawsynram",
+            "description": "Desa di Meghalaya, India, yang memegang rekor dunia sebagai tempat terbasah di Bumi dengan curah hujan tahunan rata-rata 11.871 mm."
+        },
+        "victoria_falls": {
+            "name": "Air Terjun Victoria",
+            "description": "Air terjun spektakuler di Sungai Zambezi di perbatasan Zambia dan Zimbabwe, salah satu tirai air jatuh terbesar di dunia."
+        },
+        "niagara_falls": {
+            "name": "Air Terjun Niagara",
+            "description": "Kelompok tiga air terjun raksasa di perbatasan AS dan Kanada, terkenal dengan debit airnya yang sangat besar."
+        },
         "point_nemo": {
             "name": "Point Nemo",
             "description": "Titik kutub tidak terjangkau samudra (Oceanic Pole of Inaccessibility), lokasi paling terisolasi di lautan Bumi yang terletak di Samudra Pasifik Selatan."
@@ -486,6 +578,10 @@
         "amazon_rainforest": {
             "name": "Hutan Hujan Amazon",
             "description": "Hutan hujan tropis terbesar di dunia yang membentang di sebagian besar cekungan Amazon di Amerika Selatan, menghasilkan persentase besar oksigen Bumi."
+        },
+        "congo_rainforest": {
+            "name": "Hutan Hujan Kongo",
+            "description": "Hutan hujan tropis terbesar kedua di dunia yang membentang di cekungan Sungai Kongo di Afrika Tengah, kaya akan keanekaragaman hayati."
         },
         "chicxulub_crater": {
             "name": "Bekas Meteor Mexico (Kawah Chicxulub)",

@@ -7,13 +7,13 @@ import { useCelestial } from "@function";
 import type { Planet } from "@types";
 
 
-import { PiFastForwardFill, PiRewindFill, PiPlayFill, PiPauseFill, PiMoonFill, PiSunFill } from "react-icons/pi";
-import { BsBrightnessAltLowFill, BsBrightnessAltHighFill } from "react-icons/bs";
+import { PiFastForwardFill, PiRewindFill, PiPlayFill, PiPauseFill } from "react-icons/pi";
 import { ImCloud } from "react-icons/im";
 import { GoCircle } from "react-icons/go";
 import { TbSatelliteFilled } from "react-icons/tb";
 import { HiLocationMarker } from "react-icons/hi";
 import { MdBrightnessMedium, MdClose, MdRefresh } from "react-icons/md";
+import { useTranslation } from "react-i18next";
 
 
 
@@ -53,13 +53,14 @@ const TOOLTIP_CLASS =
 
 const SPEED_ARRAY = [0.1, 0.5, 1, 1.5, 2, 3, 5]
 const LayerPanel = ({ id }: Props) => {
-    const { focusIndex, landmarkVisible, rotateSpeed, cloudVisible, artificialSatelliteVisible, dayNightMode, axisTilt, setControl, resetControl } = useControlStore()
+    const { focusIndex, focusLandmark, landmarkVisible, rotateSpeed, cloudVisible, artificialSatelliteVisible, dayNightMode, axisTilt, setControl, resetControl } = useControlStore()
     const [lastRotateSpeed, setLastRotateSpeed] = useState(rotateSpeed)
 
     const [activePanel, setActivePanel] = useState("")
 
     const tiltDialRef = useRef<HTMLDivElement>(null)
     const isDraggingRef = useRef(false)
+    const { t } = useTranslation()
 
     const updateTiltFromEvent = useCallback((e: React.PointerEvent | PointerEvent) => {
         if (!tiltDialRef.current) return
@@ -111,7 +112,7 @@ const LayerPanel = ({ id }: Props) => {
     }, [rotateSpeed])
 
     const handleRotatePlay = () => {
-        setControl({ rotateSpeed: rotateSpeed === 0 ? (lastRotateSpeed > 0 ? lastRotateSpeed : 1) : 0 })
+        setControl({ rotateSpeed: rotateSpeed === 0 ? (lastRotateSpeed > 0 ? lastRotateSpeed : 1) : 0, focusLandmark: "" })
     }
 
     const handleRotateNext = () => {
@@ -130,6 +131,10 @@ const LayerPanel = ({ id }: Props) => {
 
     const handleLandmark = () => {
         setControl({ landmarkVisible: !landmarkVisible })
+    }
+
+    const handleLeaveLandmark = () => {
+        setControl({ focusLandmark: "", focusIndex: focusIndex + 1 })
     }
 
     const handleSatellite = () => {
@@ -153,7 +158,15 @@ const LayerPanel = ({ id }: Props) => {
 
     return (
         <div className="fixed bottom-6 left-1/2 -translate-x-1/2 flex items-center gap-3 z-40 bg-background backdrop-blur-md p-2 px-3 rounded-full border border-white/15 shadow-2xl shadow-cyan-950/40 hover:border-cyan-500/30 transition-all duration-300">
-            {/* Layer Toggles Section */}
+
+            <When condition={focusLandmark}>
+                <div className="absolute flex items-center gap-2 -top-3 left-1/2 -translate-x-1/2 -translate-y-full bg-background border border-white/15 px-2.5 py-1 font-semibold text-sm text-white shadow-xl backdrop-blur-md rounded-md">
+                    <span className="pointer-events-none">{t(`landmark.${focusLandmark}.name`)}</span>
+                    <MdClose className="cursor-pointer text-red-400 size-4" onClick={handleLeaveLandmark} />
+                </div>
+            </When>
+
+
             <div className={SECTION_CLASS}>
                 <When condition={data.landmarks?.length}>
                     <button
@@ -191,7 +204,7 @@ const LayerPanel = ({ id }: Props) => {
                         className={clsx(TOGGLE_BTN_CLASS, dayNightMode && ACTIVE_CYAN_CLASS)}
                     >
                         <MdBrightnessMedium />
-                        <span className={TOOLTIP_CLASS}>Day/Night Mode</span>
+                        <span className={TOOLTIP_CLASS}>Day / Night Mode</span>
                     </button>
 
                 </When>

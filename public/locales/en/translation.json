@@ -489,6 +489,98 @@
             "name": "Mount Everest",
             "description": "Earth's highest mountain above sea level (8,848 m), located in the Himalayas on the border between Nepal and Tibet."
         },
+        "mount_aconcagua": {
+            "name": "Mount Aconcagua",
+            "description": "The highest mountain in South America (6,961 m), located in the Andes mountain range in Argentina."
+        },
+        "mount_denali": {
+            "name": "Mount Denali",
+            "description": "The highest mountain peak in North America (6,190 m), located in the Alaska Range, USA."
+        },
+        "mount_kilimanjaro": {
+            "name": "Mount Kilimanjaro",
+            "description": "The highest free-standing mountain in the world and the tallest peak in Africa (5,895 m), located in Tanzania."
+        },
+        "mount_elbrus": {
+            "name": "Mount Elbrus",
+            "description": "A dormant volcano and the highest peak in Europe (5,642 m), located in the Caucasus Mountains, Russia."
+        },
+        "mount_vinson": {
+            "name": "Vinson Massif",
+            "description": "The highest peak in Antarctica (4,892 m), located in the Ellsworth Mountains."
+        },
+        "mount_cartenz": {
+            "name": "Carstensz Pyramid",
+            "description": "The highest peak in Oceania/Australasia (4,884 m), located in the Jayawijaya Mountains, Papua, Indonesia."
+        },
+        "mount_k2": {
+            "name": "Mount K2",
+            "description": "The second-highest mountain on Earth (8,611 m), located in the Karakoram range on the border between Pakistan and China."
+        },
+        "mont_blanc": {
+            "name": "Mont Blanc",
+            "description": "The highest peak in the Alps and Western Europe (4,807 m), rising on the border between France and Italy."
+        },
+        "mauna_loa": {
+            "name": "Mauna Loa",
+            "description": "The largest active shield volcano on Earth by volume and surface area, located on the island of Hawaii."
+        },
+        "patagonian_desert": {
+            "name": "Patagonian Desert",
+            "description": "The largest desert in South America, spanning across the Patagonian region of Argentina and Chile."
+        },
+        "atacama_desert": {
+            "name": "Atacama Desert",
+            "description": "The driest non-polar desert on Earth, located in Chile, famous for its Mars-like landscape and major astronomical observatories."
+        },
+        "gobi_desert": {
+            "name": "Gobi Desert",
+            "description": "A vast cold desert in Central Asia spanning parts of China and Mongolia, famous for its Silk Road history and dinosaur fossil sites."
+        },
+        "arabian_desert": {
+            "name": "Arabian Desert",
+            "description": "A vast desert landscape in the Arabian Peninsula containing the world's largest continuous sand desert, Rub' al Khali (Empty Quarter)."
+        },
+        "great_basin_desert": {
+            "name": "Great Basin Desert",
+            "description": "The largest desert in North America, forming part of the Great Basin region in the United States."
+        },
+        "kalahari_desert": {
+            "name": "Kalahari Desert",
+            "description": "A large semi-arid sandy savanna in Southern Africa extending across Botswana, Namibia, and South Africa."
+        },
+        "great_victoria_desert": {
+            "name": "Great Victoria Desert",
+            "description": "The largest desert in Australia, characterized by red sand dunes and salt lakes."
+        },
+        "caspian_sea": {
+            "name": "Caspian Sea",
+            "description": "The world's largest inland body of water by surface area, located between Europe and Asia."
+        },
+        "dead_sea": {
+            "name": "Dead Sea",
+            "description": "A landlocked salt lake featuring the lowest land elevation on Earth's surface (-430 m) and exceptionally high salinity."
+        },
+        "mcmurdo_dry_valleys": {
+            "name": "McMurdo Dry Valleys",
+            "description": "A region in Antarctica recognized as the absolute driest place on Earth, receiving virtually no precipitation for millions of years."
+        },
+        "antarctic_desert": {
+            "name": "Antarctic Desert",
+            "description": "The largest and coldest desert in the world, covering the continent of Antarctica with extremely low precipitation and humidity."
+        },
+        "mawsynram": {
+            "name": "Mawsynram",
+            "description": "A village in Meghalaya, India, holding the world record as the wettest place on Earth with an average annual rainfall of 11,871 mm."
+        },
+        "victoria_falls": {
+            "name": "Victoria Falls",
+            "description": "A spectacular waterfall on the Zambezi River on the border between Zambia and Zimbabwe, one of the world's largest sheets of falling water."
+        },
+        "niagara_falls": {
+            "name": "Niagara Falls",
+            "description": "A famous group of three massive waterfalls spanning the border between the United States and Canada."
+        },
         "point_nemo": {
             "name": "Point Nemo",
             "description": "The oceanic pole of inaccessibility, the most remote place on Earth's oceans, located in the South Pacific Ocean."
@@ -496,6 +588,10 @@
         "amazon_rainforest": {
             "name": "Amazon Rainforest",
             "description": "The world's largest tropical rainforest, spanning across much of the Amazon basin in South America and producing a vast percentage of Earth's oxygen."
+        },
+        "congo_rainforest": {
+            "name": "Congo Rainforest",
+            "description": "The second-largest tropical rainforest in the world, spanning the Congo Basin in Central Africa and home to rich biodiversity."
         },
         "chicxulub_crater": {
             "name": "Chicxulub Crater",

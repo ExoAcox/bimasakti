@@ -84,10 +84,6 @@ const Object = ({ data, children, childrenComponent, onClick, objectRef, cloudRe
 
         const speed = ((virtualTimeRef.current % 60) / 60) * Math.PI * 2
 
-        if (focusLandmark) {
-            return;
-        }
-
         if (data.rotate_duration && objectRef?.current?.rotation) {
             objectRef.current.rotation.y = (speed / data.rotate_duration) * speedScale
         }
