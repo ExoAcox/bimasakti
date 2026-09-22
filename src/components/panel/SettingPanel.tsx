@@ -6,9 +6,10 @@ import { MdClose } from "react-icons/md";
 import { VscDebugRestart } from "react-icons/vsc";
 import { ImCheckboxChecked, ImCheckboxUnchecked } from "react-icons/im";
 import { FaSpaceAwesome } from "react-icons/fa6";
-import { useSettingStore, useControlStore, defaultSetting } from "@state";
+import { useSettingStore, useControlStore, useShipStore, defaultSetting } from "@state";
 import { SCALE, TIME_SCALE } from "@constants";
 import clsx from "clsx";
+import { TbEye } from "react-icons/tb";
 
 interface Props {
     isOpen: boolean
@@ -147,6 +148,7 @@ const SettingModal = ({ isOpen, close }: Props) => {
 const SettingPanel = () => {
     const { mode, setSetting } = useSettingStore()
     const { setControl } = useControlStore()
+    const { cockpit, setShip } = useShipStore()
     const { t } = useTranslation()
 
     const handleSpaceship = () => {
@@ -168,10 +170,19 @@ const SettingPanel = () => {
             {t("ui.setting")}
         </button> */}
 
-        <div className={"panel-section flex-col"}>
+        <div className={"panel-section flex-col gap-2"}>
+            {mode === "third-person" && (
+                <button
+                    onClick={() => setShip({ cockpit: !cockpit })}
+                    className={clsx("panel-button", cockpit && "bg-cyan-500/30 text-cyan-300 border-cyan-500/60")}
+                >
+                    <TbEye />
+                    <span className="panel-tooltip">{cockpit ? "3rd Person View (C)" : "Cockpit View (C)"}</span>
+                </button>
+            )}
             <button
                 onClick={handleSpaceship}
-                className={clsx("panel-button")}
+                className={clsx("panel-button", mode === "third-person" && "bg-cyan-500/20 text-cyan-300 border-cyan-500/40")}
             >
                 <FaSpaceAwesome />
                 <span className="panel-tooltip">Spaceship Mode</span>

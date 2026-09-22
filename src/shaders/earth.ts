@@ -113,7 +113,7 @@ void main() {
     vec3 sunDir = normalize(vSunDir);
 
     // Fresnel rim intensity falloff
-    float dotNV = dot(N, viewDir);
+    float dotNV = abs(dot(N, viewDir));
     float fresnel = pow(1.0 - clamp(dotNV, 0.0, 1.0), 3.0);
     
     // Sun light factor for day/night atmosphere illumination

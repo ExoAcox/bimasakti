@@ -72,7 +72,7 @@ const CanvasLayout = () => {
 
     return <div className="w-dvw h-dvh">
         <Canvas
-            camera={{ near: 1e-7, far: 1e+10 }}
+            camera={{ near: 1e-9, far: 1e+10 }}
             onPointerMissed={() => setSetting({ showSetting: false })}>
 
             <When condition={import.meta.env.DEV || searchParams.get('dev')}>

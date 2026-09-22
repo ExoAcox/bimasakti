@@ -76,12 +76,14 @@ export const useControlStore = create<ControlStore>((set) => ({
 
 export interface ShipStore {
     autopilot: boolean,
+    cockpit: boolean,
     distance: number,
     setShip: (values: Partial<Omit<ShipStore, "setShip">>) => void
 }
 
 export const defaultShip = {
     autopilot: false,
+    cockpit: false,
     distance: 0,
 }
 

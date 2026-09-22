@@ -1,7 +1,7 @@
 import { useEffect, useRef } from "react"
 import { useFrame, useThree } from "@react-three/fiber"
-import { Gltf, useKeyboardControls } from "@react-three/drei"
-import { Vector3, Quaternion, Matrix4, MathUtils, Group, Scene } from "three"
+import { Gltf, useGLTF, useKeyboardControls } from "@react-three/drei"
+import { Vector3, Quaternion, Matrix4, MathUtils, Group, Scene, DoubleSide } from "three"
 import { useSettingStore, useControlStore, useShipStore } from "@state"
 import { SHIP_SCALE } from "@constants"
 
@@ -14,6 +14,7 @@ export enum Controls {
     down = "down",
     boost = "boost",
     autopilot = "autopilot",
+    cockpit = "cockpit",
 }
 
 export const keyboardMap = [
@@ -25,6 +26,7 @@ export const keyboardMap = [
     { name: Controls.down, keys: ["KeyE"] },
     { name: Controls.boost, keys: ["Space"] },
     { name: Controls.autopilot, keys: ["KeyF"] },
+    { name: Controls.cockpit, keys: ["KeyC"] },
 ]
 
 // Reusable three objects to prevent GC overhead during useFrame
@@ -41,13 +43,34 @@ const qPitch = new Quaternion()
 const axisY = new Vector3(0, 1, 0)
 const axisX = new Vector3(1, 0, 0)
 
+const CockpitModel = () => {
+    const { scene } = useGLTF("/models/space_cockpit.glb")
+
+    useEffect(() => {
+        scene.traverse((child: any) => {
+            if (child.isMesh && child.material) {
+                if (Array.isArray(child.material)) {
+                    child.material.forEach((mat: any) => {
+                        mat.side = DoubleSide
+                    })
+                } else {
+                    child.material.side = DoubleSide
+                }
+            }
+        })
+    }, [scene])
+
+    return <primitive object={scene} rotation={[0, MathUtils.degToRad(180), 0]} />
+}
+
 const Spaceship = () => {
     const groupRef = useRef<Group>(null!)
     const { focus } = useControlStore()
-    const { autopilot, setShip } = useShipStore()
+    const { autopilot, cockpit, setShip } = useShipStore()
     const [, getKeys] = useKeyboardControls<Controls>()
 
     const prevAutopilotKey = useRef(false)
+    const prevCockpitKey = useRef(false)
     const { distanceScale, sizeScale } = useSettingStore()
     const { scene, camera } = useThree()
 
@@ -99,12 +122,19 @@ const Spaceship = () => {
         const isDown = keys[Controls.down]
         const isBoost = keys[Controls.boost]
         const isAutopilotKey = keys[Controls.autopilot]
+        const isCockpitKey = keys[Controls.cockpit]
 
         // Toggle Autopilot on F key press
         if (isAutopilotKey && !prevAutopilotKey.current) {
             setShip({ autopilot: !autopilot })
         }
         prevAutopilotKey.current = Boolean(isAutopilotKey)
+
+        // Toggle Cockpit on C key press
+        if (isCockpitKey && !prevCockpitKey.current) {
+            setShip({ cockpit: !cockpit })
+        }
+        prevCockpitKey.current = Boolean(isCockpitKey)
 
         // Manual steering disengages Autopilot automatically
         if (isLeft || isRight || isUp || isDown || isForward || isBackward) {
@@ -225,7 +255,11 @@ const Spaceship = () => {
     return (
         <group ref={groupRef} name="spaceship" position={[0, 0, 20]}>
             <group scale={SHIP_SCALE}>
-                <Gltf src={"/models/space_ship.glb"} rotation={[0, MathUtils.degToRad(-90), 0]} />
+                {cockpit ? (
+                    <CockpitModel />
+                ) : (
+                    <Gltf src="/models/space_ship.glb" rotation={[0, MathUtils.degToRad(-90), 0]} />
+                )}
             </group>
         </group>
     )
