@@ -1,11 +1,11 @@
 /* eslint-disable react-hooks/set-state-in-effect */
 import { useLayoutEffect, useMemo, useRef, useState } from "react"
-import { Group, MathUtils, Matrix4, Mesh, Object3D, Vector3 } from "three"
+import { Group, MathUtils, Mesh, Object3D, Vector3 } from "three"
 import type { CelestialObject, Planet as PlanetType } from "@types"
 import { useFrame, useThree } from "@react-three/fiber"
 import { calculateSatelliteDistance, getInitialRotation, useCelestial } from "@function";
 import { Html } from "@react-three/drei";
-import { useSettingStore, useControlStore } from "@state";
+import { useSettingStore, useControlStore, useShipStore } from "@state";
 import { useTranslation } from "react-i18next";
 import { When } from "react-if"
 import { OrbitLine } from "@components/object"
@@ -21,16 +21,21 @@ interface Props {
     orbitLineVisible?: boolean
 }
 
-const Object = ({ data, children, childrenComponent, onClick, objectRef, cloudRef, labelRef, orbitLineVisible = true }: Props) => {
-    const [occlude, setOcclude] = useState<{ current: Object3D }[] | undefined>(undefined)
+// Reusable vectors for zero-alloc fast occlusion math
+const vCamToLabel = new Vector3()
+const vCamToPlanet = new Vector3()
+const planetPos = new Vector3()
+const labelPos = new Vector3()
+const closestPoint = new Vector3()
 
+const Object = ({ data, children, childrenComponent, onClick, objectRef, cloudRef, labelRef, orbitLineVisible = true }: Props) => {
     const orbitRef = useRef<Group>(null!)
     const internalLabelRef = useRef<HTMLButtonElement>(null!)
 
     const { scene } = useThree()
 
-    const { sizeScale, distanceScale, speedScale, showOrbitLine, ignoreAxis, pauseOrbitWhenFocus } = useSettingStore()
-    const { focus, focusLandmark, rotateSpeed } = useControlStore()
+    const { mode, sizeScale, distanceScale, speedScale, showOrbitLine, ignoreAxis, pauseOrbitWhenFocus } = useSettingStore()
+    const { focus, rotateSpeed } = useControlStore()
     const { t } = useTranslation()
 
     const celestial = useCelestial()
@@ -85,7 +90,12 @@ const Object = ({ data, children, childrenComponent, onClick, objectRef, cloudRe
         const speed = ((virtualTimeRef.current % 60) / 60) * Math.PI * 2
 
         if (data.rotate_duration && objectRef?.current?.rotation) {
-            objectRef.current.rotation.y = (speed / data.rotate_duration) * speedScale
+            const isTidalLocked = data.orbit_duration === data.rotate_duration
+            if (isTidalLocked) {
+                objectRef.current.rotation.y = Math.PI
+            } else {
+                objectRef.current.rotation.y = (speed / data.rotate_duration) * speedScale
+            }
         }
 
         if (data.rotate_duration && data.cloud_texture && cloudRef?.current) {
@@ -102,7 +112,7 @@ const Object = ({ data, children, childrenComponent, onClick, objectRef, cloudRe
 
         if (!shouldPauseOrbit) {
             if (longestDistance > distance) {
-                const time = rotate + (speed / data.orbit_duration * speedScale);
+                const time = (speed / data.orbit_duration * speedScale);
                 const a = (longestDistance + distance) / 2;
                 const c = (longestDistance - distance) / 2;
                 const b = Math.sqrt(a * a - c * c);
@@ -112,7 +122,7 @@ const Object = ({ data, children, childrenComponent, onClick, objectRef, cloudRe
 
                 orbitRef.current.position.set(x, 0, z);
             } else {
-                orbitRef.current.rotation.y = rotate + (speed / data.orbit_duration * speedScale);
+                orbitRef.current.rotation.y = (speed / data.orbit_duration * speedScale);
             }
         }
     })
@@ -126,9 +136,44 @@ const Object = ({ data, children, childrenComponent, onClick, objectRef, cloudRe
         const distance = celestial.getCameraDistance(camera, object)
         const scale = Math.max(300, data.radius) / sizeScale * 50
 
-        internalLabelRef.current.style.background = focus === data.id ? "rgba(0,0,0,0.75)" : "transparent"
-        internalLabelRef.current.style.visibility = distance > scale ? "visible" : "hidden"
+        let isVisible = distance > scale
 
+        // High-performance vector occlusion check against focused object (zero CPU raycast against mesh geometry)
+        const effectiveFocus = focus || defaultFocus
+        if (isVisible && effectiveFocus && effectiveFocus !== data.id) {
+            const targetObj = scene.getObjectByName(effectiveFocus)
+            if (targetObj) {
+                targetObj.getWorldPosition(planetPos)
+                object.getWorldPosition(labelPos)
+
+                const distCamToPlanet = camera.position.distanceTo(planetPos)
+                const distCamToLabel = camera.position.distanceTo(labelPos)
+
+                if (distCamToPlanet < distCamToLabel) {
+                    vCamToLabel.subVectors(labelPos, camera.position)
+                    vCamToPlanet.subVectors(planetPos, camera.position)
+
+                    const lenSq = vCamToLabel.lengthSq()
+                    if (lenSq > 0) {
+                        const projLen = vCamToPlanet.dot(vCamToLabel) / lenSq
+                        if (projLen > 0 && projLen < 1) {
+                            closestPoint.copy(camera.position).addScaledVector(vCamToLabel, projLen)
+                            const distToCenter = closestPoint.distanceTo(planetPos)
+
+                            const targetData = celestial.getObjectById(effectiveFocus) as CelestialObject
+                            const targetRadius = (targetData?.radius ?? 0) / sizeScale
+
+                            if (distToCenter < Math.max(targetRadius * 1.05, 0.0005)) {
+                                isVisible = false
+                            }
+                        }
+                    }
+                }
+            }
+        }
+
+        internalLabelRef.current.style.visibility = isVisible ? "visible" : "hidden"
+        internalLabelRef.current.style.background = focus === data.id ? "rgba(0,0,0,0.75)" : "transparent"
 
         if (internalLabelRef.current.parentElement?.parentElement) {
             internalLabelRef.current.parentElement.parentElement.style.zIndex = focus === data.id ? "5" : "1"
@@ -137,6 +182,7 @@ const Object = ({ data, children, childrenComponent, onClick, objectRef, cloudRe
 
 
     const isLabelVisible = useMemo(() => {
+
         const isSmallestObject = () => {
             if (universe.defaultFocus) {
                 const isChildren = ["satellite", "space_craft"].includes(data.type)
@@ -158,26 +204,6 @@ const Object = ({ data, children, childrenComponent, onClick, objectRef, cloudRe
         return false
     }, [universe.defaultFocus, data.type, data.orbit_duration, data.id, data.parent, focus, focusedObject?.parent])
 
-    useLayoutEffect(() => {
-        const effectiveFocus = focus || defaultFocus;
-        if (!effectiveFocus) return setOcclude(undefined);
-
-        if (effectiveFocus === data.id) return setOcclude(undefined)
-
-        const object = scene.getObjectByName(effectiveFocus)
-        if (!object) return setOcclude(undefined)
-
-        const occlude = [{ current: object }]
-        if (focusedObject?.parent === data.id) return setOcclude(occlude)
-
-        if (focusedObject?.parent) {
-            const parentObject = scene.getObjectByName(focusedObject.parent)
-            if (parentObject) occlude.push({ current: parentObject })
-        }
-
-        setOcclude(occlude)
-    }, [focus, scene, focusedObject, defaultFocus, data.type, data.id])
-
     return <group rotation={[0, 0, axis]}>
         <group rotation={[0, rotate, 0]}>
             <When condition={data.orbit_duration && showOrbitLine && orbitLineVisible}>
@@ -188,7 +214,6 @@ const Object = ({ data, children, childrenComponent, onClick, objectRef, cloudRe
                 <group position={longestDistance > distance ? [0, 0, 0] : [distance, 0, 0]}>
                     <When condition={isLabelVisible}>
                         <Html
-                            occlude={occlude}
                             zIndexRange={[data.type === "star" ? 2 : 1, 0]}
                         >
                             <button ref={labelRef || internalLabelRef} className="hover:text-primary absolute -translate-x-1/2 -translate-y-full -mt-1 py-1 px-2 whitespace-nowrap rounded-lg text-sm font-semibold " onClick={onClick}>{t(`object.${data.id}.name`)}</button>

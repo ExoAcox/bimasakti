@@ -6,7 +6,7 @@ import { useTranslation } from "react-i18next"
 import { useControlStore } from "@state"
 import type { Landmark } from "@types"
 import clsx from "clsx"
-import { useCelestial } from "@function"
+import { latLngToVector3, useCelestial } from "@function"
 
 interface Props {
     landmark: Landmark
@@ -15,26 +15,7 @@ interface Props {
     lonOffset?: number
 }
 
-export const latLongToVector3 = (
-    lat: number,
-    lon: number,
-    lonOffset: number = 0
-): Vector3 => {
-    const latRad = MathUtils.degToRad(lat)
-    const lonRad = MathUtils.degToRad(lon + lonOffset)
 
-    const y = 1.01 * Math.sin(latRad)
-    const horizRadius = 1.01 * Math.cos(latRad)
-
-    // Three.js SphereGeometry equirectangular UV texture alignment:
-    // lon = 0° (Prime Meridian) -> +X
-    // lon = +90° E (Asia / Himalayas) -> -Z
-    // lon = -90° W (Americas / Mexico) -> +Z
-    const x = horizRadius * Math.cos(lonRad)
-    const z = -horizRadius * Math.sin(lonRad)
-
-    return new Vector3(x, y, z)
-}
 
 const tempMatrix = new Matrix4()
 const tempCamPos = new Vector3()
@@ -47,7 +28,7 @@ const LandmarkMarker = ({ landmark, visible = true, lonOffset = 0 }: Props) => {
     const buttonRef = useRef<HTMLButtonElement>(null!)
 
     const position = useMemo(() => {
-        return latLongToVector3(landmark.latitude, landmark.longitude, lonOffset)
+        return latLngToVector3(landmark.latitude, landmark.longitude, lonOffset)
     }, [landmark.latitude, landmark.longitude, lonOffset])
 
     const isSelected = focusLandmark === landmark.id
@@ -90,7 +71,7 @@ const LandmarkMarker = ({ landmark, visible = true, lonOffset = 0 }: Props) => {
     return (
         <group ref={groupRef} position={position}>
             <Html
-                zIndexRange={[1, 0]}
+                zIndexRange={[isSelected ? 2 : 1, 0]}
                 style={{
                     pointerEvents: "auto",
                     // transform: "translate(-50%, -100%)",
@@ -101,7 +82,7 @@ const LandmarkMarker = ({ landmark, visible = true, lonOffset = 0 }: Props) => {
                         ref={buttonRef}
                         onClick={handleClick}
                         className={clsx(
-                            "flex items-center gap-1.5 px-2 py-0.5 rounded-full text-[11px] font-medium transition-all duration-150 border whitespace-nowrap shadow-md cursor-pointer select-none",
+                            "flex items-center gap-1.5 px-2 py-0.5 rounded-full text-[10px] font-medium transition-all duration-150 border whitespace-nowrap shadow-md cursor-pointer select-none",
                             isSelected
                                 ? "bg-sky-600 text-white border-sky-300 scale-105 shadow-sky-500/40"
                                 : "bg-neutral-950/90 text-amber-200 border-amber-500/30 hover:bg-neutral-900 hover:border-amber-400 hover:text-white"

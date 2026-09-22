@@ -122,6 +122,12 @@ export interface Landmark {
     parent: string
 }
 
+export interface Nation {
+    id: string
+    latitude: number
+    longitude: number
+}
+
 export interface Universe {
     id: string
     stars: Star[]

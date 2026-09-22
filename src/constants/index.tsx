@@ -10,7 +10,8 @@ export const SCALE = 1e+6
 export const TIME_SCALE = 3
 export const INTENSITY_SCALE = 1e+14
 
-export const LOWREST_SCALE = 2e+7
+export const LOWREST_SCALE = 3e+7
+export const SHIP_SCALE = 0.01 / 1e+6
 
 const universes: Universe[] = [
     {

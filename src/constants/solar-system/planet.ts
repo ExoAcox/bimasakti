@@ -41,7 +41,7 @@ export const planets: Planet[] = [
         rotate_duration: 243.02,
         texture: "venus.ktx2",
         texture_hd: "venus_hd.ktx2",
-        cloud_texture: "venus_cloud.jpg",
+        cloud_texture: "venus_cloud.ktx2",
         icon: "venus.png",
         get satellites() {
             return satellites.filter((satellite) => satellite.parent === this.id)
@@ -63,7 +63,7 @@ export const planets: Planet[] = [
         rotate_duration: 1.0,
         texture: "earth.ktx2",
         texture_hd: "earth_hd.ktx2",
-        cloud_texture: "earth_cloud.jpg",
+        cloud_texture: "earth_cloud.ktx2",
         icon: "earth.png",
         get satellites() {
             return satellites.filter((satellite) => satellite.parent === this.id)

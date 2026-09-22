@@ -557,21 +557,49 @@
             "name": "Caspian Sea",
             "description": "The world's largest inland body of water by surface area, located between Europe and Asia."
         },
-        "dead_sea": {
-            "name": "Dead Sea",
-            "description": "A landlocked salt lake featuring the lowest land elevation on Earth's surface (-430 m) and exceptionally high salinity."
+        "atlantic_ocean": {
+            "name": "Atlantic Ocean",
+            "description": "The second-largest ocean in the world, separating the Americas from Europe and Africa."
         },
-        "mcmurdo_dry_valleys": {
-            "name": "McMurdo Dry Valleys",
-            "description": "A region in Antarctica recognized as the absolute driest place on Earth, receiving virtually no precipitation for millions of years."
+        "pacific_ocean": {
+            "name": "Pacific Ocean",
+            "description": "The largest and deepest ocean on Earth, extending from the Arctic Ocean in the north to the Southern Ocean in the south."
+        },
+        "indian_ocean": {
+            "name": "Indian Ocean",
+            "description": "The third-largest ocean in the world, bounded by Asia, Africa, Australia, and the Southern Ocean."
+        },
+        "mediterranean_sea": {
+            "name": "Mediterranean Sea",
+            "description": "A sea connected to the Atlantic Ocean, surrounded by the Mediterranean Basin and almost completely enclosed by land."
+        },
+        "baltic_sea": {
+            "name": "Baltic Sea",
+            "description": "An arm of the Atlantic Ocean in Northern Europe, enclosed by Denmark, Estonia, Finland, Germany, Latvia, Lithuania, Poland, Russia, and Sweden."
+        },
+        "black_sea": {
+            "name": "Black Sea",
+            "description": "An inland sea located between Southeastern Europe and Western Asia, connected to the Atlantic Ocean via the Mediterranean."
+        },
+        "red_sea": {
+            "name": "Red Sea",
+            "description": "A seawater inlet of the Indian Ocean lying between Africa and Asia, known for its high salinity and rich marine life."
+        },
+        "persian_gulf": {
+            "name": "Persian Gulf",
+            "description": "A mediterranean sea in Western Asia, connected to the Gulf of Oman by the Strait of Hormuz."
+        },
+        "gulf_of_mexico": {
+            "name": "Gulf of Mexico",
+            "description": "An ocean basin and marginal sea of the Atlantic Ocean, largely surrounded by the North American continent."
+        },
+        "greenland": {
+            "name": "Greenland",
+            "description": "The world's largest island, located between the Arctic and Atlantic Oceans, covered mostly by a massive ice sheet."
         },
         "antarctic_desert": {
             "name": "Antarctic Desert",
             "description": "The largest and coldest desert in the world, covering the continent of Antarctica with extremely low precipitation and humidity."
-        },
-        "mawsynram": {
-            "name": "Mawsynram",
-            "description": "A village in Meghalaya, India, holding the world record as the wettest place on Earth with an average annual rainfall of 11,871 mm."
         },
         "victoria_falls": {
             "name": "Victoria Falls",
@@ -621,6 +649,42 @@
             "name": "Great Barrier Reef",
             "description": "The world's largest coral reef system, located in the Coral Sea off the coast of Queensland, Australia."
         },
+        "himalaya_mountains": {
+            "name": "Himalaya Mountains",
+            "description": "A major mountain range in Asia separating the plains of the Indian subcontinent from the Tibetan Plateau, containing Earth's highest peaks."
+        },
+        "alps_mountains": {
+            "name": "Alps Mountains",
+            "description": "The highest and most extensive mountain range system that lies entirely in Europe, stretching across eight Alpine countries."
+        },
+        "andes_mountains": {
+            "name": "Andes Mountains",
+            "description": "The longest continental mountain range in the world, forming a continuous highland along the western edge of South America."
+        },
+        "rocky_mountains": {
+            "name": "Rocky Mountains",
+            "description": "A major mountain range in western North America stretching more than 4,800 kilometers from Canada to the United States."
+        },
+        "caucasus_mountains": {
+            "name": "Caucasus Mountains",
+            "description": "A mountain system at the intersection of Europe and Asia, stretching between the Black Sea and the Caspian Sea."
+        },
+        "atlas_mountains": {
+            "name": "Atlas Mountains",
+            "description": "A mountain range in North Africa extending through Morocco, Algeria, and Tunisia, separating the Mediterranean and Atlantic coastlines from the Sahara Desert."
+        },
+        "ural_mountains": {
+            "name": "Ural Mountains",
+            "description": "A mountain range running from north to south through western Russia, traditionally considered the boundary between Europe and Asia."
+        },
+        "lake_victoria": {
+            "name": "Lake Victoria",
+            "description": "The largest lake in Africa by surface area and the world's second-largest freshwater lake, located in East Africa."
+        },
+        "zagros_mountains": {
+            "name": "Zagros Mountains",
+            "description": "A major mountain range in Iran, Iraq, and southeastern Turkey, stretching over 1,600 kilometers along the Iranian Plateau."
+        },
         "mount_olympus": {
             "name": "Olympus Mons",
             "description": "A gigantic shield volcano on Mars, the highest volcano and planetary mountain known in the entire Solar System (~21.9 km tall)."
@@ -641,12 +705,72 @@
             "name": "Hellas Planitia",
             "description": "A colossal impact basin roughly 2,300 km in diameter located in Mars' southern hemisphere, one of the largest impact craters in the Solar System."
         },
+        "ascraeus_mons": {
+            "name": "Ascraeus Mons",
+            "description": "The northernmost and tallest volcano of the Tharsis Montes trio (~18 km high) on Mars."
+        },
+        "pavonis_mons": {
+            "name": "Pavonis Mons",
+            "description": "The middle shield volcano of the Tharsis Montes trio (~14 km high), situated almost directly on Mars' equator."
+        },
+        "arsia_mons": {
+            "name": "Arsia Mons",
+            "description": "The southernmost volcano of the Tharsis Montes trio (~12 km high), featuring a massive caldera and ancient volcanic pit craters."
+        },
+        "medusa_fossae": {
+            "name": "Medusae Fossae Formation",
+            "description": "A vast, soft geological formation along Mars' equator composed of wind-eroded volcanic ash deposits, potentially harboring deep subsurface water ice."
+        },
+        "nili_fossae": {
+            "name": "Nili Fossae",
+            "description": "A complex geological fracture system on Mars rich in clay minerals and olivine, indicating an ancient water-rich environment."
+        },
+        "ghost_dunes": {
+            "name": "Ghost Dunes",
+            "description": "Ancient sand dune casts in Noctis Labyrinthus and Hellas preserved when lava or sediment flooded around them millions of years ago, leaving negative dune molds."
+        },
+        "meridiani_planum": {
+            "name": "Meridiani Planum",
+            "description": "A vast plain located at Mars' equator rich in grey hematite deposits, site of extensive exploration by NASA's Opportunity rover."
+        },
+        "hale_crater": {
+            "name": "Hale Crater",
+            "description": "A 125 km wide impact crater in Margaritifer Terra with dramatic terraced walls and recurring slope lineae (RSL) hinting at seasonal saltwater flows."
+        },
+        "aram_chaos": {
+            "name": "Aram Chaos",
+            "description": "An ancient 280 km wide crater collapsed into a vast chaos terrain, holding rich deposits of hematite and water-bearing sulfates."
+        },
+        "aurorae_chaos": {
+            "name": "Aurorae Chaos",
+            "description": "A massive broken chaos terrain east of Valles Marineris created by colossal ancient groundwater outbursts."
+        },
+        "aureum_chaos": {
+            "name": "Aureum Chaos",
+            "description": "A vast, heavily eroded chaotic canyon system with layered mesas and deep troughs formed by catastrophic ancient flooding."
+        },
+        "planum_boreum": {
+            "name": "Planum Boreum",
+            "description": "The northern polar plain of Mars consisting of permanent water and carbon dioxide ice caps, featuring dramatic spiral troughs (Chasma Boreale)."
+        },
+        "alba_mons": {
+            "name": "Alba Mons",
+            "description": "A unique volcano on Mars with the largest surface area footprint (~1,600 km diameter) but extremely gentle slopes formed by fluid lava flows."
+        },
+        "elysium_mons": {
+            "name": "Elysium Mons",
+            "description": "The major volcano in the Elysium volcanic province (~13.9 km high), towering high above the surrounding Elysium Planitia plains."
+        },
+        "planum_australe": {
+            "name": "Planum Australe",
+            "description": "The southern polar plain of Mars covered by thick permanent water ice and seasonal carbon dioxide ice, famous for spring CO2 geysers creating dark spider-like patterns."
+        },
         "giant_red_spot": {
             "name": "Great Red Spot",
             "description": "A persistent giant anticyclonic storm in Jupiter's atmosphere that is larger than Earth and has raged for centuries."
         },
         "tranquility_base": {
-            "name": "Statio Tranquillitatis (Apollo 11)",
+            "name": "Statio Tranquillitatis",
             "description": "The historic landing site of Apollo 11 in 1969 on the Moon, where humans (Neil Armstrong & Buzz Aldrin) first stepped on another world."
         },
         "tycho_crater": {
@@ -655,7 +779,95 @@
         },
         "copernicus_crater": {
             "name": "Copernicus Crater",
-            "description": "A dramatic lunar impact crater located in Oceanus Procellarum, featuring a prominent central peak."
+            "description": "A striking impact crater in Oceanus Procellarum featuring a prominent central peak and extensive bright ray system."
+        },
+        "mare_imbrium": {
+            "name": "Mare Imbrium",
+            "description": "A massive, dark lava plain created by ancient impact flooding, forming one of the most prominent features on the Moon's near side."
+        },
+        "plato_crater": {
+            "name": "Plato Crater",
+            "description": "A prominent 100 km wide impact crater on the northern shore of Mare Imbrium with a smooth, dark lava-filled floor."
+        },
+        "montes_apenninus": {
+            "name": "Montes Apenninus",
+            "description": "A dramatic mountain range on the Moon with peaks reaching up to 5 km high, forming the southeastern border of the Mare Imbrium basin."
+        },
+        "mare_serenitatis": {
+            "name": "Mare Serenitatis",
+            "description": "A 674 km wide circular lunar mare located within the Serenitatis basin to the northeast of Mare Imbrium."
+        },
+        "mare_tranquillitatis": {
+            "name": "Mare Tranquillitatis",
+            "description": "A famous basaltic plain and landing site of Apollo 11 (Tranquility Base), exhibiting a bluish tint due to high titanium concentrations."
+        },
+        "mare_crisium": {
+            "name": "Mare Crisium",
+            "description": "An isolated 556 km wide circular lunar mare located in the Crisium basin, easily recognized near the Moon's northeastern limb."
+        },
+        "mare_fecunditatis": {
+            "name": "Mare Fecunditatis",
+            "description": "A large 840 km wide lunar mare basin in the southeastern near side of the Moon formed during the ancient Nectarian epoch."
+        },
+        "mare_nectaris": {
+            "name": "Mare Nectaris",
+            "description": "A small lunar mare located south of Mare Tranquillitatis, framed by the Pyrenaeus mountains and the ancient Fracastorius crater."
+        },
+        "mare_vaporum": {
+            "name": "Mare Vaporum",
+            "description": "A 245 km wide lunar mare located southwest of Mare Serenitatis near the center of the Moon's near side."
+        },
+        "mare_nubium": {
+            "name": "Mare Nubium",
+            "description": "An ancient 715 km wide circular lunar mare located in the Nubium basin in the southwestern near side."
+        },
+        "langrenus_crater": {
+            "name": "Langrenus Crater",
+            "description": "A prominent 132 km wide impact crater on the eastern shore of Mare Fecunditatis featuring terraced walls and bright central peaks."
+        },
+        "stevinus_crater": {
+            "name": "Stevinus Crater",
+            "description": "A 75 km wide impact crater in the southeastern lunar highlands featuring steep inner slopes and bright rayed satellite craters."
+        },
+        "mare_humorum": {
+            "name": "Mare Humorum",
+            "description": "A circular 389 km wide lunar mare basin surrounded by the prominent Gassendi crater and concentric rille systems."
+        },
+        "mare_frigoris": {
+            "name": "Mare Frigoris",
+            "description": "An elongated northern lunar mare stretching across the far north of Mare Imbrium and Mare Serenitatis."
+        },
+        "oceanus_procellarum": {
+            "name": "Oceanus Procellarum",
+            "description": "A vast lunar ocean spanning over 2,500 km across the western edge of the near side, the largest basaltic maria plain on the Moon."
+        },
+        "aristarchus_crater": {
+            "name": "Aristarchus Crater",
+            "description": "The brightest impact crater on the lunar surface (40 km wide), situated on the elevated Aristarchus Plateau in Oceanus Procellarum."
+        },
+        "kepler_crater": {
+            "name": "Kepler Crater",
+            "description": "A prominent young 31 km wide impact crater in Oceanus Procellarum surrounded by a prominent ray system."
+        },
+        "mare_cognitum": {
+            "name": "Mare Cognitum",
+            "description": "A 376 km wide lunar mare located in a basin within Oceanus Procellarum, site of historical impacts by Ranger 7 (1964) and landing of Apollo 12 (1969)."
+        },
+        "mare_insularum": {
+            "name": "Mare Insularum",
+            "description": "A 513 km wide lunar mare located south of Mare Imbrium and east of Oceanus Procellarum, hosting the famous Copernicus and Kepler craters."
+        },
+        "zeeman_crater": {
+            "name": "Zeeman Crater",
+            "description": "A massive 190 km wide impact crater near the Moon's south pole on the far side, featuring an extraordinarily high wall elevation."
+        },
+        "tsiolkovskiy_crater": {
+            "name": "Tsiolkovskiy Crater",
+            "description": "A spectacular 185 km wide crater on the far side of the Moon featuring a dark basaltic floor and a high central peak."
+        },
+        "mouton_mons": {
+            "name": "Mons Mouton",
+            "description": "A tall, flat-topped lunar mountain near the Moon's south pole, named after NASA mathematician Melba Mouton and prime candidate for lunar ice exploration."
         },
         "south_pole_aitken": {
             "name": "South Pole-Aitken Basin",
@@ -680,6 +892,593 @@
         "occator_crater": {
             "name": "Occator Crater",
             "description": "A crater on the dwarf planet Ceres famous for mysterious bright sodium carbonate spots (Cerealia Facula)."
+        }
+    },
+    "nation": {
+        "AD": {
+            "name": "Andorra"
+        },
+        "AE": {
+            "name": "United Arab Emirates"
+        },
+        "AF": {
+            "name": "Afghanistan"
+        },
+        "AG": {
+            "name": "Antigua and Barbuda"
+        },
+        "AL": {
+            "name": "Albania"
+        },
+        "AM": {
+            "name": "Armenia"
+        },
+        "AO": {
+            "name": "Angola"
+        },
+        "AR": {
+            "name": "Argentina"
+        },
+        "AT": {
+            "name": "Austria"
+        },
+        "AU": {
+            "name": "Australia"
+        },
+        "AZ": {
+            "name": "Azerbaijan"
+        },
+        "BA": {
+            "name": "Bosnia and Herzegovina"
+        },
+        "BB": {
+            "name": "Barbados"
+        },
+        "BD": {
+            "name": "Bangladesh"
+        },
+        "BE": {
+            "name": "Belgium"
+        },
+        "BF": {
+            "name": "Burkina Faso"
+        },
+        "BG": {
+            "name": "Bulgaria"
+        },
+        "BH": {
+            "name": "Bahrain"
+        },
+        "BI": {
+            "name": "Burundi"
+        },
+        "BJ": {
+            "name": "Benin"
+        },
+        "BN": {
+            "name": "Brunei"
+        },
+        "BO": {
+            "name": "Bolivia"
+        },
+        "BR": {
+            "name": "Brazil"
+        },
+        "BS": {
+            "name": "Bahamas"
+        },
+        "BT": {
+            "name": "Bhutan"
+        },
+        "BW": {
+            "name": "Botswana"
+        },
+        "BY": {
+            "name": "Belarus"
+        },
+        "BZ": {
+            "name": "Belize"
+        },
+        "CA": {
+            "name": "Canada"
+        },
+        "CD": {
+            "name": "Democratic Republic of the Congo"
+        },
+        "CF": {
+            "name": "Central African Republic"
+        },
+        "CG": {
+            "name": "Congo"
+        },
+        "CH": {
+            "name": "Switzerland"
+        },
+        "CI": {
+            "name": "Côte d'Ivoire"
+        },
+        "CL": {
+            "name": "Chile"
+        },
+        "CM": {
+            "name": "Cameroon"
+        },
+        "CN": {
+            "name": "China"
+        },
+        "CO": {
+            "name": "Colombia"
+        },
+        "CR": {
+            "name": "Costa Rica"
+        },
+        "CU": {
+            "name": "Cuba"
+        },
+        "CV": {
+            "name": "Cabo Verde"
+        },
+        "CY": {
+            "name": "Cyprus"
+        },
+        "CZ": {
+            "name": "Czechia"
+        },
+        "DE": {
+            "name": "Germany"
+        },
+        "DJ": {
+            "name": "Djibouti"
+        },
+        "DK": {
+            "name": "Denmark"
+        },
+        "DM": {
+            "name": "Dominica"
+        },
+        "DO": {
+            "name": "Dominican Republic"
+        },
+        "DZ": {
+            "name": "Algeria"
+        },
+        "EC": {
+            "name": "Ecuador"
+        },
+        "EE": {
+            "name": "Estonia"
+        },
+        "EG": {
+            "name": "Egypt"
+        },
+        "ER": {
+            "name": "Eritrea"
+        },
+        "ES": {
+            "name": "Spain"
+        },
+        "ET": {
+            "name": "Ethiopia"
+        },
+        "FI": {
+            "name": "Finland"
+        },
+        "FJ": {
+            "name": "Fiji"
+        },
+        "FM": {
+            "name": "Micronesia"
+        },
+        "FR": {
+            "name": "France"
+        },
+        "GA": {
+            "name": "Gabon"
+        },
+        "GB": {
+            "name": "United Kingdom"
+        },
+        "GD": {
+            "name": "Grenada"
+        },
+        "GE": {
+            "name": "Georgia"
+        },
+        "GH": {
+            "name": "Ghana"
+        },
+        "GM": {
+            "name": "Gambia"
+        },
+        "GN": {
+            "name": "Guinea"
+        },
+        "GQ": {
+            "name": "Equatorial Guinea"
+        },
+        "GR": {
+            "name": "Greece"
+        },
+        "GT": {
+            "name": "Guatemala"
+        },
+        "GW": {
+            "name": "Guinea-Bissau"
+        },
+        "GY": {
+            "name": "Guyana"
+        },
+        "HN": {
+            "name": "Honduras"
+        },
+        "HR": {
+            "name": "Croatia"
+        },
+        "HT": {
+            "name": "Haiti"
+        },
+        "HU": {
+            "name": "Hungary"
+        },
+        "ID": {
+            "name": "Indonesia"
+        },
+        "IE": {
+            "name": "Ireland"
+        },
+        "IL": {
+            "name": "Israel"
+        },
+        "IN": {
+            "name": "India"
+        },
+        "IQ": {
+            "name": "Iraq"
+        },
+        "IR": {
+            "name": "Iran"
+        },
+        "IS": {
+            "name": "Iceland"
+        },
+        "IT": {
+            "name": "Italy"
+        },
+        "JM": {
+            "name": "Jamaica"
+        },
+        "JO": {
+            "name": "Jordan"
+        },
+        "JP": {
+            "name": "Japan"
+        },
+        "KE": {
+            "name": "Kenya"
+        },
+        "KG": {
+            "name": "Kyrgyzstan"
+        },
+        "KH": {
+            "name": "Cambodia"
+        },
+        "KI": {
+            "name": "Kiribati"
+        },
+        "KM": {
+            "name": "Comoros"
+        },
+        "KN": {
+            "name": "Saint Kitts and Nevis"
+        },
+        "KP": {
+            "name": "North Korea"
+        },
+        "KR": {
+            "name": "South Korea"
+        },
+        "KW": {
+            "name": "Kuwait"
+        },
+        "KZ": {
+            "name": "Kazakhstan"
+        },
+        "LA": {
+            "name": "Laos"
+        },
+        "LB": {
+            "name": "Lebanon"
+        },
+        "LC": {
+            "name": "Saint Lucia"
+        },
+        "LI": {
+            "name": "Liechtenstein"
+        },
+        "LK": {
+            "name": "Sri Lanka"
+        },
+        "LR": {
+            "name": "Liberia"
+        },
+        "LS": {
+            "name": "Lesotho"
+        },
+        "LT": {
+            "name": "Lithuania"
+        },
+        "LU": {
+            "name": "Luxembourg"
+        },
+        "LV": {
+            "name": "Latvia"
+        },
+        "LY": {
+            "name": "Libya"
+        },
+        "MA": {
+            "name": "Morocco"
+        },
+        "MC": {
+            "name": "Monaco"
+        },
+        "MD": {
+            "name": "Moldova"
+        },
+        "ME": {
+            "name": "Montenegro"
+        },
+        "MG": {
+            "name": "Madagascar"
+        },
+        "MH": {
+            "name": "Marshall Islands"
+        },
+        "MK": {
+            "name": "North Macedonia"
+        },
+        "ML": {
+            "name": "Mali"
+        },
+        "MM": {
+            "name": "Myanmar"
+        },
+        "MN": {
+            "name": "Mongolia"
+        },
+        "MR": {
+            "name": "Mauritania"
+        },
+        "MT": {
+            "name": "Malta"
+        },
+        "MU": {
+            "name": "Mauritius"
+        },
+        "MV": {
+            "name": "Maldives"
+        },
+        "MW": {
+            "name": "Malawi"
+        },
+        "MX": {
+            "name": "Mexico"
+        },
+        "MY": {
+            "name": "Malaysia"
+        },
+        "MZ": {
+            "name": "Mozambique"
+        },
+        "NA": {
+            "name": "Namibia"
+        },
+        "NE": {
+            "name": "Niger"
+        },
+        "NG": {
+            "name": "Nigeria"
+        },
+        "NI": {
+            "name": "Nicaragua"
+        },
+        "NL": {
+            "name": "Netherlands"
+        },
+        "NO": {
+            "name": "Norway"
+        },
+        "NP": {
+            "name": "Nepal"
+        },
+        "NR": {
+            "name": "Nauru"
+        },
+        "NZ": {
+            "name": "New Zealand"
+        },
+        "OM": {
+            "name": "Oman"
+        },
+        "PA": {
+            "name": "Panama"
+        },
+        "PE": {
+            "name": "Peru"
+        },
+        "PG": {
+            "name": "Papua New Guinea"
+        },
+        "PH": {
+            "name": "Philippines"
+        },
+        "PK": {
+            "name": "Pakistan"
+        },
+        "PL": {
+            "name": "Poland"
+        },
+        "PS": {
+            "name": "Palestine"
+        },
+        "PT": {
+            "name": "Portugal"
+        },
+        "PW": {
+            "name": "Palau"
+        },
+        "PY": {
+            "name": "Paraguay"
+        },
+        "QA": {
+            "name": "Qatar"
+        },
+        "RO": {
+            "name": "Romania"
+        },
+        "RS": {
+            "name": "Serbia"
+        },
+        "RU": {
+            "name": "Russia"
+        },
+        "RW": {
+            "name": "Rwanda"
+        },
+        "SA": {
+            "name": "Saudi Arabia"
+        },
+        "SB": {
+            "name": "Solomon Islands"
+        },
+        "SC": {
+            "name": "Seychelles"
+        },
+        "SD": {
+            "name": "Sudan"
+        },
+        "SE": {
+            "name": "Sweden"
+        },
+        "SG": {
+            "name": "Singapore"
+        },
+        "SI": {
+            "name": "Slovenia"
+        },
+        "SK": {
+            "name": "Slovakia"
+        },
+        "SL": {
+            "name": "Sierra Leone"
+        },
+        "SM": {
+            "name": "San Marino"
+        },
+        "SN": {
+            "name": "Senegal"
+        },
+        "SO": {
+            "name": "Somalia"
+        },
+        "SR": {
+            "name": "Suriname"
+        },
+        "SS": {
+            "name": "South Sudan"
+        },
+        "ST": {
+            "name": "Sao Tome and Principe"
+        },
+        "SV": {
+            "name": "El Salvador"
+        },
+        "SY": {
+            "name": "Syria"
+        },
+        "SZ": {
+            "name": "Eswatini"
+        },
+        "TD": {
+            "name": "Chad"
+        },
+        "TG": {
+            "name": "Togo"
+        },
+        "TH": {
+            "name": "Thailand"
+        },
+        "TJ": {
+            "name": "Tajikistan"
+        },
+        "TL": {
+            "name": "Timor-Leste"
+        },
+        "TM": {
+            "name": "Turkmenistan"
+        },
+        "TN": {
+            "name": "Tunisia"
+        },
+        "TO": {
+            "name": "Tonga"
+        },
+        "TR": {
+            "name": "Turkey"
+        },
+        "TT": {
+            "name": "Trinidad and Tobago"
+        },
+        "TV": {
+            "name": "Tuvalu"
+        },
+        "TZ": {
+            "name": "Tanzania"
+        },
+        "UA": {
+            "name": "Ukraine"
+        },
+        "UG": {
+            "name": "Uganda"
+        },
+        "US": {
+            "name": "United States"
+        },
+        "UY": {
+            "name": "Uruguay"
+        },
+        "UZ": {
+            "name": "Uzbekistan"
+        },
+        "VA": {
+            "name": "Vatican City"
+        },
+        "VC": {
+            "name": "Saint Vincent and the Grenadines"
+        },
+        "VE": {
+            "name": "Venezuela"
+        },
+        "VN": {
+            "name": "Vietnam"
+        },
+        "VU": {
+            "name": "Vanuatu"
+        },
+        "WS": {
+            "name": "Samoa"
+        },
+        "YE": {
+            "name": "Yemen"
+        },
+        "ZA": {
+            "name": "South Africa"
+        },
+        "ZM": {
+            "name": "Zambia"
+        },
+        "ZW": {
+            "name": "Zimbabwe"
         }
     }
 }

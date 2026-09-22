@@ -27,14 +27,14 @@ const Blackhole = ({ id }: Props) => {
 
     useFrame(() => {
         if (labelRef.current) {
-            labelRef.current.style.visibility = controls.getDistance() <= 0.0015 ? "visible" : "hidden"
+            labelRef.current.style.visibility = controls?.getDistance() <= 0.0015 ? "visible" : "hidden"
         }
     })
 
     if (!data) return null
 
     return (
-        <group name={data.id} scale={scale}>
+        <group name={data.id} scale={scale} userData={data}>
             <Html>
                 <label ref={labelRef} className="invisible absolute -translate-x-1/2 -translate-y-full -mt-10 text-sm font-semibold ">Wormhole</label>
             </Html>

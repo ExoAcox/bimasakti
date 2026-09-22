@@ -6,7 +6,6 @@ import { useControlStore } from "@state"
 import { PlanetClass, SpaceCraftClass, type Belt, type CelestialObject, type Comet, type Planet, type SpaceCraft, type Star } from "@types"
 import { useCelestial } from "@function"
 import { useTranslation } from "react-i18next"
-import SettingPanel from "@components/panel/SettingPanel"
 
 import { IoChevronDown, IoChevronUp } from "react-icons/io5";
 import { TbLayoutSidebarLeftCollapse, TbLayoutSidebarLeftExpand } from "react-icons/tb";
@@ -113,7 +112,6 @@ const Sidebar = () => {
                     <Section data={comets}>{t("ui.comets")}</Section>
                     <Section data={belts}>{t("ui.others")}</Section>
                 </div>
-                <SettingPanel />
             </div>
         </div>
     )

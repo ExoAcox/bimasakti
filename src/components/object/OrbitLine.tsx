@@ -64,10 +64,11 @@ const OrbitLine = ({ radius, longestRadius, segments = 1280, color, opacity = 0.
 
         const currentOpacity = opacity * smoothRatio;
 
-        const isMaxZoomOut = controls?.getDistance() >= (controls?.maxDistance ?? 0) - 10 ? 0.1 : 0;
-
-        lineRef.current.material.opacity = Math.max(currentOpacity, isMaxZoomOut)
-        lineRef.current.material.transparent = true;
+        if (controls.getDistance) {
+            const isMaxZoomOut = controls?.getDistance() >= (controls?.maxDistance ?? 0) - 10 ? 0.1 : 0;
+            lineRef.current.material.opacity = Math.max(currentOpacity, isMaxZoomOut)
+            lineRef.current.material.transparent = true;
+        }
     });
 
     return (

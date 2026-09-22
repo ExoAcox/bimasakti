@@ -5,6 +5,7 @@ import { IoIosSettings } from "react-icons/io";
 import { MdClose } from "react-icons/md";
 import { VscDebugRestart } from "react-icons/vsc";
 import { ImCheckboxChecked, ImCheckboxUnchecked } from "react-icons/im";
+import { FaSpaceAwesome } from "react-icons/fa6";
 import { useSettingStore, useControlStore, defaultSetting } from "@state";
 import { SCALE, TIME_SCALE } from "@constants";
 import clsx from "clsx";
@@ -144,17 +145,42 @@ const SettingModal = ({ isOpen, close }: Props) => {
     )
 }
 const SettingPanel = () => {
-    const { showSetting, setSetting } = useSettingStore()
+    const { mode, setSetting } = useSettingStore()
+    const { setControl } = useControlStore()
     const { t } = useTranslation()
 
-    return <>
-        <button onClick={() => setSetting({ showSetting: !showSetting })} className="flex items-center gap-3 fixed bottom-4 left-4 rounded-md z-50 py-2 px-3">
+    const handleSpaceship = () => {
+        setSetting({ mode: "third-person" })
+
+        if (mode === "normal") {
+            setControl({ rotateSpeed: 0.1 })
+            setSetting({ mode: "third-person" })
+        } else {
+            setControl({ rotateSpeed: 1 })
+            setSetting({ mode: "normal" })
+        }
+
+    }
+
+    return <div className="fixed bottom-12 right-6 flex flex-col items-center gap-3 z-40 bg-background backdrop-blur-md p-2 px-3 rounded-full border border-white/15 shadow-2xl shadow-cyan-950/40 hover:border-cyan-500/30 transition-all duration-300">
+        {/* <button onClick={() => setSetting({ showSetting: !showSetting })} className="flex items-center gap-3 fixed bottom-4 left-4 rounded-md z-50 py-2 px-3">
             <IoIosSettings />
             {t("ui.setting")}
-        </button>
+        </button> */}
 
-        <SettingModal isOpen={showSetting} close={() => setSetting({ showSetting: false })} />
-    </>
+        <div className={"panel-section flex-col"}>
+            <button
+                onClick={handleSpaceship}
+                className={clsx("panel-button")}
+            >
+                <FaSpaceAwesome />
+                <span className="panel-tooltip">Spaceship Mode</span>
+            </button>
+
+        </div>
+
+        {/* <SettingModal isOpen={showSetting} close={() => setSetting({ showSetting: false })} /> */}
+    </div>
 }
 
 export default SettingPanel

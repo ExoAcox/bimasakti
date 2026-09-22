@@ -119,6 +119,27 @@ export const lengthFormat = (value: number) => {
     }
 }
 
+export const latLngToVector3 = (
+    lat: number,
+    lon: number,
+    lonOffset: number = 0
+): Vector3 => {
+    const latRad = MathUtils.degToRad(lat)
+    const lonRad = MathUtils.degToRad(lon + lonOffset)
+
+    const y = 1.01 * Math.sin(latRad)
+    const horizRadius = 1.01 * Math.cos(latRad)
+
+    // Three.js SphereGeometry equirectangular UV texture alignment:
+    // lon = 0° (Prime Meridian) -> +X
+    // lon = +90° E (Asia / Himalayas) -> -Z
+    // lon = -90° W (Americas / Mexico) -> +Z
+    const x = horizRadius * Math.cos(lonRad)
+    const z = -horizRadius * Math.sin(lonRad)
+
+    return new Vector3(x, y, z)
+}
+
 
 export const getInitialRotation = () => {
     const deg = randomNumber() * 360

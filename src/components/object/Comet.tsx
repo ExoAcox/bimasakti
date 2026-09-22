@@ -35,7 +35,7 @@ const Comet = ({ data }: Props) => {
     if (!data) return null
 
     return <CelestialBody data={data} objectRef={objectRef} onClick={handleClick}>
-        <group ref={objectRef} name={data.id} scale={scale} onClick={(e) => {
+        <group ref={objectRef} name={data.id} userData={data} scale={scale} onClick={(e) => {
             e.stopPropagation()
             handleClick()
         }}>

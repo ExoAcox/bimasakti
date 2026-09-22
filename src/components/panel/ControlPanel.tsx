@@ -13,6 +13,7 @@ import { GoCircle } from "react-icons/go";
 import { TbSatelliteFilled } from "react-icons/tb";
 import { HiLocationMarker } from "react-icons/hi";
 import { MdBrightnessMedium, MdClose, MdRefresh } from "react-icons/md";
+import { SiUnitednations } from "react-icons/si";
 import { useTranslation } from "react-i18next";
 
 
@@ -53,7 +54,7 @@ const TOOLTIP_CLASS =
 
 const SPEED_ARRAY = [0.1, 0.5, 1, 1.5, 2, 3, 5]
 const LayerPanel = ({ id }: Props) => {
-    const { focusIndex, focusLandmark, landmarkVisible, rotateSpeed, cloudVisible, artificialSatelliteVisible, dayNightMode, axisTilt, setControl, resetControl } = useControlStore()
+    const { focusIndex, focusLandmark, landmarkVisible, nationVisible, rotateSpeed, cloudVisible, artificialSatelliteVisible, dayNightMode, axisTilt, setControl, resetControl } = useControlStore()
     const [lastRotateSpeed, setLastRotateSpeed] = useState(rotateSpeed)
 
     const [activePanel, setActivePanel] = useState("")
@@ -130,7 +131,11 @@ const LayerPanel = ({ id }: Props) => {
     }
 
     const handleLandmark = () => {
-        setControl({ landmarkVisible: !landmarkVisible })
+        setControl({ landmarkVisible: !landmarkVisible, nationVisible: landmarkVisible })
+    }
+
+    const handleNation = () => {
+        setControl({ nationVisible: !nationVisible, landmarkVisible: nationVisible, focusLandmark: "" })
     }
 
     const handleLeaveLandmark = () => {
@@ -175,6 +180,16 @@ const LayerPanel = ({ id }: Props) => {
                     >
                         <HiLocationMarker />
                         <span className={TOOLTIP_CLASS}>Landmarks</span>
+                    </button>
+                </When>
+
+                <When condition={data.id === "earth"}>
+                    <button
+                        onClick={handleNation}
+                        className={clsx(TOGGLE_BTN_CLASS, nationVisible && ACTIVE_CYAN_CLASS)}
+                    >
+                        <SiUnitednations />
+                        <span className={TOOLTIP_CLASS}>Nations</span>
                     </button>
                 </When>
 

@@ -1,22 +1,23 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import { useEffect, useLayoutEffect, useRef } from "react"
 import { useSettingStore, useControlStore } from "@state"
-import { useBounds } from "@react-three/drei"
-import type { OrbitControls as OrbitControlsImpl } from "three-stdlib"
+import { OrbitControls, useBounds } from "@react-three/drei"
+import type { OrbitControls as OrbitControlsType } from "three-stdlib"
 import { useFrame, useThree } from "@react-three/fiber"
 import { Vector3 } from "three"
 import { useCelestial, useMobile } from "@function"
-import { latLongToVector3 } from "@components/object/LandmarkMarker"
-import type { Belt, CelestialObject, Landmark, Planet } from "@types"
+import { latLngToVector3 } from "@function"
+import type { Belt, CelestialObject, Landmark, Planet, Universe } from "@types"
 
 interface Props {
-    children: React.ReactNode
-    controlRef: React.RefObject<OrbitControlsImpl>
+    // children: React.ReactNode
+    data: Universe
 }
 
 const ignoredFocus = ["sagittarius_a"]
 
-const Scene = ({ children, controlRef }: Props) => {
+const Scene = ({ data }: Props) => {
+    const controlRef = useRef<OrbitControlsType>(null!)
     const lastTargetPos = useRef(new Vector3())
     const currentTargetPos = useRef(new Vector3())
     const deltaMove = useRef(new Vector3())
@@ -32,7 +33,7 @@ const Scene = ({ children, controlRef }: Props) => {
     const bound = useBounds()
     const isMobile = useMobile()
 
-    const { sizeScale, pauseOrbitWhenFocus } = useSettingStore()
+    const { sizeScale, pauseOrbitWhenFocus, mode } = useSettingStore()
     const { focus, focusIndex, focusLandmark, resetControl, setControl } = useControlStore()
 
     const { scene, camera } = useThree()
@@ -78,7 +79,7 @@ const Scene = ({ children, controlRef }: Props) => {
 
     // Focus to object
     useEffect(() => {
-        if (!focus) return;
+        if (!focus || mode !== "normal") return;
         if (ignoredFocus.includes(focus)) return
 
         const object = scene.getObjectByName(focus)
@@ -91,6 +92,8 @@ const Scene = ({ children, controlRef }: Props) => {
         if (!focusLandmark) return setControl({ focusIndex: focusIndex + 1 })
 
         setControl({
+            landmarkVisible: true,
+            nationVisible: false,
             rotateSpeed: 0,
             cloudVisible: false
         })
@@ -100,7 +103,7 @@ const Scene = ({ children, controlRef }: Props) => {
         const landmark = celestial.getObjectById(focusLandmark) as Landmark
         if (!object || !planet || !landmark) return
 
-        const localPos = latLongToVector3(landmark.latitude, landmark.longitude, 1.0)
+        const localPos = latLngToVector3(landmark.latitude, landmark.longitude, 1.0)
         const landmarkWorldPos = localPos.applyMatrix4(object.matrixWorld)
         normalVec.current.subVectors(landmarkWorldPos, currentTargetPos.current).normalize()
 
@@ -112,6 +115,8 @@ const Scene = ({ children, controlRef }: Props) => {
     }, [focusLandmark])
 
     useFrame((state) => {
+        if (mode !== "normal") return
+
         if (focus) {
             isResettingCamera.current = false
             const object = scene.getObjectByName(focus)
@@ -196,9 +201,14 @@ const Scene = ({ children, controlRef }: Props) => {
         }
     })
 
-    return <group>
-        {children}
-    </group>
+    return <OrbitControls
+        makeDefault
+        enableDamping
+        ref={controlRef}
+        minDistance={data.minDistance}
+        maxDistance={data.maxDistance}
+        zoomSpeed={3} />
+
 }
 
 export default Scene

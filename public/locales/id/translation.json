@@ -547,21 +547,49 @@
             "name": "Laut Kaspia",
             "description": "Danau atau perairan pedalaman terbesar di dunia berdasarkan luas wilayahnya, terletak di antara Eropa dan Asia."
         },
-        "dead_sea": {
-            "name": "Laut Mati",
-            "description": "Danau garam daratan dengan titik elevasi terendah di permukaan daratan Bumi (-430 m) dan kadar garam sangat tinggi."
+        "atlantic_ocean": {
+            "name": "Samudra Atlantik",
+            "description": "Samudra terbesar kedua di dunia yang memisahkan benua Amerika dari Eropa dan Afrika."
         },
-        "mcmurdo_dry_valleys": {
-            "name": "Lembah Kering McMurdo",
-            "description": "Wilayah di Antartika yang diakui sebagai lokasi paling kering di Bumi, hampir tidak pernah mengalami curah hujan selama jutaan tahun."
+        "pacific_ocean": {
+            "name": "Samudra Pasifik",
+            "description": "Samudra terbesar dan terdalam di Bumi, membentang dari Samudra Arktik di utara hingga Samudra Selatan di selatan."
+        },
+        "indian_ocean": {
+            "name": "Samudra Hindia",
+            "description": "Samudra terbesar ketiga di dunia yang berbatasan dengan Asia, Afrika, Australia, dan Samudra Selatan."
+        },
+        "mediterranean_sea": {
+            "name": "Laut Tengah",
+            "description": "Laut yang terhubung dengan Samudra Atlantik, dikelilingi oleh daratan Eropa Selatan, Afrika Utara, dan Asia Barat."
+        },
+        "baltic_sea": {
+            "name": "Laut Baltik",
+            "description": "Bagian dari Samudra Atlantik di Eropa Utara, dikelilingi oleh negara-negara Skandinavia, Finlandia, Baltik, dan Eropa Tengah."
+        },
+        "black_sea": {
+            "name": "Laut Hitam",
+            "description": "Laut pedalaman yang terletak di antara Eropa Tenggara dan Asia Barat, terhubung ke Samudra Atlantik melalui Laut Tengah."
+        },
+        "red_sea": {
+            "name": "Laut Merah",
+            "description": "Teluk lautan Samudra Hindia yang terletak di antara benua Afrika dan Asia, terkenal dengan salinitas tinggi dan terumbu karang indah."
+        },
+        "persian_gulf": {
+            "name": "Teluk Persia",
+            "description": "Teluk laut pedalaman di Asia Barat, terhubung ke Teluk Oman melalui Selat Hormuz."
+        },
+        "gulf_of_mexico": {
+            "name": "Teluk Meksiko",
+            "description": "Cekungan samudra dan laut tepi Samudra Atlantik yang dikelilingi oleh benua Amerika Utara."
+        },
+        "greenland": {
+            "name": "Greenland",
+            "description": "Pulau terbesar di dunia yang terletak di antara Samudra Arktik dan Atlantik, sebagian besar tertutup oleh lapisan es raksasa."
         },
         "antarctic_desert": {
             "name": "Gurun Antartika",
             "description": "Gurun terbesar dan terdingin di dunia yang mencakup seluruh benua Antartika dengan tingkat kelembapan udara yang sangat rendah."
-        },
-        "mawsynram": {
-            "name": "Mawsynram",
-            "description": "Desa di Meghalaya, India, yang memegang rekor dunia sebagai tempat terbasah di Bumi dengan curah hujan tahunan rata-rata 11.871 mm."
         },
         "victoria_falls": {
             "name": "Air Terjun Victoria",
@@ -611,6 +639,42 @@
             "name": "Karang Penghalang Besar",
             "description": "Sistem terumbu karang terbesar di dunia yang terletak di Laut Koral lepas pantai Queensland, Australia."
         },
+        "himalaya_mountains": {
+            "name": "Pegunungan Himalaya",
+            "description": "Jajaran pegunungan utama di Asia yang memisahkan dataran anak benua India dari Dataran Tinggi Tibet, menampung puncak-puncak tertinggi di Bumi."
+        },
+        "alps_mountains": {
+            "name": "Pegunungan Alpen",
+            "description": "Sistem pegunungan tertinggi dan terluas yang seluruhnya terletak di Eropa, membentang di delapan negara Alpine."
+        },
+        "andes_mountains": {
+            "name": "Pegunungan Andes",
+            "description": "Jajaran pegunungan benua terpanjang di dunia, membentuk dataran tinggi berkelanjutan di sepanjang tepi barat Amerika Selatan."
+        },
+        "rocky_mountains": {
+            "name": "Pegunungan Rocky",
+            "description": "Jajaran pegunungan utama di Amerika Utara bagian barat yang membentang lebih dari 4.800 kilometer dari Kanada hingga Amerika Serikat."
+        },
+        "caucasus_mountains": {
+            "name": "Pegunungan Kaukasus",
+            "description": "Sistem pegunungan di persimpangan Eropa dan Asia, membentang di antara Laut Hitam dan Laut Kaspia."
+        },
+        "atlas_mountains": {
+            "name": "Pegunungan Atlas",
+            "description": "Jajaran pegunungan di Afrika Utara yang membentang melintasi Maroko, Aljazair, dan Tunisia, memisahkan pesisir Laut Tengah dan Atlantik dari Gurun Sahara."
+        },
+        "ural_mountains": {
+            "name": "Pegunungan Ural",
+            "description": "Jajaran pegunungan yang membentang dari utara ke selatan melintasi Rusia barat, secara tradisional dianggap sebagai batas antara benua Eropa dan Asia."
+        },
+        "lake_victoria": {
+            "name": "Danau Victoria",
+            "description": "Danau terbesar di Afrika berdasarkan luas permukaan dan danau air tawar terbesar kedua di dunia, terletak di Afrika Timur."
+        },
+        "zagros_mountains": {
+            "name": "Pegunungan Zagros",
+            "description": "Jajaran pegunungan utama di Iran, Irak, dan Turki tenggara, membentang lebih dari 1.600 kilometer di sepanjang Dataran Tinggi Iran."
+        },
         "mount_olympus": {
             "name": "Olympus Mons",
             "description": "Gunung berapi perisai raksasa di Mars, merupakan gunung berapi dan puncak tertinggi yang diketahui di seluruh Tata Surya (ketinggian ±21,9 km)."
@@ -631,6 +695,66 @@
             "name": "Hellas Planitia",
             "description": "Cekungan dampak raksasa berdiameter sekitar 2.300 km di belahan selatan Mars, salah satu kawah dampak terbesar di Tata Surya."
         },
+        "ascraeus_mons": {
+            "name": "Ascraeus Mons",
+            "description": "Gunung berapi perisai tertinggi di kelompok Tharsis Montes (ketinggian ±18 km), terletak di paling utara dari tiga gunung bersaudara Tharsis."
+        },
+        "pavonis_mons": {
+            "name": "Pavonis Mons",
+            "description": "Gunung berapi perisai di bagian tengah kelompok Tharsis Montes (ketinggian ±14 km), terletak tepat di dekat khatulistiwa planet Mars."
+        },
+        "arsia_mons": {
+            "name": "Arsia Mons",
+            "description": "Gunung berapi perisai di paling selatan kelompok Tharsis Montes (ketinggian ±12 km), terkenal dengan kawah kaldera raksasa dan lubang gua vulkanik kuno."
+        },
+        "medusa_fossae": {
+            "name": "Medusa Fossae (Medusae Fossae)",
+            "description": "Formasi geologi raksasa di khatulistiwa Mars yang terdiri dari endapan abu vulkanik lunak yang tererosi angin, berpotensi menyimpan cadangan es air tebal di bawah permukaannya."
+        },
+        "nili_fossae": {
+            "name": "Nili Fossae (Nilli Fossae)",
+            "description": "Jaringan retakan dan ngarai geologi kompleks di Mars yang kaya akan mineral tanah liat (olivin dan smektit), menandakan sejarah paparan air cair purba yang intens."
+        },
+        "ghost_dunes": {
+            "name": "Bukit Pasir Hantu (Ghost Dunes)",
+            "description": "Cetakan bukit pasir purba di Noctis Labyrinthus dan Hellas yang terendam lahar atau lumpur jutaan tahun lalu, meninggalkan rongga negatif berbentuk bukit pasir kuno setelah pasirnya tererosi."
+        },
+        "meridiani_planum": {
+            "name": "Meridiani Planum",
+            "description": "Dataran luas di dekat khatulistiwa Mars yang kaya akan deposit hematit abu-abu (biji besi), lokasi pendaratan dan penjelajahan ekstensif rover Opportunity NASA."
+        },
+        "hale_crater": {
+            "name": "Kawah Hale (Hale Crater)",
+            "description": "Kawah dampak spektakuler berdiameter 125 km di Margaritifer Terra yang memiliki dinding terjal bertingkat dan alur lereng berulang (RSL) yang mengindikasikan lelehan es asin musiman."
+        },
+        "aram_chaos": {
+            "name": "Aram Chaos",
+            "description": "Kawah dampak purba berdiameter 280 km yang runtuh menjadi medan kekacauan (chaos terrain) raksasa, berisi deposit hematit dan sulfat kaya air di masa lalu."
+        },
+        "aurorae_chaos": {
+            "name": "Aurorae Chaos",
+            "description": "Wilayah medan rintangan dan blok batuan retak masif di timur Valles Marineris yang terbentuk akibat pelepasan air tanah purba dalam jumlah besar."
+        },
+        "aureum_chaos": {
+            "name": "Aureum Chaos",
+            "description": "Wilayah ngarai berantakan berukuran luas dengan mesa berlapis dan jurang dalam tempat mengalirnya banjir klastik purba menuju Chryse Planitia."
+        },
+        "planum_boreum": {
+            "name": "Planum Boreum",
+            "description": "Dataran tinggi kutub utara Mars yang terdiri dari lapisan es air dan es karbon dioksida permanen, dikelilingi oleh parit spiral kuno (Chasma Boreale)."
+        },
+        "alba_mons": {
+            "name": "Alba Mons",
+            "description": "Gunung berapi perisai unik di Mars dengan diameter terluas (mencapai 1.600 km) namun lereng sangat landai, terbentuk oleh aliran lava encer dalam jumlah besar."
+        },
+        "elysium_mons": {
+            "name": "Elysium Mons",
+            "description": "Gunung berapi perisai terbesar di provinsi vulkanik Elysium (ketinggian ±13,9 km), menjulang tinggi di atas dataran rendah Elysium Planitia."
+        },
+        "planum_australe": {
+            "name": "Planum Australe",
+            "description": "Dataran tinggi kutub selatan Mars yang berselimut es air dan es karbon dioksida beku tebal, terkenal dengan geyser karbon dioksida musim semi yang menghasilkan pola bintik gelap (spider terrain)."
+        },
         "giant_red_spot": {
             "name": "Bintik Merah Raksasa",
             "description": "Badai antisisklon raksasa di atmosfer Jupiter yang berukuran lebih besar dari Bumi dan telah berlangsung selama ratusan tahun."
@@ -641,11 +765,99 @@
         },
         "tycho_crater": {
             "name": "Kawah Tycho",
-            "description": "Kawah dampak muda yang sangat menonjol di belahan selatan Bulan, memiliki sistem pancaran sinar terang (bright rays) yang membentang luas."
+            "description": "Kawah di belahan selatan Bulan yang terkenal karena garis-garis cerah (ray system) memancar jauh ke berbagai arah."
         },
         "copernicus_crater": {
             "name": "Kawah Copernicus",
-            "description": "Kawah dampak besar nan indah di Oceanus Procellarum Bulan dengan puncak tengah yang menjulang tinggi."
+            "description": "Kawah tubrukan yang sangat mencolok dengan sistem sinar cerah di sekitarnya."
+        },
+        "mare_imbrium": {
+            "name": "Mare Imbrium",
+            "description": "Dataran gelap yang sangat besar dan menjadi salah satu fitur paling mudah dikenali di sisi dekat Bulan."
+        },
+        "plato_crater": {
+            "name": "Kawah Plato",
+            "description": "Kawah tubrukan besar berdiameter sekitar 100 kilometer dengan dasar datar yang gelap di tepi utara Mare Imbrium."
+        },
+        "montes_apenninus": {
+            "name": "Montes Apenninus",
+            "description": "Rantai pegunungan dramatis yang membentuk batas tenggara Mare Imbrium dengan puncak-puncak yang menjulang tinggi."
+        },
+        "mare_serenitatis": {
+            "name": "Mare Serenitatis",
+            "description": "Dataran basal basaltik melingkar berdiameter 674 km di sisi dekat Bulan, terletak di timur laut Mare Imbrium."
+        },
+        "mare_tranquillitatis": {
+            "name": "Mare Tranquillitatis",
+            "description": "Dataran basaltik luas tempat pendaratan bersejarah Apollo 11 (Tranquility Base), memiliki rona kebiruan akibat tingginya kandungan batuan kaya titanium."
+        },
+        "mare_crisium": {
+            "name": "Mare Crisium",
+            "description": "Cekungan lautan basal melingkar terisolasi berdiameter 556 km di timur laut sisi dekat Bulan, sangat mudah dikenali dalam pengamatan teleskopik."
+        },
+        "mare_fecunditatis": {
+            "name": "Mare Fecunditatis",
+            "description": "Dataran lautan basal luas berdiameter 840 km di belahan tenggara sisi dekat Bulan yang terbentuk pada era Nectarian kuno."
+        },
+        "mare_nectaris": {
+            "name": "Mare Nectaris",
+            "description": "Dataran lautan basal kecil di selatan Mare Tranquillitatis yang dikelilingi oleh pegunungan Pyrenaeus dan kawah tua Fracastorius."
+        },
+        "mare_vaporum": {
+            "name": "Mare Vaporum",
+            "description": "Dataran lautan basal berdiameter 245 km yang terletak di barat daya Mare Serenitatis di pusat sisi dekat Bulan."
+        },
+        "mare_nubium": {
+            "name": "Mare Nubium",
+            "description": "Dataran lautan basal melingkar tua berdiameter 715 km yang terletak di cekungan Nubium di belahan barat daya Bulan."
+        },
+        "langrenus_crater": {
+            "name": "Kawah Langrenus",
+            "description": "Kawah dampak menonjol berdiameter 132 km di tepi timur Mare Fecunditatis dengan dinding bertingkat dan puncak tengah ganda yang terang."
+        },
+        "stevinus_crater": {
+            "name": "Kawah Stevinus",
+            "description": "Kawah dampak berdiameter 75 km di dataran tinggi tenggara Bulan dengan lereng dalam yang terjal dan kawah satelit bernoda terang."
+        },
+        "mare_humorum": {
+            "name": "Mare Humorum",
+            "description": "Dataran lautan basal melingkar indah berdiameter 389 km yang dikelilingi oleh kawah Gassendi dan retakan-retakan rimae."
+        },
+        "mare_frigoris": {
+            "name": "Mare Frigoris",
+            "description": "Ngarai dataran lautan basal memanjang di belahan utara Bulan yang membentang di utara Mare Imbrium dan Mare Serenitatis."
+        },
+        "oceanus_procellarum": {
+            "name": "Oceanus Procellarum",
+            "description": "Samudra basal raksasa di sisi dekat Bulan yang membentang lebih dari 2.500 km, merupakan lautan basal terbesar di seluruh permukaan Bulan."
+        },
+        "aristarchus_crater": {
+            "name": "Kawah Aristarchus",
+            "description": "Kawah dampak paling terang di permukaan Bulan (diameter 40 km) yang terletak di dataran tinggi Aristarchus di Oceanus Procellarum."
+        },
+        "kepler_crater": {
+            "name": "Kawah Kepler",
+            "description": "Kawah dampak muda berdiameter 31 km di Oceanus Procellarum yang memiliki sistem pancaran sinar terang yang membentang luas."
+        },
+        "mare_cognitum": {
+            "name": "Mare Cognitum",
+            "description": "Dataran lautan basal berdiameter 376 km di dalam cekungan Procellarum, tempat pendaratan bersejarah Ranger 7 (1964) dan Apollo 12 (1969)."
+        },
+        "mare_insularum": {
+            "name": "Mare Insularum",
+            "description": "Dataran lautan basal berdiameter 513 km di selatan Mare Imbrium dan di timur Oceanus Procellarum, menampung kawah terkenal Copernicus dan Kepler."
+        },
+        "zeeman_crater": {
+            "name": "Kawah Zeeman",
+            "description": "Kawah dampak raksasa berdiameter 190 km dekat kutub selatan sisi jauh Bulan dengan pegunungan anomali yang menjulang sangat tinggi di tepi kawahnya."
+        },
+        "tsiolkovskiy_crater": {
+            "name": "Kawah Tsiolkovskiy",
+            "description": "Kawah tubrukan spektakuler berdiameter 185 km di sisi jauh Bulan dengan dasar laut basal yang sangat gelap dan puncak tengah yang sangat kontras."
+        },
+        "mouton_mons": {
+            "name": "Mons Mouton",
+            "description": "Pegunungan dataran tinggi yang luas dan tinggi dekat kutub selatan Bulan, dinamai dari Melba Mouton (matematikawan NASA), target utama eksplorasi es Bulan."
         },
         "south_pole_aitken": {
             "name": "Cekungan Kutub Selatan-Aitken",
@@ -670,6 +882,593 @@
         "occator_crater": {
             "name": "Kawah Occator",
             "description": "Kawah di planet kerdil Ceres yang terkenal dengan bintik-bintik terang misterius (Cerealia Facula) yang kaya akan natrium karbonat."
+        }
+    },
+    "nation": {
+        "AD": {
+            "name": "Andorra"
+        },
+        "AE": {
+            "name": "Uni Emirat Arab"
+        },
+        "AF": {
+            "name": "Afganistan"
+        },
+        "AG": {
+            "name": "Antigua dan Barbuda"
+        },
+        "AL": {
+            "name": "Albania"
+        },
+        "AM": {
+            "name": "Armenia"
+        },
+        "AO": {
+            "name": "Angola"
+        },
+        "AR": {
+            "name": "Argentina"
+        },
+        "AT": {
+            "name": "Austria"
+        },
+        "AU": {
+            "name": "Australia"
+        },
+        "AZ": {
+            "name": "Azerbaijan"
+        },
+        "BA": {
+            "name": "Bosnia dan Herzegovina"
+        },
+        "BB": {
+            "name": "Barbados"
+        },
+        "BD": {
+            "name": "Bangladesh"
+        },
+        "BE": {
+            "name": "Belgia"
+        },
+        "BF": {
+            "name": "Burkina Faso"
+        },
+        "BG": {
+            "name": "Bulgaria"
+        },
+        "BH": {
+            "name": "Bahrain"
+        },
+        "BI": {
+            "name": "Burundi"
+        },
+        "BJ": {
+            "name": "Benin"
+        },
+        "BN": {
+            "name": "Brunei"
+        },
+        "BO": {
+            "name": "Bolivia"
+        },
+        "BR": {
+            "name": "Brasil"
+        },
+        "BS": {
+            "name": "Bahama"
+        },
+        "BT": {
+            "name": "Bhutan"
+        },
+        "BW": {
+            "name": "Botswana"
+        },
+        "BY": {
+            "name": "Belarus"
+        },
+        "BZ": {
+            "name": "Belize"
+        },
+        "CA": {
+            "name": "Kanada"
+        },
+        "CD": {
+            "name": "Republik Demokratik Kongo"
+        },
+        "CF": {
+            "name": "Republik Afrika Tengah"
+        },
+        "CG": {
+            "name": "Kongo"
+        },
+        "CH": {
+            "name": "Swiss"
+        },
+        "CI": {
+            "name": "Pantai Gading"
+        },
+        "CL": {
+            "name": "Cili"
+        },
+        "CM": {
+            "name": "Kamerun"
+        },
+        "CN": {
+            "name": "Tiongkok"
+        },
+        "CO": {
+            "name": "Kolombia"
+        },
+        "CR": {
+            "name": "Kosta Rika"
+        },
+        "CU": {
+            "name": "Kuba"
+        },
+        "CV": {
+            "name": "Tanjung Verde"
+        },
+        "CY": {
+            "name": "Siprus"
+        },
+        "CZ": {
+            "name": "Ceko"
+        },
+        "DE": {
+            "name": "Jerman"
+        },
+        "DJ": {
+            "name": "Jibuti"
+        },
+        "DK": {
+            "name": "Denmark"
+        },
+        "DM": {
+            "name": "Dominika"
+        },
+        "DO": {
+            "name": "Republik Dominika"
+        },
+        "DZ": {
+            "name": "Aljazair"
+        },
+        "EC": {
+            "name": "Ekuador"
+        },
+        "EE": {
+            "name": "Estonia"
+        },
+        "EG": {
+            "name": "Mesir"
+        },
+        "ER": {
+            "name": "Eritrea"
+        },
+        "ES": {
+            "name": "Spanyol"
+        },
+        "ET": {
+            "name": "Ethiopia"
+        },
+        "FI": {
+            "name": "Finlandia"
+        },
+        "FJ": {
+            "name": "Fiji"
+        },
+        "FM": {
+            "name": "Mikronesia"
+        },
+        "FR": {
+            "name": "Prancis"
+        },
+        "GA": {
+            "name": "Gabon"
+        },
+        "GB": {
+            "name": "Britania Raya"
+        },
+        "GD": {
+            "name": "Grenada"
+        },
+        "GE": {
+            "name": "Georgia"
+        },
+        "GH": {
+            "name": "Ghana"
+        },
+        "GM": {
+            "name": "Gambia"
+        },
+        "GN": {
+            "name": "Guinea"
+        },
+        "GQ": {
+            "name": "Guinea Khatulistiwa"
+        },
+        "GR": {
+            "name": "Yunani"
+        },
+        "GT": {
+            "name": "Guatemala"
+        },
+        "GW": {
+            "name": "Guinea-Bissau"
+        },
+        "GY": {
+            "name": "Guyana"
+        },
+        "HN": {
+            "name": "Honduras"
+        },
+        "HR": {
+            "name": "Kroasia"
+        },
+        "HT": {
+            "name": "Haiti"
+        },
+        "HU": {
+            "name": "Hongaria"
+        },
+        "ID": {
+            "name": "Indonesia"
+        },
+        "IE": {
+            "name": "Irlandia"
+        },
+        "IL": {
+            "name": "Israel"
+        },
+        "IN": {
+            "name": "India"
+        },
+        "IQ": {
+            "name": "Irak"
+        },
+        "IR": {
+            "name": "Iran"
+        },
+        "IS": {
+            "name": "Islandia"
+        },
+        "IT": {
+            "name": "Italia"
+        },
+        "JM": {
+            "name": "Jamaika"
+        },
+        "JO": {
+            "name": "Yordania"
+        },
+        "JP": {
+            "name": "Jepang"
+        },
+        "KE": {
+            "name": "Kenya"
+        },
+        "KG": {
+            "name": "Kirgistan"
+        },
+        "KH": {
+            "name": "Kamboja"
+        },
+        "KI": {
+            "name": "Kiribati"
+        },
+        "KM": {
+            "name": "Komoro"
+        },
+        "KN": {
+            "name": "Saint Kitts dan Nevis"
+        },
+        "KP": {
+            "name": "Korea Utara"
+        },
+        "KR": {
+            "name": "Korea Selatan"
+        },
+        "KW": {
+            "name": "Kuwait"
+        },
+        "KZ": {
+            "name": "Kazakhstan"
+        },
+        "LA": {
+            "name": "Laos"
+        },
+        "LB": {
+            "name": "Lebanon"
+        },
+        "LC": {
+            "name": "Saint Lucia"
+        },
+        "LI": {
+            "name": "Liechtenstein"
+        },
+        "LK": {
+            "name": "Sri Lanka"
+        },
+        "LR": {
+            "name": "Liberia"
+        },
+        "LS": {
+            "name": "Lesotho"
+        },
+        "LT": {
+            "name": "Lituania"
+        },
+        "LU": {
+            "name": "Luksemburg"
+        },
+        "LV": {
+            "name": "Latvia"
+        },
+        "LY": {
+            "name": "Libya"
+        },
+        "MA": {
+            "name": "Maroko"
+        },
+        "MC": {
+            "name": "Monako"
+        },
+        "MD": {
+            "name": "Moldova"
+        },
+        "ME": {
+            "name": "Montenegro"
+        },
+        "MG": {
+            "name": "Madagaskar"
+        },
+        "MH": {
+            "name": "Kepulauan Marshall"
+        },
+        "MK": {
+            "name": "Makedonia Utara"
+        },
+        "ML": {
+            "name": "Mali"
+        },
+        "MM": {
+            "name": "Myanmar"
+        },
+        "MN": {
+            "name": "Mongolia"
+        },
+        "MR": {
+            "name": "Mauritania"
+        },
+        "MT": {
+            "name": "Malta"
+        },
+        "MU": {
+            "name": "Mauritius"
+        },
+        "MV": {
+            "name": "Maladewa"
+        },
+        "MW": {
+            "name": "Malawi"
+        },
+        "MX": {
+            "name": "Meksiko"
+        },
+        "MY": {
+            "name": "Malaysia"
+        },
+        "MZ": {
+            "name": "Mozambik"
+        },
+        "NA": {
+            "name": "Namibia"
+        },
+        "NE": {
+            "name": "Niger"
+        },
+        "NG": {
+            "name": "Nigeria"
+        },
+        "NI": {
+            "name": "Nikaragua"
+        },
+        "NL": {
+            "name": "Belanda"
+        },
+        "NO": {
+            "name": "Norwegia"
+        },
+        "NP": {
+            "name": "Nepal"
+        },
+        "NR": {
+            "name": "Nauru"
+        },
+        "NZ": {
+            "name": "Selandia Baru"
+        },
+        "OM": {
+            "name": "Oman"
+        },
+        "PA": {
+            "name": "Panama"
+        },
+        "PE": {
+            "name": "Peru"
+        },
+        "PG": {
+            "name": "Papua Nugini"
+        },
+        "PH": {
+            "name": "Filipina"
+        },
+        "PK": {
+            "name": "Pakistan"
+        },
+        "PL": {
+            "name": "Polandia"
+        },
+        "PS": {
+            "name": "Palestina"
+        },
+        "PT": {
+            "name": "Portugal"
+        },
+        "PW": {
+            "name": "Palau"
+        },
+        "PY": {
+            "name": "Paraguay"
+        },
+        "QA": {
+            "name": "Qatar"
+        },
+        "RO": {
+            "name": "Rumania"
+        },
+        "RS": {
+            "name": "Serbia"
+        },
+        "RU": {
+            "name": "Rusia"
+        },
+        "RW": {
+            "name": "Rwanda"
+        },
+        "SA": {
+            "name": "Arab Saudi"
+        },
+        "SB": {
+            "name": "Kepulauan Solomon"
+        },
+        "SC": {
+            "name": "Seychelles"
+        },
+        "SD": {
+            "name": "Sudan"
+        },
+        "SE": {
+            "name": "Swedia"
+        },
+        "SG": {
+            "name": "Singapura"
+        },
+        "SI": {
+            "name": "Slovenia"
+        },
+        "SK": {
+            "name": "Slowakia"
+        },
+        "SL": {
+            "name": "Sierra Leone"
+        },
+        "SM": {
+            "name": "San Marino"
+        },
+        "SN": {
+            "name": "Senegal"
+        },
+        "SO": {
+            "name": "Somalia"
+        },
+        "SR": {
+            "name": "Surinam"
+        },
+        "SS": {
+            "name": "Sudan Selatan"
+        },
+        "ST": {
+            "name": "Sao Tome dan Principe"
+        },
+        "SV": {
+            "name": "El Salvador"
+        },
+        "SY": {
+            "name": "Suriah"
+        },
+        "SZ": {
+            "name": "Eswatini"
+        },
+        "TD": {
+            "name": "Chad"
+        },
+        "TG": {
+            "name": "Togo"
+        },
+        "TH": {
+            "name": "Thailand"
+        },
+        "TJ": {
+            "name": "Tajikistan"
+        },
+        "TL": {
+            "name": "Timor Leste"
+        },
+        "TM": {
+            "name": "Turkmenistan"
+        },
+        "TN": {
+            "name": "Tunisia"
+        },
+        "TO": {
+            "name": "Tonga"
+        },
+        "TR": {
+            "name": "Turki"
+        },
+        "TT": {
+            "name": "Trinidad dan Tobago"
+        },
+        "TV": {
+            "name": "Tuvalu"
+        },
+        "TZ": {
+            "name": "Tanzania"
+        },
+        "UA": {
+            "name": "Ukraina"
+        },
+        "UG": {
+            "name": "Uganda"
+        },
+        "US": {
+            "name": "Amerika Serikat"
+        },
+        "UY": {
+            "name": "Uruguay"
+        },
+        "UZ": {
+            "name": "Uzbekistan"
+        },
+        "VA": {
+            "name": "Vatikan"
+        },
+        "VC": {
+            "name": "Saint Vincent dan Grenadines"
+        },
+        "VE": {
+            "name": "Venezuela"
+        },
+        "VN": {
+            "name": "Vietnam"
+        },
+        "VU": {
+            "name": "Vanuatu"
+        },
+        "WS": {
+            "name": "Samoa"
+        },
+        "YE": {
+            "name": "Yaman"
+        },
+        "ZA": {
+            "name": "Afrika Selatan"
+        },
+        "ZM": {
+            "name": "Zambia"
+        },
+        "ZW": {
+            "name": "Zimbabwe"
         }
     }
 }

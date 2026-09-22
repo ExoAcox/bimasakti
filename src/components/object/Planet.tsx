@@ -8,6 +8,8 @@ import { useSettingStore, useControlStore } from "@state"
 import { CelestialBody, PlanetCloud, PlanetRing, LandmarkMarker, PlyLoader, TextureLoader, Earth } from "@components/object"
 import { LOWREST_SCALE } from "@constants"
 import { Else, If, Then, When } from "react-if"
+import nations from "@constants/solar-system/nation"
+import NationMarker from "./NationMarker"
 
 interface Props {
     data: PlanetType
@@ -48,12 +50,12 @@ const Planet = ({
     const objectRef = useRef<Mesh>(null!)
     const cloudRef = useRef<Mesh>(null!)
 
-    const { sizeScale, distanceScale } = useSettingStore()
-    const { focus, landmarkVisible, cloudVisible, setControl } = useControlStore()
+    const { mode, sizeScale, distanceScale } = useSettingStore()
+    const { focus, landmarkVisible, nationVisible, cloudVisible, setControl } = useControlStore()
     const distance = LOWREST_SCALE / distanceScale
     const scale = data.radius / sizeScale
 
-    const distances = data.texture_hd ? [0, scale * 2, distance] : [0, distance]
+    const distances = data.texture_hd ? [0, scale * 3, distance] : [0, distance]
 
     const handleClick = () => {
         setControl({ focus: data.id })
@@ -61,7 +63,9 @@ const Planet = ({
 
     if (!data) return null
 
-    const showLandmark = focus === data.id && landmarkVisible
+    const isNormalMode = mode === "normal"
+    const showLandmark = focus === data.id && landmarkVisible && isNormalMode
+    const showNation = data.id === "earth" && nationVisible && isNormalMode
     const showCloud = data.cloud_texture && cloudVisible
 
     return (
@@ -75,6 +79,7 @@ const Planet = ({
             <group
                 ref={objectRef}
                 name={data.id}
+                userData={data}
                 scale={scale}
                 onClick={(e) => {
                     e.stopPropagation()
@@ -99,18 +104,27 @@ const Planet = ({
                 </When>
 
                 <When condition={showLandmark}>
-                    {data.landmarks?.map((landmark) => (
+                    {data.landmarks?.reverse().map((landmark) => (
                         <LandmarkMarker key={landmark.id} radius={data.radius} landmark={landmark} />
+                    ))}
+                </When>
+
+                <When condition={showNation}>
+                    {nations.reverse().map((nation) => (
+                        <NationMarker key={nation.id} radius={data.radius} nation={nation} />
                     ))}
                 </When>
             </group>
 
             <When condition={showCloud}>
-                <PlanetCloud
-                    path={data.cloud_texture!}
-                    scale={scale}
-                    cloudRef={cloudRef}
-                />
+                <Detailed distances={[0, distance]}>
+                    <PlanetCloud
+                        path={data.cloud_texture!}
+                        scale={scale}
+                        cloudRef={cloudRef}
+                    />
+                    <mesh />
+                </Detailed>
             </When>
         </CelestialBody>
     )

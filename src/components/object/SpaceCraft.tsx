@@ -35,6 +35,7 @@ const SpaceCraft = ({ data }: Props) => {
         <group
             ref={objectRef}
             name={data.id}
+            userData={data}
             scale={scale}
             rotation={rotation}
             visible={artificialSatelliteVisible}

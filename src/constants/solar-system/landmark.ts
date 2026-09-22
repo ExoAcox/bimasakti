@@ -171,16 +171,64 @@ export const landmarks: Landmark[] = [
         longitude: 50.6689
     },
     {
-        id: "dead_sea",
+        id: "atlantic_ocean",
         parent: "earth",
-        latitude: 31.5590,
-        longitude: 35.4732
+        latitude: 0.0,
+        longitude: -30.0
     },
     {
-        id: "mcmurdo_dry_valleys",
+        id: "pacific_ocean",
         parent: "earth",
-        latitude: -77.4700,
-        longitude: 162.5000
+        latitude: 0.0,
+        longitude: -160.0
+    },
+    {
+        id: "indian_ocean",
+        parent: "earth",
+        latitude: -20.0,
+        longitude: 80.0
+    },
+    {
+        id: "mediterranean_sea",
+        parent: "earth",
+        latitude: 35.0,
+        longitude: 18.0
+    },
+    {
+        id: "baltic_sea",
+        parent: "earth",
+        latitude: 58.0,
+        longitude: 20.0
+    },
+    {
+        id: "black_sea",
+        parent: "earth",
+        latitude: 43.4130,
+        longitude: 34.2993
+    },
+    {
+        id: "red_sea",
+        parent: "earth",
+        latitude: 20.2802,
+        longitude: 38.5126
+    },
+    {
+        id: "persian_gulf",
+        parent: "earth",
+        latitude: 26.8206,
+        longitude: 50.8524
+    },
+    {
+        id: "gulf_of_mexico",
+        parent: "earth",
+        latitude: 25.0,
+        longitude: -90.0
+    },
+    {
+        id: "greenland",
+        parent: "earth",
+        latitude: 72.0,
+        longitude: -40.0
     },
     {
         id: "antarctic_desert",
@@ -189,16 +237,64 @@ export const landmarks: Landmark[] = [
         longitude: 70.0000
     },
     {
-        id: "mawsynram",
-        parent: "earth",
-        latitude: 25.2975,
-        longitude: 91.5826
-    },
-    {
         id: "great_barrier_reef",
         parent: "earth",
         latitude: -18.2871,
         longitude: 147.6992
+    },
+    {
+        id: "himalaya_mountains",
+        parent: "earth",
+        latitude: 30.0,
+        longitude: 84.0
+    },
+    {
+        id: "alps_mountains",
+        parent: "earth",
+        latitude: 46.5,
+        longitude: 10.0
+    },
+    {
+        id: "andes_mountains",
+        parent: "earth",
+        latitude: -21.0,
+        longitude: -69.0
+    },
+    {
+        id: "rocky_mountains",
+        parent: "earth",
+        latitude: 44.0,
+        longitude: -110.0
+    },
+    {
+        id: "caucasus_mountains",
+        parent: "earth",
+        latitude: 42.5,
+        longitude: 46.0
+    },
+    {
+        id: "atlas_mountains",
+        parent: "earth",
+        latitude: 31.5,
+        longitude: -7.0
+    },
+    {
+        id: "ural_mountains",
+        parent: "earth",
+        latitude: 60.0,
+        longitude: 60.0
+    },
+    {
+        id: "lake_victoria",
+        parent: "earth",
+        latitude: -1.0,
+        longitude: 33.0
+    },
+    {
+        id: "zagros_mountains",
+        parent: "earth",
+        latitude: 33.5,
+        longitude: 48.5
     },
 
     // Mars
@@ -209,10 +305,16 @@ export const landmarks: Landmark[] = [
         longitude: -133.8
     },
     {
+        id: "elysium_mons",
+        parent: "mars",
+        latitude: 25.0,
+        longitude: 147.2
+    },
+    {
         id: "valles_marineris",
         parent: "mars",
-        latitude: -13.9,
-        longitude: -69.2
+        latitude: -10.3,
+        longitude: -72.2
     },
     {
         id: "gale_crater",
@@ -231,6 +333,90 @@ export const landmarks: Landmark[] = [
         parent: "mars",
         latitude: -42.4,
         longitude: 70.5
+    },
+    {
+        id: "ascraeus_mons",
+        parent: "mars",
+        latitude: 11.92,
+        longitude: -104.08
+    },
+    {
+        id: "pavonis_mons",
+        parent: "mars",
+        latitude: 1.4,
+        longitude: -113.0
+    },
+    {
+        id: "arsia_mons",
+        parent: "mars",
+        latitude: -8.4,
+        longitude: -120.95
+    },
+    {
+        id: "alba_mons",
+        parent: "mars",
+        latitude: 40.5,
+        longitude: -110.0
+    },
+    {
+        id: "medusa_fossae",
+        parent: "mars",
+        latitude: -2.0,
+        longitude: -160.0
+    },
+    {
+        id: "nili_fossae",
+        parent: "mars",
+        latitude: 22.0,
+        longitude: 76.8
+    },
+    {
+        id: "ghost_dunes",
+        parent: "mars",
+        latitude: -7.0,
+        longitude: -94.0
+    },
+    {
+        id: "meridiani_planum",
+        parent: "mars",
+        latitude: 0.2,
+        longitude: -2.5
+    },
+    {
+        id: "hale_crater",
+        parent: "mars",
+        latitude: -35.7,
+        longitude: -36.6
+    },
+    {
+        id: "aram_chaos",
+        parent: "mars",
+        latitude: 2.6,
+        longitude: -21.5
+    },
+    {
+        id: "aurorae_chaos",
+        parent: "mars",
+        latitude: -8.9,
+        longitude: -35.2
+    },
+    {
+        id: "aureum_chaos",
+        parent: "mars",
+        latitude: -4.4,
+        longitude: -27.0
+    },
+    {
+        id: "planum_boreum",
+        parent: "mars",
+        latitude: 88.0,
+        longitude: 15.0
+    },
+    {
+        id: "planum_australe",
+        parent: "mars",
+        latitude: -86.8,
+        longitude: 0.0
     },
 
     // Jupiter
@@ -259,6 +445,138 @@ export const landmarks: Landmark[] = [
         parent: "moon",
         latitude: 9.62,
         longitude: -20.08
+    },
+    {
+        id: "mare_imbrium",
+        parent: "moon",
+        latitude: 32.8,
+        longitude: -15.6
+    },
+    {
+        id: "plato_crater",
+        parent: "moon",
+        latitude: 51.6,
+        longitude: -9.3
+    },
+    {
+        id: "montes_apenninus",
+        parent: "moon",
+        latitude: 18.9,
+        longitude: -3.7
+    },
+    {
+        id: "mare_serenitatis",
+        parent: "moon",
+        latitude: 28.0,
+        longitude: 17.5
+    },
+    {
+        id: "mare_tranquillitatis",
+        parent: "moon",
+        latitude: 8.5,
+        longitude: 31.4
+    },
+    {
+        id: "mare_crisium",
+        parent: "moon",
+        latitude: 17.0,
+        longitude: 59.1
+    },
+    {
+        id: "mare_fecunditatis",
+        parent: "moon",
+        latitude: -7.8,
+        longitude: 51.3
+    },
+    {
+        id: "mare_nectaris",
+        parent: "moon",
+        latitude: -15.2,
+        longitude: 35.5
+    },
+    {
+        id: "mare_vaporum",
+        parent: "moon",
+        latitude: 13.3,
+        longitude: 3.6
+    },
+    {
+        id: "mare_nubium",
+        parent: "moon",
+        latitude: -21.3,
+        longitude: -16.6
+    },
+    {
+        id: "langrenus_crater",
+        parent: "moon",
+        latitude: -8.9,
+        longitude: 61.1
+    },
+    {
+        id: "stevinus_crater",
+        parent: "moon",
+        latitude: -32.5,
+        longitude: 54.2
+    },
+    {
+        id: "mare_humorum",
+        parent: "moon",
+        latitude: -24.4,
+        longitude: -38.6
+    },
+    {
+        id: "mare_frigoris",
+        parent: "moon",
+        latitude: 57,
+        longitude: 1.4
+    },
+    {
+        id: "oceanus_procellarum",
+        parent: "moon",
+        latitude: 17.4,
+        longitude: -57.4
+    },
+    {
+        id: "aristarchus_crater",
+        parent: "moon",
+        latitude: 23.7,
+        longitude: -47.4
+    },
+    {
+        id: "kepler_crater",
+        parent: "moon",
+        latitude: 8.1,
+        longitude: -38.0
+    },
+    {
+        id: "mare_cognitum",
+        parent: "moon",
+        latitude: -10.5,
+        longitude: -22.3
+    },
+    {
+        id: "mare_insularum",
+        parent: "moon",
+        latitude: 7.5,
+        longitude: -30.9
+    },
+    {
+        id: "zeeman_crater",
+        parent: "moon",
+        latitude: -75.2,
+        longitude: -134.8
+    },
+    {
+        id: "tsiolkovskiy_crater",
+        parent: "moon",
+        latitude: -20.4,
+        longitude: 129.1
+    },
+    {
+        id: "mouton_mons",
+        parent: "moon",
+        latitude: -85.4,
+        longitude: 31.7
     },
     {
         id: "south_pole_aitken",

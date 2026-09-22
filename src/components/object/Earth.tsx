@@ -99,6 +99,8 @@ const Earth = ({ data, hd }: Props) => {
             />
         </mesh>
 
+        {/* <GeoJsonOverlay data={SAHARA_DESERT_GEOJSON} /> */}
+
         <When condition={cloudVisible}>
             <mesh scale={1.02}>
                 <sphereGeometry args={[1, 64, 64]} />

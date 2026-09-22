@@ -11,12 +11,13 @@
     "sitemap": "npm sitemap.js"
   },
   "dependencies": {
+    "@react-router/node": "^8",
+    "@react-router/serve": "^8",
     "@react-spring/three": "^10.1.2",
     "@react-three/drei": "^10.7.7",
     "@react-three/fiber": "^9.6.1",
     "@react-three/postprocessing": "^3.1.1",
-    "@react-router/node": "^8",
-    "@react-router/serve": "^8",
+    "@react-three/rapier": "^2.2.0",
     "@vercel/analytics": "^2.0.1",
     "clsx": "^2.1.1",
     "i18next": "^26.4.0",

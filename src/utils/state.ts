@@ -3,6 +3,7 @@ import { SCALE, TIME_SCALE } from '@constants'
 import type { Belt, CelestialObject } from '@types'
 
 export interface SettingStore {
+    mode: "normal" | "third-person" | "first-person"
     showDetail: boolean
     showSetting: boolean
     sizeScale: number
@@ -27,6 +28,7 @@ export const defaultSetting = {
 
 export const useSettingStore = create<SettingStore>((set) => ({
     ...defaultSetting,
+    mode: "normal",
     setSetting: (values) => set((state) => ({ ...state, ...values })),
 }))
 
@@ -38,6 +40,7 @@ export interface ControlStore {
     axisTilt: number
     cloudVisible: boolean
     landmarkVisible: boolean
+    nationVisible: boolean
     artificialSatelliteVisible: boolean
     dayNightMode: boolean
     resetControl: (data: CelestialObject | Belt) => void
@@ -53,6 +56,7 @@ export const defaultControl = {
     dayNightMode: true,
     cloudVisible: true,
     landmarkVisible: true,
+    nationVisible: false,
     artificialSatelliteVisible: true,
 }
 
@@ -70,7 +74,21 @@ export const useControlStore = create<ControlStore>((set) => ({
     setControl: (values) => set((state) => ({ ...state, ...values })),
 }))
 
+export interface ShipStore {
+    autopilot: boolean,
+    distance: number,
+    setShip: (values: Partial<Omit<ShipStore, "setShip">>) => void
+}
 
+export const defaultShip = {
+    autopilot: false,
+    distance: 0,
+}
+
+export const useShipStore = create<ShipStore>((set) => ({
+    ...defaultShip,
+    setShip: (values) => set((state) => ({ ...state, ...values })),
+}))
 
 interface GalaxyStore {
     focus: string

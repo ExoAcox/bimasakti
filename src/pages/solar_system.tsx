@@ -1,4 +1,4 @@
-import { Planet, Satellite, Star, Comet, Belt, SpaceCraft } from "@components/object"
+import { Planet, Satellite, Star, Comet, Belt, SpaceCraft, Spaceship } from "@components/object"
 import { solar_system } from "@constants"
 import { seo } from "@function"
 
@@ -10,7 +10,6 @@ export const meta = () => seo({
 
 const SolarSystem = () => {
     const { planets, comets, belts } = solar_system
-
 
     return <Star id="sun">
         {planets.map(planet => {
@@ -48,8 +47,6 @@ const SolarSystem = () => {
                 data={belt}
             />
         ))}
-
-
     </Star>
 }
 
