@@ -132,7 +132,8 @@ const ThirdPersonScene = () => {
 
             <OrbitControls
                 makeDefault
-                enableDamping
+                // enableDamping
+                // dampingFactor={0.01}
                 minDistance={cockpit ? 1e-11 : SHIP_SCALE * 20}
                 maxDistance={cockpit ? SHIP_SCALE * 2 : SHIP_SCALE * 500}
                 minPolarAngle={cockpit ? Math.PI / 3 : 0}
