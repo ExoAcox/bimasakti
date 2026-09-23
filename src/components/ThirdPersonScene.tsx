@@ -136,7 +136,8 @@ const ThirdPersonScene = () => {
                 // dampingFactor={0.01}
                 minDistance={cockpit ? 1e-11 : SHIP_SCALE * 20}
                 maxDistance={cockpit ? SHIP_SCALE * 2 : SHIP_SCALE * 500}
-                minPolarAngle={cockpit ? Math.PI / 3 : 0}
+                enableZoom={!cockpit}
+                // minPolarAngle={cockpit ? Math.PI / 3 : 0}
                 // maxPolarAngle={cockpit ? Math.PI / 1.6 : Math.PI}
                 // minAzimuthAngle={cockpit ? -Math.PI / 2.5 : -Infinity}
                 // maxAzimuthAngle={cockpit ? Math.PI / 2.5 : Infinity}

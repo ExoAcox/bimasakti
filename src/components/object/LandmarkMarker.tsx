@@ -85,7 +85,8 @@ const LandmarkMarker = ({ landmark, visible = true, lonOffset = 0 }: Props) => {
                             "flex items-center gap-1.5 px-2 py-0.5 rounded-full text-[10px] font-medium transition-all duration-150 border whitespace-nowrap shadow-md cursor-pointer select-none",
                             isSelected
                                 ? "bg-sky-600 text-white border-sky-300 scale-105 shadow-sky-500/40"
-                                : "bg-neutral-950/90 text-amber-200 border-amber-500/30 hover:bg-neutral-900 hover:border-amber-400 hover:text-white"
+                                : "bg-neutral-950/90 text-amber-200 border-amber-500/30 hover:bg-neutral-900 hover:border-amber-400 hover:text-white",
+                            landmark.reverse ? "-translate-x-full flex-row-reverse" : ""
                         )}
                     >
                         <span className="inline-block size-1.5 rounded-full bg-amber-400 shrink-0" />

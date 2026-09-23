@@ -30,7 +30,8 @@ export const landmarks: Landmark[] = [
         id: "mount_elbrus",
         parent: "earth",
         latitude: 43.3499,
-        longitude: 42.4453
+        longitude: 42.4453,
+        reverse: true
     },
     {
         id: "mount_vinson",
@@ -54,7 +55,8 @@ export const landmarks: Landmark[] = [
         id: "mont_blanc",
         parent: "earth",
         latitude: 45.8326,
-        longitude: 6.8652
+        longitude: 6.8652,
+        reverse: true,
     },
     {
         id: "mauna_loa",
@@ -90,7 +92,8 @@ export const landmarks: Landmark[] = [
         id: "congo_rainforest",
         parent: "earth",
         latitude: -0.2280,
-        longitude: 21.7587
+        longitude: 21.7587,
+        reverse: true
     },
     {
         id: "chicxulub_crater",
@@ -150,7 +153,8 @@ export const landmarks: Landmark[] = [
         id: "great_basin_desert",
         parent: "earth",
         latitude: 39.5000,
-        longitude: -116.5000
+        longitude: -116.5000,
+        reverse: true
     },
     {
         id: "kalahari_desert",
@@ -204,7 +208,8 @@ export const landmarks: Landmark[] = [
         id: "black_sea",
         parent: "earth",
         latitude: 43.4130,
-        longitude: 34.2993
+        longitude: 34.2993,
+        reverse: true
     },
     {
         id: "red_sea",
@@ -246,7 +251,8 @@ export const landmarks: Landmark[] = [
         id: "himalaya_mountains",
         parent: "earth",
         latitude: 30.0,
-        longitude: 84.0
+        longitude: 84.0,
+        reverse: true
     },
     {
         id: "alps_mountains",
@@ -269,8 +275,8 @@ export const landmarks: Landmark[] = [
     {
         id: "caucasus_mountains",
         parent: "earth",
-        latitude: 42.5,
-        longitude: 46.0
+        latitude: 42.0,
+        longitude: 45.0
     },
     {
         id: "atlas_mountains",
@@ -288,7 +294,8 @@ export const landmarks: Landmark[] = [
         id: "lake_victoria",
         parent: "earth",
         latitude: -1.0,
-        longitude: 33.0
+        longitude: 33.0,
+        reverse: true
     },
     {
         id: "zagros_mountains",
@@ -418,11 +425,25 @@ export const landmarks: Landmark[] = [
         latitude: -86.8,
         longitude: 0.0
     },
+    {
+        id: "utopia_planitia",
+        parent: "mars",
+        latitude: 46.7,
+        longitude: 117.5
+    },
 
     // Jupiter
     {
         id: "giant_red_spot",
         parent: "jupiter",
+        latitude: -22.0,
+        longitude: -45.0
+    },
+
+    // Neptune
+    {
+        id: "great_dark_spot",
+        parent: "neptune",
         latitude: -22.0,
         longitude: -45.0
     },
@@ -456,13 +477,15 @@ export const landmarks: Landmark[] = [
         id: "plato_crater",
         parent: "moon",
         latitude: 51.6,
-        longitude: -9.3
+        longitude: -9.3,
+        reverse: true
     },
     {
         id: "montes_apenninus",
         parent: "moon",
         latitude: 18.9,
-        longitude: -3.7
+        longitude: -3.7,
+        reverse: true
     },
     {
         id: "mare_serenitatis",
@@ -584,19 +607,55 @@ export const landmarks: Landmark[] = [
         latitude: -53.0,
         longitude: 169.0
     },
+    {
+        id: "mare_orientale",
+        parent: "moon",
+        latitude: -19.4,
+        longitude: -92.8
+    },
+    {
+        id: "mare_smythii",
+        parent: "moon",
+        latitude: -1.3,
+        longitude: 87.5
+    },
+    {
+        id: "mare_marginis",
+        parent: "moon",
+        latitude: 13.3,
+        longitude: 86.1
+    },
 
     // Venus
     {
         id: "maat_mons",
         parent: "venus",
-        latitude: 0.5,
-        longitude: 194.3
+        latitude: 0.9,
+        longitude: 194.5
     },
     {
         id: "ishtar_terra",
         parent: "venus",
         latitude: 70.4,
         longitude: 27.5
+    },
+    {
+        id: "aphrodite_terra",
+        parent: "venus",
+        latitude: -5.8,
+        longitude: 100.0
+    },
+    {
+        id: "beta_regio",
+        parent: "venus",
+        latitude: 25.3,
+        longitude: 282.8
+    },
+    {
+        id: "maxwell_montes",
+        parent: "venus",
+        latitude: 65.2,
+        longitude: 3.3
     },
 
     // Mercury

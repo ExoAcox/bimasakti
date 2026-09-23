@@ -120,6 +120,7 @@ export interface Landmark {
     latitude: number
     longitude: number
     parent: string
+    reverse?: true
 }
 
 export interface Nation {

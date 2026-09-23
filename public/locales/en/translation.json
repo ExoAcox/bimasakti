@@ -765,9 +765,17 @@
             "name": "Planum Australe",
             "description": "The southern polar plain of Mars covered by thick permanent water ice and seasonal carbon dioxide ice, famous for spring CO2 geysers creating dark spider-like patterns."
         },
+        "utopia_planitia": {
+            "name": "Utopia Planitia",
+            "description": "A vast plain within a giant impact basin in the northern hemisphere of Mars, famous as the landing site for Viking 2 (1976) and China's Zhurong rover (2021)."
+        },
         "giant_red_spot": {
             "name": "Great Red Spot",
             "description": "A persistent giant anticyclonic storm in Jupiter's atmosphere that is larger than Earth and has raged for centuries."
+        },
+        "great_dark_spot": {
+            "name": "Great Dark Spot",
+            "description": "A giant anticyclonic storm in Neptune's atmosphere first observed by NASA's Voyager 2 spacecraft in 1989."
         },
         "tranquility_base": {
             "name": "Statio Tranquillitatis",
@@ -873,6 +881,18 @@
             "name": "South Pole-Aitken Basin",
             "description": "The oldest and largest impact basin on the Moon (2,500 km diameter), located on the lunar far side."
         },
+        "mare_orientale": {
+            "name": "Mare Orientale",
+            "description": "A giant multi-ringed impact basin located on the western border of the Moon's near and far sides."
+        },
+        "mare_smythii": {
+            "name": "Mare Smythii",
+            "description": "A circular lunar mare located along the equator on the eastern limb of the Moon."
+        },
+        "mare_marginis": {
+            "name": "Mare Marginis",
+            "description": "A lunar mare along the eastern limb of the Moon, located just north of Mare Smythii."
+        },
         "maat_mons": {
             "name": "Maat Mons",
             "description": "The highest volcano on planet Venus (8 km high), exhibiting signs of relatively recent volcanic activity."
@@ -880,6 +900,18 @@
         "ishtar_terra": {
             "name": "Ishtar Terra",
             "description": "One of two main continental highlands on Venus, located near the north pole and home to the Maxwell Montes range."
+        },
+        "aphrodite_terra": {
+            "name": "Aphrodite Terra",
+            "description": "The largest continental highland region on planet Venus, stretching along the equator and roughly equal in size to the continent of Africa on Earth."
+        },
+        "beta_regio": {
+            "name": "Beta Regio",
+            "description": "A major volcanic highland region on Venus marked by two massive shield volcanoes (Theia Mons and Rhea Mons) and the Devana Chasma rift valley."
+        },
+        "maxwell_montes": {
+            "name": "Maxwell Montes",
+            "description": "The highest mountain range on planet Venus (~11 km high), situated on the highland mass of Ishtar Terra."
         },
         "caloris_basin": {
             "name": "Caloris Basin",

@@ -755,9 +755,17 @@
             "name": "Planum Australe",
             "description": "Dataran tinggi kutub selatan Mars yang berselimut es air dan es karbon dioksida beku tebal, terkenal dengan geyser karbon dioksida musim semi yang menghasilkan pola bintik gelap (spider terrain)."
         },
+        "utopia_planitia": {
+            "name": "Utopia Planitia",
+            "description": "Dataran dampak raksasa di belahan utara Mars yang terkenal sebagai lokasi pendaratan Viking 2 (1976) dan penjelajah Zhurong Tiongkok (2021)."
+        },
         "giant_red_spot": {
             "name": "Bintik Merah Raksasa",
             "description": "Badai antisisklon raksasa di atmosfer Jupiter yang berukuran lebih besar dari Bumi dan telah berlangsung selama ratusan tahun."
+        },
+        "great_dark_spot": {
+            "name": "Bintik Gelap Raksasa",
+            "description": "Badai antisisklon raksasa di atmosfer Neptunus yang pertama kali diamati oleh wahana Voyager 2 pada tahun 1989."
         },
         "tranquility_base": {
             "name": "Base Tranquillitatis",
@@ -863,6 +871,18 @@
             "name": "Cekungan Kutub Selatan-Aitken",
             "description": "Cekungan kawah dampak tertua dan terbesar di Bulan (diameter 2.500 km), terletak di sisi jauh Bulan."
         },
+        "mare_orientale": {
+            "name": "Mare Orientale",
+            "description": "Cekungan dampak lautan basal raksasa berstruktur cincin ganda di perbatasan sisi barat dekat dan jauh Bulan."
+        },
+        "mare_smythii": {
+            "name": "Mare Smythii",
+            "description": "Dataran lautan basal melingkar di tepi timur khatulistiwa sisi dekat Bulan."
+        },
+        "mare_marginis": {
+            "name": "Mare Marginis",
+            "description": "Dataran lautan basal tepi timur Bulan yang terletak di utara Mare Smythii."
+        },
         "maat_mons": {
             "name": "Maat Mons",
             "description": "Gunung berapi tertinggi di planet Venus (ketinggian 8 km), menunjukkan tanda-tanda aktivitas vulkanik yang relatif baru."
@@ -870,6 +890,18 @@
         "ishtar_terra": {
             "name": "Ishtar Terra",
             "description": "Salah satu dari dua wilayah benua utama di Venus, terletak dekat kutub utara dan menampung pegunungan Maxwell Montes."
+        },
+        "aphrodite_terra": {
+            "name": "Aphrodite Terra",
+            "description": "Wilayah dataran tinggi benua terbesar di planet Venus yang membentang di sepanjang khatulistiwa dan berukuran sebanding dengan benua Afrika di Bumi."
+        },
+        "beta_regio": {
+            "name": "Beta Regio",
+            "description": "Wilayah vulkanik utama di Venus yang ditandai oleh dua gunung berapi raksasa (Theia Mons dan Rhea Mons) serta celah ngarai Devana Chasma."
+        },
+        "maxwell_montes": {
+            "name": "Maxwell Montes",
+            "description": "Jajaran pegunungan tertinggi di planet Venus (mencapai ketinggian ±11 km) yang terletak di wilayah Ishtar Terra."
         },
         "caloris_basin": {
             "name": "Cekungan Caloris",

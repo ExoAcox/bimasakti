@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/immutability */
 /* eslint-disable react-hooks/set-state-in-effect */
 import { Bounds, useProgress, useGLTF, Stats, KeyboardControls } from "@react-three/drei"
 import { Canvas } from "@react-three/fiber"
@@ -18,6 +19,9 @@ import ThirdPersonScene from "./ThirdPersonScene";
 import { keyboardMap } from "./object/Spaceship";
 
 
+
+import { useThree, useFrame } from "@react-three/fiber";
+import type { OrbitControls as OrbitControlsType } from "three-stdlib";
 
 const UserInterface = ({ id }: { id: string }) => {
     const { active, progress } = useProgress()
@@ -48,6 +52,28 @@ const UserInterface = ({ id }: { id: string }) => {
     )
 }
 
+const AutoCameraClip = () => {
+    const { camera, controls } = useThree()
+
+    useFrame(() => {
+        const orbitControls = controls as unknown as OrbitControlsType
+        if (!orbitControls.target) return
+
+        const dist = camera.position.distanceTo(orbitControls.target)
+        if (dist <= 0) return
+
+        const targetNear = Math.max(1e-7, dist * 0.00005)
+        console.log("Target near :", targetNear)
+
+        if (Math.abs(camera.near - targetNear) / camera.near > 0.05) {
+            camera.near = targetNear
+            camera.updateProjectionMatrix()
+        }
+    })
+
+    return null
+}
+
 useGLTF.setDecoderPath('/draco/')
 
 const CanvasLayout = () => {
@@ -72,8 +98,10 @@ const CanvasLayout = () => {
 
     return <div className="w-dvw h-dvh">
         <Canvas
-            camera={{ near: 1e-7, far: 1e+8 }}
+            camera={{ near: 1e-5, far: 1e+10 }}
             onPointerMissed={() => setSetting({ showSetting: false })}>
+
+            <AutoCameraClip />
 
             <When condition={import.meta.env.DEV || searchParams.get('dev')}>
                 <Stats className="top-auto! left-auto! bottom-0! right-0!" />

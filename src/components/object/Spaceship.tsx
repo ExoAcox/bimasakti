@@ -175,7 +175,7 @@ const Spaceship = () => {
                 child.getWorldPosition(objPos)
                 const objDist = shipPos.distanceTo(objPos)
                 const objRadius = radius / sizeScale
-                const minSurfaceDist = Math.max(objRadius * 2, 0.0005)
+                const minSurfaceDist = Math.max(objRadius * 1.5, 0.0005)
 
                 if (objDist < minSurfaceDist && objDist > 0) {
                     dirToObj.subVectors(objPos, shipPos).normalize()

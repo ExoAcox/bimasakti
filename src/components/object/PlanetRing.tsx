@@ -30,7 +30,7 @@ const PlanetRing = ({ data }: Props) => {
         }
     }, [innerRadius, outerRadius]);
 
-    return <mesh rotation={[-Math.PI / 2, 0, 0]} ref={ringRef} castShadow receiveShadow>
+    return <mesh renderOrder={-1} rotation={[-Math.PI / 2, 0, 0]} ref={ringRef} castShadow receiveShadow>
         <ringGeometry
             args={[
                 innerRadius,
@@ -38,11 +38,12 @@ const PlanetRing = ({ data }: Props) => {
                 64,
             ]}
         />
-        <meshStandardMaterial map={texture}
+        <meshStandardMaterial
+            map={texture}
             side={2}
             transparent={true}
             opacity={data.ring?.opacity || 1}
-
+        // depthWrite={false}
         />
     </mesh>
 }
