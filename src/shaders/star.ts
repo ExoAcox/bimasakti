@@ -118,20 +118,25 @@ void main() {
 
     float n = fBm(st + q + vec3(1.82, 1.32, 1.09), 5.0);
 
-    vec3 color = mix(u_color, vec3(1.0, 1.0, 1.0), n * n);
-    vec3 darkPlasma = mix(u_color * 0.3, u_color * u_color, 0.5);
-    color = mix(color, darkPlasma, q * 0.7);
+    // Base plasma color & bright hot spots
+    vec3 color = mix(u_color, vec3(1.2, 1.1, 0.9), n * n * 1.5);
+    vec3 darkPlasma = mix(u_color * 0.4, u_color * u_color, 0.5);
+    color = mix(color, darkPlasma, q * 0.5);
 
-    // Fresnel rim & inner effect from Sangil Lee article
-    float fresnelTerm_inner = 0.2 - 0.7 * min(dot(vPosition, vNormalView), 0.0);
-    fresnelTerm_inner = pow(max(fresnelTerm_inner, 0.0), 5.0);
+    // Fresnel calculations (dotProd is -1.0 at center facing camera, 0.0 at edge/limb)
+    float dotProd = dot(vPosition, vNormalView);
 
-    float fresnelTerm_outer = 1.0 + dot(vPosition, vNormalView);
-    fresnelTerm_outer = pow(max(fresnelTerm_outer, 0.0), 2.0);
+    // Inner heat glow across visible surface (strongest towards center)
+    float fresnelInner = pow(clamp(-dotProd, 0.0, 1.0), 1.2);
 
-    float fresnelTerm = fresnelTerm_inner + fresnelTerm_outer;
+    // Outer rim glow (strongest towards edge)
+    float fresnelOuter = pow(clamp(1.0 + dotProd, 0.0, 1.0), 2.0);
 
-    vec3 finalColor = 1.3 * color + (u_color * fresnelTerm * 0.3);
+    // Combine surface plasma with intense HDR inner heat radiation and outer limb glow
+    vec3 innerHeat = u_color * (1.2 + 1.8 * n) * fresnelInner;
+    vec3 outerLimb = (u_color + vec3(0.3)) * 2.0 * fresnelOuter;
+
+    vec3 finalColor = color * 1.6 + innerHeat + outerLimb;
 
     gl_FragColor = vec4(finalColor, 1.0);
 }

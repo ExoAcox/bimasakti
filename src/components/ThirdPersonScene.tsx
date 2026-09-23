@@ -34,23 +34,23 @@ const ThirdPersonScene = () => {
     const { camera } = useThree()
     const { cockpit } = useShipStore()
 
-    useEffect(() => {
-        if (!controlRef.current) return
-        const persCam = camera as unknown as { fov: number; updateProjectionMatrix: () => void }
-        if (cockpit) {
-            persCam.fov = 45
-            persCam.updateProjectionMatrix()
-            initializedCockpit.current = false
-        } else {
-            persCam.fov = 75
-            persCam.updateProjectionMatrix()
-            camera.up.set(0, 1, 0)
-            controlRef.current.target.copy(currentPos.current)
-            camera.position.copy(currentPos.current).add(cameraOffset)
-            controlRef.current.update()
-        }
-        lastPos.current.copy(currentPos.current)
-    }, [cockpit])
+    // useEffect(() => {
+    //     if (!controlRef.current) return
+    //     const persCam = camera as unknown as { fov: number; updateProjectionMatrix: () => void }
+    //     if (cockpit) {
+    //         persCam.fov = 45
+    //         persCam.updateProjectionMatrix()
+    //         initializedCockpit.current = false
+    //     } else {
+    //         persCam.fov = 75
+    //         persCam.updateProjectionMatrix()
+    //         camera.up.set(0, 1, 0)
+    //         controlRef.current.target.copy(currentPos.current)
+    //         camera.position.copy(currentPos.current).add(cameraOffset)
+    //         controlRef.current.update()
+    //     }
+    //     lastPos.current.copy(currentPos.current)
+    // }, [cockpit])
 
     // Camera follow spaceship
     useFrame(({ scene }) => {
