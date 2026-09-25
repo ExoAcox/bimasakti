@@ -1,8 +1,9 @@
 import { Camera, MathUtils, Object3D, Vector3 } from "three"
 import { solar_system, alpha_centauri, trappist_1, sagittarius_a, lich, universes, universe_ids } from "@constants"
-import { useEffect, useRef, useState } from "react";
-import type { Belt, CelestialObject, Landmark } from "@types";
+import { useEffect, useMemo, useRef, useState } from "react";
+import type { Belt, CelestialObject, Landmark, Planet } from "@types";
 import { useLocation } from "react-router";
+import { useControlStore } from "@state";
 
 export const getUniverseById = (id: string) => {
     const universe = universes.find(universe => universe.id === id)
@@ -29,13 +30,13 @@ export const useCelestial = () => {
 
     const currentUniverse = pathname.split("/")[1]
 
-    const objects: (CelestialObject | Belt | Landmark)[] = []
+    const objects: (CelestialObject | Belt)[] = []
 
     universe_ids.forEach(universe => {
         if (universe === currentUniverse) {
             const keys = Object.keys(universeMapping[currentUniverse])
-            keys.forEach(key => {
-                objects.push(...(universeMapping[currentUniverse][key] as (CelestialObject | Belt | Landmark)[]))
+            keys.filter(key => key !== "landmarks").forEach(key => {
+                objects.push(...(universeMapping[currentUniverse][key] as (CelestialObject | Belt)[]))
             })
 
         }
@@ -49,6 +50,10 @@ export const useCelestial = () => {
         return objects.filter((object) => "type" in object && object.type === type)
     }
 
+    const getLandmark = (id: string) => {
+        return solar_system.landmarks.find((object) => object.id === id)
+    }
+
     const getCameraDistance = (camera: Camera, object: Object3D, targetRef?: { current: Vector3 }) => {
         object.getWorldPosition(targetRef?.current ?? targetPos.current)
         return camera.position.distanceTo(targetRef?.current ?? targetPos.current)
@@ -56,9 +61,21 @@ export const useCelestial = () => {
 
     const getUniverse = () => getUniverseById(currentUniverse)
 
-    return { objects, getObjectById, getObjectsByType, getCameraDistance, getUniverse }
+    return { objects, getObjectById, getObjectsByType, getLandmark, getCameraDistance, getUniverse }
 }
 
+export const useVariant = (data: Planet) => {
+    const { variant } = useControlStore()
+
+    return useMemo(() => {
+        if (data.type === "planet" && variant) {
+            const variantData = data.variants?.find((v) => v.variant_id === variant)
+            if (variantData) return { ...data, ...variantData }
+        }
+
+        return data
+    }, [data, variant])
+}
 
 export function useMobile(breakpoint = 768) {
     const [isMobile, setMobile] = useState(false);

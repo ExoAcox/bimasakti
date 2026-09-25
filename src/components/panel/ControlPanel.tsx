@@ -1,9 +1,9 @@
 /* eslint-disable react-hooks/set-state-in-effect */
 import { useControlStore } from "@state"
 import clsx from "clsx";
-import { useCallback, useEffect, useRef, useState } from "react";
+import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import { Case, Switch, Then, When } from "react-if";
-import { useCelestial } from "@function";
+import { useCelestial, useVariant } from "@function";
 import type { Planet } from "@types";
 
 
@@ -12,7 +12,7 @@ import { ImCloud } from "react-icons/im";
 import { GoCircle } from "react-icons/go";
 import { TbSatelliteFilled } from "react-icons/tb";
 import { HiLocationMarker } from "react-icons/hi";
-import { MdBrightnessMedium, MdClose, MdRefresh } from "react-icons/md";
+import { MdBrightnessMedium, MdClose, MdHistory, MdRefresh } from "react-icons/md";
 import { SiUnitednations } from "react-icons/si";
 import { useTranslation } from "react-i18next";
 
@@ -54,7 +54,7 @@ const TOOLTIP_CLASS =
 
 const SPEED_ARRAY = [0.1, 0.5, 1, 1.5, 2, 3, 5]
 const LayerPanel = ({ id }: Props) => {
-    const { focusIndex, focusLandmark, landmarkVisible, nationVisible, rotateSpeed, cloudVisible, artificialSatelliteVisible, dayNightMode, axisTilt, setControl, resetControl } = useControlStore()
+    const { focusIndex, focusLandmark, landmarkVisible, nationVisible, rotateSpeed, cloudVisible, artificialSatelliteVisible, dayNightMode, axisTilt, variant, setControl, resetControl } = useControlStore()
     const [lastRotateSpeed, setLastRotateSpeed] = useState(rotateSpeed)
 
     const [activePanel, setActivePanel] = useState("")
@@ -106,7 +106,8 @@ const LayerPanel = ({ id }: Props) => {
         setControl({ axisTilt: nextTilt })
     }
 
-    const data = useCelestial().getObjectById(id) as Planet
+    const rawData = useCelestial().getObjectById(id) as Planet
+    const data = useVariant(rawData)
 
     useEffect(() => {
         if (rotateSpeed > 0) setLastRotateSpeed(rotateSpeed)
@@ -131,11 +132,11 @@ const LayerPanel = ({ id }: Props) => {
     }
 
     const handleLandmark = () => {
-        setControl({ landmarkVisible: !landmarkVisible, nationVisible: landmarkVisible })
+        setControl({ landmarkVisible: !landmarkVisible, nationVisible: false })
     }
 
     const handleNation = () => {
-        setControl({ nationVisible: !nationVisible, landmarkVisible: nationVisible, focusLandmark: "" })
+        setControl({ nationVisible: !nationVisible, landmarkVisible: false, focusLandmark: "" })
     }
 
     const handleLeaveLandmark = () => {
@@ -150,9 +151,13 @@ const LayerPanel = ({ id }: Props) => {
         setControl({ dayNightMode: !dayNightMode })
     }
 
+    const handleVariant = (variant: string) => {
+        setControl({ variant })
+        setActivePanel("")
+    }
+
     const handleReset = () => {
         resetControl(data)
-        setControl({ focusIndex: focusIndex + 1 })
     }
 
     const handleLeave = () => {
@@ -221,7 +226,6 @@ const LayerPanel = ({ id }: Props) => {
                         <MdBrightnessMedium />
                         <span className={TOOLTIP_CLASS}>Day / Night Mode</span>
                     </button>
-
                 </When>
             </div>
 
@@ -310,6 +314,55 @@ const LayerPanel = ({ id }: Props) => {
             </When>
 
             <div className={SECTION_CLASS}>
+
+                <When condition={Boolean(data.variants?.length)}>
+                    <div className="relative">
+                        <button
+                            onClick={() => setActivePanel(activePanel === "timelines" ? "" : "timelines")}
+                            className={clsx(TOGGLE_BTN_CLASS, (activePanel === "timelines" || Boolean(variant)) && ACTIVE_CYAN_CLASS)}
+                        >
+                            <MdHistory />
+                            <span className={TOOLTIP_CLASS}>Timelines</span>
+                        </button>
+
+                        <When condition={activePanel === "timelines"}>
+                            <div className="absolute -top-3 left-1/2 -translate-x-1/2 -translate-y-full rounded-xl bg-slate-900/90 backdrop-blur-xl py-3 px-2 border border-white/15 flex flex-col gap-2 min-w-48 shadow-2xl z-50">
+                                <div className="text-xs font-semibold text-slate-400 border-b border-white/10 pb-2 px-2 flex justify-between items-center">
+                                    <span>{t("ui.timelines", "Timelines")}</span>
+                                    <MdClose className="cursor-pointer text-slate-400 hover:text-white" onClick={() => setActivePanel("")} />
+                                </div>
+                                <div className="flex flex-col gap-1 max-h-48 overflow-y-auto">
+                                    <button
+                                        onClick={() => handleVariant("")}
+                                        className={clsx(
+                                            "flex items-center justify-between px-3 py-2 rounded-lg text-xs font-medium transition-all text-left cursor-pointer gap-3",
+                                            !variant ? "bg-cyan-500/20 text-cyan-300 border border-cyan-500/40" : "text-slate-300 hover:bg-white/10 hover:text-white"
+                                        )}
+                                    >
+                                        <span>Present</span>
+                                    </button>
+
+                                    {data.variants?.map((v) => {
+                                        const isSelected = variant === v.variant_id
+                                        const variantName = t(`object.${data.id}.${v.variant_id}.name`, v.variant_id)
+                                        return (
+                                            <button
+                                                key={v.variant_id}
+                                                onClick={() => handleVariant(v.variant_id)}
+                                                className={clsx(
+                                                    "flex items-center justify-between px-3 py-2 rounded-lg text-xs font-medium transition-all text-left cursor-pointer gap-3",
+                                                    isSelected ? "bg-cyan-500/20 text-cyan-300 border border-cyan-500/40" : "text-slate-300 hover:bg-white/10 hover:text-white"
+                                                )}
+                                            >
+                                                <span className="whitespace-nowrap">{variantName}</span>
+                                            </button>
+                                        )
+                                    })}
+                                </div>
+                            </div>
+                        </When>
+                    </div>
+                </When>
                 <button onClick={handleReset} className={clsx(TOGGLE_BTN_CLASS, "hover:bg-amber-400/50")}>
                     <MdRefresh />
                     <span className={TOOLTIP_CLASS}>Reset</span>

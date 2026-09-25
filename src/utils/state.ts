@@ -3,7 +3,7 @@ import { SCALE, TIME_SCALE } from '@constants'
 import type { Belt, CelestialObject } from '@types'
 
 export interface SettingStore {
-    mode: "normal" | "third-person" | "first-person"
+    mode: "normal" | "spaceship"
     showDetail: boolean
     showSetting: boolean
     sizeScale: number
@@ -36,6 +36,7 @@ export interface ControlStore {
     focus: string
     focusIndex: number
     focusLandmark: string
+    variant: string
     rotateSpeed: number
     axisTilt: number
     cloudVisible: boolean
@@ -51,6 +52,7 @@ export const defaultControl = {
     focus: "",
     focusIndex: 0,
     focusLandmark: "",
+    variant: "",
     rotateSpeed: 1,
     axisTilt: 0,
     dayNightMode: true,
@@ -66,8 +68,7 @@ export const useControlStore = create<ControlStore>((set) => ({
         set((state) => ({
             ...defaultControl,
             focus: state.focus,
-            focusIndex: state.focusIndex,
-            focusLandmark: "",
+            focusIndex: state.focusIndex + 1,
             axisTilt: (data as CelestialObject)?.axis || 0,
         }))
     },

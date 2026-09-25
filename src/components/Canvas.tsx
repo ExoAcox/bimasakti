@@ -15,7 +15,7 @@ import Loader from "@components/Loader"
 import { Case, Default, Switch, When } from "react-if";
 import { useCelestial } from "@function";
 import { Outlet, useSearchParams } from "react-router";
-import ThirdPersonScene from "./ThirdPersonScene";
+import SpaceshipScene from "./SpaceshipScene";
 import { keyboardMap } from "./object/Spaceship";
 
 
@@ -57,13 +57,12 @@ const AutoCameraClip = () => {
 
     useFrame(() => {
         const orbitControls = controls as unknown as OrbitControlsType
-        if (!orbitControls.target) return
+        if (!orbitControls) return
 
         const dist = camera.position.distanceTo(orbitControls.target)
         if (dist <= 0) return
 
         const targetNear = Math.max(1e-7, dist * 0.00005)
-        console.log("Target near :", targetNear)
 
         if (Math.abs(camera.near - targetNear) / camera.near > 0.05) {
             camera.near = targetNear
@@ -119,8 +118,8 @@ const CanvasLayout = () => {
                 <KeyboardControls map={keyboardMap}>
                     <Bounds>
                         <Switch>
-                            <Case condition={mode === "third-person"}>
-                                <ThirdPersonScene />
+                            <Case condition={mode === "spaceship"}>
+                                <SpaceshipScene />
                             </Case>
                             <Default>
                                 <Scene data={data} />

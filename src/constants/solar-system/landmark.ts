@@ -327,13 +327,31 @@ export const landmarks: Landmark[] = [
         id: "gale_crater",
         parent: "mars",
         latitude: -4.58,
-        longitude: 137.44
+        longitude: 138.14,
+        object: {
+            name: "Curiosity Rover",
+            icon: "rover.png"
+        }
     },
     {
         id: "jezero_crater",
         parent: "mars",
-        latitude: 18.38,
-        longitude: 77.58
+        latitude: 13.38,
+        longitude: 85.58,
+        object: {
+            name: "Perseverance Rover",
+            icon: "rover.png"
+        }
+    },
+    {
+        id: "perseverance_valley",
+        parent: "mars",
+        latitude: -14.47,
+        longitude: -2.33,
+        object: {
+            name: "Opportunity Rover",
+            icon: "rover.png"
+        }
     },
     {
         id: "hellas_planitia",
@@ -438,6 +456,14 @@ export const landmarks: Landmark[] = [
         parent: "jupiter",
         latitude: -22.0,
         longitude: -45.0
+    },
+
+    // Saturn
+    {
+        id: "saturn_hexagon",
+        parent: "saturn",
+        latitude: 90.0,
+        longitude: 0.0
     },
 
     // Neptune
@@ -659,6 +685,12 @@ export const landmarks: Landmark[] = [
     },
 
     // Mercury
+    {
+        id: "van_eyck_crater",
+        parent: "mercury",
+        latitude: 43.2,
+        longitude: 159.4
+    },
     {
         id: "caloris_basin",
         parent: "mercury",

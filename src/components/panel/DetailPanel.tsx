@@ -1,12 +1,12 @@
 /* eslint-disable react-hooks/set-state-in-effect */
 import clsx from "clsx";
 import { useControlStore } from "@state"
-import { useCelestial, lengthFormat, timeFormat } from "@function"
+import { useCelestial, lengthFormat, timeFormat, useVariant } from "@function"
 import type { Belt, CelestialObject, Planet } from "@types"
 
 import { useTranslation } from "react-i18next";
 import { When } from "react-if";
-import { useEffect, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { IoChevronDown, IoChevronUp } from "react-icons/io5";
 import { TbLayoutSidebarRightCollapse, TbLayoutSidebarRightExpand } from "react-icons/tb";
 import { BiArrowBack } from "react-icons/bi";
@@ -15,9 +15,11 @@ const PanelDetail = () => {
     const [isPanelOpen, setPanelOpen] = useState(true)
     const [activeSection, setActiveSection] = useState("")
 
-    const { focus, focusLandmark, setControl } = useControlStore()
+    const { focus, focusLandmark, variant, setControl } = useControlStore()
+
     const celestial = useCelestial()
-    const data = celestial.getObjectById(focus) as CelestialObject
+    const rawData = celestial.getObjectById(focus) as Planet
+    const data = useVariant(rawData)
 
     const { t } = useTranslation();
 
@@ -41,7 +43,8 @@ const PanelDetail = () => {
         }
     }
 
-
+    const objectName = variant ? t(`object.${data?.id}.${variant}.name`, t(`object.${data?.id}.name`)) : t(`object.${data?.id}.name`)
+    const objectDescription = variant ? t(`object.${data?.id}.${variant}.description`, t(`object.${data?.id}.description`)) : t(`object.${data?.id}.description`)
 
     return (
         <div className={clsx("fixed top-4 right-4 z-50 transition-transform duration-300", !isPanelOpen && "translate-x-[calc(100%)]")}>
@@ -55,11 +58,11 @@ const PanelDetail = () => {
             <div className="bg-background min-w-sm max-w-sm rounded-xl pb-5 pt-4 px-6 backdrop-blur-sm max-h-[calc(100vh-2rem)] h-fit overflow-y-auto text-sm border border-white/10">
                 <When condition={!focusLandmark}>
                     <div className="flex items-center gap-2 justify-between text-white">
-                        <h1 className="text-xl font-bold">{t(`object.${data?.id}.name`)}</h1>
+                        <h1 className="text-xl font-bold">{objectName}</h1>
                         {data.icon ? <img src={`/icons/${data.icon}`} className="size-10" /> : ""}
                     </div>
                     <p className="mt-4 leading-relaxed border-t border-divider pt-4">
-                        {t(`object.${data?.id}.description`)}
+                        {objectDescription}
                     </p>
                     <div className="mt-4 text-sm  leading-relaxed border-t border-divider pt-4">
                         <When condition={data.radius}>

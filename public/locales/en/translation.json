@@ -23,10 +23,12 @@
         "dwarf_planets": "Dwarf Planets",
         "satellites": "Satellites",
         "artificial_satellites": "Artificial Satellites",
-        "space_craft": "Space Craft",
+        "spacecraft": "Space Craft",
         "comets": "Comets",
         "others": "Others",
-        "landmarks": "Landmarks"
+        "landmarks": "Landmarks",
+        "timelines": "Timelines",
+        "active": "Active"
     },
     "object": {
         "milky_way": {
@@ -66,12 +68,56 @@
         "venus": {
             "name": "Venus",
             "nickname": "Venus",
-            "description": "Venus is the second planet from the Sun and Earth's closest planetary neighbor. It is enveloped in a thick, toxic atmosphere of carbon dioxide and sulfuric acid clouds that trap heat in a runaway greenhouse effect, making its surface hot enough to melt lead and making it the hottest planet in the solar system."
+            "description": "Venus is the second planet from the Sun and Earth's closest planetary neighbor. It is enveloped in a thick, toxic atmosphere of carbon dioxide and sulfuric acid clouds that trap heat in a runaway greenhouse effect, making its surface hot enough to melt lead and making it the hottest planet in the solar system.",
+            "ancient": {
+                "name": "Ancient",
+                "description": "Billions of years ago, Venus may have had a temperate climate with liquid water oceans and a thinner atmosphere, potentially hosting habitable conditions before a runaway greenhouse effect altered its climate forever."
+            },
+            "terraform": {
+                "name": "Terraformed",
+                "description": "A hypothetical future Venus where geoengineering has reduced atmospheric pressure, shaded solar radiation, and introduced liquid water oceans, transforming the scorching planet into a habitable ocean world."
+            }
         },
         "earth": {
             "name": "Earth",
             "nickname": "Earth",
-            "description": "Earth is the third planet from the Sun and the only known astronomical object to harbor life. It is characterized by its liquid water oceans, which cover about 71% of its surface, an atmosphere rich in nitrogen and oxygen, and a strong magnetic field that shields it from harmful solar radiation."
+            "description": "Earth is the third planet from the Sun and the only known astronomical object to harbor life. It is characterized by its liquid water oceans, which cover about 71% of its surface, an atmosphere rich in nitrogen and oxygen, and a strong magnetic field that shields it from harmful solar radiation.",
+            "65_mbc": {
+                "name": "Late Cretaceous",
+                "description": "The Late Cretaceous period (~65 million years ago) saw the breakup of Gondwana and Laurasia into recognizable modern continents, ending with the Chicxulub asteroid impact that caused the mass extinction of non-avian dinosaurs."
+            },
+            "90_mbc": {
+                "name": "Middle Cretaceous",
+                "description": "During the Middle Cretaceous (~90 million years ago), global sea levels were at an all-time high, creating shallow epicontinental seas across continents with a warm, ice-free super-greenhouse climate."
+            },
+            "105_mbc": {
+                "name": "Early Cretaceous",
+                "description": "The Early Cretaceous period (~105 million years ago) featured the gradual opening of the South Atlantic Ocean as South America separated from Africa, alongside the rise of flowering plants."
+            },
+            "120_mbc": {
+                "name": "Late Jurassic",
+                "description": "During the Late Jurassic era (~120 million years ago), the supercontinent Pangea split into Laurasia in the north and Gondwana in the south, accompanied by warm tropical seas and giant sauropod dinosaurs."
+            },
+            "150_mbc": {
+                "name": "Middle Jurassic",
+                "description": "The Middle Jurassic period (~150 million years ago) experienced significant continental rifting, forming the Tethys Ocean and central Atlantic rift while dinosaur lineages rapidly diversified."
+            },
+            "170_mbc": {
+                "name": "Early Jurassic",
+                "description": "The Early Jurassic epoch (~170 million years ago) followed the end-Triassic extinction, with Earth's landmasses breaking apart from Pangea into lush, humid environments inhabited by early dinosaurs."
+            },
+            "200_mbc": {
+                "name": "Late Triassic",
+                "description": "In the Late Triassic period (~200 million years ago), Pangea began showing initial tectonic rift basins, concluding with a major extinction event caused by massive volcanic eruptions."
+            },
+            "220_mbc": {
+                "name": "Middle Triassic",
+                "description": "During the Middle Triassic era (~220 million years ago), Earth featured a hot, dry continental interior within Pangea, surrounded by Panthalassa, where the first dinosaurs and early mammals emerged."
+            },
+            "240_mbc": {
+                "name": "Early Triassic",
+                "description": "The Early Triassic epoch (~240 million years ago) immediately followed the devastating Permian-Triassic extinction, leaving a barren supercontinent Pangea with extreme deserts and recovering marine life."
+            }
         },
         "moon": {
             "name": "Moon",
@@ -86,7 +132,15 @@
         "mars": {
             "name": "Mars",
             "nickname": "Mars",
-            "description": "Mars is the fourth planet from the Sun and the second-smallest planet in the solar system. Often called the Red Planet due to the iron oxide prevalent on its surface, it is a cold desert world with a thin carbon dioxide atmosphere, seasonal polar ice caps, and extinct volcanoes like Olympus Mons."
+            "description": "Mars is the fourth planet from the Sun and the second-smallest planet in the solar system. Often called the Red Planet due to the iron oxide prevalent on its surface, it is a cold desert world with a thin carbon dioxide atmosphere, seasonal polar ice caps, and extinct volcanoes like Olympus Mons.",
+            "terraform": {
+                "name": "Terraformed (Phase 1)",
+                "description": "The initial stage of Martian terraforming, where greenhouse gas release and orbital mirrors melt polar ice caps, thickening the atmosphere and allowing liquid water bodies to form across the surface."
+            },
+            "terraform_2": {
+                "name": "Terraformed (Phase 2)",
+                "description": "An advanced stage of terraforming featuring a fully breathable atmosphere, thriving plant life, vast oceans, and a stable climate capable of supporting complex terrestrial ecosystems."
+            }
         },
         "phobos": {
             "name": "Phobos",
@@ -701,6 +755,10 @@
             "name": "Jezero Crater",
             "description": "An ancient lake and river delta on Mars, landing site for NASA's Perseverance rover searching for signs of ancient microbial life."
         },
+        "perseverance_valley": {
+            "name": "Perseverance Valley",
+            "description": "An eroded valley on the rim of Endeavour Crater on Mars, the final exploration site of NASA's historic Opportunity rover."
+        },
         "hellas_planitia": {
             "name": "Hellas Planitia",
             "description": "A colossal impact basin roughly 2,300 km in diameter located in Mars' southern hemisphere, one of the largest impact craters in the Solar System."
@@ -776,6 +834,10 @@
         "great_dark_spot": {
             "name": "Great Dark Spot",
             "description": "A giant anticyclonic storm in Neptune's atmosphere first observed by NASA's Voyager 2 spacecraft in 1989."
+        },
+        "saturn_hexagon": {
+            "name": "Saturn's Hexagon",
+            "description": "A persistent hexagonal cloud pattern around the north pole of Saturn, spanning nearly 30,000 km across."
         },
         "tranquility_base": {
             "name": "Statio Tranquillitatis",
@@ -912,6 +974,10 @@
         "maxwell_montes": {
             "name": "Maxwell Montes",
             "description": "The highest mountain range on planet Venus (~11 km high), situated on the highland mass of Ishtar Terra."
+        },
+        "van_eyck_crater": {
+            "name": "Van Eyck Crater",
+            "description": "A large, heavily eroded impact crater on Mercury (~271 km in diameter) located northeast of Caloris Basin, named after Flemish painter Jan van Eyck."
         },
         "caloris_basin": {
             "name": "Caloris Basin",

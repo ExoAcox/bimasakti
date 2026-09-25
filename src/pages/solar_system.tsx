@@ -24,12 +24,6 @@ const SolarSystem = () => {
                             data={satellite}
                         />
                     ))}
-                    {planet.artificial_satellites?.map(craft => (
-                        <SpaceCraft
-                            key={craft.id}
-                            data={craft}
-                        />
-                    ))}
                 </Planet>
             )
         })}

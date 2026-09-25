@@ -17,6 +17,7 @@ const ImageLoader = ({ path }: { path: string }) => {
 }
 
 const TextureRenderer = ({ path }: { path: string }) => {
+    if (!path) return null
     const format = path.split(".")[1]
 
     if (format === "ktx2") {

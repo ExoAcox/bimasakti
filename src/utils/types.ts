@@ -1,6 +1,6 @@
 import type { Vector3 } from "@react-three/fiber"
 
-export type CelestialType = "blackhole" | "star" | "planet" | "comet" | "artificial_satellite" | "satellite" | "space_craft"
+export type CelestialType = "blackhole" | "star" | "planet" | "comet" | "artificial_satellite" | "satellite" | "spacecraft"
 export type CelestialObject = Blackhole | Star | Planet | Comet | Satellite | SpaceCraft
 
 export interface Object {
@@ -21,6 +21,7 @@ export interface Object {
     icon?: string
     longest_distance?: number
     landmarks?: Landmark[]
+    variant_id?: string
 }
 
 // export interface Dummy extends Object {
@@ -44,6 +45,19 @@ export interface Star extends Object {
     }
 }
 
+export interface Variant extends Partial<Planet> {
+    variant_id: string
+}
+
+export interface Planet extends Object {
+    type: "planet"
+    class: PlanetClass
+    satellites?: Satellite[]
+    artificial_satellites?: SpaceCraft[]
+    ring?: Ring
+    variants?: Variant[]
+}
+
 export interface Satellite extends Object {
     type: "satellite"
 }
@@ -55,16 +69,9 @@ export interface Comet extends Object {
 }
 
 export interface SpaceCraft extends Object {
-    type: "space_craft"
+    type: "spacecraft"
     model: string
     class: SpaceCraftClass
-}
-export interface Planet extends Object {
-    type: "planet"
-    class: PlanetClass
-    satellites?: Satellite[]
-    artificial_satellites?: SpaceCraft[]
-    ring?: Ring
 }
 
 export interface Ring {
@@ -121,6 +128,10 @@ export interface Landmark {
     longitude: number
     parent: string
     reverse?: true
+    object?: {
+        name: string
+        icon: string
+    }
 }
 
 export interface Nation {

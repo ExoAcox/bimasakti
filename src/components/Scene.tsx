@@ -100,7 +100,7 @@ const Scene = ({ data }: Props) => {
 
         const object = scene.getObjectByName(focus)
         const planet = celestial.getObjectById(focus) as Planet
-        const landmark = celestial.getObjectById(focusLandmark) as Landmark
+        const landmark = celestial.getLandmark(focusLandmark)
         if (!object || !planet || !landmark) return
 
         const localPos = latLngToVector3(landmark.latitude, landmark.longitude, 1.0)

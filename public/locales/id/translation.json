@@ -16,7 +16,9 @@
         "language": "Bahasa",
         "speed_scale_value": "1 detik: {{days}} hari",
         "belts": "Sabuk Asteroid",
-        "landmarks": "Landmark"
+        "landmarks": "Landmark",
+        "timelines": "Garis Waktu",
+        "active": "Aktif"
     },
     "object": {
         "milky_way": {
@@ -56,12 +58,56 @@
         "venus": {
             "name": "Venus",
             "nickname": "Venus",
-            "description": "Venus adalah planet kedua dari Matahari dan tetangga planet terdekat Bumi. Venus diselimuti oleh atmosfer karbon dioksida yang tebal dan beracun serta awan asam sulfat yang memerangkap panas dalam efek rumah kaca yang tidak terkendali, membuat permukaannya cukup panas untuk melelehkan timbal dan menjadikannya planet terpanas di tata surya."
+            "description": "Venus adalah planet kedua dari Matahari dan tetangga planet terdekat Bumi. Venus diselimuti oleh atmosfer karbon dioksida yang tebal dan beracun serta awan asam sulfat yang memerangkap panas dalam efek rumah kaca yang tidak terkendali, membuat permukaannya cukup panas untuk melelehkan timbal dan menjadikannya planet terpanas di tata surya.",
+            "ancient": {
+                "name": "Venus Kuno",
+                "description": "Miliaran tahun lalu, Venus mungkin memiliki iklim sedang dengan samudra air cair dan atmosfer yang lebih tipis, berpotensi mendukung kondisi yang dapat dihuni sebelum efek rumah kaca tak terkendali mengubah iklimnya selamanya."
+            },
+            "terraform": {
+                "name": "Venus Hasil Terraforming",
+                "description": "Venus di masa depan secara hipotetis tempat rekayasa geologi telah mengurangi tekanan atmosfer, memblokir radiasi matahari, dan menghadirkan lautan air cair, mengubah planet yang sangat panas ini menjadi dunia samudra yang dapat dihuni."
+            }
         },
         "earth": {
             "name": "Bumi",
             "nickname": "Bumi",
-            "description": "Bumi adalah planet ketiga dari Matahari dan satu-satunya objek astronomi yang diketahui mendukung kehidupan. Bumi ditandai dengan samudra air cair yang menutupi sekitar 71% permukaannya, atmosfer yang kaya akan nitrogen dan oksigen, serta medan magnet kuat yang melindunginya dari radiasi matahari yang berbahaya."
+            "description": "Bumi adalah planet ketiga dari Matahari dan satu-satunya objek astronomi yang diketahui mendukung kehidupan. Bumi ditandai dengan samudra air cair yang menutupi sekitar 71% permukaannya, atmosfer yang kaya akan nitrogen dan oksigen, serta medan magnet kuat yang melindunginya dari radiasi matahari yang berbahaya.",
+            "65_mbc": {
+                "name": "Kapur Akhir",
+                "description": "Periode Kapur Akhir (~65 juta tahun lalu) menyaksikan pemisahan Gondwana dan Laurasia menjadi benua-benua modern, berujung pada hantaman asteroid Chicxulub yang menyebabkan kepunahan massal dinosaurus."
+            },
+            "90_mbc": {
+                "name": "Kapur Tengah",
+                "description": "Selama periode Kapur Tengah (~90 juta tahun lalu), permukaan laut global mencapai titik tertinggi, membentuk laut dangkal di atas benua dengan iklim super-rumah kaca tanpa es."
+            },
+            "105_mbc": {
+                "name": "Kapur Awal",
+                "description": "Periode Kapur Awal (~105 juta tahun lalu) ditandai dengan dibukanya Samudra Atlantik Selatan saat Amerika Selatan terpisah dari Afrika, bersamaan dengan munculnya tumbuhan berbunga."
+            },
+            "120_mbc": {
+                "name": "Jura Akhir",
+                "description": "Selama era Jura Akhir (~120 juta tahun lalu), superbenua Pangea terbelah menjadi Laurasia di utara dan Gondwana di selatan, diiringi laut tropis hangat dan dinosaurus sauropoda raksasa."
+            },
+            "150_mbc": {
+                "name": "Jura Tengah",
+                "description": "Periode Jura Tengah (~150 juta tahun lalu) mengalami keretakan benua yang signifikan, membentuk Samudra Tethys dan rekahan Atlantik tengah saat garis keturunan dinosaurus berdiversifikasi pesat."
+            },
+            "170_mbc": {
+                "name": "Jura Awal",
+                "description": "Zaman Jura Awal (~170 juta tahun lalu) menyusul kepunahan akhir-Trias, di mana daratan Bumi mulai terpisah dari Pangea menjadi lingkungan tropis subur yang dihuni dinosaurus awal."
+            },
+            "200_mbc": {
+                "name": "Trias Akhir",
+                "description": "Pada periode Trias Akhir (~200 juta tahun lalu), Pangea mulai menunjukkan cekungan rekahan tektonik awal, diakhiri oleh peristiwa kepunahan besar akibat erupsi vulkanik di Atlantik Tengah."
+            },
+            "220_mbc": {
+                "name": "Trias Tengah",
+                "description": "Selama era Trias Tengah (~220 juta tahun lalu), Bumi memiliki interior benua Pangea yang panas dan kering, dikelilingi oleh Panthalassa, tempat munculnya dinosaurus pertama dan mamalia awal."
+            },
+            "240_mbc": {
+                "name": "Trias Awal",
+                "description": "Zaman Trias Awal (~240 juta tahun lalu) menyusul kepunahan masif Permian-Trias, meninggalkan superbenua Pangea yang tandus dengan gurun ekstrem dan kehidupan laut yang perlahan pulih."
+            }
         },
         "moon": {
             "name": "Bulan",
@@ -76,7 +122,15 @@
         "mars": {
             "name": "Mars",
             "nickname": "Mars",
-            "description": "Mars adalah planet keempat dari Matahari dan planet terkecil kedua di tata surya. Sering disebut Planet Merah karena besi oksida yang melimpah di permukaannya, Mars adalah dunia gurun yang dingin dengan atmosfer karbon dioksida yang tipis, lapisan es kutub musiman, dan gunung berapi mati seperti Olympus Mons."
+            "description": "Mars adalah planet keempat dari Matahari dan planet terkecil kedua di tata surya. Sering disebut Planet Merah karena besi oksida yang melimpah di permukaannya, Mars adalah dunia gurun yang dingin dengan atmosfer karbon dioksida yang tipis, lapisan es kutub musiman, dan gunung berapi mati seperti Olympus Mons.",
+            "terraform": {
+                "name": "Mars Hasil Terraforming (Tahap 1)",
+                "description": "Tahap awal terraforming Mars, di mana pelepasan gas rumah kaca dan cermin orbital mencairkan kutub es, menebalkan atmosfer, serta memungkinkan terbentuknya danau dan sungai di permukaannya."
+            },
+            "terraform_2": {
+                "name": "Mars Hasil Terraforming (Tahap 2)",
+                "description": "Tahap lanjut terraforming dengan atmosfer yang dapat dihirup sepenuhnya, vegetasi yang berkembang pesat, samudra luas, serta iklim stabil yang mampu mendukung ekosistem darat yang kompleks."
+            }
         },
         "phobos": {
             "name": "Phobos",
@@ -691,6 +745,10 @@
             "name": "Kawah Jezero",
             "description": "Bekas danau dan delta sungai kuno di Mars tempat pendaratan penjelajah Perseverance NASA untuk mencari tanda-tanda kehidupan mikroba purba."
         },
+        "perseverance_valley": {
+            "name": "Lembah Perseverance (Perseverance Valley)",
+            "description": "Lembah terukir di tepi Kawah Endeavour di Mars, lokasi akhir penjelajahan bersejarah penjelajah Opportunity NASA sebelum jalannya badai debu global."
+        },
         "hellas_planitia": {
             "name": "Hellas Planitia",
             "description": "Cekungan dampak raksasa berdiameter sekitar 2.300 km di belahan selatan Mars, salah satu kawah dampak terbesar di Tata Surya."
@@ -766,6 +824,10 @@
         "great_dark_spot": {
             "name": "Bintik Gelap Raksasa",
             "description": "Badai antisisklon raksasa di atmosfer Neptunus yang pertama kali diamati oleh wahana Voyager 2 pada tahun 1989."
+        },
+        "saturn_hexagon": {
+            "name": "Heksagon Saturnus",
+            "description": "Pola awan heksagonal raksasa yang bertahan secara persisten di sekitar kutub utara planet Saturnus."
         },
         "tranquility_base": {
             "name": "Base Tranquillitatis",
@@ -902,6 +964,10 @@
         "maxwell_montes": {
             "name": "Maxwell Montes",
             "description": "Jajaran pegunungan tertinggi di planet Venus (mencapai ketinggian ±11 km) yang terletak di wilayah Ishtar Terra."
+        },
+        "van_eyck_crater": {
+            "name": "Kawah Van Eyck",
+            "description": "Kawah dampak berukuran besar yang tererosi di Merkurius (berdiameter ±271 km) yang terletak di timur laut Cekungan Caloris, dinamai dari pelukis Flemish Jan van Eyck."
         },
         "caloris_basin": {
             "name": "Cekungan Caloris",

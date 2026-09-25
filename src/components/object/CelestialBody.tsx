@@ -103,7 +103,7 @@ const Object = ({ data, children, childrenComponent, onClick, objectRef, cloudRe
             cloudRef.current.rotation.y = (cloudSpeed / data.rotate_duration) * speedScale
         }
 
-        if (!data.orbit_duration) return
+        if (!data.orbit_duration || mode === "spaceship") return
 
         const isParentOfFocused = focus ? isAncestorOfFocused(data.id, focus) : false;
         const isFocused = focus === data.id;
@@ -185,7 +185,7 @@ const Object = ({ data, children, childrenComponent, onClick, objectRef, cloudRe
 
         const isSmallestObject = () => {
             if (universe.defaultFocus) {
-                const isChildren = ["satellite", "space_craft"].includes(data.type)
+                const isChildren = ["satellite", "spacecraft"].includes(data.type)
                 const isOrbiting = data.orbit_duration
                 return isChildren && isOrbiting
             } else {
@@ -196,7 +196,7 @@ const Object = ({ data, children, childrenComponent, onClick, objectRef, cloudRe
         if (!isSmallestObject()) return true
         if (isSmallestObject()) {
             if (focus === data.id) return true
-            if (data.type === "space_craft") return false
+            if (data.type === "spacecraft") return false
             if (focus === data.parent) return true
             if (focusedObject?.parent === data.parent) return true
         }

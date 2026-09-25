@@ -152,11 +152,11 @@ const SettingPanel = () => {
     const { t } = useTranslation()
 
     const handleSpaceship = () => {
-        setSetting({ mode: "third-person" })
+        setSetting({ mode: "spaceship" })
 
         if (mode === "normal") {
             setControl({ rotateSpeed: 0.1 })
-            setSetting({ mode: "third-person" })
+            setSetting({ mode: "spaceship" })
         } else {
             setControl({ rotateSpeed: 1 })
             setSetting({ mode: "normal" })
@@ -171,7 +171,7 @@ const SettingPanel = () => {
         </button> */}
 
         <div className={"panel-section flex-col gap-2"}>
-            {mode === "third-person" && (
+            {mode === "spaceship" && (
                 <button
                     onClick={() => setShip({ cockpit: !cockpit })}
                     className={clsx("panel-button", cockpit && "bg-cyan-500/30 text-cyan-300 border-cyan-500/60")}
@@ -182,7 +182,7 @@ const SettingPanel = () => {
             )}
             <button
                 onClick={handleSpaceship}
-                className={clsx("panel-button", mode === "third-person" && "bg-cyan-500/20 text-cyan-300 border-cyan-500/40")}
+                className={clsx("panel-button", mode === "spaceship" && "bg-cyan-500/20 text-cyan-300 border-cyan-500/40")}
             >
                 <FaSpaceAwesome />
                 <span className="panel-tooltip">Spaceship Mode</span>

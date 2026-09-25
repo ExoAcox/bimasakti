@@ -4,9 +4,10 @@ import { useFrame } from "@react-three/fiber"
 import { atmosphereFragmentShader, atmosphereVertexShader, earthFragmentShader, earthVertexShader } from "@shaders/earth"
 import { useControlStore } from "@state"
 import type { Planet } from "@types"
-import { useMemo, useRef } from "react"
+import { useMemo, useRef, Suspense } from "react"
 import { When } from "react-if"
 import { AdditiveBlending, BackSide, Color, ShaderMaterial, SRGBColorSpace, Vector3 } from "three"
+import { TextureLoader } from "."
 
 interface EarthMaterialProps {
     textures: [string, string]
@@ -18,6 +19,8 @@ const EarthMaterial = ({
     nightIntensity = 1.0,
 }: EarthMaterialProps) => {
     const materialRef = useRef<ShaderMaterial>(null!)
+
+    console.log("render earth betul")
 
     const [dayTexture, nightTexture] = useKTX2(textures)
     const { dayNightMode } = useControlStore()
@@ -85,21 +88,29 @@ interface Props {
 }
 
 const Earth = ({ data, hd }: Props) => {
-    const { cloudVisible } = useControlStore()
+    const { variant, cloudVisible } = useControlStore()
+    const texturePath = (hd && data.texture_hd) ? data.texture_hd : data.texture!
 
     return <group>
-        <mesh castShadow receiveShadow>
+        <mesh castShadow receiveShadow key={variant}>
             <sphereGeometry args={[1, 64, 64]} />
-            <EarthMaterial
-                textures={[
-                    `/textures/${hd ? "earth_hd.ktx2" : "earth.ktx2"}`,
-                    `/textures/${hd ? "earth_night_hd.ktx2" : "earth_night.ktx2"}`,
-                ]}
-                nightIntensity={1}
-            />
-        </mesh>
 
-        {/* <GeoJsonOverlay data={SAHARA_DESERT_GEOJSON} /> */}
+            <Suspense fallback={<meshStandardMaterial color={data.color} />}>
+                <When condition={!variant}>
+                    <EarthMaterial
+                        textures={[
+                            `/textures/${hd ? "earth_hd.ktx2" : "earth.ktx2"}`,
+                            `/textures/${hd ? "earth_night_hd.ktx2" : "earth_night.ktx2"}`,
+                        ]}
+                        nightIntensity={1}
+                    />
+                </When>
+
+                <When condition={variant}>
+                    <TextureLoader path={texturePath} />
+                </When>
+            </Suspense>
+        </mesh>
 
         <When condition={cloudVisible}>
             <mesh scale={1.02}>

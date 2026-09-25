@@ -14,7 +14,9 @@
         "distance_scale": "Abstandsmaßstab zur Sonne",
         "speed_scale": "Geschwindigkeitsmaßstab",
         "language": "Sprache",
-        "speed_scale_value": "1 Sekunde: {{days}} Tage"
+        "speed_scale_value": "1 Sekunde: {{days}} Tage",
+        "timelines": "Zeitleisten",
+        "active": "Aktiv"
     },
     "object": {
         "milky_way": {
@@ -54,12 +56,56 @@
         "venus": {
             "name": "Venus",
             "nickname": "Venus",
-            "description": "Venus ist der zweite Planet von der Sonne und der nächste planetare Nachbar der Erde. Sie ist von einer dichten, giftigen Atmosphäre aus Kohlendioxid und Schwefelsäurewolken umgeben, die die Wärme durch einen unkontrollierten Treibhauseffekt staut. Dies macht ihre Oberfläche heiß genug, um Blei zu schmelzen, und macht sie zum heißesten Planeten im Sonnensystem."
+            "description": "Venus ist der zweite Planet von der Sonne und der nächste planetare Nachbar der Erde. Sie ist von einer dichten, giftigen Atmosphäre aus Kohlendioxid und Schwefelsäurewolken umgeben, die die Wärme durch einen unkontrollierten Treibhauseffekt staut. Dies macht ihre Oberfläche heiß genug, um Blei zu schmelzen, und macht sie zum heißesten Planeten im Sonnensystem.",
+            "ancient": {
+                "name": "Uralte Venus",
+                "description": "Vor Milliarden von Jahren hatte die Venus möglicherweise ein gemäßigtes Klima mit flüssigen Wasserozeanen und einer dünneren Atmosphäre, was möglicherweise bewohnbare Bedingungen bot, bevor ein unkontrollierter Treibhauseffekt ihr Klima für immer veränderte."
+            },
+            "terraform": {
+                "name": "Terraformte Venus",
+                "description": "Eine hypothetische zukünftige Venus, auf der Geoengineering den Atmosphärendruck reduziert, die Sonneneinstrahlung abgeschirmt und flüssige Ozeane eingeführt hat, was den glühend heißen Planeten in eine bewohnbare Ozeanwelt verwandelte."
+            }
         },
         "earth": {
             "name": "Erde",
             "nickname": "Erde",
-            "description": "Die Erde ist der dritte Planet von der Sonne und das einzige bekannte astronomische Objekt, das Leben beherbergt. Sie zeichnet sich durch ihre flüssigen Wasserozeane aus, die etwa 71 % ihrer Oberfläche bedecken, eine stickstoff- und sauerstoffreiche Atmosphäre sowie ein starkes Magnetfeld, das sie vor schädlicher Sonnenstrahlung schützt."
+            "description": "Die Erde ist der dritte Planet von der Sonne und das einzige bekannte astronomische Objekt, das Leben beherbergt. Sie zeichnet sich durch ihre flüssigen Wasserozeane aus, die etwa 71 % ihrer Oberfläche bedecken, eine stickstoff- und sauerstoffreiche Atmosphäre sowie ein starkes Magnetfeld, das sie vor schädlicher Sonnenstrahlung schützt.",
+            "65_mbc": {
+                "name": "Späte Kreide",
+                "description": "Die Späte Kreidezeit (vor ca. 65 Mio. Jahren) war geprägt vom Zerfall von Gondwana und Laurasia in moderne Kontinente und endete mit dem Einschlag des Chicxulub-Asteroiden."
+            },
+            "90_mbc": {
+                "name": "Mittlere Kreide",
+                "description": "In der Mittleren Kreidezeit (vor ca. 90 Mio. Jahren) erreichten die globalen Meeresspiegel einen Höchststand und bildeten flache Epikontinentalmeere bei einem warmen Treibhausklima."
+            },
+            "105_mbc": {
+                "name": "Frühe Kreide",
+                "description": "Die Frühe Kreidezeit (vor ca. 105 Mio. Jahren) zeichnete sich durch die Öffnung des Südatlantiks aus, als sich Südamerika von Afrika trennte."
+            },
+            "120_mbc": {
+                "name": "Später Jura",
+                "description": "Im Späten Jura (vor ca. 120 Mio. Jahren) teilte sich der Superkontinent Pangaea in Laurasia im Norden und Gondwana im Süden, begleitet von warmen tropischen Meeren."
+            },
+            "150_mbc": {
+                "name": "Mittlerer Jura",
+                "description": "Der Mittlere Jura (vor ca. 150 Mio. Jahren) war von bedeutendem Kontinental-Rifting geprägt, das den Tethys-Ozean und den zentralen Atlantik formte."
+            },
+            "170_mbc": {
+                "name": "Früher Jura",
+                "description": "Der Frühe Jura (vor ca. 170 Mio. Jahren) folgte auf das Aussterben am Ende der Trias, als sich die Landmassen der Erde von Pangaea zu feuchten Umgebungen entwickelten."
+            },
+            "200_mbc": {
+                "name": "Späte Trias",
+                "description": "In der Späten Trias (vor ca. 200 Mio. Jahren) zeigte Pangaea erste tektonische Grabenbrüche und endete mit einem großen Massenaussterben."
+            },
+            "220_mbc": {
+                "name": "Mittlere Trias",
+                "description": "In der Mittleren Trias (vor ca. 220 Mio. Jahren) besaß die Erde ein heißes, trockenes Kontinentalinneres innerhalb von Pangaea, umgeben von Panthalassa."
+            },
+            "240_mbc": {
+                "name": "Frühe Trias",
+                "description": "Die Frühe Trias (vor ca. 240 Mio. Jahren) folgte direkt auf das verheerende Perm-Trias-Aussterben und hinterließ einen kargen Superkontinent Pangaea mit extremen Wüsten."
+            }
         },
         "moon": {
             "name": "Mond",
@@ -74,7 +120,15 @@
         "mars": {
             "name": "Mars",
             "nickname": "Mars",
-            "description": "Mars ist der vierte Planet von der Sonne und der zweitkleinste Planet im Sonnensystem. Er wird oft als Roter Planet bezeichnet, da auf seiner Oberfläche Eisenoxid vorherrscht. Er ist eine kalte Wüstenwelt mit einer dünnen Kohlendioxidatmosphäre, jahreszeitlichen polaren Eiskappen und erloschenen Vulkanen wie Olympus Mons."
+            "description": "Mars ist der vierte Planet von der Sonne und der zweitkleinste Planet im Sonnensystem. Er wird oft als Roter Planet bezeichnet, da auf seiner Oberfläche Eisenoxid vorherrscht. Er ist eine kalte Wüstenwelt mit einer dünnen Kohlendioxidatmosphäre, jahreszeitlichen polaren Eiskappen und erloschenen Vulkanen wie Olympus Mons.",
+            "terraform": {
+                "name": "Terraformter Mars (Stufe 1)",
+                "description": "Die erste Phase des Mars-Terraformings, in der Treibhausgasfreisetzungen und Orbitalspiegel die polaren Eiskappen schmelzen, die Atmosphäre verdichten und flüssige Wasseransammlungen auf der Oberfläche ermöglichen."
+            },
+            "terraform_2": {
+                "name": "Terraformter Mars (Stufe 2)",
+                "description": "Eine fortgeschrittene Phase des Terraformings mit einer vollständig atembaren Atmosphäre, gedeihender Pflanzenwelt, riesigen Ozeanen und einem stabilen Klima, das komplexe terrestrische Ökosysteme unterstützen kann."
+            }
         },
         "phobos": {
             "name": "Phobos",

@@ -1,7 +1,8 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import { useEffect, useRef } from "react"
 import { useFrame, useThree } from "@react-three/fiber"
-import { Gltf, useGLTF, useKeyboardControls } from "@react-three/drei"
-import { Vector3, Quaternion, Matrix4, MathUtils, Group, Scene, DoubleSide } from "three"
+import { useGLTF, useKeyboardControls } from "@react-three/drei"
+import { Vector3, Quaternion, Matrix4, MathUtils, Group, DoubleSide, Mesh, MeshStandardMaterial } from "three"
 import { useSettingStore, useControlStore, useShipStore } from "@state"
 import { SHIP_SCALE } from "@constants"
 
@@ -37,73 +38,80 @@ const objPos = new Vector3()
 const dirToObj = new Vector3()
 const targetMatrix = new Matrix4()
 const targetQuat = new Quaternion()
-const rotMatrix = new Matrix4()
 const qYaw = new Quaternion()
 const qPitch = new Quaternion()
 const axisY = new Vector3(0, 1, 0)
 const axisX = new Vector3(1, 0, 0)
 
+const tuneSpaceshipMaterial = (mesh: Mesh) => {
+    if (!mesh.isMesh || !mesh.material) return
+    const materials = Array.isArray(mesh.material) ? mesh.material : [mesh.material]
+    materials.forEach((mat) => {
+        mat.side = DoubleSide
+        const stdMat = mat as MeshStandardMaterial
+        if (typeof stdMat.roughness === "number") {
+            // Lower roughness so the material absorbs less light and reflects more specularity
+            stdMat.roughness = Math.min(stdMat.roughness, 0.1)
+        }
+        // if (typeof stdMat.envMapIntensity === "number") {
+        //     // Boost ambient environment map reflection so dark space shadows are illuminated
+        //     stdMat.envMapIntensity = 3.0
+        // }
+    })
+}
+
 const CockpitModel = () => {
     const { scene } = useGLTF("/models/space_cockpit.glb")
 
     useEffect(() => {
-        scene.traverse((child: any) => {
-            if (child.isMesh && child.material) {
-                if (Array.isArray(child.material)) {
-                    child.material.forEach((mat: any) => {
-                        mat.side = DoubleSide
-                    })
-                } else {
-                    child.material.side = DoubleSide
-                }
-            }
+        scene.traverse((child) => {
+            tuneSpaceshipMaterial(child as Mesh)
         })
     }, [scene])
 
     return <primitive object={scene} rotation={[0, MathUtils.degToRad(180), 0]} />
 }
 
+const ShipModel = () => {
+    const { scene } = useGLTF("/models/space_ship.glb")
+
+    useEffect(() => {
+        scene.traverse((child) => {
+            tuneSpaceshipMaterial(child as Mesh)
+        })
+    }, [scene])
+
+    return <primitive object={scene} rotation={[0, MathUtils.degToRad(-90), 0]} />
+}
+
 const Spaceship = () => {
     const groupRef = useRef<Group>(null!)
-    const { focus } = useControlStore()
-    const { autopilot, cockpit, setShip } = useShipStore()
-    const [, getKeys] = useKeyboardControls<Controls>()
-
     const prevAutopilotKey = useRef(false)
     const prevCockpitKey = useRef(false)
-    const { distanceScale, sizeScale } = useSettingStore()
+
+    const [, getKeys] = useKeyboardControls<Controls>()
+    const { distanceScale, sizeScale, mode } = useSettingStore()
+    const { autopilot, cockpit, setShip } = useShipStore()
+    const { focus } = useControlStore()
     const { scene, camera } = useThree()
 
     const step = 1 / distanceScale
 
-    // useEffect(() => {
-    //     if (!focus) return
+    useEffect(() => {
+        if (!groupRef.current || mode === "normal") return
 
-    //     const group = groupRef.current
-    //     shipPos.copy(group.position)
-    //     const shipQuat = group.quaternion
+        const earth = scene.getObjectByName("earth")
+        if (!earth) return
 
-    //     const object = focus ? scene.getObjectByName(focus) : null
+        earth.getWorldPosition(objPos)
+        const earthRadius = earth.userData?.radius ? (earth.userData.radius / sizeScale) : 0.063
+        const spawnOffset = new Vector3(earthRadius * 2.5, earthRadius * 1.5, earthRadius * 4.0)
+        groupRef.current.position.copy(objPos).add(spawnOffset)
 
-    //     let dist = 0
-    //     let targetRadius = 0.05
-
-    //     if (object) {
-    //         object.getWorldPosition(targetPos)
-    //         targetRadius = object.userData?.radius ? (object.userData.radius / sizeScale) : 0.05
-    //         dist = shipPos.distanceTo(targetPos)
-    //     }
-
-    //     const rotationLockDistance = Math.max(targetRadius * 3.5, 0.001)
-
-
-    //     if (dist > rotationLockDistance) {
-    //         targetMatrix.lookAt(shipPos, targetPos, camera.up)
-    //         targetQuat.setFromRotationMatrix(targetMatrix)
-    //         shipQuat.slerp(targetQuat, Math.min(1, 10))
-    //     }
-
-    // }, [camera.up, focus, scene, sizeScale])
+        // Point spaceship towards Earth
+        targetMatrix.lookAt(groupRef.current.position, objPos, camera.up)
+        groupRef.current.quaternion.setFromRotationMatrix(targetMatrix)
+    }, [mode])
 
     useFrame((state, delta) => {
         if (!groupRef.current) return
@@ -170,12 +178,13 @@ const Spaceship = () => {
                 if (child.name === "spaceship" || !child.userData?.radius) return
 
                 const radius = child.userData.radius
+                const isStar = child.userData.type === "star"
                 if (typeof radius !== "number" || radius <= 0) return
 
                 child.getWorldPosition(objPos)
                 const objDist = shipPos.distanceTo(objPos)
                 const objRadius = radius / sizeScale
-                const minSurfaceDist = Math.max(objRadius * 1.5, 0.0005)
+                const minSurfaceDist = Math.max(objRadius * (isStar ? 20 : 1.5), 1000 / sizeScale)
 
                 if (objDist < minSurfaceDist && objDist > 0) {
                     dirToObj.subVectors(objPos, shipPos).normalize()
@@ -222,15 +231,18 @@ const Spaceship = () => {
             let pitch = 0
             let yaw = 0
 
-            if (isUp) pitch += 0.01
-            if (isDown) pitch -= 0.01
-            if (isLeft) yaw += 0.02
-            if (isRight) yaw -= 0.02
+            const pitchSpeed = 1.2 * delta
+            const yawSpeed = 1.8 * delta
+
+            if (isUp) pitch += pitchSpeed
+            if (isDown) pitch -= pitchSpeed
+            if (isLeft) yaw += yawSpeed
+            if (isRight) yaw -= yawSpeed
 
             if (pitch !== 0 || yaw !== 0) {
                 qYaw.setFromAxisAngle(axisY, yaw)
                 qPitch.setFromAxisAngle(axisX, pitch)
-                shipQuat.multiply(qYaw).multiply(qPitch).normalize()
+                shipQuat.multiply(qPitch).premultiply(qYaw).normalize()
             }
 
             // 3. Manual Forward / Backward Thrust (translate position directly)
@@ -241,7 +253,7 @@ const Spaceship = () => {
             if (isForward) moveDir.z -= 1
             if (isBackward) {
                 moveDir.z += 1
-                speed *= 0.2
+                speed *= 0.5
             }
 
             if (moveDir.lengthSq() > 0) {
@@ -258,7 +270,7 @@ const Spaceship = () => {
                 {cockpit ? (
                     <CockpitModel />
                 ) : (
-                    <Gltf src="/models/space_ship.glb" rotation={[0, MathUtils.degToRad(-90), 0]} />
+                    <ShipModel />
                 )}
             </group>
         </group>

@@ -1,10 +1,8 @@
 import { satellites } from "./satellite"
-import { space_craft } from "./space_craft"
+import { spacecraft } from "./spacecraft"
 import { landmarks } from "./landmark"
+import { variants } from "./variant"
 import { PlanetClass, type Planet } from "@types"
-
-
-
 
 export const planets: Planet[] = [
     {
@@ -43,6 +41,9 @@ export const planets: Planet[] = [
         texture_hd: "venus_hd.ktx2",
         cloud_texture: "venus_cloud.ktx2",
         icon: "venus.png",
+        get variants() {
+            return variants[this.id]
+        },
         get satellites() {
             return satellites.filter((satellite) => satellite.parent === this.id)
         },
@@ -65,11 +66,14 @@ export const planets: Planet[] = [
         texture_hd: "earth_hd.ktx2",
         cloud_texture: "earth_cloud.ktx2",
         icon: "earth.png",
+        get variants() {
+            return variants[this.id]
+        },
         get satellites() {
             return satellites.filter((satellite) => satellite.parent === this.id)
         },
         get artificial_satellites() {
-            return space_craft.filter((craft) => craft.parent === this.id)
+            return spacecraft.filter((craft) => craft.parent === this.id)
         },
         get landmarks() {
             return landmarks.filter((landmark) => landmark.parent === this.id)
@@ -89,6 +93,9 @@ export const planets: Planet[] = [
         texture: "mars.ktx2",
         texture_hd: "mars_hd.ktx2",
         icon: "mars.png",
+        get variants() {
+            return variants[this.id]
+        },
         get satellites() {
             return satellites.filter((satellite) => satellite.parent === this.id)
         },
@@ -138,6 +145,9 @@ export const planets: Planet[] = [
         },
         get satellites() {
             return satellites.filter((satellite) => satellite.parent === this.id)
+        },
+        get landmarks() {
+            return landmarks.filter((landmark) => landmark.parent === this.id)
         }
     },
     {
@@ -178,6 +188,9 @@ export const planets: Planet[] = [
         icon: "neptune.png",
         get satellites() {
             return satellites.filter((satellite) => satellite.parent === this.id)
+        },
+        get landmarks() {
+            return landmarks.filter((landmark) => landmark.parent === this.id)
         }
     },
     {

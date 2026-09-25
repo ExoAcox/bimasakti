@@ -7,6 +7,7 @@ import { useControlStore } from "@state"
 import type { Landmark } from "@types"
 import clsx from "clsx"
 import { latLngToVector3, useCelestial } from "@function"
+import { Else, If, Then } from "react-if"
 
 interface Props {
     landmark: Landmark
@@ -89,7 +90,22 @@ const LandmarkMarker = ({ landmark, visible = true, lonOffset = 0 }: Props) => {
                             landmark.reverse ? "-translate-x-full flex-row-reverse" : ""
                         )}
                     >
-                        <span className="inline-block size-1.5 rounded-full bg-amber-400 shrink-0" />
+                        <If condition={!!landmark.object}>
+                            <Then>
+                                <div className="size-2.5">
+                                    <img
+                                        alt={landmark.object?.name}
+                                        src={`/icons/${landmark.object?.icon}`}
+                                        className="size-2.5 object-contain"
+                                        style={{ filter: "brightness(0) saturate(100%) invert(83%) sepia(67%) saturate(1800%) hue-rotate(345deg)" }}
+                                    />
+                                </div>
+                            </Then>
+                            <Else>
+                                <span className="inline-block size-1.5 rounded-full bg-amber-400 shrink-0" />
+                            </Else>
+                        </If>
+
                         <span>{t(`landmark.${landmark.id}.name`, { defaultValue: landmark.id })}</span>
                     </button>
                 </div>
