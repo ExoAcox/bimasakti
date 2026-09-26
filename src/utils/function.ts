@@ -68,7 +68,7 @@ export const useVariant = (data: Planet) => {
     const { variant } = useControlStore()
 
     return useMemo(() => {
-        if (data.type === "planet" && variant) {
+        if (data?.type === "planet" && variant) {
             const variantData = data.variants?.find((v) => v.variant_id === variant)
             if (variantData) return { ...data, ...variantData }
         }

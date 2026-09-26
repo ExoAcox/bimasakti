@@ -31,7 +31,7 @@ export const satellites: Satellite[] = [
         axis: 0.01,
         orbit_duration: 0.32,
         rotate_duration: 0.32, // Tidally locked
-        texture: "phobos.webp",
+        texture: "phobos.png",
         model: "phobos.ply",
         icon: "satellite.png"
     },
@@ -45,7 +45,7 @@ export const satellites: Satellite[] = [
         axis: 0.93,
         orbit_duration: 1.26,
         rotate_duration: 1.26, // Tidally locked
-        texture: "deimos.webp",
+        texture: "deimos.png",
         model: "deimos.ply",
         icon: "satellite.png"
     },

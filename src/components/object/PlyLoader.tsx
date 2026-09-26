@@ -4,14 +4,15 @@ import { BufferAttribute, type BufferGeometry } from "three"
 import { PLYLoader } from "three-stdlib"
 
 const generateSphericalUVs = (geometry: BufferGeometry) => {
-    if (!geometry || geometry.attributes.uv) return
+    if (!geometry) return
 
     const pos = geometry.attributes.position
     if (!pos) return
 
-    const uvs = new Float32Array(pos.count * 2)
+    const count = pos.count
+    const uvs = new Float32Array(count * 2)
 
-    for (let i = 0; i < pos.count; i++) {
+    for (let i = 0; i < count; i++) {
         const x = pos.getX(i)
         const y = pos.getY(i)
         const z = pos.getZ(i)
@@ -24,24 +25,45 @@ const generateSphericalUVs = (geometry: BufferGeometry) => {
         uvs[i * 2 + 1] = v
     }
 
+    for (let i = 0; i < count; i += 3) {
+        const u0 = uvs[i * 2]
+        const u1 = uvs[(i + 1) * 2]
+        const u2 = uvs[(i + 2) * 2]
+
+        const maxU = Math.max(u0, u1, u2)
+        const minU = Math.min(u0, u1, u2)
+
+        if (maxU - minU > 0.5) {
+            if (u0 < 0.5) uvs[i * 2] += 1.0
+            if (u1 < 0.5) uvs[(i + 1) * 2] += 1.0
+            if (u2 < 0.5) uvs[(i + 2) * 2] += 1.0
+        }
+    }
+
     geometry.setAttribute('uv', new BufferAttribute(uvs, 2))
 }
 
 const ModelRenderer = ({ path }: { path: string }) => {
-    const geometry = useLoader(PLYLoader, `/models/${path}`)
+    const rawGeometry = useLoader(PLYLoader, `/models/${path}`)
 
-    useMemo(() => {
-        if (geometry) {
-            geometry.center()
-            geometry.computeVertexNormals()
-            generateSphericalUVs(geometry)
-            geometry.computeBoundingSphere()
-            if (geometry.boundingSphere && geometry.boundingSphere.radius > 0) {
-                const scaleFactor = 1 / geometry.boundingSphere.radius
-                geometry.scale(scaleFactor, scaleFactor, scaleFactor)
-            }
+    const geometry = useMemo(() => {
+        if (!rawGeometry) return null
+        const geo = rawGeometry.clone()
+        geo.center()
+        // Compute smooth vertex normals on the indexed geometry first
+        geo.computeVertexNormals()
+        // Convert to non-indexed so vertices near the seam can have independent UVs
+        const unindexedGeo = geo.index ? geo.toNonIndexed() : geo
+        generateSphericalUVs(unindexedGeo)
+        unindexedGeo.computeBoundingSphere()
+        if (unindexedGeo.boundingSphere && unindexedGeo.boundingSphere.radius > 0) {
+            const scaleFactor = 1 / unindexedGeo.boundingSphere.radius
+            unindexedGeo.scale(scaleFactor, scaleFactor, scaleFactor)
         }
-    }, [geometry])
+        return unindexedGeo
+    }, [rawGeometry])
+
+    if (!geometry) return null
 
     return <primitive object={geometry} attach="geometry" />
 }

@@ -1,10 +1,12 @@
 /* eslint-disable react-hooks/immutability */
 import { useKTX2, useTexture } from "@react-three/drei"
-import { SRGBColorSpace } from "three"
+import { RepeatWrapping, SRGBColorSpace } from "three"
 
 const KTX2Loader = ({ path }: { path: string }) => {
     const texture = useKTX2(`/textures/${path}`)
     texture.colorSpace = SRGBColorSpace
+    texture.wrapS = RepeatWrapping
+    texture.wrapT = RepeatWrapping
 
     return <meshStandardMaterial map={texture} />
 }
@@ -12,6 +14,8 @@ const KTX2Loader = ({ path }: { path: string }) => {
 const ImageLoader = ({ path }: { path: string }) => {
     const texture = useTexture(`/textures/${path}`)
     texture.colorSpace = SRGBColorSpace
+    texture.wrapS = RepeatWrapping
+    texture.wrapT = RepeatWrapping
 
     return <meshStandardMaterial map={texture} />
 }
