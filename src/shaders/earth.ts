@@ -102,6 +102,7 @@ void main() {
 
 export const atmosphereFragmentShader = /* glsl */ `
 uniform vec3 uAtmosphereColor;
+uniform float uOpacity;
 
 varying vec3 vNormal;
 varying vec3 vViewPosition;
@@ -128,7 +129,7 @@ void main() {
     vec3 finalColor = mix(uAtmosphereColor, sunsetColor, sunsetFactor * 0.45);
     
     // Combine Fresnel rim with day light intensity
-    float alpha = fresnel * (0.1 + 0.9 * dayFactor);
+    float alpha = fresnel * (0.1 + 0.9 * dayFactor) * uOpacity;
 
     gl_FragColor = vec4(finalColor, alpha);
 }

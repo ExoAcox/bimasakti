@@ -40,6 +40,7 @@ export interface ControlStore {
     rotateSpeed: number
     axisTilt: number
     cloudVisible: boolean
+    atmosphereVisible: boolean
     landmarkVisible: boolean
     nationVisible: boolean
     artificialSatelliteVisible: boolean
@@ -57,6 +58,7 @@ export const defaultControl = {
     axisTilt: 0,
     dayNightMode: true,
     cloudVisible: true,
+    atmosphereVisible: true,
     landmarkVisible: true,
     nationVisible: false,
     artificialSatelliteVisible: true,

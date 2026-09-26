@@ -6,14 +6,16 @@ interface Props {
     path: string;
     scale: number;
     cloudRef: React.RefObject<Mesh>
+    opacity?: number
 }
 
-const KTX2Loader = ({ path }: { path: string }) => {
+const KTX2Loader = ({ path, opacity }: { path: string, opacity: number }) => {
     const texture = useKTX2(`/textures/${path}`)
     texture.colorSpace = NoColorSpace
 
     return <meshStandardMaterial
         color="#ffffff"
+        opacity={opacity}
         alphaMap={texture}
         transparent={true}
         depthWrite={false}
@@ -24,12 +26,13 @@ const KTX2Loader = ({ path }: { path: string }) => {
         polygonOffsetUnits={-1} />
 }
 
-const ImageLoader = ({ path }: { path: string }) => {
+const ImageLoader = ({ path, opacity }: { path: string, opacity: number }) => {
     const texture = useTexture(`/textures/${path}`)
     texture.colorSpace = NoColorSpace
 
     return <meshStandardMaterial
         color="#ffffff"
+        opacity={opacity}
         alphaMap={texture}
         transparent={true}
         depthWrite={false}
@@ -40,18 +43,20 @@ const ImageLoader = ({ path }: { path: string }) => {
         polygonOffsetUnits={-1} />
 }
 
-const CloudRenderer = ({ path, scale, cloudRef }: Props) => {
+const PlanetCloud = ({ path, scale, opacity = 1, cloudRef }: Props) => {
     const format = path.split(".")[1]
-    const cloudScale = scale * 1.01
+    const cloudScale = scale * 1.001
+
+    console.log("opacity", opacity)
 
     return <mesh ref={cloudRef} scale={cloudScale} castShadow receiveShadow>
         <sphereGeometry args={[1, 64, 64]} />
         {format === "ktx2" ? (
-            <KTX2Loader path={path} />
+            <KTX2Loader path={path} opacity={opacity} />
         ) : (
-            <ImageLoader path={path} />
+            <ImageLoader path={path} opacity={opacity} />
         )}
     </mesh>
 }
 
-export default CloudRenderer
+export default PlanetCloud

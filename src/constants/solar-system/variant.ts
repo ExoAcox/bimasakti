@@ -91,13 +91,18 @@ export const variants: Variants = {
             variant_id: "terraform",
             texture: "mars_terraform.png",
             texture_hd: undefined,
-            cloud_texture: "earth_cloud.ktx2"
+            cloud_texture: "earth_cloud.ktx2",
+            cloud_opacity: 0.5,
+            aurora: 0.5
         },
         {
             variant_id: "terraform_2",
+            color: "#2b82c5",
             texture: "mars_terraform_2.png",
             texture_hd: undefined,
-            cloud_texture: "earth_cloud.ktx2"
+            cloud_texture: "earth_cloud.ktx2",
+            atmosphere: 1,
+            aurora: 1
         }
     ]
 }

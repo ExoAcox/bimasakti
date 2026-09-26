@@ -1,12 +1,11 @@
 /* eslint-disable react-hooks/immutability */
 import { useKTX2 } from "@react-three/drei"
-import { useFrame } from "@react-three/fiber"
-import { atmosphereFragmentShader, atmosphereVertexShader, earthFragmentShader, earthVertexShader } from "@shaders/earth"
+import { earthFragmentShader, earthVertexShader } from "@shaders/earth"
 import { useControlStore } from "@state"
 import type { Planet } from "@types"
 import { useMemo, useRef, Suspense } from "react"
 import { When } from "react-if"
-import { AdditiveBlending, BackSide, Color, ShaderMaterial, SRGBColorSpace, Vector3 } from "three"
+import { ShaderMaterial, SRGBColorSpace, Vector3 } from "three"
 import { TextureLoader } from "."
 
 interface EarthMaterialProps {
@@ -55,32 +54,6 @@ const EarthMaterial = ({
     return <primitive ref={materialRef} object={earthMaterial} attach="material" />
 }
 
-const Atmosphere = ({ color }: { color: string }) => {
-    const materialRef = useRef<ShaderMaterial>(null!)
-
-    const atmosphereMaterial = useMemo(() => {
-        return new ShaderMaterial({
-            vertexShader: atmosphereVertexShader,
-            fragmentShader: atmosphereFragmentShader,
-            transparent: true,
-            blending: AdditiveBlending,
-            side: BackSide,
-            depthWrite: false,
-            uniforms: {
-                uAtmosphereColor: { value: new Color(color) },
-                uSunPosition: { value: new Vector3(0, 0, 0) },
-            },
-        })
-    }, [color])
-
-    useFrame(() => {
-        if (materialRef.current) {
-            materialRef.current.uniforms.uSunPosition.value.set(0, 0, 0)
-        }
-    })
-
-    return <primitive ref={materialRef} object={atmosphereMaterial} attach="material" />
-}
 
 interface Props {
     data: Planet
@@ -88,37 +61,28 @@ interface Props {
 }
 
 const Earth = ({ data, hd }: Props) => {
-    const { variant, cloudVisible } = useControlStore()
+    const { variant } = useControlStore()
     const texturePath = (hd && data.texture_hd) ? data.texture_hd : data.texture!
 
-    return <group>
-        <mesh castShadow receiveShadow key={variant}>
-            <sphereGeometry args={[1, 64, 64]} />
+    return <mesh castShadow receiveShadow key={variant}>
+        <sphereGeometry args={[1, 64, 64]} />
 
-            <Suspense fallback={<meshStandardMaterial color={data.color} />}>
-                <When condition={!variant}>
-                    <EarthMaterial
-                        textures={[
-                            `/textures/${hd ? "earth_hd.ktx2" : "earth.ktx2"}`,
-                            `/textures/${hd ? "earth_night_hd.ktx2" : "earth_night.ktx2"}`,
-                        ]}
-                        nightIntensity={1}
-                    />
-                </When>
+        <Suspense fallback={<meshStandardMaterial color={data.color} />}>
+            <When condition={!variant}>
+                <EarthMaterial
+                    textures={[
+                        `/textures/${hd ? "earth_hd.ktx2" : "earth.ktx2"}`,
+                        `/textures/${hd ? "earth_night_hd.ktx2" : "earth_night.ktx2"}`,
+                    ]}
+                    nightIntensity={1}
+                />
+            </When>
 
-                <When condition={variant}>
-                    <TextureLoader path={texturePath} />
-                </When>
-            </Suspense>
-        </mesh>
-
-        <When condition={cloudVisible}>
-            <mesh scale={1.02}>
-                <sphereGeometry args={[1, 64, 64]} />
-                <Atmosphere color={data.color} />
-            </mesh>
-        </When>
-    </group>
+            <When condition={variant}>
+                <TextureLoader path={texturePath} />
+            </When>
+        </Suspense>
+    </mesh>
 }
 
 export default Earth

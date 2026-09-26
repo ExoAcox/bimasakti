@@ -13,10 +13,8 @@ import { GoCircle } from "react-icons/go";
 import { TbSatelliteFilled } from "react-icons/tb";
 import { HiLocationMarker } from "react-icons/hi";
 import { MdBrightnessMedium, MdClose, MdHistory, MdRefresh } from "react-icons/md";
-import { SiUnitednations } from "react-icons/si";
+import { SiUnitednations, SiGoogleearth } from "react-icons/si";
 import { useTranslation } from "react-i18next";
-
-
 
 interface Props {
     id: string
@@ -36,6 +34,7 @@ const TOGGLE_BTN_CLASS = clsx(
 const ACTIVE_CYAN_CLASS = "bg-cyan-500/20 text-cyan-300 border-cyan-500/50  hover:bg-cyan-500/30";
 const ACTIVE_SKY_CLASS = "bg-sky-500/20 text-sky-300 border-sky-500/50 hover:bg-sky-500/30";
 const ACTIVE_PURPLE_CLASS = "bg-purple-500/20 text-purple-300 border-purple-500/50 hover:bg-purple-500/30";
+const ACTIVE_GREEN_CLASS = "bg-emerald-500/20 text-emerald-300 border-emerald-500/50 hover:bg-emerald-500/30";
 
 const NAV_BTN_CLASS = clsx(
     BUTTON_BASE_CLASS,
@@ -54,7 +53,7 @@ const TOOLTIP_CLASS =
 
 const SPEED_ARRAY = [0.1, 0.5, 1, 1.5, 2, 3, 5]
 const LayerPanel = ({ id }: Props) => {
-    const { focusIndex, focusLandmark, landmarkVisible, nationVisible, rotateSpeed, cloudVisible, artificialSatelliteVisible, dayNightMode, axisTilt, variant, setControl, resetControl } = useControlStore()
+    const { focusIndex, focusLandmark, landmarkVisible, nationVisible, rotateSpeed, cloudVisible, atmosphereVisible, artificialSatelliteVisible, dayNightMode, axisTilt, variant, setControl, resetControl } = useControlStore()
     const [lastRotateSpeed, setLastRotateSpeed] = useState(rotateSpeed)
 
     const [activePanel, setActivePanel] = useState("")
@@ -131,6 +130,10 @@ const LayerPanel = ({ id }: Props) => {
         setControl({ cloudVisible: !cloudVisible })
     }
 
+    const handleAtmosphere = () => {
+        setControl({ atmosphereVisible: !atmosphereVisible })
+    }
+
     const handleLandmark = () => {
         setControl({ landmarkVisible: !landmarkVisible, nationVisible: false })
     }
@@ -204,7 +207,17 @@ const LayerPanel = ({ id }: Props) => {
                         className={clsx(TOGGLE_BTN_CLASS, cloudVisible && ACTIVE_SKY_CLASS)}
                     >
                         <ImCloud />
-                        <span className={TOOLTIP_CLASS}>Clouds</span>
+                        <span className={TOOLTIP_CLASS}>Cloud</span>
+                    </button>
+                </When>
+
+                <When condition={Boolean(data.aurora || data.id === "earth")}>
+                    <button
+                        onClick={handleAtmosphere}
+                        className={clsx(TOGGLE_BTN_CLASS, atmosphereVisible && ACTIVE_GREEN_CLASS)}
+                    >
+                        <SiGoogleearth />
+                        <span className={TOOLTIP_CLASS}>Atmosphere</span>
                     </button>
                 </When>
 

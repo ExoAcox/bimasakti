@@ -5,7 +5,7 @@ import { Detailed } from "@react-three/drei"
 
 import type { Planet as PlanetType } from "@types"
 import { useSettingStore, useControlStore } from "@state"
-import { CelestialBody, PlanetCloud, PlanetRing, LandmarkMarker, PlyLoader, TextureLoader, Earth, SpaceCraft } from "@components/object"
+import { CelestialBody, PlanetCloud, PlanetRing, LandmarkMarker, PlyLoader, TextureLoader, Earth, SpaceCraft, Aurora, Atmosphere } from "@components/object"
 import { LOWREST_SCALE } from "@constants"
 import { Else, If, Then, When } from "react-if"
 import nations from "@constants/solar-system/nation"
@@ -55,7 +55,7 @@ const Planet = ({
     const cloudRef = useRef<Mesh>(null!)
 
     const { mode, sizeScale, distanceScale } = useSettingStore()
-    const { focus, variant, landmarkVisible, nationVisible, cloudVisible, setControl } = useControlStore()
+    const { focus, variant, landmarkVisible, nationVisible, cloudVisible, atmosphereVisible, setControl } = useControlStore()
     const distance = LOWREST_SCALE / distanceScale
 
     const data = useVariant(rawData)
@@ -105,6 +105,12 @@ const Planet = ({
                     </mesh>
                 </Detailed>
 
+                <When condition={Boolean(data.aurora) && data.id !== "earth" && atmosphereVisible}>
+                    <Suspense fallback={null}>
+                        <Aurora data={data} />
+                    </Suspense>
+                </When>
+
                 <When condition={Boolean(data.ring?.texture)}>
                     <PlanetRing data={data} />
                 </When>
@@ -120,12 +126,22 @@ const Planet = ({
                         <NationMarker key={nation.id} radius={data.radius} nation={nation} />
                     ))}
                 </When>
+
+                <When condition={atmosphereVisible}>
+                    <When condition={data.atmosphere}>
+                        <Atmosphere data={data} />
+                    </When>
+                    <When condition={data.aurora}>
+                        <Aurora data={data} />
+                    </When>
+                </When>
             </group>
 
             <When condition={showCloud}>
                 <Detailed distances={[0, distance]}>
                     <PlanetCloud
                         path={data.cloud_texture!}
+                        opacity={data.cloud_opacity}
                         scale={scale}
                         cloudRef={cloudRef}
                     />

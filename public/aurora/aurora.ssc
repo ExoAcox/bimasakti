@@ -1,0 +1,51 @@
+# Northern and southern lights (aurora) of the Earth.
+
+# Last update: 23.07.2023
+
+"<Auroral Ring>" "Sol/Earth"
+{
+	Class	"diffuse"
+	Mesh	"auroring.cmod"
+	Emissive	true
+	Radius	9800
+	
+	EllipticalOrbit
+	{
+		Period	9e+12
+		SemiMajorAxis	0.000383
+		Inclination	90
+	}
+	PrecessingRotation
+	{
+		Period	1
+		Inclination	-11
+		AscendingNode	114.4
+		PrecessionPeriod	360.9856502605
+	}
+}
+
+"<Auroral Oval>" "Sol/Earth"
+{
+	Class	"diffuse"
+	Mesh	""
+	Emissive	true
+	Radius	6378
+	Atmosphere
+	{
+		CloudHeight	100
+		CloudSpeed	0
+		CloudMap	"corona-green.png"
+	}	
+	EllipticalOrbit
+	{
+		Period	9e+12
+		SemiMajorAxis	0
+	}
+	PrecessingRotation
+	{
+		Period	1
+		Inclination	-11
+		AscendingNode	114.4
+		PrecessionPeriod	360.9856502605
+	}
+}

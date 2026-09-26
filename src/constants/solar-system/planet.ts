@@ -40,6 +40,7 @@ export const planets: Planet[] = [
         texture: "venus.ktx2",
         texture_hd: "venus_hd.ktx2",
         cloud_texture: "venus_cloud.ktx2",
+        atmosphere: 1,
         icon: "venus.png",
         get variants() {
             return variants[this.id]
@@ -65,6 +66,8 @@ export const planets: Planet[] = [
         texture: "earth.ktx2",
         texture_hd: "earth_hd.ktx2",
         cloud_texture: "earth_cloud.ktx2",
+        aurora: 1,
+        atmosphere: 1,
         icon: "earth.png",
         get variants() {
             return variants[this.id]
@@ -92,6 +95,7 @@ export const planets: Planet[] = [
         rotate_duration: 1.03,
         texture: "mars.ktx2",
         texture_hd: "mars_hd.ktx2",
+        atmosphere: 0.5,
         icon: "mars.png",
         get variants() {
             return variants[this.id]

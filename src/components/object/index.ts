@@ -18,3 +18,6 @@ export { default as Earth } from "./Earth"
 export { default as LandmarkMarker } from "./LandmarkMarker"
 export { default as GeoJsonOverlay } from "./GeoJsonOverlay"
 export { default as Spaceship } from "./Spaceship"
+export { default as Aurora } from "./Aurora"
+export { default as Atmosphere } from "./Atmosphere"
+
