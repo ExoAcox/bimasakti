@@ -6,7 +6,7 @@ import { Detailed } from "@react-three/drei"
 
 import type { Planet as PlanetType } from "@types"
 import { useSettingStore, useControlStore } from "@state"
-import { CelestialBody, PlanetCloud, PlanetRing, LandmarkMarker, PlyLoader, TextureLoader, Earth, SpaceCraft, Aurora, Atmosphere, MaterialFallback, EarthMaterial } from "@components/object"
+import { CelestialBody, PlanetCloud, PlanetRing, LandmarkMarker, PlyLoader, TextureLoader, SpaceCraft, Aurora, Atmosphere, EarthMaterial } from "@components/object"
 import { LOWREST_SCALE } from "@constants"
 import { Case, Default, Else, If, Switch, Then, When } from "react-if"
 import nations from "@constants/solar-system/nation"
