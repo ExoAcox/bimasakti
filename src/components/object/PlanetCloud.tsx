@@ -47,8 +47,6 @@ const PlanetCloud = ({ path, scale, opacity = 1, cloudRef }: Props) => {
     const format = path.split(".")[1]
     const cloudScale = scale * 1.001
 
-    console.log("opacity", opacity)
-
     return <mesh ref={cloudRef} scale={cloudScale} castShadow receiveShadow>
         <sphereGeometry args={[1, 64, 64]} />
         {format === "ktx2" ? (

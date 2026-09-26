@@ -1,13 +1,14 @@
-/* eslint-disable react-hooks/immutability */
-import { useMemo, useRef, Suspense } from "react"
+/* eslint-disable react-hooks/rules-of-hooks */
+
+import { useRef, Suspense, useDeferredValue } from "react"
 import { type Mesh } from "three"
 import { Detailed } from "@react-three/drei"
 
 import type { Planet as PlanetType } from "@types"
 import { useSettingStore, useControlStore } from "@state"
-import { CelestialBody, PlanetCloud, PlanetRing, LandmarkMarker, PlyLoader, TextureLoader, Earth, SpaceCraft, Aurora, Atmosphere } from "@components/object"
+import { CelestialBody, PlanetCloud, PlanetRing, LandmarkMarker, PlyLoader, TextureLoader, Earth, SpaceCraft, Aurora, Atmosphere, MaterialFallback, EarthMaterial } from "@components/object"
 import { LOWREST_SCALE } from "@constants"
-import { Else, If, Then, When } from "react-if"
+import { Case, Default, Else, If, Switch, Then, When } from "react-if"
 import nations from "@constants/solar-system/nation"
 import NationMarker from "./NationMarker"
 import { useVariant } from "@function"
@@ -20,11 +21,11 @@ interface Props {
 }
 
 const PlanetMesh = ({ data, hd }: { data: PlanetType, hd?: boolean }) => {
-
-    if (data.id === "earth") return <Earth data={data} hd={hd} />
     const texturePath = (hd && data.texture_hd) ? data.texture_hd : data.texture!
+    const texture = useDeferredValue(texturePath)
+    const isPresentEarth = data.id === "earth" && !data.variant_id
 
-    return <mesh castShadow receiveShadow key={data.variant_id}>
+    return <mesh castShadow receiveShadow>
         <If condition={data.model}>
             <Then>
                 <PlyLoader path={data.model!} />
@@ -34,14 +35,23 @@ const PlanetMesh = ({ data, hd }: { data: PlanetType, hd?: boolean }) => {
             </Else>
         </If>
         <Suspense fallback={<meshStandardMaterial color={data.color} />}>
-            <If condition={data.texture}>
-                <Then>
-                    <TextureLoader path={texturePath} />
-                </Then>
-                <Else>
+            <Switch>
+                <Case condition={isPresentEarth}>
+                    <EarthMaterial
+                        textures={[
+                            `/textures/${hd ? "earth_hd.ktx2" : "earth.ktx2"}`,
+                            `/textures/${hd ? "earth_night_hd.ktx2" : "earth_night.ktx2"}`,
+                        ]}
+                        nightIntensity={1}
+                    />
+                </Case>
+                <Case condition={data.texture}>
+                    <TextureLoader path={texture} />
+                </Case>
+                <Default>
                     <meshStandardMaterial color={data.color} />
-                </Else>
-            </If>
+                </Default>
+            </Switch>
         </Suspense>
     </mesh>
 }

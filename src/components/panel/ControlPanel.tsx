@@ -1,7 +1,7 @@
 /* eslint-disable react-hooks/set-state-in-effect */
 import { useControlStore } from "@state"
 import clsx from "clsx";
-import { useCallback, useEffect, useMemo, useRef, useState } from "react";
+import { startTransition, useCallback, useEffect, useMemo, useRef, useState } from "react";
 import { Case, Switch, Then, When } from "react-if";
 import { useCelestial, useVariant } from "@function";
 import type { Planet } from "@types";
@@ -57,6 +57,7 @@ const LayerPanel = ({ id }: Props) => {
     const [lastRotateSpeed, setLastRotateSpeed] = useState(rotateSpeed)
 
     const [activePanel, setActivePanel] = useState("")
+    const [timelinesVisible, setTimelineVisible] = useState(true)
 
     const tiltDialRef = useRef<HTMLDivElement>(null)
     const isDraggingRef = useRef(false)
@@ -108,6 +109,15 @@ const LayerPanel = ({ id }: Props) => {
     const rawData = useCelestial().getObjectById(id) as Planet
     const data = useVariant(rawData)
 
+    const timelines = useMemo(() => {
+        if (!data?.variants?.length) return []
+
+        const variants = [{ variant_id: "", order: 0 }, ...data.variants]
+            .sort((a, b) => a.order - b.order).map(v => v.variant_id)
+
+        return variants
+    }, [data])
+
     useEffect(() => {
         if (rotateSpeed > 0) setLastRotateSpeed(rotateSpeed)
     }, [rotateSpeed])
@@ -155,8 +165,13 @@ const LayerPanel = ({ id }: Props) => {
     }
 
     const handleVariant = (variant: string) => {
-        setControl({ variant })
-        setActivePanel("")
+        startTransition(() => {
+            setControl({ variant })
+        })
+    }
+
+    const handleTimelines = () => {
+        setTimelineVisible(!timelinesVisible)
     }
 
     const handleReset = () => {
@@ -329,52 +344,10 @@ const LayerPanel = ({ id }: Props) => {
             <div className={SECTION_CLASS}>
 
                 <When condition={Boolean(data.variants?.length)}>
-                    <div className="relative">
-                        <button
-                            onClick={() => setActivePanel(activePanel === "timelines" ? "" : "timelines")}
-                            className={clsx(TOGGLE_BTN_CLASS, (activePanel === "timelines" || Boolean(variant)) && ACTIVE_CYAN_CLASS)}
-                        >
-                            <MdHistory />
-                            <span className={TOOLTIP_CLASS}>Timelines</span>
-                        </button>
-
-                        <When condition={activePanel === "timelines"}>
-                            <div className="absolute -top-3 left-1/2 -translate-x-1/2 -translate-y-full rounded-xl bg-slate-900/90 backdrop-blur-xl py-3 px-2 border border-white/15 flex flex-col gap-2 min-w-48 shadow-2xl z-50">
-                                <div className="text-xs font-semibold text-slate-400 border-b border-white/10 pb-2 px-2 flex justify-between items-center">
-                                    <span>{t("ui.timelines", "Timelines")}</span>
-                                    <MdClose className="cursor-pointer text-slate-400 hover:text-white" onClick={() => setActivePanel("")} />
-                                </div>
-                                <div className="flex flex-col gap-1 max-h-48 overflow-y-auto">
-                                    <button
-                                        onClick={() => handleVariant("")}
-                                        className={clsx(
-                                            "flex items-center justify-between px-3 py-2 rounded-lg text-xs font-medium transition-all text-left cursor-pointer gap-3",
-                                            !variant ? "bg-cyan-500/20 text-cyan-300 border border-cyan-500/40" : "text-slate-300 hover:bg-white/10 hover:text-white"
-                                        )}
-                                    >
-                                        <span>Present</span>
-                                    </button>
-
-                                    {data.variants?.map((v) => {
-                                        const isSelected = variant === v.variant_id
-                                        const variantName = t(`object.${data.id}.${v.variant_id}.name`, v.variant_id)
-                                        return (
-                                            <button
-                                                key={v.variant_id}
-                                                onClick={() => handleVariant(v.variant_id)}
-                                                className={clsx(
-                                                    "flex items-center justify-between px-3 py-2 rounded-lg text-xs font-medium transition-all text-left cursor-pointer gap-3",
-                                                    isSelected ? "bg-cyan-500/20 text-cyan-300 border border-cyan-500/40" : "text-slate-300 hover:bg-white/10 hover:text-white"
-                                                )}
-                                            >
-                                                <span className="whitespace-nowrap">{variantName}</span>
-                                            </button>
-                                        )
-                                    })}
-                                </div>
-                            </div>
-                        </When>
-                    </div>
+                    <button onClick={handleTimelines} className={clsx(TOGGLE_BTN_CLASS, "hover:bg-green-400/40")}>
+                        <MdHistory />
+                        <span className={TOOLTIP_CLASS}>Timelines</span>
+                    </button>
                 </When>
                 <button onClick={handleReset} className={clsx(TOGGLE_BTN_CLASS, "hover:bg-amber-400/50")}>
                     <MdRefresh />
@@ -385,6 +358,44 @@ const LayerPanel = ({ id }: Props) => {
                     <span className={TOOLTIP_CLASS}>Leave</span>
                 </button>
             </div>
+
+            <When condition={timelinesVisible}>
+                <div className="absolute w-full -top-1 left-1/2 -translate-x-1/2 -translate-y-full z-5">
+                    <div className="relative flex justify-evenly items-end gap-3 py-2 px-3 max-w-full scrollbar-thin scrollbar-thumb-slate-700">
+                        <div className="absolute bottom-3.75 left-6 right-6 h-0.5 bg-linear-to-r from-slate-700 via-cyan-500/40 to-slate-700 z-0 pointer-events-none" />
+
+                        {timelines.map((variantId) => {
+                            const isSelected = variant === variantId
+
+                            return (
+                                <button
+                                    key={variantId}
+                                    onClick={() => handleVariant(variantId)}
+                                    className="group/btn relative z-10 flex flex-col items-center gap-2.5 group/node cursor-pointer shrink-0 transition-transform active:scale-95"
+                                >
+                                    <div className={clsx(
+                                        "group-hover/btn:block hidden absolute -top-2 -translate-y-full px-3 py-1.5 rounded-xl text-xs font-medium transition-all duration-200 border whitespace-nowrap shadow-md",
+                                        isSelected
+                                            ? "bg-cyan-500/25 text-cyan-200 border-cyan-400/60 shadow-[0_0_15px_rgba(6,182,212,0.35)] scale-105"
+                                            : "bg-slate-800/90 text-slate-300 border-white/10 hover:bg-slate-700 hover:text-white hover:border-white/30"
+                                    )}>
+                                        {t(`object.${data.id}.variants.${variantId}.name`, t("ui.present"))}
+                                    </div>
+
+                                    <div className={clsx(
+                                        "w-3.5 h-3.5 rounded-full border-2 transition-all duration-200 flex items-center justify-center",
+                                        isSelected
+                                            ? "bg-primary border-base shadow-[0_0_10px_rgba(6,182,212,0.9)] scale-125"
+                                            : "bg-slate-900 border-slate-500 group-hover/node:border-cyan-400 group-hover/node:bg-slate-700"
+                                    )}>
+                                        {/* {isSelected && <div className="w-1 h-1 rounded-full bg-slate-950" />} */}
+                                    </div>
+                                </button>
+                            )
+                        })}
+                    </div>
+                </div>
+            </When>
 
         </div>
     )

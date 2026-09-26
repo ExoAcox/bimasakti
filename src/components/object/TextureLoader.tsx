@@ -4,6 +4,7 @@ import { RepeatWrapping, SRGBColorSpace } from "three"
 
 const KTX2Loader = ({ path }: { path: string }) => {
     const texture = useKTX2(`/textures/${path}`)
+
     texture.colorSpace = SRGBColorSpace
     texture.wrapS = RepeatWrapping
     texture.wrapT = RepeatWrapping

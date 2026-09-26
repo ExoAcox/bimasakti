@@ -55,6 +55,7 @@ export interface Star extends Object {
 
 export interface Variant extends Partial<Planet> {
     variant_id: string
+    order: number
 }
 
 export interface Planet extends Object {

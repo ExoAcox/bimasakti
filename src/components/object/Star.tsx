@@ -61,7 +61,7 @@ const Star = ({ id, children, labelRef }: Props) => {
             fragmentShader: surfaceFragmentShader,
             uniforms: {
                 u_time: { value: 0 },
-                u_color: { value: hexToRawColor(color) }
+                u_color: { value: new Color(color) }
             }
         })
     }, [color])
@@ -72,7 +72,7 @@ const Star = ({ id, children, labelRef }: Props) => {
             fragmentShader: glowFragmentShader,
             uniforms: {
                 u_time: { value: 0 },
-                u_color: { value: hexToRawColor(glowColor) }
+                u_color: { value: new Color(glowColor) }
             },
             blending: AdditiveBlending,
             side: BackSide,
@@ -87,7 +87,7 @@ const Star = ({ id, children, labelRef }: Props) => {
             fragmentShader: coronaFragmentShader,
             uniforms: {
                 u_time: { value: 0 },
-                u_color: { value: hexToRawColor(glowColor) }
+                u_color: { value: new Color(glowColor) }
             },
             blending: AdditiveBlending,
             side: BackSide,

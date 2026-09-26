@@ -3,10 +3,10 @@ import { useKTX2 } from "@react-three/drei"
 import { earthFragmentShader, earthVertexShader } from "@shaders/earth"
 import { useControlStore } from "@state"
 import type { Planet } from "@types"
-import { useMemo, useRef, Suspense } from "react"
+import { Suspense, useDeferredValue, useMemo, useRef } from "react"
 import { When } from "react-if"
 import { ShaderMaterial, SRGBColorSpace, Vector3 } from "three"
-import { TextureLoader } from "."
+import { TextureLoader, MaterialFallback } from "."
 
 interface EarthMaterialProps {
     textures: [string, string]
@@ -18,8 +18,6 @@ const EarthMaterial = ({
     nightIntensity = 1.0,
 }: EarthMaterialProps) => {
     const materialRef = useRef<ShaderMaterial>(null!)
-
-    console.log("render earth betul")
 
     const [dayTexture, nightTexture] = useKTX2(textures)
     const { dayNightMode } = useControlStore()
@@ -62,7 +60,9 @@ interface Props {
 
 const Earth = ({ data, hd }: Props) => {
     const { variant } = useControlStore()
+    const deferredVariant = useDeferredValue(variant)
     const texturePath = (hd && data.texture_hd) ? data.texture_hd : data.texture!
+    const deferredTexturePath = useDeferredValue(texturePath)
 
     return <mesh castShadow receiveShadow key={variant}>
         <sphereGeometry args={[1, 64, 64]} />
@@ -78,8 +78,8 @@ const Earth = ({ data, hd }: Props) => {
                 />
             </When>
 
-            <When condition={variant}>
-                <TextureLoader path={texturePath} />
+            <When condition={deferredVariant}>
+                <TextureLoader path={deferredTexturePath} />
             </When>
         </Suspense>
     </mesh>
