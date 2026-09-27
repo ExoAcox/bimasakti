@@ -61,6 +61,10 @@
             "nickname": "Sun",
             "description": "The Sun is the star at the center of our solar system, comprising 99.8% of the system's total mass. It is a nearly perfect sphere of hot plasma, heated to incandescence by nuclear fusion reactions in its core, which radiates energy primarily as light, ultraviolet, and infrared radiation, providing the primary source of energy for life on Earth.",
             "variants": {
+                "dyson_sphere": {
+                    "name": "Dyson Sphere Sun",
+                    "description": "A hypothetical megastructure that encompasses the Sun to capture a large percentage or all of its power output, representing a Type II civilization on the Kardashev scale."
+                },
                 "red_giant": {
                     "name": "Red Giant Sun",
                     "description": "In about 5 billion years, the Sun will exhaust hydrogen fuel in its core and swell into a Red Giant. Expanding tens to hundreds of times its current size, it will engulf nearby planets and drastically alter the solar system's habitable zone."
@@ -152,6 +156,10 @@
                 "terraform_2": {
                     "name": "Terraformed Mars (Phase 2)",
                     "description": "An advanced stage of terraforming featuring a fully breathable atmosphere, thriving plant life, vast oceans, and a stable climate capable of supporting complex terrestrial ecosystems."
+                },
+                "terraform_3": {
+                    "name": "Terraformed Mars (Phase 3)",
+                    "description": "The final stage of terraforming where Mars is fully colonized and inhabited by humanity. Sprawling mega-cities and human settlements dot the planet, with glowing city lights illuminating the Martian night, establishing Mars as a thriving second home for human civilization."
                 }
             }
         },
@@ -820,9 +828,9 @@
             "name": "Nili Fossae",
             "description": "A complex geological fracture system on Mars rich in clay minerals and olivine, indicating an ancient water-rich environment."
         },
-        "ghost_dunes": {
-            "name": "Ghost Dunes",
-            "description": "Ancient sand dune casts in Noctis Labyrinthus and Hellas preserved when lava or sediment flooded around them millions of years ago, leaving negative dune molds."
+        "noctis_labyrinthus": {
+            "name": "Noctis Labyrinthus",
+            "description": "A vast, maze-like region on Mars located between Valles Marineris and the Tharsis plateau, characterized by a complex network of deep, steep-walled valleys formed by faulting."
         },
         "meridiani_planum": {
             "name": "Meridiani Planum",

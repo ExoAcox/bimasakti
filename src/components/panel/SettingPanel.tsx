@@ -147,7 +147,7 @@ const SettingModal = ({ isOpen, close }: Props) => {
 }
 const SettingPanel = () => {
     const { mode, setSetting } = useSettingStore()
-    const { setControl } = useControlStore()
+    const { setControl, resetControl } = useControlStore()
     const { cockpit, setShip } = useShipStore()
     const { t } = useTranslation()
 
@@ -155,6 +155,7 @@ const SettingPanel = () => {
         setSetting({ mode: "spaceship" })
 
         if (mode === "normal") {
+            resetControl()
             setControl({ rotateSpeed: 0.1 })
             setSetting({ mode: "spaceship" })
         } else {

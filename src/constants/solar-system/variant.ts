@@ -7,8 +7,12 @@ interface Variants {
 export const variants: Variants = {
     sun: [
         {
+            variant_id: "dyson_sphere",
+            order: 1
+        },
+        {
             variant_id: "red_giant",
-            order: 1,
+            order: 2,
             class: StarClass.RedGiant,
             radius: 695700 * 200,
             color: "#ff3300",
@@ -17,7 +21,8 @@ export const variants: Variants = {
                 inner_radius: 4500000000,
                 outer_radius: 7500000000,
             }
-        }
+        },
+
     ],
     venus: [
         {
@@ -35,6 +40,7 @@ export const variants: Variants = {
             texture: "venus_terraform.jpg",
             texture_hd: undefined,
             cloud_texture: "earth_cloud.ktx2",
+            icon: "earth.png",
             aurora: 1,
             landmarks: []
         }
@@ -45,6 +51,7 @@ export const variants: Variants = {
             order: -1,
             texture: "earth_0065.jpg",
             texture_hd: undefined,
+            night_texture: undefined,
             artificial_satellites: [],
             landmarks: [],
         },
@@ -53,6 +60,7 @@ export const variants: Variants = {
             order: -2,
             texture: "earth_0090.jpg",
             texture_hd: undefined,
+            night_texture: undefined,
             artificial_satellites: [],
             landmarks: [],
         },
@@ -61,6 +69,7 @@ export const variants: Variants = {
             order: -3,
             texture: "earth_0105.jpg",
             texture_hd: undefined,
+            night_texture: undefined,
             artificial_satellites: [],
             landmarks: [],
         },
@@ -69,6 +78,7 @@ export const variants: Variants = {
             order: -4,
             texture: "earth_0120.jpg",
             texture_hd: undefined,
+            night_texture: undefined,
             artificial_satellites: [],
             landmarks: [],
         },
@@ -77,6 +87,7 @@ export const variants: Variants = {
             order: -5,
             texture: "earth_0150.jpg",
             texture_hd: undefined,
+            night_texture: undefined,
             artificial_satellites: [],
             landmarks: [],
         },
@@ -85,6 +96,7 @@ export const variants: Variants = {
             order: -6,
             texture: "earth_0170.jpg",
             texture_hd: undefined,
+            night_texture: undefined,
             artificial_satellites: [],
             landmarks: [],
         },
@@ -93,6 +105,7 @@ export const variants: Variants = {
             order: -7,
             texture: "earth_0200.jpg",
             texture_hd: undefined,
+            night_texture: undefined,
             artificial_satellites: [],
             landmarks: [],
         },
@@ -101,6 +114,7 @@ export const variants: Variants = {
             order: -8,
             texture: "earth_0220.jpg",
             texture_hd: undefined,
+            night_texture: undefined,
             artificial_satellites: [],
             landmarks: [],
         },
@@ -109,6 +123,7 @@ export const variants: Variants = {
             order: -9,
             texture: "earth_0240.jpg",
             texture_hd: undefined,
+            night_texture: undefined,
             artificial_satellites: [],
             landmarks: [],
         },
@@ -117,19 +132,34 @@ export const variants: Variants = {
         {
             variant_id: "terraform",
             order: 1,
-            texture: "mars_terraform.png",
-            texture_hd: undefined,
+            texture: "mars_terraform.ktx2",
+            texture_hd: "mars_terraform_hd.ktx2",
             cloud_texture: "earth_cloud.ktx2",
             cloud_opacity: 0.5,
+            atmosphere: 0.5,
             aurora: 0.5
         },
         {
             variant_id: "terraform_2",
             order: 2,
             color: "#2b82c5",
-            texture: "mars_terraform_2.png",
-            texture_hd: undefined,
+            texture: "mars_terraform_2.ktx2",
+            texture_hd: "mars_terraform_2_hd.ktx2",
             cloud_texture: "earth_cloud.ktx2",
+            icon: "earth.png",
+            atmosphere: 1,
+            aurora: 1
+        },
+        {
+            variant_id: "terraform_3",
+            order: 3,
+            color: "#2b82c5",
+            texture: "mars_terraform_3.ktx2",
+            texture_hd: undefined,
+            night_texture: "mars_night.ktx2",
+            night_opacity: 0.25,
+            cloud_texture: "earth_cloud.ktx2",
+            icon: "earth.png",
             atmosphere: 1,
             aurora: 1
         }

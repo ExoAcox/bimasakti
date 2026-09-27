@@ -5,15 +5,12 @@ import { useControlStore } from "@state"
 import { useMemo, useRef } from "react"
 import { ShaderMaterial, SRGBColorSpace, Vector3 } from "three"
 
-interface EarthMaterialProps {
+interface Props {
     textures: [string, string]
-    nightIntensity?: number
+    intensity?: number
 }
 
-const EarthMaterial = ({
-    textures,
-    nightIntensity = 1.0,
-}: EarthMaterialProps) => {
+const NightMaterial = ({ textures, intensity = 1.0 }: Props) => {
     const materialRef = useRef<ShaderMaterial>(null!)
 
     const [dayTexture, nightTexture] = useKTX2(textures)
@@ -22,7 +19,7 @@ const EarthMaterial = ({
     dayTexture.colorSpace = SRGBColorSpace
     nightTexture.colorSpace = SRGBColorSpace
 
-    const earthMaterial = useMemo(() => {
+    const material = useMemo(() => {
         return new ShaderMaterial({
             vertexShader: earthVertexShader,
             fragmentShader: earthFragmentShader,
@@ -30,24 +27,16 @@ const EarthMaterial = ({
                 u_dayTexture: { value: dayTexture },
                 u_nightTexture: { value: nightTexture },
                 u_sunPosition: { value: new Vector3(0, 0, 0) },
-                u_nightIntensity: { value: nightIntensity },
+                u_nightIntensity: { value: intensity },
                 u_mode: { value: dayNightMode ? 1 : 0 }
             },
         })
 
 
-    }, [dayNightMode, dayTexture, nightIntensity, nightTexture])
+    }, [dayNightMode, dayTexture, intensity, nightTexture])
 
-    // useFrame(() => {
-    //     if (materialRef.current) {
-    //         // Sun is positioned at origin (0, 0, 0) in solar system
-    //         materialRef.current.uniforms.u_sunPosition.value.set(0, 0, 0)
-    //         materialRef.current.uniforms.u_nightIntensity.value = nightIntensity
-    //     }
-    // })
-
-    return <primitive ref={materialRef} object={earthMaterial} attach="material" />
+    return <primitive ref={materialRef} object={material} attach="material" />
 }
 
 
-export default EarthMaterial
+export default NightMaterial

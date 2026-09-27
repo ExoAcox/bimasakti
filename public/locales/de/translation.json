@@ -46,7 +46,17 @@
         "sun": {
             "name": "Sonne",
             "nickname": "Sonne",
-            "description": "Die Sonne ist der Stern im Zentrum unseres Sonnensystems und macht 99,8 % der Gesamtmasse des Systems aus. Sie ist eine fast perfekte Kugel aus heißem Plasma, die durch Kernfusionsreaktionen in ihrem Kern erhitzt wird. Sie strahlt Energie hauptsächlich als Licht, ultraviolette und infrarote Strahlung aus und ist die primäre Energiequelle für das Leben auf der Erde."
+            "description": "Die Sonne ist der Stern im Zentrum unseres Sonnensystems und macht 99,8 % der Gesamtmasse des Systems aus. Sie ist eine fast perfekte Kugel aus heißem Plasma, die durch Kernfusionsreaktionen in ihrem Kern erhitzt wird. Sie strahlt Energie hauptsächlich als Licht, ultraviolette und infrarote Strahlung aus und ist die primäre Energiequelle für das Leben auf der Erde.",
+            "variants": {
+                "dyson_sphere": {
+                    "name": "Dyson-Sphäre der Sonne",
+                    "description": "Eine hypothetische Megastruktur, die die Sonne vollständig umgibt, um einen Großteil ihrer Energieausbeute aufzufangen, was eine Zivilisation vom Typ II auf der Kardaschow-Skala darstellt."
+                },
+                "red_giant": {
+                    "name": "Roter Riese Sonne",
+                    "description": "In etwa 5 Milliarden Jahren wird die Sonne den Wasserstoffbrennstoff in ihrem Kern verbrauchen und sich zu einem Roten Riesen aufblähen. Er dehnt sich auf das Zehn- bis Hunderfache seiner derzeitigen Größe aus, verschlingt nahe gelegene Planeten und verändert die bewohnbare Zone des Sonnensystems drastisch."
+                }
+            }
         },
         "mercury": {
             "name": "Merkur",
@@ -121,13 +131,19 @@
             "name": "Mars",
             "nickname": "Mars",
             "description": "Mars ist der vierte Planet von der Sonne und der zweitkleinste Planet im Sonnensystem. Er wird oft als Roter Planet bezeichnet, da auf seiner Oberfläche Eisenoxid vorherrscht. Er ist eine kalte Wüstenwelt mit einer dünnen Kohlendioxidatmosphäre, jahreszeitlichen polaren Eiskappen und erloschenen Vulkanen wie Olympus Mons.",
-            "terraform": {
-                "name": "Terraformter Mars (Stufe 1)",
-                "description": "Die erste Phase des Mars-Terraformings, in der Treibhausgasfreisetzungen und Orbitalspiegel die polaren Eiskappen schmelzen, die Atmosphäre verdichten und flüssige Wasseransammlungen auf der Oberfläche ermöglichen."
-            },
-            "terraform_2": {
-                "name": "Terraformter Mars (Stufe 2)",
-                "description": "Eine fortgeschrittene Phase des Terraformings mit einer vollständig atembaren Atmosphäre, gedeihender Pflanzenwelt, riesigen Ozeanen und einem stabilen Klima, das komplexe terrestrische Ökosysteme unterstützen kann."
+            "variants": {
+                "terraform": {
+                    "name": "Terraformter Mars (Stufe 1)",
+                    "description": "Die erste Phase des Mars-Terraformings, in der Treibhausgasfreisetzungen und Orbitalspiegel die polaren Eiskappen schmelzen, die Atmosphäre verdichten und flüssige Wasseransammlungen auf der Oberfläche ermöglichen."
+                },
+                "terraform_2": {
+                    "name": "Terraformter Mars (Stufe 2)",
+                    "description": "Eine fortgeschrittene Phase des Terraformings mit einer vollständig atembaren Atmosphäre, gedeihender Pflanzenwelt, riesigen Ozeanen und einem stabilen Klima, das komplexe terrestrische Ökosysteme unterstützen kann."
+                },
+                "terraform_3": {
+                    "name": "Terraformter Mars (Stufe 3)",
+                    "description": "Die finale Phase des Terraformings, in der der Mars vollständig von der Menschheit kolonialisiert und bewohnt ist. Riesige Megastädte und menschliche Siedlungen erstrecken sich über den Planeten, während leuchtende Stadtlichter die Marsnacht erhellen und den Mars als zweite Heimat der menschlichen Zivilisation etablieren."
+                }
             }
         },
         "phobos": {

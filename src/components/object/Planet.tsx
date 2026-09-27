@@ -6,7 +6,7 @@ import { Detailed } from "@react-three/drei"
 
 import type { Planet as PlanetType } from "@types"
 import { useSettingStore, useControlStore } from "@state"
-import { CelestialBody, PlanetCloud, PlanetRing, LandmarkMarker, PlyLoader, TextureLoader, SpaceCraft, Aurora, Atmosphere, EarthMaterial } from "@components/object"
+import { CelestialBody, PlanetCloud, PlanetRing, LandmarkMarker, PlyLoader, TextureLoader, SpaceCraft, Aurora, Atmosphere, NightMaterial } from "@components/object"
 import { LOWREST_SCALE } from "@constants"
 import { Else, If, Then, When } from "react-if"
 import nations from "@constants/solar-system/nation"
@@ -26,33 +26,32 @@ const PlanetMesh = ({ data }: { data: PlanetType }) => {
     const isFocused = focus === data.id
     const texturePath = (isFocused && data.texture_hd) ? data.texture_hd : data.texture!
     const texture = useDeferredValue(texturePath)
-    const isPresentEarth = data.id === "earth" && !data.variant_id
 
     const material = useMemo(() => {
-        if (isPresentEarth) {
-            return <EarthMaterial
+        if (data.night_texture) {
+            return <NightMaterial
                 textures={[
-                    `/textures/${isFocused ? "earth_hd.ktx2" : "earth.ktx2"}`,
-                    `/textures/${isFocused ? "earth_night_hd.ktx2" : "earth_night.ktx2"}`,
+                    `/textures/${isFocused && data.night_texture_hd ? data.texture_hd : data.texture}`,
+                    `/textures/${isFocused && data.night_texture_hd ? data.night_texture_hd : data.night_texture}`,
                 ]}
-                nightIntensity={1}
+                intensity={data.night_opacity}
             />
         } else if (data.texture) {
             return <TextureLoader path={texture} />
         } else {
             return <meshStandardMaterial color={data.color} />
         }
-    }, [isPresentEarth, data.texture, data.color, isFocused, texture])
+    }, [data.night_texture, data.texture, data.night_texture_hd, data.texture_hd, data.color, isFocused, texture])
 
     const materialRender = useDeferredValue(material)
 
     return <mesh castShadow receiveShadow>
-        <If condition={data.model}>
+        <If condition={data.texture}>
             <Then>
-                <PlyLoader path={data.model!} />
+                <sphereGeometry args={[1, 128, 64]} />
             </Then>
             <Else>
-                <sphereGeometry args={[1, 64, 64]} />
+                <sphereGeometry args={isFocused ? [1, 128, 64] : [1]} />
             </Else>
         </If>
         <Suspense fallback={<meshStandardMaterial color={data.color} />}>
@@ -74,9 +73,7 @@ const Planet = ({
     const distance = LOWREST_SCALE / distanceScale
 
     const data = useVariant(rawData) as PlanetType
-
     const scale = data.radius / sizeScale
-    const distances = data.texture_hd ? [0, scale * 3, distance] : [0, distance]
 
     const handleClick = () => {
         setControl({ focus: data.id })
@@ -151,9 +148,7 @@ const Planet = ({
             <When condition={showCloud}>
                 <Detailed distances={[0, distance]}>
                     <PlanetCloud
-                        path={data.cloud_texture!}
-                        opacity={data.cloud_opacity}
-                        scale={scale}
+                        data={data}
                         cloudRef={cloudRef}
                     />
                     <mesh />

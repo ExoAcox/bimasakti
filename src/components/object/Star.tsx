@@ -1,7 +1,7 @@
 
 
 
-import { useMemo, useRef } from "react"
+import { Suspense, useMemo, useRef } from "react"
 import { Color, ShaderMaterial, AdditiveBlending, BackSide, Mesh } from "three"
 import { useFrame } from "@react-three/fiber"
 import { useSettingStore, useControlStore } from "@state"
@@ -17,6 +17,7 @@ import {
 } from "@shaders/star"
 import { When } from "react-if"
 import { INTENSITY_SCALE } from "@constants"
+import { Gltf } from "@react-three/drei"
 
 
 const hexToRawColor = (hex: string) => {
@@ -42,15 +43,21 @@ const Star = ({ id, children, labelRef }: Props) => {
     const glowMatRef = useRef<ShaderMaterial>(null!)
     const coronaMatRef = useRef<ShaderMaterial>(null!)
 
+    const celestial = useCelestial()
     const { distanceScale, sizeScale } = useSettingStore()
-    const { setControl } = useControlStore()
+    const { focus, setControl } = useControlStore()
 
-    const rawData = useCelestial().getObjectById(id) as StarType
+    const universe = celestial.getUniverse()
+    const rawData = celestial.getObjectById(id) as StarType
     const data = useVariant(rawData) as StarType
+
+    const isFocused = data.id === focus || data.id === universe.defaultFocus
+    const isDysonSohere = data.variant_id === "dyson_sphere"
     const intensity = data.intensity / Math.pow(distanceScale, 2) * INTENSITY_SCALE
     const scale = data.radius / sizeScale
     const color = data.color
     const glowColor = data.color
+
 
     const handleClick = () => {
         setControl({ focus: id })
@@ -114,7 +121,7 @@ const Star = ({ id, children, labelRef }: Props) => {
 
     return (
         <CelestialBody data={data} onClick={handleClick} objectRef={objectRef} childrenComponent={children} labelRef={labelRef}>
-            <pointLight intensity={intensity / 5 * 2} color="white" />
+            <pointLight intensity={isDysonSohere ? 1000 : intensity / 5 * 2} color="white" />
 
             <group ref={objectRef}>
                 <group
@@ -125,25 +132,27 @@ const Star = ({ id, children, labelRef }: Props) => {
                         e.stopPropagation()
                         handleClick()
                     }}>
+
+                    <When condition={isDysonSohere}>
+                        <Suspense fallback={null}>
+                            <Gltf src="/models/dyson.glb" scale={0.1} />
+                            <Gltf rotation={[Math.PI / 2, 0, 0]} src="/models/dyson.glb" scale={0.1} />
+                            <Gltf rotation={[0, 0, Math.PI / 2]} src="/models/dyson.glb" scale={0.1} />
+                        </Suspense>
+                    </When>
+
                     <mesh>
-                        <sphereGeometry args={[1, 64, 64]} />
-                        {/* <meshStandardMaterial color={data.color} emissive={data.color} emissiveIntensity={intensity / 20} /> */}
+                        <sphereGeometry args={isFocused ? [1, 128, 64] : [1]} />
                         <primitive object={surfaceMaterial} ref={surfaceMatRef} attach="material" emissive={data.color} emissiveIntensity={intensity} />
                     </mesh>
 
-                    {/* 
-                <mesh scale={1.5}>
-                    <sphereGeometry args={[1, 64, 64]} />
-                    <meshStandardMaterial emissive="white" emissiveIntensity={10} />
-                </mesh> */}
-
                     <mesh scale={1.005}>
-                        <sphereGeometry args={[1, 64, 64]} />
+                        <sphereGeometry args={isFocused ? [1, 128, 64] : [1]} />
                         <primitive object={glowMaterial} ref={glowMatRef} attach="material" />
                     </mesh>
 
                     <mesh scale={1.01}>
-                        <sphereGeometry args={[1, 64, 64]} />
+                        <sphereGeometry args={isFocused ? [1, 128, 64] : [1]} />
                         <primitive object={coronaMaterial} ref={coronaMatRef} attach="material" />
                     </mesh>
                 </group>

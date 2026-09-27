@@ -21,6 +21,9 @@ export interface Object {
     min_zoom?: number
     texture?: string
     texture_hd?: string
+    night_texture?: string
+    night_texture_hd?: string
+    night_opacity?: number
     cloud_texture?: string
     cloud_opacity?: number
     aurora?: number

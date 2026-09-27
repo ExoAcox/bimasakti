@@ -1,6 +1,7 @@
 import { useTexture } from "@react-three/drei"
 import { useFrame } from "@react-three/fiber"
 import { auroraFragmentShader, auroraVertexShader } from "@shaders/aurora"
+import { useControlStore } from "@state"
 import type { Planet } from "@types"
 import { useMemo, useRef } from "react"
 import { AdditiveBlending, Color, DoubleSide, ShaderMaterial, Vector3 } from "three"
@@ -13,6 +14,9 @@ const Aurora = ({ data }: Props) => {
     const materialRef = useRef<ShaderMaterial>(null!)
     const texture = useTexture("/textures/aurora.png")
 
+    const { focus } = useControlStore()
+
+    const isFocused = data.id === focus
     const radius = 1.015
     const intensity = data.aurora ?? 0
     const color = "#44ffaa"
@@ -49,7 +53,7 @@ const Aurora = ({ data }: Props) => {
         <group rotation={[0, nodeRad, 0]}>
             <group rotation={[tiltRad, 0, 0]}>
                 <mesh scale={radius}>
-                    <sphereGeometry args={[1, 64, 64]} />
+                    <sphereGeometry args={isFocused ? [1, 64, 32] : [1]} />
                     <primitive ref={materialRef} object={auroraMaterial} attach="material" />
                 </mesh>
             </group>

@@ -51,7 +51,7 @@ const PLAY_BTN_ACTIVE_CLASS = "border-cyan-500/40 bg-cyan-950/40 text-cyan-200 s
 const TOOLTIP_CLASS =
     "absolute -top-9 left-1/2 -translate-x-1/2 pointer-events-none opacity-0 group-hover/btn:opacity-100 transition-all duration-200 translate-y-1 group-hover/btn:translate-y-0 whitespace-nowrap rounded-md bg-slate-900/90 border border-white/15 px-2.5 py-1 text-xs text-slate-200 shadow-xl backdrop-blur-md z-50";
 
-const SPEED_ARRAY = [0.1, 0.5, 1, 1.5, 2, 3, 5]
+const SPEED_ARRAY = [0.1, 0.5, 1, 2, 3, 5]
 const LayerPanel = ({ id }: Props) => {
     const { focusIndex, focusLandmark, landmarkVisible, nationVisible, rotateSpeed, cloudVisible, atmosphereVisible, artificialSatelliteVisible, dayNightMode, axisTilt, variant, setControl, resetControl } = useControlStore()
     const [lastRotateSpeed, setLastRotateSpeed] = useState(rotateSpeed)
@@ -180,6 +180,7 @@ const LayerPanel = ({ id }: Props) => {
     }
 
     const handleLeave = () => {
+        resetControl(data)
         setControl({ focus: "" })
     }
 
@@ -227,7 +228,7 @@ const LayerPanel = ({ id }: Props) => {
                     </button>
                 </When>
 
-                <When condition={Boolean(data.aurora || data.id === "earth")}>
+                <When condition={data.atmosphere}>
                     <button
                         onClick={handleAtmosphere}
                         className={clsx(TOGGLE_BTN_CLASS, atmosphereVisible && ACTIVE_GREEN_CLASS)}
@@ -247,7 +248,7 @@ const LayerPanel = ({ id }: Props) => {
                     </button>
                 </When>
 
-                <When condition={data.id === "earth"}>
+                <When condition={data.night_texture}>
                     <button
                         onClick={handleDayNight}
                         className={clsx(TOGGLE_BTN_CLASS, dayNightMode && ACTIVE_CYAN_CLASS)}

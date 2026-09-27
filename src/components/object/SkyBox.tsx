@@ -45,7 +45,7 @@ const SkyBox = ({
 
     return (
         <mesh ref={meshRef} material={material}>
-            <sphereGeometry args={[size, 64, 64]} />
+            <sphereGeometry args={[size, 64, 32]} />
         </mesh>
     )
 }

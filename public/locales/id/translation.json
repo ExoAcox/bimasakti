@@ -54,6 +54,10 @@
                 "description": "Dalam sekitar 5 miliar tahun ke depan, Matahari akan kehabisan bahan bakar hidrogen di intinya dan membengkak menjadi Raksasa Merah. Ukurannya akan mengembang puluhan hingga ratusan kali lipat, menelan planet-planet terdekat dan mengubah zona laik huni tata surya secara drastis."
             },
             "variants": {
+                "dyson_sphere": {
+                    "name": "Dyson Sphere Matahari",
+                    "description": "Megastruktur hipotetis yang mengelilingi Matahari untuk menangkap sebagian besar atau seluruh energi yang dipancarkannya, menandakan peradaban tingkat Tipe II pada Skala Kardashev."
+                },
                 "red_giant": {
                     "name": "Matahari Raksasa Merah",
                     "description": "Dalam sekitar 5 miliar tahun ke depan, Matahari akan kehabisan bahan bakar hidrogen di intinya dan membengkak menjadi Raksasa Merah. Ukurannya akan mengembang puluhan hingga ratusan kali lipat, menelan planet-planet terdekat dan mengubah zona laik huni tata surya secara drastis."
@@ -70,11 +74,11 @@
             "nickname": "Venus",
             "description": "Venus adalah planet kedua dari Matahari dan tetangga planet terdekat Bumi. Venus diselimuti oleh atmosfer karbon dioksida yang tebal dan beracun serta awan asam sulfat yang memerangkap panas dalam efek rumah kaca yang tidak terkendali, membuat permukaannya cukup panas untuk melelehkan timbal dan menjadikannya planet terpanas di tata surya.",
             "ancient": {
-                "name": "Venus Kuno",
+                "name": "Venus Lampau",
                 "description": "Miliaran tahun lalu, Venus mungkin memiliki iklim sedang dengan samudra air cair dan atmosfer yang lebih tipis, berpotensi mendukung kondisi yang dapat dihuni sebelum efek rumah kaca tak terkendali mengubah iklimnya selamanya."
             },
             "terraform": {
-                "name": "Venus Hasil Terraforming",
+                "name": "Venus Terraforming",
                 "description": "Venus di masa depan secara hipotetis tempat rekayasa geologi telah mengurangi tekanan atmosfer, memblokir radiasi matahari, dan menghadirkan lautan air cair, mengubah planet yang sangat panas ini menjadi dunia samudra yang dapat dihuni."
             }
         },
@@ -133,13 +137,19 @@
             "name": "Mars",
             "nickname": "Mars",
             "description": "Mars adalah planet keempat dari Matahari dan planet terkecil kedua di tata surya. Sering disebut Planet Merah karena besi oksida yang melimpah di permukaannya, Mars adalah dunia gurun yang dingin dengan atmosfer karbon dioksida yang tipis, lapisan es kutub musiman, dan gunung berapi mati seperti Olympus Mons.",
-            "terraform": {
-                "name": "Mars Hasil Terraforming (Tahap 1)",
-                "description": "Tahap awal terraforming Mars, di mana pelepasan gas rumah kaca dan cermin orbital mencairkan kutub es, menebalkan atmosfer, serta memungkinkan terbentuknya danau dan sungai di permukaannya."
-            },
-            "terraform_2": {
-                "name": "Mars Hasil Terraforming (Tahap 2)",
-                "description": "Tahap lanjut terraforming dengan atmosfer yang dapat dihirup sepenuhnya, vegetasi yang berkembang pesat, samudra luas, serta iklim stabil yang mampu mendukung ekosistem darat yang kompleks."
+            "variants": {
+                "terraform": {
+                    "name": "Mars Terraforming (Tahap 1)",
+                    "description": "Tahap awal terraforming Mars, di mana pelepasan gas rumah kaca dan cermin orbital mencairkan kutub es, menebalkan atmosfer, serta memungkinkan terbentuknya danau dan sungai di permukaannya."
+                },
+                "terraform_2": {
+                    "name": "Mars Terraforming (Tahap 2)",
+                    "description": "Tahap lanjut terraforming dengan atmosfer yang dapat dihirup sepenuhnya, vegetasi yang berkembang pesat, samudra luas, serta iklim stabil yang mampu mendukung ekosistem darat yang kompleks."
+                },
+                "terraform_3": {
+                    "name": "Mars Terraforming (Tahap 3)",
+                    "description": "Tahap akhir terraforming di mana Mars telah sepenuhnya dikolonisasi oleh manusia. Kota-kota megah dan pemukiman manusia tersebar di seluruh planet dengan jaringan lampu kota yang menerangi sisi malam Mars, menandai Mars sebagai rumah baru bagi peradaban manusia."
+                }
             }
         },
         "phobos": {
@@ -807,9 +817,9 @@
             "name": "Nili Fossae (Nilli Fossae)",
             "description": "Jaringan retakan dan ngarai geologi kompleks di Mars yang kaya akan mineral tanah liat (olivin dan smektit), menandakan sejarah paparan air cair purba yang intens."
         },
-        "ghost_dunes": {
-            "name": "Bukit Pasir Hantu (Ghost Dunes)",
-            "description": "Cetakan bukit pasir purba di Noctis Labyrinthus dan Hellas yang terendam lahar atau lumpur jutaan tahun lalu, meninggalkan rongga negatif berbentuk bukit pasir kuno setelah pasirnya tererosi."
+        "noctis_labyrinthus": {
+            "name": "Labirin Malam (Noctis Labyrinthus)",
+            "description": "Wilayah berstruktur labirin raksasa di Mars yang terletak di antara Valles Marineris dan dataran tinggi Tharsis, ditandai oleh jaringan kompleks lembah berlapis dan ngarai berdinding terjal yang terbentuk akibat patahan geologi."
         },
         "meridiani_planum": {
             "name": "Meridiani Planum",

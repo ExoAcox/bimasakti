@@ -45,7 +45,7 @@ const Blackhole = ({ id }: Props) => {
                     handleClick()
                 }}
             >
-                <sphereGeometry args={[1, 64, 64]} />
+                <sphereGeometry args={[1, 64, 32]} />
                 <meshBasicMaterial color="#000000" />
             </mesh>
             {/* <mesh scale={[1, 0.1, 1]}>

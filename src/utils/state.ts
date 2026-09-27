@@ -45,7 +45,7 @@ export interface ControlStore {
     nationVisible: boolean
     artificialSatelliteVisible: boolean
     dayNightMode: boolean
-    resetControl: (data: CelestialObject | Belt) => void
+    resetControl: (data?: CelestialObject | Belt) => void
     setControl: (values: Partial<Omit<ControlStore, "setControl" | "resetControl">>) => void
 }
 
@@ -71,7 +71,7 @@ export const useControlStore = create<ControlStore>((set) => ({
             ...defaultControl,
             focus: state.focus,
             focusIndex: state.focusIndex + 1,
-            axisTilt: (data as CelestialObject)?.axis || 0,
+            axisTilt: data ? (data as CelestialObject)?.axis : 0,
         }))
     },
     setControl: (values) => set((state) => ({ ...state, ...values })),

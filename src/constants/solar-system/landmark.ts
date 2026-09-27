@@ -432,10 +432,10 @@ export const landmarks: Landmark[] = [
         longitude: 76.8
     },
     {
-        id: "ghost_dunes",
+        id: "noctis_labyrinthus",
         parent: "mars",
         latitude: -7.0,
-        longitude: -94.0
+        longitude: -98.1
     },
     {
         id: "meridiani_planum",

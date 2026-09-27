@@ -37,7 +37,7 @@ const UserInterface = ({ id }: { id: string }) => {
         }
     }, [active, progress])
 
-    if (!isLoaded) return null
+    // if (!isLoaded) return null
 
     return (
         <When condition={id !== "milky_way"}>
