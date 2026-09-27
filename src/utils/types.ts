@@ -42,6 +42,11 @@ export interface Blackhole extends Object {
     stars: Star[]
 }
 
+export interface StarVariant extends Partial<Star> {
+    variant_id: string
+    order: number
+}
+
 export interface Star extends Object {
     type: "star"
     class: StarClass
@@ -50,7 +55,8 @@ export interface Star extends Object {
     gordilocks?: {
         inner_radius: number
         outer_radius: number
-    }
+    },
+    variants?: StarVariant[]
 }
 
 export interface Variant extends Partial<Planet> {
@@ -115,6 +121,7 @@ export const StarClass = {
     Yellow: "Yellow Dwarf Star",
     Orange: "Orange Dwarf Star",
     Red: "Red Dwarf Star",
+    RedGiant: "Red Giant Star",
     Neutron: "Neutron Star",
     Blue: "Blue Main-Sequence Star"
 } as const;

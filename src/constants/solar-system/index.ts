@@ -1,8 +1,9 @@
-import { StarClass, type Belt, type Comet, type Star } from "@types"
+import { StarClass, type Belt, type Comet, type Star, type StarVariant } from "@types"
 import { planets } from "./planet"
 import { satellites } from "./satellite"
 import { spacecraft } from "./spacecraft"
 import { landmarks } from "./landmark"
+import { variants } from "./variant"
 
 const stars: Star[] = [{
     id: "sun",
@@ -21,6 +22,9 @@ const stars: Star[] = [{
     gordilocks: {
         inner_radius: 142120000,
         outer_radius: 249832000,
+    },
+    get variants() {
+        return variants[this.id] as StarVariant[]
     },
     planets
 }]

@@ -11,7 +11,7 @@ interface Props {
 
 const Aurora = ({ data }: Props) => {
     const materialRef = useRef<ShaderMaterial>(null!)
-    const texture = useTexture("/aurora/textures/medres/corona-green.png")
+    const texture = useTexture("/textures/aurora.png")
 
     const radius = 1.015
     const intensity = data.aurora ?? 0

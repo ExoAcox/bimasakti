@@ -1,7 +1,7 @@
 import { useRef } from "react"
 import type { Blackhole as BlackholeType } from "@types"
 import { useSettingStore, useControlStore } from "@state"
-import { useCelestial } from "@function"
+import { useCelestial, userDataFormat } from "@function"
 import { Html } from "@react-three/drei"
 import { useFrame, useThree } from "@react-three/fiber"
 import type { OrbitControls } from "three-stdlib"
@@ -34,7 +34,7 @@ const Blackhole = ({ id }: Props) => {
     if (!data) return null
 
     return (
-        <group name={data.id} scale={scale} userData={data}>
+        <group name={data.id} scale={scale} userData={userDataFormat(data)}>
             <Html>
                 <label ref={labelRef} className="invisible absolute -translate-x-1/2 -translate-y-full -mt-10 text-sm font-semibold ">Wormhole</label>
             </Html>

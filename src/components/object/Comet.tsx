@@ -7,6 +7,7 @@ import { CelestialBody } from "@components/object"
 import { type Mesh } from "three"
 import { useSettingStore, useControlStore } from "@state"
 import { LOWREST_SCALE } from "@constants"
+import { userDataFormat } from "@function"
 
 interface Props {
     data: CometType
@@ -35,7 +36,7 @@ const Comet = ({ data }: Props) => {
     if (!data) return null
 
     return <CelestialBody data={data} objectRef={objectRef} onClick={handleClick}>
-        <group ref={objectRef} name={data.id} userData={data} scale={scale} onClick={(e) => {
+        <group ref={objectRef} name={data.id} userData={userDataFormat(data)} scale={scale} onClick={(e) => {
             e.stopPropagation()
             handleClick()
         }}>

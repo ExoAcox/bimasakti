@@ -7,7 +7,7 @@ import { useFrame } from "@react-three/fiber"
 import { useSettingStore, useControlStore } from "@state"
 import { StarClass, type Star as StarType } from "@types"
 import { CelestialBody, GordilocksZone, Pulsar } from "@components/object"
-import { useCelestial } from "@function"
+import { useCelestial, userDataFormat, useVariant } from "@function"
 import {
     surfaceVertexShader,
     surfaceFragmentShader,
@@ -45,7 +45,8 @@ const Star = ({ id, children, labelRef }: Props) => {
     const { distanceScale, sizeScale } = useSettingStore()
     const { setControl } = useControlStore()
 
-    const data = useCelestial().getObjectById(id) as StarType
+    const rawData = useCelestial().getObjectById(id) as StarType
+    const data = useVariant(rawData) as StarType
     const intensity = data.intensity / Math.pow(distanceScale, 2) * INTENSITY_SCALE
     const scale = data.radius / sizeScale
     const color = data.color
@@ -119,7 +120,7 @@ const Star = ({ id, children, labelRef }: Props) => {
                 <group
                     scale={scale}
                     name={id}
-                    userData={data}
+                    userData={userDataFormat(data)}
                     onClick={(e) => {
                         e.stopPropagation()
                         handleClick()

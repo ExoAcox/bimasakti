@@ -127,6 +127,7 @@ const Object = ({ data, children, childrenComponent, onClick, objectRef, cloudRe
         }
     })
 
+    // Occlude alternative
     useFrame(({ camera }) => {
         if (!internalLabelRef.current) return
 
@@ -138,16 +139,20 @@ const Object = ({ data, children, childrenComponent, onClick, objectRef, cloudRe
 
         let isVisible = distance > scale
 
-        // High-performance vector occlusion check against focused object (zero CPU raycast against mesh geometry)
-        const effectiveFocus = focus || defaultFocus
-        if (isVisible && effectiveFocus && effectiveFocus !== data.id) {
-            const targetObj = scene.getObjectByName(effectiveFocus)
-            if (targetObj) {
+        if (isVisible) {
+            const checkOcclusion = (occluderId: string) => {
+                const targetObj = scene.getObjectByName(occluderId)
+                if (!targetObj) return false
+
                 targetObj.getWorldPosition(planetPos)
                 object.getWorldPosition(labelPos)
 
                 const distCamToPlanet = camera.position.distanceTo(planetPos)
                 const distCamToLabel = camera.position.distanceTo(labelPos)
+
+                const targetRadius = targetObj.scale.x
+
+                if (distCamToPlanet <= targetRadius * 1.05) return false
 
                 if (distCamToPlanet < distCamToLabel) {
                     vCamToLabel.subVectors(labelPos, camera.position)
@@ -160,15 +165,21 @@ const Object = ({ data, children, childrenComponent, onClick, objectRef, cloudRe
                             closestPoint.copy(camera.position).addScaledVector(vCamToLabel, projLen)
                             const distToCenter = closestPoint.distanceTo(planetPos)
 
-                            const targetData = celestial.getObjectById(effectiveFocus) as CelestialObject
-                            const targetRadius = (targetData?.radius ?? 0) / sizeScale
-
-                            if (distToCenter < Math.max(targetRadius * 1.05, 0.0005)) {
-                                isVisible = false
+                            if (distToCenter < targetRadius * 1.05) {
+                                return true
                             }
                         }
                     }
                 }
+                return false
+            }
+
+            if (defaultFocus && defaultFocus !== data.id && checkOcclusion(defaultFocus)) {
+                isVisible = false
+            } else if (focus && focus !== data.id && focus !== defaultFocus && checkOcclusion(focus)) {
+                isVisible = false
+            } else if (focusedObject?.parent && focusedObject.parent !== data.id && focusedObject.parent !== defaultFocus && focusedObject.parent !== focus && checkOcclusion(focusedObject.parent)) {
+                isVisible = false
             }
         }
 

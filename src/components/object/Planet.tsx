@@ -1,6 +1,6 @@
 /* eslint-disable react-hooks/rules-of-hooks */
 
-import { useRef, Suspense, useDeferredValue } from "react"
+import { useRef, Suspense, useDeferredValue, useMemo } from "react"
 import { type Mesh } from "three"
 import { Detailed } from "@react-three/drei"
 
@@ -8,10 +8,10 @@ import type { Planet as PlanetType } from "@types"
 import { useSettingStore, useControlStore } from "@state"
 import { CelestialBody, PlanetCloud, PlanetRing, LandmarkMarker, PlyLoader, TextureLoader, SpaceCraft, Aurora, Atmosphere, EarthMaterial } from "@components/object"
 import { LOWREST_SCALE } from "@constants"
-import { Case, Default, Else, If, Switch, Then, When } from "react-if"
+import { Else, If, Then, When } from "react-if"
 import nations from "@constants/solar-system/nation"
 import NationMarker from "./NationMarker"
-import { useVariant } from "@function"
+import { userDataFormat, useVariant } from "@function"
 
 interface Props {
     data: PlanetType
@@ -20,10 +20,31 @@ interface Props {
     nightIntensity?: number
 }
 
-const PlanetMesh = ({ data, hd }: { data: PlanetType, hd?: boolean }) => {
-    const texturePath = (hd && data.texture_hd) ? data.texture_hd : data.texture!
+const PlanetMesh = ({ data }: { data: PlanetType }) => {
+    const { focus } = useControlStore()
+
+    const isFocused = focus === data.id
+    const texturePath = (isFocused && data.texture_hd) ? data.texture_hd : data.texture!
     const texture = useDeferredValue(texturePath)
     const isPresentEarth = data.id === "earth" && !data.variant_id
+
+    const material = useMemo(() => {
+        if (isPresentEarth) {
+            return <EarthMaterial
+                textures={[
+                    `/textures/${isFocused ? "earth_hd.ktx2" : "earth.ktx2"}`,
+                    `/textures/${isFocused ? "earth_night_hd.ktx2" : "earth_night.ktx2"}`,
+                ]}
+                nightIntensity={1}
+            />
+        } else if (data.texture) {
+            return <TextureLoader path={texture} />
+        } else {
+            return <meshStandardMaterial color={data.color} />
+        }
+    }, [isPresentEarth, data.texture, data.color, isFocused, texture])
+
+    const materialRender = useDeferredValue(material)
 
     return <mesh castShadow receiveShadow>
         <If condition={data.model}>
@@ -35,23 +56,7 @@ const PlanetMesh = ({ data, hd }: { data: PlanetType, hd?: boolean }) => {
             </Else>
         </If>
         <Suspense fallback={<meshStandardMaterial color={data.color} />}>
-            <Switch>
-                <Case condition={isPresentEarth}>
-                    <EarthMaterial
-                        textures={[
-                            `/textures/${hd ? "earth_hd.ktx2" : "earth.ktx2"}`,
-                            `/textures/${hd ? "earth_night_hd.ktx2" : "earth_night.ktx2"}`,
-                        ]}
-                        nightIntensity={1}
-                    />
-                </Case>
-                <Case condition={data.texture}>
-                    <TextureLoader path={texture} />
-                </Case>
-                <Default>
-                    <meshStandardMaterial color={data.color} />
-                </Default>
-            </Switch>
+            {materialRender}
         </Suspense>
     </mesh>
 }
@@ -68,7 +73,7 @@ const Planet = ({
     const { focus, variant, landmarkVisible, nationVisible, cloudVisible, atmosphereVisible, setControl } = useControlStore()
     const distance = LOWREST_SCALE / distanceScale
 
-    const data = useVariant(rawData)
+    const data = useVariant(rawData) as PlanetType
 
     const scale = data.radius / sizeScale
     const distances = data.texture_hd ? [0, scale * 3, distance] : [0, distance]
@@ -95,18 +100,14 @@ const Planet = ({
             <group
                 ref={objectRef}
                 name={data.id}
-                userData={data}
+                userData={userDataFormat(data)}
                 scale={scale}
                 onClick={(e) => {
                     e.stopPropagation()
                     handleClick()
                 }}
             >
-                <Detailed distances={distances}>
-                    <When condition={data.texture_hd}>
-                        <PlanetMesh data={data} hd />
-                    </When>
-
+                <Detailed distances={[0, distance]}>
                     <PlanetMesh data={data} />
 
                     <mesh>

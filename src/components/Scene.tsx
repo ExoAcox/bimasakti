@@ -7,10 +7,9 @@ import { useFrame, useThree } from "@react-three/fiber"
 import { Vector3 } from "three"
 import { useCelestial, useMobile } from "@function"
 import { latLngToVector3 } from "@function"
-import type { Belt, CelestialObject, Landmark, Planet, Universe } from "@types"
+import type { Belt, CelestialObject, Planet, Universe } from "@types"
 
 interface Props {
-    // children: React.ReactNode
     data: Universe
 }
 
@@ -34,13 +33,28 @@ const Scene = ({ data }: Props) => {
     const isMobile = useMobile()
 
     const { sizeScale, pauseOrbitWhenFocus, mode } = useSettingStore()
-    const { focus, focusIndex, focusLandmark, resetControl, setControl } = useControlStore()
+    const { focus, variant, focusIndex, focusLandmark, resetControl, setControl } = useControlStore()
 
     const { scene, camera } = useThree()
     const celestial = useCelestial()
     const universe = celestial.getUniverse()
 
+    // Focus to default position
+    useLayoutEffect(() => {
+        if (controlRef.current) {
+            const position = (isMobile ? universe.mobile?.cameraPosition : universe.cameraPosition) || universe.cameraPosition
+            controlRef.current.target.set(0, 0, 0);
 
+            if (Array.isArray(position)) {
+                camera.position.set(position[0], position[1], position[2]);
+            } else if (position instanceof Vector3) {
+                camera.position.copy(position);
+            }
+            controlRef.current.update();
+        }
+    }, [universe, controlRef, camera.position, isMobile])
+
+    // Reset default position
     useEffect(() => {
         if (focus) {
             const object = celestial.getObjectById(focus) as CelestialObject | Belt
@@ -62,30 +76,22 @@ const Scene = ({ data }: Props) => {
         }
     }, [focus])
 
-    // Focus to default position
-    useLayoutEffect(() => {
-        if (controlRef.current) {
-            const position = (isMobile ? universe.mobile?.cameraPosition : universe.cameraPosition) || universe.cameraPosition
-            controlRef.current.target.set(0, 0, 0);
-
-            if (Array.isArray(position)) {
-                camera.position.set(position[0], position[1], position[2]);
-            } else if (position instanceof Vector3) {
-                camera.position.copy(position);
-            }
-            controlRef.current.update();
-        }
-    }, [universe, controlRef, camera.position, isMobile])
-
     // Focus to object
     useEffect(() => {
         if (!focus || mode !== "normal") return;
         if (ignoredFocus.includes(focus)) return
 
         const object = scene.getObjectByName(focus)
-
         bound.refresh(object).fit()
     }, [bound, focus, scene, focusIndex])
+
+    // Refocus after sun become red giant
+    useEffect(() => {
+        if (focus === "sun") {
+            const object = scene.getObjectByName(focus)
+            bound.refresh(object).fit()
+        }
+    }, [focus, variant])
 
     // Focus to landmark
     useEffect(() => {
@@ -174,7 +180,7 @@ const Scene = ({ data }: Props) => {
                 const distSqCam = state.camera.position.distanceToSquared(targetResetCamPos.current)
                 const distSqTarget = controlRef.current.target.distanceToSquared(targetResetControlsTarget.current)
 
-                if (distSqCam < 0.0001 && distSqTarget < 0.0001) {
+                if (distSqCam < 10 && distSqTarget < 10) {
                     state.camera.position.copy(targetResetCamPos.current)
                     controlRef.current.target.copy(targetResetControlsTarget.current)
                     controlRef.current.enabled = true

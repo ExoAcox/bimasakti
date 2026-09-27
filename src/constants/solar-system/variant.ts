@@ -1,10 +1,24 @@
-import type { Variant } from "@types"
+import { StarClass, type StarVariant, type Variant } from "@types"
 
 interface Variants {
-    [key: string]: Variant[]
+    [key: string]: (Variant | StarVariant)[]
 }
 
 export const variants: Variants = {
+    sun: [
+        {
+            variant_id: "red_giant",
+            order: 1,
+            class: StarClass.RedGiant,
+            radius: 695700 * 200,
+            color: "#ff3300",
+            intensity: 3000,
+            gordilocks: {
+                inner_radius: 4500000000,
+                outer_radius: 7500000000,
+            }
+        }
+    ],
     venus: [
         {
             variant_id: "ancient",
@@ -17,9 +31,11 @@ export const variants: Variants = {
         {
             variant_id: "terraform",
             order: 1,
+            color: "#2b82c5",
             texture: "venus_terraform.jpg",
             texture_hd: undefined,
             cloud_texture: "earth_cloud.ktx2",
+            aurora: 1,
             landmarks: []
         }
     ],

@@ -2,7 +2,7 @@
 import { useControlStore } from "@state"
 import clsx from "clsx";
 import { startTransition, useCallback, useEffect, useMemo, useRef, useState } from "react";
-import { Case, Switch, Then, When } from "react-if";
+import { When } from "react-if";
 import { useCelestial, useVariant } from "@function";
 import type { Planet } from "@types";
 
@@ -107,7 +107,8 @@ const LayerPanel = ({ id }: Props) => {
     }
 
     const rawData = useCelestial().getObjectById(id) as Planet
-    const data = useVariant(rawData)
+    const data = useVariant(rawData) as Planet
+    const showTimelines = data.variants?.length && timelinesVisible
 
     const timelines = useMemo(() => {
         if (!data?.variants?.length) return []
@@ -188,7 +189,7 @@ const LayerPanel = ({ id }: Props) => {
         <div className="fixed bottom-6 left-1/2 -translate-x-1/2 flex items-center gap-3 z-40 bg-background backdrop-blur-md p-2 px-3 rounded-full border border-white/15 shadow-2xl shadow-cyan-950/40 hover:border-cyan-500/30 transition-all duration-300">
 
             <When condition={focusLandmark}>
-                <div className="absolute flex items-center gap-2 -top-3 left-1/2 -translate-x-1/2 -translate-y-full bg-background border border-white/15 px-2.5 py-1 font-semibold text-sm text-white shadow-xl backdrop-blur-md rounded-md">
+                <div className={clsx(showTimelines ? "-top-10" : "-top-3", "absolute flex items-center gap-2 left-1/2 -translate-x-1/2 -translate-y-full bg-background border border-white/15 px-2.5 py-1 font-semibold text-sm text-white shadow-xl backdrop-blur-md rounded-md")}>
                     <span className="pointer-events-none">{t(`landmark.${focusLandmark}.name`)}</span>
                     <MdClose className="cursor-pointer text-red-400 size-4" onClick={handleLeaveLandmark} />
                 </div>
@@ -206,7 +207,7 @@ const LayerPanel = ({ id }: Props) => {
                     </button>
                 </When>
 
-                <When condition={data.id === "earth"}>
+                <When condition={data.id === "earth" && !data.variant_id}>
                     <button
                         onClick={handleNation}
                         className={clsx(TOGGLE_BTN_CLASS, nationVisible && ACTIVE_CYAN_CLASS)}
@@ -359,7 +360,7 @@ const LayerPanel = ({ id }: Props) => {
                 </button>
             </div>
 
-            <When condition={timelinesVisible}>
+            <When condition={showTimelines}>
                 <div className="absolute w-full -top-1 left-1/2 -translate-x-1/2 -translate-y-full z-5">
                     <div className="relative flex justify-evenly items-end gap-3 py-2 px-3 max-w-full scrollbar-thin scrollbar-thumb-slate-700">
                         <div className="absolute bottom-3.75 left-6 right-6 h-0.5 bg-linear-to-r from-slate-700 via-cyan-500/40 to-slate-700 z-0 pointer-events-none" />

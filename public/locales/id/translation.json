@@ -48,7 +48,17 @@
         "sun": {
             "name": "Matahari",
             "nickname": "Matahari",
-            "description": "Matahari adalah bintang di pusat tata surya kita, yang mencakup 99,8% dari total massa tata surya. Matahari berbentuk bola plasma panas yang hampir sempurna, dipanaskan hingga pijar oleh reaksi fusi nuklir di intinya, memancarkan energi terutama dalam bentuk cahaya, radiasi ultraviolet, dan inframerah, serta menjadi sumber energi utama bagi kehidupan di Bumi."
+            "description": "Matahari adalah bintang di pusat tata surya kita, yang mencakup 99,8% dari total massa tata surya. Matahari berbentuk bola plasma panas yang hampir sempurna, dipanaskan hingga pijar oleh reaksi fusi nuklir di intinya, memancarkan energi terutama dalam bentuk cahaya, radiasi ultraviolet, dan inframerah, serta menjadi sumber energi utama bagi kehidupan di Bumi.",
+            "red_giant": {
+                "name": "Matahari Raksasa Merah",
+                "description": "Dalam sekitar 5 miliar tahun ke depan, Matahari akan kehabisan bahan bakar hidrogen di intinya dan membengkak menjadi Raksasa Merah. Ukurannya akan mengembang puluhan hingga ratusan kali lipat, menelan planet-planet terdekat dan mengubah zona laik huni tata surya secara drastis."
+            },
+            "variants": {
+                "red_giant": {
+                    "name": "Matahari Raksasa Merah",
+                    "description": "Dalam sekitar 5 miliar tahun ke depan, Matahari akan kehabisan bahan bakar hidrogen di intinya dan membengkak menjadi Raksasa Merah. Ukurannya akan mengembang puluhan hingga ratusan kali lipat, menelan planet-planet terdekat dan mengubah zona laik huni tata surya secara drastis."
+                }
+            }
         },
         "mercury": {
             "name": "Merkurius",
@@ -729,6 +739,30 @@
             "name": "Pegunungan Zagros",
             "description": "Jajaran pegunungan utama di Iran, Irak, dan Turki tenggara, membentang lebih dari 1.600 kilometer di sepanjang Dataran Tinggi Iran."
         },
+        "indonesian_archipelago": {
+            "name": "Kepulauan Indonesia",
+            "description": "Kumpulan pulau terluas di dunia yang membentang di antara Samudra Pasifik dan Samudra Hindia, mencakup lebih dari 17.000 pulau."
+        },
+        "karakoram_mountains": {
+            "name": "Pegunungan Karakoram",
+            "description": "Jajaran pegunungan raksasa di Asia yang melintasi perbatasan Pakistan, India, dan Tiongkok, menampung konsentrasi puncak di atas 8.000 meter terbanyak setelah Himalaya termasuk Gunung K2."
+        },
+        "yangtze_river": {
+            "name": "Sungai Yangtze",
+            "description": "Sungai terpanjang di Asia dan sungai terpanjang ketiga di dunia, mengalir seluruhnya di dalam Tiongkok menuju Laut Tiongkok Timur."
+        },
+        "great_dividing_range": {
+            "name": "Great Dividing Range",
+            "description": "Pegunungan terbesar dan terpanjang di benua Australia, membentang paralel dengan pesisir timur Australia sepanjang lebih dari 3.500 kilometer."
+        },
+        "bay_of_bengal": {
+            "name": "Teluk Benggala",
+            "description": "Teluk terbesar di dunia yang membentuk bagian timur laut Samudra Hindia, berbatasan dengan India, Bangladesh, Myanmar, dan Kepulauan Andaman."
+        },
+        "hudson_bay": {
+            "name": "Teluk Hudson",
+            "description": "Badan air pedalaman yang sangat besar di Kanada bagian timur laut, terhubung dengan Samudra Arktik dan Atlantik."
+        },
         "mount_olympus": {
             "name": "Olympus Mons",
             "description": "Gunung berapi perisai raksasa di Mars, merupakan gunung berapi dan puncak tertinggi yang diketahui di seluruh Tata Surya (ketinggian ±21,9 km)."
@@ -972,6 +1006,10 @@
         "caloris_basin": {
             "name": "Cekungan Caloris",
             "description": "Cekungan dampak kolosal di Merkurius berdiameter 1.550 km, dikelilingi oleh pegunungan berbatu tinggi akibat hantaman asteroid raksasa."
+        },
+        "vivaldi_crater": {
+            "name": "Kawah Vivaldi",
+            "description": "Kawah dampak berstruktur cincin puncak yang mencolok di planet Merkurius (berdiameter ±213 km) dengan cincin pegunungan dalam yang utuh, dinamai dari komposer Italia Antonio Vivaldi."
         },
         "tombaugh_regio": {
             "name": "Tombaugh Regio",

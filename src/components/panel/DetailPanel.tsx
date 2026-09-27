@@ -43,8 +43,8 @@ const PanelDetail = () => {
         }
     }
 
-    const objectName = variant ? t(`object.${data?.id}.${variant}.name`, t(`object.${data?.id}.name`)) : t(`object.${data?.id}.name`)
-    const objectDescription = variant ? t(`object.${data?.id}.${variant}.description`, t(`object.${data?.id}.description`)) : t(`object.${data?.id}.description`)
+    const objectName = variant ? t(`object.${data?.id}.variants.${variant}.name`, t(`object.${data?.id}.name`)) : t(`object.${data?.id}.name`)
+    const objectDescription = variant ? t(`object.${data?.id}.variants.${variant}.description`, t(`object.${data?.id}.description`)) : t(`object.${data?.id}.description`)
 
     return (
         <div className={clsx("fixed top-4 right-4 z-50 transition-transform duration-300", !isPanelOpen && "translate-x-[calc(100%)]")}>

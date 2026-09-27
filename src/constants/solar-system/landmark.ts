@@ -303,6 +303,42 @@ export const landmarks: Landmark[] = [
         latitude: 33.5,
         longitude: 48.5
     },
+    {
+        id: "indonesian_archipelago",
+        parent: "earth",
+        latitude: -2.5,
+        longitude: 118.0
+    },
+    {
+        id: "karakoram_mountains",
+        parent: "earth",
+        latitude: 35.5,
+        longitude: 76.0
+    },
+    {
+        id: "yangtze_river",
+        parent: "earth",
+        latitude: 30.5,
+        longitude: 114.3
+    },
+    {
+        id: "great_dividing_range",
+        parent: "earth",
+        latitude: -25.0,
+        longitude: 149.0
+    },
+    {
+        id: "bay_of_bengal",
+        parent: "earth",
+        latitude: 15.0,
+        longitude: 88.0
+    },
+    {
+        id: "hudson_bay",
+        parent: "earth",
+        latitude: 60.0,
+        longitude: -85.0
+    },
 
     // Mars
     {
@@ -696,6 +732,12 @@ export const landmarks: Landmark[] = [
         parent: "mercury",
         latitude: 30.5,
         longitude: 189.8
+    },
+    {
+        id: "vivaldi_crater",
+        parent: "mercury",
+        latitude: 13.7,
+        longitude: 85.9
     },
 
     // Pluto

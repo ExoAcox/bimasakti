@@ -1,21 +1,31 @@
 import { Detailed, Gltf } from "@react-three/drei"
 import { SpaceCraftClass, type SpaceCraft as SpaceCraftType } from "@types"
 import { MathUtils, Mesh } from "three"
-import { useRef } from "react"
+import { Suspense, useRef } from "react"
 import { useSettingStore, useControlStore } from "@state"
 import { CelestialBody } from "@components/object"
 import { LOWREST_SCALE } from "@constants"
 import { When } from "react-if"
+import { userDataFormat } from "@function"
 
 interface Props {
     data: SpaceCraftType
 }
 
+const WireframeMesh = () => {
+    return <mesh>
+        <sphereGeometry />
+        <meshStandardMaterial wireframe />
+    </mesh>
+}
+
 const SpaceCraft = ({ data }: Props) => {
     const objectRef = useRef<Mesh>(null!)
 
-    const { artificialSatelliteVisible, setControl } = useControlStore()
+    const { focus, artificialSatelliteVisible, setControl } = useControlStore()
     const { sizeScale, distanceScale } = useSettingStore()
+
+    const isFocused = data.id === focus
     const scale = Math.max(data.radius / sizeScale, 5e-8)
     const distance = LOWREST_SCALE / distanceScale
     const rotation: [number, number, number] = data.orbit_duration ? [0, 0, 0] : [0, MathUtils.degToRad(-90), 0]
@@ -35,7 +45,7 @@ const SpaceCraft = ({ data }: Props) => {
         <group
             ref={objectRef}
             name={data.id}
-            userData={data}
+            userData={userDataFormat(data)}
             scale={scale}
             rotation={rotation}
             visible={artificialSatelliteVisible}
@@ -44,13 +54,14 @@ const SpaceCraft = ({ data }: Props) => {
                 handleClick()
             }}
         >
-            <Detailed distances={[0, distance]}>
-                <Gltf src={`/models/${data.model}`} />
-                <mesh>
-                    <sphereGeometry />
-                    <meshStandardMaterial color={data.color} />
-                </mesh>
-            </Detailed>
+            <Suspense fallback={<WireframeMesh />}>
+                <Detailed distances={[0, distance]}>
+                    <When condition={isFocused}>
+                        <Gltf src={`/models/${data.model}`} />
+                    </When>
+                    <WireframeMesh />
+                </Detailed>
+            </Suspense>
         </group>
     </CelestialBody>
 }

@@ -51,32 +51,6 @@ export const satellites: Satellite[] = [
     },
     // Jupiter
     {
-        id: "amalthea",
-        type: "satellite",
-        parent: "jupiter",
-        radius: 83.5,
-        distance: 181400,
-        color: "#c85244",
-        axis: 0.4,
-        orbit_duration: 0.5,
-        rotate_duration: 0.5, // Tidally locked
-        texture: "amalthea.webp",
-        icon: "satellite.png"
-    },
-    {
-        id: "thebe",
-        type: "satellite",
-        parent: "jupiter",
-        radius: 49.3,
-        distance: 221900,
-        color: "#8a8a8a",
-        axis: 0.2,
-        orbit_duration: 0.68,
-        rotate_duration: 0.68, // Tidally locked
-        texture: "thebe.webp",
-        icon: "satellite.png"
-    },
-    {
         id: "io",
         type: "satellite",
         parent: "jupiter",
@@ -126,31 +100,6 @@ export const satellites: Satellite[] = [
         orbit_duration: 16.69,
         rotate_duration: 16.69, // Tidally locked
         texture: "callisto.webp",
-        icon: "satellite.png"
-    },
-    {
-        id: "himalia",
-        type: "satellite",
-        parent: "jupiter",
-        radius: 85,
-        distance: 11461000,
-        color: "#8a8a8a",
-        axis: 0,
-        orbit_duration: 250.56,
-        rotate_duration: 0.41,
-        icon: "satellite.png"
-    },
-    {
-        id: "elara",
-        type: "satellite",
-        parent: "jupiter",
-        radius: 43,
-        distance: 11741000,
-        color: "#8a8a8a",
-        axis: 0,
-        orbit_duration: 259.64,
-        rotate_duration: 0.5, // Tidally locked
-        texture: "elara.webp",
         icon: "satellite.png"
     },
     // Saturn
@@ -378,7 +327,7 @@ export const satellites: Satellite[] = [
     //     rotate_duration: 25.2, // Tidally locked
     //     icon: "satellite.png"
     // },
-    // // Quaoar
+    // Quaoar
     // {
     //     id: "weywot",
     //     type: "satellite",

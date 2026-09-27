@@ -1,7 +1,7 @@
-import { Camera, MathUtils, Object3D, Vector3 } from "three"
+import { Camera, MathUtils, Object3D, Plane, Vector3 } from "three"
 import { solar_system, alpha_centauri, trappist_1, sagittarius_a, lich, universes, universe_ids } from "@constants"
 import { useEffect, useMemo, useRef, useState } from "react";
-import type { Belt, CelestialObject, Landmark, Planet } from "@types";
+import type { Belt, CelestialObject, Landmark, Planet, Star } from "@types";
 import { useLocation } from "react-router";
 import { useControlStore } from "@state";
 
@@ -28,6 +28,7 @@ export const useCelestial = () => {
     const { pathname } = useLocation()
     const targetPos = useRef(new Vector3())
 
+    const { focus, variant } = useControlStore()
     const currentUniverse = pathname.split("/")[1]
 
     const objects: (CelestialObject | Belt)[] = []
@@ -36,6 +37,10 @@ export const useCelestial = () => {
         if (universe === currentUniverse) {
             const keys = Object.keys(universeMapping[currentUniverse])
             keys.filter(key => key !== "landmarks").forEach(key => {
+                if (key === "planets" && focus === "sun" && variant === "red_giant") {
+                    return objects.push(...solar_system.planets.slice(3) as Planet[])
+                }
+
                 objects.push(...(universeMapping[currentUniverse][key] as (CelestialObject | Belt)[]))
             })
 
@@ -64,11 +69,11 @@ export const useCelestial = () => {
     return { objects, getObjectById, getObjectsByType, getLandmark, getCameraDistance, getUniverse }
 }
 
-export const useVariant = (data: Planet) => {
+export const useVariant = (data: Star | Planet) => {
     const { variant } = useControlStore()
 
     return useMemo(() => {
-        if (data?.type === "planet" && variant) {
+        if (data && data.variants && variant) {
             const variantData = data.variants?.find((v) => v.variant_id === variant)
             if (variantData) return { ...data, ...variantData }
         }
@@ -133,6 +138,13 @@ export const lengthFormat = (value: number) => {
         return `${(value * 1000)?.toLocaleString()} m`
     } else {
         return `${value?.toLocaleString()} km`
+    }
+}
+
+export const userDataFormat = (data: CelestialObject) => {
+    return {
+        type: data.type,
+        radius: data.radius
     }
 }
 

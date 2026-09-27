@@ -2,7 +2,7 @@ import { satellites } from "./satellite"
 import { spacecraft } from "./spacecraft"
 import { landmarks } from "./landmark"
 import { variants } from "./variant"
-import { PlanetClass, type Planet } from "@types"
+import { PlanetClass, type Planet, type Variant } from "@types"
 
 export const planets: Planet[] = [
     {
@@ -41,9 +41,10 @@ export const planets: Planet[] = [
         texture_hd: "venus_hd.ktx2",
         cloud_texture: "venus_cloud.ktx2",
         atmosphere: 1,
+        aurora: 0.5,
         icon: "venus.png",
         get variants() {
-            return variants[this.id]
+            return variants[this.id] as Variant[]
         },
         get satellites() {
             return satellites.filter((satellite) => satellite.parent === this.id)
@@ -70,7 +71,7 @@ export const planets: Planet[] = [
         atmosphere: 1,
         icon: "earth.png",
         get variants() {
-            return variants[this.id]
+            return variants[this.id] as Variant[]
         },
         get satellites() {
             return satellites.filter((satellite) => satellite.parent === this.id)
@@ -98,7 +99,7 @@ export const planets: Planet[] = [
         atmosphere: 0.5,
         icon: "mars.png",
         get variants() {
-            return variants[this.id]
+            return variants[this.id] as Variant[]
         },
         get satellites() {
             return satellites.filter((satellite) => satellite.parent === this.id)
