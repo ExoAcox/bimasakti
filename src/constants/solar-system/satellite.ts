@@ -1,5 +1,6 @@
-import type { Satellite } from "@types"
+import type { Satellite, SatelliteVariant } from "@types"
 import { landmarks } from "./landmark"
+import { variants } from "./variant"
 
 export const satellites: Satellite[] = [
     // Earth
@@ -16,6 +17,9 @@ export const satellites: Satellite[] = [
         texture: "moon.ktx2",
         texture_hd: "moon_hd.ktx2",
         icon: "satellite.png",
+        get variants() {
+            return variants[this.id] as SatelliteVariant[]
+        },
         get landmarks() {
             return landmarks.filter((landmark) => landmark.parent === this.id)
         }
@@ -61,7 +65,10 @@ export const satellites: Satellite[] = [
         orbit_duration: 1.77,
         rotate_duration: 1.77, // Tidally locked
         texture: "io.webp",
-        icon: "satellite.png"
+        icon: "satellite.png",
+        get landmarks() {
+            return landmarks.filter((landmark) => landmark.parent === this.id)
+        }
     },
     {
         id: "europa",
@@ -113,8 +120,11 @@ export const satellites: Satellite[] = [
         axis: 1.5,
         orbit_duration: 0.94,
         rotate_duration: 0.94, // Tidally locked
-        texture: "mimas.webp",
-        icon: "satellite.png"
+        texture: "mimas.jpg",
+        icon: "satellite.png",
+        get landmarks() {
+            return landmarks.filter((landmark) => landmark.parent === this.id)
+        }
     },
     {
         id: "enceladus",
@@ -179,6 +189,7 @@ export const satellites: Satellite[] = [
         orbit_duration: 15.95,
         rotate_duration: 15.95, // Tidally locked
         texture: "titan.webp",
+        atmosphere: 1,
         icon: "satellite.png"
     },
     {
@@ -272,6 +283,7 @@ export const satellites: Satellite[] = [
         orbit_duration: 1.12,
         rotate_duration: 1.12, // Tidally locked
         texture: "proteus.webp",
+        model: "proteus.ply",
         icon: "satellite.png"
     },
     {
@@ -284,7 +296,7 @@ export const satellites: Satellite[] = [
         axis: 157.0,
         orbit_duration: 5.88,
         rotate_duration: 5.88, // Tidally locked
-        texture: "triton.webp",
+        texture: "triton.png",
         icon: "satellite.png"
     },
     {

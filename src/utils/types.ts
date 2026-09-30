@@ -1,7 +1,7 @@
 import type { Vector3 } from "@react-three/fiber"
 
-export type CelestialType = "blackhole" | "star" | "planet" | "comet" | "artificial_satellite" | "satellite" | "spacecraft"
-export type CelestialObject = Blackhole | Star | Planet | Comet | Satellite | SpaceCraft
+export type CelestialType = "blackhole" | "star" | "planet" | "asteroid" | "comet" | "artificial_satellite" | "satellite" | "spacecraft"
+export type CelestialObject = Blackhole | Star | Planet | Asteroid | Comet | Satellite | SpaceCraft
 
 // export interface Aurora {
 //     color?: string
@@ -26,6 +26,7 @@ export interface Object {
     night_opacity?: number
     cloud_texture?: string
     cloud_opacity?: number
+    topology_texture?: string
     aurora?: number
     atmosphere?: number
     model?: string
@@ -46,6 +47,11 @@ export interface Blackhole extends Object {
 }
 
 export interface StarVariant extends Partial<Star> {
+    variant_id: string
+    order: number
+}
+
+export interface SatelliteVariant extends Partial<Satellite> {
     variant_id: string
     order: number
 }
@@ -78,6 +84,12 @@ export interface Planet extends Object {
 
 export interface Satellite extends Object {
     type: "satellite"
+    variants?: SatelliteVariant[]
+}
+
+export interface Asteroid extends Object {
+    type: "asteroid"
+    model: string
 }
 
 export interface Comet extends Object {
@@ -134,7 +146,7 @@ export const SpaceCraftClass = {
     Orbiter: "Orbiter Probe",
     Station: "Space Station",
     Telescope: "Space Telescope"
-}
+} as const
 
 export type PlanetClass = (typeof PlanetClass)[keyof typeof PlanetClass];
 export type StarClass = (typeof StarClass)[keyof typeof StarClass];
@@ -171,3 +183,11 @@ export interface Universe {
     assetCount?: number,
     mobile: Partial<Universe>
 }
+
+export const Mode = {
+    Object: "object-view",
+    ThirdPerson: "third-person",
+    FirstPerson: "first-person"
+} as const
+
+export type Mode = (typeof Mode)[keyof typeof Mode];

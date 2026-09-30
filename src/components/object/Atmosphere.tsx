@@ -40,7 +40,7 @@ const Atmosphere = ({ data }: Props) => {
     })
 
     return <mesh scale={1.01}>
-        <sphereGeometry args={isFocused ? [1, 128, 64] : [1]} />
+        <sphereGeometry args={isFocused ? [1, 128, 64] : [1, 64, 32]} />
         <primitive ref={materialRef} object={atmosphereMaterial} attach="material" />
     </mesh>
 }

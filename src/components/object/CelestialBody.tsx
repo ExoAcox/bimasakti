@@ -1,11 +1,11 @@
 /* eslint-disable react-hooks/set-state-in-effect */
-import { useLayoutEffect, useMemo, useRef, useState } from "react"
-import { Group, MathUtils, Mesh, Object3D, Vector3 } from "three"
-import type { CelestialObject, Planet as PlanetType } from "@types"
+import { useMemo, useRef } from "react"
+import { Group, MathUtils, Mesh, Vector3 } from "three"
+import { Mode, type CelestialObject, type Planet as PlanetType } from "@types"
 import { useFrame, useThree } from "@react-three/fiber"
 import { calculateSatelliteDistance, getInitialRotation, useCelestial } from "@function";
 import { Html } from "@react-three/drei";
-import { useSettingStore, useControlStore, useShipStore } from "@state";
+import { useSettingStore, useControlStore } from "@state";
 import { useTranslation } from "react-i18next";
 import { When } from "react-if"
 import { OrbitLine } from "@components/object"
@@ -34,14 +34,15 @@ const Object = ({ data, children, childrenComponent, onClick, objectRef, cloudRe
 
     const { scene } = useThree()
 
-    const { mode, sizeScale, distanceScale, speedScale, showOrbitLine, ignoreAxis, pauseOrbitWhenFocus } = useSettingStore()
-    const { focus, rotateSpeed } = useControlStore()
+    const { sizeScale, distanceScale, speedScale, showOrbitLine, ignoreAxis, pauseOrbitWhenFocus } = useSettingStore()
+    const { mode, focus, tidalLock, rotateSpeed } = useControlStore()
     const { t } = useTranslation()
 
     const celestial = useCelestial()
     const universe = celestial.getUniverse()
     const focusedObject = celestial.getObjectById(focus) as CelestialObject
     const defaultFocus = universe.defaultFocus
+    const isFocused = focus === data.id;
 
     const axis = ignoreAxis ? 0 : MathUtils.degToRad(data?.axis ?? 0)
     // const scale = data.radius / sizeScale
@@ -74,6 +75,8 @@ const Object = ({ data, children, childrenComponent, onClick, objectRef, cloudRe
 
     const virtualTimeRef = useRef(0)
     const lastElapsedTimeRef = useRef<number | null>(null)
+    const rotationRef = useRef<number | null>(null)
+    const cloudRotationRef = useRef<number>(0)
 
     useFrame((state) => {
         if (!data) return
@@ -85,29 +88,38 @@ const Object = ({ data, children, childrenComponent, onClick, objectRef, cloudRe
         const deltaT = elapsedTime - lastElapsedTimeRef.current
         lastElapsedTimeRef.current = elapsedTime
 
-        virtualTimeRef.current += deltaT * rotateSpeed
+        const effectiveRotateSpeed = isFocused ? rotateSpeed : 1
+        virtualTimeRef.current += deltaT * effectiveRotateSpeed
 
         const speed = ((virtualTimeRef.current % 60) / 60) * Math.PI * 2
+        const deltaSpeed = ((deltaT * effectiveRotateSpeed) / 60) * Math.PI * 2
 
         if (data.rotate_duration && objectRef?.current?.rotation) {
-            const isTidalLocked = data.orbit_duration === data.rotate_duration
+            const isTidalLocked = data.orbit_duration === data.rotate_duration && tidalLock
             if (isTidalLocked) {
                 objectRef.current.rotation.y = Math.PI
+                rotationRef.current = Math.PI
             } else {
-                objectRef.current.rotation.y = (speed / data.rotate_duration) * speedScale
+                if (rotationRef.current === null) {
+                    rotationRef.current = (speed / data.rotate_duration) * speedScale
+                } else {
+                    const deltaRotation = (deltaSpeed / data.rotate_duration) * speedScale
+                    rotationRef.current += deltaRotation
+                }
+                objectRef.current.rotation.y = rotationRef.current
             }
         }
 
         if (data.rotate_duration && data.cloud_texture && cloudRef?.current) {
-            const cloudSpeed = ((virtualTimeRef.current % 50) / 50) * Math.PI * 2
-            cloudRef.current.rotation.y = (cloudSpeed / data.rotate_duration) * speedScale
+            const cloudDeltaSpeed = ((deltaT * effectiveRotateSpeed) / 50) * Math.PI * 2
+            const cloudDeltaRotation = (cloudDeltaSpeed / data.rotate_duration) * speedScale
+            cloudRotationRef.current += cloudDeltaRotation
+            cloudRef.current.rotation.y = cloudRotationRef.current
         }
 
-        if (!data.orbit_duration || mode === "spaceship") return
+        if (!data.orbit_duration || mode !== Mode.Object) return
 
         const isParentOfFocused = focus ? isAncestorOfFocused(data.id, focus) : false;
-        const isFocused = focus === data.id;
-
         const shouldPauseOrbit = pauseOrbitWhenFocus && (isFocused || isParentOfFocused);
 
         if (!shouldPauseOrbit) {

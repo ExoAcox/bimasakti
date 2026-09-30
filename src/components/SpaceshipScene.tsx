@@ -1,13 +1,15 @@
 /* eslint-disable react-hooks/immutability */
 /* eslint-disable react-hooks/exhaustive-deps */
-import { useRef } from "react"
+import { useEffect, useRef } from "react"
 import { OrbitControls } from "@react-three/drei"
 import type { OrbitControls as OrbitControlsType } from "three-stdlib"
 import { useFrame, useThree } from "@react-three/fiber"
 import { Vector3, Quaternion, Group, MathUtils } from "three"
 import { SHIP_SCALE } from "@constants"
 import { Spaceship } from "./object"
-import { useShipStore } from "@state"
+import { useControlStore } from "@state"
+import { useCelestial } from "@function"
+import { Mode } from "@types"
 
 const cameraOffset = new Vector3(0, 4 * SHIP_SCALE, SHIP_SCALE * 12)
 const cockpitOffset = new Vector3(0, SHIP_SCALE * 2.75, SHIP_SCALE * 1.0)
@@ -29,8 +31,11 @@ const SpaceshipScene = () => {
     const initialized1stPerson = useRef(false)
     const initialized3rdPerson = useRef(false)
 
+    const { mode, focus, resetControl } = useControlStore()
+
     const { camera } = useThree()
-    const { cockpit } = useShipStore()
+    const celestial = useCelestial()
+    const isCockpit = mode === Mode.FirstPerson
 
     // useEffect(() => {
     //     if (!controlRef.current) return
@@ -50,6 +55,13 @@ const SpaceshipScene = () => {
     //     lastPos.current.copy(currentPos.current)
     // }, [cockpit])
 
+    useEffect(() => {
+        if (focus) {
+            const object = celestial.getObjectById(focus)
+            resetControl(object)
+        }
+    }, [focus])
+
     // Camera follow spaceship
     useFrame(({ scene }) => {
         const spaceship = scene.getObjectByName("spaceship")
@@ -58,7 +70,7 @@ const SpaceshipScene = () => {
         spaceship.getWorldPosition(currentPos.current)
         spaceship.getWorldQuaternion(currentQuat.current)
 
-        if (cockpit) {
+        if (isCockpit) {
             initialized3rdPerson.current = false
             rotCockpitOffset.current.copy(cockpitOffset).applyQuaternion(currentQuat.current)
             const eyePos = currentPos.current.clone().add(rotCockpitOffset.current)
@@ -172,9 +184,9 @@ const SpaceshipScene = () => {
 
             <OrbitControls
                 makeDefault
-                minDistance={cockpit ? 1e-11 : SHIP_SCALE * 20}
-                maxDistance={cockpit ? SHIP_SCALE * 2 : SHIP_SCALE * 500}
-                enableZoom={!cockpit}
+                minDistance={isCockpit ? 1e-11 : SHIP_SCALE * 20}
+                maxDistance={isCockpit ? SHIP_SCALE * 2 : SHIP_SCALE * 500}
+                enableZoom={!isCockpit}
                 // minPolarAngle={0}
                 // maxPolarAngle={Math.PI}
                 // minAzimuthAngle={-Infinity}

@@ -1,13 +1,14 @@
+/* eslint-disable react-hooks/set-state-in-effect */
 /* eslint-disable react-hooks/exhaustive-deps */
-import { useEffect, useLayoutEffect, useRef } from "react"
+import { useEffect, useLayoutEffect, useRef, useState } from "react"
 import { useSettingStore, useControlStore } from "@state"
 import { OrbitControls, useBounds } from "@react-three/drei"
 import type { OrbitControls as OrbitControlsType } from "three-stdlib"
 import { useFrame, useThree } from "@react-three/fiber"
 import { Vector3 } from "three"
-import { useCelestial, useMobile } from "@function"
+import { useCelestial, useMobile, useVariant } from "@function"
 import { latLngToVector3 } from "@function"
-import type { Belt, CelestialObject, Planet, Universe } from "@types"
+import type { CelestialObject, Planet, Satellite, Star, Universe } from "@types"
 
 interface Props {
     data: Universe
@@ -32,12 +33,17 @@ const Scene = ({ data }: Props) => {
     const bound = useBounds()
     const isMobile = useMobile()
 
-    const { sizeScale, pauseOrbitWhenFocus, mode } = useSettingStore()
-    const { focus, variant, focusIndex, focusLandmark, resetControl, setControl } = useControlStore()
+    const { sizeScale, pauseOrbitWhenFocus } = useSettingStore()
+    const { focus, focusIndex, focusLandmark, resetControl, setControl } = useControlStore()
+    const [lastVariant, setLastVariant] = useState<{ radius: number, distance: number } | undefined>()
+
 
     const { scene, camera } = useThree()
     const celestial = useCelestial()
     const universe = celestial.getUniverse()
+
+    const focusData = focus ? (celestial.getObjectById(focus) as Planet) : undefined
+    const variantData = useVariant(focusData as Planet)
 
     // Focus to default position
     useLayoutEffect(() => {
@@ -57,7 +63,7 @@ const Scene = ({ data }: Props) => {
     // Reset default position
     useEffect(() => {
         if (focus) {
-            const object = celestial.getObjectById(focus) as CelestialObject | Belt
+            const object = celestial.getObjectById(focus)
             resetControl(object)
 
             isResettingCamera.current = false
@@ -78,20 +84,25 @@ const Scene = ({ data }: Props) => {
 
     // Focus to object
     useEffect(() => {
-        if (!focus || mode !== "normal") return;
+        if (!focus) return;
         if (ignoredFocus.includes(focus)) return
 
         const object = scene.getObjectByName(focus)
         bound.refresh(object).fit()
     }, [bound, focus, scene, focusIndex])
 
-    // Refocus after sun become red giant
+    // Refocus if variant changed
     useEffect(() => {
-        if (focus === "sun") {
-            const object = scene.getObjectByName(focus)
-            bound.refresh(object).fit()
+        if (focus && focusData && variantData) {
+            if (lastVariant?.radius !== variantData.radius || lastVariant?.distance !== variantData.distance) {
+                setLastVariant({ radius: variantData.radius, distance: variantData.distance })
+                const object = scene.getObjectByName(focus)
+                bound.refresh(object).fit()
+            }
+        } else {
+            setLastVariant(undefined)
         }
-    }, [focus, variant])
+    }, [bound, focus, focusData, variantData, scene])
 
     // Focus to landmark
     useEffect(() => {
@@ -121,8 +132,6 @@ const Scene = ({ data }: Props) => {
     }, [focusLandmark])
 
     useFrame((state) => {
-        if (mode !== "normal") return
-
         if (focus) {
             isResettingCamera.current = false
             const object = scene.getObjectByName(focus)

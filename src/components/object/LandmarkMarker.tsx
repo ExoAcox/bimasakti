@@ -1,12 +1,12 @@
-import { useMemo, useRef } from "react"
-import { Group, Matrix4, MathUtils, Vector3 } from "three"
-import { useFrame, useThree } from "@react-three/fiber"
+import { useEffect, useMemo, useRef } from "react"
+import { Group, Matrix4, Mesh, Raycaster, Vector3 } from "three"
+import { useFrame } from "@react-three/fiber"
 import { Html } from "@react-three/drei"
 import { useTranslation } from "react-i18next"
 import { useControlStore } from "@state"
 import type { Landmark } from "@types"
 import clsx from "clsx"
-import { latLngToVector3, useCelestial } from "@function"
+import { latLngToVector3 } from "@function"
 import { Else, If, Then } from "react-if"
 
 interface Props {
@@ -14,22 +14,36 @@ interface Props {
     radius: number
     visible?: boolean
     lonOffset?: number
+    custom?: boolean
 }
-
-
 
 const tempMatrix = new Matrix4()
 const tempCamPos = new Vector3()
 const tempWorldPos = new Vector3()
+const tempDir = new Vector3()
+const tempWorldOrigin = new Vector3()
+const tempWorldTarget = new Vector3()
+const tempWorldDir = new Vector3()
+const tempLocalPos = new Vector3()
 
-const LandmarkMarker = ({ landmark, visible = true, lonOffset = 0 }: Props) => {
+const LandmarkMarker = ({ landmark, visible = true, lonOffset = 0, custom = false }: Props) => {
     const { t } = useTranslation()
     const { focusLandmark, setControl } = useControlStore()
     const groupRef = useRef<Group>(null!)
     const buttonRef = useRef<HTMLButtonElement>(null!)
 
-    const position = useMemo(() => {
+    const initialPosition = useMemo(() => {
         return latLngToVector3(landmark.latitude, landmark.longitude, lonOffset)
+    }, [landmark.latitude, landmark.longitude, lonOffset])
+
+    const positionRef = useRef<Vector3>(initialPosition.clone())
+    const snappedRef = useRef(false)
+    const raycaster = useMemo(() => new Raycaster(), [])
+
+    useEffect(() => {
+        const initial = latLngToVector3(landmark.latitude, landmark.longitude, lonOffset)
+        positionRef.current.copy(initial)
+        snappedRef.current = false
     }, [landmark.latitude, landmark.longitude, lonOffset])
 
     const isSelected = focusLandmark === landmark.id
@@ -38,21 +52,67 @@ const LandmarkMarker = ({ landmark, visible = true, lonOffset = 0 }: Props) => {
         if (!groupRef.current || !buttonRef.current) return
 
         const parent = groupRef.current.parent
-        if (parent) {
-            tempMatrix.copy(parent.matrixWorld).invert()
-            tempCamPos.copy(state.camera.position).applyMatrix4(tempMatrix)
-        } else {
-            tempCamPos.copy(state.camera.position)
+        if (!parent) return
+
+        // Raycast to snap position to actual 3D mesh surface if custom model and not yet snapped
+        if (custom && !snappedRef.current) {
+            parent.updateMatrixWorld(true)
+
+            tempDir.copy(initialPosition).normalize()
+            tempWorldOrigin.copy(tempDir).multiplyScalar(3.0).applyMatrix4(parent.matrixWorld)
+            tempWorldTarget.set(0, 0, 0).applyMatrix4(parent.matrixWorld)
+            tempWorldDir.copy(tempWorldTarget).sub(tempWorldOrigin).normalize()
+
+            raycaster.set(tempWorldOrigin, tempWorldDir)
+            const intersects = raycaster.intersectObject(parent, true)
+
+            const meshHit = intersects.find((hit) => {
+                const obj = hit.object as Mesh
+                if (!obj.isMesh || !obj.geometry) return false
+                // Skip fallback SphereGeometry if a detailed custom geometry (like PLY model) exists in the hit list
+                if (
+                    obj.geometry.type === "SphereGeometry" &&
+                    intersects.some((h) => {
+                        const hObj = h.object as Mesh
+                        return hObj.isMesh && hObj.geometry && hObj.geometry.type !== "SphereGeometry"
+                    })
+                ) {
+                    return false
+                }
+                return true
+            })
+
+            if (meshHit) {
+                const hitObj = meshHit.object as Mesh
+                tempMatrix.copy(parent.matrixWorld).invert()
+                tempLocalPos.copy(meshHit.point).applyMatrix4(tempMatrix)
+
+                // Offset slightly outward along surface direction (1.5% above surface)
+                const surfaceDist = tempLocalPos.length()
+                tempLocalPos.normalize().multiplyScalar(surfaceDist + 0.015)
+
+                positionRef.current.copy(tempLocalPos)
+                groupRef.current.position.copy(tempLocalPos)
+
+                const isCustomMesh = hitObj.geometry.type !== "SphereGeometry"
+                if (isCustomMesh) {
+                    snappedRef.current = true
+                }
+            }
         }
 
-        // Fast mathematical dot-product occlusion check on sphere surface (front hemisphere)
-        const dot = position.dot(tempCamPos)
-        const isFacingCamera = dot > 1
+        tempMatrix.copy(parent.matrixWorld).invert()
+        tempCamPos.copy(state.camera.position).applyMatrix4(tempMatrix)
+
+        const currentPos = positionRef.current
+        const dot = currentPos.dot(tempCamPos)
+        // Dot product horizon occlusion check for arbitrary radius surface point
+        const isFacingCamera = dot > currentPos.lengthSq() * 0.95
 
         // Distance check: only display landmark labels when camera is zoomed in close to planet
         const worldPos = groupRef.current.getWorldPosition(tempWorldPos)
         const dist = state.camera.position.distanceTo(worldPos)
-        const parentScale = parent ? parent.scale.x : 1
+        const parentScale = parent.scale.x
         const isZoomedIn = dist < parentScale * 4.0
 
         buttonRef.current.style.visibility = (isFacingCamera && isZoomedIn) ? "visible" : "hidden"
@@ -70,7 +130,7 @@ const LandmarkMarker = ({ landmark, visible = true, lonOffset = 0 }: Props) => {
     }
 
     return (
-        <group ref={groupRef} position={position}>
+        <group ref={groupRef} position={initialPosition}>
             <Html
                 zIndexRange={[isSelected ? 2 : 1, 0]}
                 style={{

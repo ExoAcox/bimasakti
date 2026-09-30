@@ -3,7 +3,7 @@ import clsx from "clsx"
 import { useState } from "react"
 import { useControlStore } from "@state"
 
-import { PlanetClass, SpaceCraftClass, type Belt, type CelestialObject, type Comet, type Planet, type SpaceCraft, type Star } from "@types"
+import { PlanetClass, SpaceCraftClass, type Asteroid, type Belt, type CelestialObject, type Comet, type Planet, type Satellite, type SpaceCraft, type Star } from "@types"
 import { useCelestial } from "@function"
 import { useTranslation } from "react-i18next"
 
@@ -84,11 +84,13 @@ const Sidebar = () => {
     const celestial = useCelestial()
     const stars = celestial.getObjectsByType("star") as Star[]
     const comets = celestial.getObjectsByType("comet") as Comet[]
+    const asteroids = celestial.getObjectsByType("asteroid") as Asteroid[]
     const belts = celestial.getObjectsByType("belt") as Belt[]
     const allPlanets = celestial.getObjectsByType("planet") as Planet[]
     const planets = allPlanets.filter(planet => planet.class !== PlanetClass.Dwarf)
     const dwarfPlanets = allPlanets.filter(planet => planet.class === PlanetClass.Dwarf)
-    const spaceCraft = celestial.getObjectsByType("spacecraft") as SpaceCraft[]
+    const satellites = celestial.getObjectsByType("satellite") as Satellite[]
+    const spacecraft = celestial.getObjectsByType("spacecraft") as SpaceCraft[]
 
     const handleClick = () => {
         setOpen(!isOpen)
@@ -108,8 +110,10 @@ const Sidebar = () => {
                     <Section data={stars} initialOpen>{t("ui.stars")}</Section>
                     <Section data={planets} initialOpen>{t("ui.planets")}</Section>
                     <Section data={dwarfPlanets}>{t("ui.dwarf_planets")}</Section>
-                    <Section data={spaceCraft}>{t("ui.spacecraft")}</Section>
+                    <Section data={satellites}>{t("ui.satellites")}</Section>
+                    <Section data={asteroids}>{t("ui.asteroids")}</Section>
                     <Section data={comets}>{t("ui.comets")}</Section>
+                    <Section data={spacecraft}>{t("ui.spacecraft")}</Section>
                     <Section data={belts}>{t("ui.others")}</Section>
                 </div>
             </div>

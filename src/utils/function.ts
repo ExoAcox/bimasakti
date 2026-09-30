@@ -1,7 +1,7 @@
 import { Camera, MathUtils, Object3D, Plane, Vector3 } from "three"
 import { solar_system, alpha_centauri, trappist_1, sagittarius_a, lich, universes, universe_ids } from "@constants"
 import { useEffect, useMemo, useRef, useState } from "react";
-import type { Belt, CelestialObject, Landmark, Planet, Star } from "@types";
+import type { Belt, CelestialObject, Landmark, Planet, Satellite, Star } from "@types";
 import { useLocation } from "react-router";
 import { useControlStore } from "@state";
 
@@ -69,7 +69,7 @@ export const useCelestial = () => {
     return { objects, getObjectById, getObjectsByType, getLandmark, getCameraDistance, getUniverse }
 }
 
-export const useVariant = (data: Star | Planet) => {
+export const useVariant = (data: Star | Planet | Satellite) => {
     const { variant } = useControlStore()
 
     return useMemo(() => {

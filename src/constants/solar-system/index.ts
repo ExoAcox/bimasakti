@@ -1,4 +1,4 @@
-import { StarClass, type Belt, type Comet, type Star, type StarVariant } from "@types"
+import { StarClass, type Asteroid, type Belt, type Comet, type Star, type StarVariant } from "@types"
 import { planets } from "./planet"
 import { satellites } from "./satellite"
 import { spacecraft } from "./spacecraft"
@@ -71,5 +71,25 @@ const comets: Comet[] = [
     }
 ]
 
-export default { stars, belts, comets, planets, satellites, spacecraft, landmarks }
+const asteroids: Asteroid[] = [
+    {
+        id: "vesta",
+        type: "asteroid",
+        parent: "sun",
+        radius: 262.7,
+        distance: 353400000,
+        color: "#9c9589",
+        axis: 7.14,
+        orbit_duration: 1325.4,
+        rotate_duration: 0.22,
+        model: "vesta.ply",
+        texture: "vesta.jpg",
+        icon: "asteroid.png",
+        get landmarks() {
+            return landmarks.filter((landmark) => landmark.parent === this.id)
+        }
+    }
+]
+
+export default { stars, belts, comets, asteroids, planets, satellites, spacecraft, landmarks }
 

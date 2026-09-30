@@ -48,7 +48,7 @@ export const variants: Variants = {
     earth: [
         {
             variant_id: "65_mbc",
-            order: -1,
+            order: -65,
             texture: "earth_0065.jpg",
             texture_hd: undefined,
             night_texture: undefined,
@@ -57,7 +57,7 @@ export const variants: Variants = {
         },
         {
             variant_id: "90_mbc",
-            order: -2,
+            order: -90,
             texture: "earth_0090.jpg",
             texture_hd: undefined,
             night_texture: undefined,
@@ -66,7 +66,7 @@ export const variants: Variants = {
         },
         {
             variant_id: "105_mbc",
-            order: -3,
+            order: -105,
             texture: "earth_0105.jpg",
             texture_hd: undefined,
             night_texture: undefined,
@@ -75,7 +75,7 @@ export const variants: Variants = {
         },
         {
             variant_id: "120_mbc",
-            order: -4,
+            order: -120,
             texture: "earth_0120.jpg",
             texture_hd: undefined,
             night_texture: undefined,
@@ -84,7 +84,7 @@ export const variants: Variants = {
         },
         {
             variant_id: "150_mbc",
-            order: -5,
+            order: -150,
             texture: "earth_0150.jpg",
             texture_hd: undefined,
             night_texture: undefined,
@@ -93,7 +93,7 @@ export const variants: Variants = {
         },
         {
             variant_id: "170_mbc",
-            order: -6,
+            order: -170,
             texture: "earth_0170.jpg",
             texture_hd: undefined,
             night_texture: undefined,
@@ -102,7 +102,7 @@ export const variants: Variants = {
         },
         {
             variant_id: "200_mbc",
-            order: -7,
+            order: -200,
             texture: "earth_0200.jpg",
             texture_hd: undefined,
             night_texture: undefined,
@@ -111,7 +111,7 @@ export const variants: Variants = {
         },
         {
             variant_id: "220_mbc",
-            order: -8,
+            order: -220,
             texture: "earth_0220.jpg",
             texture_hd: undefined,
             night_texture: undefined,
@@ -120,12 +120,23 @@ export const variants: Variants = {
         },
         {
             variant_id: "240_mbc",
-            order: -9,
+            order: -240,
             texture: "earth_0240.jpg",
             texture_hd: undefined,
             night_texture: undefined,
             artificial_satellites: [],
             landmarks: [],
+        },
+    ],
+    moon: [
+        {
+            variant_id: "theia",
+            order: -4500,
+            radius: 3390,
+            rotate_duration: 14.0,
+            texture: "theia.jpg",
+            texture_hd: undefined,
+            landmarks: []
         },
     ],
     mars: [

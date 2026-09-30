@@ -1,15 +1,15 @@
 import { createPortal } from "react-dom"
 import { useTranslation } from "react-i18next"
 
-import { IoIosSettings } from "react-icons/io";
 import { MdClose } from "react-icons/md";
 import { VscDebugRestart } from "react-icons/vsc";
 import { ImCheckboxChecked, ImCheckboxUnchecked } from "react-icons/im";
 import { FaSpaceAwesome } from "react-icons/fa6";
-import { useSettingStore, useControlStore, useShipStore, defaultSetting } from "@state";
+import { useSettingStore, useControlStore, defaultSetting } from "@state";
 import { SCALE, TIME_SCALE } from "@constants";
 import clsx from "clsx";
 import { TbEye } from "react-icons/tb";
+import { Mode } from "@types";
 
 interface Props {
     isOpen: boolean
@@ -146,21 +146,15 @@ const SettingModal = ({ isOpen, close }: Props) => {
     )
 }
 const SettingPanel = () => {
-    const { mode, setSetting } = useSettingStore()
-    const { setControl, resetControl } = useControlStore()
-    const { cockpit, setShip } = useShipStore()
+    const { mode, setControl, resetControl } = useControlStore()
     const { t } = useTranslation()
 
     const handleSpaceship = () => {
-        setSetting({ mode: "spaceship" })
-
-        if (mode === "normal") {
+        if (mode === Mode.Object) {
             resetControl()
-            setControl({ rotateSpeed: 0.1 })
-            setSetting({ mode: "spaceship" })
+            setControl({ rotateSpeed: 0.1, landmarkVisible: false, mode: Mode.ThirdPerson })
         } else {
-            setControl({ rotateSpeed: 1 })
-            setSetting({ mode: "normal" })
+            setControl({ rotateSpeed: 1, landmarkVisible: true, mode: Mode.Object })
         }
 
     }
@@ -171,8 +165,8 @@ const SettingPanel = () => {
             {t("ui.setting")}
         </button> */}
 
-        <div className={"panel-section flex-col gap-2"}>
-            {mode === "spaceship" && (
+        {/* <div className={"panel-section flex-col gap-2"}>
+            {mode !== Mode.Object && (
                 <button
                     onClick={() => setShip({ cockpit: !cockpit })}
                     className={clsx("panel-button", cockpit && "bg-cyan-500/30 text-cyan-300 border-cyan-500/60")}
@@ -183,13 +177,13 @@ const SettingPanel = () => {
             )}
             <button
                 onClick={handleSpaceship}
-                className={clsx("panel-button", mode === "spaceship" && "bg-cyan-500/20 text-cyan-300 border-cyan-500/40")}
+                className={clsx("panel-button", mode !== Mode.Object && "bg-cyan-500/20 text-cyan-300 border-cyan-500/40")}
             >
                 <FaSpaceAwesome />
                 <span className="panel-tooltip">Spaceship Mode</span>
             </button>
 
-        </div>
+        </div> */}
 
         {/* <SettingModal isOpen={showSetting} close={() => setSetting({ showSetting: false })} /> */}
     </div>

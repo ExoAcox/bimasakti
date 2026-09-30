@@ -1,7 +1,7 @@
 /* eslint-disable react-hooks/set-state-in-effect */
 import { useControlStore } from "@state"
 import clsx from "clsx";
-import { startTransition, useCallback, useEffect, useMemo, useRef, useState } from "react";
+import { startTransition, useCallback, useDeferredValue, useEffect, useMemo, useRef, useState } from "react";
 import { When } from "react-if";
 import { useCelestial, useVariant } from "@function";
 import type { Planet } from "@types";
@@ -9,12 +9,13 @@ import type { Planet } from "@types";
 
 import { PiFastForwardFill, PiRewindFill, PiPlayFill, PiPauseFill } from "react-icons/pi";
 import { ImCloud } from "react-icons/im";
-import { GoCircle } from "react-icons/go";
+import { AiFillEye } from "react-icons/ai";
 import { TbSatelliteFilled } from "react-icons/tb";
 import { HiLocationMarker } from "react-icons/hi";
 import { MdBrightnessMedium, MdClose, MdHistory, MdRefresh } from "react-icons/md";
 import { SiUnitednations, SiGoogleearth } from "react-icons/si";
 import { useTranslation } from "react-i18next";
+import type { Plane } from "three";
 
 interface Props {
     id: string
@@ -53,11 +54,13 @@ const TOOLTIP_CLASS =
 
 const SPEED_ARRAY = [0.1, 0.5, 1, 2, 3, 5]
 const LayerPanel = ({ id }: Props) => {
-    const { focusIndex, focusLandmark, landmarkVisible, nationVisible, rotateSpeed, cloudVisible, atmosphereVisible, artificialSatelliteVisible, dayNightMode, axisTilt, variant, setControl, resetControl } = useControlStore()
+    const { focusIndex, focusLandmark, tidalLock, landmarkVisible, nationVisible, rotateSpeed, cloudVisible, atmosphereVisible, artificialSatelliteVisible, dayNightMode, axisTilt, variant, setControl, resetControl } = useControlStore()
+    const [lastVariant, setLastVariant] = useState<{ orbit_duration: number, rotate_duration: number } | undefined>()
     const [lastRotateSpeed, setLastRotateSpeed] = useState(rotateSpeed)
-
-    const [activePanel, setActivePanel] = useState("")
     const [timelinesVisible, setTimelineVisible] = useState(true)
+    const [modeVisible, setModeVisible] = useState(false)
+    const deferredVariant = useDeferredValue(variant)
+    const isLoading = variant !== deferredVariant
 
     const tiltDialRef = useRef<HTMLDivElement>(null)
     const isDraggingRef = useRef(false)
@@ -110,6 +113,7 @@ const LayerPanel = ({ id }: Props) => {
     const data = useVariant(rawData) as Planet
     const showTimelines = data.variants?.length && timelinesVisible
 
+
     const timelines = useMemo(() => {
         if (!data?.variants?.length) return []
 
@@ -124,7 +128,21 @@ const LayerPanel = ({ id }: Props) => {
     }, [rotateSpeed])
 
     const handleRotatePlay = () => {
-        setControl({ rotateSpeed: rotateSpeed === 0 ? (lastRotateSpeed > 0 ? lastRotateSpeed : 1) : 0, focusLandmark: "" })
+        const isTidalLock = data.rotate_duration === data.orbit_duration
+
+        if (isTidalLock) {
+            setControl({
+                rotateSpeed: rotateSpeed === 0 ? (lastRotateSpeed > 0 ? lastRotateSpeed : 1) : 0,
+                tidalLock: false,
+                focusLandmark: ""
+            })
+        } else {
+            setControl({
+                rotateSpeed: rotateSpeed === 0 ? (lastRotateSpeed > 0 ? lastRotateSpeed : 1) : 0,
+                focusLandmark: ""
+            })
+        }
+
     }
 
     const handleRotateNext = () => {
@@ -183,6 +201,27 @@ const LayerPanel = ({ id }: Props) => {
         resetControl(data)
         setControl({ focus: "" })
     }
+
+    useEffect(() => {
+        if (data) {
+            setLastVariant({ orbit_duration: data.orbit_duration, rotate_duration: data.rotate_duration })
+        }
+    }, [data])
+
+    const isTidalLock = (object: { orbit_duration: number, rotate_duration: number }) => {
+        return object.orbit_duration === object.rotate_duration
+    }
+
+    useEffect(() => {
+        if (!lastVariant || !data) return
+
+        const previousLock = isTidalLock(lastVariant)
+        const currentLock = isTidalLock(data)
+
+        if (previousLock !== currentLock) {
+            setControl({ tidalLock: currentLock, rotateSpeed: currentLock ? 0 : 1 })
+        }
+    }, [data, data.orbit_duration, data.rotate_duration, lastVariant, rotateSpeed, setControl])
 
     if (!data) return null;
 
@@ -257,11 +296,20 @@ const LayerPanel = ({ id }: Props) => {
                         <span className={TOOLTIP_CLASS}>Day / Night Mode</span>
                     </button>
                 </When>
+                <When condition={data.variants?.length}>
+                    <button
+                        onClick={handleTimelines}
+                        className={clsx(TOGGLE_BTN_CLASS, showTimelines && ACTIVE_CYAN_CLASS)}
+                    >
+                        <MdHistory />
+                        <span className={TOOLTIP_CLASS}>Timelines</span>
+                    </button>
+                </When>
             </div>
 
-            <div className="h-6 w-px bg-divider my-auto" />
+            {/* <div className="h-6 w-px bg-divider my-auto" /> */}
 
-            <div>
+            {/* <div>
                 <button
                     onClick={() => setActivePanel(activePanel === "axis_tilt" ? "" : "axis_tilt")}
                     className={clsx(PLAY_BTN_CLASS)}
@@ -299,7 +347,7 @@ const LayerPanel = ({ id }: Props) => {
                         </div>
                     </div>
                 </When>
-            </div>
+            </div> */}
 
             {/* Rotation Controls Section */}
             <When condition={data.rotate_duration}>
@@ -320,7 +368,7 @@ const LayerPanel = ({ id }: Props) => {
                         className={clsx(PLAY_BTN_CLASS, rotateSpeed > 0 && PLAY_BTN_ACTIVE_CLASS)}
                     >
                         <span className="font-mono text-xs tracking-wider font-semibold">
-                            {rotateSpeed}x
+                            {tidalLock ? "Tidally Locked" : `${rotateSpeed}x`}
                         </span>
                         {rotateSpeed > 0 ? (
                             <PiPauseFill className=" text-red-300 shrink-0" />
@@ -344,13 +392,10 @@ const LayerPanel = ({ id }: Props) => {
             </When>
 
             <div className={SECTION_CLASS}>
-
-                <When condition={Boolean(data.variants?.length)}>
-                    <button onClick={handleTimelines} className={clsx(TOGGLE_BTN_CLASS, "hover:bg-green-400/40")}>
-                        <MdHistory />
-                        <span className={TOOLTIP_CLASS}>Timelines</span>
-                    </button>
-                </When>
+                <button onClick={handleReset} className={clsx(TOGGLE_BTN_CLASS, "hover:bg-green-400/40")}>
+                    <AiFillEye />
+                    <span className={TOOLTIP_CLASS}>View Mode</span>
+                </button>
                 <button onClick={handleReset} className={clsx(TOGGLE_BTN_CLASS, "hover:bg-amber-400/50")}>
                     <MdRefresh />
                     <span className={TOOLTIP_CLASS}>Reset</span>
@@ -390,7 +435,6 @@ const LayerPanel = ({ id }: Props) => {
                                             ? "bg-primary border-base shadow-[0_0_10px_rgba(6,182,212,0.9)] scale-125"
                                             : "bg-slate-900 border-slate-500 group-hover/node:border-cyan-400 group-hover/node:bg-slate-700"
                                     )}>
-                                        {/* {isSelected && <div className="w-1 h-1 rounded-full bg-slate-950" />} */}
                                     </div>
                                 </button>
                             )

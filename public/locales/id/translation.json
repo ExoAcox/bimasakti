@@ -16,6 +16,7 @@
         "language": "Bahasa",
         "speed_scale_value": "1 detik: {{days}} hari",
         "belts": "Sabuk Asteroid",
+        "asteroids": "Asteroid",
         "landmarks": "Landmark",
         "timelines": "Garis Waktu",
         "active": "Aktif"
@@ -73,60 +74,70 @@
             "name": "Venus",
             "nickname": "Venus",
             "description": "Venus adalah planet kedua dari Matahari dan tetangga planet terdekat Bumi. Venus diselimuti oleh atmosfer karbon dioksida yang tebal dan beracun serta awan asam sulfat yang memerangkap panas dalam efek rumah kaca yang tidak terkendali, membuat permukaannya cukup panas untuk melelehkan timbal dan menjadikannya planet terpanas di tata surya.",
-            "ancient": {
-                "name": "Venus Lampau",
-                "description": "Miliaran tahun lalu, Venus mungkin memiliki iklim sedang dengan samudra air cair dan atmosfer yang lebih tipis, berpotensi mendukung kondisi yang dapat dihuni sebelum efek rumah kaca tak terkendali mengubah iklimnya selamanya."
-            },
-            "terraform": {
-                "name": "Venus Terraforming",
-                "description": "Venus di masa depan secara hipotetis tempat rekayasa geologi telah mengurangi tekanan atmosfer, memblokir radiasi matahari, dan menghadirkan lautan air cair, mengubah planet yang sangat panas ini menjadi dunia samudra yang dapat dihuni."
+            "variants": {
+                "ancient": {
+                    "name": "Venus Lampau",
+                    "description": "Miliaran tahun lalu, Venus mungkin memiliki iklim sedang dengan samudra air cair dan atmosfer yang lebih tipis, berpotensi mendukung kondisi yang dapat dihuni sebelum efek rumah kaca tak terkendali mengubah iklimnya selamanya."
+                },
+                "terraform": {
+                    "name": "Venus Terraforming",
+                    "description": "Venus di masa depan secara hipotetis tempat rekayasa geologi telah mengurangi tekanan atmosfer, memblokir radiasi matahari, dan menghadirkan lautan air cair, mengubah planet yang sangat panas ini menjadi dunia samudra yang dapat dihuni."
+                }
             }
         },
         "earth": {
             "name": "Bumi",
             "nickname": "Bumi",
             "description": "Bumi adalah planet ketiga dari Matahari dan satu-satunya objek astronomi yang diketahui mendukung kehidupan. Bumi ditandai dengan samudra air cair yang menutupi sekitar 71% permukaannya, atmosfer yang kaya akan nitrogen dan oksigen, serta medan magnet kuat yang melindunginya dari radiasi matahari yang berbahaya.",
-            "65_mbc": {
-                "name": "Kapur Akhir",
-                "description": "Periode Kapur Akhir (~65 juta tahun lalu) menyaksikan pemisahan Gondwana dan Laurasia menjadi benua-benua modern, berujung pada hantaman asteroid Chicxulub yang menyebabkan kepunahan massal dinosaurus."
-            },
-            "90_mbc": {
-                "name": "Kapur Tengah",
-                "description": "Selama periode Kapur Tengah (~90 juta tahun lalu), permukaan laut global mencapai titik tertinggi, membentuk laut dangkal di atas benua dengan iklim super-rumah kaca tanpa es."
-            },
-            "105_mbc": {
-                "name": "Kapur Awal",
-                "description": "Periode Kapur Awal (~105 juta tahun lalu) ditandai dengan dibukanya Samudra Atlantik Selatan saat Amerika Selatan terpisah dari Afrika, bersamaan dengan munculnya tumbuhan berbunga."
-            },
-            "120_mbc": {
-                "name": "Jura Akhir",
-                "description": "Selama era Jura Akhir (~120 juta tahun lalu), superbenua Pangea terbelah menjadi Laurasia di utara dan Gondwana di selatan, diiringi laut tropis hangat dan dinosaurus sauropoda raksasa."
-            },
-            "150_mbc": {
-                "name": "Jura Tengah",
-                "description": "Periode Jura Tengah (~150 juta tahun lalu) mengalami keretakan benua yang signifikan, membentuk Samudra Tethys dan rekahan Atlantik tengah saat garis keturunan dinosaurus berdiversifikasi pesat."
-            },
-            "170_mbc": {
-                "name": "Jura Awal",
-                "description": "Zaman Jura Awal (~170 juta tahun lalu) menyusul kepunahan akhir-Trias, di mana daratan Bumi mulai terpisah dari Pangea menjadi lingkungan tropis subur yang dihuni dinosaurus awal."
-            },
-            "200_mbc": {
-                "name": "Trias Akhir",
-                "description": "Pada periode Trias Akhir (~200 juta tahun lalu), Pangea mulai menunjukkan cekungan rekahan tektonik awal, diakhiri oleh peristiwa kepunahan besar akibat erupsi vulkanik di Atlantik Tengah."
-            },
-            "220_mbc": {
-                "name": "Trias Tengah",
-                "description": "Selama era Trias Tengah (~220 juta tahun lalu), Bumi memiliki interior benua Pangea yang panas dan kering, dikelilingi oleh Panthalassa, tempat munculnya dinosaurus pertama dan mamalia awal."
-            },
-            "240_mbc": {
-                "name": "Trias Awal",
-                "description": "Zaman Trias Awal (~240 juta tahun lalu) menyusul kepunahan masif Permian-Trias, meninggalkan superbenua Pangea yang tandus dengan gurun ekstrem dan kehidupan laut yang perlahan pulih."
+            "variants": {
+                "65_mbc": {
+                    "name": "Kapur Akhir",
+                    "description": "Periode Kapur Akhir (~65 juta tahun lalu) menyaksikan pemisahan Gondwana dan Laurasia menjadi benua-benua modern, berujung pada hantaman asteroid Chicxulub yang menyebabkan kepunahan massal dinosaurus."
+                },
+                "90_mbc": {
+                    "name": "Kapur Tengah",
+                    "description": "Selama periode Kapur Tengah (~90 juta tahun lalu), permukaan laut global mencapai titik tertinggi, membentuk laut dangkal di atas benua dengan iklim super-rumah kaca tanpa es."
+                },
+                "105_mbc": {
+                    "name": "Kapur Awal",
+                    "description": "Periode Kapur Awal (~105 juta tahun lalu) ditandai dengan dibukanya Samudra Atlantik Selatan saat Amerika Selatan terpisah dari Afrika, bersamaan dengan munculnya tumbuhan berbunga."
+                },
+                "120_mbc": {
+                    "name": "Jura Akhir",
+                    "description": "Selama era Jura Akhir (~120 juta tahun lalu), superbenua Pangea terbelah menjadi Laurasia di utara dan Gondwana di selatan, diiringi laut tropis hangat dan dinosaurus sauropoda raksasa."
+                },
+                "150_mbc": {
+                    "name": "Jura Tengah",
+                    "description": "Periode Jura Tengah (~150 juta tahun lalu) mengalami keretakan benua yang signifikan, membentuk Samudra Tethys dan rekahan Atlantik tengah saat garis keturunan dinosaurus berdiversifikasi pesat."
+                },
+                "170_mbc": {
+                    "name": "Jura Awal",
+                    "description": "Zaman Jura Awal (~170 juta tahun lalu) menyusul kepunahan akhir-Trias, di mana daratan Bumi mulai terpisah dari Pangea menjadi lingkungan tropis subur yang dihuni dinosaurus awal."
+                },
+                "200_mbc": {
+                    "name": "Trias Akhir",
+                    "description": "Pada periode Trias Akhir (~200 juta tahun lalu), Pangea mulai menunjukkan cekungan rekahan tektonik awal, diakhiri oleh peristiwa kepunahan besar akibat erupsi vulkanik di Atlantik Tengah."
+                },
+                "220_mbc": {
+                    "name": "Trias Tengah",
+                    "description": "Selama era Trias Tengah (~220 juta tahun lalu), Bumi memiliki interior benua Pangea yang panas dan kering, dikelilingi oleh Panthalassa, tempat munculnya dinosaurus pertama dan mamalia awal."
+                },
+                "240_mbc": {
+                    "name": "Trias Awal",
+                    "description": "Zaman Trias Awal (~240 juta tahun lalu) menyusul kepunahan masif Permian-Trias, meninggalkan superbenua Pangea yang tandus dengan gurun ekstrem dan kehidupan laut yang perlahan pulih."
+                }
             }
         },
         "moon": {
             "name": "Bulan",
             "nickname": "Bulan",
-            "description": "Bulan adalah satu-satunya satelit alami Bumi dan bulan terbesar kelima di tata surya. Bulan terkunci secara pasang surut (tidally locked) dengan Bumi, yang berarti ia selalu menunjukkan sisi yang sama, dan gaya tarik gravitasinya merupakan penggerak utama pasang surut samudra di Bumi serta menstabilkan kemiringan sumbu planet."
+            "description": "Bulan adalah satu-satunya satelit alami Bumi dan bulan terbesar kelima di tata surya. Bulan terkunci secara pasang surut (tidally locked) dengan Bumi, yang berarti ia selalu menunjukkan sisi yang sama, dan gaya tarik gravitasinya merupakan penggerak utama pasang surut samudra di Bumi serta menstabilkan kemiringan sumbu planet.",
+            "variants": {
+                "theia": {
+                    "name": "Theia",
+                    "description": "Protoplanet hipotetis berukuran seukuran Mars di Tata Surya awal yang bertabrakan dengan Bumi sekitar 4,5 miliar tahun lalu. Puing-puing dari tabrakan raksasa ini berkumpul di orbit Bumi dan membentuk Bulan."
+                }
+            }
         },
         "iss": {
             "name": "International Space Station",
@@ -439,6 +450,11 @@
             "name": "Halley",
             "nickname": "Halley",
             "description": "Komet Halley adalah komet periodik pendek yang terlihat dari Bumi setiap 75–76 tahun. Komet ini adalah satu-satunya komet periodik pendek yang diketahui dan dapat dilihat dengan mata telanjang dari Bumi secara teratur."
+        },
+        "vesta": {
+            "name": "Vesta",
+            "nickname": "Vesta",
+            "description": "Vesta adalah salah satu asteroid terbesar di Tata Surya, terletak di Sabuk Asteroid Utama. Dengan diameter rata-rata sekitar 525 kilometer, Vesta adalah asteroid paling terang yang dapat dilihat dari Bumi dan merupakan sisa protoplanet utuh dari pembentukan Tata Surya."
         },
         "trappist-1": {
             "name": "TRAPPIST-1",
@@ -861,9 +877,21 @@
             "name": "Utopia Planitia",
             "description": "Dataran dampak raksasa di belahan utara Mars yang terkenal sebagai lokasi pendaratan Viking 2 (1976) dan penjelajah Zhurong Tiongkok (2021)."
         },
-        "giant_red_spot": {
+        "great_red_spot": {
             "name": "Bintik Merah Raksasa",
             "description": "Badai antisisklon raksasa di atmosfer Jupiter yang berukuran lebih besar dari Bumi dan telah berlangsung selama ratusan tahun."
+        },
+        "boosaule_montes": {
+            "name": "Boösaule Montes",
+            "description": "Gunung non-vulkanik tertinggi yang diketahui di Tata Surya (ketinggian ±18,2 km), terletak di satelit Jupiter, Io."
+        },
+        "dis_mons": {
+            "name": "Dis Mons",
+            "description": "Struktur gunung berapi menonjol di permukaan Io yang kaya akan sulfur dan aktivitas vulkanik."
+        },
+        "lei_kung_fluctus": {
+            "name": "Lei Kung Fluctus",
+            "description": "Aliran lava vulkanik (fluctus) yang luas di belahan utara Io, dinamai menurut Lei Gong, dewa petir dalam mitologi Tionghoa."
         },
         "great_dark_spot": {
             "name": "Bintik Gelap Raksasa",
@@ -1005,6 +1033,10 @@
             "name": "Beta Regio",
             "description": "Wilayah vulkanik utama di Venus yang ditandai oleh dua gunung berapi raksasa (Theia Mons dan Rhea Mons) serta celah ngarai Devana Chasma."
         },
+        "eistla_regio": {
+            "name": "Eistla Regio",
+            "description": "Wilayah dataran tinggi vulkanik di Venus yang menampung beberapa gunung berapi perisai besar seperti Sif Mons dan Gula Mons serta struktur corona."
+        },
         "maxwell_montes": {
             "name": "Maxwell Montes",
             "description": "Jajaran pegunungan tertinggi di planet Venus (mencapai ketinggian ±11 km) yang terletak di wilayah Ishtar Terra."
@@ -1028,6 +1060,14 @@
         "occator_crater": {
             "name": "Kawah Occator",
             "description": "Kawah di planet kerdil Ceres yang terkenal dengan bintik-bintik terang misterius (Cerealia Facula) yang kaya akan natrium karbonat."
+        },
+        "rheasilvia_peak": {
+            "name": "Puncak Rheasilvia",
+            "description": "Kawah tubrukan raksasa berdiameter 505 km di asteroid Vesta, menampung puncak gunung tengah setinggi 22 km yang merupakan salah satu puncak tertinggi di Tata Surya."
+        },
+        "herschel_crater": {
+            "name": "Kawah Herschel",
+            "description": "Kawah dampak raksasa di satelit Saturnus, Mimas, berdiameter 139 km (hampir sepertiga diameter total Mimas) yang memberikannya penampilan ikonik mirip Death Star."
         }
     },
     "nation": {
@@ -1186,6 +1226,9 @@
         },
         "EG": {
             "name": "Mesir"
+        },
+        "EH": {
+            "name": "Sahara Barat"
         },
         "ER": {
             "name": "Eritrea"
@@ -1568,6 +1611,9 @@
         "TV": {
             "name": "Tuvalu"
         },
+        "TW": {
+            "name": "Taiwan"
+        },
         "TZ": {
             "name": "Tanzania"
         },
@@ -1603,6 +1649,9 @@
         },
         "WS": {
             "name": "Samoa"
+        },
+        "XK": {
+            "name": "Kosovo"
         },
         "YE": {
             "name": "Yaman"

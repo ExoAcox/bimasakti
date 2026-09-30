@@ -3,8 +3,10 @@ import { useEffect, useRef } from "react"
 import { useFrame, useThree } from "@react-three/fiber"
 import { useGLTF, useKeyboardControls } from "@react-three/drei"
 import { Vector3, Quaternion, Matrix4, MathUtils, Group, DoubleSide, Mesh, MeshStandardMaterial } from "three"
-import { useSettingStore, useControlStore, useShipStore } from "@state"
+import { useSettingStore, useControlStore } from "@state"
 import { SHIP_SCALE } from "@constants"
+import { Mode } from "@types"
+import { When } from "react-if"
 
 export enum Controls {
     forward = "forward",
@@ -90,15 +92,14 @@ const Spaceship = () => {
     const prevCockpitKey = useRef(false)
 
     const [, getKeys] = useKeyboardControls<Controls>()
-    const { distanceScale, sizeScale, mode } = useSettingStore()
-    const { autopilot, cockpit, setShip } = useShipStore()
-    const { focus } = useControlStore()
+    const { distanceScale, sizeScale } = useSettingStore()
+    const { mode, autopilot, focus, setControl } = useControlStore()
     const { scene, camera } = useThree()
 
     const step = 1 / distanceScale
 
     useEffect(() => {
-        if (!groupRef.current || mode === "normal") return
+        if (!groupRef.current || mode === Mode.Object) return
 
         const earth = scene.getObjectByName("earth")
         if (!earth) return
@@ -133,44 +134,45 @@ const Spaceship = () => {
         const isCockpitKey = keys[Controls.cockpit]
 
         // Toggle Autopilot on F key press
-        if (isAutopilotKey && !prevAutopilotKey.current) {
-            setShip({ autopilot: !autopilot })
-        }
-        prevAutopilotKey.current = Boolean(isAutopilotKey)
+        // if (isAutopilotKey && !prevAutopilotKey.current) {
+        //     setControl({ autopilot: !autopilot })
+        // }
+        // prevAutopilotKey.current = Boolean(isAutopilotKey)
 
         // Toggle Cockpit on C key press
-        if (isCockpitKey && !prevCockpitKey.current) {
-            setShip({ cockpit: !cockpit })
-        }
-        prevCockpitKey.current = Boolean(isCockpitKey)
+        // if (isCockpitKey && !prevCockpitKey.current) {
+        //     setShip({ cockpit: !cockpit })
+        // }
+        // prevCockpitKey.current = Boolean(isCockpitKey)
 
         // Manual steering disengages Autopilot automatically
-        if (isLeft || isRight || isUp || isDown || isForward || isBackward) {
-            if (autopilot) setShip({ autopilot: false })
-        }
+        // if (isLeft || isRight || isUp || isDown || isForward || isBackward) {
+        //     if (autopilot) setShip({ autopilot: false })
+        // }
 
         // Calculate distance to target object if focus exists
+
         const object = focus ? state.scene.getObjectByName(focus) : null
-        let dist = 0
-        let targetRadius = 0.05
 
-        if (object) {
-            object.getWorldPosition(targetPos)
-            targetRadius = object.userData?.radius ? (object.userData.radius / sizeScale) : 0.05
-            dist = shipPos.distanceTo(targetPos)
+        const dist = 0
+        const targetRadius = 0.05
 
-            // Direct DOM update for 60 FPS distance display on ShipPanel
-            const distEl = document.getElementById("ship-target-distance")
-            if (distEl) {
-                const realDistance = dist * distanceScale
-                distEl.innerText = `${realDistance.toFixed(2)} AU`
-            }
-        } else {
-            const distEl = document.getElementById("ship-target-distance")
-            if (distEl) {
-                distEl.innerText = "--"
-            }
-        }
+        // if (object) {
+        //     object.getWorldPosition(targetPos)
+        //     targetRadius = object.userData?.radius ? (object.userData.radius / sizeScale) : 0.05
+        //     dist = shipPos.distanceTo(targetPos)
+
+        //     const distEl = document.getElementById("ship-target-distance")
+        //     if (distEl) {
+        //         const realDistance = dist * distanceScale
+        //         distEl.innerText = `${realDistance.toFixed(2)} AU`
+        //     }
+        // } else {
+        //     const distEl = document.getElementById("ship-target-distance")
+        //     if (distEl) {
+        //         distEl.innerText = "--"
+        //     }
+        // }
 
         // Collision prevention against ANY celestial object in the scene
         const applyCollisionPrevention = () => {
@@ -178,13 +180,13 @@ const Spaceship = () => {
                 if (child.name === "spaceship" || !child.userData?.radius) return
 
                 const radius = child.userData.radius
-                const isStar = child.userData.type === "star"
+                // const isStar = child.userData.type === "star"
                 if (typeof radius !== "number" || radius <= 0) return
 
                 child.getWorldPosition(objPos)
                 const objDist = shipPos.distanceTo(objPos)
                 const objRadius = radius / sizeScale
-                const minSurfaceDist = Math.max(objRadius * (isStar ? 20 : 1.5), 1000 / sizeScale)
+                const minSurfaceDist = Math.max(objRadius * 1.5, 1000 / sizeScale)
 
                 if (objDist < minSurfaceDist && objDist > 0) {
                     dirToObj.subVectors(objPos, shipPos).normalize()
@@ -224,7 +226,7 @@ const Spaceship = () => {
                 group.position.add(moveDir)
             } else {
                 // Arrived at target planet smoothly
-                setShip({ autopilot: false, distance: 0 })
+                setControl({ autopilot: false })
             }
         } else {
             // 2. Manual Steering & Rotation (Q/E for Pitch, A/D for Yaw)
@@ -267,11 +269,12 @@ const Spaceship = () => {
     return (
         <group ref={groupRef} name="spaceship" position={[0, 0, 20]}>
             <group scale={SHIP_SCALE}>
-                {cockpit ? (
+                <When condition={mode === Mode.FirstPerson}>
                     <CockpitModel />
-                ) : (
+                </When>
+                <When condition={mode === Mode.ThirdPerson}>
                     <ShipModel />
-                )}
+                </When>
             </group>
         </group>
     )

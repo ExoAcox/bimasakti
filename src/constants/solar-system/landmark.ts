@@ -488,10 +488,30 @@ export const landmarks: Landmark[] = [
 
     // Jupiter
     {
-        id: "giant_red_spot",
+        id: "great_red_spot",
         parent: "jupiter",
-        latitude: -22.0,
-        longitude: -45.0
+        latitude: -20.0,
+        longitude: -47.0
+    },
+
+    // Io
+    {
+        id: "boosaule_montes",
+        parent: "io",
+        latitude: -15.8,
+        longitude: 90.9
+    },
+    {
+        id: "dis_mons",
+        parent: "io",
+        latitude: 5.4,
+        longitude: -114.6
+    },
+    {
+        id: "lei_kung_fluctus",
+        parent: "io",
+        latitude: 40.4,
+        longitude: 153.6
     },
 
     // Saturn
@@ -714,6 +734,12 @@ export const landmarks: Landmark[] = [
         longitude: 282.8
     },
     {
+        id: "eistla_regio",
+        parent: "venus",
+        latitude: 10.5,
+        longitude: 27.5
+    },
+    {
         id: "maxwell_montes",
         parent: "venus",
         latitude: 65.2,
@@ -754,5 +780,21 @@ export const landmarks: Landmark[] = [
         parent: "ceres",
         latitude: 19.8,
         longitude: 239.3
+    },
+
+    // Vesta
+    {
+        id: "rheasilvia_peak",
+        parent: "vesta",
+        latitude: 100.0,
+        longitude: -80.0
+    },
+
+    // Mimas
+    {
+        id: "herschel_crater",
+        parent: "mimas",
+        latitude: -1.38,
+        longitude: -111.76
     }
 ]

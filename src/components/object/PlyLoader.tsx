@@ -48,16 +48,28 @@ const ModelRenderer = ({ path }: { path: string }) => {
 
     const geometry = useMemo(() => {
         if (!rawGeometry) return null
+
         const geo = rawGeometry.clone()
-        geo.center()
-        // Compute smooth vertex normals on the indexed geometry first
+        geo.rotateX(Math.PI / 2)
         geo.computeVertexNormals()
-        // Convert to non-indexed so vertices near the seam can have independent UVs
+
         const unindexedGeo = geo.index ? geo.toNonIndexed() : geo
         generateSphericalUVs(unindexedGeo)
-        unindexedGeo.computeBoundingSphere()
-        if (unindexedGeo.boundingSphere && unindexedGeo.boundingSphere.radius > 0) {
-            const scaleFactor = 1 / unindexedGeo.boundingSphere.radius
+
+        const pos = unindexedGeo.attributes.position
+        let maxDistSq = 0
+        if (pos) {
+            for (let i = 0; i < pos.count; i++) {
+                const x = pos.getX(i)
+                const y = pos.getY(i)
+                const z = pos.getZ(i)
+                const distSq = x * x + y * y + z * z
+                if (distSq > maxDistSq) maxDistSq = distSq
+            }
+        }
+        const maxDist = Math.sqrt(maxDistSq)
+        if (maxDist > 0) {
+            const scaleFactor = 1 / maxDist
             unindexedGeo.scale(scaleFactor, scaleFactor, scaleFactor)
         }
         return unindexedGeo

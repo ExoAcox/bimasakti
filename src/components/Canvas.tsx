@@ -22,6 +22,7 @@ import { keyboardMap } from "./object/Spaceship";
 
 import { useThree, useFrame } from "@react-three/fiber";
 import type { OrbitControls as OrbitControlsType } from "three-stdlib";
+import { Mode } from "@types";
 
 const UserInterface = ({ id }: { id: string }) => {
     const { active, progress } = useProgress()
@@ -79,8 +80,8 @@ const CanvasLayout = () => {
     const [searchParams] = useSearchParams();
 
     const data = useCelestial().getUniverse()
-    const { mode, setSetting } = useSettingStore()
-    const { focus } = useControlStore()
+    const { setSetting } = useSettingStore()
+    const { mode, focus } = useControlStore()
 
     const skyboxTexture = data.id === "sagittarius_a" ? "/textures/nebula.jpg" : "/textures/milky_way.jpg"
 
@@ -118,7 +119,7 @@ const CanvasLayout = () => {
                 <KeyboardControls map={keyboardMap}>
                     <Bounds>
                         <Switch>
-                            <Case condition={mode === "spaceship"}>
+                            <Case condition={mode !== Mode.Object}>
                                 <SpaceshipScene />
                             </Case>
                             <Default>

@@ -262,6 +262,11 @@ export const nations: Nation[] = [
         longitude: 30.8025
     },
     {
+        id: "EH",
+        latitude: 24.2155,
+        longitude: -12.8858
+    },
+    {
         id: "ER",
         latitude: 15.1794,
         longitude: 39.7823
@@ -386,11 +391,11 @@ export const nations: Nation[] = [
         latitude: 53.4129,
         longitude: -8.2439
     },
-    // {
-    //     id: "IL",
-    //     latitude: 31.0461,
-    //     longitude: 34.8516
-    // },
+    {
+        id: "IL",
+        latitude: 31.0461,
+        longitude: 34.8516
+    },
     {
         id: "IN",
         latitude: 20.5937,
@@ -897,6 +902,11 @@ export const nations: Nation[] = [
         longitude: 177.6493
     },
     {
+        id: "TW",
+        latitude: 23.6978,
+        longitude: 120.9605
+    },
+    {
         id: "TZ",
         latitude: -6.369,
         longitude: 34.8888
@@ -955,6 +965,11 @@ export const nations: Nation[] = [
         id: "WS",
         latitude: -13.759,
         longitude: -172.1046
+    },
+    {
+        id: "XK",
+        latitude: 42.6026,
+        longitude: 20.9029
     },
     {
         id: "YE",

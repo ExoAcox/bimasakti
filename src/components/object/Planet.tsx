@@ -1,12 +1,10 @@
-/* eslint-disable react-hooks/rules-of-hooks */
-
 import { useRef, Suspense, useDeferredValue, useMemo } from "react"
-import { type Mesh } from "three"
+import { MathUtils, type Mesh } from "three"
 import { Detailed } from "@react-three/drei"
 
-import type { Planet as PlanetType } from "@types"
+import { Mode, type Planet as PlanetType } from "@types"
 import { useSettingStore, useControlStore } from "@state"
-import { CelestialBody, PlanetCloud, PlanetRing, LandmarkMarker, PlyLoader, TextureLoader, SpaceCraft, Aurora, Atmosphere, NightMaterial } from "@components/object"
+import { CelestialBody, PlanetCloud, PlanetRing, LandmarkMarker, TextureLoader, SpaceCraft, Aurora, Atmosphere, NightMaterial, PlyLoader } from "@components/object"
 import { LOWREST_SCALE } from "@constants"
 import { Else, If, Then, When } from "react-if"
 import nations from "@constants/solar-system/nation"
@@ -24,11 +22,17 @@ const PlanetMesh = ({ data }: { data: PlanetType }) => {
     const { focus } = useControlStore()
 
     const isFocused = focus === data.id
-    const texturePath = (isFocused && data.texture_hd) ? data.texture_hd : data.texture!
-    const texture = useDeferredValue(texturePath)
+    const { topologyVisible } = useControlStore()
+    const texturePath = () => {
+        if (data.topology_texture && topologyVisible) return data.topology_texture
+        return isFocused && data.texture_hd ? data.texture_hd : data.texture!
+    }
+    const texture = useDeferredValue(texturePath())
 
     const material = useMemo(() => {
-        if (data.night_texture) {
+        if (topologyVisible) {
+            return <TextureLoader path={texture} />
+        } else if (data.night_texture) {
             return <NightMaterial
                 textures={[
                     `/textures/${isFocused && data.night_texture_hd ? data.texture_hd : data.texture}`,
@@ -41,17 +45,17 @@ const PlanetMesh = ({ data }: { data: PlanetType }) => {
         } else {
             return <meshStandardMaterial color={data.color} />
         }
-    }, [data.night_texture, data.texture, data.night_texture_hd, data.texture_hd, data.color, isFocused, texture])
+    }, [data.night_texture, data.texture, data.night_texture_hd, data.texture_hd, data.night_opacity, data.color, topologyVisible, texture, isFocused])
 
     const materialRender = useDeferredValue(material)
 
     return <mesh castShadow receiveShadow>
-        <If condition={data.texture}>
+        <If condition={data.model}>
             <Then>
-                <sphereGeometry args={[1, 128, 64]} />
+                <PlyLoader path={data.model!} />
             </Then>
             <Else>
-                <sphereGeometry args={isFocused ? [1, 128, 64] : [1]} />
+                <sphereGeometry args={isFocused ? [1, 128, 64] : [1, 64, 32]} />
             </Else>
         </If>
         <Suspense fallback={<meshStandardMaterial color={data.color} />}>
@@ -68,8 +72,8 @@ const Planet = ({
     const objectRef = useRef<Mesh>(null!)
     const cloudRef = useRef<Mesh>(null!)
 
-    const { mode, sizeScale, distanceScale } = useSettingStore()
-    const { focus, variant, landmarkVisible, nationVisible, cloudVisible, atmosphereVisible, setControl } = useControlStore()
+    const { sizeScale, distanceScale } = useSettingStore()
+    const { mode, focus, variant, landmarkVisible, nationVisible, cloudVisible, atmosphereVisible, setControl } = useControlStore()
     const distance = LOWREST_SCALE / distanceScale
 
     const data = useVariant(rawData) as PlanetType
@@ -81,7 +85,7 @@ const Planet = ({
 
     if (!data) return null
 
-    const isNormalMode = mode === "normal"
+    const isNormalMode = mode === Mode.Object
     const showLandmark = focus === data.id && landmarkVisible && isNormalMode
     const showNation = data.id === "earth" && nationVisible && isNormalMode && !variant
     const showCloud = data.cloud_texture && cloudVisible
@@ -125,7 +129,7 @@ const Planet = ({
 
                 <When condition={showLandmark}>
                     {data.landmarks?.reverse().map((landmark) => (
-                        <LandmarkMarker key={landmark.id} radius={data.radius} landmark={landmark} />
+                        <LandmarkMarker key={landmark.id} radius={data.radius} landmark={landmark} custom={Boolean(data.model)} />
                     ))}
                 </When>
 

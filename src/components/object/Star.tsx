@@ -19,18 +19,6 @@ import { When } from "react-if"
 import { INTENSITY_SCALE } from "@constants"
 import { Gltf } from "@react-three/drei"
 
-
-const hexToRawColor = (hex: string) => {
-    if (!hex) return new Color(1, 0.4, 0)
-    const cleanHex = hex.replace("#", "")
-    const num = parseInt(cleanHex, 16)
-    return new Color(
-        ((num >> 16) & 255) / 255,
-        ((num >> 8) & 255) / 255,
-        (num & 255) / 255
-    )
-}
-
 export interface Props {
     id: string
     children?: React.ReactNode

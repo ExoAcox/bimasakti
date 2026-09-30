@@ -25,6 +25,7 @@
         "artificial_satellites": "Artificial Satellites",
         "spacecraft": "Space Craft",
         "comets": "Comets",
+        "asteroids": "Asteroids",
         "others": "Others",
         "landmarks": "Landmarks",
         "timelines": "Timelines",
@@ -137,7 +138,13 @@
         "moon": {
             "name": "Moon",
             "nickname": "Moon",
-            "description": "The Moon is Earth's only natural satellite and the fifth-largest moon in the solar system. It is tidally locked to Earth, meaning it always shows the same face, and its gravitational pull is the primary driver of Earth's ocean tides and stabilizes the planet's axial tilt."
+            "description": "The Moon is Earth's only natural satellite and the fifth-largest moon in the solar system. It is tidally locked to Earth, meaning it always shows the same face, and its gravitational pull is the primary driver of Earth's ocean tides and stabilizes the planet's axial tilt.",
+            "variants": {
+                "theia": {
+                    "name": "Theia",
+                    "description": "A hypothetical Mars-sized protoplanet in the early Solar System that collided with Earth about 4.5 billion years ago. The debris from this giant impact coalesced in Earth's orbit to form the Moon."
+                }
+            }
         },
         "iss": {
             "name": "International Space Station",
@@ -450,6 +457,11 @@
             "name": "Halley",
             "nickname": "Halley",
             "description": "Halley's Comet is a short-period comet visible from Earth every 75–76 years. It is the only known short-period comet that is regularly visible to the naked eye from Earth."
+        },
+        "vesta": {
+            "name": "Vesta",
+            "nickname": "Vesta",
+            "description": "Vesta is one of the largest asteroids in the Solar System, located in the Main Asteroid Belt. With a mean diameter of about 525 kilometers, Vesta is the brightest asteroid visible from Earth and a preserved protoplanet from the early Solar System."
         },
         "trappist-1": {
             "name": "TRAPPIST-1",
@@ -872,9 +884,21 @@
             "name": "Utopia Planitia",
             "description": "A vast plain within a giant impact basin in the northern hemisphere of Mars, famous as the landing site for Viking 2 (1976) and China's Zhurong rover (2021)."
         },
-        "giant_red_spot": {
+        "great_red_spot": {
             "name": "Great Red Spot",
             "description": "A persistent giant anticyclonic storm in Jupiter's atmosphere that is larger than Earth and has raged for centuries."
+        },
+        "boosaule_montes": {
+            "name": "Boösaule Montes",
+            "description": "The tallest known non-volcanic mountain in the Solar System (~18.2 km high), located on Jupiter's moon Io."
+        },
+        "dis_mons": {
+            "name": "Dis Mons",
+            "description": "A prominent volcanic mountain structure on the sulfurous surface of Jupiter's moon Io."
+        },
+        "lei_kung_fluctus": {
+            "name": "Lei Kung Fluctus",
+            "description": "An extensive volcanic lava flow (fluctus) in the northern hemisphere of Io, named after Lei Gong, the thunder god in Chinese mythology."
         },
         "great_dark_spot": {
             "name": "Great Dark Spot",
@@ -1016,6 +1040,10 @@
             "name": "Beta Regio",
             "description": "A major volcanic highland region on Venus marked by two massive shield volcanoes (Theia Mons and Rhea Mons) and the Devana Chasma rift valley."
         },
+        "eistla_regio": {
+            "name": "Eistla Regio",
+            "description": "A volcanic highland region on Venus featuring several large shield volcanoes, such as Sif Mons and Gula Mons, along with corona structures."
+        },
         "maxwell_montes": {
             "name": "Maxwell Montes",
             "description": "The highest mountain range on planet Venus (~11 km high), situated on the highland mass of Ishtar Terra."
@@ -1039,6 +1067,14 @@
         "occator_crater": {
             "name": "Occator Crater",
             "description": "A crater on the dwarf planet Ceres famous for mysterious bright sodium carbonate spots (Cerealia Facula)."
+        },
+        "rheasilvia_peak": {
+            "name": "Rheasilvia Peak",
+            "description": "A colossal 505 km wide impact crater on asteroid Vesta, featuring a central mountain peak rising 22 km high, making it one of the tallest mountains in the Solar System."
+        },
+        "herschel_crater": {
+            "name": "Herschel Crater",
+            "description": "A giant impact crater on Saturn's moon Mimas spanning 139 km across—nearly one-third of the moon's diameter—giving Mimas its iconic resemblance to the Death Star."
         }
     },
     "nation": {
@@ -1197,6 +1233,9 @@
         },
         "EG": {
             "name": "Egypt"
+        },
+        "EH": {
+            "name": "Western Sahara"
         },
         "ER": {
             "name": "Eritrea"
@@ -1579,6 +1618,9 @@
         "TV": {
             "name": "Tuvalu"
         },
+        "TW": {
+            "name": "Taiwan"
+        },
         "TZ": {
             "name": "Tanzania"
         },
@@ -1614,6 +1656,9 @@
         },
         "WS": {
             "name": "Samoa"
+        },
+        "XK": {
+            "name": "Kosovo"
         },
         "YE": {
             "name": "Yemen"
