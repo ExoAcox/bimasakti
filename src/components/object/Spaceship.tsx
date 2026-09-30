@@ -97,22 +97,23 @@ const Spaceship = () => {
     const { scene, camera } = useThree()
 
     const step = 1 / distanceScale
+    const currentSpeed = useRef(0)
 
-    useEffect(() => {
-        if (!groupRef.current || mode === Mode.Object) return
+    // useEffect(() => {
+    //     if (!groupRef.current || mode === Mode.Object) return
 
-        const earth = scene.getObjectByName("earth")
-        if (!earth) return
+    //     const earth = scene.getObjectByName("earth")
+    //     if (!earth) return
 
-        earth.getWorldPosition(objPos)
-        const earthRadius = earth.userData?.radius ? (earth.userData.radius / sizeScale) : 0.063
-        const spawnOffset = new Vector3(earthRadius * 2.5, earthRadius * 1.5, earthRadius * 4.0)
-        groupRef.current.position.copy(objPos).add(spawnOffset)
+    //     earth.getWorldPosition(objPos)
+    //     const earthRadius = earth.userData?.radius ? (earth.userData.radius / sizeScale) : 0.063
+    //     const spawnOffset = new Vector3(earthRadius * 2.5, earthRadius * 1.5, earthRadius * 4.0)
+    //     groupRef.current.position.copy(objPos).add(spawnOffset)
 
-        // Point spaceship towards Earth
-        targetMatrix.lookAt(groupRef.current.position, objPos, camera.up)
-        groupRef.current.quaternion.setFromRotationMatrix(targetMatrix)
-    }, [mode])
+    //     // Point spaceship towards Earth
+    //     targetMatrix.lookAt(groupRef.current.position, objPos, camera.up)
+    //     groupRef.current.quaternion.setFromRotationMatrix(targetMatrix)
+    // }, [mode])
 
     useFrame((state, delta) => {
         if (!groupRef.current) return
@@ -130,8 +131,8 @@ const Spaceship = () => {
         const isUp = keys[Controls.up]
         const isDown = keys[Controls.down]
         const isBoost = keys[Controls.boost]
-        const isAutopilotKey = keys[Controls.autopilot]
-        const isCockpitKey = keys[Controls.cockpit]
+
+        console.log(autopilot)
 
         // Toggle Autopilot on F key press
         // if (isAutopilotKey && !prevAutopilotKey.current) {
@@ -154,25 +155,25 @@ const Spaceship = () => {
 
         const object = focus ? state.scene.getObjectByName(focus) : null
 
-        const dist = 0
-        const targetRadius = 0.05
+        let dist = 0
+        let targetRadius = 0.05
 
-        // if (object) {
-        //     object.getWorldPosition(targetPos)
-        //     targetRadius = object.userData?.radius ? (object.userData.radius / sizeScale) : 0.05
-        //     dist = shipPos.distanceTo(targetPos)
+        if (object) {
+            object.getWorldPosition(targetPos)
+            targetRadius = object.userData?.radius ? (object.userData.radius / sizeScale) : 0.05
+            dist = shipPos.distanceTo(targetPos)
 
-        //     const distEl = document.getElementById("ship-target-distance")
-        //     if (distEl) {
-        //         const realDistance = dist * distanceScale
-        //         distEl.innerText = `${realDistance.toFixed(2)} AU`
-        //     }
-        // } else {
-        //     const distEl = document.getElementById("ship-target-distance")
-        //     if (distEl) {
-        //         distEl.innerText = "--"
-        //     }
-        // }
+            const distEl = document.getElementById("ship-target-distance")
+            if (distEl) {
+                const realDistance = dist * distanceScale
+                distEl.innerText = `${realDistance.toFixed(2)} AU`
+            }
+        } else {
+            const distEl = document.getElementById("ship-target-distance")
+            if (distEl) {
+                distEl.innerText = "--"
+            }
+        }
 
         // Collision prevention against ANY celestial object in the scene
         const applyCollisionPrevention = () => {
@@ -186,7 +187,7 @@ const Spaceship = () => {
                 child.getWorldPosition(objPos)
                 const objDist = shipPos.distanceTo(objPos)
                 const objRadius = radius / sizeScale
-                const minSurfaceDist = Math.max(objRadius * 1.5, 1000 / sizeScale)
+                const minSurfaceDist = Math.max(objRadius * 1.25, 1000 / sizeScale)
 
                 if (objDist < minSurfaceDist && objDist > 0) {
                     dirToObj.subVectors(objPos, shipPos).normalize()
@@ -204,8 +205,10 @@ const Spaceship = () => {
             const rotationLockDistance = Math.max(targetRadius * 3.5, 0.001)
 
             const effectDist = dist - targetArrivalDist
+            console.log("effectDist", effectDist)
 
-            if (effectDist > 0) {
+
+            if (effectDist > 0.0001) {
                 const dirToTarget = new Vector3().subVectors(targetPos, shipPos).normalize()
 
                 // Point spaceship towards target planet with smooth slerp
@@ -224,8 +227,12 @@ const Spaceship = () => {
                 moveDir.copy(dirToTarget).multiplyScalar(speedPerSec * delta)
                 applyCollisionPrevention()
                 group.position.add(moveDir)
+
+                if (effectDist > 0.01) return
+                if (isLeft || isRight || isUp || isDown || isForward || isBackward) {
+                    setControl({ autopilot: false })
+                }
             } else {
-                // Arrived at target planet smoothly
                 setControl({ autopilot: false })
             }
         } else {
@@ -233,8 +240,8 @@ const Spaceship = () => {
             let pitch = 0
             let yaw = 0
 
-            const pitchSpeed = 1.2 * delta
-            const yawSpeed = 1.8 * delta
+            const pitchSpeed = 0.2 * delta
+            const yawSpeed = 0.4 * delta
 
             if (isUp) pitch += pitchSpeed
             if (isDown) pitch -= pitchSpeed
@@ -248,18 +255,52 @@ const Spaceship = () => {
             }
 
             // 3. Manual Forward / Backward Thrust (translate position directly)
-            let speed = isBoost ? step * 100000 : step * 10000
-            moveDir.set(0, 0, 0)
+            const maxSpeed = step * 10000
+            const isFirstTime = currentSpeed.current <= 0
+            const acceleration = isBoost ? step * (isFirstTime ? 3000 : 300) : step * (isFirstTime ? 3000 : 100)
+            const deceleration = step * 1000
 
-            if (isBoost) moveDir.z -= 1
-            if (isForward) moveDir.z -= 1
-            if (isBackward) {
-                moveDir.z += 1
-                speed *= 0.5
+            console.log(currentSpeed.current)
+
+            if (isForward || isBoost) {
+                // Accelerate smoothly
+                currentSpeed.current = Math.min(
+                    currentSpeed.current + acceleration * delta,
+                    maxSpeed
+                )
+
+                moveDir.set(0, 0, -1)
+            } else if (isBackward) {
+                // Backward movement
+                currentSpeed.current = Math.max(
+                    currentSpeed.current - acceleration * delta,
+                    -(maxSpeed * 0.5)
+                )
+
+                moveDir.set(0, 0, 1)
+            } else {
+                // Slowly decelerate when no thrust
+                if (currentSpeed.current > 0) {
+                    currentSpeed.current = Math.max(
+                        0,
+                        currentSpeed.current - deceleration * delta
+                    )
+                } else if (currentSpeed.current < 0) {
+                    currentSpeed.current = Math.min(
+                        0,
+                        currentSpeed.current + deceleration * delta
+                    )
+                }
+
+                moveDir.set(0, 0, -1)
             }
 
-            if (moveDir.lengthSq() > 0) {
-                moveDir.normalize().multiplyScalar(speed * delta).applyQuaternion(shipQuat)
+            if (Math.abs(currentSpeed.current) > 0.001) {
+                moveDir
+                    .normalize()
+                    .multiplyScalar(currentSpeed.current * delta)
+                    .applyQuaternion(shipQuat)
+
                 applyCollisionPrevention()
                 group.position.add(moveDir)
             }

@@ -31,7 +31,7 @@ const SpaceshipScene = () => {
     const initialized1stPerson = useRef(false)
     const initialized3rdPerson = useRef(false)
 
-    const { mode, focus, resetControl } = useControlStore()
+    const { mode, autopilot, focus, resetControl, setControl } = useControlStore()
 
     const { camera } = useThree()
     const celestial = useCelestial()
@@ -59,8 +59,12 @@ const SpaceshipScene = () => {
         if (focus) {
             const object = celestial.getObjectById(focus)
             resetControl(object)
+
+            if (mode !== Mode.Object) setControl({ autopilot: true })
         }
     }, [focus])
+
+    console.log(autopilot)
 
     // Camera follow spaceship
     useFrame(({ scene }) => {

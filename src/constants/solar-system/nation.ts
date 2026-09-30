@@ -391,11 +391,11 @@ export const nations: Nation[] = [
         latitude: 53.4129,
         longitude: -8.2439
     },
-    {
-        id: "IL",
-        latitude: 31.0461,
-        longitude: 34.8516
-    },
+    // {
+    //     id: "IL",
+    //     latitude: 31.0461,
+    //     longitude: 34.8516
+    // },
     {
         id: "IN",
         latitude: 20.5937,

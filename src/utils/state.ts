@@ -73,38 +73,25 @@ export const defaultControl = {
 export const useControlStore = create<ControlStore>((set) => ({
     ...defaultControl,
     resetControl: (data) => {
-        const object = data as CelestialObject
-        const tidalLock = object?.rotate_duration === object?.orbit_duration
+        set((state) => {
+            const object = data as CelestialObject
+            const tidalLock = object?.rotate_duration === object?.orbit_duration
+            const rotateSpeed = (state.mode === Mode.Object ? 1 : 0.1)
 
-        set((state) => ({
-            ...defaultControl,
-            focus: state.focus,
-            focusIndex: state.focusIndex + 1,
-            axisTilt: object?.axis ?? 0,
-            rotateSpeed: tidalLock ? 0 : 1,
-            tidalLock
-        }))
+            return {
+                ...defaultControl,
+                mode: state.mode,
+                focus: state.focus,
+                autopilot: state.autopilot,
+                focusIndex: state.focusIndex + 1,
+                axisTilt: object?.axis ?? 0,
+                rotateSpeed: tidalLock ? 0 : rotateSpeed,
+                tidalLock
+            }
+        })
     },
     setControl: (values) => set((state) => ({ ...state, ...values })),
 }))
-
-// export interface ShipStore {
-//     autopilot: boolean,
-//     cockpit: boolean,
-//     distance: number,
-//     setShip: (values: Partial<Omit<ShipStore, "setShip">>) => void
-// }
-
-// export const defaultShip = {
-//     autopilot: false,
-//     cockpit: false,
-//     distance: 0,
-// }
-
-// export const useShipStore = create<ShipStore>((set) => ({
-//     ...defaultShip,
-//     setShip: (values) => set((state) => ({ ...state, ...values })),
-// }))
 
 interface GalaxyStore {
     focus: string

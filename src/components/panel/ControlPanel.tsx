@@ -4,7 +4,7 @@ import clsx from "clsx";
 import { startTransition, useCallback, useDeferredValue, useEffect, useMemo, useRef, useState } from "react";
 import { When } from "react-if";
 import { useCelestial, useVariant } from "@function";
-import type { Planet } from "@types";
+import { Mode, type Planet } from "@types";
 
 
 import { PiFastForwardFill, PiRewindFill, PiPlayFill, PiPauseFill } from "react-icons/pi";
@@ -15,7 +15,6 @@ import { HiLocationMarker } from "react-icons/hi";
 import { MdBrightnessMedium, MdClose, MdHistory, MdRefresh } from "react-icons/md";
 import { SiUnitednations, SiGoogleearth } from "react-icons/si";
 import { useTranslation } from "react-i18next";
-import type { Plane } from "three";
 
 interface Props {
     id: string
@@ -53,8 +52,14 @@ const TOOLTIP_CLASS =
     "absolute -top-9 left-1/2 -translate-x-1/2 pointer-events-none opacity-0 group-hover/btn:opacity-100 transition-all duration-200 translate-y-1 group-hover/btn:translate-y-0 whitespace-nowrap rounded-md bg-slate-900/90 border border-white/15 px-2.5 py-1 text-xs text-slate-200 shadow-xl backdrop-blur-md z-50";
 
 const SPEED_ARRAY = [0.1, 0.5, 1, 2, 3, 5]
+
+const MODE_LIST = [
+    { id: Mode.Object, label: "Object View", img: "mode_object.jpg" },
+    { id: Mode.ThirdPerson, label: "Third Person", img: "mode_third_person.jpg" },
+    { id: Mode.FirstPerson, label: "First Person", img: "mode_first_person.jpg" }
+]
 const LayerPanel = ({ id }: Props) => {
-    const { focusIndex, focusLandmark, tidalLock, landmarkVisible, nationVisible, rotateSpeed, cloudVisible, atmosphereVisible, artificialSatelliteVisible, dayNightMode, axisTilt, variant, setControl, resetControl } = useControlStore()
+    const { mode, focusIndex, focusLandmark, tidalLock, landmarkVisible, nationVisible, rotateSpeed, cloudVisible, atmosphereVisible, artificialSatelliteVisible, dayNightMode, axisTilt, variant, setControl, resetControl } = useControlStore()
     const [lastVariant, setLastVariant] = useState<{ orbit_duration: number, rotate_duration: number } | undefined>()
     const [lastRotateSpeed, setLastRotateSpeed] = useState(rotateSpeed)
     const [timelinesVisible, setTimelineVisible] = useState(true)
@@ -191,6 +196,11 @@ const LayerPanel = ({ id }: Props) => {
 
     const handleTimelines = () => {
         setTimelineVisible(!timelinesVisible)
+    }
+
+    const handleMode = (mode: Mode) => {
+        setControl({ mode })
+        setModeVisible(false)
     }
 
     const handleReset = () => {
@@ -392,7 +402,7 @@ const LayerPanel = ({ id }: Props) => {
             </When>
 
             <div className={SECTION_CLASS}>
-                <button onClick={handleReset} className={clsx(TOGGLE_BTN_CLASS, "hover:bg-green-400/40")}>
+                <button onClick={() => setModeVisible(!modeVisible)} className={clsx(TOGGLE_BTN_CLASS, "hover:bg-green-400/40")}>
                     <AiFillEye />
                     <span className={TOOLTIP_CLASS}>View Mode</span>
                 </button>
@@ -443,6 +453,36 @@ const LayerPanel = ({ id }: Props) => {
                 </div>
             </When>
 
+            <When condition={modeVisible}>
+                <div className="absolute -top-3 left-1/2 -translate-x-1/2 -translate-y-full rounded-xl bg-slate-900/90 backdrop-blur-xl py-3 px-2 border border-white/15 flex flex-col gap-2 min-w-48 shadow-2xl z-5">
+                    <div className="text-xs font-semibold text-slate-400 border-b border-white/10 pb-2 px-2 flex justify-between items-center">
+                        <span>View Mode</span>
+                        <MdClose className="cursor-pointer text-slate-400 hover:text-white" onClick={() => setModeVisible(false)} />
+                    </div>
+                    <div className="flex gap-1">
+
+                        {MODE_LIST.map((_mode) => {
+                            const isSelected = mode === _mode.id
+
+                            return (
+                                <button
+                                    key={_mode.id}
+                                    onClick={() => handleMode(_mode.id)}
+                                    className={clsx(
+                                        "flex flex-col items-center justify-between px-4 pt-3 pb-2 rounded-lg text-xs font-medium transition-all text-left cursor-pointer gap-3",
+                                        isSelected ? "bg-cyan-500/20 text-cyan-300 border border-cyan-500/40" : "text-slate-300 hover:bg-white/10 hover:text-white"
+                                    )}
+                                >
+                                    <div className="w-56 bg-red-100 rounded">
+                                        <img alt={_mode.label} src={`/images/${_mode.img}`} />
+                                    </div>
+                                    <span className="whitespace-nowrap">{_mode.label}</span>
+                                </button>
+                            )
+                        })}
+                    </div>
+                </div>
+            </When>
         </div>
     )
 }
