@@ -1,15 +1,16 @@
 import { useRef, Suspense, useDeferredValue, useMemo } from "react"
-import { MathUtils, type Mesh } from "three"
+import { type Mesh } from "three"
 import { Detailed } from "@react-three/drei"
 
-import { Mode, type Planet as PlanetType } from "@types"
+import { SpaceCraftClass, type Planet as PlanetType } from "@types"
 import { useSettingStore, useControlStore } from "@state"
 import { CelestialBody, PlanetCloud, PlanetRing, LandmarkMarker, TextureLoader, SpaceCraft, Aurora, Atmosphere, NightMaterial, PlyLoader } from "@components/object"
 import { LOWREST_SCALE } from "@constants"
 import { Else, If, Then, When } from "react-if"
 import nations from "@constants/solar-system/nation"
 import NationMarker from "./NationMarker"
-import { userDataFormat, useVariant } from "@function"
+import { useCelestial, userDataFormat, useVariant } from "@function"
+import spacecraft from "@constants/solar-system/spacecraft"
 
 interface Props {
     data: PlanetType
@@ -19,18 +20,17 @@ interface Props {
 }
 
 const PlanetMesh = ({ data }: { data: PlanetType }) => {
-    const { focus } = useControlStore()
+    const isFocused = useCelestial().isFocused(data.id)
 
-    const isFocused = focus === data.id
-    const { topologyVisible } = useControlStore()
+    const { topographyVisible } = useControlStore()
     const texturePath = () => {
-        if (data.topology_texture && topologyVisible) return data.topology_texture
+        if (data.topography_texture && topographyVisible) return data.topography_texture
         return isFocused && data.texture_hd ? data.texture_hd : data.texture!
     }
     const texture = useDeferredValue(texturePath())
 
     const material = useMemo(() => {
-        if (topologyVisible) {
+        if (topographyVisible) {
             return <TextureLoader path={texture} />
         } else if (data.night_texture) {
             return <NightMaterial
@@ -45,7 +45,7 @@ const PlanetMesh = ({ data }: { data: PlanetType }) => {
         } else {
             return <meshStandardMaterial color={data.color} />
         }
-    }, [data.night_texture, data.texture, data.night_texture_hd, data.texture_hd, data.night_opacity, data.color, topologyVisible, texture, isFocused])
+    }, [data.night_texture, data.texture, data.night_texture_hd, data.texture_hd, data.night_opacity, data.color, topographyVisible, texture, isFocused])
 
     const materialRender = useDeferredValue(material)
 
@@ -72,22 +72,25 @@ const Planet = ({
     const objectRef = useRef<Mesh>(null!)
     const cloudRef = useRef<Mesh>(null!)
 
+    const celestial = useCelestial()
     const { sizeScale, distanceScale } = useSettingStore()
-    const { mode, focus, variant, landmarkVisible, nationVisible, cloudVisible, atmosphereVisible, setControl } = useControlStore()
+    const { focus, variant, landmarkVisible, nationVisible, cloudVisible, atmosphereVisible, setControl } = useControlStore()
     const distance = LOWREST_SCALE / distanceScale
 
     const data = useVariant(rawData) as PlanetType
     const scale = data.radius / sizeScale
 
     const handleClick = () => {
+        const object = celestial.getObjectById(focus) as PlanetType
+        if (data.id === object.parent && object.radius < 1 && object.distance < 10000) return;
+
         setControl({ focus: data.id })
     }
 
     if (!data) return null
 
-    const isNormalMode = mode === Mode.Object
-    const showLandmark = focus === data.id && landmarkVisible && isNormalMode
-    const showNation = data.id === "earth" && nationVisible && isNormalMode && !variant
+    const showLandmark = focus === data.id && landmarkVisible
+    const showNation = data.id === "earth" && nationVisible && !variant
     const showCloud = data.cloud_texture && cloudVisible
 
     return (
@@ -165,6 +168,15 @@ const Planet = ({
                     data={craft}
                 />
             ))}
+
+            <When condition={data.id === "earth"}>
+                {spacecraft.filter(craft => craft.class === SpaceCraftClass.FlyBy).map(craft => (
+                    <SpaceCraft
+                        key={craft.id}
+                        data={craft}
+                    />
+                ))}
+            </When>
         </CelestialBody>
     )
 }

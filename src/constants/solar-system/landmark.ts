@@ -313,7 +313,8 @@ export const landmarks: Landmark[] = [
         id: "karakoram_mountains",
         parent: "earth",
         latitude: 35.5,
-        longitude: 76.0
+        longitude: 76.0,
+        reverse: true
     },
     {
         id: "yangtze_river",
@@ -520,6 +521,26 @@ export const landmarks: Landmark[] = [
         parent: "saturn",
         latitude: 90.0,
         longitude: 0.0
+    },
+
+    // Titan
+    {
+        id: "kraken_mare",
+        parent: "titan",
+        latitude: 68.0,
+        longitude: 50.0
+    },
+    {
+        id: "ligeia_mare",
+        parent: "titan",
+        latitude: 79.0,
+        longitude: 112.0
+    },
+    {
+        id: "punga_mare",
+        parent: "titan",
+        latitude: 85.1,
+        longitude: 20.3
     },
 
     // Neptune

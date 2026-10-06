@@ -1,6 +1,7 @@
 /* eslint-disable react-hooks/immutability */
+import { useCelestial } from "@function";
 import { useKTX2, useTexture } from "@react-three/drei";
-import { useControlStore, useSettingStore } from "@state";
+import { useSettingStore } from "@state";
 import type { Planet } from "@types";
 import { NoColorSpace, type Mesh } from "three";
 
@@ -44,10 +45,9 @@ const ImageLoader = ({ path, opacity }: { path: string, opacity: number }) => {
 }
 
 const PlanetCloud = ({ data, cloudRef }: Props) => {
+    const isFocused = useCelestial().isFocused(data.id)
     const { sizeScale } = useSettingStore()
-    const { focus } = useControlStore()
 
-    const isFocused = data.id === focus
     const path = data.cloud_texture ?? ""
     const format = path.split(".")[1]
     const scale = data.radius / sizeScale

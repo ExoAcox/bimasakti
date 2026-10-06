@@ -3,8 +3,8 @@ import { useControlStore } from "@state"
 import clsx from "clsx";
 import { startTransition, useCallback, useDeferredValue, useEffect, useMemo, useRef, useState } from "react";
 import { When } from "react-if";
-import { useCelestial, useVariant } from "@function";
-import { Mode, type Planet } from "@types";
+import { timelineFormat, useCelestial, useVariant } from "@function";
+import { Mode, SpaceCraftClass, type Belt, type Planet, type SpaceCraft } from "@types";
 
 
 import { PiFastForwardFill, PiRewindFill, PiPlayFill, PiPauseFill } from "react-icons/pi";
@@ -12,9 +12,12 @@ import { ImCloud } from "react-icons/im";
 import { AiFillEye } from "react-icons/ai";
 import { TbSatelliteFilled } from "react-icons/tb";
 import { HiLocationMarker } from "react-icons/hi";
+import { CgTerrain } from "react-icons/cg";
 import { MdBrightnessMedium, MdClose, MdHistory, MdRefresh } from "react-icons/md";
 import { SiUnitednations, SiGoogleearth } from "react-icons/si";
 import { useTranslation } from "react-i18next";
+import { useKeyboardControls } from "@react-three/drei";
+import { Controls } from "@function";
 
 interface Props {
     id: string
@@ -59,13 +62,17 @@ const MODE_LIST = [
     { id: Mode.FirstPerson, label: "First Person", img: "mode_first_person.jpg" }
 ]
 const LayerPanel = ({ id }: Props) => {
-    const { mode, focusIndex, focusLandmark, tidalLock, landmarkVisible, nationVisible, rotateSpeed, cloudVisible, atmosphereVisible, artificialSatelliteVisible, dayNightMode, axisTilt, variant, setControl, resetControl } = useControlStore()
+    const { mode, focus, focusIndex, focusLandmark, tidalLock, landmarkVisible, nationVisible, rotateSpeed, cloudVisible, atmosphereVisible, artificialSatelliteVisible, topographyVisible, dayNightMode, axisTilt, variant, setControl, resetControl } = useControlStore()
     const [lastVariant, setLastVariant] = useState<{ orbit_duration: number, rotate_duration: number } | undefined>()
     const [lastRotateSpeed, setLastRotateSpeed] = useState(rotateSpeed)
     const [timelinesVisible, setTimelineVisible] = useState(true)
     const [modeVisible, setModeVisible] = useState(false)
     const deferredVariant = useDeferredValue(variant)
     const isLoading = variant !== deferredVariant
+
+    const [sub] = useKeyboardControls<Controls>()
+
+
 
     const tiltDialRef = useRef<HTMLDivElement>(null)
     const isDraggingRef = useRef(false)
@@ -123,7 +130,7 @@ const LayerPanel = ({ id }: Props) => {
         if (!data?.variants?.length) return []
 
         const variants = [{ variant_id: "", order: 0 }, ...data.variants]
-            .sort((a, b) => a.order - b.order).map(v => v.variant_id)
+            .sort((a, b) => a.order - b.order)
 
         return variants
     }, [data])
@@ -132,7 +139,7 @@ const LayerPanel = ({ id }: Props) => {
         if (rotateSpeed > 0) setLastRotateSpeed(rotateSpeed)
     }, [rotateSpeed])
 
-    const handleRotatePlay = () => {
+    const handleRotatePlay = useCallback(() => {
         const isTidalLock = data.rotate_duration === data.orbit_duration
 
         if (isTidalLock) {
@@ -147,30 +154,32 @@ const LayerPanel = ({ id }: Props) => {
                 focusLandmark: ""
             })
         }
+    }, [data.orbit_duration, data.rotate_duration, lastRotateSpeed, rotateSpeed, setControl])
 
-    }
-
-    const handleRotateNext = () => {
+    const handleRotateNext = useCallback(() => {
+        if (rotateSpeed === SPEED_ARRAY[SPEED_ARRAY.length - 1] || rotateSpeed === 0) return
         const currentIndex = SPEED_ARRAY.indexOf(rotateSpeed)
         setControl({ rotateSpeed: SPEED_ARRAY[currentIndex + 1] })
-    }
+    }, [rotateSpeed, setControl])
 
-    const handleRotatePrev = () => {
+    const handleRotatePrev = useCallback(() => {
+        if (rotateSpeed === SPEED_ARRAY[0] || rotateSpeed === 0) return
         const currentIndex = SPEED_ARRAY.indexOf(rotateSpeed)
         setControl({ rotateSpeed: SPEED_ARRAY[currentIndex - 1] })
-    }
+    }, [rotateSpeed, setControl])
 
-    const handleCloud = () => {
+    const handleLandmark = useCallback(() => {
+        setControl({ landmarkVisible: !landmarkVisible, nationVisible: false })
+    }, [landmarkVisible, setControl])
+
+    const handleCloud = useCallback(() => {
         setControl({ cloudVisible: !cloudVisible })
-    }
+    }, [cloudVisible, setControl])
 
     const handleAtmosphere = () => {
         setControl({ atmosphereVisible: !atmosphereVisible })
     }
 
-    const handleLandmark = () => {
-        setControl({ landmarkVisible: !landmarkVisible, nationVisible: false })
-    }
 
     const handleNation = () => {
         setControl({ nationVisible: !nationVisible, landmarkVisible: false, focusLandmark: "" })
@@ -188,11 +197,13 @@ const LayerPanel = ({ id }: Props) => {
         setControl({ dayNightMode: !dayNightMode })
     }
 
-    const handleVariant = (variant: string) => {
-        startTransition(() => {
-            setControl({ variant })
-        })
+    const handleTopography = () => {
+        setControl({ topographyVisible: !topographyVisible, cloudVisible: false, atmosphereVisible: false })
     }
+
+    const handleVariant = useCallback((variant: string) => {
+        setControl({ variant, focusLandmark: "", topographyVisible: false })
+    }, [setControl])
 
     const handleTimelines = () => {
         setTimelineVisible(!timelinesVisible)
@@ -208,9 +219,55 @@ const LayerPanel = ({ id }: Props) => {
     }
 
     const handleLeave = () => {
+        const spacecraft = data as unknown as SpaceCraft
+        const isSpacecraft = spacecraft.type === "spacecraft" && spacecraft.class !== SpaceCraftClass.FlyBy
+
         resetControl(data)
-        setControl({ focus: "" })
+        setControl({ focus: isSpacecraft ? data.parent : "" })
     }
+
+    const getVariantIndex = useCallback(() => {
+        return timelines.findIndex(time => time.variant_id === variant)
+    }, [timelines, variant])
+
+    useEffect(() => {
+        const unsub = sub(
+            (state) => state,
+            (keys) => {
+                if (keys.space) handleRotatePlay()
+                if (keys.up) handleRotateNext()
+                if (keys.down) handleRotatePrev()
+                if (keys.q) handleLandmark()
+                if (keys.e) handleCloud()
+                if (keys.left) {
+                    const index = getVariantIndex()
+                    if (index === 0) return
+                    handleVariant(timelines[index - 1].variant_id)
+                }
+
+                if (keys.right) {
+                    const index = getVariantIndex()
+                    if (index === timelines.length - 1) return
+                    handleVariant(timelines[index + 1].variant_id)
+                }
+
+                if (keys.z) {
+                    console.log('left tilt')
+                }
+
+                if (keys.x) {
+                    console.log('right tilt')
+                }
+
+                if (keys.c) {
+                    console.log('right tilt')
+                }
+
+            }
+        )
+
+        return unsub
+    }, [getVariantIndex, handleCloud, handleLandmark, handleRotateNext, handleRotatePlay, handleRotatePrev, handleVariant, setControl, sub, timelines])
 
     useEffect(() => {
         if (data) {
@@ -233,17 +290,68 @@ const LayerPanel = ({ id }: Props) => {
         }
     }, [data, data.orbit_duration, data.rotate_duration, lastVariant, rotateSpeed, setControl])
 
+    useEffect(() => {
+        setModeVisible(false)
+    }, [focus])
+
     if (!data) return null;
 
     return (
         <div className="fixed bottom-6 left-1/2 -translate-x-1/2 flex items-center gap-3 z-40 bg-background backdrop-blur-md p-2 px-3 rounded-full border border-white/15 shadow-2xl shadow-cyan-950/40 hover:border-cyan-500/30 transition-all duration-300">
+            <div className="flex items-center flex-col gap-2 absolute w-full -top-1 left-1/2 -translate-x-1/2 -translate-y-full z-5">
+                <When condition={isLoading}>
+                    <div className="w-fit bg-background border border-white/15 px-2.5 py-1 font-semibold text-sm text-white shadow-xl backdrop-blur-md rounded-md italic">
+                        Loading texture ...
+                    </div>
+                </When>
 
-            <When condition={focusLandmark}>
-                <div className={clsx(showTimelines ? "-top-10" : "-top-3", "absolute flex items-center gap-2 left-1/2 -translate-x-1/2 -translate-y-full bg-background border border-white/15 px-2.5 py-1 font-semibold text-sm text-white shadow-xl backdrop-blur-md rounded-md")}>
-                    <span className="pointer-events-none">{t(`landmark.${focusLandmark}.name`)}</span>
-                    <MdClose className="cursor-pointer text-red-400 size-4" onClick={handleLeaveLandmark} />
-                </div>
-            </When>
+                <When condition={focusLandmark}>
+                    <div className="flex w-fit items-center gap-2 bg-background border border-white/15 px-2.5 py-1 font-semibold text-sm text-white shadow-xl backdrop-blur-md rounded-md">
+                        <span className="pointer-events-none">{t(`landmark.${focusLandmark}.name`)}</span>
+                        <MdClose className="cursor-pointer text-red-400 size-4" onClick={handleLeaveLandmark} />
+                    </div>
+                </When>
+
+                <When condition={showTimelines}>
+                    <div className="w-full relative flex justify-evenly items-end gap-3 py-2 px-3 max-w-full scrollbar-thin scrollbar-thumb-slate-700">
+                        <div className="absolute bottom-3.75 left-6 right-6 h-0.5 bg-linear-to-r from-slate-700 via-cyan-500/40 to-slate-700 z-0 pointer-events-none" />
+
+                        {timelines.map((_data) => {
+                            const isSelected = variant === _data.variant_id
+
+                            return (
+                                <button
+                                    key={_data.variant_id}
+                                    onClick={() => handleVariant(_data.variant_id)}
+                                    className="group/btn relative z-10 flex flex-col items-center gap-2.5 group/node cursor-pointer shrink-0 transition-transform active:scale-95"
+                                >
+                                    <div className={clsx(
+                                        "group-hover/btn:flex hidden absolute -top-2 -translate-y-full px-3 py-1.5 rounded-xl text-xs flex-col gap-0.5 items-center font-medium transition-all duration-200 border whitespace-nowrap shadow-md",
+                                        isSelected
+                                            ? "bg-cyan-500/25 text-cyan-200 border-cyan-400/60 shadow-[0_0_15px_rgba(6,182,212,0.35)] scale-105"
+                                            : "bg-slate-800/90 text-slate-300 border-white/10 hover:bg-slate-700 hover:text-white hover:border-white/30"
+                                    )}>
+                                        <span className="font-semibold">{t(`object.${data.id}.variants.${_data.variant_id}.name`, t("ui.present"))}</span>
+                                        <When condition={_data.order !== 0}>
+                                            <span>{timelineFormat(_data.order)}</span>
+                                        </When>
+                                    </div>
+
+                                    <div className={clsx(
+                                        "w-3.5 h-3.5 rounded-full border-2 transition-all duration-200 flex items-center justify-center",
+                                        isSelected
+                                            ? "bg-primary border-base shadow-[0_0_10px_rgba(6,182,212,0.9)] scale-125"
+                                            : "bg-slate-900 border-slate-500 group-hover/node:border-cyan-400 group-hover/node:bg-slate-700"
+                                    )}>
+                                    </div>
+                                </button>
+                            )
+                        })}
+                    </div>
+                </When>
+            </div>
+
+
 
 
             <div className={SECTION_CLASS}>
@@ -277,13 +385,13 @@ const LayerPanel = ({ id }: Props) => {
                     </button>
                 </When>
 
-                <When condition={data.atmosphere}>
+                <When condition={data.atmosphere || data.aurora}>
                     <button
                         onClick={handleAtmosphere}
                         className={clsx(TOGGLE_BTN_CLASS, atmosphereVisible && ACTIVE_GREEN_CLASS)}
                     >
                         <SiGoogleearth />
-                        <span className={TOOLTIP_CLASS}>Atmosphere</span>
+                        <span className={TOOLTIP_CLASS}>{data.atmosphere ? "Atmosphere" : "Aurora"}</span>
                     </button>
                 </When>
 
@@ -296,7 +404,6 @@ const LayerPanel = ({ id }: Props) => {
                         <span className={TOOLTIP_CLASS}>Satellites</span>
                     </button>
                 </When>
-
                 <When condition={data.night_texture}>
                     <button
                         onClick={handleDayNight}
@@ -304,6 +411,15 @@ const LayerPanel = ({ id }: Props) => {
                     >
                         <MdBrightnessMedium />
                         <span className={TOOLTIP_CLASS}>Day / Night Mode</span>
+                    </button>
+                </When>
+                <When condition={data.topography_texture}>
+                    <button
+                        onClick={handleTopography}
+                        className={clsx(TOGGLE_BTN_CLASS, topographyVisible && ACTIVE_CYAN_CLASS)}
+                    >
+                        <CgTerrain />
+                        <span className={TOOLTIP_CLASS}>Topography</span>
                     </button>
                 </When>
                 <When condition={data.variants?.length}>
@@ -402,10 +518,12 @@ const LayerPanel = ({ id }: Props) => {
             </When>
 
             <div className={SECTION_CLASS}>
-                <button onClick={() => setModeVisible(!modeVisible)} className={clsx(TOGGLE_BTN_CLASS, "hover:bg-green-400/40")}>
-                    <AiFillEye />
-                    <span className={TOOLTIP_CLASS}>View Mode</span>
-                </button>
+                <When condition={(data as unknown as Belt).type !== "belt"}>
+                    <button onClick={() => setModeVisible(!modeVisible)} className={clsx(TOGGLE_BTN_CLASS, "hover:bg-green-400/40")}>
+                        <AiFillEye />
+                        <span className={TOOLTIP_CLASS}>View Mode</span>
+                    </button>
+                </When>
                 <button onClick={handleReset} className={clsx(TOGGLE_BTN_CLASS, "hover:bg-amber-400/50")}>
                     <MdRefresh />
                     <span className={TOOLTIP_CLASS}>Reset</span>
@@ -415,43 +533,6 @@ const LayerPanel = ({ id }: Props) => {
                     <span className={TOOLTIP_CLASS}>Leave</span>
                 </button>
             </div>
-
-            <When condition={showTimelines}>
-                <div className="absolute w-full -top-1 left-1/2 -translate-x-1/2 -translate-y-full z-5">
-                    <div className="relative flex justify-evenly items-end gap-3 py-2 px-3 max-w-full scrollbar-thin scrollbar-thumb-slate-700">
-                        <div className="absolute bottom-3.75 left-6 right-6 h-0.5 bg-linear-to-r from-slate-700 via-cyan-500/40 to-slate-700 z-0 pointer-events-none" />
-
-                        {timelines.map((variantId) => {
-                            const isSelected = variant === variantId
-
-                            return (
-                                <button
-                                    key={variantId}
-                                    onClick={() => handleVariant(variantId)}
-                                    className="group/btn relative z-10 flex flex-col items-center gap-2.5 group/node cursor-pointer shrink-0 transition-transform active:scale-95"
-                                >
-                                    <div className={clsx(
-                                        "group-hover/btn:block hidden absolute -top-2 -translate-y-full px-3 py-1.5 rounded-xl text-xs font-medium transition-all duration-200 border whitespace-nowrap shadow-md",
-                                        isSelected
-                                            ? "bg-cyan-500/25 text-cyan-200 border-cyan-400/60 shadow-[0_0_15px_rgba(6,182,212,0.35)] scale-105"
-                                            : "bg-slate-800/90 text-slate-300 border-white/10 hover:bg-slate-700 hover:text-white hover:border-white/30"
-                                    )}>
-                                        {t(`object.${data.id}.variants.${variantId}.name`, t("ui.present"))}
-                                    </div>
-
-                                    <div className={clsx(
-                                        "w-3.5 h-3.5 rounded-full border-2 transition-all duration-200 flex items-center justify-center",
-                                        isSelected
-                                            ? "bg-primary border-base shadow-[0_0_10px_rgba(6,182,212,0.9)] scale-125"
-                                            : "bg-slate-900 border-slate-500 group-hover/node:border-cyan-400 group-hover/node:bg-slate-700"
-                                    )}>
-                                    </div>
-                                </button>
-                            )
-                        })}
-                    </div>
-                </div>
-            </When>
 
             <When condition={modeVisible}>
                 <div className="absolute -top-3 left-1/2 -translate-x-1/2 -translate-y-full rounded-xl bg-slate-900/90 backdrop-blur-xl py-3 px-2 border border-white/15 flex flex-col gap-2 min-w-48 shadow-2xl z-5">

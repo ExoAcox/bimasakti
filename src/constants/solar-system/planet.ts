@@ -2,7 +2,7 @@ import { satellites } from "./satellite"
 import { spacecraft } from "./spacecraft"
 import { landmarks } from "./landmark"
 import { variants } from "./variant"
-import { PlanetClass, type Planet, type Variant } from "@types"
+import { PlanetClass, SpaceCraftClass, type Planet, type Variant } from "@types"
 
 export const planets: Planet[] = [
     {
@@ -18,6 +18,7 @@ export const planets: Planet[] = [
         rotate_duration: 58.65,
         texture: "mercury.ktx2",
         texture_hd: "mercury_hd.ktx2",
+        topography_texture: "mercury_topography.jpg",
         icon: "mercury.png",
         get satellites() {
             return satellites.filter((satellite) => satellite.parent === this.id)
@@ -40,6 +41,7 @@ export const planets: Planet[] = [
         texture: "venus.ktx2",
         texture_hd: "venus_hd.ktx2",
         cloud_texture: "venus_cloud.ktx2",
+        topography_texture: "venus_topography.jpg",
         atmosphere: 1,
         aurora: 0.5,
         icon: "venus.png",
@@ -69,6 +71,7 @@ export const planets: Planet[] = [
         night_texture: "earth_night.ktx2",
         night_texture_hd: "earth_night_hd.ktx2",
         cloud_texture: "earth_cloud.ktx2",
+        topography_texture: "earth_topography.jpg",
         aurora: 1,
         atmosphere: 1,
         icon: "earth.png",
@@ -79,7 +82,7 @@ export const planets: Planet[] = [
             return satellites.filter((satellite) => satellite.parent === this.id)
         },
         get artificial_satellites() {
-            return spacecraft.filter((craft) => craft.parent === this.id)
+            return spacecraft.filter((craft) => craft.parent === this.id && craft.class !== SpaceCraftClass.FlyBy)
         },
         get landmarks() {
             return landmarks.filter((landmark) => landmark.parent === this.id)
@@ -98,6 +101,7 @@ export const planets: Planet[] = [
         rotate_duration: 1.03,
         texture: "mars.ktx2",
         texture_hd: "mars_hd.ktx2",
+        topography_texture: "mars_topography.jpg",
         atmosphere: 0.1,
         icon: "mars.png",
         get variants() {
@@ -105,6 +109,9 @@ export const planets: Planet[] = [
         },
         get satellites() {
             return satellites.filter((satellite) => satellite.parent === this.id)
+        },
+        get artificial_satellites() {
+            return spacecraft.filter((craft) => craft.parent === this.id)
         },
         get landmarks() {
             return landmarks.filter((landmark) => landmark.parent === this.id)
@@ -126,6 +133,9 @@ export const planets: Planet[] = [
         icon: "jupiter.png",
         get satellites() {
             return satellites.filter((satellite) => satellite.parent === this.id)
+        },
+        get artificial_satellites() {
+            return spacecraft.filter((craft) => craft.parent === this.id)
         },
         get landmarks() {
             return landmarks.filter((landmark) => landmark.parent === this.id)

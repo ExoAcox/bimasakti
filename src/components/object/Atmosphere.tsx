@@ -1,6 +1,6 @@
+import { useCelestial } from "@function"
 import { useFrame } from "@react-three/fiber"
 import { atmosphereFragmentShader, atmosphereVertexShader } from "@shaders/earth"
-import { useControlStore } from "@state"
 import type { Planet } from "@types"
 import { useMemo, useRef } from "react"
 import { AdditiveBlending, BackSide, Color, ShaderMaterial, Vector3 } from "three"
@@ -13,8 +13,7 @@ const Atmosphere = ({ data }: Props) => {
     const materialRef = useRef<ShaderMaterial>(null!)
     const opacity = data.atmosphere ?? 1.0
 
-    const { focus } = useControlStore()
-    const isFocused = focus === data.id
+    const isFocused = useCelestial().isFocused(data.id)
 
     const atmosphereMaterial = useMemo(() => {
         return new ShaderMaterial({

@@ -40,7 +40,7 @@ export interface ControlStore {
     rotateSpeed: number
     axisTilt: number
     tidalLock: boolean
-    topologyVisible: boolean
+    topographyVisible: boolean
     cloudVisible: boolean
     atmosphereVisible: boolean
     landmarkVisible: boolean
@@ -62,7 +62,7 @@ export const defaultControl = {
     axisTilt: 0,
     tidalLock: false,
     dayNightMode: true,
-    topologyVisible: false,
+    topographyVisible: false,
     cloudVisible: true,
     atmosphereVisible: true,
     landmarkVisible: true,

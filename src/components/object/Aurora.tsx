@@ -1,7 +1,7 @@
+import { useCelestial } from "@function"
 import { useTexture } from "@react-three/drei"
 import { useFrame } from "@react-three/fiber"
 import { auroraFragmentShader, auroraVertexShader } from "@shaders/aurora"
-import { useControlStore } from "@state"
 import type { Planet } from "@types"
 import { useMemo, useRef } from "react"
 import { AdditiveBlending, Color, DoubleSide, ShaderMaterial, Vector3 } from "three"
@@ -14,9 +14,8 @@ const Aurora = ({ data }: Props) => {
     const materialRef = useRef<ShaderMaterial>(null!)
     const texture = useTexture("/textures/aurora.png")
 
-    const { focus } = useControlStore()
+    const isFocused = useCelestial().isFocused(data.id)
 
-    const isFocused = data.id === focus
     const radius = 1.015
     const intensity = data.aurora ?? 0
     const color = "#44ffaa"

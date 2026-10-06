@@ -13,10 +13,9 @@ import { Bloom, EffectComposer } from '@react-three/postprocessing'
 import BlackholeWrapEffect from "@components/effect/BlackholeWrapEffect"
 import Loader from "@components/Loader"
 import { Case, Default, Switch, When } from "react-if";
-import { useCelestial } from "@function";
+import { keyboardMap, useCelestial } from "@function";
 import { Outlet, useSearchParams } from "react-router";
 import SpaceshipScene from "./SpaceshipScene";
-import { keyboardMap } from "./object/Spaceship";
 
 
 
@@ -97,26 +96,27 @@ const CanvasLayout = () => {
     if (!isMounted) return null
 
     return <div className="w-dvw h-dvh">
-        <Canvas
-            camera={{ near: 1e-5, far: 1e+10 }}
-            onPointerMissed={() => setSetting({ showSetting: false })}>
+        <KeyboardControls map={keyboardMap}>
+            <Canvas
+                camera={{ near: 1e-5, far: 1e+10 }}
+                onPointerMissed={() => setSetting({ showSetting: false })}>
 
-            <AutoCameraClip />
+                <AutoCameraClip />
 
-            <When condition={import.meta.env.DEV || searchParams.get('dev')}>
-                <Stats className="top-auto! left-auto! bottom-0! right-0!" />
-            </When>
-
-            <Suspense fallback={<Loader />}>
-                <ambientLight intensity={0.5} />
-                <color attach="background" args={['black']} />
-
-                <When condition={data.id !== "milky_way"}>
-                    <SkyBox path={skyboxTexture} />
+                <When condition={import.meta.env.DEV || searchParams.get('dev')}>
+                    <Stats className="top-auto! left-auto! bottom-0! right-0!" />
                 </When>
 
-                {/* <Physics gravity={[0, 0, 0]} debug> */}
-                <KeyboardControls map={keyboardMap}>
+                <Suspense fallback={<Loader />}>
+                    <ambientLight intensity={0.5} />
+                    <color attach="background" args={['black']} />
+
+                    <When condition={data.id !== "milky_way"}>
+                        <SkyBox path={skyboxTexture} />
+                    </When>
+
+                    {/* <Physics gravity={[0, 0, 0]} debug> */}
+
                     <Bounds>
                         <Switch>
                             <Case condition={mode !== Mode.Object}>
@@ -129,26 +129,26 @@ const CanvasLayout = () => {
 
                         <Outlet />
                     </Bounds>
-                </KeyboardControls>
-                {/* </Physics> */}
+                    {/* </Physics> */}
 
-                <EffectComposer>
-                    <BlackholeWrapEffect />
-                    <Bloom
-                        intensity={2}
-                        luminanceThreshold={1.0}
-                        luminanceSmoothing={0.9}
-                        mipmapBlur
-                    />
-                </EffectComposer>
+                    <EffectComposer>
+                        <BlackholeWrapEffect />
+                        <Bloom
+                            intensity={2}
+                            luminanceThreshold={1.0}
+                            luminanceSmoothing={0.9}
+                            mipmapBlur
+                        />
+                    </EffectComposer>
 
-            </Suspense>
-        </Canvas>
+                </Suspense>
+            </Canvas>
 
-        <Header id={data.id} />
-        <NavigationPanel />
-        <SettingPanel />
-        <UserInterface id={data.id} />
+            <Header id={data.id} />
+            <NavigationPanel />
+            <SettingPanel />
+            <UserInterface id={data.id} />
+        </KeyboardControls>
     </div>
 }
 

@@ -7,6 +7,7 @@
         "orbital_period": "Orbital period",
         "distance_from": "Distance from",
         "parent_planet": "Parent Planet",
+        "parent_object": "Parent Object",
         "natural_satellites": "Natural Satellites",
         "days": "days",
         "setting": "Setting",
@@ -555,6 +556,51 @@
             "nickname": "S4711",
             "description": "S4711 is a high-velocity star orbiting Sagittarius A* with a short 7.6-year period."
         },
+        "hubble": {
+            "name": "Hubble Space Telescope",
+            "nickname": "Hubble",
+            "description": "The Hubble Space Telescope is a space telescope that was launched into low Earth orbit in 1990. Hubble has revolutionized modern astronomy with iconic, deep-space imaging."
+        },
+        "jswt": {
+            "name": "James Webb Space Telescope",
+            "nickname": "JSWT",
+            "description": "The James Webb Space Telescope (JWST) is a space telescope designed primarily to conduct infrared astronomy to study the first galaxies, stars, and planetary systems."
+        },
+        "lro": {
+            "name": "Lunar Reconnaissance Orbiter",
+            "nickname": "LRO",
+            "description": "The Lunar Reconnaissance Orbiter (LRO) is a NASA robotic spacecraft currently orbiting the Moon, creating high-resolution 3D maps of the lunar surface."
+        },
+        "exomars": {
+            "name": "ExoMars Trace Gas Orbiter",
+            "nickname": "ExoMars",
+            "description": "The ExoMars Trace Gas Orbiter is a joint project between ESA and Roscosmos orbiting Mars to analyze trace atmospheric gases, particularly methane."
+        },
+        "maven": {
+            "name": "MAVEN",
+            "nickname": "MAVEN",
+            "description": "MAVEN (Mars Atmosphere and Volatile EvolutioN) is a NASA spacecraft orbiting Mars to study the loss of its atmospheric gases to space over time."
+        },
+        "mro": {
+            "name": "Mars Reconnaissance Orbiter",
+            "nickname": "MRO",
+            "description": "The Mars Reconnaissance Orbiter (MRO) is a NASA spacecraft orbiting Mars equipped with powerful cameras to capture high-resolution imagery of the Martian surface."
+        },
+        "odyssey": {
+            "name": "2001 Mars Odyssey",
+            "nickname": "Mars Odyssey",
+            "description": "2001 Mars Odyssey is a NASA spacecraft orbiting Mars, holding the record for the longest-continually surviving continually active spacecraft in orbit around another planet."
+        },
+        "juno": {
+            "name": "Juno",
+            "nickname": "Juno",
+            "description": "Juno is a NASA space probe orbiting the planet Jupiter in a polar orbit to measure its atmosphere, magnetic field, gravitational field, and magnetosphere."
+        },
+        "parker_solar": {
+            "name": "Parker Solar Probe",
+            "nickname": "Parker Solar",
+            "description": "The Parker Solar Probe is a NASA space probe orbiting the Sun, traveling closer to the solar surface than any previous spacecraft to study the solar corona and solar wind."
+        },
         "voyager_1": {
             "name": "Voyager 1",
             "nickname": "Voyager 1",
@@ -907,6 +953,18 @@
         "saturn_hexagon": {
             "name": "Saturn's Hexagon",
             "description": "A persistent hexagonal cloud pattern around the north pole of Saturn, spanning nearly 30,000 km across."
+        },
+        "kraken_mare": {
+            "name": "Kraken Mare",
+            "description": "The largest body of liquid on Titan's surface, a massive hydrocarbon sea composed primarily of liquid methane and ethane."
+        },
+        "ligeia_mare": {
+            "name": "Ligeia Mare",
+            "description": "The second-largest body of liquid on Titan, a vast liquid methane sea located in Titan's north polar region."
+        },
+        "punga_mare": {
+            "name": "Punga Mare",
+            "description": "The third-largest known liquid sea on Titan, located near Titan's north pole and connected to Kraken Mare."
         },
         "tranquility_base": {
             "name": "Statio Tranquillitatis",

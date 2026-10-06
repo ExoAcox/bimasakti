@@ -64,8 +64,6 @@ const SpaceshipScene = () => {
         }
     }, [focus])
 
-    console.log(autopilot)
-
     // Camera follow spaceship
     useFrame(({ scene }) => {
         const spaceship = scene.getObjectByName("spaceship")

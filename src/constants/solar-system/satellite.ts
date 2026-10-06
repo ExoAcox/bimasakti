@@ -1,6 +1,7 @@
 import type { Satellite, SatelliteVariant } from "@types"
 import { landmarks } from "./landmark"
 import { variants } from "./variant"
+import spacecraft from "./spacecraft"
 
 export const satellites: Satellite[] = [
     // Earth
@@ -16,7 +17,11 @@ export const satellites: Satellite[] = [
         rotate_duration: 27.32, // Tidally locked
         texture: "moon.ktx2",
         texture_hd: "moon_hd.ktx2",
+        topography_texture: "moon_topography.jpg",
         icon: "satellite.png",
+        get artificial_satellites() {
+            return spacecraft.filter((craft) => craft.parent === this.id)
+        },
         get variants() {
             return variants[this.id] as SatelliteVariant[]
         },
@@ -189,8 +194,12 @@ export const satellites: Satellite[] = [
         orbit_duration: 15.95,
         rotate_duration: 15.95, // Tidally locked
         texture: "titan.webp",
+        cloud_texture: "titan_cloud.png",
         atmosphere: 1,
-        icon: "satellite.png"
+        icon: "satellite.png",
+        get landmarks() {
+            return landmarks.filter((landmark) => landmark.parent === this.id)
+        }
     },
     {
         id: "iapetus",

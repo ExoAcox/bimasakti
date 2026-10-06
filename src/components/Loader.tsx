@@ -18,8 +18,6 @@ export const Loader = () => {
     const displayTotal = Math.max(total, knownTotalAssets)
     const formattedProgress = Math.min(Math.round((loaded / displayTotal) * 100), 99)
 
-    console.log(loaded, item)
-
     return (
         <Html center style={{ width: "100vw", height: "100vh", pointerEvents: "none" }}>
             <div className="fixed inset-0 z-100 flex flex-col items-center justify-center select-none font-sans text-white pointer-events-auto overflow-hidden">

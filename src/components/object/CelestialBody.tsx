@@ -1,7 +1,7 @@
 /* eslint-disable react-hooks/set-state-in-effect */
 import { useMemo, useRef } from "react"
 import { Group, MathUtils, Mesh, Vector3 } from "three"
-import { Mode, type CelestialObject, type Planet as PlanetType } from "@types"
+import { Mode, SpaceCraftClass, type CelestialObject, type Planet as PlanetType, type SpaceCraft } from "@types"
 import { useFrame, useThree } from "@react-three/fiber"
 import { calculateSatelliteDistance, getInitialRotation, useCelestial } from "@function";
 import { Html } from "@react-three/drei";
@@ -18,7 +18,7 @@ interface Props {
     cloudRef?: React.RefObject<Mesh | null>,
     labelRef?: React.RefObject<HTMLButtonElement>
     childrenComponent?: React.ReactNode
-    orbitLineVisible?: boolean
+    visible?: boolean
 }
 
 // Reusable vectors for zero-alloc fast occlusion math
@@ -28,7 +28,7 @@ const planetPos = new Vector3()
 const labelPos = new Vector3()
 const closestPoint = new Vector3()
 
-const Object = ({ data, children, childrenComponent, onClick, objectRef, cloudRef, labelRef, orbitLineVisible = true }: Props) => {
+const Object = ({ data, children, childrenComponent, onClick, objectRef, cloudRef, labelRef, visible = true }: Props) => {
     const orbitRef = useRef<Group>(null!)
     const internalLabelRef = useRef<HTMLButtonElement>(null!)
 
@@ -43,6 +43,7 @@ const Object = ({ data, children, childrenComponent, onClick, objectRef, cloudRe
     const focusedObject = celestial.getObjectById(focus) as CelestialObject
     const defaultFocus = universe.defaultFocus
     const isFocused = focus === data.id;
+    const isSpacecraft = data.type === "spacecraft" && data.distance < 10000
 
     const axis = ignoreAxis ? 0 : MathUtils.degToRad(data?.axis ?? 0)
     // const scale = data.radius / sizeScale
@@ -59,12 +60,17 @@ const Object = ({ data, children, childrenComponent, onClick, objectRef, cloudRe
         }
     }, [celestial, data.distance, data.id, data.parent, data.type, distanceScale, sizeScale])
 
+    const isOrbitLineVisible = useMemo(() => {
+        const isSpacecraft = data.type === "spacecraft" ? (isFocused || data.parent === focus) : true;
+        return data.orbit_duration && showOrbitLine && visible && isSpacecraft
+    }, [data.type, data.parent, data.orbit_duration, isFocused, focus, showOrbitLine, visible])
+
     const longestDistance = useMemo(() => {
         if (!("longest_distance" in data) || !data.longest_distance) return distance;
         return data.longest_distance / distanceScale;
     }, [data, distanceScale, distance]);
 
-    const isAncestorOfFocused = (currentId: string, focusedId: string) => {
+    const isAncestorFocused = (currentId: string, focusedId: string) => {
         let curr = celestial.getObjectById(focusedId) as CelestialObject
         while (curr && curr.parent) {
             if (curr.parent === currentId) return true;
@@ -119,8 +125,8 @@ const Object = ({ data, children, childrenComponent, onClick, objectRef, cloudRe
 
         if (!data.orbit_duration || mode !== Mode.Object) return
 
-        const isParentOfFocused = focus ? isAncestorOfFocused(data.id, focus) : false;
-        const shouldPauseOrbit = pauseOrbitWhenFocus && (isFocused || isParentOfFocused);
+        const isParentFocused = focus ? isAncestorFocused(data.id, focus) : false;
+        const shouldPauseOrbit = pauseOrbitWhenFocus && (isFocused || isParentFocused || data.type === "spacecraft");
 
         if (!shouldPauseOrbit) {
             if (longestDistance > distance) {
@@ -149,7 +155,7 @@ const Object = ({ data, children, childrenComponent, onClick, objectRef, cloudRe
         const distance = celestial.getCameraDistance(camera, object)
         const scale = Math.max(300, data.radius) / sizeScale * 50
 
-        let isVisible = distance > scale
+        let isVisible = isSpacecraft ? true : distance > scale
 
         if (isVisible) {
             const checkOcclusion = (occluderId: string) => {
@@ -196,7 +202,10 @@ const Object = ({ data, children, childrenComponent, onClick, objectRef, cloudRe
         }
 
         internalLabelRef.current.style.visibility = isVisible ? "visible" : "hidden"
-        internalLabelRef.current.style.background = focus === data.id ? "rgba(0,0,0,0.75)" : "transparent"
+
+        if (!isSpacecraft) {
+            internalLabelRef.current.style.background = focus === data.id ? "rgba(0,0,0,0.75)" : "transparent"
+        }
 
         if (internalLabelRef.current.parentElement?.parentElement) {
             internalLabelRef.current.parentElement.parentElement.style.zIndex = focus === data.id ? "5" : "1"
@@ -205,6 +214,7 @@ const Object = ({ data, children, childrenComponent, onClick, objectRef, cloudRe
 
 
     const isLabelVisible = useMemo(() => {
+        if (!visible) return false
 
         const isSmallestObject = () => {
             if (universe.defaultFocus) {
@@ -219,17 +229,32 @@ const Object = ({ data, children, childrenComponent, onClick, objectRef, cloudRe
         if (!isSmallestObject()) return true
         if (isSmallestObject()) {
             if (focus === data.id) return true
-            if (data.type === "spacecraft") return false
             if (focus === data.parent) return true
-            if (focusedObject?.parent === data.parent) return true
+            if (focusedObject?.parent === data.parent && data.parent !== defaultFocus) return true
+            // if (data.type === "spacecraft") {
+            //     if (isFocused) return true
+            //     if (data.parent === focus) return true
+            // }
+
+            if (data.id === "parker_solar") {
+                console.log(isFocused, data.parent === focus, data.parent, !isSmallestObject())
+            }
         }
 
         return false
-    }, [universe.defaultFocus, data.type, data.orbit_duration, data.id, data.parent, focus, focusedObject?.parent])
+    }, [visible, universe.defaultFocus, data, focus, focusedObject?.parent, defaultFocus, isFocused])
+
+    const labelClass = useMemo(() => {
+        if (isSpacecraft) {
+            return "hover:text-primary absolute -translate-x-1/2 px-2 py-0.5 rounded-full text-[10px] font-medium transition-all duration-150 border whitespace-nowrap shadow-md cursor-pointer select-none bg-neutral-950/90 text-sky-200 border-sky-500/30 hover:bg-neutral-900 hover:border-sky-400 hover:text-white"
+        } else {
+            return "hover:text-primary absolute -translate-x-1/2 -translate-y-full -mt-1 py-1 px-2 whitespace-nowrap rounded-lg text-sm font-semibold"
+        }
+    }, [isSpacecraft])
 
     return <group rotation={[0, 0, axis]}>
         <group rotation={[0, rotate, 0]}>
-            <When condition={data.orbit_duration && showOrbitLine && orbitLineVisible}>
+            <When condition={isOrbitLineVisible}>
                 <OrbitLine radius={distance} longestRadius={longestDistance > distance ? longestDistance : undefined} color={data.color} />
             </When>
 
@@ -237,11 +262,28 @@ const Object = ({ data, children, childrenComponent, onClick, objectRef, cloudRe
                 <group position={longestDistance > distance ? [0, 0, 0] : [distance, 0, 0]}>
                     <When condition={isLabelVisible}>
                         <Html
-                            zIndexRange={[data.type === "star" ? 2 : 1, 0]}
+                            zIndexRange={[data.type === "star" ? 3 : 2, 0]}
                         >
-                            <button ref={labelRef || internalLabelRef} className="hover:text-primary absolute -translate-x-1/2 -translate-y-full -mt-1 py-1 px-2 whitespace-nowrap rounded-lg text-sm font-semibold " onClick={onClick}>{t(`object.${data.id}.name`)}</button>
+                            <button
+                                ref={labelRef || internalLabelRef}
+                                className={labelClass}
+                                onClick={onClick}>
+                                {t(`object.${data.id}.name`)}
+                            </button>
                         </Html>
                     </When>
+                    {/* <When condition={isSpacecraftLabelVisible}>
+                        <Html
+                            zIndexRange={[isFocused ? 2 : 1, 0]}
+                        >
+                            <button ref={spacecraftLabelRef} className={clsx(
+                                "flex items-center gap-1.5 px-2 py-0.5 rounded-full text-[10px] font-medium transition-all duration-150 border whitespace-nowrap shadow-md cursor-pointer select-none",
+                                isFocused
+                                    ? "bg-sky-600 text-white border-sky-300 scale-105 shadow-sky-500/40"
+                                    : "bg-neutral-950/90 text-sky-200 border-sky-500/30 hover:bg-neutral-900 hover:border-sky-400 hover:text-white",
+                            )} onClick={onClick}>{t(`object.${data.id}.name`)}</button>
+                        </Html>
+                    </When> */}
 
                     {children}
                     {childrenComponent}

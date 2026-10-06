@@ -1,4 +1,4 @@
-import { Camera, MathUtils, Object3D, Plane, Vector3 } from "three"
+import { Camera, MathUtils, Object3D, Vector3 } from "three"
 import { solar_system, alpha_centauri, trappist_1, sagittarius_a, lich, universes, universe_ids } from "@constants"
 import { useEffect, useMemo, useRef, useState } from "react";
 import type { Belt, CelestialObject, Landmark, Planet, Satellite, Star } from "@types";
@@ -51,6 +51,11 @@ export const useCelestial = () => {
         return objects.find((object) => object.id === id)
     }
 
+    const isFocused = (id: string) => {
+        if (!focus) return false
+        return focus === id || (getObjectById(focus) as CelestialObject)?.parent === id
+    }
+
     const getObjectsByType = (type: string) => {
         return objects.filter((object) => "type" in object && object.type === type)
     }
@@ -66,7 +71,7 @@ export const useCelestial = () => {
 
     const getUniverse = () => getUniverseById(currentUniverse)
 
-    return { objects, getObjectById, getObjectsByType, getLandmark, getCameraDistance, getUniverse }
+    return { objects, getObjectById, getObjectsByType, getLandmark, getCameraDistance, getUniverse, isFocused }
 }
 
 export const useVariant = (data: Star | Planet | Satellite) => {
@@ -138,6 +143,21 @@ export const lengthFormat = (value: number) => {
         return `${(value * 1000)?.toLocaleString()} m`
     } else {
         return `${value?.toLocaleString()} km`
+    }
+}
+
+export const timelineFormat = (value: number) => {
+    const absValue = Math.abs(value)
+    const suffix = value >= 0 ? "from now" : "ago"
+
+    if (absValue >= 1000000000) {
+        const billion = Math.round(absValue / 1000000000)
+        return `${billion.toLocaleString()} billion year${billion > 1 ? "s" : ""} ${suffix}`
+    } else if (absValue >= 1000000) {
+        const million = Math.round(absValue / 1000000)
+        return `${million.toLocaleString()} million year${million > 1 ? "s" : ""} ${suffix}`
+    } else {
+        return `${absValue.toLocaleString()} year${absValue !== 1 ? "s" : ""} ${suffix}`
     }
 }
 
@@ -246,3 +266,29 @@ export const seo = ({ title, description }: { title: string, description: string
         },
     ];
 }
+
+export enum Controls {
+    up = "up",
+    down = "down",
+    left = "left",
+    right = "right",
+    q = "q",
+    e = "e",
+    z = "z",
+    x = "x",
+    c = "c",
+    space = "space",
+}
+
+export const keyboardMap = [
+    { name: Controls.up, keys: ["KeyW", "ArrowUp"] },
+    { name: Controls.down, keys: ["KeyS", "ArrowDown"] },
+    { name: Controls.left, keys: ["KeyA", "ArrowLeft"] },
+    { name: Controls.right, keys: ["KeyD", "ArrowRight"] },
+    { name: Controls.q, keys: ["KeyQ"] },
+    { name: Controls.e, keys: ["KeyE"] },
+    { name: Controls.z, keys: ["KeyZ"] },
+    { name: Controls.x, keys: ["KeyX"] },
+    { name: Controls.c, keys: ["KeyC"] },
+    { name: Controls.space, keys: ["Space"] },
+]

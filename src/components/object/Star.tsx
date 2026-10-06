@@ -6,7 +6,7 @@ import { Color, ShaderMaterial, AdditiveBlending, BackSide, Mesh } from "three"
 import { useFrame } from "@react-three/fiber"
 import { useSettingStore, useControlStore } from "@state"
 import { StarClass, type Star as StarType } from "@types"
-import { CelestialBody, GordilocksZone, Pulsar } from "@components/object"
+import { CelestialBody, GordilocksZone, Pulsar, SpaceCraft } from "@components/object"
 import { useCelestial, userDataFormat, useVariant } from "@function"
 import {
     surfaceVertexShader,
@@ -40,8 +40,12 @@ const Star = ({ id, children, labelRef }: Props) => {
     const data = useVariant(rawData) as StarType
 
     const isFocused = data.id === focus || data.id === universe.defaultFocus
+    const focusedObject = celestial.getObjectById(focus)
     const isDysonSohere = data.variant_id === "dyson_sphere"
-    const intensity = data.intensity / Math.pow(distanceScale, 2) * INTENSITY_SCALE
+    const intensity = useMemo(() => {
+        const isSpacecraft = (focusedObject?.type === "spacecraft" && focusedObject?.parent === data.id ? 100 : 1)
+        return data.intensity / Math.pow(distanceScale, 2) * INTENSITY_SCALE / isSpacecraft
+    }, [data, distanceScale, focusedObject])
     const scale = data.radius / sizeScale
     const color = data.color
     const glowColor = data.color
@@ -153,6 +157,13 @@ const Star = ({ id, children, labelRef }: Props) => {
             <When condition={!!data.gordilocks}>
                 <GordilocksZone data={data} />
             </When>
+
+            {data.artificial_satellites?.map(craft => (
+                <SpaceCraft
+                    key={craft.id}
+                    data={craft}
+                />
+            ))}
         </CelestialBody>
     )
 }

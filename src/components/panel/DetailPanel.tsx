@@ -2,11 +2,11 @@
 import clsx from "clsx";
 import { useControlStore } from "@state"
 import { useCelestial, lengthFormat, timeFormat, useVariant } from "@function"
-import type { Belt, CelestialObject, Planet } from "@types"
+import { SpaceCraftClass, type Belt, type Planet, type SpaceCraft } from "@types"
 
 import { useTranslation } from "react-i18next";
 import { When } from "react-if";
-import { useEffect, useMemo, useState } from "react";
+import { useEffect, useState } from "react";
 import { IoChevronDown, IoChevronUp } from "react-icons/io5";
 import { TbLayoutSidebarRightCollapse, TbLayoutSidebarRightExpand } from "react-icons/tb";
 import { BiArrowBack } from "react-icons/bi";
@@ -105,10 +105,10 @@ const PanelDetail = () => {
                     </div>
 
                     {/* Parent Section */}
-                    <When condition={["satellite", "artificial_satellite"].includes(data.type)}>
+                    <When condition={data.type === "satellite" || ((data as unknown as SpaceCraft).type === "spacecraft" && (data as unknown as SpaceCraft).class !== SpaceCraftClass.FlyBy)}>
                         <div className="mt-4 mb-2 leading-relaxed border-t border-divider pt-4">
-                            <label className="font-bold text-blue-300">{t("ui.parent_planet")}</label>
-                            <button className="flex gap-2 items-center mb-2" onClick={() => setControl({ focus: parentPlanet.id })}>
+                            <label className="font-bold text-blue-300">{t(data.type === "satellite" ? "ui.parent_planet" : "ui.parent_object")}</label>
+                            <button className="flex gap-2 items-center my-2" onClick={() => setControl({ focus: parentPlanet.id })}>
                                 <img src={`/icons/${parentPlanet.icon}`} className="size-6" alt={parentPlanet.icon} />
                                 <span className="text-lg font-bold">{t(`object.${parentPlanet.id}.name`)}</span>
                             </button>
@@ -170,14 +170,14 @@ const PanelDetail = () => {
                     </When>
 
                     {/* Artificial Satellites Section */}
-                    <When condition={data.type === "planet" && data.artificial_satellites && data.artificial_satellites.length}>
+                    <When condition={data.artificial_satellites?.length}>
                         <div className="mt-4 leading-relaxed border-t border-divider pt-4 overflow-auto">
                             <button className="flex items-center gap-2 font-bold text-blue-300" onClick={() => handleClickSection("artificial_satellite")}>
-                                <span>{t("ui.artificial_satellites")} ({(data as Planet).artificial_satellites?.filter(craft => craft.orbit_duration).length})</span>
+                                <span>{t("ui.artificial_satellites")} ({data.artificial_satellites?.filter(craft => craft.orbit_duration).length})</span>
                                 {activeSection === "artificial_satellite" ? <IoChevronUp /> : <IoChevronDown />}
                             </button>
                             <div className={clsx("flex flex-col gap-4 mt-3", activeSection !== "artificial_satellite" && "hidden")}>
-                                {(data as Planet).artificial_satellites?.filter(craft => craft.orbit_duration)?.map(satellite => {
+                                {data.artificial_satellites?.filter(craft => craft.orbit_duration)?.map(satellite => {
                                     return <div>
                                         <button className="flex gap-2 items-center mb-2" onClick={() => setControl({ focus: satellite.id })}>
                                             <img src={`/icons/${satellite.icon}`} className="size-6" alt={satellite.icon} />

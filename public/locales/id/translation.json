@@ -6,6 +6,7 @@
         "orbital_period": "Periode orbit",
         "distance_from": "Jarak dari",
         "parent_planet": "Planet Induk",
+        "parent_object": "Objek Induk",
         "natural_satellites": "Satelit Alami",
         "days": "hari",
         "setting": "Pengaturan",
@@ -548,6 +549,51 @@
             "nickname": "S4711",
             "description": "S4711 adalah bintang berkecepatan tinggi dengan periode orbit 7,6 tahun di sekitar Sagittarius A*."
         },
+        "hubble": {
+            "name": "Hubble Space Telescope",
+            "nickname": "Hubble",
+            "description": "Teleskop Luar Angkasa Hubble adalah teleskop luar angkasa yang diluncurkan ke orbit rendah Bumi pada tahun 1990. Hubble telah merevolusi astronomi modern dengan gambar-gambar alam semesta yang sangat mendalam dan jernih."
+        },
+        "jswt": {
+            "name": "James Webb Space Telescope",
+            "nickname": "JSWT",
+            "description": "Teleskop Luar Angkasa James Webb (JWST) adalah observatorium luar angkasa inframerah terkemuka yang diluncurkan pada Desember 2021 untuk mempelajari pembentukan galaksi, bintang, dan sistem planet pertama di alam semesta."
+        },
+        "lro": {
+            "name": "Lunar Reconnaissance Orbiter",
+            "nickname": "LRO",
+            "description": "Lunar Reconnaissance Orbiter (LRO) adalah wahana antariksa NASA yang mengorbit Bulan untuk memetakan permukaan Bulan dalam resolusi tinggi dan mencari lokasi pendaratan potensial."
+        },
+        "exomars": {
+            "name": "ExoMars Trace Gas Orbiter",
+            "nickname": "ExoMars",
+            "description": "ExoMars Trace Gas Orbiter adalah proyek kolaborasi antara ESA dan Roscosmos yang mengorbit Mars untuk menganalisis gas kelumit di atmosfer Mars, terutama metana."
+        },
+        "maven": {
+            "name": "MAVEN",
+            "nickname": "MAVEN",
+            "description": "MAVEN (Mars Atmosphere and Volatile EvolutioN) adalah wahana antariksa NASA yang mengorbit Mars untuk mempelajari hilangnya atmosfer dan air planet tersebut ke luar angkasa dari waktu ke waktu."
+        },
+        "mro": {
+            "name": "Mars Reconnaissance Orbiter",
+            "nickname": "MRO",
+            "description": "Mars Reconnaissance Orbiter (MRO) adalah wahana antariksa NASA di orbit Mars yang dirancang untuk melakukan pengamatan dan pencitraan permukaan Mars dengan resolusi sangat tinggi."
+        },
+        "odyssey": {
+            "name": "2001 Mars Odyssey",
+            "nickname": "Mars Odyssey",
+            "description": "2001 Mars Odyssey adalah wahana antariksa NASA yang mengorbit Mars sejak 2001, memegang rekor sebagai wahana antariksa terlama yang beroperasi secara terus-menerus di Mars."
+        },
+        "juno": {
+            "name": "Juno",
+            "nickname": "Juno",
+            "description": "Juno adalah wahana antariksa NASA yang mengorbit Jupiter dalam orbit polar untuk mengukur komposisi, medan gravitasi, medan magnet, dan magnetosfer kutub Jupiter."
+        },
+        "parker_solar": {
+            "name": "Parker Solar Probe",
+            "nickname": "Parker Solar",
+            "description": "Parker Solar Probe adalah wahana antariksa NASA yang melintas sangat dekat dengan korona luar Matahari untuk mempelajari angin matahari dan dinamika energi Matahari."
+        },
         "voyager_1": {
             "name": "Voyager 1",
             "nickname": "Voyager 1",
@@ -900,6 +946,18 @@
         "saturn_hexagon": {
             "name": "Heksagon Saturnus",
             "description": "Pola awan heksagonal raksasa yang bertahan secara persisten di sekitar kutub utara planet Saturnus."
+        },
+        "kraken_mare": {
+            "name": "Kraken Mare",
+            "description": "Lautan hidrokarbon terbesar di permukaan Titan yang sebagian besar terdiri dari metana dan etana cair."
+        },
+        "ligeia_mare": {
+            "name": "Ligeia Mare",
+            "description": "Laut hidrokarbon terbesar kedua di Titan yang terletak di wilayah kutub utara, sebagian besar terdiri dari metana cair."
+        },
+        "punga_mare": {
+            "name": "Punga Mare",
+            "description": "Laut cair terbesar ketiga yang diketahui di Titan, terletak di dekat kutub utara Titan dan terhubung ke Kraken Mare."
         },
         "tranquility_base": {
             "name": "Base Tranquillitatis",

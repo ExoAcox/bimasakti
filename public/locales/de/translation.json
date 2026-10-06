@@ -483,6 +483,51 @@
             "nickname": "S4711",
             "description": "S4711 ist ein Hochgeschwindigkeitsstern mit einer kurzen Umlaufzeit von 7,6 Jahren um Sagittarius A*."
         },
+        "hubble": {
+            "name": "Hubble-Weltraumteleskop",
+            "nickname": "Hubble",
+            "description": "Das Hubble-Weltraumteleskop ist ein Weltraumteleskop, das 1990 in eine niedrige Erdumlaufbahn gebracht wurde und die moderne Astronomie revolutioniert hat."
+        },
+        "jswt": {
+            "name": "James-Webb-Weltraumteleskop",
+            "nickname": "JWST",
+            "description": "Das James-Webb-Weltraumteleskop (JWST) ist ein Infrarot-Weltraumteleskop zur Erforschung der ersten Galaxien, Sterne und Planeten im Universum."
+        },
+        "lro": {
+            "name": "Lunar Reconnaissance Orbiter",
+            "nickname": "LRO",
+            "description": "Der Lunar Reconnaissance Orbiter (LRO) ist eine NASA-Mondsonde, die den Mond kartiert und hochauflösende Aufnahmen der Mondoberfläche liefert."
+        },
+        "exomars": {
+            "name": "ExoMars Trace Gas Orbiter",
+            "nickname": "ExoMars",
+            "description": "Der ExoMars Trace Gas Orbiter ist ein gemeinsames Projekt von ESA und Roskosmos zur Erforschung von Spurengasen in der Marsatmosphäre."
+        },
+        "maven": {
+            "name": "MAVEN",
+            "nickname": "MAVEN",
+            "description": "MAVEN ist eine NASA-Raumsonde in einer Marsumlaufbahn zur Untersuchung des Verlusts der Marsatmosphäre im Laufe der Zeit."
+        },
+        "mro": {
+            "name": "Mars Reconnaissance Orbiter",
+            "nickname": "MRO",
+            "description": "Der Mars Reconnaissance Orbiter (MRO) ist eine NASA-Raumsonde im Orbit um den Mars, ausgerüstet mit hochauflösenden Kameras."
+        },
+        "odyssey": {
+            "name": "2001 Mars Odyssey",
+            "nickname": "Mars Odyssey",
+            "description": "2001 Mars Odyssey ist eine Raumsonde der NASA, die den Mars seit 2001 kontinuierlich erforscht."
+        },
+        "juno": {
+            "name": "Juno",
+            "nickname": "Juno",
+            "description": "Juno ist eine NASA-Raumsonde, die den Jupiter in einer polaren Umlaufbahn umkreist, um dessen Magnetfeld, Gravitation und Atmosphäre zu erforschen."
+        },
+        "parker_solar": {
+            "name": "Parker Solar Probe",
+            "nickname": "Parker Solar",
+            "description": "Die Parker Solar Probe ist eine NASA-Raumsonde zur Erforschung der Sonne und der Sonnenkorona."
+        },
         "voyager_1": {
             "name": "Voyager 1",
             "nickname": "Voyager 1",

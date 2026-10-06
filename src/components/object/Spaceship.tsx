@@ -1,36 +1,13 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import { useEffect, useRef } from "react"
-import { useFrame, useThree } from "@react-three/fiber"
+import { useFrame } from "@react-three/fiber"
 import { useGLTF, useKeyboardControls } from "@react-three/drei"
 import { Vector3, Quaternion, Matrix4, MathUtils, Group, DoubleSide, Mesh, MeshStandardMaterial } from "three"
 import { useSettingStore, useControlStore } from "@state"
 import { SHIP_SCALE } from "@constants"
 import { Mode } from "@types"
 import { When } from "react-if"
-
-export enum Controls {
-    forward = "forward",
-    backward = "backward",
-    left = "left",
-    right = "right",
-    up = "up",
-    down = "down",
-    boost = "boost",
-    autopilot = "autopilot",
-    cockpit = "cockpit",
-}
-
-export const keyboardMap = [
-    { name: Controls.forward, keys: ["KeyW", "ArrowUp"] },
-    { name: Controls.backward, keys: ["KeyS", "ArrowDown"] },
-    { name: Controls.left, keys: ["KeyA", "ArrowLeft"] },
-    { name: Controls.right, keys: ["KeyD", "ArrowRight"] },
-    { name: Controls.up, keys: ["KeyQ"] },
-    { name: Controls.down, keys: ["KeyE"] },
-    { name: Controls.boost, keys: ["Space"] },
-    { name: Controls.autopilot, keys: ["KeyF"] },
-    { name: Controls.cockpit, keys: ["KeyC"] },
-]
+import { Controls } from "@function"
 
 // Reusable three objects to prevent GC overhead during useFrame
 const moveDir = new Vector3()
@@ -88,35 +65,32 @@ const ShipModel = () => {
 
 const Spaceship = () => {
     const groupRef = useRef<Group>(null!)
-    const prevAutopilotKey = useRef(false)
-    const prevCockpitKey = useRef(false)
 
     const [, getKeys] = useKeyboardControls<Controls>()
     const { distanceScale, sizeScale } = useSettingStore()
     const { mode, autopilot, focus, setControl } = useControlStore()
-    const { scene, camera } = useThree()
 
     const step = 1 / distanceScale
     const currentSpeed = useRef(0)
+    const backwardSpeed = useRef(0)
 
     // useEffect(() => {
-    //     if (!groupRef.current || mode === Mode.Object) return
+    //     if (!groupRef.current || mode !== Mode.Object) return
 
-    //     const earth = scene.getObjectByName("earth")
-    //     if (!earth) return
+    //     const object = scene.getObjectByName(focus)
+    //     if (!object) return
 
-    //     earth.getWorldPosition(objPos)
-    //     const earthRadius = earth.userData?.radius ? (earth.userData.radius / sizeScale) : 0.063
-    //     const spawnOffset = new Vector3(earthRadius * 2.5, earthRadius * 1.5, earthRadius * 4.0)
+    //     object.getWorldPosition(objPos)
+    //     const objectRadius = object.userData?.radius / sizeScale
+    //     const spawnOffset = new Vector3(objectRadius * 2.5, objectRadius * 1.5, objectRadius * 4.0)
     //     groupRef.current.position.copy(objPos).add(spawnOffset)
 
-    //     // Point spaceship towards Earth
     //     targetMatrix.lookAt(groupRef.current.position, objPos, camera.up)
     //     groupRef.current.quaternion.setFromRotationMatrix(targetMatrix)
-    // }, [mode])
+    // }, [mode, focus])
 
     useFrame((state, delta) => {
-        if (!groupRef.current) return
+        if (!groupRef.current && mode === Mode.Object) return
 
         const group = groupRef.current
         shipPos.copy(group.position)
@@ -124,15 +98,13 @@ const Spaceship = () => {
 
         // Read active keys from Drei's KeyboardControls
         const keys = getKeys()
-        const isForward = keys[Controls.forward]
-        const isBackward = keys[Controls.backward]
+        const isForward = keys[Controls.up]
+        const isBackward = keys[Controls.down]
         const isLeft = keys[Controls.left]
         const isRight = keys[Controls.right]
-        const isUp = keys[Controls.up]
-        const isDown = keys[Controls.down]
-        const isBoost = keys[Controls.boost]
-
-        console.log(autopilot)
+        const isUp = keys[Controls.q]
+        const isDown = keys[Controls.e]
+        const isBoost = keys[Controls.space]
 
         // Toggle Autopilot on F key press
         // if (isAutopilotKey && !prevAutopilotKey.current) {
@@ -187,7 +159,7 @@ const Spaceship = () => {
                 child.getWorldPosition(objPos)
                 const objDist = shipPos.distanceTo(objPos)
                 const objRadius = radius / sizeScale
-                const minSurfaceDist = Math.max(objRadius * 1.25, 1000 / sizeScale)
+                const minSurfaceDist = objRadius * 1.25
 
                 if (objDist < minSurfaceDist && objDist > 0) {
                     dirToObj.subVectors(objPos, shipPos).normalize()
@@ -201,22 +173,20 @@ const Spaceship = () => {
 
         // 1. Autopilot Homing Logic
         if (autopilot && object) {
-            const targetArrivalDist = Math.max(targetRadius * 1.5, 0.0005)
-            const rotationLockDistance = Math.max(targetRadius * 3.5, 0.001)
-
+            // const rotationLockDistance = Math.max(targetRadius * 3.5, 0.001)
+            const targetArrivalDist = targetRadius * 2
             const effectDist = dist - targetArrivalDist
-            console.log("effectDist", effectDist)
 
 
             if (effectDist > 0.0001) {
                 const dirToTarget = new Vector3().subVectors(targetPos, shipPos).normalize()
 
                 // Point spaceship towards target planet with smooth slerp
-                if (dist > rotationLockDistance) {
-                    targetMatrix.lookAt(shipPos, targetPos, state.camera.up)
-                    targetQuat.setFromRotationMatrix(targetMatrix)
-                    shipQuat.slerp(targetQuat, Math.min(1, delta * 8.0))
-                }
+                // if (dist > rotationLockDistance) {
+                targetMatrix.lookAt(shipPos, targetPos, state.camera.up)
+                targetQuat.setFromRotationMatrix(targetMatrix)
+                shipQuat.slerp(targetQuat, Math.min(1, delta * 8.0))
+                // }
 
                 // Smooth exponential deceleration as ship approaches arrival distance
                 const maxSafeSpeed = effectDist / Math.max(delta * 1.05, 0.001)
@@ -256,14 +226,11 @@ const Spaceship = () => {
 
             // 3. Manual Forward / Backward Thrust (translate position directly)
             const maxSpeed = step * 10000
-            const isFirstTime = currentSpeed.current <= 0
-            const acceleration = isBoost ? step * (isFirstTime ? 3000 : 300) : step * (isFirstTime ? 3000 : 100)
+            // const isFirstTime = currentSpeed.current <= 0
+            const acceleration = isBoost ? step * 300 : step * 100
             const deceleration = step * 1000
 
-            console.log(currentSpeed.current)
-
             if (isForward || isBoost) {
-                // Accelerate smoothly
                 currentSpeed.current = Math.min(
                     currentSpeed.current + acceleration * delta,
                     maxSpeed
@@ -271,15 +238,14 @@ const Spaceship = () => {
 
                 moveDir.set(0, 0, -1)
             } else if (isBackward) {
-                // Backward movement
-                currentSpeed.current = Math.max(
-                    currentSpeed.current - acceleration * delta,
-                    -(maxSpeed * 0.5)
+                currentSpeed.current = 0
+                backwardSpeed.current = Math.min(
+                    backwardSpeed.current + acceleration * delta,
+                    maxSpeed
                 )
 
                 moveDir.set(0, 0, 1)
             } else {
-                // Slowly decelerate when no thrust
                 if (currentSpeed.current > 0) {
                     currentSpeed.current = Math.max(
                         0,
@@ -292,13 +258,14 @@ const Spaceship = () => {
                     )
                 }
 
+                backwardSpeed.current = 0
                 moveDir.set(0, 0, -1)
             }
 
-            if (Math.abs(currentSpeed.current) > 0.001) {
+            if (currentSpeed.current || backwardSpeed.current) {
                 moveDir
                     .normalize()
-                    .multiplyScalar(currentSpeed.current * delta)
+                    .multiplyScalar((isBackward ? backwardSpeed.current : currentSpeed.current) * delta)
                     .applyQuaternion(shipQuat)
 
                 applyCollisionPrevention()

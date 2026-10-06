@@ -23,6 +23,9 @@ const stars: Star[] = [{
         inner_radius: 142120000,
         outer_radius: 249832000,
     },
+    get artificial_satellites() {
+        return spacecraft.filter((craft) => craft.parent === this.id)
+    },
     get variants() {
         return variants[this.id] as StarVariant[]
     },

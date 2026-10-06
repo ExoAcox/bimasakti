@@ -45,10 +45,17 @@ const Section = ({ children, data, initialOpen }: SectionProps) => {
                 const isFocus = focus === planet.id
                 const satellite = celestial.getObjectById(focus) as Planet
                 const isParentFocus = planet.id === satellite?.parent && satellite?.orbit_duration
+                const isMoonProbeFocus = planet.id === "earth" && focus === "lro"
 
-                const artificialSatellites = (planet as Planet).artificial_satellites?.filter(craft => craft.class !== SpaceCraftClass.FlyBy)
-                const satellites = [...(planet as Planet).satellites ?? [], ...artificialSatellites ?? []]
-                const isSatelliteVisible = (isFocus || isParentFocus) && satellites.length
+                const moonArtificialSatellites = () => {
+                    if (planet.id !== "earth") return []
+
+                    const earth = planet as Planet
+                    return earth.satellites![0].artificial_satellites ?? []
+                }
+                const artificialSatellites = (planet as Planet).artificial_satellites
+                const satellites = [...(planet as Planet).satellites ?? [], ...artificialSatellites ?? [], ...moonArtificialSatellites()]
+                const isSatelliteVisible = (isFocus || isParentFocus || isMoonProbeFocus) && satellites.length
 
 
                 const buttonClass = (id: string) => clsx("w-full py-2 px-3 flex items-center", (focus === id) && "bg-blue-400/80 text-white")
@@ -111,9 +118,9 @@ const Sidebar = () => {
                     <Section data={planets} initialOpen>{t("ui.planets")}</Section>
                     <Section data={dwarfPlanets}>{t("ui.dwarf_planets")}</Section>
                     <Section data={satellites}>{t("ui.satellites")}</Section>
+                    <Section data={spacecraft}>{t("ui.spacecraft")}</Section>
                     <Section data={asteroids}>{t("ui.asteroids")}</Section>
                     <Section data={comets}>{t("ui.comets")}</Section>
-                    <Section data={spacecraft}>{t("ui.spacecraft")}</Section>
                     <Section data={belts}>{t("ui.others")}</Section>
                 </div>
             </div>

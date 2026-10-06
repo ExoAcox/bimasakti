@@ -3,11 +3,6 @@ import type { Vector3 } from "@react-three/fiber"
 export type CelestialType = "blackhole" | "star" | "planet" | "asteroid" | "comet" | "artificial_satellite" | "satellite" | "spacecraft"
 export type CelestialObject = Blackhole | Star | Planet | Asteroid | Comet | Satellite | SpaceCraft
 
-// export interface Aurora {
-//     color?: string
-//     intensity?: number
-// }
-
 export interface Object {
     id: string
     type: CelestialType
@@ -26,7 +21,8 @@ export interface Object {
     night_opacity?: number
     cloud_texture?: string
     cloud_opacity?: number
-    topology_texture?: string
+    topography_texture?: string
+    artificial_satellites?: SpaceCraft[]
     aurora?: number
     atmosphere?: number
     model?: string
@@ -35,10 +31,6 @@ export interface Object {
     landmarks?: Landmark[]
     variant_id?: string
 }
-
-// export interface Dummy extends Object {
-//     type: "dummy"
-// }
 
 export interface Blackhole extends Object {
     type: "blackhole"
@@ -77,7 +69,6 @@ export interface Planet extends Object {
     type: "planet"
     class: PlanetClass
     satellites?: Satellite[]
-    artificial_satellites?: SpaceCraft[]
     ring?: Ring
     variants?: Variant[]
 }
@@ -102,6 +93,8 @@ export interface SpaceCraft extends Object {
     type: "spacecraft"
     model: string
     class: SpaceCraftClass
+    agencies: string[]
+    rotation?: [number, number, number]
 }
 
 export interface Ring {

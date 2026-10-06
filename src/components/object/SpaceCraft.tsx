@@ -1,16 +1,25 @@
-import { Detailed, Gltf } from "@react-three/drei"
+/* eslint-disable react-hooks/immutability */
+import { Detailed, useGLTF } from "@react-three/drei"
 import { SpaceCraftClass, type SpaceCraft as SpaceCraftType } from "@types"
-import { MathUtils, Mesh } from "three"
-import { Suspense, useRef } from "react"
+import { Box3, MathUtils, Mesh, Vector3 } from "three"
+import { Suspense, useEffect, useMemo, useRef, type RefObject } from "react"
 import { useSettingStore, useControlStore } from "@state"
 import { CelestialBody } from "@components/object"
 import { LOWREST_SCALE } from "@constants"
-import { When } from "react-if"
 import { userDataFormat } from "@function"
+import { When } from "react-if"
 
 interface Props {
     data: SpaceCraftType
 }
+
+interface GltfProps {
+    data: SpaceCraftType
+    objectRef: RefObject<Mesh>
+}
+
+
+const centeredIds = ["iss"]
 
 const WireframeMesh = () => {
     return <mesh>
@@ -18,6 +27,44 @@ const WireframeMesh = () => {
         <meshStandardMaterial wireframe />
     </mesh>
 }
+
+const GltfLoader = ({ data, objectRef }: GltfProps) => {
+    const { scene } = useGLTF(`/models/${data.model}`)
+
+    const model = useMemo(() => {
+        const clone = scene.clone(true)
+
+        if (centeredIds.includes(data.id)) {
+            const box = new Box3().setFromObject(clone)
+            const center = box.getCenter(new Vector3())
+
+            clone.position.x -= center.x
+            clone.position.y -= center.y
+            clone.position.z -= center.z
+        }
+
+        return clone
+    }, [scene, data.id])
+
+    useEffect(() => {
+        if (!objectRef.current) return
+
+        const [x, y, z] = data.rotation ?? [0, 0, 0]
+
+        objectRef.current.rotation.set(
+            MathUtils.degToRad(x),
+            MathUtils.degToRad(y),
+            MathUtils.degToRad(z)
+        )
+
+        if (data.class === SpaceCraftClass.FlyBy) {
+            objectRef.current.rotation.y = MathUtils.degToRad(-90)
+        }
+    }, [data.class, data.rotation, objectRef])
+
+    return <primitive object={model} />
+}
+
 
 const SpaceCraft = ({ data }: Props) => {
     const objectRef = useRef<Mesh>(null!)
@@ -28,7 +75,6 @@ const SpaceCraft = ({ data }: Props) => {
     const isFocused = data.id === focus
     const scale = Math.max(data.radius / sizeScale, 5e-8)
     const distance = LOWREST_SCALE / distanceScale
-    const rotation: [number, number, number] = data.orbit_duration ? [0, 0, 0] : [0, MathUtils.degToRad(-90), 0]
 
     const handleClick = () => {
         setControl({ focus: data.id })
@@ -36,8 +82,7 @@ const SpaceCraft = ({ data }: Props) => {
 
     if (!data) return null
 
-    return <CelestialBody data={data} objectRef={objectRef} onClick={handleClick} orbitLineVisible={artificialSatelliteVisible}>
-
+    return <CelestialBody data={data} objectRef={objectRef} onClick={handleClick} visible={artificialSatelliteVisible}>
         <When condition={data.class === SpaceCraftClass.FlyBy}>
             <directionalLight position={[3, 0, 0]} color="white" intensity={0.5} />
         </When>
@@ -47,7 +92,6 @@ const SpaceCraft = ({ data }: Props) => {
             name={data.id}
             userData={userDataFormat(data)}
             scale={scale}
-            rotation={rotation}
             visible={artificialSatelliteVisible}
             onClick={(e) => {
                 e.stopPropagation()
@@ -57,7 +101,7 @@ const SpaceCraft = ({ data }: Props) => {
             <Suspense fallback={<WireframeMesh />}>
                 <Detailed distances={[0, distance]}>
                     <When condition={isFocused}>
-                        <Gltf src={`/models/${data.model}`} />
+                        <GltfLoader data={data} objectRef={objectRef} />
                     </When>
                     <WireframeMesh />
                 </Detailed>
