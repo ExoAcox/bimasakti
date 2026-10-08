@@ -8,7 +8,8 @@ export const variants: Variants = {
     sun: [
         {
             variant_id: "dyson_sphere",
-            order: 500
+            order: 500,
+            artificial_satellites: [],
         },
         {
             variant_id: "red_giant",
@@ -20,7 +21,8 @@ export const variants: Variants = {
             gordilocks: {
                 inner_radius: 4500000000,
                 outer_radius: 7500000000,
-            }
+            },
+            artificial_satellites: [],
         },
 
     ],
@@ -158,7 +160,8 @@ export const variants: Variants = {
             cloud_texture: "earth_cloud.ktx2",
             cloud_opacity: 0.5,
             atmosphere: 0.5,
-            aurora: 0.5
+            aurora: 0.5,
+            artificial_satellites: [],
         },
         {
             variant_id: "terraform_2",
@@ -169,7 +172,8 @@ export const variants: Variants = {
             cloud_texture: "earth_cloud.ktx2",
             icon: "earth.png",
             atmosphere: 1,
-            aurora: 1
+            aurora: 1,
+            artificial_satellites: [],
         },
         {
             variant_id: "terraform_3",
@@ -182,7 +186,8 @@ export const variants: Variants = {
             cloud_texture: "earth_cloud.ktx2",
             icon: "earth.png",
             atmosphere: 1,
-            aurora: 1
+            aurora: 1,
+            artificial_satellites: [],
         }
     ]
 }

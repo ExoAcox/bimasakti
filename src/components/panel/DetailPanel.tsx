@@ -2,7 +2,7 @@
 import clsx from "clsx";
 import { useControlStore } from "@state"
 import { useCelestial, lengthFormat, timeFormat, useVariant } from "@function"
-import { SpaceCraftClass, type Belt, type Planet, type SpaceCraft } from "@types"
+import { type Belt, type Planet, type SpaceCraft } from "@types"
 
 import { useTranslation } from "react-i18next";
 import { When } from "react-if";
@@ -105,7 +105,7 @@ const PanelDetail = () => {
                     </div>
 
                     {/* Parent Section */}
-                    <When condition={data.type === "satellite" || ((data as unknown as SpaceCraft).type === "spacecraft" && (data as unknown as SpaceCraft).class !== SpaceCraftClass.FlyBy)}>
+                    <When condition={data.type === "satellite" || ((data as unknown as SpaceCraft).type === "spacecraft-orbiter")}>
                         <div className="mt-4 mb-2 leading-relaxed border-t border-divider pt-4">
                             <label className="font-bold text-blue-300">{t(data.type === "satellite" ? "ui.parent_planet" : "ui.parent_object")}</label>
                             <button className="flex gap-2 items-center my-2" onClick={() => setControl({ focus: parentPlanet.id })}>

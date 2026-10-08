@@ -1,7 +1,7 @@
 /* eslint-disable react-hooks/set-state-in-effect */
 import { useMemo, useRef } from "react"
 import { Group, MathUtils, Mesh, Vector3 } from "three"
-import { Mode, SpaceCraftClass, type CelestialObject, type Planet as PlanetType, type SpaceCraft } from "@types"
+import { Mode, type CelestialObject, type Planet as PlanetType } from "@types"
 import { useFrame, useThree } from "@react-three/fiber"
 import { calculateSatelliteDistance, getInitialRotation, useCelestial } from "@function";
 import { Html } from "@react-three/drei";
@@ -9,6 +9,7 @@ import { useSettingStore, useControlStore } from "@state";
 import { useTranslation } from "react-i18next";
 import { When } from "react-if"
 import { OrbitLine } from "@components/object"
+import clsx from "clsx";
 
 interface Props {
     data: CelestialObject,
@@ -40,10 +41,9 @@ const Object = ({ data, children, childrenComponent, onClick, objectRef, cloudRe
 
     const celestial = useCelestial()
     const universe = celestial.getUniverse()
-    const focusedObject = celestial.getObjectById(focus) as CelestialObject
+    const focusedObject = celestial.getObjectById(focus) as CelestialObject | undefined
     const defaultFocus = universe.defaultFocus
     const isFocused = focus === data.id;
-    const isSpacecraft = data.type === "spacecraft" && data.distance < 10000
 
     const axis = ignoreAxis ? 0 : MathUtils.degToRad(data?.axis ?? 0)
     // const scale = data.radius / sizeScale
@@ -53,7 +53,7 @@ const Object = ({ data, children, childrenComponent, onClick, objectRef, cloudRe
         if (["satellite"].includes(data.type)) {
             const parentPlanet = celestial.getObjectById(data.parent) as PlanetType
             if (!parentPlanet) return 0
-            const index = [...(parentPlanet.artificial_satellites ?? []), ...(parentPlanet.satellites ?? [])].findIndex((satellite) => satellite.id === data.id)
+            const index = [...parentPlanet.satellites ?? []].findIndex((satellite) => satellite.id === data.id)
             return calculateSatelliteDistance(data.distance, distanceScale, parentPlanet.radius / sizeScale, index)
         } else {
             return data.distance / distanceScale
@@ -61,7 +61,7 @@ const Object = ({ data, children, childrenComponent, onClick, objectRef, cloudRe
     }, [celestial, data.distance, data.id, data.parent, data.type, distanceScale, sizeScale])
 
     const isOrbitLineVisible = useMemo(() => {
-        const isSpacecraft = data.type === "spacecraft" ? (isFocused || data.parent === focus) : true;
+        const isSpacecraft = data.type === "spacecraft-orbiter" ? (isFocused || data.parent === focus) : true;
         return data.orbit_duration && showOrbitLine && visible && isSpacecraft
     }, [data.type, data.parent, data.orbit_duration, isFocused, focus, showOrbitLine, visible])
 
@@ -126,7 +126,7 @@ const Object = ({ data, children, childrenComponent, onClick, objectRef, cloudRe
         if (!data.orbit_duration || mode !== Mode.Object) return
 
         const isParentFocused = focus ? isAncestorFocused(data.id, focus) : false;
-        const shouldPauseOrbit = pauseOrbitWhenFocus && (isFocused || isParentFocused || data.type === "spacecraft");
+        const shouldPauseOrbit = pauseOrbitWhenFocus && (isFocused || isParentFocused || data.type === "spacecraft-orbiter");
 
         if (!shouldPauseOrbit) {
             if (longestDistance > distance) {
@@ -155,10 +155,15 @@ const Object = ({ data, children, childrenComponent, onClick, objectRef, cloudRe
         const distance = celestial.getCameraDistance(camera, object)
         const scale = Math.max(300, data.radius) / sizeScale * 50
 
-        let isVisible = isSpacecraft ? true : distance > scale
+        let isVisible = distance > scale
+
+        if (data.type === "spacecraft-orbiter" && data.distance < 10000) {
+            if (focusedObject?.type === "spacecraft-orbiter") isVisible = false
+            if (distance > 0.3) isVisible = false
+        }
 
         if (isVisible) {
-            const checkOcclusion = (occluderId: string) => {
+            const checkOcclusion = (occluderId: string, skipCamInsideGuard = false) => {
                 const targetObj = scene.getObjectByName(occluderId)
                 if (!targetObj) return false
 
@@ -167,14 +172,11 @@ const Object = ({ data, children, childrenComponent, onClick, objectRef, cloudRe
 
                 const distCamToPlanet = camera.position.distanceTo(planetPos)
                 const distCamToLabel = camera.position.distanceTo(labelPos)
-
                 const targetRadius = targetObj.scale.x
 
-                if (isSpacecraft) {
-                    if (distance > 0.3) isVisible = false
-                }
-
-                if (distCamToPlanet <= targetRadius * 1.05) return false
+                // Skip if camera is inside the occluder planet — UNLESS we explicitly override
+                // (e.g. camera near parent planet surface while focused on orbiting spacecraft)
+                if (!skipCamInsideGuard && distCamToPlanet <= targetRadius * 1.05) return false
 
                 if (distCamToPlanet < distCamToLabel) {
                     vCamToLabel.subVectors(labelPos, camera.position)
@@ -187,27 +189,30 @@ const Object = ({ data, children, childrenComponent, onClick, objectRef, cloudRe
                             closestPoint.copy(camera.position).addScaledVector(vCamToLabel, projLen)
                             const distToCenter = closestPoint.distanceTo(planetPos)
 
-                            if (distToCenter < targetRadius * 1.05) {
+                            if (distToCenter < targetRadius * 1.1) {
                                 return true
                             }
                         }
                     }
                 }
+
                 return false
             }
+
+            const isSpacecraftFocused = focusedObject?.type === "spacecraft-orbiter"
 
             if (defaultFocus && defaultFocus !== data.id && checkOcclusion(defaultFocus)) {
                 isVisible = false
             } else if (focus && focus !== data.id && focus !== defaultFocus && checkOcclusion(focus)) {
                 isVisible = false
-            } else if (focusedObject?.parent && focusedObject.parent !== data.id && focusedObject.parent !== defaultFocus && focusedObject.parent !== focus && checkOcclusion(focusedObject.parent)) {
+            } else if (focusedObject?.parent && focusedObject.parent !== data.id && focusedObject.parent !== defaultFocus && focusedObject.parent !== focus && checkOcclusion(focusedObject.parent, isSpacecraftFocused)) {
                 isVisible = false
             }
         }
 
         internalLabelRef.current.style.visibility = isVisible ? "visible" : "hidden"
 
-        if (!isSpacecraft) {
+        if (data.type !== "spacecraft-orbiter") {
             internalLabelRef.current.style.background = focus === data.id ? "rgba(0,0,0,0.75)" : "transparent"
         }
 
@@ -217,14 +222,13 @@ const Object = ({ data, children, childrenComponent, onClick, objectRef, cloudRe
     })
 
 
-    const isLabelVisible = useMemo(() => {
+    const isLabelVisible = (() => {
         if (!visible) return false
 
         const isSmallestObject = () => {
             if (universe.defaultFocus) {
-                const isChildren = ["satellite", "spacecraft"].includes(data.type)
-                const isOrbiting = data.orbit_duration
-                return isChildren && isOrbiting
+                const isChildren = ["satellite", "spacecraft-orbiter"].includes(data.type)
+                return isChildren
             } else {
                 return data.type === "planet"
             }
@@ -235,26 +239,15 @@ const Object = ({ data, children, childrenComponent, onClick, objectRef, cloudRe
             if (focus === data.id) return true
             if (focus === data.parent) return true
             if (focusedObject?.parent === data.parent && data.parent !== defaultFocus) return true
-            // if (data.type === "spacecraft") {
-            //     if (isFocused) return true
-            //     if (data.parent === focus) return true
-            // }
-
-            if (data.id === "parker_solar") {
-                console.log(isFocused, data.parent === focus, data.parent, !isSmallestObject())
-            }
         }
 
         return false
-    }, [visible, universe.defaultFocus, data, focus, focusedObject?.parent, defaultFocus, isFocused])
+    })()
 
-    const labelClass = useMemo(() => {
-        if (isSpacecraft) {
-            return "hover:text-primary absolute -translate-x-1/2 px-2 py-0.5 rounded-full text-[10px] font-medium transition-all duration-150 border whitespace-nowrap shadow-md select-none bg-neutral-950/90 text-sky-200 border-sky-500/30 hover:bg-neutral-900 hover:border-sky-400 hover:text-white"
-        } else {
-            return "hover:text-primary absolute -translate-x-1/2 -translate-y-full -mt-1 py-1 px-2 whitespace-nowrap select-none rounded-lg text-sm font-semibold"
-        }
-    }, [isSpacecraft])
+
+    const labelClass = data.type === "spacecraft-orbiter" && data.orbit_duration
+        ? "hover:text-primary flex items-center gap-1 px-2 py-0.5 rounded-full text-[10px] font-medium transition-all duration-150 border whitespace-nowrap shadow-md select-none bg-neutral-950/90 text-sky-200 border-sky-500/30 hover:bg-neutral-900 hover:border-sky-400 hover:text-white"
+        : clsx("hover:text-primary absolute -translate-y-1/4 -translate-x-1/2 flex flex-col items-center whitespace-nowrap select-none rounded-lg text-xs font-semibold", focusedObject?.parent === data.id && "mt-3")
 
     return <group rotation={[0, 0, axis]}>
         <group rotation={[0, rotate, 0]}>
@@ -266,12 +259,19 @@ const Object = ({ data, children, childrenComponent, onClick, objectRef, cloudRe
                 <group position={longestDistance > distance ? [0, 0, 0] : [distance, 0, 0]}>
                     <When condition={isLabelVisible}>
                         <Html
+                            center
                             zIndexRange={[data.type === "star" ? 3 : 2, 0]}
                         >
                             <button
                                 ref={labelRef || internalLabelRef}
                                 className={labelClass}
                                 onClick={onClick}>
+                                <When condition={focusedObject?.parent !== data.id}>
+                                    <div className={clsx(data.type === "spacecraft-orbiter" && data.orbit_duration ? "size-3" : "size-4")}>
+                                        <img alt="" src={`/icons/${data.icon}`} />
+                                    </div>
+                                </When>
+
                                 {t(`object.${data.id}.name`)}
                             </button>
                         </Html>

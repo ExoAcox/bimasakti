@@ -1,10 +1,10 @@
 /* eslint-disable react-hooks/set-state-in-effect */
 import { useControlStore } from "@state"
 import clsx from "clsx";
-import { startTransition, useCallback, useDeferredValue, useEffect, useMemo, useRef, useState } from "react";
+import { useCallback, useDeferredValue, useEffect, useMemo, useRef, useState } from "react";
 import { When } from "react-if";
 import { timelineFormat, useCelestial, useVariant } from "@function";
-import { Mode, SpaceCraftClass, type Belt, type Planet, type SpaceCraft } from "@types";
+import { Mode, type Belt, type Planet, type SpaceCraft } from "@types";
 
 
 import { PiFastForwardFill, PiRewindFill, PiPlayFill, PiPauseFill } from "react-icons/pi";
@@ -16,7 +16,7 @@ import { CgTerrain } from "react-icons/cg";
 import { MdBrightnessMedium, MdClose, MdHistory, MdRefresh } from "react-icons/md";
 import { SiUnitednations, SiGoogleearth } from "react-icons/si";
 import { useTranslation } from "react-i18next";
-import { useKeyboardControls } from "@react-three/drei";
+import { useKeyboardControls, useProgress } from "@react-three/drei";
 import { Controls } from "@function";
 
 interface Props {
@@ -62,68 +62,69 @@ const MODE_LIST = [
     { id: Mode.FirstPerson, label: "First Person", img: "mode_first_person.jpg" }
 ]
 const LayerPanel = ({ id }: Props) => {
-    const { mode, focus, focusIndex, focusLandmark, tidalLock, landmarkVisible, nationVisible, rotateSpeed, cloudVisible, atmosphereVisible, artificialSatelliteVisible, topographyVisible, dayNightMode, axisTilt, variant, setControl, resetControl } = useControlStore()
+    const { mode, focus, focusIndex, focusLandmark, tidalLock, landmarkVisible, nationVisible, rotateSpeed, cloudVisible, atmosphereVisible, artificialSatelliteVisible, topographyVisible, dayNightMode, variant, setControl, resetControl } = useControlStore()
     const [lastVariant, setLastVariant] = useState<{ orbit_duration: number, rotate_duration: number } | undefined>()
     const [lastRotateSpeed, setLastRotateSpeed] = useState(rotateSpeed)
     const [timelinesVisible, setTimelineVisible] = useState(true)
     const [modeVisible, setModeVisible] = useState(false)
-    const deferredVariant = useDeferredValue(variant)
-    const isLoading = variant !== deferredVariant
+    const isLoading = useProgress(state => state.active)
 
     const [sub] = useKeyboardControls<Controls>()
-
-
-
-    const tiltDialRef = useRef<HTMLDivElement>(null)
-    const isDraggingRef = useRef(false)
     const { t } = useTranslation()
-
-    const updateTiltFromEvent = useCallback((e: React.PointerEvent | PointerEvent) => {
-        if (!tiltDialRef.current) return
-        const rect = tiltDialRef.current.getBoundingClientRect()
-        const centerX = rect.left + rect.width / 2
-        const centerY = rect.top + rect.height / 2
-        const dx = e.clientX - centerX
-        const dy = e.clientY - centerY
-        let deg = Math.round(Math.atan2(dy, dx) * (180 / Math.PI) + 90)
-        if (deg > 180) deg -= 360
-        setControl({ axisTilt: deg })
-    }, [setControl])
-
-    const handlePointerDown = (e: React.PointerEvent<HTMLDivElement>) => {
-        isDraggingRef.current = true
-        e.currentTarget.setPointerCapture(e.pointerId)
-        updateTiltFromEvent(e)
-    }
-
-    const handlePointerMove = (e: React.PointerEvent<HTMLDivElement>) => {
-        if (isDraggingRef.current) {
-            updateTiltFromEvent(e)
-        }
-    }
-
-    const handlePointerUp = (e: React.PointerEvent<HTMLDivElement>) => {
-        if (isDraggingRef.current) {
-            isDraggingRef.current = false
-            try {
-                e.currentTarget.releasePointerCapture(e.pointerId)
-            } catch {
-                // ignore if already released
-            }
-        }
-    }
-
-    const handleWheel = (e: React.WheelEvent<HTMLDivElement>) => {
-        const step = e.shiftKey ? 5 : 1
-        let nextTilt = axisTilt + (e.deltaY < 0 ? step : -step)
-        if (nextTilt > 180) nextTilt -= 360
-        if (nextTilt < -180) nextTilt += 360
-        setControl({ axisTilt: nextTilt })
-    }
 
     const rawData = useCelestial().getObjectById(id) as Planet
     const data = useVariant(rawData) as Planet
     const showTimelines = data.variants?.length && timelinesVisible
+    const isStillObject = ["spacecraft-orbiter", "spacecraft-flyby", "belt"].includes(data.type)
+
+    // const tiltDialRef = useRef<HTMLDivElement>(null)
+    // const isDraggingRef = useRef(false)
+
+
+    // const updateTiltFromEvent = useCallback((e: React.PointerEvent | PointerEvent) => {
+    //     if (!tiltDialRef.current) return
+    //     const rect = tiltDialRef.current.getBoundingClientRect()
+    //     const centerX = rect.left + rect.width / 2
+    //     const centerY = rect.top + rect.height / 2
+    //     const dx = e.clientX - centerX
+    //     const dy = e.clientY - centerY
+    //     let deg = Math.round(Math.atan2(dy, dx) * (180 / Math.PI) + 90)
+    //     if (deg > 180) deg -= 360
+    //     setControl({ axisTilt: deg })
+    // }, [setControl])
+
+    // const handlePointerDown = (e: React.PointerEvent<HTMLDivElement>) => {
+    //     isDraggingRef.current = true
+    //     e.currentTarget.setPointerCapture(e.pointerId)
+    //     updateTiltFromEvent(e)
+    // }
+
+    // const handlePointerMove = (e: React.PointerEvent<HTMLDivElement>) => {
+    //     if (isDraggingRef.current) {
+    //         updateTiltFromEvent(e)
+    //     }
+    // }
+
+    // const handlePointerUp = (e: React.PointerEvent<HTMLDivElement>) => {
+    //     if (isDraggingRef.current) {
+    //         isDraggingRef.current = false
+    //         try {
+    //             e.currentTarget.releasePointerCapture(e.pointerId)
+    //         } catch {
+    //             // ignore if already released
+    //         }
+    //     }
+    // }
+
+    // const handleWheel = (e: React.WheelEvent<HTMLDivElement>) => {
+    //     const step = e.shiftKey ? 5 : 1
+    //     let nextTilt = axisTilt + (e.deltaY < 0 ? step : -step)
+    //     if (nextTilt > 180) nextTilt -= 360
+    //     if (nextTilt < -180) nextTilt += 360
+    //     setControl({ axisTilt: nextTilt })
+    // }
+
+
 
 
     const timelines = useMemo(() => {
@@ -220,10 +221,9 @@ const LayerPanel = ({ id }: Props) => {
 
     const handleLeave = () => {
         const spacecraft = data as unknown as SpaceCraft
-        const isSpacecraft = spacecraft.type === "spacecraft" && spacecraft.class !== SpaceCraftClass.FlyBy
 
         resetControl(data)
-        setControl({ focus: isSpacecraft ? data.parent : "" })
+        setControl({ focus: spacecraft.type === "spacecraft-orbiter" ? data.parent : "" })
     }
 
     const getVariantIndex = useCallback(() => {
@@ -300,7 +300,7 @@ const LayerPanel = ({ id }: Props) => {
         <div className="fixed bottom-6 left-1/2 -translate-x-1/2 flex items-center gap-3 z-40 bg-background backdrop-blur-md p-2 px-3 rounded-full border border-white/15 shadow-2xl shadow-cyan-950/40 hover:border-cyan-500/30 transition-all duration-300">
             <div className="flex items-center flex-col gap-2 absolute w-full -top-1 left-1/2 -translate-x-1/2 -translate-y-full z-5">
                 <When condition={isLoading}>
-                    <div className="w-fit bg-background border border-white/15 px-2.5 py-1 font-semibold text-sm text-white shadow-xl backdrop-blur-md rounded-md italic">
+                    <div className="w-fit whitespace-nowrap bg-background border border-white/15 px-2.5 py-1 font-semibold text-sm text-white shadow-xl backdrop-blur-md rounded-md italic">
                         Loading texture ...
                     </div>
                 </When>
@@ -476,7 +476,7 @@ const LayerPanel = ({ id }: Props) => {
             </div> */}
 
             {/* Rotation Controls Section */}
-            <When condition={data.rotate_duration}>
+            <When condition={!isStillObject}>
                 <div className="h-6 w-px bg-divider my-auto" />
 
                 <div className={SECTION_CLASS}>
@@ -518,7 +518,7 @@ const LayerPanel = ({ id }: Props) => {
             </When>
 
             <div className={SECTION_CLASS}>
-                <When condition={(data as unknown as Belt).type !== "belt"}>
+                <When condition={!isStillObject}>
                     <button onClick={() => setModeVisible(!modeVisible)} className={clsx(TOGGLE_BTN_CLASS, "hover:bg-green-400/40")}>
                         <AiFillEye />
                         <span className={TOOLTIP_CLASS}>View Mode</span>

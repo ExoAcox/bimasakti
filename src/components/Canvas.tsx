@@ -82,7 +82,7 @@ const CanvasLayout = () => {
     const { setSetting } = useSettingStore()
     const { mode, focus } = useControlStore()
 
-    const skyboxTexture = data.id === "sagittarius_a" ? "/textures/nebula.jpg" : "/textures/milky_way.jpg"
+    const skyboxTexture = data.id === "sagittarius_a" ? "/textures/nebula.jpg" : "/textures/milky_way.webp"
 
     useEffect(() => {
         if (focus) track('focus', { object: focus, universe: data.id })

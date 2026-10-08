@@ -2,7 +2,7 @@ import { satellites } from "./satellite"
 import { spacecraft } from "./spacecraft"
 import { landmarks } from "./landmark"
 import { variants } from "./variant"
-import { PlanetClass, SpaceCraftClass, type Planet, type Variant } from "@types"
+import { PlanetClass, type Planet, type Variant } from "@types"
 
 export const planets: Planet[] = [
     {
@@ -82,7 +82,7 @@ export const planets: Planet[] = [
             return satellites.filter((satellite) => satellite.parent === this.id)
         },
         get artificial_satellites() {
-            return spacecraft.filter((craft) => craft.parent === this.id && craft.class !== SpaceCraftClass.FlyBy)
+            return spacecraft.filter((craft) => craft.parent === this.id && craft.type === "spacecraft-orbiter")
         },
         get landmarks() {
             return landmarks.filter((landmark) => landmark.parent === this.id)

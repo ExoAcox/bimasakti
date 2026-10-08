@@ -1,6 +1,6 @@
 import type { Vector3 } from "@react-three/fiber"
 
-export type CelestialType = "blackhole" | "star" | "planet" | "asteroid" | "comet" | "artificial_satellite" | "satellite" | "spacecraft"
+export type CelestialType = "blackhole" | "star" | "planet" | "asteroid" | "comet" | "satellite" | "spacecraft-flyby" | "spacecraft-orbiter"
 export type CelestialObject = Blackhole | Star | Planet | Asteroid | Comet | Satellite | SpaceCraft
 
 export interface Object {
@@ -14,6 +14,7 @@ export interface Object {
     orbit_duration: number
     rotate_duration: number
     min_zoom?: number
+    rotation?: [number, number, number]
     texture?: string
     texture_hd?: string
     night_texture?: string
@@ -90,11 +91,10 @@ export interface Comet extends Object {
 }
 
 export interface SpaceCraft extends Object {
-    type: "spacecraft"
+    type: "spacecraft-flyby" | "spacecraft-orbiter"
     model: string
-    class: SpaceCraftClass
+    // class: SpaceCraftClass
     agencies: string[]
-    rotation?: [number, number, number]
 }
 
 export interface Ring {
@@ -134,16 +134,16 @@ export const StarClass = {
     Blue: "Blue Main-Sequence Star"
 } as const;
 
-export const SpaceCraftClass = {
-    FlyBy: "Fly-by Probe",
-    Orbiter: "Orbiter Probe",
-    Station: "Space Station",
-    Telescope: "Space Telescope"
-} as const
+// export const SpaceCraftClass = {
+//     FlyBy: "Fly-by Probe",
+//     Orbiter: "Orbiter Probe",
+//     Station: "Space Station",
+//     Telescope: "Space Telescope"
+// } as const
 
 export type PlanetClass = (typeof PlanetClass)[keyof typeof PlanetClass];
 export type StarClass = (typeof StarClass)[keyof typeof StarClass];
-export type SpaceCraftClass = (typeof SpaceCraftClass)[keyof typeof SpaceCraftClass];
+// export type SpaceCraftClass = (typeof SpaceCraftClass)[keyof typeof SpaceCraftClass];
 
 export interface Landmark {
     id: string

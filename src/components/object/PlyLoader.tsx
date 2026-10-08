@@ -1,6 +1,6 @@
 import { useLoader } from "@react-three/fiber"
 import { useMemo } from "react"
-import { BufferAttribute, type BufferGeometry } from "three"
+import { BufferAttribute, MathUtils, type BufferGeometry } from "three"
 import { PLYLoader } from "three-stdlib"
 
 const generateSphericalUVs = (geometry: BufferGeometry) => {
@@ -43,14 +43,18 @@ const generateSphericalUVs = (geometry: BufferGeometry) => {
     geometry.setAttribute('uv', new BufferAttribute(uvs, 2))
 }
 
-const ModelRenderer = ({ path }: { path: string }) => {
+const ModelRenderer = ({ path, rotation }: { path: string, rotation?: [number, number, number] }) => {
     const rawGeometry = useLoader(PLYLoader, `/models/${path}`)
 
     const geometry = useMemo(() => {
         if (!rawGeometry) return null
 
         const geo = rawGeometry.clone()
-        geo.rotateX(Math.PI / 2)
+        const [x, y, z] = rotation ?? [0, 0, 0]
+        if (x) geo.rotateX(MathUtils.degToRad(x))
+        if (y) geo.rotateY(MathUtils.degToRad(y))
+        if (z) geo.rotateZ(MathUtils.degToRad(z))
+
         geo.computeVertexNormals()
 
         const unindexedGeo = geo.index ? geo.toNonIndexed() : geo

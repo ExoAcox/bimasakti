@@ -43,7 +43,7 @@ const Star = ({ id, children, labelRef }: Props) => {
     const focusedObject = celestial.getObjectById(focus)
     const isDysonSohere = data.variant_id === "dyson_sphere"
     const intensity = useMemo(() => {
-        const isSpacecraft = (focusedObject?.type === "spacecraft" && focusedObject?.parent === data.id ? 100 : 1)
+        const isSpacecraft = (focusedObject?.type === "spacecraft-orbiter" && focusedObject?.parent === data.id ? 100 : 1)
         return data.intensity / Math.pow(distanceScale, 2) * INTENSITY_SCALE / isSpacecraft
     }, [data, distanceScale, focusedObject])
     const scale = data.radius / sizeScale

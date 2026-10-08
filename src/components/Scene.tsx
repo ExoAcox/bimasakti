@@ -8,7 +8,7 @@ import { useFrame, useThree } from "@react-three/fiber"
 import { Vector3 } from "three"
 import { useCelestial, useMobile, useVariant } from "@function"
 import { latLngToVector3 } from "@function"
-import type { CelestialObject, Planet, Satellite, Star, Universe } from "@types"
+import type { Planet, Universe } from "@types"
 
 interface Props {
     data: Universe
@@ -219,10 +219,11 @@ const Scene = ({ data }: Props) => {
     return <OrbitControls
         makeDefault
         enableDamping
+        zoomSpeed={3}
         ref={controlRef}
         minDistance={data.minDistance}
         maxDistance={data.maxDistance}
-        zoomSpeed={3} />
+    />
 
 }
 

@@ -1,6 +1,6 @@
 /* eslint-disable react-hooks/immutability */
 import { Detailed, useGLTF } from "@react-three/drei"
-import { SpaceCraftClass, type SpaceCraft as SpaceCraftType } from "@types"
+import { type SpaceCraft as SpaceCraftType } from "@types"
 import { Box3, MathUtils, Mesh, Vector3 } from "three"
 import { Suspense, useEffect, useMemo, useRef, type RefObject } from "react"
 import { useSettingStore, useControlStore } from "@state"
@@ -19,10 +19,10 @@ interface GltfProps {
 }
 
 
-const centeredIds = ["iss"]
+const centeredIds = ["iss", "tiangong"]
 
 const WireframeMesh = () => {
-    return <mesh>
+    return <mesh scale={2}>
         <sphereGeometry />
         <meshStandardMaterial wireframe />
     </mesh>
@@ -56,11 +56,7 @@ const GltfLoader = ({ data, objectRef }: GltfProps) => {
             MathUtils.degToRad(y),
             MathUtils.degToRad(z)
         )
-
-        if (data.class === SpaceCraftClass.FlyBy) {
-            objectRef.current.rotation.y = MathUtils.degToRad(-90)
-        }
-    }, [data.class, data.rotation, objectRef])
+    }, [data.rotation, objectRef])
 
     return <primitive object={model} />
 }
@@ -83,7 +79,7 @@ const SpaceCraft = ({ data }: Props) => {
     if (!data) return null
 
     return <CelestialBody data={data} objectRef={objectRef} onClick={handleClick} visible={artificialSatelliteVisible}>
-        <When condition={data.class === SpaceCraftClass.FlyBy}>
+        <When condition={data.type === "spacecraft-flyby"}>
             <directionalLight position={[3, 0, 0]} color="white" intensity={0.5} />
         </When>
 

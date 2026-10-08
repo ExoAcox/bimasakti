@@ -2,7 +2,7 @@ import { useRef, Suspense, useDeferredValue, useMemo } from "react"
 import { type Mesh } from "three"
 import { Detailed } from "@react-three/drei"
 
-import { SpaceCraftClass, type Planet as PlanetType } from "@types"
+import { type Planet as PlanetType, type SpaceCraft as SpaceCraftType } from "@types"
 import { useSettingStore, useControlStore } from "@state"
 import { CelestialBody, PlanetCloud, PlanetRing, LandmarkMarker, TextureLoader, SpaceCraft, Aurora, Atmosphere, NightMaterial, PlyLoader } from "@components/object"
 import { LOWREST_SCALE } from "@constants"
@@ -10,7 +10,6 @@ import { Else, If, Then, When } from "react-if"
 import nations from "@constants/solar-system/nation"
 import NationMarker from "./NationMarker"
 import { useCelestial, userDataFormat, useVariant } from "@function"
-import spacecraft from "@constants/solar-system/spacecraft"
 
 interface Props {
     data: PlanetType
@@ -52,7 +51,7 @@ const PlanetMesh = ({ data }: { data: PlanetType }) => {
     return <mesh castShadow receiveShadow>
         <If condition={data.model}>
             <Then>
-                <PlyLoader path={data.model!} />
+                <PlyLoader path={data.model!} rotation={data.rotation} />
             </Then>
             <Else>
                 <sphereGeometry args={isFocused ? [1, 128, 64] : [1, 64, 32]} />
@@ -81,8 +80,9 @@ const Planet = ({
     const scale = data.radius / sizeScale
 
     const handleClick = () => {
-        const object = celestial.getObjectById(focus) as PlanetType
-        if (data.id === object.parent && object.radius < 1 && object.distance < 10000) return;
+        const object = celestial.getObjectById(focus) as PlanetType | undefined
+
+        if (data.id === object?.parent && object?.radius < 1 && object?.distance < 10000) return;
 
         setControl({ focus: data.id })
     }
@@ -170,10 +170,10 @@ const Planet = ({
             ))}
 
             <When condition={data.id === "earth"}>
-                {spacecraft.filter(craft => craft.class === SpaceCraftClass.FlyBy).map(craft => (
+                {celestial.getObjectsByType("spacecraft-flyby").map(craft => (
                     <SpaceCraft
                         key={craft.id}
-                        data={craft}
+                        data={craft as SpaceCraftType}
                     />
                 ))}
             </When>

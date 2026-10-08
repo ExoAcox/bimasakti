@@ -17,6 +17,11 @@ button {
   cursor: pointer;
 }
 
+input {
+  outline: none;
+  border: none;
+}
+
 .panel-section {
   @apply flex items-center gap-1.5
 }

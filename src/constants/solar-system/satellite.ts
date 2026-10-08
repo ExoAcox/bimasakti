@@ -38,6 +38,7 @@ export const satellites: Satellite[] = [
         distance: 9377,
         color: "#8d7768",
         axis: 0.01,
+        rotation: [90, 0, 0],
         orbit_duration: 0.32,
         rotate_duration: 0.32, // Tidally locked
         texture: "phobos.png",
@@ -52,6 +53,7 @@ export const satellites: Satellite[] = [
         distance: 23460,
         color: "#b8a088",
         axis: 0.93,
+        rotation: [90, 0, 0],
         orbit_duration: 1.26,
         rotate_duration: 1.26, // Tidally locked
         texture: "deimos.png",
