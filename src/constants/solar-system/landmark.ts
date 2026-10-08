@@ -547,8 +547,8 @@ export const landmarks: Landmark[] = [
     {
         id: "great_dark_spot",
         parent: "neptune",
-        latitude: -22.0,
-        longitude: -45.0
+        latitude: -16.0,
+        longitude: 17.0
     },
 
     // Moon

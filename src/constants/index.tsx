@@ -87,6 +87,6 @@ const universes: Universe[] = [
     }
 ]
 
-const universe_ids = universes.filter(universe => universe.id !== "milky_way").map(universe => universe.id)
+const universe_ids = universes.map(universe => universe.id)
 
 export { universes, universe_ids, solar_system, alpha_centauri, sagittarius_a, trappist_1, lich }

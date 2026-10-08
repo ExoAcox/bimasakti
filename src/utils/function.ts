@@ -34,6 +34,7 @@ export const useCelestial = () => {
     const objects: (CelestialObject | Belt)[] = []
 
     universe_ids.forEach(universe => {
+        if (universe === "milky_way") return
         if (universe === currentUniverse) {
             const keys = Object.keys(universeMapping[currentUniverse])
             keys.filter(key => key !== "landmarks").forEach(key => {

@@ -27,7 +27,7 @@ interface Props {
 const SECTION_CLASS = "flex items-center gap-1.5";
 
 const BUTTON_BASE_CLASS =
-    "relative group/btn flex items-center justify-center rounded-full transition-all duration-200 focus:outline-none select-none cursor-pointer disabled:opacity-50";
+    "relative group/btn flex items-center justify-center rounded-full transition-all duration-200 focus:outline-none disabled:opacity-50";
 
 const TOGGLE_BTN_CLASS = clsx(
     BUTTON_BASE_CLASS,
@@ -61,7 +61,7 @@ const MODE_LIST = [
     { id: Mode.ThirdPerson, label: "Third Person", img: "mode_third_person.jpg" },
     { id: Mode.FirstPerson, label: "First Person", img: "mode_first_person.jpg" }
 ]
-const LayerPanel = ({ id }: Props) => {
+const ControlPanel = ({ id }: Props) => {
     const { mode, focus, focusIndex, focusLandmark, tidalLock, landmarkVisible, nationVisible, rotateSpeed, cloudVisible, atmosphereVisible, artificialSatelliteVisible, topographyVisible, dayNightMode, variant, setControl, resetControl } = useControlStore()
     const [lastVariant, setLastVariant] = useState<{ orbit_duration: number, rotate_duration: number } | undefined>()
     const [lastRotateSpeed, setLastRotateSpeed] = useState(rotateSpeed)
@@ -568,4 +568,4 @@ const LayerPanel = ({ id }: Props) => {
     )
 }
 
-export default LayerPanel
+export default ControlPanel

@@ -18,7 +18,7 @@ export const satellites: Satellite[] = [
         texture: "moon.ktx2",
         texture_hd: "moon_hd.ktx2",
         topography_texture: "moon_topography.jpg",
-        icon: "satellite.png",
+        icon: "moon.png",
         get artificial_satellites() {
             return spacecraft.filter((craft) => craft.parent === this.id)
         },
@@ -43,7 +43,7 @@ export const satellites: Satellite[] = [
         rotate_duration: 0.32, // Tidally locked
         texture: "phobos.png",
         model: "phobos.ply",
-        icon: "satellite.png"
+        icon: "asteroid.png"
     },
     {
         id: "deimos",
@@ -58,7 +58,7 @@ export const satellites: Satellite[] = [
         rotate_duration: 1.26, // Tidally locked
         texture: "deimos.png",
         model: "deimos.ply",
-        icon: "satellite.png"
+        icon: "asteroid.png"
     },
     // Jupiter
     {
@@ -72,7 +72,7 @@ export const satellites: Satellite[] = [
         orbit_duration: 1.77,
         rotate_duration: 1.77, // Tidally locked
         texture: "io.webp",
-        icon: "satellite.png",
+        icon: "moon.png",
         get landmarks() {
             return landmarks.filter((landmark) => landmark.parent === this.id)
         }
@@ -128,7 +128,7 @@ export const satellites: Satellite[] = [
         orbit_duration: 0.94,
         rotate_duration: 0.94, // Tidally locked
         texture: "mimas.jpg",
-        icon: "satellite.png",
+        icon: "moon.png",
         get landmarks() {
             return landmarks.filter((landmark) => landmark.parent === this.id)
         }
@@ -198,7 +198,7 @@ export const satellites: Satellite[] = [
         texture: "titan.webp",
         cloud_texture: "titan_cloud.png",
         atmosphere: 1,
-        icon: "satellite.png",
+        icon: "moon.png",
         get landmarks() {
             return landmarks.filter((landmark) => landmark.parent === this.id)
         }

@@ -113,7 +113,7 @@ const LandmarkMarker = ({ landmark, visible = true, lonOffset = 0, custom = fals
         const worldPos = groupRef.current.getWorldPosition(tempWorldPos)
         const dist = state.camera.position.distanceTo(worldPos)
         const parentScale = parent.scale.x
-        const isZoomedIn = dist < parentScale * 4.0
+        const isZoomedIn = dist < parentScale * 6.0
 
         buttonRef.current.style.visibility = (isFacingCamera && isZoomedIn) ? "visible" : "hidden"
     })
@@ -143,7 +143,7 @@ const LandmarkMarker = ({ landmark, visible = true, lonOffset = 0, custom = fals
                         ref={buttonRef}
                         onClick={handleClick}
                         className={clsx(
-                            "flex items-center gap-1.5 px-2 py-0.5 rounded-full text-[10px] font-medium transition-all duration-150 border whitespace-nowrap shadow-md cursor-pointer select-none",
+                            "flex items-center gap-1.5 px-2 py-0.5 rounded-full text-[10px] font-medium transition-all duration-150 border whitespace-nowrap shadow-md",
                             isSelected
                                 ? "bg-sky-600 text-white border-sky-300 scale-105 shadow-sky-500/40"
                                 : "bg-neutral-950/90 text-amber-200 border-amber-500/30 hover:bg-neutral-900 hover:border-amber-400 hover:text-white",

@@ -8,7 +8,7 @@
     "start": "react-router-serve ./build/server/index.js",
     "typecheck": "react-router typegen && tsc",
     "lint": "eslint .",
-    "sitemap": "npm sitemap.js"
+    "sitemap": "npm run sitemap.js"
   },
   "dependencies": {
     "@react-router/node": "^8",

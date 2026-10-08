@@ -71,8 +71,9 @@ const Section = ({ children, data, initialOpen }: SectionProps) => {
     if (!data?.length) return null
 
     return <div>
-        <button className="flex items-center" onClick={() => setOpen(!isOpen)}>
-            <span className="text-xs uppercase px-2 block">{children}</span>
+        <button className="flex items-center gap-1" onClick={() => setOpen(!isOpen)}>
+            <span className="text-xs uppercase ml-2 block">{children}</span>
+            <span className="text-xs text-white/80">({data.length})</span>
             {isOpen ? <IoChevronUp /> : <IoChevronDown />}
         </button>
         <div className={clsx("flex flex-col mt-1", !isOpen && "hidden")}>

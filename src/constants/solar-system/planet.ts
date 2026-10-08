@@ -242,7 +242,7 @@ export const planets: Planet[] = [
         orbit_duration: 1682,
         rotate_duration: 0.378,
         texture: "ceres.jpg",
-        icon: "satellite.png",
+        icon: "moon.png",
         satellites: [],
         get landmarks() {
             return landmarks.filter((landmark) => landmark.parent === this.id)
@@ -261,7 +261,7 @@ export const planets: Planet[] = [
         rotate_duration: 0.163,
         texture: "haumea.jpg",
         model: "haumea.ply",
-        icon: "satellite.png",
+        icon: "moon.png",
         satellites: []
     },
     {
@@ -276,7 +276,7 @@ export const planets: Planet[] = [
         orbit_duration: 112897,
         rotate_duration: 0.937,
         texture: "makemake.jpg",
-        icon: "satellite.png",
+        icon: "moon.png",
         satellites: []
     },
     {
@@ -291,7 +291,7 @@ export const planets: Planet[] = [
         orbit_duration: 203830,
         rotate_duration: 1.08,
         texture: "eris.jpg",
-        icon: "satellite.png",
+        icon: "moon.png",
         satellites: []
     },
     {
@@ -306,7 +306,7 @@ export const planets: Planet[] = [
         orbit_duration: 90250,
         rotate_duration: 0.549,
         texture: "orcus.jpg",
-        icon: "satellite.png",
+        icon: "moon.png",
         satellites: []
     },
     {
@@ -321,7 +321,7 @@ export const planets: Planet[] = [
         orbit_duration: 99640,
         rotate_duration: 0.25,
         texture: "salacia.jpg",
-        icon: "satellite.png",
+        icon: "moon.png",
         satellites: []
     },
     {
@@ -336,7 +336,7 @@ export const planets: Planet[] = [
         orbit_duration: 104380,
         rotate_duration: 0.736,
         texture: "quaoar.jpg",
-        icon: "satellite.png",
+        icon: "moon.png",
         ring: {
             inner_radius: 4050,
             outer_radius: 4250,
@@ -358,7 +358,7 @@ export const planets: Planet[] = [
         orbit_duration: 202300,
         rotate_duration: 0.933,
         texture: "gonggong.jpg",
-        icon: "satellite.png",
+        icon: "moon.png",
         get satellites() {
             return satellites.filter((satellite) => satellite.parent === this.id)
         }
@@ -376,7 +376,7 @@ export const planets: Planet[] = [
         orbit_duration: 4161000,
         rotate_duration: 0.427,
         texture: "sedna.jpg",
-        icon: "satellite.png",
+        icon: "moon.png",
         satellites: []
     },
 ]

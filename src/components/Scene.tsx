@@ -1,7 +1,7 @@
 /* eslint-disable react-hooks/set-state-in-effect */
 /* eslint-disable react-hooks/exhaustive-deps */
 import { useEffect, useLayoutEffect, useRef, useState } from "react"
-import { useSettingStore, useControlStore } from "@state"
+import { useSettingStore, useControlStore, defaultControl } from "@state"
 import { OrbitControls, useBounds } from "@react-three/drei"
 import type { OrbitControls as OrbitControlsType } from "three-stdlib"
 import { useFrame, useThree } from "@react-three/fiber"
@@ -44,6 +44,10 @@ const Scene = ({ data }: Props) => {
 
     const focusData = focus ? (celestial.getObjectById(focus) as Planet) : undefined
     const variantData = useVariant(focusData as Planet)
+
+    useEffect(() => {
+        setControl(defaultControl)
+    }, [universe])
 
     // Focus to default position
     useLayoutEffect(() => {

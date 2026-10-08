@@ -1,7 +1,7 @@
 import { redirect } from "react-router";
 
 export const clientLoader = () => {
-    return redirect("/");
+    return redirect("/solar_system");
 };
 
 const Redirect = () => {

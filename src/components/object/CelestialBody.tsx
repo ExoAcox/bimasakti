@@ -44,6 +44,7 @@ const Object = ({ data, children, childrenComponent, onClick, objectRef, cloudRe
     const focusedObject = celestial.getObjectById(focus) as CelestialObject | undefined
     const defaultFocus = universe.defaultFocus
     const isFocused = focus === data.id;
+    const isSpacecraft = data.type === "spacecraft-orbiter" && data.distance < 10000
 
     const axis = ignoreAxis ? 0 : MathUtils.degToRad(data?.axis ?? 0)
     // const scale = data.radius / sizeScale
@@ -155,11 +156,11 @@ const Object = ({ data, children, childrenComponent, onClick, objectRef, cloudRe
         const distance = celestial.getCameraDistance(camera, object)
         const scale = Math.max(300, data.radius) / sizeScale * 50
 
-        let isVisible = distance > scale
+        let isVisible = isSpacecraft ? true : (distance > scale)
 
-        if (data.type === "spacecraft-orbiter" && data.distance < 10000) {
+        if (isSpacecraft) {
             if (focusedObject?.type === "spacecraft-orbiter") isVisible = false
-            if (distance > 0.3) isVisible = false
+            if (distance > scale * 4) isVisible = false
         }
 
         if (isVisible) {
@@ -176,7 +177,7 @@ const Object = ({ data, children, childrenComponent, onClick, objectRef, cloudRe
 
                 // Skip if camera is inside the occluder planet — UNLESS we explicitly override
                 // (e.g. camera near parent planet surface while focused on orbiting spacecraft)
-                if (!skipCamInsideGuard && distCamToPlanet <= targetRadius * 1.05) return false
+                // if (!skipCamInsideGuard && distCamToPlanet <= targetRadius * 1.05) return false
 
                 if (distCamToPlanet < distCamToLabel) {
                     vCamToLabel.subVectors(labelPos, camera.position)
@@ -245,9 +246,9 @@ const Object = ({ data, children, childrenComponent, onClick, objectRef, cloudRe
     })()
 
 
-    const labelClass = data.type === "spacecraft-orbiter" && data.orbit_duration
-        ? "hover:text-primary flex items-center gap-1 px-2 py-0.5 rounded-full text-[10px] font-medium transition-all duration-150 border whitespace-nowrap shadow-md select-none bg-neutral-950/90 text-sky-200 border-sky-500/30 hover:bg-neutral-900 hover:border-sky-400 hover:text-white"
-        : clsx("hover:text-primary absolute -translate-y-1/4 -translate-x-1/2 flex flex-col items-center whitespace-nowrap select-none rounded-lg text-xs font-semibold", focusedObject?.parent === data.id && "mt-3")
+    const labelClass = isSpacecraft
+        ? "hover:text-primary flex items-center gap-1 px-2 py-0.5 rounded-full text-[10px] font-medium transition-all duration-150 border whitespace-nowrap shadow-md bg-neutral-950/90 text-sky-200 border-sky-500/30 hover:bg-neutral-900 hover:border-sky-400 hover:text-white"
+        : clsx("hover:text-primary absolute -translate-y-1/4 -translate-x-1/2 flex flex-col px-1.5 py-1 items-center whitespace-nowrap rounded text-xs font-semibold", focusedObject?.parent === data.id && "mt-3")
 
     return <group rotation={[0, 0, axis]}>
         <group rotation={[0, rotate, 0]}>
@@ -267,7 +268,7 @@ const Object = ({ data, children, childrenComponent, onClick, objectRef, cloudRe
                                 className={labelClass}
                                 onClick={onClick}>
                                 <When condition={focusedObject?.parent !== data.id}>
-                                    <div className={clsx(data.type === "spacecraft-orbiter" && data.orbit_duration ? "size-3" : "size-4")}>
+                                    <div className={clsx(isSpacecraft ? "size-3" : "size-4")}>
                                         <img alt="" src={`/icons/${data.icon}`} />
                                     </div>
                                 </When>
@@ -276,19 +277,6 @@ const Object = ({ data, children, childrenComponent, onClick, objectRef, cloudRe
                             </button>
                         </Html>
                     </When>
-                    {/* <When condition={isSpacecraftLabelVisible}>
-                        <Html
-                            zIndexRange={[isFocused ? 2 : 1, 0]}
-                        >
-                            <button ref={spacecraftLabelRef} className={clsx(
-                                "flex items-center gap-1.5 px-2 py-0.5 rounded-full text-[10px] font-medium transition-all duration-150 border whitespace-nowrap shadow-md cursor-pointer select-none",
-                                isFocused
-                                    ? "bg-sky-600 text-white border-sky-300 scale-105 shadow-sky-500/40"
-                                    : "bg-neutral-950/90 text-sky-200 border-sky-500/30 hover:bg-neutral-900 hover:border-sky-400 hover:text-white",
-                            )} onClick={onClick}>{t(`object.${data.id}.name`)}</button>
-                        </Html>
-                    </When> */}
-
                     {children}
                     {childrenComponent}
                 </group>
