@@ -170,6 +170,10 @@ const Object = ({ data, children, childrenComponent, onClick, objectRef, cloudRe
 
                 const targetRadius = targetObj.scale.x
 
+                if (isSpacecraft) {
+                    if (distance > 0.3) isVisible = false
+                }
+
                 if (distCamToPlanet <= targetRadius * 1.05) return false
 
                 if (distCamToPlanet < distCamToLabel) {
@@ -246,9 +250,9 @@ const Object = ({ data, children, childrenComponent, onClick, objectRef, cloudRe
 
     const labelClass = useMemo(() => {
         if (isSpacecraft) {
-            return "hover:text-primary absolute -translate-x-1/2 px-2 py-0.5 rounded-full text-[10px] font-medium transition-all duration-150 border whitespace-nowrap shadow-md cursor-pointer select-none bg-neutral-950/90 text-sky-200 border-sky-500/30 hover:bg-neutral-900 hover:border-sky-400 hover:text-white"
+            return "hover:text-primary absolute -translate-x-1/2 px-2 py-0.5 rounded-full text-[10px] font-medium transition-all duration-150 border whitespace-nowrap shadow-md select-none bg-neutral-950/90 text-sky-200 border-sky-500/30 hover:bg-neutral-900 hover:border-sky-400 hover:text-white"
         } else {
-            return "hover:text-primary absolute -translate-x-1/2 -translate-y-full -mt-1 py-1 px-2 whitespace-nowrap rounded-lg text-sm font-semibold"
+            return "hover:text-primary absolute -translate-x-1/2 -translate-y-full -mt-1 py-1 px-2 whitespace-nowrap select-none rounded-lg text-sm font-semibold"
         }
     }, [isSpacecraft])
 
