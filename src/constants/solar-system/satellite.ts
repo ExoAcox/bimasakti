@@ -88,7 +88,7 @@ export const satellites: Satellite[] = [
         orbit_duration: 3.55,
         rotate_duration: 3.55, // Tidally locked
         texture: "europa.webp",
-        icon: "satellite.png"
+        icon: "moon.png"
     },
     {
         id: "ganymede",
@@ -101,7 +101,7 @@ export const satellites: Satellite[] = [
         orbit_duration: 7.16,
         rotate_duration: 7.16, // Tidally locked
         texture: "ganymede.webp",
-        icon: "satellite.png"
+        icon: "moon.png"
     },
     {
         id: "callisto",
@@ -114,7 +114,7 @@ export const satellites: Satellite[] = [
         orbit_duration: 16.69,
         rotate_duration: 16.69, // Tidally locked
         texture: "callisto.webp",
-        icon: "satellite.png"
+        icon: "moon.png"
     },
     // Saturn
     {
@@ -144,7 +144,7 @@ export const satellites: Satellite[] = [
         orbit_duration: 1.37,
         rotate_duration: 1.37, // Tidally locked
         texture: "enceladus.webp",
-        icon: "satellite.png"
+        icon: "moon.png"
     },
     {
         id: "tethys",
@@ -157,7 +157,7 @@ export const satellites: Satellite[] = [
         orbit_duration: 1.89,
         rotate_duration: 1.89, // Tidally locked
         texture: "tethys.webp",
-        icon: "satellite.png"
+        icon: "moon.png"
     },
     {
         id: "dione",
@@ -170,7 +170,7 @@ export const satellites: Satellite[] = [
         orbit_duration: 2.74,
         rotate_duration: 2.74, // Tidally locked
         texture: "dione.webp",
-        icon: "satellite.png"
+        icon: "moon.png"
     },
     {
         id: "rhea",
@@ -183,7 +183,7 @@ export const satellites: Satellite[] = [
         orbit_duration: 4.52,
         rotate_duration: 4.52, // Tidally locked
         texture: "rhea.webp",
-        icon: "satellite.png"
+        icon: "moon.png"
     },
     {
         id: "titan",
@@ -214,7 +214,7 @@ export const satellites: Satellite[] = [
         orbit_duration: 79.33,
         rotate_duration: 79.33, // Tidally locked
         texture: "iapetus.webp",
-        icon: "satellite.png"
+        icon: "moon.png"
     },
     // Uranus
     {
@@ -228,7 +228,7 @@ export const satellites: Satellite[] = [
         orbit_duration: 1.41,
         rotate_duration: 1.41, // Tidally locked
         texture: "miranda.webp",
-        icon: "satellite.png"
+        icon: "moon.png"
     },
     {
         id: "ariel",
@@ -241,7 +241,7 @@ export const satellites: Satellite[] = [
         orbit_duration: 2.52,
         rotate_duration: 2.52, // Tidally locked
         texture: "ariel.webp",
-        icon: "satellite.png"
+        icon: "moon.png"
     },
     {
         id: "umbriel",
@@ -254,7 +254,7 @@ export const satellites: Satellite[] = [
         orbit_duration: 4.14,
         rotate_duration: 4.14, // Tidally locked
         texture: "umbriel.webp",
-        icon: "satellite.png"
+        icon: "moon.png"
     },
     {
         id: "titania",
@@ -267,7 +267,7 @@ export const satellites: Satellite[] = [
         orbit_duration: 8.71,
         rotate_duration: 8.71, // Tidally locked
         texture: "titania.webp",
-        icon: "satellite.png"
+        icon: "moon.png"
     },
     {
         id: "oberon",
@@ -280,7 +280,7 @@ export const satellites: Satellite[] = [
         orbit_duration: 13.46,
         rotate_duration: 13.46, // Tidally locked
         texture: "oberon.webp",
-        icon: "satellite.png"
+        icon: "moon.png"
     },
     // Neptune
     {
@@ -295,7 +295,7 @@ export const satellites: Satellite[] = [
         rotate_duration: 1.12, // Tidally locked
         texture: "proteus.webp",
         model: "proteus.ply",
-        icon: "satellite.png"
+        icon: "moon.png"
     },
     {
         id: "triton",
@@ -308,7 +308,7 @@ export const satellites: Satellite[] = [
         orbit_duration: 5.88,
         rotate_duration: 5.88, // Tidally locked
         texture: "triton.png",
-        icon: "satellite.png"
+        icon: "moon.png"
     },
     {
         id: "nereid",
@@ -321,7 +321,7 @@ export const satellites: Satellite[] = [
         orbit_duration: 360.14,
         rotate_duration: 0.48, // 11.5 hours
         texture: "nereid.webp",
-        icon: "satellite.png"
+        icon: "moon.png"
     },
     // Pluto
     {
@@ -335,7 +335,7 @@ export const satellites: Satellite[] = [
         orbit_duration: 6.39,
         rotate_duration: 6.39, // Tidally locked
         texture: "charon.webp",
-        icon: "satellite.png"
+        icon: "moon.png"
     },
     // Gonggong
     // {
@@ -348,7 +348,7 @@ export const satellites: Satellite[] = [
     //     axis: 0,
     //     orbit_duration: 25.2,
     //     rotate_duration: 25.2, // Tidally locked
-    //     icon: "satellite.png"
+    //     icon: "moon.png"
     // },
     // Quaoar
     // {
@@ -361,7 +361,7 @@ export const satellites: Satellite[] = [
     //     axis: 0,
     //     orbit_duration: 12.4,
     //     rotate_duration: 12.4, // Tidally locked
-    //     icon: "satellite.png"
+    //     icon: "moon.png"
     // },
     // {
     //     id: "styx",
@@ -373,7 +373,7 @@ export const satellites: Satellite[] = [
     //     axis: 0.81,
     //     orbit_duration: 20.16,
     //     rotate_duration: 1.35, // Chaotic
-    //     icon: "satellite.png"
+    //     icon: "moon.png"
     // },
     // {
     //     id: "nix",
@@ -385,7 +385,7 @@ export const satellites: Satellite[] = [
     //     axis: 0.13,
     //     orbit_duration: 24.85,
     //     rotate_duration: 1.83, // Chaotic / rapid
-    //     icon: "satellite.png"
+    //     icon: "moon.png"
     // },
     // {
     //     id: "kerberos",
@@ -397,7 +397,7 @@ export const satellites: Satellite[] = [
     //     axis: 0.39,
     //     orbit_duration: 32.17,
     //     rotate_duration: 5.33, // Chaotic
-    //     icon: "satellite.png"
+    //     icon: "moon.png"
     // },
     // {
     //     id: "hydra",
@@ -409,6 +409,6 @@ export const satellites: Satellite[] = [
     //     axis: 0.24,
     //     orbit_duration: 38.2,
     //     rotate_duration: 0.43, // Chaotic / rapid
-    //     icon: "satellite.png"
+    //     icon: "moon.png"
     // }
 ]
