@@ -17,8 +17,7 @@ const stars: Star[] = [{
     axis: 7.25, // obliquity to the ecliptic in degrees
     rotate_duration: 25.05, // equator sidereal rotation period in days
     orbit_duration: 0,
-    texture: "sun.jpg",
-    icon: "sun.png",
+    icon: "yellow_star.png",
     gordilocks: {
         inner_radius: 142120000,
         outer_radius: 249832000,

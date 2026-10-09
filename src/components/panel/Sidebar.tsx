@@ -135,7 +135,7 @@ const Sidebar = () => {
     const satellites = celestial.getObjectsByType("satellite") as Satellite[]
     const spacecraftFlyby = celestial.getObjectsByType("spacecraft-flyby") as SpaceCraft[]
     const spacecraftOrbiter = celestial.getObjectsByType("spacecraft-orbiter") as SpaceCraft[]
-    const spacecraft = [...spacecraftOrbiter, ...spacecraftFlyby]
+    const spacecraft = [...spacecraftFlyby, ...spacecraftOrbiter]
 
     const handleClick = () => {
         setOpen(!isOpen)

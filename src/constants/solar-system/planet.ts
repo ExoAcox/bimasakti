@@ -18,7 +18,7 @@ export const planets: Planet[] = [
         rotate_duration: 58.65,
         texture: "mercury.ktx2",
         texture_hd: "mercury_hd.ktx2",
-        topography_texture: "mercury_topography.jpg",
+        topography_texture: "mercury_topography.ktx2",
         icon: "mercury.png",
         get satellites() {
             return satellites.filter((satellite) => satellite.parent === this.id)
@@ -41,7 +41,7 @@ export const planets: Planet[] = [
         texture: "venus.ktx2",
         texture_hd: "venus_hd.ktx2",
         cloud_texture: "venus_cloud.ktx2",
-        topography_texture: "venus_topography.jpg",
+        topography_texture: "venus_topography.ktx2",
         atmosphere: 1,
         aurora: 0.5,
         icon: "venus.png",
@@ -71,7 +71,7 @@ export const planets: Planet[] = [
         night_texture: "earth_night.ktx2",
         night_texture_hd: "earth_night_hd.ktx2",
         cloud_texture: "earth_cloud.ktx2",
-        topography_texture: "earth_topography.jpg",
+        topography_texture: "earth_topography.ktx2",
         aurora: 1,
         atmosphere: 1,
         icon: "earth.png",
@@ -101,7 +101,7 @@ export const planets: Planet[] = [
         rotate_duration: 1.03,
         texture: "mars.ktx2",
         texture_hd: "mars_hd.ktx2",
-        topography_texture: "mars_topography.jpg",
+        topography_texture: "mars_topography.ktx2",
         atmosphere: 0.1,
         icon: "mars.png",
         get variants() {
@@ -276,7 +276,7 @@ export const planets: Planet[] = [
         orbit_duration: 112897,
         rotate_duration: 0.937,
         texture: "makemake.jpg",
-        icon: "moon.png",
+        icon: "mercury.png",
         satellites: []
     },
     {
@@ -321,7 +321,7 @@ export const planets: Planet[] = [
         orbit_duration: 99640,
         rotate_duration: 0.25,
         texture: "salacia.jpg",
-        icon: "moon.png",
+        icon: "mercury.png",
         satellites: []
     },
     {
@@ -336,7 +336,7 @@ export const planets: Planet[] = [
         orbit_duration: 104380,
         rotate_duration: 0.736,
         texture: "quaoar.jpg",
-        icon: "moon.png",
+        icon: "mercury.png",
         ring: {
             inner_radius: 4050,
             outer_radius: 4250,
@@ -358,7 +358,7 @@ export const planets: Planet[] = [
         orbit_duration: 202300,
         rotate_duration: 0.933,
         texture: "gonggong.jpg",
-        icon: "moon.png",
+        icon: "mercury.png",
         get satellites() {
             return satellites.filter((satellite) => satellite.parent === this.id)
         }
@@ -376,7 +376,7 @@ export const planets: Planet[] = [
         orbit_duration: 4161000,
         rotate_duration: 0.427,
         texture: "sedna.jpg",
-        icon: "moon.png",
+        icon: "mercury.png",
         satellites: []
     },
 ]

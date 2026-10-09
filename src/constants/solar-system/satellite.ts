@@ -72,7 +72,7 @@ export const satellites: Satellite[] = [
         orbit_duration: 1.77,
         rotate_duration: 1.77, // Tidally locked
         texture: "io.webp",
-        icon: "moon.png",
+        icon: "pluto.png",
         get landmarks() {
             return landmarks.filter((landmark) => landmark.parent === this.id)
         }
@@ -114,7 +114,7 @@ export const satellites: Satellite[] = [
         orbit_duration: 16.69,
         rotate_duration: 16.69, // Tidally locked
         texture: "callisto.webp",
-        icon: "moon.png"
+        icon: "mercury.png"
     },
     // Saturn
     {
@@ -157,7 +157,7 @@ export const satellites: Satellite[] = [
         orbit_duration: 1.89,
         rotate_duration: 1.89, // Tidally locked
         texture: "tethys.webp",
-        icon: "moon.png"
+        icon: "mercury.png"
     },
     {
         id: "dione",
@@ -183,7 +183,7 @@ export const satellites: Satellite[] = [
         orbit_duration: 4.52,
         rotate_duration: 4.52, // Tidally locked
         texture: "rhea.webp",
-        icon: "moon.png"
+        icon: "mercury.png"
     },
     {
         id: "titan",
@@ -197,8 +197,8 @@ export const satellites: Satellite[] = [
         rotate_duration: 15.95, // Tidally locked
         texture: "titan.webp",
         cloud_texture: "titan_cloud.png",
-        atmosphere: 1,
-        icon: "moon.png",
+        atmosphere: 0.5,
+        icon: "venus.png",
         get landmarks() {
             return landmarks.filter((landmark) => landmark.parent === this.id)
         }
@@ -214,7 +214,7 @@ export const satellites: Satellite[] = [
         orbit_duration: 79.33,
         rotate_duration: 79.33, // Tidally locked
         texture: "iapetus.webp",
-        icon: "moon.png"
+        icon: "mercury.png"
     },
     // Uranus
     {
@@ -295,7 +295,7 @@ export const satellites: Satellite[] = [
         rotate_duration: 1.12, // Tidally locked
         texture: "proteus.webp",
         model: "proteus.ply",
-        icon: "moon.png"
+        icon: "asteroid.png"
     },
     {
         id: "triton",

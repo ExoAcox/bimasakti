@@ -13,7 +13,7 @@ const stars: Star[] = [{
     axis: -4.3,
     rotate_duration: 0.00622,
     orbit_duration: 0,
-    icon: "sun.png",
+    icon: "blue_star.png",
     gordilocks: {
         inner_radius: 40000000,
         outer_radius: 75000000,

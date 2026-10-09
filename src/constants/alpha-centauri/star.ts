@@ -14,8 +14,7 @@ export const stars: Star[] = [
                 axis: 7.9, // obliquity to the ecliptic in degrees
                 rotate_duration: 22.0, // equator sidereal rotation period in days
                 orbit_duration: 29187, // ~79.91 years in days
-                texture: "sun.jpg",
-                icon: "sun.png",
+                icon: "yellow_star.png",
                 // gordilocks: {
                 //     inner_radius: 175160000,
                 //     outer_radius: 307912000,
@@ -37,8 +36,7 @@ export const stars: Star[] = [
                 axis: 7.25,
                 rotate_duration: 41.0,
                 orbit_duration: 29187, // ~79.91 years in days
-                texture: "sun.jpg",
-                icon: "sun.png",
+                icon: "yellow_star.png",
                 // gordilocks: {
                 //     inner_radius: 100494000,
                 //     outer_radius: 176658000,
@@ -59,8 +57,7 @@ export const stars: Star[] = [
                 axis: 7.25,
                 rotate_duration: 82.6,
                 orbit_duration: 199790000, // ~547,000 years in days
-                texture: "sun.jpg",
-                icon: "sun.png",
+                icon: "red_star.png",
                 gordilocks: {
                         inner_radius: 5860000,
                         outer_radius: 10300000,
