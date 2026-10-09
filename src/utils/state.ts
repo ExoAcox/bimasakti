@@ -36,6 +36,7 @@ export interface ControlStore {
     focus: string
     focusIndex: number
     focusLandmark: string
+    focusInput: boolean
     variant: string
     rotateSpeed: number
     axisTilt: number
@@ -57,6 +58,7 @@ export const defaultControl = {
     focus: "",
     focusIndex: 0,
     focusLandmark: "",
+    focusInput: false,
     variant: "",
     rotateSpeed: 1,
     axisTilt: 0,

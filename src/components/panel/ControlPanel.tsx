@@ -62,7 +62,7 @@ const MODE_LIST = [
     { id: Mode.FirstPerson, label: "First Person", img: "mode_first_person.jpg" }
 ]
 const ControlPanel = ({ id }: Props) => {
-    const { mode, focus, focusIndex, focusLandmark, tidalLock, landmarkVisible, nationVisible, rotateSpeed, cloudVisible, atmosphereVisible, artificialSatelliteVisible, topographyVisible, dayNightMode, variant, setControl, resetControl } = useControlStore()
+    const { mode, focus, focusIndex, focusInput, focusLandmark, tidalLock, landmarkVisible, nationVisible, rotateSpeed, cloudVisible, atmosphereVisible, artificialSatelliteVisible, topographyVisible, dayNightMode, variant, setControl, resetControl } = useControlStore()
     const [lastVariant, setLastVariant] = useState<{ orbit_duration: number, rotate_duration: number } | undefined>()
     const [lastRotateSpeed, setLastRotateSpeed] = useState(rotateSpeed)
     const [timelinesVisible, setTimelineVisible] = useState(true)
@@ -125,7 +125,9 @@ const ControlPanel = ({ id }: Props) => {
     // }
 
 
-
+    useEffect(() => {
+        setLastRotateSpeed(1)
+    }, [focus])
 
     const timelines = useMemo(() => {
         if (!data?.variants?.length) return []
@@ -234,6 +236,8 @@ const ControlPanel = ({ id }: Props) => {
         const unsub = sub(
             (state) => state,
             (keys) => {
+                if (focusInput) return
+
                 if (keys.space) handleRotatePlay()
                 if (keys.up) handleRotateNext()
                 if (keys.down) handleRotatePrev()
@@ -267,7 +271,7 @@ const ControlPanel = ({ id }: Props) => {
         )
 
         return unsub
-    }, [getVariantIndex, handleCloud, handleLandmark, handleRotateNext, handleRotatePlay, handleRotatePrev, handleVariant, setControl, sub, timelines])
+    }, [focusInput, getVariantIndex, handleCloud, handleLandmark, handleRotateNext, handleRotatePlay, handleRotatePrev, handleVariant, setControl, sub, timelines])
 
     useEffect(() => {
         if (data) {

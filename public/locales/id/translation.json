@@ -145,6 +145,11 @@
             "nickname": "ISS",
             "description": "International Space Station (ISS) adalah stasiun luar angkasa modular di orbit rendah Bumi. Ini adalah proyek kolaborasi multinasional yang melibatkan lima badan antariksa: NASA, Roscosmos, JAXA, ESA, dan CSA. ISS berfungsi sebagai laboratorium penelitian mikrogravitasi dan lingkungan luar angkasa."
         },
+        "tiangong": {
+            "name": "Stasiun Luar Angkasa Tiangong",
+            "nickname": "Tiangong",
+            "description": "Tiangong (bahasa Mandarin: Istana Surgawi) adalah stasiun luar angkasa modular milik Tiongkok. Dirakit di orbit rendah Bumi, stasiun ini dihuni secara terus-menerus sejak November 2022. Dioperasikan oleh China Manned Space Agency (CMSA), Tiangong terdiri dari modul inti Tianhe dan dua modul laboratorium, Wentian dan Mengtian, yang mendukung penghunian jangka panjang serta penelitian ilmiah."
+        },
         "mars": {
             "name": "Mars",
             "nickname": "Mars",

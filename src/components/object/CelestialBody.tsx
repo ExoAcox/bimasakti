@@ -95,7 +95,7 @@ const Object = ({ data, children, childrenComponent, onClick, objectRef, cloudRe
         const deltaT = elapsedTime - lastElapsedTimeRef.current
         lastElapsedTimeRef.current = elapsedTime
 
-        const effectiveRotateSpeed = isFocused ? rotateSpeed : 1
+        const effectiveRotateSpeed = isFocused ? (rotateSpeed) : 1
         virtualTimeRef.current += deltaT * effectiveRotateSpeed
 
         const speed = ((virtualTimeRef.current % 60) / 60) * Math.PI * 2
@@ -104,8 +104,9 @@ const Object = ({ data, children, childrenComponent, onClick, objectRef, cloudRe
         if (data.rotate_duration && objectRef?.current?.rotation) {
             const isTidalLocked = data.orbit_duration === data.rotate_duration && tidalLock
             if (isTidalLocked) {
-                objectRef.current.rotation.y = Math.PI
-                rotationRef.current = Math.PI
+                const rotationY = (data?.rotation?.[1] ?? 0)
+                objectRef.current.rotation.y = MathUtils.degToRad(rotationY)
+                rotationRef.current = MathUtils.degToRad(rotationY)
             } else {
                 if (rotationRef.current === null) {
                     rotationRef.current = (speed / data.rotate_duration) * speedScale
@@ -118,7 +119,7 @@ const Object = ({ data, children, childrenComponent, onClick, objectRef, cloudRe
         }
 
         if (data.rotate_duration && data.cloud_texture && cloudRef?.current) {
-            const cloudDeltaSpeed = ((deltaT * effectiveRotateSpeed) / 50) * Math.PI * 2
+            const cloudDeltaSpeed = ((deltaT * (tidalLock && isFocused ? 1 : effectiveRotateSpeed)) / 50) * Math.PI * 2
             const cloudDeltaRotation = (cloudDeltaSpeed / data.rotate_duration) * speedScale
             cloudRotationRef.current += cloudDeltaRotation
             cloudRef.current.rotation.y = cloudRotationRef.current
@@ -248,7 +249,7 @@ const Object = ({ data, children, childrenComponent, onClick, objectRef, cloudRe
 
     const labelClass = isSpacecraft
         ? "hover:text-primary flex items-center gap-1 px-2 py-0.5 rounded-full text-[10px] font-medium transition-all duration-150 border whitespace-nowrap shadow-md bg-neutral-950/90 text-sky-200 border-sky-500/30 hover:bg-neutral-900 hover:border-sky-400 hover:text-white"
-        : clsx("hover:text-primary absolute -translate-y-1/4 -translate-x-1/2 flex flex-col px-1.5 py-1 items-center whitespace-nowrap rounded text-xs font-semibold", focusedObject?.parent === data.id && "mt-3")
+        : clsx("hover:text-primary absolute -translate-y-2/7 -translate-x-1/2 flex flex-col px-1.5 py-1 items-center whitespace-nowrap rounded text-xs font-semibold")
 
     return <group rotation={[0, 0, axis]}>
         <group rotation={[0, rotate, 0]}>

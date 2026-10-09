@@ -27,6 +27,7 @@ export const planets: Planet[] = [
         axis: -5,
         orbit_duration: 2.42,
         rotate_duration: 2.42,
+        rotation: [0, -90, 0],
         texture: "trappist-1_c.png",
         icon: "earth.png",
         satellites: []
@@ -42,6 +43,7 @@ export const planets: Planet[] = [
         axis: 6,
         orbit_duration: 4.05,
         rotate_duration: 4.05,
+        rotation: [0, -90, 0],
         texture: "trappist-1_d.png",
         cloud_texture: "trappist-1_d_cloud.png",
         icon: "earth.png",
@@ -74,6 +76,7 @@ export const planets: Planet[] = [
         axis: 21,
         orbit_duration: 9.21,
         rotate_duration: 9.21,
+        rotation: [0, 180, 0],
         texture: "trappist-1_f.png",
         cloud_texture: "trappist-1_f_cloud.png",
         icon: "earth.png",

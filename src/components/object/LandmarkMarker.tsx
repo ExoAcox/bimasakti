@@ -106,7 +106,6 @@ const LandmarkMarker = ({ landmark, visible = true, lonOffset = 0, custom = fals
 
         const currentPos = positionRef.current
         const dot = currentPos.dot(tempCamPos)
-        // Dot product horizon occlusion check for arbitrary radius surface point
         const isFacingCamera = dot > currentPos.lengthSq() * 0.95
 
         // Distance check: only display landmark labels when camera is zoomed in close to planet

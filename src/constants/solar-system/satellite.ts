@@ -15,9 +15,10 @@ export const satellites: Satellite[] = [
         axis: 1.54,
         orbit_duration: 27.32,
         rotate_duration: 27.32, // Tidally locked
+        rotation: [0, 180, 0],
         texture: "moon.ktx2",
         texture_hd: "moon_hd.ktx2",
-        topography_texture: "moon_topography.jpg",
+        topography_texture: "moon_topography.ktx2",
         icon: "moon.png",
         get artificial_satellites() {
             return spacecraft.filter((craft) => craft.parent === this.id)
