@@ -122,7 +122,7 @@ export const timeFormat = (value: number) => {
         const year = Math.floor(value / 365)
         const day = Math.round((value / 365 - year) * 365)
 
-        if (year) return `${year} years ${day} days`
+        if (year) return `${year.toLocaleString()} years ${day ? day + " days" : ""}`
         return `${year} years`
     } else if (value <= 0.1) {
         const minute = Math.round((value * 24 * 60))
@@ -132,7 +132,7 @@ export const timeFormat = (value: number) => {
         const hour = Math.floor(value * 24)
         const minute = Math.round((value * 24 - hour) * 60)
 
-        if (minute) return `${hour} hours ${minute} minutes`
+        if (minute) return `${hour} hours ${minute ? minute + " minutes" : ""}`
         return `${hour} hours`
     } else {
         return `${value} days`

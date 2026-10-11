@@ -69,8 +69,11 @@ const AlphaCentauri = () => {
 
     return <group>
         <group ref={centerRef}>
-            <Html occlude={occlude} zIndexRange={[2, 0]}>
-                <button ref={alphaLabelRef} className="hover:text-primary absolute -translate-x-1/2 -translate-y-full -mt-1 py-1 px-2 whitespace-nowrap rounded-lg text-sm font-semibold " onClick={handleClick}>Alpha Centauri</button>
+            <Html occlude={occlude} zIndexRange={[2, 0]} center>
+                <button ref={alphaLabelRef} className="hover:text-primary whitespace-nowrap rounded-lg text-xs font-semibold flex flex-col items-center" onClick={handleClick}>
+                    <img className="size-4" alt="" src={`/icons/yellow_star.png`} />
+                    <span>Alpha Centauri</span>
+                </button>
             </Html>
 
             {stars.filter(star => star.id.includes("alpha_centauri")).map(star => {

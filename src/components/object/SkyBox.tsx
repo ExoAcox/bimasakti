@@ -56,7 +56,7 @@ const SkyBox = ({
     })
 
     useFrame(({ camera }) => {
-        const zoom = controls.getDistance()
+        const zoom = controls?.getDistance()
         const orbitCamera = camera as PerspectiveCamera
 
         const fov = Math.max(fovMin, Math.min(fovMax, fovMin + (zoom - zoomMin) * ratio))
