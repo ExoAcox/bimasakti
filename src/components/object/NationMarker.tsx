@@ -48,7 +48,7 @@ const NationMarker = ({ nation, visible = true, lonOffset = 0 }: Props) => {
         const worldPos = groupRef.current.getWorldPosition(tempWorldPos)
         const dist = state.camera.position.distanceTo(worldPos)
         const parentScale = parent ? parent.scale.x : 1
-        const isZoomedIn = dist < parentScale * 3.0
+        const isZoomedIn = dist < parentScale * 6.0
 
         buttonRef.current.style.visibility = (isFacingCamera && isZoomedIn) ? "visible" : "hidden"
     })

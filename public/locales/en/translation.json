@@ -152,6 +152,11 @@
             "nickname": "ISS",
             "description": "The International Space Station (ISS) is a modular space station in low Earth orbit. It is a multinational collaborative project involving five participating space agencies: NASA, Roscosmos, JAXA, ESA, and CSA. It serves as a microgravity and space environment research laboratory in which scientific tests are conducted."
         },
+        "tiangong": {
+            "name": "Tiangong Space Station",
+            "nickname": "Tiangong",
+            "description": "Tiangong (Chinese for Heavenly Palace) is China's modular space station. Assembled in low Earth orbit, it has been continuously crewed since November 2022. Operated by the China Manned Space Agency (CMSA), it consists of the Tianhe core module and the Wentian and Mengtian laboratory modules, supporting long-duration crewed stays and scientific research."
+        },
         "mars": {
             "name": "Mars",
             "nickname": "Mars",

@@ -137,6 +137,11 @@
             "nickname": "ISS",
             "description": "Die Internationale Raumstation (ISS) ist eine modulare Raumstation in der niedrigen Erdumlaufbahn. Sie ist ein multinationales Gemeinschaftsprojekt von fünf Raumfahrtagenturen: NASA, Roscosmos, JAXA, ESA und CSA."
         },
+        "tiangong": {
+            "name": "Raumstation Tiangong",
+            "nickname": "Tiangong",
+            "description": "Tiangong (chinesisch für Himmlischer Palast) ist Chinas modulare Raumstation. Sie wurde in der niedrigen Erdumlaufbahn zusammengebaut und ist seit November 2022 dauerhaft bemannt. Betrieben von der China Manned Space Agency (CMSA), besteht sie aus dem Kernmodul Tianhe und den beiden Labormodulen Wentian und Mengtian und ermöglicht langfristige bemannte Aufenthalte sowie wissenschaftliche Forschung."
+        },
         "mars": {
             "name": "Mars",
             "nickname": "Mars",

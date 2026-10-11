@@ -80,6 +80,7 @@ const asteroids: Asteroid[] = [
         parent: "sun",
         radius: 262.7,
         distance: 353400000,
+        rotation: [90, 0, 0],
         color: "#9c9589",
         axis: 7.14,
         orbit_duration: 1325.4,

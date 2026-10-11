@@ -1,6 +1,6 @@
 /* eslint-disable react-hooks/set-state-in-effect */
 /* eslint-disable react-hooks/exhaustive-deps */
-import { useEffect, useLayoutEffect, useRef, useState } from "react"
+import { useEffect, useLayoutEffect, useMemo, useRef, useState } from "react"
 import { useSettingStore, useControlStore, defaultControl } from "@state"
 import { OrbitControls, useBounds } from "@react-three/drei"
 import type { OrbitControls as OrbitControlsType } from "three-stdlib"
@@ -8,7 +8,7 @@ import { useFrame, useThree } from "@react-three/fiber"
 import { Vector3 } from "three"
 import { useCelestial, useMobile, useVariant } from "@function"
 import { latLngToVector3 } from "@function"
-import type { Planet, Universe } from "@types"
+import { Mode, type CelestialObject, type Planet, type Universe } from "@types"
 
 interface Props {
     data: Universe
@@ -34,7 +34,7 @@ const Scene = ({ data }: Props) => {
     const isMobile = useMobile()
 
     const { sizeScale, pauseOrbitWhenFocus } = useSettingStore()
-    const { focus, focusIndex, focusLandmark, resetControl, setControl } = useControlStore()
+    const { mode, focus, focusIndex, focusLandmark, resetControl, setControl } = useControlStore()
     const [lastVariant, setLastVariant] = useState<{ radius: number, distance: number } | undefined>()
 
 
@@ -48,6 +48,16 @@ const Scene = ({ data }: Props) => {
     useEffect(() => {
         setControl(defaultControl)
     }, [universe])
+
+    const minDistance = useMemo(() => {
+        const objectId = focus || universe.defaultFocus
+        if (!objectId || mode !== Mode.Object) return universe.minDistance
+
+        const object = celestial.getObjectById(objectId) as CelestialObject
+        if (!object?.radius) return universe.minDistance
+
+        return object.radius / sizeScale * 1.5
+    }, [focus, mode, universe, sizeScale])
 
     // Focus to default position
     useLayoutEffect(() => {
@@ -225,7 +235,7 @@ const Scene = ({ data }: Props) => {
         enableDamping
         zoomSpeed={3}
         ref={controlRef}
-        minDistance={data.minDistance}
+        minDistance={minDistance}
         maxDistance={data.maxDistance}
     />
 

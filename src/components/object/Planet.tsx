@@ -19,23 +19,25 @@ interface Props {
 }
 
 const PlanetMesh = ({ data }: { data: PlanetType }) => {
-    const isFocused = useCelestial().isFocused(data.id)
+    const { focus } = useControlStore()
+    const isFocused = data.id === focus
+    const isChildParentFocused = useCelestial().isFocused(data.id)
 
     const { topographyVisible } = useControlStore()
     const texturePath = () => {
-        if (data.topography_texture && topographyVisible) return data.topography_texture
-        return isFocused && data.texture_hd ? data.texture_hd : data.texture!
+        if (data.topography_texture && topographyVisible && isFocused) return data.topography_texture
+        return isChildParentFocused && data.texture_hd ? data.texture_hd : data.texture!
     }
     const texture = useDeferredValue(texturePath())
 
     const material = useMemo(() => {
-        if (topographyVisible) {
+        if (topographyVisible && isFocused) {
             return <TextureLoader path={texture} />
         } else if (data.night_texture) {
             return <NightMaterial
                 textures={[
-                    `/textures/${isFocused && data.night_texture_hd ? data.texture_hd : data.texture}`,
-                    `/textures/${isFocused && data.night_texture_hd ? data.night_texture_hd : data.night_texture}`,
+                    `/textures/${isChildParentFocused && data.night_texture_hd ? data.texture_hd : data.texture}`,
+                    `/textures/${isChildParentFocused && data.night_texture_hd ? data.night_texture_hd : data.night_texture}`,
                 ]}
                 intensity={data.night_opacity}
             />
@@ -44,7 +46,7 @@ const PlanetMesh = ({ data }: { data: PlanetType }) => {
         } else {
             return <meshStandardMaterial color={data.color} />
         }
-    }, [data.night_texture, data.texture, data.night_texture_hd, data.texture_hd, data.night_opacity, data.color, topographyVisible, texture, isFocused])
+    }, [topographyVisible, isFocused, data, texture, isChildParentFocused])
 
     const materialRender = useDeferredValue(material)
 
@@ -78,6 +80,7 @@ const Planet = ({
 
     const data = useVariant(rawData) as PlanetType
     const scale = data.radius / sizeScale
+    const isFocused = data.id === focus
 
     const handleClick = () => {
         const object = celestial.getObjectById(focus) as PlanetType | undefined
@@ -89,9 +92,11 @@ const Planet = ({
 
     if (!data) return null
 
-    const showLandmark = focus === data.id && landmarkVisible
-    const showNation = data.id === "earth" && nationVisible && !variant
-    const showCloud = data.cloud_texture && cloudVisible
+    const showLandmark = isFocused ? focus === data.id && landmarkVisible : false
+    const showNation = isFocused ? data.id === "earth" && nationVisible && !variant : false
+    const showCloud = isFocused ? data.cloud_texture && cloudVisible : data.cloud_texture
+    const showAtmosphere = isFocused ? (data.atmosphere || data.aurora) && atmosphereVisible : (data.atmosphere || data.aurora)
+
 
     return (
         <CelestialBody
@@ -120,13 +125,7 @@ const Planet = ({
                     </mesh>
                 </Detailed>
 
-                <When condition={Boolean(data.aurora) && data.id !== "earth" && atmosphereVisible}>
-                    <Suspense fallback={null}>
-                        <Aurora data={data} />
-                    </Suspense>
-                </When>
-
-                <When condition={Boolean(data.ring?.texture)}>
+                <When condition={data.ring?.texture}>
                     <PlanetRing data={data} />
                 </When>
 
@@ -142,7 +141,7 @@ const Planet = ({
                     ))}
                 </When>
 
-                <When condition={atmosphereVisible}>
+                <When condition={showAtmosphere}>
                     <When condition={data.atmosphere}>
                         <Atmosphere data={data} />
                     </When>

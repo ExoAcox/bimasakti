@@ -124,6 +124,8 @@ const Sidebar = () => {
     const [isOpen, setOpen] = useState(true)
     const [search, setSearch] = useState("")
 
+    const { setControl } = useControlStore()
+
     const celestial = useCelestial()
     const stars = celestial.getObjectsByType("star") as Star[]
     const comets = celestial.getObjectsByType("comet") as Comet[]
@@ -167,11 +169,17 @@ const Sidebar = () => {
                 {isOpen ? <TbLayoutSidebarLeftCollapse className="size-6" /> : <TbLayoutSidebarLeftExpand className="size-6" />}
             </button>
             <div className="bg-background min-w-44 h-full flex flex-col px-3 py-4 text-white backdrop-blur-sm border-r border-white/10">
-                <div className="px-2 mb-4 flex items-center gap-2">
-                    <MdSearch />
-                    <input value={search} onChange={handleChange} placeholder="Search object ..." className="placeholder:text-sm text-sm flex-1" />
+                <div className="relative px-2 mb-4 flex items-center gap-2">
+                    <MdSearch className="shrink-0" />
+                    <input
+                        value={search}
+                        onChange={handleChange}
+                        onFocus={() => setControl({ focusInput: true })}
+                        onBlur={() => setControl({ focusInput: false })}
+                        placeholder="Search object ..."
+                        className="placeholder:text-sm text-sm pr-3" />
                     <When condition={search}>
-                        <MdClose onClick={handleReset} className="cursor-pointer hover:text-red-400" />
+                        <MdClose onClick={handleReset} className="absolute right-0 top-1/2 -translate-y-1/2 cursor-pointer hover:text-red-400 shrink-0" />
                     </When>
                 </div>
                 <When condition={search}>
