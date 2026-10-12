@@ -1,7 +1,7 @@
 /* eslint-disable react-hooks/set-state-in-effect */
 import clsx from "clsx";
 import { useControlStore } from "@state"
-import { useCelestial, lengthFormat, timeFormat, useVariant } from "@function"
+import { useCelestial, lengthFormat, timeFormat, useVariant, useMobile } from "@function"
 import { type Belt, type Planet, type SpaceCraft } from "@types"
 
 import { useTranslation } from "react-i18next";
@@ -17,6 +17,7 @@ const PanelDetail = () => {
 
     const { focus, focusLandmark, variant, setControl } = useControlStore()
 
+    const isMobile = useMobile()
     const celestial = useCelestial()
     const rawData = celestial.getObjectById(focus) as Planet
     const data = useVariant(rawData)
@@ -47,15 +48,17 @@ const PanelDetail = () => {
     const objectDescription = variant ? t(`object.${data?.id}.variants.${variant}.description`, t(`object.${data?.id}.description`)) : t(`object.${data?.id}.description`)
 
     return (
-        <div className={clsx("fixed top-4 right-4 z-50 transition-transform duration-300", !isPanelOpen && "translate-x-[calc(100%)]")}>
-            <button
-                className="absolute top-3 -left-10 bg-background/90 p-2 rounded-l-xl border border-r-0 border-white/10 shadow-lg cursor-pointer hover:bg-neutral-800 transition-colors opacity-90"
-                onClick={handleClick}
-            >
-                {isPanelOpen ? <TbLayoutSidebarRightCollapse className="size-6" /> : <TbLayoutSidebarRightExpand className="size-6" />}
-            </button>
+        <div className={clsx(!isMobile && "fixed top-4 right-4 z-50 ", "transition-transform duration-300", !isPanelOpen && "translate-x-[calc(100%)]")}>
+            <When condition={!isMobile}>
+                <button
+                    className="absolute top-3 -left-10 bg-background/90 p-2 rounded-l-xl border border-r-0 border-white/10 shadow-lg cursor-pointer hover:bg-neutral-800 transition-colors opacity-90"
+                    onClick={handleClick}
+                >
+                    {isPanelOpen ? <TbLayoutSidebarRightCollapse className="size-6" /> : <TbLayoutSidebarRightExpand className="size-6" />}
+                </button>
+            </When>
 
-            <div className="bg-background min-w-sm max-w-sm rounded-xl pb-5 pt-4 px-6 backdrop-blur-sm max-h-[calc(100vh-2rem)] h-fit overflow-y-auto text-sm border border-white/10">
+            <div className={clsx(isMobile ? "w-full" : "max-w-sm bg-background backdrop-blur-sm max-h-[calc(100vh-2rem)] h-fit overflow-y-auto border border-white/10", "min-w-sm rounded-xl pb-5 pt-4 px-6 text-sm ")}>
                 <When condition={!focusLandmark}>
                     <div className="flex items-center gap-2 justify-between text-white">
                         <h1 className="text-xl font-bold">{objectName}</h1>

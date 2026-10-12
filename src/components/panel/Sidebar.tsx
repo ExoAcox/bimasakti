@@ -1,17 +1,19 @@
+/* eslint-disable react-hooks/set-state-in-effect */
 
 import clsx from "clsx"
-import { useState, type ChangeEvent } from "react"
+import { useEffect, useState, type ChangeEvent } from "react"
 import { useControlStore } from "@state"
 
 import { PlanetClass, type Asteroid, type Belt, type CelestialObject, type Comet, type Planet, type Satellite, type SpaceCraft, type Star } from "@types"
-import { useCelestial } from "@function"
+import { useCelestial, useMobile } from "@function"
 import { useTranslation } from "react-i18next"
 
-import { IoChevronDown, IoChevronUp } from "react-icons/io5";
+import { IoChevronDown, IoChevronUp, IoArrowBack } from "react-icons/io5";
 import { TbLayoutSidebarLeftCollapse, TbLayoutSidebarLeftExpand } from "react-icons/tb";
 import { MdClose, MdSearch } from "react-icons/md"
 import { PiEmpty } from "react-icons/pi";
 import { When } from "react-if"
+import { Link, useNavigate } from "react-router"
 
 
 interface SectionProps {
@@ -124,7 +126,9 @@ const Sidebar = () => {
     const [isOpen, setOpen] = useState(true)
     const [search, setSearch] = useState("")
 
-    const { setControl } = useControlStore()
+    const isMobile = useMobile()
+    const { focus, setControl } = useControlStore()
+    const navigate = useNavigate()
 
     const celestial = useCelestial()
     const stars = celestial.getObjectsByType("star") as Star[]
@@ -151,6 +155,17 @@ const Sidebar = () => {
         setSearch("")
     }
 
+    const handleBack = () => {
+        navigate("/milky_way")
+    }
+
+    useEffect(() => {
+        if (isMobile) {
+            setOpen(false)
+        }
+
+    }, [focus, isMobile])
+
     const allObjects = [...stars, ...comets, ...asteroids, ...belts, ...allPlanets, ...satellites, ...spacecraft]
 
     const filteredObjects = allObjects.filter((object) => {
@@ -161,7 +176,7 @@ const Sidebar = () => {
     })
 
     return (
-        <div className={clsx("fixed top-0 left-0 bottom-0 z-50 transition-transform duration-300", !isOpen && "-translate-x-full")}>
+        <div className={clsx("fixed top-0 left-0 bottom-0 z-50 transition-transform duration-300 max-w-dvw", !isOpen && "-translate-x-full")}>
             <button
                 className="absolute top-3 -right-10 bg-background/90 p-2 rounded-r-xl border border-l-0 border-white/10 shadow-lg cursor-pointer hover:bg-neutral-800 transition-colors opacity-90"
                 onClick={handleClick}
@@ -182,6 +197,7 @@ const Sidebar = () => {
                         <MdClose onClick={handleReset} className="absolute right-0 top-1/2 -translate-y-1/2 cursor-pointer hover:text-red-400 shrink-0" />
                     </When>
                 </div>
+
                 <When condition={search}>
                     <SearchResultSection data={filteredObjects} />
                 </When>
@@ -197,6 +213,11 @@ const Sidebar = () => {
                         <Section data={belts}>{t("ui.others")}</Section>
                     </div>
                 </When>
+
+                <button onClick={handleBack} className="flex items-center gap-3 text-sm px-3 pb-1 pt-3 hover:translate-x-2 transition">
+                    <IoArrowBack />
+                    Back to Milky Way
+                </button>
             </div>
         </div>
     )

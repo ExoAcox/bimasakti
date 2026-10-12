@@ -7,13 +7,13 @@ import { track } from '@vercel/analytics';
 
 import Scene from "@components/Scene"
 import { useSettingStore, useControlStore } from "@state"
-import { Header, DetailPanel, NavigationPanel, Sidebar, ControlPanel, SettingPanel } from "@components/panel"
+import { Header, DetailPanel, NavigationPanel, Sidebar, ControlPanel, SettingPanel, GalaxySidebar, BottomSheet } from "@components/panel"
 import { SkyBox } from "@components/object"
 import { Bloom, EffectComposer } from '@react-three/postprocessing'
 import BlackholeWrapEffect from "@components/effect/BlackholeWrapEffect"
 import Loader from "@components/Loader"
 import { Case, Default, Switch, When } from "react-if";
-import { keyboardMap, useCelestial } from "@function";
+import { keyboardMap, useCelestial, useMobile } from "@function";
 import { Outlet, useSearchParams } from "react-router";
 import SpaceshipScene from "./SpaceshipScene";
 
@@ -25,6 +25,7 @@ import { Mode } from "@types";
 
 const UserInterface = ({ id }: { id: string }) => {
     const { active, progress } = useProgress()
+    const isMobile = useMobile()
     const [isLoaded, setLoaded] = useState(false)
     const { focus } = useControlStore()
 
@@ -38,16 +39,27 @@ const UserInterface = ({ id }: { id: string }) => {
     }, [active, progress])
 
     // if (!isLoaded) return null
+    if (id === "milky_way") {
+        return <GalaxySidebar />
+    }
 
     return (
         <When condition={id !== "milky_way"}>
             <When condition={id !== "sagittarius_a"}>
                 <Sidebar />
             </When>
-            <When condition={focus}>
-                <ControlPanel id={focus} />
+
+            <When condition={isMobile}>
+                <BottomSheet />
             </When>
-            <DetailPanel />
+
+            <When condition={!isMobile}>
+                <When condition={focus}>
+                    <ControlPanel />
+                </When>
+
+                <DetailPanel />
+            </When>
         </When>
     )
 }

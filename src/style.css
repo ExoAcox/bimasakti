@@ -102,3 +102,11 @@ input {
 .animate-cosmic-shimmer {
   animation: cosmic-shimmer 2s infinite;
 }
+
+.react-modal-sheet-root {
+  @apply !z-10
+}
+
+.react-modal-sheet-container {
+  @apply !bg-background !backdrop-blur-md
+}

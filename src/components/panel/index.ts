@@ -1,7 +1,8 @@
 export { default as DetailPanel } from "./DetailPanel"
 export { default as SettingPanel } from "./SettingPanel"
 export { default as Sidebar } from "./Sidebar"
+export { default as GalaxySidebar } from "./GalaxySidebar"
 export { default as Header } from "./Header"
 export { default as NavigationPanel } from "./NavigationPanel"
 export { default as ControlPanel } from "./ControlPanel"
-
+export { default as BottomSheet } from "./BottomSheet"

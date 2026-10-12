@@ -1,10 +1,10 @@
 /* eslint-disable react-hooks/set-state-in-effect */
 import { useControlStore } from "@state"
 import clsx from "clsx";
-import { useCallback, useDeferredValue, useEffect, useMemo, useRef, useState } from "react";
+import { useCallback, useEffect, useMemo, useState } from "react";
 import { When } from "react-if";
-import { timelineFormat, useCelestial, useVariant } from "@function";
-import { Mode, type Belt, type Planet, type SpaceCraft } from "@types";
+import { timelineFormat, useCelestial, useMobile, useVariant } from "@function";
+import { Mode, type Planet, type SpaceCraft } from "@types";
 
 
 import { PiFastForwardFill, PiRewindFill, PiPlayFill, PiPauseFill } from "react-icons/pi";
@@ -19,12 +19,8 @@ import { useTranslation } from "react-i18next";
 import { useKeyboardControls, useProgress } from "@react-three/drei";
 import { Controls } from "@function";
 
-interface Props {
-    id: string
-}
-
 // Reusable style classes for consistent UI design
-const SECTION_CLASS = "flex items-center gap-1.5";
+const SECTION_CLASS = "flex items-center gap-1.5 flex-wrap justify-center";
 
 const BUTTON_BASE_CLASS =
     "relative group/btn flex items-center justify-center rounded-full transition-all duration-200 focus:outline-none disabled:opacity-50";
@@ -61,7 +57,8 @@ const MODE_LIST = [
     { id: Mode.ThirdPerson, label: "Third Person", img: "mode_third_person.jpg" },
     { id: Mode.FirstPerson, label: "First Person", img: "mode_first_person.jpg" }
 ]
-const ControlPanel = ({ id }: Props) => {
+
+const ControlPanel = () => {
     const { mode, focus, focusIndex, focusInput, focusLandmark, tidalLock, landmarkVisible, nationVisible, rotateSpeed, cloudVisible, atmosphereVisible, artificialSatelliteVisible, topographyVisible, dayNightMode, variant, setControl, resetControl } = useControlStore()
     const [lastVariant, setLastVariant] = useState<{ orbit_duration: number, rotate_duration: number } | undefined>()
     const [lastRotateSpeed, setLastRotateSpeed] = useState(rotateSpeed)
@@ -69,12 +66,13 @@ const ControlPanel = ({ id }: Props) => {
     const [modeVisible, setModeVisible] = useState(false)
     const isLoading = useProgress(state => state.active)
 
+    const isMobile = useMobile()
     const [sub] = useKeyboardControls<Controls>()
     const { t } = useTranslation()
 
-    const rawData = useCelestial().getObjectById(id) as Planet
+    const rawData = useCelestial().getObjectById(focus) as Planet
     const data = useVariant(rawData) as Planet
-    const showTimelines = data.variants?.length && timelinesVisible
+    const showTimelines = data?.variants?.length && timelinesVisible
     const isStillObject = ["spacecraft-orbiter", "spacecraft-flyby", "belt"].includes(data.type)
 
     // const tiltDialRef = useRef<HTMLDivElement>(null)
@@ -301,8 +299,8 @@ const ControlPanel = ({ id }: Props) => {
     if (!data) return null;
 
     return (
-        <div className="fixed bottom-6 left-1/2 -translate-x-1/2 flex items-center gap-3 z-40 bg-background backdrop-blur-md p-2 px-3 rounded-full border border-white/15 shadow-2xl shadow-cyan-950/40 hover:border-cyan-500/30 transition-all duration-300">
-            <div className="flex items-center flex-col gap-2 absolute w-full -top-1 left-1/2 -translate-x-1/2 -translate-y-full z-5">
+        <div className={clsx(isMobile ? "" : "fixed w-fit bottom-6 left-1/2 -translate-x-1/2 bg-background backdrop-blur-md border border-white/15 shadow-2xl shadow-cyan-950/40 hover:border-cyan-500/30", "max-w-full flex-wrap flex items-center gap-3 z-40  p-2 px-3 rounded-full  transition-all duration-300")}>
+            <div className={clsx(isMobile ? "order-last" : "absolute -top-1 left-1/2 -translate-x-1/2 -translate-y-full z-5", "flex items-center flex-col gap-2 w-full")}>
                 <When condition={isLoading}>
                     <div className="w-fit whitespace-nowrap bg-background border border-white/15 px-2.5 py-1 font-semibold text-sm text-white shadow-xl backdrop-blur-md rounded-md italic">
                         Loading texture ...
@@ -318,7 +316,7 @@ const ControlPanel = ({ id }: Props) => {
 
                 <When condition={showTimelines}>
                     <div className="w-full relative flex justify-evenly items-end gap-3 py-2 px-3 max-w-full scrollbar-thin scrollbar-thumb-slate-700">
-                        <div className="absolute bottom-3.75 left-6 right-6 h-0.5 bg-linear-to-r from-slate-700 via-cyan-500/40 to-slate-700 z-0 pointer-events-none" />
+                        <div className={clsx(!isMobile && "absolute", "absolute bottom-3.75 left-6 right-6 h-0.5 bg-linear-to-r from-slate-700 via-cyan-500/40 to-slate-700 z-0 pointer-events-none")} />
 
                         {timelines.map((_data) => {
                             const isSelected = variant === _data.variant_id
@@ -358,7 +356,7 @@ const ControlPanel = ({ id }: Props) => {
 
 
 
-            <div className={SECTION_CLASS}>
+            <div className={clsx(SECTION_CLASS, isMobile && "w-full")}>
                 <When condition={data.landmarks?.length}>
                     <button
                         onClick={handleLandmark}
@@ -481,62 +479,69 @@ const ControlPanel = ({ id }: Props) => {
 
             {/* Rotation Controls Section */}
             <When condition={!isStillObject}>
-                <div className="h-6 w-px bg-divider my-auto" />
+                <div className={clsx(isMobile && "w-full justify-center", "flex items-center gap-2")}>
+                    <When condition={!isMobile}>
+                        <div className="h-6 w-px bg-divider my-auto" />
+                    </When>
 
-                <div className={SECTION_CLASS}>
-                    <button
-                        onClick={handleRotatePrev}
-                        className={NAV_BTN_CLASS}
-                        disabled={rotateSpeed === SPEED_ARRAY[0] || rotateSpeed === 0}
-                    >
-                        <PiRewindFill />
-                        <span className={TOOLTIP_CLASS}>Slower</span>
-                    </button>
 
-                    <button
-                        onClick={handleRotatePlay}
-                        className={clsx(PLAY_BTN_CLASS, rotateSpeed > 0 && PLAY_BTN_ACTIVE_CLASS)}
-                    >
-                        <span className="font-mono text-xs tracking-wider font-semibold">
-                            {tidalLock ? "Tidally Locked" : `${rotateSpeed}x`}
-                        </span>
-                        {rotateSpeed > 0 ? (
-                            <PiPauseFill className=" text-red-300 shrink-0" />
-                        ) : (
-                            <PiPlayFill className=" text-base shrink-0" />
-                        )}
-                        <span className={TOOLTIP_CLASS}>{rotateSpeed > 0 ? "Pause" : "Rotate"}</span>
-                    </button>
+                    <div className={clsx(SECTION_CLASS, isMobile && "justify-center")}>
+                        <button
+                            onClick={handleRotatePrev}
+                            className={NAV_BTN_CLASS}
+                            disabled={rotateSpeed === SPEED_ARRAY[0] || rotateSpeed === 0}
+                        >
+                            <PiRewindFill />
+                            <span className={TOOLTIP_CLASS}>Slower</span>
+                        </button>
 
-                    <button
-                        onClick={handleRotateNext}
-                        className={NAV_BTN_CLASS}
-                        disabled={rotateSpeed === SPEED_ARRAY[SPEED_ARRAY.length - 1] || rotateSpeed === 0}
-                    >
-                        <PiFastForwardFill />
-                        <span className={TOOLTIP_CLASS}>Faster</span>
-                    </button>
+                        <button
+                            onClick={handleRotatePlay}
+                            className={clsx(PLAY_BTN_CLASS, rotateSpeed > 0 && PLAY_BTN_ACTIVE_CLASS)}
+                        >
+                            <span className="font-mono text-xs tracking-wider font-semibold">
+                                {tidalLock ? "Tidally Locked" : `${rotateSpeed}x`}
+                            </span>
+                            {rotateSpeed > 0 ? (
+                                <PiPauseFill className=" text-red-300 shrink-0" />
+                            ) : (
+                                <PiPlayFill className=" text-base shrink-0" />
+                            )}
+                            <span className={TOOLTIP_CLASS}>{rotateSpeed > 0 ? "Pause" : "Rotate"}</span>
+                        </button>
+
+                        <button
+                            onClick={handleRotateNext}
+                            className={NAV_BTN_CLASS}
+                            disabled={rotateSpeed === SPEED_ARRAY[SPEED_ARRAY.length - 1] || rotateSpeed === 0}
+                        >
+                            <PiFastForwardFill />
+                            <span className={TOOLTIP_CLASS}>Faster</span>
+                        </button>
+                    </div>
+
+                    <div className="h-6 w-px bg-divider my-auto" />
+
+                    <div className={SECTION_CLASS}>
+                        <When condition={!isStillObject}>
+                            <button onClick={() => setModeVisible(!modeVisible)} className={clsx(TOGGLE_BTN_CLASS, "hover:bg-green-400/40")}>
+                                <AiFillEye />
+                                <span className={TOOLTIP_CLASS}>View Mode</span>
+                            </button>
+                        </When>
+                        <button onClick={handleReset} className={clsx(TOGGLE_BTN_CLASS, "hover:bg-amber-400/50")}>
+                            <MdRefresh />
+                            <span className={TOOLTIP_CLASS}>Reset</span>
+                        </button>
+                        <button onClick={handleLeave} className={clsx(TOGGLE_BTN_CLASS, "hover:bg-red-500/50")}>
+                            <MdClose />
+                            <span className={TOOLTIP_CLASS}>Leave</span>
+                        </button>
+                    </div>
                 </div>
-
-                <div className="h-6 w-px bg-divider my-auto" />
             </When>
 
-            <div className={SECTION_CLASS}>
-                <When condition={!isStillObject}>
-                    <button onClick={() => setModeVisible(!modeVisible)} className={clsx(TOGGLE_BTN_CLASS, "hover:bg-green-400/40")}>
-                        <AiFillEye />
-                        <span className={TOOLTIP_CLASS}>View Mode</span>
-                    </button>
-                </When>
-                <button onClick={handleReset} className={clsx(TOGGLE_BTN_CLASS, "hover:bg-amber-400/50")}>
-                    <MdRefresh />
-                    <span className={TOOLTIP_CLASS}>Reset</span>
-                </button>
-                <button onClick={handleLeave} className={clsx(TOGGLE_BTN_CLASS, "hover:bg-red-500/50")}>
-                    <MdClose />
-                    <span className={TOOLTIP_CLASS}>Leave</span>
-                </button>
-            </div>
+
 
             <When condition={modeVisible}>
                 <div className="absolute -top-3 left-1/2 -translate-x-1/2 -translate-y-full rounded-xl bg-slate-900/90 backdrop-blur-xl py-3 px-2 border border-white/15 flex flex-col gap-2 min-w-48 shadow-2xl z-5">
