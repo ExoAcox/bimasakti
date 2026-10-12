@@ -104,7 +104,7 @@ const Object = ({ data, children, childrenComponent, onClick, objectRef, cloudRe
         if (data.rotate_duration && objectRef?.current?.rotation) {
             const isTidalLocked = data.orbit_duration === data.rotate_duration && tidalLock
             if (isTidalLocked) {
-                const rotationY = (data?.rotation?.[1] ?? 0)
+                const rotationY = ((data as PlanetType)?.tidalAxis ?? 0)
                 objectRef.current.rotation.y = MathUtils.degToRad(rotationY)
                 rotationRef.current = MathUtils.degToRad(rotationY)
             } else {
@@ -155,17 +155,16 @@ const Object = ({ data, children, childrenComponent, onClick, objectRef, cloudRe
         if (!object) return
 
         const distance = celestial.getCameraDistance(camera, object)
-        const scale = Math.max(300, data.radius) / sizeScale * 50
+        const scale = Math.max(300, data.radius) / sizeScale * 200
 
         let isVisible = isSpacecraft ? true : (distance > scale)
 
         if (isSpacecraft) {
-            if (focusedObject?.type === "spacecraft-orbiter") isVisible = false
-            if (distance > scale * 4) isVisible = false
+            if (distance > scale) isVisible = false
         }
 
         if (isVisible) {
-            const checkOcclusion = (occluderId: string, skipCamInsideGuard = false) => {
+            const checkOcclusion = (occluderId: string) => {
                 const targetObj = scene.getObjectByName(occluderId)
                 if (!targetObj) return false
 
@@ -175,10 +174,6 @@ const Object = ({ data, children, childrenComponent, onClick, objectRef, cloudRe
                 const distCamToPlanet = camera.position.distanceTo(planetPos)
                 const distCamToLabel = camera.position.distanceTo(labelPos)
                 const targetRadius = targetObj.scale.x
-
-                // Skip if camera is inside the occluder planet — UNLESS we explicitly override
-                // (e.g. camera near parent planet surface while focused on orbiting spacecraft)
-                // if (!skipCamInsideGuard && distCamToPlanet <= targetRadius * 1.05) return false
 
                 if (distCamToPlanet < distCamToLabel) {
                     vCamToLabel.subVectors(labelPos, camera.position)
@@ -201,13 +196,11 @@ const Object = ({ data, children, childrenComponent, onClick, objectRef, cloudRe
                 return false
             }
 
-            const isSpacecraftFocused = focusedObject?.type === "spacecraft-orbiter"
-
             if (defaultFocus && defaultFocus !== data.id && checkOcclusion(defaultFocus)) {
                 isVisible = false
             } else if (focus && focus !== data.id && focus !== defaultFocus && checkOcclusion(focus)) {
                 isVisible = false
-            } else if (focusedObject?.parent && focusedObject.parent !== data.id && focusedObject.parent !== defaultFocus && focusedObject.parent !== focus && checkOcclusion(focusedObject.parent, isSpacecraftFocused)) {
+            } else if (focusedObject?.parent && focusedObject.parent !== data.id && focusedObject.parent !== defaultFocus && focusedObject.parent !== focus && checkOcclusion(focusedObject.parent)) {
                 isVisible = false
             }
         }

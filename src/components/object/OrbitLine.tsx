@@ -82,6 +82,9 @@ const OrbitLine = ({ radius, longestRadius, segments = 1280, color, opacity = 0.
             lineWidth={2}
             transparent
             opacity={opacity}
+            polygonOffset={true}
+            polygonOffsetFactor={-1}
+            polygonOffsetUnits={-1}
         />
     );
 };

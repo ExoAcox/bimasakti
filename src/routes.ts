@@ -6,8 +6,8 @@ import {
 } from "@react-router/dev/routes";
 
 export default [
+    index("./pages/home_redirect.tsx"),
     layout("./components/Canvas.tsx", [
-        index("./pages/home_redirect.tsx"),
         route("milky_way", "./pages/milky_way.tsx"),
         route("solar_system", "./pages/solar_system.tsx"),
         route("alpha_centauri", "./pages/alpha_centauri.tsx"),

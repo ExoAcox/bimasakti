@@ -31,29 +31,11 @@ const SpaceshipScene = () => {
     const initialized1stPerson = useRef(false)
     const initialized3rdPerson = useRef(false)
 
-    const { mode, autopilot, focus, resetControl, setControl } = useControlStore()
+    const { mode, focus, resetControl, setControl } = useControlStore()
 
     const { camera } = useThree()
     const celestial = useCelestial()
     const isCockpit = mode === Mode.FirstPerson
-
-    // useEffect(() => {
-    //     if (!controlRef.current) return
-    //     const persCam = camera as unknown as { fov: number; updateProjectionMatrix: () => void }
-    //     if (cockpit) {
-    //         persCam.fov = 45
-    //         persCam.updateProjectionMatrix()
-    //         initialized1stPerson.current = false
-    //     } else {
-    //         persCam.fov = 75
-    //         persCam.updateProjectionMatrix()
-    //         camera.up.set(0, 1, 0)
-    //         controlRef.current.target.copy(currentPos.current)
-    //         camera.position.copy(currentPos.current).add(cameraOffset)
-    //         controlRef.current.update()
-    //     }
-    //     lastPos.current.copy(currentPos.current)
-    // }, [cockpit])
 
     useEffect(() => {
         if (focus) {
@@ -189,6 +171,7 @@ const SpaceshipScene = () => {
                 minDistance={isCockpit ? 1e-11 : SHIP_SCALE * 20}
                 maxDistance={isCockpit ? SHIP_SCALE * 2 : SHIP_SCALE * 500}
                 enableZoom={!isCockpit}
+                enablePan={false}
                 // minPolarAngle={0}
                 // maxPolarAngle={Math.PI}
                 // minAzimuthAngle={-Infinity}

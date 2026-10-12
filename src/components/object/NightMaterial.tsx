@@ -8,9 +8,10 @@ import { ShaderMaterial, SRGBColorSpace, Vector3 } from "three"
 interface Props {
     textures: [string, string]
     intensity?: number
+    lightPosition?: Vector3
 }
 
-const NightMaterial = ({ textures, intensity = 1.0 }: Props) => {
+const NightMaterial = ({ textures, intensity = 1.0, lightPosition = new Vector3(0, 0, 0) }: Props) => {
     const materialRef = useRef<ShaderMaterial>(null!)
 
     const [dayTexture, nightTexture] = useKTX2(textures)
@@ -26,14 +27,14 @@ const NightMaterial = ({ textures, intensity = 1.0 }: Props) => {
             uniforms: {
                 u_dayTexture: { value: dayTexture },
                 u_nightTexture: { value: nightTexture },
-                u_sunPosition: { value: new Vector3(0, 0, 0) },
+                u_sunPosition: { value: lightPosition },
                 u_nightIntensity: { value: intensity },
                 u_mode: { value: dayNightMode ? 1 : 0 }
             },
         })
 
 
-    }, [dayNightMode, dayTexture, intensity, nightTexture])
+    }, [dayNightMode, dayTexture, intensity, nightTexture, lightPosition])
 
     return <primitive ref={materialRef} object={material} attach="material" />
 }

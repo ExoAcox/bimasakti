@@ -21,5 +21,7 @@ export { default as Spaceship } from "./Spaceship"
 export { default as Aurora } from "./Aurora"
 export { default as Atmosphere } from "./Atmosphere"
 export { default as Asteroid } from "./Asteroid"
+export { default as Galaxy } from "./Galaxy"
+
 
 

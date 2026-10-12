@@ -72,11 +72,13 @@ export interface Planet extends Object {
     satellites?: Satellite[]
     ring?: Ring
     variants?: Variant[]
+    tidalAxis?: number
 }
 
 export interface Satellite extends Object {
     type: "satellite"
     variants?: SatelliteVariant[]
+    tidalAxis?: number
 }
 
 export interface Asteroid extends Object {

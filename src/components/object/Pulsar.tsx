@@ -23,7 +23,15 @@ const Pulsar = ({ radius, color, tilt = 0.5 }: Props) => {
             </mesh> */}
             <mesh position={[0, 0, 0]}>
                 <cylinderGeometry args={[lightWidth, lightWidth, lightHeight]} />
-                <meshStandardMaterial color={color} transparent opacity={0.5} emissive={color} emissiveIntensity={10} />
+                <meshStandardMaterial
+                    color={color}
+                    transparent opacity={0.5}
+                    emissive={color}
+                    emissiveIntensity={10}
+                    polygonOffset={true}
+                    polygonOffsetFactor={-1}
+                    polygonOffsetUnits={-1}
+                />
             </mesh>
         </group>
     )

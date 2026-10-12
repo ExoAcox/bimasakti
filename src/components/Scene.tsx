@@ -234,6 +234,7 @@ const Scene = ({ data }: Props) => {
         makeDefault
         enableDamping
         zoomSpeed={3}
+        enablePan={false}
         ref={controlRef}
         minDistance={minDistance}
         maxDistance={data.maxDistance}

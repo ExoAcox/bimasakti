@@ -2,7 +2,7 @@
 import { useTexture } from "@react-three/drei"
 import { useFrame, useThree } from "@react-three/fiber"
 import { useMemo, useRef } from "react"
-import { BackSide, NearestFilter, PerspectiveCamera, ShaderLib, ShaderMaterial, SRGBColorSpace, UniformsUtils, type Mesh } from "three"
+import { BackSide, MathUtils, NearestFilter, PerspectiveCamera, ShaderLib, ShaderMaterial, SRGBColorSpace, UniformsUtils, type Mesh } from "three"
 import type { OrbitControls } from "three-stdlib"
 
 interface Props {

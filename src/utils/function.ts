@@ -48,6 +48,22 @@ export const useCelestial = () => {
         }
     })
 
+    const getFeaturedObjects = () => {
+        const objects: CelestialObject[] = []
+
+        universe_ids.forEach(universe => {
+            if (universe === "milky_way") return
+            const keys = Object.keys(universeMapping[universe])
+            keys.filter(key => !["belts", "landmarks"].includes(key)).forEach(key => {
+                objects.push(...(universeMapping[universe][key] as (CelestialObject)[]))
+            })
+        })
+
+        return randomItems(objects, 10)
+
+
+    }
+
     const getObjectById = (id: string) => {
         return objects.find((object) => object.id === id)
     }
@@ -72,7 +88,7 @@ export const useCelestial = () => {
 
     const getUniverse = () => getUniverseById(currentUniverse)
 
-    return { objects, getObjectById, getObjectsByType, getLandmark, getCameraDistance, getUniverse, isFocused }
+    return { objects, getObjectById, getObjectsByType, getLandmark, getCameraDistance, getUniverse, getFeaturedObjects, isFocused }
 }
 
 export const useVariant = (data: Star | Planet | Satellite) => {
@@ -113,6 +129,20 @@ export const randomNumber = () => {
     const seed = Math.random()
     const x = Math.sin(seed) * 10000;
     return x - Math.floor(x);
+}
+
+export const randomItems = (arr: CelestialObject[], count: number) => {
+    // Create a shallow copy to avoid mutating the original array
+    const shuffled = [...arr];
+
+    // Fisher-Yates shuffle algorithm (optimized to only shuffle what we need)
+    for (let i = shuffled.length - 1; i > shuffled.length - 1 - count; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [shuffled[i], shuffled[j]] = [shuffled[j], shuffled[i]];
+    }
+
+    // Return the last N elements
+    return shuffled.slice(-count);
 }
 
 export const timeFormat = (value: number) => {
