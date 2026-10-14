@@ -218,7 +218,7 @@ const PanoramaLookControls = () => {
     return null
 }
 
-const SUN_POSITION: [number, number, number] = [-100, 120, 0]
+const SUN_POSITION: [number, number, number] = [-100, 80, 0]
 
 const atmosphereVertexShader = `
 varying vec3 vWorldPosition;
@@ -325,11 +325,11 @@ const MarsSun = () => {
         if (!ctx) return null
 
         const gradient = ctx.createRadialGradient(128, 128, 0, 128, 128, 128)
-        gradient.addColorStop(0, "rgba(255, 255, 255, 1.0)")
-        gradient.addColorStop(0.15, "rgba(240, 248, 255, 0.9)")
-        gradient.addColorStop(0.38, "rgba(180, 215, 250, 0.5)") // Martian blue forward-scattered halo
-        gradient.addColorStop(0.68, "rgba(220, 145, 100, 0.25)") // Transition to atmospheric dust
-        gradient.addColorStop(1, "rgba(166, 80, 44, 0.0)")
+        gradient.addColorStop(0.0, "rgba(255, 255, 255, 1.0)")
+        gradient.addColorStop(0.35, "rgba(240, 250, 255, 0.95)")
+        gradient.addColorStop(0.55, "rgba(150, 215, 255, 0.75)") // Crisp Martian cyan-blue ring
+        gradient.addColorStop(0.78, "rgba(225, 155, 95, 0.35)") // Warm amber transition border
+        gradient.addColorStop(1.0, "rgba(166, 80, 44, 0.0)")
 
         ctx.fillStyle = gradient
         ctx.fillRect(0, 0, 256, 256)
@@ -378,7 +378,7 @@ const MarsSun = () => {
                 {/* Sun Corona / Martian atmospheric halo */}
                 {glowTexture && (
                     <mesh position={[0, 0, -0.2]}>
-                        <planeGeometry args={[3.0, 3.0]} />
+                        <planeGeometry args={[2.4, 2.4]} />
                         <meshBasicMaterial
                             map={glowTexture}
                             transparent
@@ -415,7 +415,7 @@ const Mars = () => {
             >
                 {/* Physically Grounded Mars Atmospheric Sky Dome */}
                 <MarsAtmosphereSky sunPosition={SUN_POSITION} />
-                <fog attach="fog" args={["#944927", 35, 260]} />
+                <fog attach="fog" args={["#944927", 5, 150]} />
 
                 {/* Lighting */}
                 {/* Warm ambient bounce from Martian soil */}
