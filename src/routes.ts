@@ -14,6 +14,8 @@ export default [
         route("alpha_centauri", "./pages/alpha_centauri.tsx"),
         route("trappist-1", "./pages/trappist-1.tsx"),
         route("lich", "./pages/lich.tsx"),
+        route("toi-700", "./pages/toi-700.tsx"),
+        route("copernicus", "./pages/copernicus.tsx"),
         route("sagittarius_a", "./pages/sagittarius_a.tsx"),
     ]),
 

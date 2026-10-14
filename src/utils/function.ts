@@ -1,5 +1,5 @@
 import { Camera, MathUtils, Object3D, Vector3 } from "three"
-import { solar_system, alpha_centauri, trappist_1, sagittarius_a, lich, universes, universe_ids } from "@constants"
+import { solar_system, alpha_centauri, trappist_1, lich, toi_700, copernicus, universes, universe_ids } from "@constants"
 import { useEffect, useMemo, useRef, useState } from "react";
 import type { Belt, CelestialObject, Landmark, Planet, Satellite, Star } from "@types";
 import { useLocation } from "react-router";
@@ -21,7 +21,9 @@ const universeMapping: UniverseMapping = {
     solar_system,
     alpha_centauri,
     "trappist-1": trappist_1,
-    lich
+    lich,
+    "toi-700": toi_700,
+    copernicus
 }
 
 export const useCelestial = () => {

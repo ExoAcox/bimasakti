@@ -72,13 +72,11 @@ export interface Planet extends Object {
     satellites?: Satellite[]
     ring?: Ring
     variants?: Variant[]
-    tidalAxis?: number
 }
 
 export interface Satellite extends Object {
     type: "satellite"
     variants?: SatelliteVariant[]
-    tidalAxis?: number
 }
 
 export interface Asteroid extends Object {
@@ -175,6 +173,7 @@ export interface Universe {
     maxDistance: number,
     cameraPosition: Vector3,
     labelPosition: "top" | "bottom" | "left" | "right",
+    labelLength?: number,
     defaultFocus?: string,
     assetCount?: number,
     mobile: Partial<Universe>

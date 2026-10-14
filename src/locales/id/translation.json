@@ -20,7 +20,15 @@
         "asteroids": "Asteroid",
         "landmarks": "Landmark",
         "timelines": "Garis Waktu",
-        "active": "Aktif"
+        "active": "Aktif",
+        "home_description": "Nama Indonesia untuk <highlight>Bima Sakti</highlight>, galaksi rumah kita, sebuah alam semesta luas berisikan bintang, planet, dan kemungkinan tak terbatas yang menunggu untuk dijelajahi.",
+        "explore_milky_way": "Jelajahi Simulasi Bima Sakti",
+        "explore_solar_system": "Jelajahi Simulasi Tata Surya",
+        "universe_section_title": "Jelajahi Anggota Keluarga <br/>Bima Sakti",
+        "enter": "Masuk",
+        "featured_objects": "Objek Unggulan",
+        "show_more": "Tampilkan Lebih Banyak",
+        "show_less": "Tampilkan Lebih Sedikit"
     },
     "object": {
         "milky_way": {
@@ -523,6 +531,68 @@
             "name": "Phobetor",
             "nickname": "Phobetor",
             "description": "Phobetor (PSR B1257+12 d) adalah eksoplanet super-Bumi yang mengorbit Lich pada jarak 0,47 AU dengan periode orbit sekitar 98,2 hari."
+        },
+        "toi-700": {
+            "name": "TOI-700",
+            "title": "Sistem TOI-700",
+            "nickname": "TOI-700",
+            "description": "TOI-700 adalah bintang katai merah kelas M yang berjarak sekitar 101,4 tahun cahaya di rasi bintang Dorado. Sistem ini memiliki empat eksoplanet terkonfirmasi, termasuk TOI-700 d dan TOI-700 e yang mengorbit di zona laik huni."
+        },
+        "toi-700_b": {
+            "name": "TOI-700 b",
+            "nickname": "TOI-700 b",
+            "description": "TOI-700 b adalah eksoplanet terestrial berbatu terdalam di sistem TOI-700. Planet ini mengorbit bintangnya setiap 9,98 hari dan memiliki ukuran mendekati ukuran Bumi."
+        },
+        "toi-700_c": {
+            "name": "TOI-700 c",
+            "nickname": "TOI-700 c",
+            "description": "TOI-700 c adalah planet sub-Neptunus gas dengan radius sekitar 2,6 kali ukuran Bumi. Planet ini mengorbit setiap 16,05 hari dan merupakan planet terbesar dalam sistem tersebut."
+        },
+        "toi-700_e": {
+            "name": "TOI-700 e",
+            "nickname": "TOI-700 e",
+            "description": "TOI-700 e adalah eksoplanet berbatu seukuran Bumi yang mengorbit di zona laik huni optimis bintangnya dengan periode orbit sekitar 27,8 hari."
+        },
+        "toi-700_d": {
+            "name": "TOI-700 d",
+            "nickname": "TOI-700 d",
+            "description": "TOI-700 d adalah eksoplanet terestrial seukuran Bumi yang mengorbit di dalam zona laik huni konservatif TOI-700 setiap 37,42 hari, menjadikannya kandidat kuat dunia yang berpotensi mendukung air cair."
+        },
+        "copernicus": {
+            "name": "Copernicus",
+            "title": "Sistem Copernicus (55 Cancri)",
+            "nickname": "Copernicus",
+            "description": "Copernicus (55 Cancri A) adalah bintang katai kuning kelas G yang berjarak sekitar 41 tahun cahaya di rasi bintang Cancer. Bintang ini memiliki sistem keplanetan yang kaya dengan lima eksoplanet terkonfirmasi."
+        },
+        "55_cancri_b": {
+            "name": "55 Cancri B",
+            "nickname": "55 Cancri B",
+            "description": "55 Cancri B adalah bintang katai merah kelas M4.5V yang merupakan pendamping biner bintang Copernicus (55 Cancri A) pada jarak sekitar 1.065 AU. Bintang ini membutuhkan waktu puluhan ribu tahun untuk mengorbit Copernicus."
+        },
+        "janssen": {
+            "name": "Janssen",
+            "nickname": "Janssen",
+            "description": "Janssen (55 Cancri Ae) adalah eksoplanet super-Bumi yang sangat panas dan mengorbit sangat dekat dengan Copernicus dalam waktu hanya sekitar 17,7 jam. Permukaannya diperkirakan tertutup lautan lava silikat cair."
+        },
+        "galileo": {
+            "name": "Galileo",
+            "nickname": "Galileo",
+            "description": "Galileo (55 Cancri Ab) adalah raksasa gas bertipe Jupiter panas dengan massa sekitar 83% massa Jupiter. Planet ini mengorbit Copernicus setiap 14,65 hari pada jarak sekitar 0,11 AU."
+        },
+        "brahe": {
+            "name": "Brahe",
+            "nickname": "Brahe",
+            "description": "Brahe (55 Cancri Ac) adalah planet raksasa gas hangat dengan massa sebanding dengan sub-Saturnus, memiliki periode orbit sekitar 44,34 hari pada jarak 0,24 AU."
+        },
+        "harriot": {
+            "name": "Harriot",
+            "nickname": "Harriot",
+            "description": "Harriot (55 Cancri Af) adalah eksoplanet raksasa gas yang mengorbit di zona laik huni bintang Copernicus setiap 260,7 hari, menjadikannya dunia gas dengan kemungkinan bulan-bulan berair."
+        },
+        "lipperhey": {
+            "name": "Lipperhey",
+            "nickname": "Lipperhey",
+            "description": "Lipperhey (55 Cancri Ad) adalah planet raksasa gas masif terluar dengan cincin megah dan massa hampir empat kali Jupiter, membutuhkan waktu sekitar 14,3 tahun untuk mengelilingi Copernicus."
         },
         "s2": {
             "name": "S2 (S0-2)",

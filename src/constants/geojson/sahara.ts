@@ -17,6 +17,7 @@ export type GeoJsonGeometry = GeoJsonPolygon | GeoJsonMultiPolygon | GeoJsonLine
 
 export interface GeoJsonFeature {
     type: "Feature"
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     properties?: Record<string, any>
     geometry: GeoJsonGeometry
 }

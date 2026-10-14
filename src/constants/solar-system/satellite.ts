@@ -15,7 +15,7 @@ export const satellites: Satellite[] = [
         axis: 1.54,
         orbit_duration: 27.32,
         rotate_duration: 27.32, // Tidally locked
-        tidalAxis: 180,
+        rotation: [0, 180, 0],
         texture: "moon.ktx2",
         texture_hd: "moon_hd.ktx2",
         topography_texture: "moon_topography.ktx2",

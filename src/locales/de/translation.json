@@ -16,7 +16,15 @@
         "language": "Sprache",
         "speed_scale_value": "1 Sekunde: {{days}} Tage",
         "timelines": "Zeitleisten",
-        "active": "Aktiv"
+        "active": "Aktiv",
+        "home_description": "Der indonesische Name für die <highlight>Milchstraße</highlight>, unsere Heimatgalaxie, ein riesiges Universum aus Sternen, Planeten und endlosen Möglichkeiten, die darauf warten, erkundet zu werden.",
+        "explore_milky_way": "Milchstraßen-Simulation erkunden",
+        "explore_solar_system": "Sonnensystem-Simulation erkunden",
+        "universe_section_title": "Erkunde die Mitglieder der <br/>Milchstraßen-Familie",
+        "enter": "Eintreten",
+        "featured_objects": "Ausgewählte Objekte",
+        "show_more": "Mehr anzeigen",
+        "show_less": "Weniger anzeigen"
     },
     "object": {
         "milky_way": {
@@ -457,6 +465,68 @@
             "name": "Phobetor",
             "nickname": "Phobetor",
             "description": "Phobetor (PSR B1257+12 d) ist eine Supererde, die Lich im Abstand von 0,47 AE mit einer Umlaufzeit von etwa 98,2 Tagen umkreist."
+        },
+        "toi-700": {
+            "name": "TOI-700",
+            "title": "TOI-700 System",
+            "nickname": "TOI-700",
+            "description": "TOI-700 ist ein Roter Zwergstern im Sternbild Schwertfisch (Dorado), etwa 101,4 Lichtjahre entfernt. Das System beherbergt vier bestätigte Exoplaneten, darunter TOI-700 d und TOI-700 e in der habitablen Zone."
+        },
+        "toi-700_b": {
+            "name": "TOI-700 b",
+            "nickname": "TOI-700 b",
+            "description": "TOI-700 b ist der innerste erdgroße Gesteinsplanet im TOI-700-System. Er umkreist seinen Stern alle 9,98 Tage und ist fast so groß wie die Erde."
+        },
+        "toi-700_c": {
+            "name": "TOI-700 c",
+            "nickname": "TOI-700 c",
+            "description": "TOI-700 c ist ein gasförmiger Sub-Neptun mit einem Radius von etwa dem 2,6-fachen der Erde. Er vollendet einen Umlauf in 16,05 Tagen und ist der größte Planet im System."
+        },
+        "toi-700_e": {
+            "name": "TOI-700 e",
+            "nickname": "TOI-700 e",
+            "description": "TOI-700 e ist ein erdgroßer Gesteinsplanet, der sich in der optimistischen habitablen Zone befindet und eine Umlaufzeit von etwa 27,8 Tagen aufweist."
+        },
+        "toi-700_d": {
+            "name": "TOI-700 d",
+            "nickname": "TOI-700 d",
+            "description": "TOI-700 d ist ein erdgroßer Gesteinsplanet in der konservativen habitablen Zone von TOI-700 mit einer Umlaufzeit von 37,42 Tagen und ein vielversprechender Kandidat für flüssiges Wasser."
+        },
+        "copernicus": {
+            "name": "Copernicus",
+            "title": "Copernicus-System (55 Cancri)",
+            "nickname": "Copernicus",
+            "description": "Copernicus (55 Cancri A) ist ein Gelber Zwergstern der Spektralklasse G im Sternbild Krebs, etwa 41 Lichtjahre entfernt. Er besitzt ein bemerkenswertes Planetensystem mit fünf bestätigten Exoplaneten."
+        },
+        "55_cancri_b": {
+            "name": "55 Cancri B",
+            "nickname": "55 Cancri B",
+            "description": "55 Cancri B ist ein Roter Zwergstern der Spektralklasse M4.5V, der in einem Abstand von rund 1.065 AE einen weiten Doppelstern mit Copernicus (55 Cancri A) bildet und zehntausende Jahre für einen Umlauf benötigt."
+        },
+        "janssen": {
+            "name": "Janssen",
+            "nickname": "Janssen",
+            "description": "Janssen (55 Cancri Ae) ist eine extrem heiße Supererde mit ultrakurzer Umlaufzeit von nur 17,7 Stunden um Copernicus. Seine Oberfläche besteht vermutlich aus Ozeanen aus geschmolzener Lava."
+        },
+        "galileo": {
+            "name": "Galileo",
+            "nickname": "Galileo",
+            "description": "Galileo (55 Cancri Ab) ist ein heißer Jupiter-Gasriese mit etwa 83 % der Jupitermasse, der Copernicus alle 14,65 Tage in einem Abstand von rund 0,11 AE umkreist."
+        },
+        "brahe": {
+            "name": "Brahe",
+            "nickname": "Brahe",
+            "description": "Brahe (55 Cancri Ac) ist ein warmer Gasriese mit einer sub-saturnähnlichen Masse, der Copernicus alle 44,34 Tage in einer Entfernung von ca. 0,24 AE umrundet."
+        },
+        "harriot": {
+            "name": "Harriot",
+            "nickname": "Harriot",
+            "description": "Harriot (55 Cancri Af) ist ein Gasriese, der sich in der habitablen Zone von Copernicus bewegt und für einen Umlauf 260,7 Tage benötigt, was lebensfreundliche Exomonde ermöglichen könnte."
+        },
+        "lipperhey": {
+            "name": "Lipperhey",
+            "nickname": "Lipperhey",
+            "description": "Lipperhey (55 Cancri Ad) ist ein gewaltiger äußerer Gasriese mit prächtigen Ringen und fast der vierfachen Masse von Jupiter, der etwa 14,3 Jahre für einen Umlauf um Copernicus benötigt."
         },
         "s2": {
             "name": "S2 (S0-2)",

@@ -2,7 +2,7 @@
 import { universes } from "@constants"
 import type { Universe as UniverseType } from "@types"
 import clsx from "clsx"
-import { useTranslation } from "react-i18next"
+import { Trans, useTranslation } from "react-i18next"
 import { Link } from "react-router"
 
 interface Props {
@@ -22,7 +22,9 @@ const Card = ({ id, className, imgClassName }: Props) => {
         </div>
         <h5 className="text-lg mt-auto font-bold font-space-grotesk">{t(`object.${id}.title`)}</h5>
         <p className="text-sm">{t(`object.${id}.description`)}</p>
-        <Link to={`/${id}`} className="w-full sm:max-w-64 text-primary text-center border border-primary mt-2 rounded-lg font-semibold py-1 hover:bg-primary hover:text-white">Enter</Link>
+        <Link to={`/${id}`} className="w-full sm:max-w-64 text-primary text-center border border-primary mt-2 rounded-lg font-semibold py-1 hover:bg-primary hover:text-white">
+            {t("ui.enter")}
+        </Link>
     </div>
 }
 
@@ -32,18 +34,23 @@ const Universe = () => {
     return <div className="mb-20 md:mb-24">
         <div className="mb-4 md:mb-8 w-fit mx-auto">
             <h3 className="text-2xl md:text-4xl font-bold text-center px-4 font-space-grotesk">
-                Explore the Members of {" "}
-                <br className="sm:hidden" />
-                Milky Way Family
+                <Trans
+                    i18nKey="ui.universe_section_title"
+                    components={{ br: <br className="sm:hidden" /> }}
+                >
+                    Explore the Members of <br className="sm:hidden" /> Milky Way Family
+                </Trans>
             </h3>
             <div className="h-px w-full bg-base/50 sm:bg-base mt-4" />
         </div>
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-9 gap-4 p-4">
-            <Card id="milky_way" className="md:col-span-2 lg:col-span-3 lg:row-span-2" imgClassName="h-[240px] lg:h-full" />
-            <Card id="solar_system" className="lg:col-span-6" imgClassName="h-[240px] lg:h-full" />
-            <Card id="alpha_centauri" className="lg:col-span-2" imgClassName="h-[240px] lg:h-full" />
-            <Card id="trappist-1" className="lg:col-span-2" imgClassName="h-[240px] lg:h-full" />
-            <Card id="lich" className="lg:col-span-2" imgClassName="h-[240px] lg:h-full" />
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-4 p-4">
+            <Card id="milky_way" className="md:col-span-2 lg:col-span-4 lg:row-span-2" imgClassName="h-[240px] lg:h-full" />
+            <Card id="solar_system" className="md:col-span-2 lg:col-span-8" imgClassName="h-[240px] lg:h-[320px]" />
+            <Card id="alpha_centauri" className="lg:col-span-4" imgClassName="h-[240px] lg:h-full" />
+            <Card id="trappist-1" className="lg:col-span-4" imgClassName="h-[240px] lg:h-full" />
+            <Card id="toi-700" className="lg:col-span-4" imgClassName="h-[240px] lg:h-full" />
+            <Card id="copernicus" className="lg:col-span-4" imgClassName="h-[240px] lg:h-full" />
+            <Card id="lich" className="lg:col-span-4" imgClassName="h-[240px] lg:h-full" />
         </div>
     </div>
 }

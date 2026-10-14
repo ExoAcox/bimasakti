@@ -31,7 +31,15 @@
         "landmarks": "Landmarks",
         "timelines": "Timelines",
         "active": "Active",
-        "present": "Present"
+        "present": "Present",
+        "home_description": "The Indonesian name for the <highlight>Milky Way</highlight>, our home galaxy, a vast universe of stars, planets, and endless possibilities waiting to be explored.",
+        "explore_milky_way": "Explore Milky Way Simulation",
+        "explore_solar_system": "Explore Solar System Simulation",
+        "universe_section_title": "Explore the Members of <br/>Milky Way Family",
+        "enter": "Enter",
+        "featured_objects": "Featured Objects",
+        "show_more": "Show More",
+        "show_less": "Show Less"
     },
     "object": {
         "milky_way": {
@@ -530,6 +538,68 @@
             "name": "Phobetor",
             "nickname": "Phobetor",
             "description": "Phobetor (PSR B1257+12 d) is a super-Earth exoplanet orbiting Lich at 0.47 AU with an orbital period of about 98.2 days."
+        },
+        "toi-700": {
+            "name": "TOI-700",
+            "title": "TOI-700 System",
+            "nickname": "TOI-700",
+            "description": "TOI-700 is an M-dwarf star located approximately 101.4 light-years away in the constellation Dorado. It hosts four confirmed exoplanets, including TOI-700 d and TOI-700 e orbiting within the habitable zone."
+        },
+        "toi-700_b": {
+            "name": "TOI-700 b",
+            "nickname": "TOI-700 b",
+            "description": "TOI-700 b is the innermost rocky terrestrial exoplanet in the TOI-700 system. It orbits its host star roughly every 9.98 days and is nearly the size of Earth."
+        },
+        "toi-700_c": {
+            "name": "TOI-700 c",
+            "nickname": "TOI-700 c",
+            "description": "TOI-700 c is a gaseous sub-Neptune exoplanet with a radius roughly 2.6 times that of Earth. It orbits every 16.05 days and is the largest planet in the system."
+        },
+        "toi-700_e": {
+            "name": "TOI-700 e",
+            "nickname": "TOI-700 e",
+            "description": "TOI-700 e is a rocky, Earth-sized exoplanet orbiting within the star's optimistic habitable zone, completing an orbit every 27.8 days."
+        },
+        "toi-700_d": {
+            "name": "TOI-700 d",
+            "nickname": "TOI-700 d",
+            "description": "TOI-700 d is an Earth-sized terrestrial exoplanet orbiting within the conservative habitable zone of TOI-700 every 37.42 days, making it a prime candidate for supporting liquid water."
+        },
+        "copernicus": {
+            "name": "Copernicus",
+            "title": "Copernicus (55 Cancri) System",
+            "nickname": "Copernicus",
+            "description": "Copernicus (55 Cancri A) is a G-type yellow dwarf star located approximately 41 light-years away in the constellation Cancer. It hosts a rich planetary system with five confirmed exoplanets."
+        },
+        "55_cancri_b": {
+            "name": "55 Cancri B",
+            "nickname": "55 Cancri B",
+            "description": "55 Cancri B is an M4.5V red dwarf star forming a wide binary system with Copernicus (55 Cancri A) at a separation of approximately 1,065 AU. It takes tens of thousands of years to complete an orbit around Copernicus."
+        },
+        "janssen": {
+            "name": "Janssen",
+            "nickname": "Janssen",
+            "description": "Janssen (55 Cancri Ae) is an ultra-short-period super-Earth orbiting Copernicus in just 17.7 hours. Its scorching surface is believed to be covered by molten lava oceans and exotic mineral atmospheres."
+        },
+        "galileo": {
+            "name": "Galileo",
+            "nickname": "Galileo",
+            "description": "Galileo (55 Cancri Ab) is a hot Jupiter gas giant with approximately 83% of Jupiter's mass, completing an orbit around Copernicus every 14.65 days at a distance of about 0.11 AU."
+        },
+        "brahe": {
+            "name": "Brahe",
+            "nickname": "Brahe",
+            "description": "Brahe (55 Cancri Ac) is a warm gas giant planet with a mass comparable to a sub-Saturn, orbiting Copernicus every 44.34 days at an orbital distance of approximately 0.24 AU."
+        },
+        "harriot": {
+            "name": "Harriot",
+            "nickname": "Harriot",
+            "description": "Harriot (55 Cancri Af) is a gas giant exoplanet orbiting within the habitable zone of Copernicus with an orbital period of 260.7 days, potentially hosting habitable exomoons."
+        },
+        "lipperhey": {
+            "name": "Lipperhey",
+            "nickname": "Lipperhey",
+            "description": "Lipperhey (55 Cancri Ad) is a massive outer gas giant featuring majestic rings and nearly four times Jupiter's mass, taking about 14.3 years to complete one orbit around Copernicus."
         },
         "s2": {
             "name": "S2 (S0-2)",

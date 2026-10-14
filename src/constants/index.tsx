@@ -5,6 +5,8 @@ import alpha_centauri from "./alpha-centauri"
 import sagittarius_a from "./sagittarius-a"
 import trappist_1 from "./trappist-1"
 import lich from "./lich"
+import toi_700 from "./toi-700"
+import copernicus from "./copernicus"
 
 export const SCALE = 1e+5
 export const TIME_SCALE = 3
@@ -16,16 +18,16 @@ export const SHIP_SCALE = 0.05 / SCALE
 const universes: Universe[] = [
     {
         id: "milky_way",
-        image: "milky_way.webp",
+        image: "milky_way.jpg",
         position: [0, 0, 0],
         minDistance: 10,
         maxDistance: 30,
-        cameraPosition: [2, -12, 5],
+        cameraPosition: [-2, -12, -5],
         labelPosition: "top",
         assetCount: 3,
         stars: [],
         mobile: {
-            cameraPosition: [2, -20, 5]
+            cameraPosition: [-2, -20, -5]
         }
     },
     // {
@@ -42,7 +44,7 @@ const universes: Universe[] = [
     // },
     {
         id: "solar_system",
-        image: "solar_system.webp",
+        image: "solar_system.jpg",
         position: [0.038105392881217164, -2.745814737039023, 0.7172299984047412],
         minDistance: 3e-7,
         maxDistance: 400000,
@@ -90,9 +92,35 @@ const universes: Universe[] = [
         assetCount: 4,
         stars: lich.stars,
         mobile: {}
+    },
+    {
+        id: "toi-700",
+        image: "toi-700.webp",
+        position: [0.12, -2.65, 0.68],
+        minDistance: 0.1,
+        maxDistance: 1500,
+        cameraPosition: [100, 100, 100],
+        labelPosition: "left",
+        defaultFocus: "toi-700",
+        assetCount: 8,
+        stars: toi_700.stars,
+        mobile: {}
+    },
+    {
+        id: "copernicus",
+        image: "copernicus.webp",
+        position: [0.06, -2.6, 0.73],
+        minDistance: 0.1,
+        maxDistance: 2000000,
+        cameraPosition: [150, 150, 150],
+        labelPosition: "bottom",
+        defaultFocus: "copernicus",
+        assetCount: 7,
+        stars: copernicus.stars,
+        mobile: {}
     }
 ]
 
 const universe_ids = universes.map(universe => universe.id)
 
-export { universes, universe_ids, solar_system, alpha_centauri, sagittarius_a, trappist_1, lich }
+export { universes, universe_ids, solar_system, alpha_centauri, sagittarius_a, trappist_1, lich, toi_700, copernicus }

@@ -13,7 +13,7 @@ export const meta = () => seo({
 
 
 const MilkyWay = () => {
-    const { setFocus } = useGalaxyStore()
+    const { focus, setFocus } = useGalaxyStore()
     const { t } = useTranslation()
 
     const handleClick = (id: string) => {
@@ -32,9 +32,9 @@ const MilkyWay = () => {
 
                         return (
                             <group position={universe.position} key={universe.id}>
-                                <Html className={clsx("-mt-1 absolute", root)} zIndexRange={[1, 0]} >
+                                <Html className={clsx("-mt-1 absolute", root)} zIndexRange={[focus === universe.id ? 2 : 1, 0]} >
                                     <button className={clsx("flex cursor-pointer", parent)} onClick={() => handleClick(universe.id)}>
-                                        <label className="py-px px-1 whitespace-nowrap rounded text-[8px] font-semibold text-white bg-background hover:text-primary cursor-pointer"  >{t(`object.${universe.id}.name`)}</label>
+                                        <label className="py-px px-1 whitespace-nowrap rounded text-[8px] font-semibold text-white bg-background hover:text-blue-300 cursor-pointer"  >{t(`object.${universe.id}.name`)}</label>
                                         <div className={clsx("bg-background", line)} />
                                     </button>
                                 </Html>

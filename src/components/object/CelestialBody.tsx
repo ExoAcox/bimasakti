@@ -104,9 +104,12 @@ const Object = ({ data, children, childrenComponent, onClick, objectRef, cloudRe
         if (data.rotate_duration && objectRef?.current?.rotation) {
             const isTidalLocked = data.orbit_duration === data.rotate_duration && tidalLock
             if (isTidalLocked) {
-                const rotationY = ((data as PlanetType)?.tidalAxis ?? 0)
-                objectRef.current.rotation.y = MathUtils.degToRad(rotationY)
-                rotationRef.current = MathUtils.degToRad(rotationY)
+                const [x, y, z] = ((data as PlanetType)?.rotation ?? [0, 0, 0])
+                objectRef.current.rotation.y = MathUtils.degToRad(y)
+                rotationRef.current = MathUtils.degToRad(y)
+
+                if (x) objectRef.current.rotation.z = MathUtils.degToRad(x)
+                if (z) objectRef.current.rotation.z = MathUtils.degToRad(z)
             } else {
                 if (rotationRef.current === null) {
                     rotationRef.current = (speed / data.rotate_duration) * speedScale

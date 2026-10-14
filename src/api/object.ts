@@ -75,7 +75,6 @@ export async function loader({ params, request }: LoaderFunctionArgs) {
                 longest_distance: obj.longest_distance ?? undefined,
                 color: obj.color,
                 axis: obj.axis,
-                tidalAxis: obj.tidal_axis ?? undefined,
                 orbit_duration: obj.orbit_duration,
                 rotate_duration: obj.rotate_duration,
                 min_zoom: obj.min_zoom ?? undefined,

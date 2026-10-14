@@ -29,7 +29,7 @@ const Featured = () => {
 
     return <>
         <div className="px-6 mb-24 rounded-2xl">
-            <h3 className="text-2xl md:text-3xl font-bold mb-6 font-space-grotesk">Featured Objects</h3>
+            <h3 className="text-2xl md:text-3xl font-bold mb-6 font-space-grotesk">{t("ui.featured_objects")}</h3>
             <div className="flex items-center gap-3 mt-4 flex-wrap">
                 {data.filter((_, index) => isMore || index < 20).map(object => {
                     if (!object) return null
@@ -44,7 +44,7 @@ const Featured = () => {
                     </button>
                 })}
                 <button onClick={() => setMore(!isMore)} className="bg-sky-100/25 border border-sky-100/25 whitespace-nowrap rounded-full px-4 py-2 flex items-center gap-1.5">
-                    <span className="text-sm font-medium">{isMore ? "Show Less" : "Show More"}</span>
+                    <span className="text-sm font-medium">{isMore ? t("ui.show_less") : t("ui.show_more")}</span>
                 </button>
             </div>
         </div>
