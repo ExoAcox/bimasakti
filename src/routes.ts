@@ -2,7 +2,8 @@ import {
     type RouteConfig,
     route,
     index,
-    layout
+    layout,
+    prefix,
 } from "@react-router/dev/routes";
 
 export default [
@@ -14,5 +15,14 @@ export default [
         route("trappist-1", "./pages/trappist-1.tsx"),
         route("lich", "./pages/lich.tsx"),
         route("sagittarius_a", "./pages/sagittarius_a.tsx"),
+    ]),
+
+    ...prefix("api", [
+        route("objects", "./api/objects.ts"),
+        route("objects/:id", "./api/object.ts"),
+        route("universes", "./api/universes.ts"),
+        route("universes/:id", "./api/universe.ts"),
+        route("landmarks", "./api/landmarks.ts"),
+        route("nations", "./api/nations.ts"),
     ]),
 ] satisfies RouteConfig;

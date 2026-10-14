@@ -17,7 +17,7 @@ type UniverseMapping = {
 };
 
 const universeMapping: UniverseMapping = {
-    sagittarius_a,
+    // sagittarius_a,
     solar_system,
     alpha_centauri,
     "trappist-1": trappist_1,

@@ -3,7 +3,6 @@ import { useControlStore } from '@state';
 import { useEffect, useMemo, useRef, useState } from 'react'
 import { Sheet } from 'react-modal-sheet';
 
-import 'react-spring-bottom-sheet/dist/style.css'
 import ControlPanel from './ControlPanel';
 import { useTranslation } from 'react-i18next';
 import { DetailPanel } from '.';

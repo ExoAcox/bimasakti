@@ -32,7 +32,7 @@ const Universe = () => {
     return <div className="mb-20 md:mb-24">
         <div className="mb-4 md:mb-8 w-fit mx-auto">
             <h3 className="text-2xl md:text-4xl font-bold text-center px-4 font-space-grotesk">
-                Explore the Members of
+                Explore the Members of {" "}
                 <br className="sm:hidden" />
                 Milky Way Family
             </h3>

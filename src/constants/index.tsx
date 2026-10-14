@@ -28,18 +28,18 @@ const universes: Universe[] = [
             cameraPosition: [2, -20, 5]
         }
     },
-    {
-        id: "sagittarius_a",
-        image: "sagittarius_a.jpg",
-        position: [0, 0, 0],
-        minDistance: 1e-6,
-        maxDistance: 25000,
-        cameraPosition: [200, 100, 500],
-        labelPosition: "top",
-        assetCount: 1,
-        stars: [],
-        mobile: {}
-    },
+    // {
+    //     id: "sagittarius_a",
+    //     image: "sagittarius_a.jpg",
+    //     position: [0, 0, 0],
+    //     minDistance: 1e-6,
+    //     maxDistance: 25000,
+    //     cameraPosition: [200, 100, 500],
+    //     labelPosition: "top",
+    //     assetCount: 1,
+    //     stars: [],
+    //     mobile: {}
+    // },
     {
         id: "solar_system",
         image: "solar_system.webp",
