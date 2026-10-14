@@ -8,6 +8,7 @@ import {
 
 export default [
     index("./pages/home.tsx"),
+    route("mars", "./pages/mars.tsx"),
     layout("./components/Canvas.tsx", [
         route("milky_way", "./pages/milky_way.tsx"),
         route("solar_system", "./pages/solar_system.tsx"),
