@@ -7,13 +7,15 @@ import { AdditiveBlending, BackSide, Color, ShaderMaterial, Vector3 } from "thre
 
 interface Props {
     data: Planet
+    forceFocus?: boolean
 }
 
-const Atmosphere = ({ data }: Props) => {
+const Atmosphere = ({ data, forceFocus = false }: Props) => {
     const materialRef = useRef<ShaderMaterial>(null!)
     const opacity = data.atmosphere ?? 1.0
 
-    const isFocused = useCelestial().isFocused(data.id)
+    const celestial = useCelestial()
+    const isFocused = forceFocus || celestial.isFocused(data.id)
 
     const atmosphereMaterial = useMemo(() => {
         return new ShaderMaterial({

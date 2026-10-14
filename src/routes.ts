@@ -6,7 +6,7 @@ import {
 } from "@react-router/dev/routes";
 
 export default [
-    index("./pages/home_redirect.tsx"),
+    index("./pages/home.tsx"),
     layout("./components/Canvas.tsx", [
         route("milky_way", "./pages/milky_way.tsx"),
         route("solar_system", "./pages/solar_system.tsx"),

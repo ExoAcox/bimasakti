@@ -53,9 +53,9 @@ const TOOLTIP_CLASS =
 const SPEED_ARRAY = [0.1, 0.5, 1, 2, 3, 5]
 
 const MODE_LIST = [
-    { id: Mode.Object, label: "Object View", img: "mode_object.jpg" },
-    { id: Mode.ThirdPerson, label: "Third Person", img: "mode_third_person.jpg" },
-    { id: Mode.FirstPerson, label: "First Person", img: "mode_first_person.jpg" }
+    { id: Mode.Object, label: "Object View", img: "mode_object.webp" },
+    { id: Mode.ThirdPerson, label: "Third Person", img: "mode_third_person.webp" },
+    { id: Mode.FirstPerson, label: "First Person", img: "mode_first_person.webp" }
 ]
 
 const ControlPanel = () => {

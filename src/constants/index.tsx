@@ -16,6 +16,7 @@ export const SHIP_SCALE = 0.05 / SCALE
 const universes: Universe[] = [
     {
         id: "milky_way",
+        image: "milky_way.webp",
         position: [0, 0, 0],
         minDistance: 10,
         maxDistance: 30,
@@ -29,6 +30,7 @@ const universes: Universe[] = [
     },
     {
         id: "sagittarius_a",
+        image: "sagittarius_a.jpg",
         position: [0, 0, 0],
         minDistance: 1e-6,
         maxDistance: 25000,
@@ -40,6 +42,7 @@ const universes: Universe[] = [
     },
     {
         id: "solar_system",
+        image: "solar_system.webp",
         position: [0.038105392881217164, -2.745814737039023, 0.7172299984047412],
         minDistance: 3e-7,
         maxDistance: 400000,
@@ -52,6 +55,7 @@ const universes: Universe[] = [
     },
     {
         id: "alpha_centauri",
+        image: "alpha_centauri.webp",
         position: [0.0881, -2.6958, 0.7172],
         minDistance: 0.01,
         maxDistance: 60000000,
@@ -63,6 +67,7 @@ const universes: Universe[] = [
     },
     {
         id: "trappist-1",
+        image: "trappist-1.webp",
         position: [0.1, -2.5, 0.7],
         minDistance: 0.1,
         maxDistance: 300,
@@ -75,6 +80,7 @@ const universes: Universe[] = [
     },
     {
         id: "lich",
+        image: "lich.webp",
         position: [0.14, -2.4, 0.75],
         minDistance: 0.1,
         maxDistance: 3000,

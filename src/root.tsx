@@ -10,6 +10,9 @@ import {
 import type { Route } from "./+types/root";
 import "./utils/i18n"
 import "./style.css";
+import { seo } from "@function";
+
+export const meta = () => seo({})
 
 export function Layout({ children }: { children: React.ReactNode }) {
   return (

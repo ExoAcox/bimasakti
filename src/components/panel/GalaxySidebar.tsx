@@ -1,17 +1,23 @@
+/* eslint-disable react-hooks/set-state-in-effect */
 
 import clsx from "clsx"
-import { useState } from "react"
+import { useEffect, useState } from "react"
 import { useGalaxyStore } from "@state"
 
 import { useTranslation } from "react-i18next"
 
 import { TbLayoutSidebarLeftCollapse, TbLayoutSidebarLeftExpand } from "react-icons/tb";
 import { universe_ids } from "@constants"
+import { IoArrowBack } from "react-icons/io5";
+import { useNavigate } from "react-router";
+import { useMobile } from "@function";
 
 
 
 const Sidebar = () => {
     const { t } = useTranslation()
+    const navigate = useNavigate()
+    const isMobile = useMobile()
 
 
     const [isOpen, setOpen] = useState(true)
@@ -20,6 +26,17 @@ const Sidebar = () => {
     const handleClick = (id: string) => {
         setFocus(id)
     }
+
+    const handleBack = () => {
+        navigate("/")
+    }
+
+    useEffect(() => {
+        if (isMobile) {
+            setOpen(false)
+        }
+    }, [focus, isMobile])
+
 
     const buttonClass = (id: string) => clsx("w-full py-2 px-3 flex items-center", (focus === id) && "bg-blue-400/80 text-white")
 
@@ -35,17 +52,6 @@ const Sidebar = () => {
                 {isOpen ? <TbLayoutSidebarLeftCollapse className="size-6" /> : <TbLayoutSidebarLeftExpand className="size-6" />}
             </button>
             <div className="bg-background min-w-44 h-full flex flex-col px-3 py-4 text-white backdrop-blur-sm border-r border-white/10">
-                {/* <div className="relative px-2 mb-4 flex items-center gap-2">
-                    <MdSearch className="shrink-0" />
-                    <input
-                        value={search}
-                        onChange={handleChange}
-                        placeholder="Search object ..."
-                        className="placeholder:text-sm text-sm pr-3" />
-                    <When condition={search}>
-                        <MdClose onClick={handleReset} className="absolute right-0 top-1/2 -translate-y-1/2 cursor-pointer hover:text-red-400 shrink-0" />
-                    </When>
-                </div> */}
                 <div className="flex-1 flex flex-col gap-1 overflow-y-auto">
                     {data.map(universe => {
                         return <button key={universe} className={clsx(buttonClass(universe), "text-sm gap-3")} onClick={() => handleClick(universe)}>
@@ -53,6 +59,11 @@ const Sidebar = () => {
                         </button>
                     })}
                 </div>
+
+                <button onClick={handleBack} className="flex items-center gap-3 text-sm px-3 pb-1 pt-3 hover:translate-x-2 transition">
+                    <IoArrowBack />
+                    Back to Home
+                </button>
             </div>
         </div>
     )

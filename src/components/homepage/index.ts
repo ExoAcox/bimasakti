@@ -1,2 +1,6 @@
 export { default as Earth } from "./Earth"
 export { default as Hero } from "./Hero"
+export { default as Description } from "./Description"
+export { default as Universe } from "./Universe"
+export { default as Featured } from "./Featured"
+export { default as ModalObject } from "./ModalObject"

@@ -92,9 +92,13 @@ const CanvasLayout = () => {
 
     const data = useCelestial().getUniverse()
     const { setSetting } = useSettingStore()
-    const { mode, focus } = useControlStore()
+    const { mode, focus, setControl } = useControlStore()
 
-    const skyboxTexture = data.id === "sagittarius_a" ? "/textures/nebula.jpg" : "/textures/milky_way.webp"
+    const skyboxTexture = data.id === "sagittarius_a" ? "/textures/nebula.webp" : "/textures/milky_way.webp"
+
+    useEffect(() => {
+        setControl({ focus: "" })
+    }, [setControl])
 
     useEffect(() => {
         if (focus) track('focus', { object: focus, universe: data.id })
@@ -158,7 +162,7 @@ const CanvasLayout = () => {
 
             <Header id={data.id} />
             <NavigationPanel />
-            <SettingPanel />
+            {/* <SettingPanel /> */}
             <UserInterface id={data.id} />
         </KeyboardControls>
     </div>

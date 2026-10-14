@@ -1,6 +1,10 @@
+@import url("https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@400;500;600;700;800&display=swap");
 @import "tailwindcss";
 
 @theme {
+  --font-sans: "Plus Jakarta Sans", sans-serif;
+  --font-jakarta-sans: "Plus Jakarta Sans", sans-serif;
+  --font-space-grotesk: "Space Grotesk", sans-serif;
   --color-primary: var(--color-blue-400);
   --color-secondary: var(--color-amber-300);
   --color-base: var(--color-gray-300);
@@ -43,64 +47,13 @@ input {
   @apply w-full h-2 bg-gray-200 rounded-lg appearance-none cursor-pointer accent-primary focus:outline-none focus:ring-2 focus:ring-primary [&::-webkit-slider-runnable-track]:bg-gray-200 [&::-webkit-slider-runnable-track]:rounded-lg [&::-webkit-slider-thumb]:appearance-none [&::-webkit-slider-thumb]:w-5 [&::-webkit-slider-thumb]:h-5 [&::-webkit-slider-thumb]:rounded-full [&::-webkit-slider-thumb]:bg-primary [&::-webkit-slider-thumb]:transition-all [&::-webkit-slider-thumb]:hover:scale-110 [&::-moz-range-thumb]:w-5 [&::-moz-range-thumb]:h-5 [&::-moz-range-thumb]:border-none [&::-moz-range-thumb]:rounded-full [&::-moz-range-thumb]:bg-primary [&::-moz-range-thumb]:transition-all [&::-moz-range-thumb]:hover:scale-110
 }
 
-@keyframes cosmic-spin {
+@keyframes spin {
   from {
     transform: rotate(0deg);
   }
-
   to {
     transform: rotate(360deg);
   }
-}
-
-@keyframes cosmic-spin-reverse {
-  from {
-    transform: rotate(360deg);
-  }
-
-  to {
-    transform: rotate(0deg);
-  }
-}
-
-@keyframes cosmic-pulse {
-
-  0%,
-  100% {
-    transform: scale(1);
-    opacity: 0.8;
-  }
-
-  50% {
-    transform: scale(1.15);
-    opacity: 1;
-  }
-}
-
-@keyframes cosmic-shimmer {
-  0% {
-    transform: translateX(-100%);
-  }
-
-  100% {
-    transform: translateX(100%);
-  }
-}
-
-.animate-cosmic-spin {
-  animation: cosmic-spin 12s linear infinite;
-}
-
-.animate-cosmic-spin-reverse {
-  animation: cosmic-spin-reverse 8s linear infinite;
-}
-
-.animate-cosmic-pulse {
-  animation: cosmic-pulse 3s ease-in-out infinite;
-}
-
-.animate-cosmic-shimmer {
-  animation: cosmic-shimmer 2s infinite;
 }
 
 .react-modal-sheet-root {

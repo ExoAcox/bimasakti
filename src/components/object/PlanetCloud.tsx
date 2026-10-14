@@ -8,6 +8,8 @@ import { NoColorSpace, type Mesh } from "three";
 interface Props {
     data: Planet
     cloudRef: React.RefObject<Mesh>
+    scale?: number
+    forceFocus?: boolean
 }
 
 const KTX2Loader = ({ path, opacity }: { path: string, opacity: number }) => {
@@ -44,14 +46,15 @@ const ImageLoader = ({ path, opacity }: { path: string, opacity: number }) => {
         polygonOffsetUnits={-1} />
 }
 
-const PlanetCloud = ({ data, cloudRef }: Props) => {
-    const isFocused = useCelestial().isFocused(data.id)
+const PlanetCloud = ({ data, cloudRef, scale: scaleProp, forceFocus = false }: Props) => {
+    const celestial = useCelestial()
+    const isFocused = forceFocus || celestial.isFocused(data.id)
     const { sizeScale } = useSettingStore()
 
     const path = data.cloud_texture ?? ""
     const format = path.split(".")[1]
     const scale = data.radius / sizeScale
-    const cloudScale = scale * 1.001
+    const cloudScale = scaleProp || scale * 1.001
     const opacity = data.cloud_opacity ?? 1
 
     return <mesh ref={cloudRef} scale={cloudScale} castShadow receiveShadow>

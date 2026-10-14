@@ -42,10 +42,12 @@ const Earth = () => {
             <PlanetCloud
                 data={data}
                 cloudRef={cloudRef}
+                scale={1.001}
+                forceFocus
             />
 
-            <Atmosphere data={data} />
-            <Aurora data={data} />
+            <Atmosphere data={data} forceFocus />
+            <Aurora data={data} forceFocus />
         </group>
     </>
 }

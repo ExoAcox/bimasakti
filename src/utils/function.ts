@@ -48,7 +48,7 @@ export const useCelestial = () => {
         }
     })
 
-    const getFeaturedObjects = () => {
+    const getFeaturedObjects = (count = 10) => {
         const objects: CelestialObject[] = []
 
         universe_ids.forEach(universe => {
@@ -59,7 +59,7 @@ export const useCelestial = () => {
             })
         })
 
-        return randomItems(objects, 10)
+        return randomItems(objects, count)
 
 
     }
@@ -272,12 +272,15 @@ export const classPosition = (position: "top" | "bottom" | "left" | "right") => 
     return { root, parent, line }
 }
 
-export const seo = ({ title, description }: { title: string, description: string }) => {
+export const seo = ({ title, description }: { title?: string, description?: string }) => {
+    const titlePage = title ? `${title} | Bimasakti` : "Bimasakti"
+    const descPage = description || "Bimasakti — Explore the Milky Way"
+
     return [
-        { title: `${title} | Bimasakti` },
+        { title: titlePage },
         {
             name: "description",
-            content: description,
+            content: descPage,
         },
         {
             name: "keywords",
@@ -285,11 +288,11 @@ export const seo = ({ title, description }: { title: string, description: string
         },
         {
             property: "og:title",
-            content: `${title} | Bimasakti`,
+            content: titlePage,
         },
         {
             property: "og:description",
-            content: description,
+            content: descPage,
         },
         {
             property: "og:type",

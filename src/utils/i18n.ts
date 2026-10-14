@@ -1,9 +1,10 @@
 import i18n from "i18next";
 import { initReactI18next } from "react-i18next";
-import HttpBackend from "i18next-http-backend";
+import en from "../locales/en/translation.json";
+import id from "../locales/id/translation.json";
+import de from "../locales/de/translation.json";
 
 i18n
-    .use(HttpBackend)
     .use(initReactI18next)
     .init({
         lng: "en",
@@ -11,8 +12,10 @@ i18n
         interpolation: {
             escapeValue: false
         },
-        backend: {
-            loadPath: "/locales/{{lng}}/{{ns}}.json",
+        resources: {
+            en: { translation: en },
+            id: { translation: id },
+            de: { translation: de },
         },
     });
 export default i18n;

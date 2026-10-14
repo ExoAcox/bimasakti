@@ -1,66 +1,57 @@
-/* eslint-disable react-hooks/immutability */
-import { Earth, Hero } from "@components/homepage"
+/* eslint-disable react-hooks/set-state-in-effect */
+import { Description, Earth, Universe, Hero, Featured } from "@components/homepage"
 import SkyBox from "@components/object/SkyBox"
-import { OrbitControls, Stars } from "@react-three/drei"
-import { Canvas, useThree } from "@react-three/fiber"
+import { Canvas } from "@react-three/fiber"
 import { Bloom, EffectComposer } from "@react-three/postprocessing"
-import { useControlStore } from "@state"
 import clsx from "clsx"
-import { useEffect, useLayoutEffect, useRef, useState } from "react"
-import { When } from "react-if"
-import type { PerspectiveCamera } from "three"
-import { OrbitControls as OrbitControlsType } from "three-stdlib"
-
-
+import { useLayoutEffect, useState } from "react"
 
 const Home = () => {
     const [orientation, setOrientation] = useState<string>("")
-    const parentRef = useRef<HTMLDivElement>(null!)
-
-    const { setControl } = useControlStore()
+    const isLandscape = orientation === "landscape"
 
     useLayoutEffect(() => {
-        setControl({ focus: "earth" })
-    }, [setControl])
+        const { innerWidth, innerHeight } = window
+        setOrientation(innerWidth > innerHeight ? "landscape" : "portrait")
+    }, [])
 
-    useLayoutEffect(() => {
-        if (parentRef.current) {
-            const { clientWidth, clientHeight } = parentRef.current
-            console.log(clientWidth, clientHeight)
-            setOrientation(clientWidth > clientHeight ? "landscape" : "portrait")
-        }
-    }, [parentRef])
-
-    console.log(orientation)
-
-
-    return <div className="w-dvw h-dvh relative overflow-hidden bg-black" ref={parentRef}>
-        <div className="h-dvh w-dvw absolute top-0 left-0">
+    return <div className="min-w-dvw min-h-dvh relative bg-black">
+        <div className="fixed inset-0">
             <Canvas camera={{ position: [400, -300, 3] }}>
-                <OrbitControls />
-
                 <SkyBox path="/textures/milky_way.webp" size={1000} />
-                {/* <Stars /> */}
             </Canvas>
         </div>
-        <div className={clsx(orientation === "landscape" ? "h-dvh w-dvh" : "w-dvw h-dvw", "absolute -right-16 -bottom-16")}>
-            <Canvas camera={{ position: [3, 3, 3] }}>
+        <div className="absolute h-dvh w-dvw top-0 left-0">
 
-                <Earth />
+            <div className={clsx(isLandscape ? "h-[75dvw] w-dvw" : "w-dvw h-dvw", "absolute z-3 left-1/2 bottom-0 -translate-x-1/2 translate-y-3/5")}>
+                <Canvas camera={{ position: [3, 3, 3] }}>
 
-                <EffectComposer>
-                    <Bloom
-                        intensity={1}
-                        luminanceThreshold={1.0}
-                        luminanceSmoothing={0.9}
-                        mipmapBlur
-                    />
-                </EffectComposer>
-            </Canvas>
-        </div >
-        <div className={clsx(orientation === "landscape" ? "top-1/2 -translate-y-1/2 left-4" : "top-4 left-1/2 -translate-x-1/2", "absolute")}>
-            <Hero />
+                    <Earth />
+
+                    <EffectComposer>
+                        <Bloom
+                            intensity={1}
+                            luminanceThreshold={1.0}
+                            luminanceSmoothing={0.9}
+                            mipmapBlur
+                        />
+                    </EffectComposer>
+                </Canvas>
+            </div >
         </div>
+
+        <div className="w-dvw h-[150dvh] sm:h-[170dvh] md:h-[250dvh] flex flex-col relative max-w-7xl mx-auto px-4">
+            <div className="md:flex-1">
+                <Hero />
+            </div>
+
+            <Description />
+        </div>
+        <div className="max-w-7xl mx-auto relative z-2">
+            <Universe />
+            <Featured />
+        </div>
+
     </div >
 }
 

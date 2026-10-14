@@ -168,6 +168,7 @@ export interface Nation {
 
 export interface Universe {
     id: string
+    image: string
     stars: Star[]
     position: Vector3,
     minDistance: number,

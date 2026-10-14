@@ -8,13 +8,15 @@ import { AdditiveBlending, Color, DoubleSide, ShaderMaterial, Vector3 } from "th
 
 interface Props {
     data: Planet
+    forceFocus?: boolean
 }
 
-const Aurora = ({ data }: Props) => {
+const Aurora = ({ data, forceFocus = false }: Props) => {
     const materialRef = useRef<ShaderMaterial>(null!)
     const texture = useTexture("/textures/aurora.png")
 
-    const isFocused = useCelestial().isFocused(data.id)
+    const celestial = useCelestial()
+    const isFocused = forceFocus || celestial.isFocused(data.id)
 
     const radius = 1.015
     const intensity = data.aurora ?? 0
