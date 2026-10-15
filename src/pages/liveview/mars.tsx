@@ -20,8 +20,10 @@ const TERRAIN_SCALE = 100
 const EYE_HEIGHT = 1.8
 const CAMERA_ORIGIN = new Vector3(0, 33.08 + EYE_HEIGHT, 0)
 const SUN_POSITION: [number, number, number] = [-100, 80, 0]
+const SUNSET_SUN_POSITION: [number, number, number] = [-150, 20, 0]
 const SCENES = [
     { id: "day", label: "Day", icon: TbSun },
+    { id: "evening", label: "Evening", icon: TbSunset2 },
     { id: "sunset", label: "Sunset", icon: TbSunset2 },
     { id: "night", label: "Night", icon: TbMoonStars },
 ] as const
@@ -29,6 +31,7 @@ const SCENES = [
 const Mars = () => {
     const [activeScene, setActiveScene] = useState<string>("day")
     const isNight = activeScene === "night"
+    const isSunset = activeScene === "sunset"
 
     return (
         <LiveviewCanvas>
@@ -38,16 +41,19 @@ const Mars = () => {
                     position: [CAMERA_ORIGIN.x, CAMERA_ORIGIN.y, CAMERA_ORIGIN.z],
                     fov: 65,
                     near: 0.1,
-                    far: 1500,
+                    far: 10000,
                 }}
-            >
-                <SkyBox size={1200} rotation={[0, MathUtils.degToRad(120), 0]} />
 
-                {isNight ? (
+
+            >
+
+                <SkyBox size={10000} rotation={[MathUtils.degToRad(25), MathUtils.degToRad(230), 0]} />
+
+                {isNight && (
                     <>
+
                         <fog attach="fog" args={["#000009", 5, 150]} key="night-fog" />
 
-                        {/* Phobos Moon in the night sky */}
                         <Suspense fallback={null}>
                             <Phobos />
                         </Suspense>
@@ -64,10 +70,43 @@ const Mars = () => {
                             color="#8ca4d0"
                         />
                     </>
-                ) : (
+                )}
+
+                {isSunset && (
                     <>
-                        <Sun position={SUN_POSITION} />
-                        <Atmosphere sunPosition={SUN_POSITION} />
+                        <Sun position={SUNSET_SUN_POSITION} mode="sunset" />
+                        <Atmosphere sunPosition={SUNSET_SUN_POSITION} mode="sunset" />
+
+                        <fog attach="fog" args={["#161b24", 5, 150]} key="sunset-fog" />
+
+                        <Suspense fallback={null}>
+                            <Phobos />
+                        </Suspense>
+
+                        {/* Sunset Lighting: moody, dim twilight terrain matching Curiosity reference */}
+                        {/* <ambientLight intensity={0.16} color="#38302a" />
+                        <hemisphereLight
+                            args={["#2b3d52", "#180e0a", 0.25]}
+                            position={[0, 50, 0]}
+                        /> */}
+
+                        <ambientLight intensity={0.5} color="#cbd5e1" />
+                        <hemisphereLight
+                            args={["#e2e8f0", "#94a3b8", 0.5]}
+                            position={[0, 50, 0]}
+                        />
+                        <directionalLight
+                            position={[0, 50, 0]}
+                            intensity={1.5}
+                            color="#8ca4d0"
+                        />
+                    </>
+                )}
+
+                {activeScene === "day" && (
+                    <>
+                        <Sun position={SUN_POSITION} mode="day" />
+                        <Atmosphere sunPosition={SUN_POSITION} mode="day" />
 
                         <fog attach="fog" args={["#944927", 5, 150]} key="day-fog" />
 
@@ -79,7 +118,7 @@ const Mars = () => {
                         />
                         <directionalLight
                             position={[-70, 40, -50]}
-                            intensity={0.5}
+                            intensity={1}
                             color="#d66838"
                         />
                     </>
@@ -96,13 +135,6 @@ const Mars = () => {
                 onPointerDown={(e) => e.stopPropagation()}
             >
                 <div className="flex items-center gap-1.5 p-1.5 cursor-default bg-background backdrop-blur-md border border-white/15 rounded-full shadow-2xl shadow-cyan-950/40 hover:border-white/25 transition-all">
-                    <div className="flex items-center gap-1.5 pl-3 pr-2 text-xs font-semibold tracking-wider text-slate-300 uppercase">
-                        <TbMovie className="size-4 text-primary" />
-                        <span>Scenes</span>
-                    </div>
-
-                    <div className="h-4 w-px bg-white/15" />
-
                     <div className="flex items-center gap-1">
                         {SCENES.map((scene) => {
                             const Icon = scene.icon

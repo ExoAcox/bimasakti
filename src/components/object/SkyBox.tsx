@@ -44,7 +44,10 @@ const SkyBox = ({
 
         return new ShaderMaterial({
             fragmentShader: shader.fragmentShader,
-            vertexShader: shader.vertexShader,
+            vertexShader: shader.vertexShader.replace(
+                "vWorldDirection = transformDirection( position, modelMatrix );",
+                "vWorldDirection = position;"
+            ),
             uniforms,
             depthWrite: false,
             side: BackSide,

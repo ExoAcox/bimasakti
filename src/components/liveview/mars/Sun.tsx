@@ -4,10 +4,12 @@ import { AdditiveBlending, CanvasTexture, type Group } from "three"
 
 interface Props {
     position: [number, number, number]
+    mode?: "day" | "sunset"
 }
 
-const Sun = ({ position }: Props) => {
+const Sun = ({ position, mode = "day" }: Props) => {
     const sunRef = useRef<Group>(null)
+    const isSunset = mode === "sunset"
 
     // Generate soft glowing halo texture mimicking Martian forward scattering
     const glowTexture = useMemo(() => {
@@ -19,11 +21,21 @@ const Sun = ({ position }: Props) => {
         if (!ctx) return null
 
         const gradient = ctx.createRadialGradient(128, 128, 0, 128, 128, 128)
-        gradient.addColorStop(0.0, "rgba(255, 255, 255, 1.0)")
-        gradient.addColorStop(0.35, "rgba(240, 250, 255, 0.95)")
-        gradient.addColorStop(0.55, "rgba(150, 215, 255, 0.75)") // Crisp Martian cyan-blue ring
-        gradient.addColorStop(0.78, "rgba(225, 155, 95, 0.35)") // Warm amber transition border
-        gradient.addColorStop(1.0, "rgba(166, 80, 44, 0.0)")
+        if (isSunset) {
+            // Famous Martian Blue Sunset Halo
+            gradient.addColorStop(0.0, "rgba(255, 255, 255, 1.0)")
+            gradient.addColorStop(0.18, "rgba(220, 242, 255, 0.95)")
+            gradient.addColorStop(0.42, "rgba(125, 195, 255, 0.75)")
+            gradient.addColorStop(0.68, "rgba(65, 145, 235, 0.38)")
+            gradient.addColorStop(0.88, "rgba(35, 95, 195, 0.12)")
+            gradient.addColorStop(1.0, "rgba(15, 50, 140, 0.0)")
+        } else {
+            gradient.addColorStop(0.0, "rgba(255, 255, 255, 1.0)")
+            gradient.addColorStop(0.35, "rgba(240, 250, 255, 0.95)")
+            gradient.addColorStop(0.55, "rgba(150, 215, 255, 0.75)") // Crisp Martian cyan-blue ring
+            gradient.addColorStop(0.78, "rgba(225, 155, 95, 0.35)") // Warm amber transition border
+            gradient.addColorStop(1.0, "rgba(166, 80, 44, 0.0)")
+        }
 
         ctx.fillStyle = gradient
         ctx.fillRect(0, 0, 256, 256)
@@ -31,7 +43,7 @@ const Sun = ({ position }: Props) => {
         const tex = new CanvasTexture(canvas)
         tex.needsUpdate = true
         return tex
-    }, [])
+    }, [isSunset])
 
     // Ensure sun corona always faces the camera
     useFrame(({ camera }) => {
@@ -45,8 +57,8 @@ const Sun = ({ position }: Props) => {
             {/* Primary sunlight originating directly from the Sun */}
             <directionalLight
                 position={[0, 0, 0]}
-                intensity={2}
-                color="#fff1dc"
+                intensity={isSunset ? 0.2 : 2}
+                color={isSunset ? "#e0efff" : "#fff1dc"}
                 castShadow
                 shadow-mapSize={[2048, 2048]}
                 shadow-camera-near={10}
@@ -61,9 +73,9 @@ const Sun = ({ position }: Props) => {
             <group ref={sunRef}>
                 {/* Visible Sun Core Disk - Realistic size for Mars */}
                 <mesh>
-                    <sphereGeometry args={[0.7, 32, 32]} />
+                    <sphereGeometry args={[isSunset ? 1 : 0.7, 32, 32]} />
                     <meshBasicMaterial
-                        color="#ffffff"
+                        color={isSunset ? "#f0f8ff" : "#ffffff"}
                         fog={false}
                         toneMapped={false}
                     />
@@ -72,7 +84,7 @@ const Sun = ({ position }: Props) => {
                 {/* Sun Corona / Martian atmospheric halo */}
                 {glowTexture && (
                     <mesh position={[0, 0, -0.2]}>
-                        <planeGeometry args={[2.4, 2.4]} />
+                        <planeGeometry args={isSunset ? [1.5, 1.5] : [2.4, 2.4]} />
                         <meshBasicMaterial
                             map={glowTexture}
                             transparent

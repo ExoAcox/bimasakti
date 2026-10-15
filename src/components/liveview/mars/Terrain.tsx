@@ -1,7 +1,7 @@
 /* eslint-disable react-hooks/immutability */
 import { useGLTF, useTexture } from "@react-three/drei"
 import { useMemo } from "react"
-import { Color, Mesh, MeshStandardMaterial, RepeatWrapping, SRGBColorSpace, Vector2 } from "three"
+import { Color, DoubleSide, Mesh, MeshStandardMaterial, RepeatWrapping, SRGBColorSpace, Vector2 } from "three"
 
 interface Props {
     scale: number
@@ -61,11 +61,18 @@ const Terrain = ({ scale }: Props) => {
     }, [scene, customMaterial])
 
     return (
-        <primitive
-            object={clonedScene}
-            scale={[scale, scale, scale]}
-            position={[0, 0, 0]}
-        />
+        <group>
+            <primitive
+                object={clonedScene}
+                scale={[scale, scale, scale]}
+                position={[0, 0, 0]}
+            />
+            {/* Vertical testing plane */}
+            {/* <mesh rotation={[0, Math.PI / 2, 0]} position={[-100, 0, 0]} castShadow>
+                <planeGeometry args={[500, 68]} />
+                <meshBasicMaterial side={DoubleSide} fog={false} />
+            </mesh> */}
+        </group>
     )
 }
 
