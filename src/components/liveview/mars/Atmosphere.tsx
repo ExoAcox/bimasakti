@@ -16,6 +16,7 @@ const atmosphereFragmentShader = `
 uniform vec3 uSunPosition;
 uniform vec3 uCameraPosition;
 uniform float uIsSunset;
+uniform float uIsDay;
 varying vec3 vWorldPosition;
 
 void main() {
@@ -47,12 +48,22 @@ void main() {
     vec3 skyColor;
     if (height > 0.0) {
         float h = pow(height, 0.62);
-        if (h < 0.32) {
-            skyColor = mix(horizonColor, midSkyColor, h / 0.32);
-        } else if (h < 0.72) {
-            skyColor = mix(midSkyColor, upperSkyColor, (h - 0.32) / 0.40);
+        if (uIsDay > 0.5) {
+            // Day mode: tanpa zenith, menyatu mulus ke upperSkyColor hingga ke puncak
+            if (h < 0.45) {
+                skyColor = mix(horizonColor, midSkyColor, h / 0.45);
+            } else {
+                skyColor = mix(midSkyColor, upperSkyColor, (h - 0.45) / 0.55);
+            }
         } else {
-            skyColor = mix(upperSkyColor, zenithColor, (h - 0.72) / 0.28);
+            // Evening / Sunset mode: logic existing dengan zenith gelap/hitam
+            if (h < 0.32) {
+                skyColor = mix(horizonColor, midSkyColor, h / 0.32);
+            } else if (h < 0.72) {
+                skyColor = mix(midSkyColor, upperSkyColor, (h - 0.32) / 0.40);
+            } else {
+                skyColor = mix(upperSkyColor, zenithColor, (h - 0.72) / 0.28);
+            }
         }
     } else {
         skyColor = mix(horizonColor, groundColor, clamp(-height * 4.0, 0.0, 1.0));
@@ -88,21 +99,23 @@ void main() {
 
 interface Props {
     sunPosition: [number, number, number]
-    mode?: "day" | "sunset"
+    mode?: "day" | "evening" | "sunset"
 }
 
 const Atmosphere = ({ sunPosition, mode = "day" }: Props) => {
     const { camera } = useThree()
     const meshRef = useRef<Mesh>(null)
     const isSunset = mode === "sunset" ? 1.0 : 0.0
+    const isDay = mode === "day" ? 1.0 : 0.0
 
     const uniforms = useMemo(
         () => ({
             uSunPosition: { value: new Vector3(...sunPosition) },
             uCameraPosition: { value: new Vector3() },
             uIsSunset: { value: isSunset },
+            uIsDay: { value: isDay },
         }),
-        [sunPosition, isSunset]
+        [sunPosition, isSunset, isDay]
     )
 
     useFrame(() => {
@@ -111,6 +124,7 @@ const Atmosphere = ({ sunPosition, mode = "day" }: Props) => {
             uniforms.uCameraPosition.value.copy(camera.position)
             uniforms.uSunPosition.value.set(...sunPosition)
             uniforms.uIsSunset.value = isSunset
+            uniforms.uIsDay.value = isDay
         }
     })
 

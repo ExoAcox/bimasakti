@@ -21,6 +21,7 @@ export default [
 
     ...prefix("liveview", [
         route("mars", "./pages/liveview/mars.tsx"),
+        route("moon", "./pages/liveview/moon.tsx"),
     ]),
 
     ...prefix("api", [

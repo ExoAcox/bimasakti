@@ -4,11 +4,19 @@ import { AdditiveBlending, CanvasTexture, type Group } from "three"
 
 interface Props {
     position: [number, number, number]
-    mode?: "day" | "sunset"
+    mode?: "day" | "evening" | "sunset"
 }
 
 const Sun = ({ position, mode = "day" }: Props) => {
     const sunRef = useRef<Group>(null)
+
+    const intensity = useMemo(() => {
+        if (mode === "day") return 3
+        if (mode === "evening") return 2
+        if (mode === "sunset") return 0.2
+        return 0
+    }, [mode])
+
     const isSunset = mode === "sunset"
 
     // Generate soft glowing halo texture mimicking Martian forward scattering
@@ -57,7 +65,7 @@ const Sun = ({ position, mode = "day" }: Props) => {
             {/* Primary sunlight originating directly from the Sun */}
             <directionalLight
                 position={[0, 0, 0]}
-                intensity={isSunset ? 0.2 : 2}
+                intensity={intensity}
                 color={isSunset ? "#e0efff" : "#fff1dc"}
                 castShadow
                 shadow-mapSize={[2048, 2048]}

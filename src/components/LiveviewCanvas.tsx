@@ -1,14 +1,18 @@
 import { useGLTF } from "@react-three/drei"
-import { useState } from "react"
+import { Canvas, type CameraProps } from "@react-three/fiber"
+import { Suspense, useState } from "react"
+import Loader from "./Loader"
 
 interface Props {
     children: React.ReactNode
+    userInterface: React.ReactNode
+    camera: CameraProps
 }
 
 
 useGLTF.setDecoderPath("/draco/")
 
-const LiveviewCanvas = ({ children }: Props) => {
+const LiveviewCanvas = ({ children, userInterface, camera }: Props) => {
     const [isGrabbing, setIsGrabbing] = useState(false)
 
     return <div
@@ -17,7 +21,16 @@ const LiveviewCanvas = ({ children }: Props) => {
         onPointerDown={() => setIsGrabbing(true)}
         onPointerUp={() => setIsGrabbing(false)}
     >
-        {children}
+        <Canvas
+            shadows
+            camera={camera}
+        >
+            <Suspense fallback={<Loader />}>
+                {children}
+            </Suspense>
+        </Canvas>
+
+        {userInterface}
     </div>
 }
 

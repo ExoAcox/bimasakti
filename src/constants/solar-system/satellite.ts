@@ -20,6 +20,7 @@ export const satellites: Satellite[] = [
         texture_hd: "moon_hd.ktx2",
         topography_texture: "moon_topography.ktx2",
         icon: "moon.png",
+        // liveview: true,
         get artificial_satellites() {
             return spacecraft.filter((craft) => craft.parent === this.id)
         },
