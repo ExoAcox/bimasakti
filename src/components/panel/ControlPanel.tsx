@@ -18,6 +18,7 @@ import { SiUnitednations, SiGoogleearth } from "react-icons/si";
 import { useTranslation } from "react-i18next";
 import { useKeyboardControls, useProgress } from "@react-three/drei";
 import { Controls } from "@function";
+import { useNavigate } from "react-router";
 
 // Reusable style classes for consistent UI design
 const SECTION_CLASS = "flex items-center gap-1.5 flex-wrap justify-center";
@@ -52,7 +53,7 @@ const TOOLTIP_CLASS =
 
 const SPEED_ARRAY = [0.1, 0.5, 1, 2, 3, 5]
 
-const MODE_LIST = [
+const MODE_LIST: { id: Mode, label: string, img: string }[] = [
     { id: Mode.Object, label: "Object View", img: "mode_object.webp" },
     { id: Mode.ThirdPerson, label: "Third Person", img: "mode_third_person.webp" },
     { id: Mode.FirstPerson, label: "First Person", img: "mode_first_person.webp" }
@@ -65,6 +66,7 @@ const ControlPanel = () => {
     const [timelinesVisible, setTimelineVisible] = useState(true)
     const [modeVisible, setModeVisible] = useState(false)
     const isLoading = useProgress(state => state.active)
+    const navigate = useNavigate()
 
     const isMobile = useMobile()
     const [sub] = useKeyboardControls<Controls>()
@@ -75,53 +77,16 @@ const ControlPanel = () => {
     const showTimelines = data?.variants?.length && timelinesVisible
     const isStillObject = ["spacecraft-orbiter", "spacecraft-flyby", "belt"].includes(data.type)
 
-    // const tiltDialRef = useRef<HTMLDivElement>(null)
-    // const isDraggingRef = useRef(false)
+    const modeLists = useMemo(() => {
+        const liveView = {
+            id: Mode.LiveView, label: "Live View", img: "mode_first_person.webp"
+        }
 
-
-    // const updateTiltFromEvent = useCallback((e: React.PointerEvent | PointerEvent) => {
-    //     if (!tiltDialRef.current) return
-    //     const rect = tiltDialRef.current.getBoundingClientRect()
-    //     const centerX = rect.left + rect.width / 2
-    //     const centerY = rect.top + rect.height / 2
-    //     const dx = e.clientX - centerX
-    //     const dy = e.clientY - centerY
-    //     let deg = Math.round(Math.atan2(dy, dx) * (180 / Math.PI) + 90)
-    //     if (deg > 180) deg -= 360
-    //     setControl({ axisTilt: deg })
-    // }, [setControl])
-
-    // const handlePointerDown = (e: React.PointerEvent<HTMLDivElement>) => {
-    //     isDraggingRef.current = true
-    //     e.currentTarget.setPointerCapture(e.pointerId)
-    //     updateTiltFromEvent(e)
-    // }
-
-    // const handlePointerMove = (e: React.PointerEvent<HTMLDivElement>) => {
-    //     if (isDraggingRef.current) {
-    //         updateTiltFromEvent(e)
-    //     }
-    // }
-
-    // const handlePointerUp = (e: React.PointerEvent<HTMLDivElement>) => {
-    //     if (isDraggingRef.current) {
-    //         isDraggingRef.current = false
-    //         try {
-    //             e.currentTarget.releasePointerCapture(e.pointerId)
-    //         } catch {
-    //             // ignore if already released
-    //         }
-    //     }
-    // }
-
-    // const handleWheel = (e: React.WheelEvent<HTMLDivElement>) => {
-    //     const step = e.shiftKey ? 5 : 1
-    //     let nextTilt = axisTilt + (e.deltaY < 0 ? step : -step)
-    //     if (nextTilt > 180) nextTilt -= 360
-    //     if (nextTilt < -180) nextTilt += 360
-    //     setControl({ axisTilt: nextTilt })
-    // }
-
+        return [
+            ...MODE_LIST,
+            ...(data.liveview ? [liveView] : [])
+        ]
+    }, [data.liveview])
 
     useEffect(() => {
         setLastRotateSpeed(1)
@@ -211,6 +176,10 @@ const ControlPanel = () => {
     }
 
     const handleMode = (mode: Mode) => {
+        if (mode === Mode.LiveView) {
+            return navigate(`/liveview/${data.id}`)
+        }
+
         setControl({ mode })
         setModeVisible(false)
     }
@@ -435,49 +404,7 @@ const ControlPanel = () => {
                 </When>
             </div>
 
-            {/* <div className="h-6 w-px bg-divider my-auto" /> */}
 
-            {/* <div>
-                <button
-                    onClick={() => setActivePanel(activePanel === "axis_tilt" ? "" : "axis_tilt")}
-                    className={clsx(PLAY_BTN_CLASS)}
-                >
-                    <div className="relative">
-                        <GoCircle />
-                        <div style={{ rotate: axisTilt + "deg" }} className="bg-base w-px h-5 absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2" />
-                    </div>
-                    <span className="text-sm text-white">{axisTilt}°</span>
-                    <span className={TOOLTIP_CLASS}>Axis Tilt</span>
-                </button>
-
-                <When condition={activePanel === "axis_tilt"}>
-                    <div className="absolute -top-4 left-1/2 -translate-x-1/2 -translate-y-full rounded-xl bg-slate-900/90 backdrop-blur-xl p-2 border border-white/15 flex items-center gap-2">
-                        <div
-                            ref={tiltDialRef}
-                            onPointerDown={handlePointerDown}
-                            onPointerMove={handlePointerMove}
-                            onPointerUp={handlePointerUp}
-                            onPointerCancel={handlePointerUp}
-                            onWheel={handleWheel}
-                            className="py-14 px-18 relative select-none cursor-grab active:cursor-grabbing touch-none"
-                        >
-                            <div className="relative pointer-events-none" style={{
-                                rotate: axisTilt + "deg"
-                            }}>
-                                <div className="size-48 rounded-full border-white/90 border-2"></div>
-                                <div className="bg-white/90 absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 h-56 rounded w-1"></div>
-                            </div>
-
-                            <label className="absolute top-1 left-1/2 -translate-x-1/2 pl-1.5 pointer-events-none text-xs text-slate-300">0°</label>
-                            <label className="absolute right-1 top-1/2 -translate-y-1/2 pointer-events-none text-xs text-slate-300">90°</label>
-                            <label className="absolute bottom-1 left-1/2 -translate-x-1/2 pl-1.5 pointer-events-none text-xs text-slate-300">180°</label>
-                            <label className="absolute left-1 top-1/2 -translate-y-1/2 pointer-events-none text-xs text-slate-300">-90°</label>
-                        </div>
-                    </div>
-                </When>
-            </div> */}
-
-            {/* Rotation Controls Section */}
             <When condition={!isStillObject}>
                 <div className={clsx(isMobile && "w-full justify-center", "flex items-center gap-2")}>
                     <When condition={!isMobile}>
@@ -551,7 +478,7 @@ const ControlPanel = () => {
                     </div>
                     <div className="flex gap-1">
 
-                        {MODE_LIST.map((_mode) => {
+                        {modeLists.map((_mode) => {
                             const isSelected = mode === _mode.id
 
                             return (

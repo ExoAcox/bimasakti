@@ -7,7 +7,7 @@ import { track } from '@vercel/analytics';
 
 import Scene from "@components/Scene"
 import { useSettingStore, useControlStore } from "@state"
-import { Header, DetailPanel, NavigationPanel, Sidebar, ControlPanel, SettingPanel, GalaxySidebar, BottomSheet } from "@components/panel"
+import { Header, DetailPanel, NavigationPanel, Sidebar, ControlPanel, GalaxySidebar, BottomSheet } from "@components/panel"
 import { SkyBox } from "@components/object"
 import { Bloom, EffectComposer } from '@react-three/postprocessing'
 import BlackholeWrapEffect from "@components/effect/BlackholeWrapEffect"
@@ -24,19 +24,17 @@ import type { OrbitControls as OrbitControlsType } from "three-stdlib";
 import { Mode } from "@types";
 
 const UserInterface = ({ id }: { id: string }) => {
-    const { active, progress } = useProgress()
     const isMobile = useMobile()
-    const [isLoaded, setLoaded] = useState(false)
     const { focus } = useControlStore()
 
-    useEffect(() => {
-        if (active) {
-            setLoaded(false)
-        } else if (progress === 100) {
-            const timer = setTimeout(() => setLoaded(true), 200)
-            return () => clearTimeout(timer)
-        }
-    }, [active, progress])
+    // useEffect(() => {
+    //     if (active) {
+    //         setLoaded(false)
+    //     } else if (progress === 100) {
+    //         const timer = setTimeout(() => setLoaded(true), 200)
+    //         return () => clearTimeout(timer)
+    //     }
+    // }, [active, progress])
 
     // if (!isLoaded) return null
     if (id === "milky_way") {
@@ -94,8 +92,6 @@ const CanvasLayout = () => {
     const { setSetting } = useSettingStore()
     const { mode, focus, setControl } = useControlStore()
 
-    const skyboxTexture = data.id === "sagittarius_a" ? "/textures/nebula.webp" : "/textures/milky_way.webp"
-
     useEffect(() => {
         setControl({ focus: "" })
     }, [setControl])
@@ -128,7 +124,7 @@ const CanvasLayout = () => {
                     <color attach="background" args={['black']} />
 
                     <When condition={data.id !== "milky_way"}>
-                        <SkyBox path={skyboxTexture} />
+                        <SkyBox />
                     </When>
 
                     {/* <Physics gravity={[0, 0, 0]} debug> */}

@@ -8,7 +8,6 @@ import {
 
 export default [
     index("./pages/home.tsx"),
-    route("mars", "./pages/mars.tsx"),
     layout("./components/Canvas.tsx", [
         route("milky_way", "./pages/milky_way.tsx"),
         route("solar_system", "./pages/solar_system.tsx"),
@@ -18,6 +17,10 @@ export default [
         route("toi-700", "./pages/toi-700.tsx"),
         route("copernicus", "./pages/copernicus.tsx"),
         route("sagittarius_a", "./pages/sagittarius_a.tsx"),
+    ]),
+
+    ...prefix("liveview", [
+        route("mars", "./pages/liveview/mars.tsx"),
     ]),
 
     ...prefix("api", [

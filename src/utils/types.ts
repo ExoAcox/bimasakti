@@ -31,6 +31,7 @@ export interface Object {
     longest_distance?: number
     landmarks?: Landmark[]
     variant_id?: string
+    liveview?: boolean
 }
 
 export interface Blackhole extends Object {
@@ -182,7 +183,8 @@ export interface Universe {
 export const Mode = {
     Object: "object-view",
     ThirdPerson: "third-person",
-    FirstPerson: "first-person"
+    FirstPerson: "first-person",
+    LiveView: "live-view"
 } as const
 
 export type Mode = (typeof Mode)[keyof typeof Mode];

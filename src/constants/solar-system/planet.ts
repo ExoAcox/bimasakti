@@ -104,6 +104,7 @@ export const planets: Planet[] = [
         topography_texture: "mars_topography.ktx2",
         atmosphere: 0.1,
         icon: "mars.png",
+        liveview: true,
         get variants() {
             return variants[this.id] as Variant[]
         },
