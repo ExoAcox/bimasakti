@@ -8,7 +8,7 @@ interface Props {
     tilt?: number
 }
 
-const Pulsar = ({ radius, color, tilt = 0.5 }: Props) => {
+const Pulsar = ({ radius, color, tilt = 5 }: Props) => {
 
     const universe = useCelestial().getUniverse()
     const lightHeight = universe.maxDistance * 2

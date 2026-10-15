@@ -1,258 +1,490 @@
 /* eslint-disable react-hooks/set-state-in-effect */
 import clsx from "clsx";
-import { useControlStore } from "@state"
-import { useCelestial, lengthFormat, timeFormat, useVariant, useMobile } from "@function"
-import { type Belt, type Planet, type SpaceCraft } from "@types"
+import { useControlStore } from "@state";
+import { useCelestial, lengthFormat, timeFormat, useVariant, useMobile } from "@function";
+import { type Belt, type CelestialObject, type Planet, type SpaceCraft, type Star } from "@types";
 
 import { useTranslation } from "react-i18next";
 import { When } from "react-if";
 import { useEffect, useState } from "react";
-import { IoChevronDown, IoChevronUp } from "react-icons/io5";
-import { TbLayoutSidebarRightCollapse, TbLayoutSidebarRightExpand } from "react-icons/tb";
+import { IoChevronDown, IoPlanetOutline } from "react-icons/io5";
+import {
+    TbLayoutSidebarRightCollapse,
+    TbLayoutSidebarRightExpand,
+    TbRulerMeasure,
+    TbRotateClockwise,
+    TbRotate360,
+    TbArrowsHorizontal,
+    TbSatellite,
+    TbMapPin,
+    TbLayersIntersect,
+    TbArrowUpRight,
+    TbSparkles
+} from "react-icons/tb";
 import { BiArrowBack } from "react-icons/bi";
 
 const PanelDetail = () => {
-    const [isPanelOpen, setPanelOpen] = useState(true)
-    const [activeSection, setActiveSection] = useState("")
+    const [isPanelOpen, setPanelOpen] = useState(true);
+    const [activeSection, setActiveSection] = useState("");
 
-    const { focus, focusLandmark, variant, setControl } = useControlStore()
+    const { focus, focusLandmark, variant, setControl } = useControlStore();
 
-    const isMobile = useMobile()
-    const celestial = useCelestial()
-    const rawData = celestial.getObjectById(focus) as Planet
-    const data = useVariant(rawData)
+    const isMobile = useMobile();
+    const celestial = useCelestial();
+    const rawData = celestial.getObjectById(focus) as Planet;
+    const data = useVariant(rawData);
 
     const { t } = useTranslation();
 
     useEffect(() => {
-        setActiveSection("")
-    }, [focus])
+        setActiveSection("");
+    }, [focus]);
 
-    if (!data) return null
+    if (!data) return null;
 
-    const parentPlanet = (data.parent ? celestial.getObjectById(data.parent) : {}) as Planet
+    const parentPlanet = (data.parent ? celestial.getObjectById(data.parent) : {}) as Planet;
 
     const handleClick = () => {
-        setPanelOpen(!isPanelOpen)
-    }
+        setPanelOpen(!isPanelOpen);
+    };
 
     const handleClickSection = (value: string) => {
-        if (activeSection === value) {
-            setActiveSection("")
-        } else {
-            setActiveSection(value)
-        }
-    }
+        setActiveSection(activeSection === value ? "" : value);
+    };
 
-    const objectName = variant ? t(`object.${data?.id}.variants.${variant}.name`, t(`object.${data?.id}.name`)) : t(`object.${data?.id}.name`)
-    const objectDescription = variant ? t(`object.${data?.id}.variants.${variant}.description`, t(`object.${data?.id}.description`)) : t(`object.${data?.id}.description`)
+    const objectName = variant ? t(`object.${data?.id}.variants.${variant}.name`, t(`object.${data?.id}.name`)) : t(`object.${data?.id}.name`);
+    const objectDescription = variant ? t(`object.${data?.id}.variants.${variant}.description`, t(`object.${data?.id}.description`)) : t(`object.${data?.id}.description`);
+
+    // Type badge information
+    const getBadgeInfo = () => {
+        const celestialType = (data as CelestialObject | Belt).type;
+
+        if (celestialType === "planet") {
+            const planetClass = (data as Planet).class;
+            const classKey = planetClass ? planetClass.toLowerCase().replace(/[\s-]+/g, "_") : "";
+            return {
+                label: classKey ? t(`class.${classKey}`, planetClass) : t("ui.planets", "Planet"),
+                color: "text-blue-400 bg-blue-400/10 border-blue-400/20"
+            };
+        }
+        if (celestialType === "star") {
+            const starClass = (data as Star).class;
+            const classKey = starClass ? starClass.toLowerCase().replace(/[\s-]+/g, "_") : "";
+            return {
+                label: classKey ? t(`class.${classKey}`, starClass) : t("ui.stars", "Star"),
+                color: "text-yellow-400 bg-yellow-400/10 border-yellow-400/20"
+            };
+        }
+        if (celestialType === "satellite") {
+            return { label: t("ui.satellites", "Satellite"), color: "text-cyan-400 bg-cyan-400/10 border-cyan-400/20" };
+        }
+        if (celestialType === "spacecraft-orbiter" || celestialType === "spacecraft-flyby") {
+            return { label: t("ui.spacecraft", "Spacecraft"), color: "text-emerald-400 bg-emerald-400/10 border-emerald-400/20" };
+        }
+        if (celestialType === "belt") {
+            return { label: t("ui.belts", "Asteroid Belt"), color: "text-amber-400 bg-amber-400/10 border-amber-400/20" };
+        }
+        if (celestialType === "blackhole") {
+            return { label: t("ui.blackhole", "Black Hole"), color: "text-red-400 bg-red-400/10 border-red-400/20" };
+        }
+        if (celestialType === "asteroid") {
+            return { label: t("ui.asteroid", "Asteroid"), color: "text-red-400 bg-red-400/10 border-red-400/20" };
+        }
+        if (celestialType === "comet") {
+            return { label: t("ui.comet", "Comet"), color: "text-red-400 bg-red-400/10 border-red-400/20" };
+        }
+
+        return { label: "", color: "" };
+    };
+
+    const badge = getBadgeInfo();
 
     return (
-        <div className={clsx(!isMobile && "fixed top-4 right-4 z-50 ", "transition-transform duration-300", !isPanelOpen && "translate-x-[calc(100%)]")}>
+        <div className={clsx(!isMobile && "fixed top-4 right-4 z-50", "transition-transform duration-300", !isPanelOpen && "translate-x-[calc(100%+1.5rem)]")}>
             <When condition={!isMobile}>
                 <button
-                    className="absolute top-3 -left-10 bg-background/90 p-2 rounded-l-xl border border-r-0 border-white/10 shadow-lg cursor-pointer hover:bg-neutral-800 transition-colors opacity-90"
+                    className="absolute top-4 -left-10 bg-slate-950/85 backdrop-blur-xl p-2.5 rounded-l-xl border border-r-0 border-white/15 shadow-[0_8px_25px_rgba(0,0,0,0.6)] cursor-pointer hover:bg-slate-900 hover:border-cyan-400/50 hover:text-cyan-300 transition-all text-slate-300"
                     onClick={handleClick}
+                    title={isPanelOpen ? t("ui.close_panel", "Tutup panel") : t("ui.open_panel", "Buka panel")}
                 >
-                    {isPanelOpen ? <TbLayoutSidebarRightCollapse className="size-6" /> : <TbLayoutSidebarRightExpand className="size-6" />}
+                    {isPanelOpen ? <TbLayoutSidebarRightCollapse className="size-5" /> : <TbLayoutSidebarRightExpand className="size-5" />}
                 </button>
             </When>
 
-            <div className={clsx(isMobile ? "w-full" : "max-w-sm bg-background backdrop-blur-sm max-h-[calc(100vh-2rem)] h-fit overflow-y-auto border border-white/10", "min-w-sm rounded-xl pb-5 pt-4 px-6 text-sm ")}>
+            <div
+                className={clsx(
+                    isMobile
+                        ? "w-full pb-8 pt-3 px-4 text-sm"
+                        : "w-84 md:w-96 max-h-[calc(100vh-2rem)] overflow-y-auto pb-6 pt-5 px-5 text-sm rounded-2xl bg-slate-950/85 backdrop-blur-2xl border border-white/10 shadow-[0_20px_50px_rgba(0,0,0,0.7)] relative scrollbar-thin scrollbar-thumb-white/10 scrollbar-track-transparent"
+                )}
+            >
+                {/* Top Glowing Cosmic Line */}
+                <div className="absolute top-0 inset-x-8 h-[1.5px] bg-linear-to-r from-transparent via-cyan-400/60 to-transparent pointer-events-none" />
+
+                {/* Normal Object Detail View */}
                 <When condition={!focusLandmark}>
-                    <div className="flex items-center gap-2 justify-between text-white">
-                        <h1 className="text-xl font-bold">{objectName}</h1>
-                        {data.icon ? <img src={`/icons/${data.icon}`} className="size-10" /> : ""}
-                    </div>
-                    <p className="mt-4 leading-relaxed border-t border-divider pt-4">
-                        {objectDescription}
-                    </p>
-                    <div className="mt-4 text-sm  leading-relaxed border-t border-divider pt-4">
-                        <When condition={data.radius}>
-                            <div className="flex justify-between items-center">
-                                <span>{t("ui.diameter")}</span>
-                                <span>{lengthFormat(data.radius * 2)}</span>
+                    {/* Header */}
+                    <div className="flex items-start justify-between gap-3">
+                        <div className="flex-1 min-w-0">
+                            <div className="flex items-center gap-2 mb-1.5">
+                                <span className={clsx("inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full text-[10px] font-mono uppercase tracking-wider border font-medium", badge.color)}>
+                                    <span className="size-1.5 rounded-full bg-current animate-pulse" />
+                                    {badge.label}
+                                </span>
                             </div>
-                            <div className="flex justify-between items-center">
-                                <span>{t("ui.rotation_period")}</span>
-                                <span>{timeFormat(data.rotate_duration)}</span>
-                            </div>
-                        </When>
+                            <h1 className="text-2xl font-bold font-space-grotesk tracking-tight text-white truncate drop-shadow-sm">
+                                {objectName}
+                            </h1>
+                            {/* {data.parent && (
+                                <p className="text-xs text-slate-400 mt-0.5 truncate">
+                                    {t("ui.parent_object")}: <span className="text-slate-200">{t(`object.${data.parent}.name`)}</span>
+                                </p>
+                            )} */}
+                        </div>
 
+                        {data.icon && (
+                            <div className="relative shrink-0 flex items-center justify-center size-14 rounded-2xl bg-linear-to-b from-white/10 to-white/3 border border-white/15 shadow-[inset_0_1px_1px_rgba(255,255,255,0.2),0_8px_20px_rgba(0,0,0,0.4)] p-2">
+                                <img src={`/icons/${data.icon}`} alt={objectName} className="size-10 object-contain drop-shadow" />
+                            </div>
+                        )}
+                    </div>
+
+                    {/* Description Card */}
+                    {objectDescription && (
+                        <div className="mt-3.5 p-3 rounded-xl bg-white/3 border border-white/5 text-slate-300 text-xs leading-relaxed">
+                            {objectDescription}
+                        </div>
+                    )}
+
+                    {/* Telemetry Matrix Grid */}
+                    <div className="mt-4">
+                        <div className="flex items-center gap-2 mb-2 px-0.5">
+                            <span className="text-[11px] font-mono uppercase tracking-widest text-slate-400 font-semibold">
+                                {t("ui.telemetry_and_specs", "Telemetri & Spesifikasi")}
+                            </span>
+                        </div>
+
+                        {/* Planet / Star / Satellite Metrics */}
+                        <div className="grid grid-cols-2 gap-2">
+                            <When condition={data.radius}>
+                                <div className="p-2.5 rounded-xl bg-white/3 hover:bg-white/6 border border-white/5 transition-colors">
+                                    <div className="flex items-center gap-1.5 text-cyan-400 mb-1">
+                                        <TbRulerMeasure className="size-3.5" />
+                                        <span className="text-[10px] uppercase font-semibold tracking-wider text-slate-400">{t("ui.diameter")}</span>
+                                    </div>
+                                    <div className="font-space-grotesk text-xs sm:text-sm font-bold text-white tracking-tight">
+                                        {lengthFormat(data.radius * 2)}
+                                    </div>
+                                </div>
+
+                                <div className="p-2.5 rounded-xl bg-white/3 hover:bg-white/6 border border-white/5 transition-colors">
+                                    <div className="flex items-center gap-1.5 text-amber-400 mb-1">
+                                        <TbRotateClockwise className="size-3.5" />
+                                        <span className="text-[10px] uppercase font-semibold tracking-wider text-slate-400">{t("ui.rotation_period")}</span>
+                                    </div>
+                                    <div className="font-space-grotesk text-xs sm:text-sm font-bold text-white tracking-tight">
+                                        {timeFormat(data.rotate_duration)}
+                                    </div>
+                                </div>
+                            </When>
+
+                            <When condition={data.parent}>
+                                <div className="p-2.5 rounded-xl bg-white/3 hover:bg-white/6 border border-white/5 transition-colors">
+                                    <div className="flex items-center gap-1.5 text-blue-400 mb-1">
+                                        <TbRotate360 className="size-3.5" />
+                                        <span className="text-[10px] uppercase font-semibold tracking-wider text-slate-400">{t("ui.orbital_period")}</span>
+                                    </div>
+                                    <div className="font-space-grotesk text-xs sm:text-sm font-bold text-white tracking-tight">
+                                        {timeFormat((data as Planet).orbit_duration)}
+                                    </div>
+                                </div>
+
+                                <div className="p-2.5 rounded-xl bg-white/3 hover:bg-white/6 border border-white/5 transition-colors">
+                                    <div className="flex items-center gap-1.5 text-purple-400 mb-1">
+                                        <TbArrowsHorizontal className="size-3.5" />
+                                        <span className="text-[10px] uppercase font-semibold tracking-wider text-slate-400 truncate">
+                                            {t("ui.distance_from")} {data.parent ? t(`object.${data.parent}.name`) : t("object.sun.name")}
+                                        </span>
+                                    </div>
+                                    <div className="font-space-grotesk text-xs sm:text-sm font-bold text-white tracking-tight">
+                                        {lengthFormat((data as Planet).distance)}
+                                    </div>
+                                </div>
+                            </When>
+                        </div>
+
+                        {/* Asteroid Belt Metrics */}
                         <When condition={(data as unknown as Belt).type === "belt"}>
-                            <div className="flex justify-between items-center">
-                                <span>{t("ui.object_count")}</span>
-                                <span>± {(data as unknown as Belt).count?.toLocaleString()}</span>
-                            </div>
-                            <div className="flex justify-between items-center">
-                                <span>{t("ui.inner_radius")}</span>
-                                <span>{lengthFormat((data as unknown as Belt).inner_radius)}</span>
-                            </div>
-                            <div className="flex justify-between items-center">
-                                <span>{t("ui.outer_radius")}</span>
-                                <span>{lengthFormat((data as unknown as Belt).outer_radius)}</span>
-                            </div>
-                        </When>
-
-
-                        <When condition={data.parent}>
-                            <div className="flex justify-between items-center">
-                                <span>{t("ui.orbital_period")}</span>
-                                <span>{timeFormat((data as Planet).orbit_duration)}</span>
-                            </div>
-                            <div className="flex justify-between items-center">
-                                <span>{t("ui.distance_from")} {data.parent ? t(`object.${data.parent}.name`) : t("object.sun.name")}</span>
-                                <span>{lengthFormat((data as Planet).distance)}</span>
+                            <div className="grid grid-cols-1 gap-2 mt-2">
+                                <div className="flex items-center justify-between p-2.5 rounded-xl bg-white/3 border border-white/5">
+                                    <div className="flex items-center gap-2 text-amber-400">
+                                        <TbSparkles className="size-4" />
+                                        <span className="text-xs text-slate-400">{t("ui.object_count")}</span>
+                                    </div>
+                                    <span className="font-space-grotesk font-bold text-white">± {(data as unknown as Belt).count?.toLocaleString()}</span>
+                                </div>
+                                <div className="flex items-center justify-between p-2.5 rounded-xl bg-white/3 border border-white/5">
+                                    <div className="flex items-center gap-2 text-cyan-400">
+                                        <TbLayersIntersect className="size-4" />
+                                        <span className="text-xs text-slate-400">{t("ui.inner_radius")}</span>
+                                    </div>
+                                    <span className="font-space-grotesk font-bold text-white">{lengthFormat((data as unknown as Belt).inner_radius)}</span>
+                                </div>
+                                <div className="flex items-center justify-between p-2.5 rounded-xl bg-white/3 border border-white/5">
+                                    <div className="flex items-center gap-2 text-purple-400">
+                                        <TbLayersIntersect className="size-4" />
+                                        <span className="text-xs text-slate-400">{t("ui.outer_radius")}</span>
+                                    </div>
+                                    <span className="font-space-grotesk font-bold text-white">{lengthFormat((data as unknown as Belt).outer_radius)}</span>
+                                </div>
                             </div>
                         </When>
                     </div>
 
-                    {/* Parent Section */}
+                    {/* Parent Planet / Object Card */}
                     <When condition={data.type === "satellite" || ((data as unknown as SpaceCraft).type === "spacecraft-orbiter")}>
-                        <div className="mt-4 mb-2 leading-relaxed border-t border-divider pt-4">
-                            <label className="font-bold text-blue-300">{t(data.type === "satellite" ? "ui.parent_planet" : "ui.parent_object")}</label>
-                            <button className="flex gap-2 items-center my-2" onClick={() => setControl({ focus: parentPlanet.id })}>
-                                <img src={`/icons/${parentPlanet.icon}`} className="size-6" alt={parentPlanet.icon} />
-                                <span className="text-lg font-bold">{t(`object.${parentPlanet.id}.name`)}</span>
-                            </button>
+                        <div className="mt-4 pt-4 border-t border-white/10">
+                            <span className="text-[11px] font-mono uppercase tracking-widest text-slate-400 font-semibold block mb-2 px-0.5">
+                                {t(data.type === "satellite" ? "ui.parent_planet" : "ui.parent_object")}
+                            </span>
 
-                            <div className="flex justify-between items-center">
-                                <span>{t("ui.diameter")}</span>
-                                <span>{lengthFormat(parentPlanet.radius * 2)}</span>
-                            </div>
-                            <div className="flex justify-between items-center">
-                                <span>{t("ui.rotation_period")}</span>
-                                <span>{timeFormat(parentPlanet.rotate_duration)}</span>
-                            </div>
-                            <div className="flex justify-between items-center">
-                                <span>{t("ui.orbital_period")}</span>
-                                <span>{timeFormat(parentPlanet.orbit_duration)}</span>
-                            </div>
-                            <div className="flex justify-between items-center">
-                                <span>{t("ui.distance_from")} {t("object.sun.name")}</span>
-                                <span>{lengthFormat(parentPlanet.distance)}</span>
-                            </div>
-                        </div>
-                    </When>
-
-                    {/* Satellites Section */}
-                    <When condition={data.type === "planet" && data.satellites && data.satellites.length}>
-                        <div className="mt-4 leading-relaxed border-t border-divider pt-4 overflow-auto">
-                            <button className="flex items-center gap-2 font-bold text-blue-300" onClick={() => handleClickSection("satellite")}>
-                                <span>{t("ui.natural_satellites")} ({(data as Planet).satellites?.length})</span>
-                                {activeSection === "satellite" ? <IoChevronUp /> : <IoChevronDown />}
-                            </button>
-                            <div className={clsx("flex flex-col gap-4 mt-3", activeSection !== "satellite" && "hidden")}>
-                                {(data as Planet).satellites?.map(satellite => {
-                                    return <div>
-                                        <button className="flex gap-2 items-center mb-2" onClick={() => setControl({ focus: satellite.id })}>
-                                            <img src={`/icons/${satellite.icon}`} className="size-6" alt={satellite.icon} />
-                                            <span className="text-lg font-bold">{t(`object.${satellite.id}.name`)}</span>
-                                        </button>
-
-                                        <div className="flex justify-between items-center">
-                                            <span>{t("ui.diameter")}</span>
-                                            <span>{lengthFormat(satellite.radius * 2)}</span>
+                            <button
+                                className="group w-full flex items-center justify-between p-3 rounded-xl bg-gradient-to-r from-blue-500/10 to-transparent hover:from-blue-500/20 border border-blue-400/20 hover:border-blue-400/40 transition-all text-left"
+                                onClick={() => setControl({ focus: parentPlanet.id })}
+                            >
+                                <div className="flex items-center gap-3 min-w-0">
+                                    {parentPlanet.icon && (
+                                        <div className="size-10 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center p-1.5 shrink-0 group-hover:scale-105 transition-transform">
+                                            <img src={`/icons/${parentPlanet.icon}`} className="size-full object-contain" alt={parentPlanet.icon} />
                                         </div>
-                                        <div className="flex justify-between items-center">
-                                            <span>{t("ui.rotation_period")}</span>
-                                            <span>{timeFormat(satellite.rotate_duration)}</span>
-                                        </div>
-                                        <div className="flex justify-between items-center">
-                                            <span>{t("ui.orbital_period")}</span>
-                                            <span>{timeFormat(satellite.orbit_duration)}</span>
-                                        </div>
-                                        <div className="flex justify-between items-center">
-                                            <span>{t("ui.distance_from")} {t(`object.${data.id}.name`)}</span>
-                                            <span>{lengthFormat(satellite.distance)}</span>
-                                        </div>
+                                    )}
+                                    <div className="min-w-0">
+                                        <span className="text-sm font-bold font-space-grotesk text-white block truncate group-hover:text-cyan-300 transition-colors">
+                                            {t(`object.${parentPlanet.id}.name`)}
+                                        </span>
+                                        <span className="text-[11px] text-slate-400 font-mono">
+                                            {lengthFormat(parentPlanet.radius * 2)} · {timeFormat(parentPlanet.rotate_duration)}
+                                        </span>
                                     </div>
-                                })}
-                            </div>
-                        </div>
-                    </When>
-
-                    {/* Artificial Satellites Section */}
-                    <When condition={data.artificial_satellites?.length}>
-                        <div className="mt-4 leading-relaxed border-t border-divider pt-4 overflow-auto">
-                            <button className="flex items-center gap-2 font-bold text-blue-300" onClick={() => handleClickSection("artificial_satellite")}>
-                                <span>{t("ui.artificial_satellites")} ({data.artificial_satellites?.filter(craft => craft.orbit_duration).length})</span>
-                                {activeSection === "artificial_satellite" ? <IoChevronUp /> : <IoChevronDown />}
+                                </div>
+                                <div className="flex items-center gap-1 text-xs font-medium text-cyan-400 opacity-80 group-hover:opacity-100 group-hover:translate-x-0.5 transition-all shrink-0">
+                                    {/* <span>Fokus</span> */}
+                                    <TbArrowUpRight className="size-5" />
+                                </div>
                             </button>
-                            <div className={clsx("flex flex-col gap-4 mt-3", activeSection !== "artificial_satellite" && "hidden")}>
-                                {data.artificial_satellites?.filter(craft => craft.orbit_duration)?.map(satellite => {
-                                    return <div>
-                                        <button className="flex gap-2 items-center mb-2" onClick={() => setControl({ focus: satellite.id })}>
-                                            <img src={`/icons/${satellite.icon}`} className="size-6" alt={satellite.icon} />
-                                            <span className="text-lg font-bold">{t(`object.${satellite.id}.name`)}</span>
-                                        </button>
+                        </div>
+                    </When>
 
-                                        <div className="flex justify-between items-center">
-                                            <span>{t("ui.diameter")}</span>
-                                            <span>{lengthFormat(satellite.radius * 2)}</span>
+                    {/* Natural Satellites Section */}
+                    <When condition={data.type === "planet" && !!(data.satellites && data.satellites.length)}>
+                        <div className="mt-4 pt-4 border-t border-white/10">
+                            <button
+                                className="w-full flex items-center justify-between p-3 rounded-xl bg-white/3 hover:bg-white/[0.07] border border-white/5 transition-all text-left"
+                                onClick={() => handleClickSection("satellite")}
+                            >
+                                <div className="flex items-center gap-2 text-slate-200">
+                                    <IoPlanetOutline className="size-4 text-cyan-400" />
+                                    <span className="font-semibold text-xs">{t("ui.natural_satellites")}</span>
+                                    <span className="px-2 py-0.5 rounded-full text-[10px] font-mono bg-cyan-400/15 text-cyan-300 border border-cyan-400/25">
+                                        {(data as Planet).satellites?.length}
+                                    </span>
+                                </div>
+                                <IoChevronDown className={clsx("size-4 text-slate-400 transition-transform duration-200", activeSection === "satellite" && "rotate-180")} />
+                            </button>
+
+                            <div className={clsx("flex flex-col gap-2 mt-2", activeSection !== "satellite" && "hidden")}>
+                                {(data as Planet).satellites?.map(satellite => (
+                                    <button
+                                        key={satellite.id}
+                                        className="group w-full flex items-center justify-between p-2.5 rounded-xl bg-white/[0.02] hover:bg-cyan-500/10 border border-white/5 hover:border-cyan-400/30 transition-all text-left"
+                                        onClick={() => setControl({ focus: satellite.id })}
+                                    >
+                                        <div className="flex items-center gap-2.5 min-w-0">
+                                            {satellite.icon && (
+                                                <img src={`/icons/${satellite.icon}`} className="size-6 object-contain shrink-0 group-hover:scale-110 transition-transform" alt={satellite.icon} />
+                                            )}
+                                            <div className="min-w-0">
+                                                <span className="text-xs font-bold text-white block truncate group-hover:text-cyan-300 transition-colors">
+                                                    {t(`object.${satellite.id}.name`)}
+                                                </span>
+                                                <span className="text-[10px] text-slate-400 font-mono">
+                                                    {lengthFormat(satellite.radius * 2)} · {timeFormat(satellite.orbit_duration)}
+                                                </span>
+                                            </div>
                                         </div>
-                                        <div className="flex justify-between items-center">
-                                            <span>{t("ui.rotation_period")}</span>
-                                            <span>{timeFormat(satellite.rotate_duration)}</span>
-                                        </div>
-                                        <div className="flex justify-between items-center">
-                                            <span>{t("ui.orbital_period")}</span>
-                                            <span>{timeFormat(satellite.orbit_duration)}</span>
-                                        </div>
-                                        <div className="flex justify-between items-center">
-                                            <span>{t("ui.distance_from")} {t(`object.${data.id}.name`)}</span>
-                                            <span>{lengthFormat(satellite.distance)}</span>
-                                        </div>
-                                    </div>
-                                })}
+                                        <TbArrowUpRight className="size-4 text-slate-400 group-hover:text-cyan-400 group-hover:translate-x-0.5 transition-all shrink-0" />
+                                    </button>
+                                ))}
                             </div>
                         </div>
                     </When>
-                </When>
 
-                {/* Landmark Detail */}
-                <When condition={focusLandmark}>
-                    <div className="flex items-center gap-4 text-white">
-                        <button className="text-white" onClick={() => setControl({ focusLandmark: "" })}><BiArrowBack className="size-4" /></button>
-                        <h1 className="text-xl font-bold">{t(`landmark.${focusLandmark}.name`)}</h1>
-                    </div>
-                    <p className="mt-4 leading-relaxed border-t border-divider pt-4">
-                        {t(`landmark.${focusLandmark}.description`)}
-                    </p>
-                </When>
+                    {/* Artificial Satellites / Spacecraft Section */}
+                    <When condition={!!(data.artificial_satellites && data.artificial_satellites.filter(craft => craft.orbit_duration).length)}>
+                        <div className="mt-3">
+                            <button
+                                className="w-full flex items-center justify-between p-3 rounded-xl bg-white/3 hover:bg-white/[0.07] border border-white/5 transition-all text-left"
+                                onClick={() => handleClickSection("artificial_satellite")}
+                            >
+                                <div className="flex items-center gap-2 text-slate-200">
+                                    <TbSatellite className="size-4 text-emerald-400" />
+                                    <span className="font-semibold text-xs">{t("ui.artificial_satellites")}</span>
+                                    <span className="px-2 py-0.5 rounded-full text-[10px] font-mono bg-emerald-400/15 text-emerald-300 border border-emerald-400/25">
+                                        {data.artificial_satellites?.filter(craft => craft.orbit_duration).length}
+                                    </span>
+                                </div>
+                                <IoChevronDown className={clsx("size-4 text-slate-400 transition-transform duration-200", activeSection === "artificial_satellite" && "rotate-180")} />
+                            </button>
 
-                {/* Landmarks Section */}
-                <When condition={!!(data.landmarks && data.landmarks.length > 0)}>
-                    <div className="mt-4 leading-relaxed border-t border-divider pt-4">
-                        <button className="flex items-center gap-2 font-bold text-blue-300" onClick={() => handleClickSection("landmark")}>
-                            <span className="flex items-center gap-1.5">{t("ui.landmarks")} ({data.landmarks?.length})</span>
-                            {activeSection === "landmark" ? <IoChevronUp /> : <IoChevronDown />}
-                        </button>
-                        <div className={clsx("flex flex-col gap-2 mt-3 pr-1", activeSection !== "landmark" && "hidden")}>
-                            {data.landmarks?.map(landmark => {
-                                const isSelected = focusLandmark === landmark.id
-                                return (
-                                    <div key={landmark.id} className={clsx("p-2.5 rounded-lg border transition-all", isSelected ? "bg-amber-500/15 border-amber-400 text-white" : "bg-white/5 border-white/10 hover:border-amber-400/40")}>
+                            <div className={clsx("flex flex-col gap-2 mt-2", activeSection !== "artificial_satellite" && "hidden")}>
+                                {data.artificial_satellites?.filter(craft => craft.orbit_duration)?.map(satellite => (
+                                    <button
+                                        key={satellite.id}
+                                        className="group w-full flex items-center justify-between p-2.5 rounded-xl bg-white/[0.02] hover:bg-emerald-500/10 border border-white/5 hover:border-emerald-400/30 transition-all text-left"
+                                        onClick={() => setControl({ focus: satellite.id })}
+                                    >
+                                        <div className="flex items-center gap-2.5 min-w-0">
+                                            {satellite.icon && (
+                                                <img src={`/icons/${satellite.icon}`} className="size-6 object-contain shrink-0 group-hover:scale-110 transition-transform" alt={satellite.icon} />
+                                            )}
+                                            <div className="min-w-0">
+                                                <span className="text-xs font-bold text-white block truncate group-hover:text-emerald-300 transition-colors">
+                                                    {t(`object.${satellite.id}.name`)}
+                                                </span>
+                                                <span className="text-[10px] text-slate-400 font-mono">
+                                                    {timeFormat(satellite.orbit_duration)}
+                                                </span>
+                                            </div>
+                                        </div>
+                                        <TbArrowUpRight className="size-4 text-slate-400 group-hover:text-emerald-400 group-hover:translate-x-0.5 transition-all shrink-0" />
+                                    </button>
+                                ))}
+                            </div>
+                        </div>
+                    </When>
+
+                    {/* Landmarks Section */}
+                    <When condition={!!(data.landmarks && data.landmarks.length > 0)}>
+                        <div className="mt-3">
+                            <button
+                                className="w-full flex items-center justify-between p-3 rounded-xl bg-white/3 hover:bg-white/[0.07] border border-white/5 transition-all text-left"
+                                onClick={() => handleClickSection("landmark")}
+                            >
+                                <div className="flex items-center gap-2 text-slate-200">
+                                    <TbMapPin className="size-4 text-amber-400" />
+                                    <span className="font-semibold text-xs">{t("ui.landmarks")}</span>
+                                    <span className="px-2 py-0.5 rounded-full text-[10px] font-mono bg-amber-400/15 text-amber-300 border border-amber-400/25">
+                                        {data.landmarks?.length}
+                                    </span>
+                                </div>
+                                <IoChevronDown className={clsx("size-4 text-slate-400 transition-transform duration-200", activeSection === "landmark" && "rotate-180")} />
+                            </button>
+
+                            <div className={clsx("flex flex-col gap-1.5 mt-2", activeSection !== "landmark" && "hidden")}>
+                                {data.landmarks?.map(landmark => {
+                                    const isSelected = focusLandmark === landmark.id;
+                                    return (
                                         <button
-                                            className="w-full flex items-center justify-between text-left font-semibold  hover:text-amber-200 cursor-pointer"
+                                            key={landmark.id}
+                                            className={clsx(
+                                                "w-full flex items-center justify-between p-2.5 rounded-xl border text-left transition-all",
+                                                isSelected
+                                                    ? "bg-amber-500/20 border-amber-400/60 text-white shadow-[0_0_15px_rgba(245,158,11,0.2)]"
+                                                    : "bg-white/[0.02] border-white/5 hover:border-amber-400/30 hover:bg-white/[0.05] text-slate-300"
+                                            )}
                                             onClick={() => setControl({ focusLandmark: isSelected ? "" : landmark.id })}
                                         >
-                                            <span className="truncate pr-1">{t(`landmark.${landmark.id}.name`)}</span>
-                                            <span className="text-[10px] font-mono shrink-0">
+                                            <div className="flex items-center gap-2 min-w-0">
+                                                <TbMapPin className={clsx("size-3.5 shrink-0", isSelected ? "text-amber-400" : "text-slate-400")} />
+                                                <span className="text-xs font-semibold truncate">{t(`landmark.${landmark.id}.name`)}</span>
+                                            </div>
+                                            <span className="text-[10px] font-mono text-slate-400 shrink-0 ml-2">
                                                 {landmark.latitude > 0 ? `${landmark.latitude}°N` : `${Math.abs(landmark.latitude)}°S`},{" "}
                                                 {landmark.longitude > 0 ? `${landmark.longitude}°E` : `${Math.abs(landmark.longitude)}°W`}
                                             </span>
                                         </button>
-                                    </div>
-                                )
-                            })}
+                                    );
+                                })}
+                            </div>
+                        </div>
+                    </When>
+                </When>
+
+                {/* Landmark Focused / Detail Inspector */}
+                <When condition={focusLandmark}>
+                    <div className="flex items-center gap-3 pb-3 border-b border-white/10">
+                        <button
+                            className="p-1.5 rounded-lg bg-white/5 hover:bg-white/10 text-white border border-white/10 hover:border-amber-400/50 transition-colors"
+                            onClick={() => setControl({ focusLandmark: "" })}
+                            title={t("ui.back_to_object", "Kembali ke objek")}
+                        >
+                            <BiArrowBack className="size-4" />
+                        </button>
+                        <div className="min-w-0 flex-1">
+                            <span className="text-[10px] font-mono uppercase tracking-wider text-amber-400 font-semibold block">
+                                {t("ui.focused_landmark", "Landmark Terfokus")}
+                            </span>
+                            <h1 className="text-lg font-bold font-space-grotesk text-white truncate">
+                                {t(`landmark.${focusLandmark}.name`)}
+                            </h1>
                         </div>
                     </div>
+
+                    <div className="mt-3.5 p-3 rounded-xl bg-white/3 border border-white/5 text-slate-300 text-xs leading-relaxed">
+                        {t(`landmark.${focusLandmark}.description`)}
+                    </div>
+
+                    <div className="mt-4">
+                        <button
+                            className="w-full flex items-center justify-center gap-2 py-2 px-4 rounded-xl bg-amber-500/15 hover:bg-amber-500/25 border border-amber-400/30 text-amber-300 text-xs font-semibold transition-all cursor-pointer"
+                            onClick={() => setControl({ focusLandmark: "" })}
+                        >
+                            <BiArrowBack className="size-3.5" />
+                            <span>{t("ui.back_to_summary", { object: objectName, defaultValue: `Kembali ke ringkasan ${objectName}` })}</span>
+                        </button>
+                    </div>
+
+                    {/* Landmarks List under Focused View */}
+                    <When condition={!!(data.landmarks && data.landmarks.length > 0)}>
+                        <div className="mt-4 pt-3.5 border-t border-white/10">
+                            <div className="flex items-center justify-between mb-2 px-0.5">
+                                <span className="text-[11px] font-mono uppercase tracking-wider text-slate-400 font-semibold">
+                                    {t("ui.landmarks")} ({data.landmarks?.length})
+                                </span>
+                            </div>
+
+                            <div className="flex flex-col gap-1.5 max-h-56 overflow-y-auto pr-1 scrollbar-thin scrollbar-thumb-white/10 scrollbar-track-transparent">
+                                {data.landmarks?.map(landmark => {
+                                    const isSelected = focusLandmark === landmark.id;
+                                    return (
+                                        <button
+                                            key={landmark.id}
+                                            className={clsx(
+                                                "w-full flex items-center justify-between p-2.5 rounded-xl border text-left transition-all cursor-pointer",
+                                                isSelected
+                                                    ? "bg-amber-500/20 border-amber-400/60 text-white shadow-[0_0_15px_rgba(245,158,11,0.2)] font-semibold"
+                                                    : "bg-white/2 border-white/5 hover:border-amber-400/30 hover:bg-white/5 text-slate-300"
+                                            )}
+                                            onClick={() => setControl({ focusLandmark: isSelected ? "" : landmark.id })}
+                                        >
+                                            <div className="flex items-center gap-2 min-w-0">
+                                                <TbMapPin className={clsx("size-3.5 shrink-0", isSelected ? "text-amber-400" : "text-slate-400")} />
+                                                <span className="text-xs truncate">{t(`landmark.${landmark.id}.name`)}</span>
+                                            </div>
+                                            <span className="text-[10px] font-mono text-slate-400 shrink-0 ml-2">
+                                                {landmark.latitude > 0 ? `${landmark.latitude}°N` : `${Math.abs(landmark.latitude)}°S`},{" "}
+                                                {landmark.longitude > 0 ? `${landmark.longitude}°E` : `${Math.abs(landmark.longitude)}°W`}
+                                            </span>
+                                        </button>
+                                    );
+                                })}
+                            </div>
+                        </div>
+                    </When>
                 </When>
             </div>
         </div>
-    )
-}
+    );
+};
 
-
-export default PanelDetail
+export default PanelDetail;

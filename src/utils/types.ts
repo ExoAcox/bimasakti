@@ -177,6 +177,7 @@ export interface Universe {
     labelLength?: number,
     defaultFocus?: string,
     assetCount?: number,
+    skyboxTexture?: string,
     mobile: Partial<Universe>
 }
 

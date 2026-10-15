@@ -132,6 +132,7 @@ export const planets: Planet[] = [
         texture: "jupiter.ktx2",
         texture_hd: "jupiter_hd.ktx2",
         icon: "jupiter.png",
+        aurora: 1,
         get satellites() {
             return satellites.filter((satellite) => satellite.parent === this.id)
         },
@@ -156,6 +157,7 @@ export const planets: Planet[] = [
         rotate_duration: 0.44, // 10.6 hours
         texture: "saturn.ktx2",
         icon: "saturn.png",
+        aurora: 1,
         ring: {
             inner_radius: 66900,
             outer_radius: 136770,
