@@ -72,7 +72,7 @@ const SearchResultSection = ({ data }: { data: (CelestialObject | Belt)[] }) => 
                         className={clsx(
                             "w-full py-2 px-2.5 flex items-center gap-2.5 rounded-xl border text-left transition-all text-xs cursor-pointer",
                             isFocus
-                                ? "bg-cyan-500/15 border-cyan-400/40 text-white font-semibold"
+                                ? "bg-cyan-500/15 border-accent/40 text-white font-semibold"
                                 : "bg-white/2 hover:bg-white/6 border-white/5 hover:border-white/10 text-secondary hover:text-white"
                         )}
                         onClick={() => handleClick(object.id)}
@@ -81,7 +81,7 @@ const SearchResultSection = ({ data }: { data: (CelestialObject | Belt)[] }) => 
                         <img alt={object.icon} src={`/icons/${object.icon}`} className="size-5 object-contain" />
                         {/* </div> */}
                         <span className="truncate">{t(`object.${object.id}.nickname`)}</span>
-                        {isFocus && <span className="size-1.5 rounded-full bg-cyan-400 animate-pulse ml-auto shrink-0" />}
+                        {isFocus && <span className="size-1.5 rounded-full bg-accent animate-pulse ml-auto shrink-0" />}
                     </button>
                 );
             })}
@@ -117,7 +117,7 @@ const Section = ({ children, data, initialOpen }: SectionProps) => {
                     {children}
                 </span>
                 <div className="flex items-center gap-1.5">
-                    <span className="px-1.5 py-0.5 rounded-full text-[9px] font-mono bg-white/5 border border-white/10 text-tertiary group-hover:border-cyan-400/30 group-hover:text-cyan-300 transition-colors">
+                    <span className="px-1.5 py-0.5 rounded-full text-[9px] font-mono bg-white/5 border border-white/10 text-tertiary group-hover:border-accent/30 group-hover:text-cyan-300 transition-colors">
                         {data.length}
                     </span>
                     <IoChevronDown className={clsx("size-3.5 text-tertiary transition-transform duration-200", isOpen && "rotate-180")} />
@@ -147,7 +147,7 @@ const Section = ({ children, data, initialOpen }: SectionProps) => {
                                 className={clsx(
                                     "w-full py-1.5 px-2 flex items-center gap-2.5 rounded-xl border text-left transition-all text-xs cursor-pointer",
                                     isFocus
-                                        ? "bg-cyan-500/15 border-cyan-400/40 text-white font-semibold"
+                                        ? "bg-cyan-500/15 border-accent/40 text-white font-semibold"
                                         : "bg-white/2 hover:bg-white/6 border-white/5 hover:border-white/10 text-secondary hover:text-white"
                                 )}
                                 onClick={() => handleClick(object.id)}
@@ -156,7 +156,7 @@ const Section = ({ children, data, initialOpen }: SectionProps) => {
                                 <img alt={object.icon} src={`/icons/${object.icon}`} className="size-5 object-contain" />
                                 {/* </div> */}
                                 <span className="truncate">{t(`object.${object.id}.nickname`)}</span>
-                                {isFocus && <span className="size-1.5 rounded-full bg-cyan-400 animate-pulse ml-auto mr-1 shrink-0" />}
+                                {isFocus && <span className="size-1.5 rounded-full bg-accent animate-pulse ml-auto mr-1 shrink-0" />}
                             </button>
 
                             {isSatelliteVisible && (
@@ -169,14 +169,14 @@ const Section = ({ children, data, initialOpen }: SectionProps) => {
                                                 className={clsx(
                                                     "w-full py-1 px-2 flex items-center gap-2 rounded-lg border text-left transition-all text-xs cursor-pointer",
                                                     isSatFocus
-                                                        ? "bg-cyan-500/20 border-cyan-400/50 text-white font-semibold"
+                                                        ? "bg-cyan-500/20 border-accent/50 text-white font-semibold"
                                                         : "bg-transparent hover:bg-white/5 border-transparent text-tertiary hover:text-slate-200"
                                                 )}
                                                 onClick={() => handleClick(sat.id)}
                                             >
                                                 <img alt={sat.icon} src={`/icons/${sat.icon}`} className="size-3.5 object-contain shrink-0" />
                                                 <span className="truncate">{t(`object.${sat.id}.nickname`)}</span>
-                                                {isSatFocus && <span className="size-1 rounded-full bg-cyan-400 ml-auto mr-0.5 shrink-0" />}
+                                                {isSatFocus && <span className="size-1 rounded-full bg-accent ml-auto mr-0.5 shrink-0" />}
                                             </button>
                                         );
                                     })}
@@ -195,7 +195,7 @@ const Sidebar = () => {
     const [isOpen, setOpen] = useState(true);
     const [search, setSearch] = useState("");
 
-    const isMobile = useMobile();
+    const isTablet = useMobile(1080);
     const { focus, setControl } = useControlStore();
     const navigate = useNavigate();
 
@@ -230,10 +230,10 @@ const Sidebar = () => {
     };
 
     useEffect(() => {
-        if (isMobile) {
+        if (isTablet) {
             setOpen(false);
         }
-    }, [focus, isMobile]);
+    }, [focus, isTablet]);
 
     const allObjects = [...stars, ...comets, ...asteroids, ...belts, ...allPlanets, ...satellites, ...spacecraft];
 

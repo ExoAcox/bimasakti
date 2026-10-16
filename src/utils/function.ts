@@ -90,7 +90,22 @@ export const useCelestial = () => {
 
     const getUniverse = () => getUniverseById(currentUniverse)
 
-    return { objects, getObjectById, getObjectsByType, getLandmark, getCameraDistance, getUniverse, getFeaturedObjects, isFocused }
+    const getUniverseByObjectId = (id: string): string => {
+        for (const universe of universe_ids) {
+            if (universe === "milky_way" || !universeMapping[universe]) continue
+            const keys = Object.keys(universeMapping[universe])
+            for (const key of keys) {
+                if (["belts", "landmarks"].includes(key)) continue
+                const list = universeMapping[universe][key] as CelestialObject[]
+                if (list?.some(obj => obj.id === id)) {
+                    return universe
+                }
+            }
+        }
+        return "solar_system"
+    }
+
+    return { objects, getObjectById, getObjectsByType, getLandmark, getCameraDistance, getUniverse, getFeaturedObjects, isFocused, getUniverseByObjectId }
 }
 
 export const useVariant = (data: Star | Planet | Satellite) => {

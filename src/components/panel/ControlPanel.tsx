@@ -38,8 +38,8 @@ const ACTIVE_LANDMARK_CLASS = "bg-yellow/20 border-yellow/50 hover:bg-yellow/30"
 const BTN_NATION_CLASS = "hover:border-sky-400/40 hover:bg-sky-500/10";
 const ACTIVE_NATION_CLASS = "bg-sky-500/20 border-sky-400/50  hover:bg-sky-500/30";
 
-const BTN_CLOUD_CLASS = "hover:border-cyan-400/40 hover:bg-cyan-500/10";
-const ACTIVE_CLOUD_CLASS = "bg-cyan-500/20 border-cyan-400/50 hover:bg-cyan-500/30";
+const BTN_CLOUD_CLASS = "hover:border-accent/40 hover:bg-cyan-500/10";
+const ACTIVE_CLOUD_CLASS = "bg-cyan-500/20 border-accent/50 hover:bg-cyan-500/30";
 
 const BTN_ATMOSPHERE_CLASS = "hover:border-emerald-400/40 hover:bg-emerald-500/10";
 const ACTIVE_ATMOSPHERE_CLASS = "bg-emerald-500/20 border-emerald-400/50  hover:bg-emerald-500/30";
@@ -58,15 +58,15 @@ const ACTIVE_TIMELINE_CLASS = "bg-indigo-500/20 border-indigo-400/50 hover:bg-in
 
 const NAV_BTN_CLASS = clsx(
     BUTTON_BASE_CLASS,
-    "size-9 rounded-xl border border-transparent text-secondary hover:text-cyan-300 hover:bg-cyan-500/10 hover:border-cyan-400/30 active:scale-90"
+    "size-9 rounded-xl border border-transparent text-secondary hover:text-cyan-300 hover:bg-cyan-500/10 hover:border-accent/30 active:scale-90"
 );
 
 const PLAY_BTN_CLASS = clsx(
     BUTTON_BASE_CLASS,
-    "h-9 px-3.5 gap-2 rounded-xl border border-white/15 bg-white/5 hover:bg-cyan-500/10 hover:border-cyan-400/30 hover:text-cyan-200 text-primary active:scale-95 font-mono text-xs"
+    "h-9 px-3.5 gap-2 rounded-xl border border-white/15 bg-white/5 hover:bg-cyan-500/10 hover:border-accent/30 hover:text-cyan-200 text-primary active:scale-95 font-mono text-xs"
 );
 
-const PLAY_BTN_ACTIVE_CLASS = "border-cyan-400/50 bg-cyan-950/40 text-cyan-200";
+const PLAY_BTN_ACTIVE_CLASS = "border-accent/50 bg-cyan-950/40 text-cyan-200";
 
 const TOOLTIP_CLASS =
     "absolute -top-9 left-1/2 -translate-x-1/2 pointer-events-none opacity-0 group-hover/btn:opacity-100 transition-all duration-200 translate-y-1 group-hover/btn:translate-y-0 whitespace-nowrap rounded-lg bg-panel-bg border border-white/15 px-2.5 py-1 text-[11px] font-sans text-secondary shadow-2xl backdrop-blur-xl z-50";

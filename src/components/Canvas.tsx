@@ -93,8 +93,9 @@ const CanvasLayout = () => {
     const { mode, focus, setControl } = useControlStore()
 
     useEffect(() => {
-        setControl({ focus: "" })
-    }, [setControl])
+        const queryFocus = searchParams.get("focus")
+        setControl({ focus: queryFocus || "" })
+    }, [searchParams, setControl])
 
     useEffect(() => {
         if (focus) track('focus', { object: focus, universe: data.id })

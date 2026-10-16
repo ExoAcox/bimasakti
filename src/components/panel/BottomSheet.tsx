@@ -133,6 +133,10 @@ const BottomSheet = () => {
             snapPoints={snapPoints}
             initialSnap={2}
             onSnap={handleSnapChange}
+            tweenConfig={{
+                ease: 'easeOut',
+                duration: 0.1,
+            }}
         >
             <SheetClamper minVisibleHeight={handleSnap} isActive={isOpen} />
             <Sheet.Container>

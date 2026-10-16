@@ -32,6 +32,7 @@ const PanelDetail = () => {
     const { focus, focusLandmark, variant, setControl } = useControlStore();
 
     const isMobile = useMobile();
+    const isTablet = useMobile(1080);
     const celestial = useCelestial();
     const rawData = celestial.getObjectById(focus) as Planet;
     const data = useVariant(rawData);
@@ -41,6 +42,12 @@ const PanelDetail = () => {
     useEffect(() => {
         setActiveSection("");
     }, [focus]);
+
+    useEffect(() => {
+        if (isTablet) {
+            setPanelOpen(false);
+        }
+    }, [focus, isTablet]);
 
     if (!data) return null;
 
@@ -114,16 +121,20 @@ const PanelDetail = () => {
 
             <When condition={!isMobile}>
                 <button
-                    className="absolute top-4 -left-8 w-8 h-12 flex items-center justify-center bg-panel-bg backdrop-blur-2xl rounded-l-xl border border-r-0 border-panel-border cursor-pointer hover:bg-card-hover hover:border-accent/40 hover:text-highlight transition-all text-secondary group"
+                    className={clsx(isPanelOpen ? "-left-8 w-8" : "-left-16 w-16", "absolute top-4 h-12 flex gap-1 items-center justify-center bg-panel-bg backdrop-blur-2xl rounded-l-xl border border-r-0 border-panel-border cursor-pointer hover:bg-card-hover hover:border-accent/40 hover:text-highlight transition-all text-secondary group")}
                     onClick={handleClick}
                     title={isPanelOpen ? t("ui.close_panel", "Tutup panel") : t("ui.open_panel", "Buka panel")}
                 >
                     <TbChevronRight
                         className={clsx(
-                            "size-4.5 transition-transform duration-300",
+                            "size-4.5 transition-transform duration-300 shrink-0",
                             !isPanelOpen ? "rotate-180" : "group-hover:translate-x-0.5"
                         )}
                     />
+
+                    <When condition={!isPanelOpen}>
+                        <img src={`/icons/${data.icon}`} alt={objectName} className="size-6 shrink-0 object-contain drop-shadow" />
+                    </When>
                 </button>
             </When>
 
@@ -219,7 +230,7 @@ const PanelDetail = () => {
 
 
                             <div className="flex-1 min-w-[35%] p-2.5 rounded-xl bg-white/3 hover:bg-white/6 border border-white/5 transition-colors">
-                                <div className="flex flex-1 items-center gap-1.5 text-cyan-400 mb-1">
+                                <div className="flex flex-1 items-center gap-1.5 text-accent mb-1">
                                     <TbRulerMeasure className="size-3.5" />
                                     <span className="text-[10px] uppercase font-semibold tracking-wider text-tertiary">{t("ui.diameter")}</span>
                                 </div>
@@ -275,7 +286,7 @@ const PanelDetail = () => {
                                     <span className="font-space-grotesk font-bold text-white">± {(data as unknown as Belt).count?.toLocaleString()}</span>
                                 </div>
                                 <div className="flex items-center justify-between p-2.5 rounded-xl bg-white/3 border border-white/5">
-                                    <div className="flex items-center gap-2 text-cyan-400">
+                                    <div className="flex items-center gap-2 text-accent">
                                         <TbLayersIntersect className="size-4" />
                                         <span className="text-xs text-tertiary">{t("ui.inner_radius")}</span>
                                     </div>
@@ -318,7 +329,7 @@ const PanelDetail = () => {
                                         </span>
                                     </div>
                                 </div>
-                                <div className="flex items-center gap-1 text-xs font-medium text-cyan-400 opacity-80 group-hover:opacity-100 group-hover:translate-x-0.5 transition-all shrink-0">
+                                <div className="flex items-center gap-1 text-xs font-medium text-accent opacity-80 group-hover:opacity-100 group-hover:translate-x-0.5 transition-all shrink-0">
                                     {/* <span>Fokus</span> */}
                                     <TbArrowUpRight className="size-5" />
                                 </div>
@@ -334,9 +345,9 @@ const PanelDetail = () => {
                                 onClick={() => handleClickSection("satellite")}
                             >
                                 <div className="flex items-center gap-2 text-slate-200">
-                                    <IoPlanetOutline className="size-4 text-cyan-400" />
+                                    <IoPlanetOutline className="size-4 text-accent" />
                                     <span className="font-semibold text-xs">{t("ui.natural_satellites")}</span>
-                                    <span className="px-2 py-0.5 rounded-full text-[10px] font-mono bg-cyan-400/15 text-cyan-300 border border-cyan-400/25">
+                                    <span className="px-2 py-0.5 rounded-full text-[10px] font-mono bg-accent/15 text-cyan-300 border border-accent/25">
                                         {(data as Planet).satellites?.length}
                                     </span>
                                 </div>
@@ -347,7 +358,7 @@ const PanelDetail = () => {
                                 {(data as Planet).satellites?.map(satellite => (
                                     <button
                                         key={satellite.id}
-                                        className="group w-full flex items-center justify-between p-2.5 rounded-xl bg-white/2 hover:bg-cyan-500/10 border border-white/5 hover:border-cyan-400/30 transition-all text-left"
+                                        className="group w-full flex items-center justify-between p-2.5 rounded-xl bg-white/2 hover:bg-cyan-500/10 border border-white/5 hover:border-accent/30 transition-all text-left"
                                         onClick={() => setControl({ focus: satellite.id })}
                                     >
                                         <div className="flex items-center gap-2.5 min-w-0">
@@ -363,7 +374,7 @@ const PanelDetail = () => {
                                                 </span>
                                             </div>
                                         </div>
-                                        <TbArrowUpRight className="size-4 text-tertiary group-hover:text-cyan-400 group-hover:translate-x-0.5 transition-all shrink-0" />
+                                        <TbArrowUpRight className="size-4 text-tertiary group-hover:text-accent group-hover:translate-x-0.5 transition-all shrink-0" />
                                     </button>
                                 ))}
                             </div>

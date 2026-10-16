@@ -72,7 +72,7 @@ const Sidebar = () => {
                                 className={clsx(
                                     "w-full py-2 px-2.5 flex items-center gap-2.5 rounded-xl border text-left transition-all text-xs cursor-pointer group",
                                     isFocus
-                                        ? "bg-cyan-500/15 border-cyan-400/40 text-white font-semibold"
+                                        ? "bg-cyan-500/15 border-accent/40 text-white font-semibold"
                                         : "bg-white/2 hover:bg-white/6 border-white/5 hover:border-white/10 text-secondary hover:text-white"
                                 )}
                                 onClick={() => handleClick(universe)}
@@ -81,14 +81,14 @@ const Sidebar = () => {
                                     className={clsx(
                                         "size-6 rounded-lg border flex items-center justify-center shrink-0 transition-colors",
                                         isFocus
-                                            ? "bg-cyan-500/20 border-cyan-400/40 text-cyan-300"
+                                            ? "bg-cyan-500/20 border-accent/40 text-cyan-300"
                                             : "bg-white/5 border-white/10 text-tertiary group-hover:text-slate-200 group-hover:border-white/20"
                                     )}
                                 >
                                     <IoPlanetOutline className="size-3.5" />
                                 </div>
                                 <span className="truncate flex-1">{t(`object.${universe}.name`)}</span>
-                                {isFocus && <span className="size-1.5 rounded-full bg-cyan-400 animate-pulse ml-auto shrink-0" />}
+                                {isFocus && <span className="size-1.5 rounded-full bg-accent animate-pulse ml-auto shrink-0" />}
                             </button>
                         )
                     })}
