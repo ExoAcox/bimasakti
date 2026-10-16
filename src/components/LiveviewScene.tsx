@@ -42,12 +42,11 @@ const LiveviewScene = ({ position }: Props) => {
 
             // Sensitivity factor scaled by current FOV
             const fovFactor = (currentFov.current / 65) * 0.003
+            const direction = e.pointerType === "touch" ? 1 : -1
 
-            // Dragging left turns camera left, dragging right turns camera right
-            targetYaw.current -= deltaX * fovFactor
-
-            // Dragging up tilts up (targetPitch increases), dragging down tilts down
-            targetPitch.current -= deltaY * fovFactor
+            // Dragging direction (reversed for touch compared to mouse)
+            targetYaw.current += deltaX * fovFactor * direction
+            targetPitch.current += deltaY * fovFactor * direction
 
             // Clamp pitch to prevent flipping upside down (-75 deg to +75 deg)
             const maxPitch = (75 * Math.PI) / 180

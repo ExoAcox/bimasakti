@@ -37,7 +37,6 @@ const BottomSheet = () => {
     const controlRef = useRef<HTMLDivElement>(null!);
     const [controlHeight, setControlHeight] = useState(160);
     const [descHeight, setDescHeight] = useState(140);
-    const [telemetryHeight, setTelemetryHeight] = useState(240);
 
     const [isOpen, setOpen] = useState(false);
     const { focus } = useControlStore();
@@ -76,12 +75,6 @@ const BottomSheet = () => {
                 const dHeight = descEl.offsetHeight;
                 if (dHeight > 0) setDescHeight(dHeight);
             }
-
-            const teleEl = document.getElementById('detail-telemetry-section');
-            if (teleEl) {
-                const tHeight = teleEl.offsetHeight;
-                if (tHeight > 0) setTelemetryHeight(tHeight);
-            }
         };
 
         updateMeasurements();
@@ -111,10 +104,9 @@ const BottomSheet = () => {
         const s1 = handleSnap; // 1: Handle
         const s2 = Math.min(Math.max(s1 + 60, handleSnap + controlHeight), maxSnapPixels - 140); // 2: Control Panel
         const s3 = Math.min(Math.max(s2 + 60, s2 + descHeight + 32), maxSnapPixels - 70); // 3: Detail Description
-        const s4 = Math.min(Math.max(s3 + 60, s3 + telemetryHeight + 16), maxSnapPixels); // 4: Detail Telemetry
 
-        return [0, s1, s2, s3, s4, 1];
-    }, [handleSnap, controlHeight, descHeight, telemetryHeight]);
+        return [0, s1, s2, s3, 1];
+    }, [handleSnap, controlHeight, descHeight]);
 
     const handleSnapChange = (index: number) => {
         // Jika karena flick/swipe mengarah ke 0 (closed), segera pantulkan ke snap 1 (Handle)
