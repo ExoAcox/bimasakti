@@ -141,47 +141,50 @@ const PanelDetail = () => {
 
                 {/* Normal Object Detail View */}
                 <When condition={!focusLandmark}>
-                    {/* Header */}
-                    <div className="flex items-start justify-between gap-3">
-                        <div className="flex-1 min-w-0">
-                            <div className="flex items-center gap-2 mb-1.5">
-                                <span className={clsx("inline-flex items-center gap-2 px-2.5 py-0.5 rounded-full text-[10px] font-mono uppercase tracking-wider border font-medium", getBadgeInfo().color)}>
-                                    <span className="size-1.5 rounded-full bg-current animate-pulse" />
-                                    {getBadgeInfo().label}
-                                </span>
+                    {/* Header & Description Section for Snap Point */}
+                    <div id="detail-description-section">
+                        {/* Header */}
+                        <div className="flex items-start justify-between gap-3">
+                            <div className="flex-1 min-w-0">
+                                <div className="flex items-center gap-2 mb-1.5">
+                                    <span className={clsx("inline-flex items-center gap-2 px-2.5 py-0.5 rounded-full text-[10px] font-mono uppercase tracking-wider border font-medium", getBadgeInfo().color)}>
+                                        <span className="size-1.5 rounded-full bg-current animate-pulse" />
+                                        {getBadgeInfo().label}
+                                    </span>
+                                </div>
+                                <h1
+                                    className={clsx(
+                                        "font-bold font-space-grotesk tracking-tight text-primary wrap-break-word leading-tight drop-shadow-sm text-balance",
+                                        getTitleSize(objectName)
+                                    )}
+                                    title={objectName}
+                                >
+                                    {objectName}
+                                </h1>
+                                {/* {data.parent && (
+                                    <p className="text-xs text-tertiary mt-0.5 truncate">
+                                        {t("ui.parent_object")}: <span className="text-slate-200">{t(`object.${data.parent}.name`)}</span>
+                                    </p>
+                                )} */}
                             </div>
-                            <h1
-                                className={clsx(
-                                    "font-bold font-space-grotesk tracking-tight text-primary wrap-break-word leading-tight drop-shadow-sm text-balance",
-                                    getTitleSize(objectName)
-                                )}
-                                title={objectName}
-                            >
-                                {objectName}
-                            </h1>
-                            {/* {data.parent && (
-                                <p className="text-xs text-tertiary mt-0.5 truncate">
-                                    {t("ui.parent_object")}: <span className="text-slate-200">{t(`object.${data.parent}.name`)}</span>
-                                </p>
-                            )} */}
+
+                            <When condition={data.icon}>
+                                <div className="relative shrink-0 flex items-center justify-center size-14 rounded-2xl bg-linear-to-b from-white/10 to-white/3 border border-white/15 shadow-[inset_0_1px_1px_rgba(255,255,255,0.2),0_8px_20px_rgba(0,0,0,0.4)] p-2">
+                                    <img src={`/icons/${data.icon}`} alt={objectName} className="size-10 object-contain drop-shadow" />
+                                </div>
+                            </When>
                         </div>
 
-                        <When condition={data.icon}>
-                            <div className="relative shrink-0 flex items-center justify-center size-14 rounded-2xl bg-linear-to-b from-white/10 to-white/3 border border-white/15 shadow-[inset_0_1px_1px_rgba(255,255,255,0.2),0_8px_20px_rgba(0,0,0,0.4)] p-2">
-                                <img src={`/icons/${data.icon}`} alt={objectName} className="size-10 object-contain drop-shadow" />
+                        {/* Description Card */}
+                        {objectDescription && (
+                            <div className="mt-3.5 p-3 rounded-xl bg-white/3 border border-white/5 text-secondary text-sm leading-relaxed">
+                                {objectDescription}
                             </div>
-                        </When>
+                        )}
                     </div>
 
-                    {/* Description Card */}
-                    {objectDescription && (
-                        <div className="mt-3.5 p-3 rounded-xl bg-white/3 border border-white/5 text-secondary text-sm leading-relaxed">
-                            {objectDescription}
-                        </div>
-                    )}
-
                     {/* Telemetry Matrix Grid */}
-                    <div className="mt-4">
+                    <div id="detail-telemetry-section" className="mt-4">
                         <div className="flex items-center gap-2 mb-2 px-0.5">
                             <span className="text-[11px] font-mono uppercase tracking-widest text-tertiary font-semibold">
                                 {t("ui.telemetry_and_specs", "Telemetri & Spesifikasi")}

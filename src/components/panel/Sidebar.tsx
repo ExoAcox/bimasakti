@@ -77,9 +77,9 @@ const SearchResultSection = ({ data }: { data: (CelestialObject | Belt)[] }) => 
                         )}
                         onClick={() => handleClick(object.id)}
                     >
-                        <div className="size-6 rounded-lg bg-white/5 border border-white/10 flex items-center justify-center p-0.5 shrink-0">
-                            <img alt={object.icon} src={`/icons/${object.icon}`} className="size-full object-contain" />
-                        </div>
+                        {/* <div className="size-6 rounded-lg bg-white/5 border border-white/10 flex items-center justify-center p-0.5 shrink-0"> */}
+                        <img alt={object.icon} src={`/icons/${object.icon}`} className="size-5 object-contain" />
+                        {/* </div> */}
                         <span className="truncate">{t(`object.${object.id}.nickname`)}</span>
                         {isFocus && <span className="size-1.5 rounded-full bg-cyan-400 animate-pulse ml-auto shrink-0" />}
                     </button>
