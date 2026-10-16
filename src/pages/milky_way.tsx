@@ -5,6 +5,7 @@ import clsx from "clsx"
 import { classPosition, seo } from "@function"
 import { useGalaxyStore } from "@state"
 import { Galaxy } from "@components/object"
+import { useEffect } from "react"
 
 export const meta = () => seo({
     title: "Milky Way",
@@ -19,6 +20,10 @@ const MilkyWay = () => {
     const handleClick = (id: string) => {
         setFocus(id)
     }
+
+    useEffect(() => {
+        setFocus("")
+    }, [setFocus])
 
     return (
         <>

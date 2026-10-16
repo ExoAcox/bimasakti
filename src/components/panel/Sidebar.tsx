@@ -19,11 +19,12 @@ import { useCelestial, useMobile } from "@function";
 import { useTranslation } from "react-i18next";
 
 import { IoChevronDown, IoArrowBack } from "react-icons/io5";
-import { TbLayoutSidebarLeftCollapse, TbLayoutSidebarLeftExpand } from "react-icons/tb";
+import { TbChevronLeft, TbSearchOff } from "react-icons/tb";
 import { MdClose, MdSearch } from "react-icons/md";
-import { PiEmpty } from "react-icons/pi";
+import { GiGalaxy } from "react-icons/gi";
 import { When } from "react-if";
 import { useNavigate } from "react-router";
+import { PiEmpty } from "react-icons/pi";
 
 interface SectionProps {
     children: string;
@@ -45,9 +46,18 @@ const SearchResultSection = ({ data }: { data: (CelestialObject | Belt)[] }) => 
 
     if (!data.length) {
         return (
-            <div className="flex flex-col items-center justify-center gap-2.5 py-10 px-4 rounded-xl bg-white/2 border border-white/5 text-slate-400 mt-2">
-                <PiEmpty className="size-8 text-slate-500" />
-                <span className="text-xs font-mono">{t("ui.object_not_found")}</span>
+            <div className="flex flex-col items-center justify-center gap-3 py-9 px-4 rounded-2xl bg-card-bg/40 border border-panel-border/60 text-center my-2">
+                <div className="size-11 rounded-2xl bg-white/4 border border-white/8 flex items-center justify-center text-tertiary">
+                    <PiEmpty className="size-5" />
+                </div>
+                <div className="flex flex-col gap-1">
+                    <span className="text-xs font-semibold font-space-grotesk text-secondary">
+                        {t("ui.object_not_found")}
+                    </span>
+                    <span className="text-[11px] text-tertiary">
+                        {t("ui.try_another_keyword")}
+                    </span>
+                </div>
             </div>
         );
     }
@@ -62,8 +72,8 @@ const SearchResultSection = ({ data }: { data: (CelestialObject | Belt)[] }) => 
                         className={clsx(
                             "w-full py-2 px-2.5 flex items-center gap-2.5 rounded-xl border text-left transition-all text-xs cursor-pointer",
                             isFocus
-                                ? "bg-cyan-500/15 border-cyan-400/40 text-white shadow-[0_0_12px_rgba(6,182,212,0.15)] font-semibold"
-                                : "bg-white/2 hover:bg-white/6 border-white/5 hover:border-white/10 text-slate-300 hover:text-white"
+                                ? "bg-cyan-500/15 border-cyan-400/40 text-white font-semibold"
+                                : "bg-white/2 hover:bg-white/6 border-white/5 hover:border-white/10 text-secondary hover:text-white"
                         )}
                         onClick={() => handleClick(object.id)}
                     >
@@ -100,17 +110,17 @@ const Section = ({ children, data, initialOpen }: SectionProps) => {
     return (
         <div className="flex flex-col gap-1">
             <button
-                className="w-full flex items-center justify-between py-1 px-2 rounded-lg text-slate-400 hover:text-slate-200 hover:bg-white/3 transition-all text-left group cursor-pointer"
+                className="w-full flex items-center justify-between py-1 px-2 rounded-lg text-tertiary hover:text-slate-200 hover:bg-white/3 transition-all text-left group cursor-pointer"
                 onClick={() => setOpen(!isOpen)}
             >
-                <span className="text-[10px] font-mono uppercase tracking-wider font-semibold text-slate-400 group-hover:text-cyan-300 transition-colors">
+                <span className="text-[10px] font-mono uppercase tracking-wider font-semibold text-tertiary group-hover:text-cyan-300 transition-colors">
                     {children}
                 </span>
                 <div className="flex items-center gap-1.5">
-                    <span className="px-1.5 py-0.5 rounded-full text-[9px] font-mono bg-white/5 border border-white/10 text-slate-400 group-hover:border-cyan-400/30 group-hover:text-cyan-300 transition-colors">
+                    <span className="px-1.5 py-0.5 rounded-full text-[9px] font-mono bg-white/5 border border-white/10 text-tertiary group-hover:border-cyan-400/30 group-hover:text-cyan-300 transition-colors">
                         {data.length}
                     </span>
-                    <IoChevronDown className={clsx("size-3.5 text-slate-400 transition-transform duration-200", isOpen && "rotate-180")} />
+                    <IoChevronDown className={clsx("size-3.5 text-tertiary transition-transform duration-200", isOpen && "rotate-180")} />
                 </div>
             </button>
 
@@ -137,16 +147,16 @@ const Section = ({ children, data, initialOpen }: SectionProps) => {
                                 className={clsx(
                                     "w-full py-1.5 px-2 flex items-center gap-2.5 rounded-xl border text-left transition-all text-xs cursor-pointer",
                                     isFocus
-                                        ? "bg-cyan-500/15 border-cyan-400/40 text-white shadow-[0_0_12px_rgba(6,182,212,0.15)] font-semibold"
-                                        : "bg-white/2 hover:bg-white/6 border-white/5 hover:border-white/10 text-slate-300 hover:text-white"
+                                        ? "bg-cyan-500/15 border-cyan-400/40 text-white font-semibold"
+                                        : "bg-white/2 hover:bg-white/6 border-white/5 hover:border-white/10 text-secondary hover:text-white"
                                 )}
                                 onClick={() => handleClick(object.id)}
                             >
-                                <div className="size-5 rounded-md bg-white/5 border border-white/10 flex items-center justify-center p-0.5 shrink-0">
-                                    <img alt={object.icon} src={`/icons/${object.icon}`} className="size-full object-contain" />
-                                </div>
+                                {/* <div className="size-5 rounded-md bg-white/5 border border-white/10 flex items-center justify-center p-0.5 shrink-0"> */}
+                                <img alt={object.icon} src={`/icons/${object.icon}`} className="size-5 object-contain" />
+                                {/* </div> */}
                                 <span className="truncate">{t(`object.${object.id}.nickname`)}</span>
-                                {isFocus && <span className="size-1.5 rounded-full bg-cyan-400 animate-pulse ml-auto shrink-0" />}
+                                {isFocus && <span className="size-1.5 rounded-full bg-cyan-400 animate-pulse ml-auto mr-1 shrink-0" />}
                             </button>
 
                             {isSatelliteVisible && (
@@ -157,16 +167,16 @@ const Section = ({ children, data, initialOpen }: SectionProps) => {
                                             <button
                                                 key={sat.id}
                                                 className={clsx(
-                                                    "w-full py-1 px-2 flex items-center gap-2 rounded-lg border text-left transition-all text-[11px] cursor-pointer",
+                                                    "w-full py-1 px-2 flex items-center gap-2 rounded-lg border text-left transition-all text-xs cursor-pointer",
                                                     isSatFocus
                                                         ? "bg-cyan-500/20 border-cyan-400/50 text-white font-semibold"
-                                                        : "bg-transparent hover:bg-white/5 border-transparent text-slate-400 hover:text-slate-200"
+                                                        : "bg-transparent hover:bg-white/5 border-transparent text-tertiary hover:text-slate-200"
                                                 )}
                                                 onClick={() => handleClick(sat.id)}
                                             >
                                                 <img alt={sat.icon} src={`/icons/${sat.icon}`} className="size-3.5 object-contain shrink-0" />
                                                 <span className="truncate">{t(`object.${sat.id}.nickname`)}</span>
-                                                {isSatFocus && <span className="size-1 rounded-full bg-cyan-400 ml-auto shrink-0" />}
+                                                {isSatFocus && <span className="size-1 rounded-full bg-cyan-400 ml-auto mr-0.5 shrink-0" />}
                                             </button>
                                         );
                                     })}
@@ -236,38 +246,41 @@ const Sidebar = () => {
     return (
         <div className={clsx("fixed top-0 left-0 bottom-0 z-50 transition-transform duration-300 max-w-dvw", !isOpen && "-translate-x-full")}>
             <button
-                className="absolute top-4 -right-10 bg-slate-950/85 backdrop-blur-xl p-2.5 rounded-r-xl border border-l-0 border-white/15 shadow-[0_8px_25px_rgba(0,0,0,0.6)] cursor-pointer hover:bg-slate-900 hover:border-cyan-400/50 hover:text-cyan-300 transition-all text-slate-300"
+                className="absolute top-4 -right-8 w-8 h-12 flex items-center justify-center bg-panel-bg backdrop-blur-2xl rounded-r-xl border border-l-0 border-panel-border cursor-pointer hover:bg-card-hover hover:border-accent/40 hover:text-highlight transition-all text-secondary group"
                 onClick={handleClick}
-                title={isOpen ? t("ui.close_sidebar", "Tutup sidebar") : t("ui.open_sidebar", "Buka sidebar")}
+                title={isOpen ? t("ui.close_sidebar") : t("ui.open_sidebar")}
             >
-                {isOpen ? <TbLayoutSidebarLeftCollapse className="size-5" /> : <TbLayoutSidebarLeftExpand className="size-5" />}
+                <TbChevronLeft
+                    className={clsx(
+                        "size-4.5 transition-transform duration-300",
+                        !isOpen ? "rotate-180" : "group-hover:-translate-x-0.5"
+                    )}
+                />
             </button>
 
-            <div className="w-64 sm:w-72 h-full flex flex-col p-4 text-white bg-slate-950/85 backdrop-blur-2xl border-r border-white/10 shadow-[0_20px_50px_rgba(0,0,0,0.7)] relative">
-                {/* Top Glowing Cosmic Line */}
-                <div className="absolute top-0 inset-x-4 h-[1.5px] bg-linear-to-r from-transparent via-cyan-400/60 to-transparent pointer-events-none" />
+            <div className="w-64 h-full flex flex-col p-4 text-primary bg-panel-bg backdrop-blur-2xl border-r border-panel-border relative">
 
                 {/* System Title */}
-                <div className="flex items-center justify-between mb-3 px-1 pt-1">
-                    <span className="font-space-grotesk font-bold text-sm tracking-tight text-white uppercase flex items-center gap-2">
-                        <span className="size-2 rounded-full bg-cyan-400 animate-pulse" />
+                <div className="flex items-center justify-between mb-4 px-1">
+                    <span className="font-space-grotesk font-bold text-sm text-primary uppercase flex items-center gap-2">
+                        <GiGalaxy />
                         {t(`object.${universe?.id}.name`, universe?.id)}
                     </span>
                 </div>
 
                 {/* Search Input Box */}
-                <div className="relative flex items-center gap-2 px-3 py-2 rounded-xl bg-white/3 border border-white/10 focus-within:border-cyan-400/50 focus-within:bg-white/6 focus-within:ring-1 focus-within:ring-cyan-400/30 transition-all mb-3.5">
-                    <MdSearch className="size-4 text-cyan-400 shrink-0" />
+                <div className="relative flex items-center gap-2 px-3 py-2 rounded-xl bg-card-bg border border-panel-border focus-within:border-accent/50 focus-within:bg-card-hover focus-within:ring-1 focus-within:ring-accent/30 transition-all mb-3.5">
+                    <MdSearch className="size-4 text-accent shrink-0" />
                     <input
                         value={search}
                         onChange={handleChange}
                         onFocus={() => setControl({ focusInput: true })}
                         onBlur={() => setControl({ focusInput: false })}
                         placeholder={t("ui.search_object", "Cari objek...")}
-                        className="w-full bg-transparent text-xs text-white placeholder:text-slate-400 focus:outline-none font-sans"
+                        className="w-full bg-transparent text-xs text-primary placeholder:text-tertiary focus:outline-none font-sans"
                     />
                     <When condition={search}>
-                        <button onClick={handleReset} className="text-slate-400 hover:text-red-400 transition-colors cursor-pointer shrink-0">
+                        <button onClick={handleReset} className="text-tertiary hover:text-red transition-colors cursor-pointer shrink-0">
                             <MdClose className="size-3.5" />
                         </button>
                     </When>
@@ -292,10 +305,10 @@ const Sidebar = () => {
                 </When>
 
                 {/* Footer Back Button */}
-                <div className="pt-3 mt-2 border-t border-white/10">
+                <div className="pt-3 mt-2 border-t border-panel-border">
                     <button
                         onClick={handleBack}
-                        className="w-full flex items-center justify-center gap-2 py-2 px-3 rounded-xl bg-white/3 hover:bg-cyan-500/10 border border-white/10 hover:border-cyan-400/40 text-slate-300 hover:text-cyan-300 text-xs font-semibold transition-all group cursor-pointer"
+                        className="w-full flex items-center justify-center gap-2 py-2 px-3 rounded-xl bg-card-bg hover:bg-accent/10 border border-panel-border hover:border-accent/40 text-secondary hover:text-highlight text-xs font-semibold transition-all group cursor-pointer"
                     >
                         <IoArrowBack className="size-3.5 group-hover:-translate-x-1 transition-transform" />
                         <span>{t("ui.back_to_milky_way", "Kembali ke Bima Sakti")}</span>

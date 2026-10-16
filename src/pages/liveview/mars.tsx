@@ -65,10 +65,10 @@ const Mars = () => {
                                     "flex items-center gap-1.5 px-3 py-1.5 rounded-full text-xs font-medium transition-all duration-200 cursor-pointer",
                                     isSelected
                                         ? "bg-white/15 text-white border border-white/20 shadow-sm"
-                                        : "text-slate-400 hover:text-white hover:bg-white/10 border border-transparent"
+                                        : "text-tertiary hover:text-white hover:bg-white/10 border border-transparent"
                                 )}
                             >
-                                <Icon className={clsx("size-4", isSelected ? "text-secondary" : "text-slate-400")} />
+                                <Icon className={clsx("size-4", isSelected ? "text-secondary" : "text-tertiary")} />
                                 <span>{scene_.label}</span>
                             </button>
                         )

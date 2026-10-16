@@ -3,8 +3,8 @@ import { defaultSetting, useSettingStore, useGalaxyStore } from "@state"
 import { useEffect } from "react"
 import { useTranslation } from "react-i18next"
 import { useNavigate } from "react-router"
-
-
+import { IoArrowForward, IoArrowBack, IoPlanetOutline } from "react-icons/io5"
+import { MdClose } from "react-icons/md"
 
 const NavigationPanel = () => {
     const { t } = useTranslation()
@@ -17,16 +17,18 @@ const NavigationPanel = () => {
     const data = getUniverseById(id!)
     const { setSetting } = useSettingStore()
 
+    const isGalaxy = universe.id === "milky_way"
+
     const backText = () => {
-        if (universe.id === "milky_way") {
-            return `Enter ${t(`object.${data?.id}.name`)}`
+        if (isGalaxy) {
+            return t("ui.enter_system", { name: t(`object.${data?.id}.name`), defaultValue: `Jelajahi ${t(`object.${data?.id}.name`)}` })
         } else {
-            return `Back to Milky Way`
+            return t("ui.back_to_milky_way", "Kembali ke Bima Sakti")
         }
     }
 
     const handleClick = () => {
-        if (universe.id === "milky_way") {
+        if (isGalaxy) {
             navigate(`/${focus}`)
         } else {
             reset()
@@ -45,20 +47,62 @@ const NavigationPanel = () => {
 
     if (!data) return null
 
-    return <div id="navigation-panel" className="invisible fixed left-1/2 -translate-x-1/2 bottom-4 flex flex-col text-sm  bg-background min-w-sm max-w-2xl rounded-md pb-6 pt-4 px-7 z-50 backdrop-blur-sm">
-        <div>
-            <div className="flex items-center gap-2 justify-between text-white">
-                <h1 className="text-xl font-bold">{t(`object.${data?.id}.name`)}</h1>
-                {/* {data.icon ? <img src={`/icons/${data.icon}`} className="size-10" /> : ""} */}
+    return (
+        <div
+            id="navigation-panel"
+            className="invisible fixed left-1/2 -translate-x-1/2 bottom-5 w-[calc(100vw-2rem)] sm:w-auto sm:min-w-md sm:max-w-xl flex flex-col text-sm bg-panel-bg backdrop-blur-2xl border border-panel-border rounded-2xl p-5 z-50 text-primary"
+        >
+            <div className="flex flex-col gap-3">
+                {/* Header: Title, Badge, and Close Button */}
+                <div className="flex items-start justify-between gap-3">
+                    <div className="flex flex-col gap-1 min-w-0">
+                        {/* <div className="flex items-center gap-2">
+                            <span className="inline-flex items-center gap-1.5 px-2 py-0.5 rounded-full text-[10px] font-mono uppercase tracking-wider border font-medium text-accent bg-accent/10 border-accent/20">
+                                <IoPlanetOutline className="size-3" />
+                                {t("ui.system", "Sistem Bintang")}
+                            </span>
+                        </div> */}
+                        <h1 className="text-lg sm:text-xl font-bold font-space-grotesk tracking-tight text-primary truncate">
+                            {t(`object.${data?.id}.name`)}
+                        </h1>
+                    </div>
+
+                    {isGalaxy && (
+                        <button
+                            onClick={reset}
+                            className="p-1.5 rounded-xl border border-white/5 hover:border-white/15 bg-white/5 hover:bg-white/10 text-secondary hover:text-primary transition-all cursor-pointer shrink-0"
+                            title={t("ui.close", "Tutup")}
+                        >
+                            <MdClose className="size-4" />
+                        </button>
+                    )}
+                </div>
+
+                {/* Description */}
+                <p className="text-xs sm:text-sm text-secondary leading-relaxed border-t border-panel-border pt-3">
+                    {t(`object.${data?.id}.description`)}
+                </p>
+
+                {/* Action CTA Button */}
+                <button
+                    className="w-full flex items-center justify-center gap-2 font-semibold font-space-grotesk text-xs sm:text-sm bg-accent/20 hover:bg-accent/30 border border-accent/40 hover:border-accent/70 text-highlight py-2.5 px-4 rounded-xl active:scale-[0.98] transition cursor-pointer group mt-1"
+                    onClick={handleClick}
+                >
+                    {isGalaxy ? (
+                        <>
+                            <span>{backText()}</span>
+                            <IoArrowForward className="size-4 group-hover:translate-x-1 transition-transform" />
+                        </>
+                    ) : (
+                        <>
+                            <IoArrowBack className="size-4 group-hover:-translate-x-1 transition-transform" />
+                            <span>{backText()}</span>
+                        </>
+                    )}
+                </button>
             </div>
-            <p className="mt-4 leading-relaxed border-t border-divider pt-4">
-                {t(`object.${data?.id}.description`)}
-            </p>
-            <button className="w-full font-semibold bg-primary text-white p-3 rounded-lg mt-4" onClick={handleClick}>
-                {backText()}
-            </button>
         </div>
-    </div>
+    )
 }
 
 export default NavigationPanel

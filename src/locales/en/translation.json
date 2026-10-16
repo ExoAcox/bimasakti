@@ -45,7 +45,28 @@
         "back_to_summary": "Back to {{object}} summary",
         "search_object": "Search object...",
         "back_to_milky_way": "Back to Milky Way",
+        "back_to_home": "Back to Home",
+        "enter_system": "Explore {{name}}",
+        "system": "Star System",
+        "systems": "Systems",
+        "close": "Close",
         "object_not_found": "Object not found",
+        "try_another_keyword": "Try another keyword",
+        "nations": "Nations",
+        "cloud": "Cloud",
+        "atmosphere": "Atmosphere",
+        "aurora": "Aurora",
+        "day_night_mode": "Day / Night Mode",
+        "topography": "Topography",
+        "slower": "Slower",
+        "faster": "Faster",
+        "pause": "Pause",
+        "rotate": "Rotate",
+        "view_mode": "View Mode",
+        "reset": "Reset",
+        "leave": "Leave Object",
+        "loading_texture": "Loading texture...",
+        "tidally_locked": "Tidally Locked",
         "landmarks": "Landmarks",
         "timelines": "Timelines",
         "active": "Active",
@@ -70,7 +91,11 @@
         "red_dwarf_star": "Red Dwarf Star",
         "red_giant_star": "Red Giant Star",
         "neutron_star": "Neutron Star",
-        "blue_main_sequence_star": "Blue Main-Sequence Star"
+        "blue_main_sequence_star": "Blue Main-Sequence Star",
+        "fly_by_probe": "Fly-by Probe",
+        "orbiter_probe": "Orbiter Probe",
+        "space_station": "Space Station",
+        "space_telescope": "Space Telescope"
     },
     "object": {
         "milky_way": {
@@ -667,9 +692,9 @@
             "nickname": "Hubble",
             "description": "The Hubble Space Telescope is a space telescope that was launched into low Earth orbit in 1990. Hubble has revolutionized modern astronomy with iconic, deep-space imaging."
         },
-        "jswt": {
+        "jwst": {
             "name": "James Webb Space Telescope",
-            "nickname": "JSWT",
+            "nickname": "JWST",
             "description": "The James Webb Space Telescope (JWST) is a space telescope designed primarily to conduct infrared astronomy to study the first galaxies, stars, and planetary systems."
         },
         "lro": {
@@ -704,7 +729,7 @@
         },
         "parker_solar": {
             "name": "Parker Solar Probe",
-            "nickname": "Parker Solar",
+            "nickname": "Parker Solar Probe",
             "description": "The Parker Solar Probe is a NASA space probe orbiting the Sun, traveling closer to the solar surface than any previous spacecraft to study the solar corona and solar wind."
         },
         "voyager_1": {

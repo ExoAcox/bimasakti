@@ -13,7 +13,7 @@ export const planets: Planet[] = [
         orbit_duration: 1.51,
         rotate_duration: 1.51,
         texture: "trappist-1_b.png",
-        icon: "earth.png",
+        icon: "mars.png",
         satellites: []
     },
     {
@@ -29,7 +29,7 @@ export const planets: Planet[] = [
         rotate_duration: 2.42,
         rotation: [0, -90, 0],
         texture: "trappist-1_c.png",
-        icon: "earth.png",
+        icon: "venus.png",
         satellites: []
     },
     {
@@ -79,7 +79,7 @@ export const planets: Planet[] = [
         rotation: [0, 180, 0],
         texture: "trappist-1_f.png",
         cloud_texture: "trappist-1_f_cloud.png",
-        icon: "earth.png",
+        icon: "moon.png",
         satellites: []
     },
     {
@@ -95,7 +95,7 @@ export const planets: Planet[] = [
         rotate_duration: 12.35,
         texture: "trappist-1_g.png",
         cloud_texture: "trappist-1_g_cloud.png",
-        icon: "earth.png",
+        icon: "neptune.png",
         satellites: []
     },
     {
@@ -110,7 +110,7 @@ export const planets: Planet[] = [
         orbit_duration: 18.77,
         rotate_duration: 18.77,
         texture: "trappist-1_h.png",
-        icon: "earth.png",
+        icon: "moon.png",
         satellites: []
     }
 ]

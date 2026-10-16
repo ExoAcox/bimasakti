@@ -33,7 +33,7 @@ const Featured = () => {
             <div className="flex items-center gap-3 mt-4 flex-wrap">
                 {data.filter((_, index) => isMore || index < 20).map(object => {
                     if (!object) return null
-                    return <button onClick={() => handleClick(object.id)} key={object.id} className="group relative bg-background border border-sky-100/25 whitespace-nowrap rounded-full px-4 py-2 flex items-center gap-1.5 hover:bg-primary/80 transition">
+                    return <button onClick={() => handleClick(object.id)} key={object.id} className="group relative bg-background border border-sky-100/25 whitespace-nowrap rounded-full px-4 py-2 flex items-center gap-1.5 hover:bg-accent/80 hover:text-slate-950 transition">
                         <img className="size-4" src={`/icons/${object.icon}`} alt={object.id} />
                         <span className="text-sm font-medium">{t(`object.${object.id}.name`)}</span>
 

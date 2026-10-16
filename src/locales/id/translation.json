@@ -43,7 +43,28 @@
         "back_to_summary": "Kembali ke ringkasan {{object}}",
         "search_object": "Cari objek...",
         "back_to_milky_way": "Kembali ke Bima Sakti",
+        "back_to_home": "Kembali ke Beranda",
+        "enter_system": "Jelajahi {{name}}",
+        "system": "Sistem Bintang",
+        "systems": "Sistem",
+        "close": "Tutup",
         "object_not_found": "Objek tidak ditemukan",
+        "try_another_keyword": "Coba kata kunci lain",
+        "nations": "Negara",
+        "cloud": "Awan",
+        "atmosphere": "Atmosfer",
+        "aurora": "Aurora",
+        "day_night_mode": "Mode Siang / Malam",
+        "topography": "Topografi",
+        "slower": "Lebih Lambat",
+        "faster": "Lebih Cepat",
+        "pause": "Jeda",
+        "rotate": "Putar",
+        "view_mode": "Mode Tampilan",
+        "reset": "Atur Ulang",
+        "leave": "Keluar Objek",
+        "loading_texture": "Memuat tekstur...",
+        "tidally_locked": "Terkunci Pasang Surut",
         "belts": "Sabuk Asteroid",
         "landmarks": "Landmark",
         "timelines": "Garis Waktu",
@@ -61,14 +82,18 @@
         "terrestrial_planet": "Planet Terestrial",
         "gas_giant_planet": "Planet Raksasa Gas",
         "ice_giant_planet": "Planet Raksasa Es",
-        "dwarf_planet": "Planet Kerdil",
+        "dwarf_planet": "Planet Katai",
         "super_earth_planet": "Planet Bumi Super",
-        "yellow_dwarf_star": "Bintang Kurcaci Kuning",
-        "orange_dwarf_star": "Bintang Kurcaci Oranye",
-        "red_dwarf_star": "Bintang Kurcaci Merah",
+        "yellow_dwarf_star": "Bintang Katai Kuning",
+        "orange_dwarf_star": "Bintang Katai Oranye",
+        "red_dwarf_star": "Bintang Katai Merah",
         "red_giant_star": "Bintang Raksasa Merah",
         "neutron_star": "Bintang Neutron",
-        "blue_main_sequence_star": "Bintang Deret Utama Biru"
+        "blue_main_sequence_star": "Bintang Deret Utama Biru",
+        "fly_by_probe": "Wahana Terbang Lintas",
+        "orbiter_probe": "Wahana Pengorbit",
+        "space_station": "Stasiun Luar Angkasa",
+        "space_telescope": "Teleskop Luar Angkasa"
     },
     "object": {
         "milky_way": {
@@ -669,9 +694,9 @@
             "nickname": "Hubble",
             "description": "Teleskop Luar Angkasa Hubble adalah teleskop luar angkasa yang diluncurkan ke orbit rendah Bumi pada tahun 1990. Hubble telah merevolusi astronomi modern dengan gambar-gambar alam semesta yang sangat mendalam dan jernih."
         },
-        "jswt": {
+        "jwst": {
             "name": "James Webb Space Telescope",
-            "nickname": "JSWT",
+            "nickname": "JWST",
             "description": "Teleskop Luar Angkasa James Webb (JWST) adalah observatorium luar angkasa inframerah terkemuka yang diluncurkan pada Desember 2021 untuk mempelajari pembentukan galaksi, bintang, dan sistem planet pertama di alam semesta."
         },
         "lro": {
@@ -706,7 +731,7 @@
         },
         "parker_solar": {
             "name": "Parker Solar Probe",
-            "nickname": "Parker Solar",
+            "nickname": "Parker Solar Probe",
             "description": "Parker Solar Probe adalah wahana antariksa NASA yang melintas sangat dekat dengan korona luar Matahari untuk mempelajari angin matahari dan dinamika energi Matahari."
         },
         "voyager_1": {

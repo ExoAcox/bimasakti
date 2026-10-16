@@ -1,9 +1,10 @@
-import { type SpaceCraft } from "@types"
+import { type SpaceCraft, SpaceCraftClass } from "@types"
 
 export const spacecraft: SpaceCraft[] = [
     {
         id: "iss",
         type: "spacecraft-orbiter",
+        class: SpaceCraftClass.Station,
         parent: "earth",
         agencies: ["nasa", "esa", "jaxa", "csa", "roscosmos"],
         rotation: [0, 0, -90],
@@ -19,6 +20,7 @@ export const spacecraft: SpaceCraft[] = [
     {
         id: "tiangong",
         type: "spacecraft-orbiter",
+        class: SpaceCraftClass.Station,
         parent: "earth",
         agencies: ["cnsa"],
         rotation: [0, 0, -90],
@@ -34,6 +36,7 @@ export const spacecraft: SpaceCraft[] = [
     {
         id: "hubble",
         type: "spacecraft-orbiter",
+        class: SpaceCraftClass.Telescope,
         parent: "earth",
         agencies: ["nasa", "esa"],
         radius: 0.0066,
@@ -46,8 +49,9 @@ export const spacecraft: SpaceCraft[] = [
         icon: "telescope.png"
     },
     {
-        id: "jswt",
+        id: "jwst",
         type: "spacecraft-orbiter",
+        class: SpaceCraftClass.Telescope,
         parent: "earth",
         agencies: ["nasa", "esa", "csa"],
         radius: 0.01,
@@ -56,12 +60,13 @@ export const spacecraft: SpaceCraft[] = [
         axis: 5.0,
         orbit_duration: 0,
         rotate_duration: 0,
-        model: "jswt.glb",
+        model: "jwst.glb",
         icon: "telescope.png"
     },
     {
         id: "lro",
         type: "spacecraft-orbiter",
+        class: SpaceCraftClass.Orbiter,
         parent: "moon",
         agencies: ["nasa"],
         radius: 0.003,
@@ -76,6 +81,7 @@ export const spacecraft: SpaceCraft[] = [
     {
         id: "exomars",
         type: "spacecraft-orbiter",
+        class: SpaceCraftClass.Orbiter,
         parent: "mars",
         agencies: ["esa", "roscosmos"],
         radius: 0.0035,
@@ -90,6 +96,7 @@ export const spacecraft: SpaceCraft[] = [
     {
         id: "maven",
         type: "spacecraft-orbiter",
+        class: SpaceCraftClass.Orbiter,
         parent: "mars",
         agencies: ["nasa"],
         radius: 0.0057,
@@ -104,6 +111,7 @@ export const spacecraft: SpaceCraft[] = [
     {
         id: "mro",
         type: "spacecraft-orbiter",
+        class: SpaceCraftClass.Orbiter,
         parent: "mars",
         agencies: ["nasa"],
         radius: 0.0068,
@@ -118,6 +126,7 @@ export const spacecraft: SpaceCraft[] = [
     {
         id: "odyssey",
         type: "spacecraft-orbiter",
+        class: SpaceCraftClass.Orbiter,
         parent: "mars",
         agencies: ["nasa"],
         radius: 0.0022,
@@ -132,6 +141,7 @@ export const spacecraft: SpaceCraft[] = [
     {
         id: "juno",
         type: "spacecraft-orbiter",
+        class: SpaceCraftClass.Orbiter,
         parent: "jupiter",
         agencies: ["nasa"],
         radius: 0.01,
@@ -146,6 +156,7 @@ export const spacecraft: SpaceCraft[] = [
     {
         id: "parker_solar",
         type: "spacecraft-orbiter",
+        class: SpaceCraftClass.Orbiter,
         parent: "sun",
         agencies: ["nasa"],
         radius: 0.003,
@@ -160,6 +171,7 @@ export const spacecraft: SpaceCraft[] = [
     {
         id: "voyager_1",
         type: "spacecraft-flyby",
+        class: SpaceCraftClass.FlyBy,
         parent: "earth",
         rotation: [0, -90, 0],
         agencies: ["nasa"],
@@ -175,6 +187,7 @@ export const spacecraft: SpaceCraft[] = [
     {
         id: "voyager_2",
         type: "spacecraft-flyby",
+        class: SpaceCraftClass.FlyBy,
         parent: "earth",
         rotation: [0, -90, 0],
         agencies: ["nasa"],
@@ -190,6 +203,7 @@ export const spacecraft: SpaceCraft[] = [
     {
         id: "new_horizons",
         type: "spacecraft-flyby",
+        class: SpaceCraftClass.FlyBy,
         parent: "earth",
         rotation: [0, -90, 0],
         agencies: ["nasa"],

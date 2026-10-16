@@ -16,6 +16,7 @@ export const planets: Planet[] = [
         axis: 0.034,
         orbit_duration: 87.97,
         rotate_duration: 58.65,
+        childCount: 0,
         texture: "mercury.ktx2",
         texture_hd: "mercury_hd.ktx2",
         topography_texture: "mercury_topography.ktx2",
@@ -38,6 +39,7 @@ export const planets: Planet[] = [
         axis: 177.3,
         orbit_duration: 224.7,
         rotate_duration: 243.02,
+        childCount: 0,
         texture: "venus.ktx2",
         texture_hd: "venus_hd.ktx2",
         cloud_texture: "venus_cloud.ktx2",
@@ -66,6 +68,7 @@ export const planets: Planet[] = [
         axis: 23.4,
         orbit_duration: 365.26,
         rotate_duration: 1.0,
+        childCount: 1,
         texture: "earth.ktx2",
         texture_hd: "earth_hd.ktx2",
         night_texture: "earth_night.ktx2",
@@ -99,6 +102,7 @@ export const planets: Planet[] = [
         axis: 25.19,
         orbit_duration: 686.98,
         rotate_duration: 1.03,
+        childCount: 2,
         texture: "mars.ktx2",
         texture_hd: "mars_hd.ktx2",
         topography_texture: "mars_topography.ktx2",
@@ -129,6 +133,7 @@ export const planets: Planet[] = [
         axis: 3.13,
         orbit_duration: 4332.59,
         rotate_duration: 0.41, // 9.9 hours
+        childCount: 95,
         texture: "jupiter.ktx2",
         texture_hd: "jupiter_hd.ktx2",
         icon: "jupiter.png",
@@ -155,6 +160,7 @@ export const planets: Planet[] = [
         axis: 26.73,
         orbit_duration: 10759.22,
         rotate_duration: 0.44, // 10.6 hours
+        childCount: 146,
         texture: "saturn.ktx2",
         icon: "saturn.png",
         aurora: 1,
@@ -181,6 +187,7 @@ export const planets: Planet[] = [
         axis: 97.77,
         orbit_duration: 30688.5,
         rotate_duration: 0.72, // 17.2 hours
+        childCount: 28,
         texture: "uranus.ktx2",
         icon: "uranus.png",
         ring: {
@@ -204,6 +211,7 @@ export const planets: Planet[] = [
         axis: 28.32,
         orbit_duration: 60182,
         rotate_duration: 0.67, // 16.1 hours
+        childCount: 16,
         texture: "neptune.ktx2",
         icon: "neptune.png",
         get satellites() {
@@ -224,6 +232,7 @@ export const planets: Planet[] = [
         axis: 122.5,
         orbit_duration: 90560,
         rotate_duration: 6.39, // Tidally locked with Charon
+        childCount: 5,
         texture: "pluto.webp",
         icon: "pluto.png",
         get satellites() {
@@ -244,6 +253,7 @@ export const planets: Planet[] = [
         axis: 4,
         orbit_duration: 1682,
         rotate_duration: 0.378,
+        childCount: 0,
         texture: "ceres.jpg",
         icon: "moon.png",
         satellites: [],
@@ -262,6 +272,7 @@ export const planets: Planet[] = [
         axis: 28,
         orbit_duration: 104210,
         rotate_duration: 0.163,
+        childCount: 2,
         texture: "haumea.jpg",
         model: "haumea.ply",
         icon: "moon.png",
@@ -278,6 +289,7 @@ export const planets: Planet[] = [
         axis: 29,
         orbit_duration: 112897,
         rotate_duration: 0.937,
+        childCount: 1,
         texture: "makemake.jpg",
         icon: "mercury.png",
         satellites: []
@@ -293,6 +305,7 @@ export const planets: Planet[] = [
         axis: 44,
         orbit_duration: 203830,
         rotate_duration: 1.08,
+        childCount: 1,
         texture: "eris.jpg",
         icon: "moon.png",
         satellites: []
@@ -308,6 +321,7 @@ export const planets: Planet[] = [
         axis: 20,
         orbit_duration: 90250,
         rotate_duration: 0.549,
+        childCount: 1,
         texture: "orcus.jpg",
         icon: "moon.png",
         satellites: []
@@ -323,6 +337,7 @@ export const planets: Planet[] = [
         axis: 18,
         orbit_duration: 99640,
         rotate_duration: 0.25,
+        childCount: 1,
         texture: "salacia.jpg",
         icon: "mercury.png",
         satellites: []
@@ -338,6 +353,7 @@ export const planets: Planet[] = [
         axis: 14,
         orbit_duration: 104380,
         rotate_duration: 0.736,
+        childCount: 1,
         texture: "quaoar.jpg",
         icon: "mercury.png",
         ring: {
@@ -360,6 +376,7 @@ export const planets: Planet[] = [
         axis: 30.7,
         orbit_duration: 202300,
         rotate_duration: 0.933,
+        childCount: 1,
         texture: "gonggong.jpg",
         icon: "mercury.png",
         get satellites() {
@@ -378,8 +395,9 @@ export const planets: Planet[] = [
         axis: 26,
         orbit_duration: 4161000,
         rotate_duration: 0.427,
+        childCount: 0,
         texture: "sedna.jpg",
-        icon: "mercury.png",
+        icon: "mars.png",
         satellites: []
     },
 ]

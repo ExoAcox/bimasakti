@@ -1,0 +1,419 @@
+{
+  "buildManifest": {
+    "serverBundles": {
+      "nodejs_eyJydW50aW1lIjoibm9kZWpzIn0": {
+        "id": "nodejs_eyJydW50aW1lIjoibm9kZWpzIn0",
+        "file": "build/server/nodejs_eyJydW50aW1lIjoibm9kZWpzIn0/index.js",
+        "config": {
+          "runtime": "nodejs"
+        }
+      }
+    },
+    "routeIdToServerBundleId": {
+      "pages/home": "nodejs_eyJydW50aW1lIjoibm9kZWpzIn0",
+      "pages/milky_way": "nodejs_eyJydW50aW1lIjoibm9kZWpzIn0",
+      "pages/solar_system": "nodejs_eyJydW50aW1lIjoibm9kZWpzIn0",
+      "pages/alpha_centauri": "nodejs_eyJydW50aW1lIjoibm9kZWpzIn0",
+      "pages/trappist-1": "nodejs_eyJydW50aW1lIjoibm9kZWpzIn0",
+      "pages/lich": "nodejs_eyJydW50aW1lIjoibm9kZWpzIn0",
+      "pages/toi-700": "nodejs_eyJydW50aW1lIjoibm9kZWpzIn0",
+      "pages/copernicus": "nodejs_eyJydW50aW1lIjoibm9kZWpzIn0",
+      "pages/sagittarius_a": "nodejs_eyJydW50aW1lIjoibm9kZWpzIn0",
+      "pages/liveview/mars": "nodejs_eyJydW50aW1lIjoibm9kZWpzIn0",
+      "pages/liveview/moon": "nodejs_eyJydW50aW1lIjoibm9kZWpzIn0",
+      "api/objects": "nodejs_eyJydW50aW1lIjoibm9kZWpzIn0",
+      "api/object": "nodejs_eyJydW50aW1lIjoibm9kZWpzIn0",
+      "api/universes": "nodejs_eyJydW50aW1lIjoibm9kZWpzIn0",
+      "api/universe": "nodejs_eyJydW50aW1lIjoibm9kZWpzIn0",
+      "api/landmarks": "nodejs_eyJydW50aW1lIjoibm9kZWpzIn0",
+      "api/nations": "nodejs_eyJydW50aW1lIjoibm9kZWpzIn0"
+    },
+    "routes": {
+      "root": {
+        "id": "root",
+        "file": "src/root.tsx",
+        "path": "",
+        "config": {}
+      },
+      "pages/home": {
+        "id": "pages/home",
+        "parentId": "root",
+        "file": "src/pages/home.tsx",
+        "index": true,
+        "config": {
+          "runtime": "nodejs"
+        }
+      },
+      "components/Canvas": {
+        "id": "components/Canvas",
+        "parentId": "root",
+        "file": "src/components/Canvas.tsx",
+        "config": {}
+      },
+      "pages/milky_way": {
+        "id": "pages/milky_way",
+        "parentId": "components/Canvas",
+        "file": "src/pages/milky_way.tsx",
+        "path": "milky_way",
+        "config": {
+          "runtime": "nodejs"
+        }
+      },
+      "pages/solar_system": {
+        "id": "pages/solar_system",
+        "parentId": "components/Canvas",
+        "file": "src/pages/solar_system.tsx",
+        "path": "solar_system",
+        "config": {
+          "runtime": "nodejs"
+        }
+      },
+      "pages/alpha_centauri": {
+        "id": "pages/alpha_centauri",
+        "parentId": "components/Canvas",
+        "file": "src/pages/alpha_centauri.tsx",
+        "path": "alpha_centauri",
+        "config": {
+          "runtime": "nodejs"
+        }
+      },
+      "pages/trappist-1": {
+        "id": "pages/trappist-1",
+        "parentId": "components/Canvas",
+        "file": "src/pages/trappist-1.tsx",
+        "path": "trappist-1",
+        "config": {
+          "runtime": "nodejs"
+        }
+      },
+      "pages/lich": {
+        "id": "pages/lich",
+        "parentId": "components/Canvas",
+        "file": "src/pages/lich.tsx",
+        "path": "lich",
+        "config": {
+          "runtime": "nodejs"
+        }
+      },
+      "pages/toi-700": {
+        "id": "pages/toi-700",
+        "parentId": "components/Canvas",
+        "file": "src/pages/toi-700.tsx",
+        "path": "toi-700",
+        "config": {
+          "runtime": "nodejs"
+        }
+      },
+      "pages/copernicus": {
+        "id": "pages/copernicus",
+        "parentId": "components/Canvas",
+        "file": "src/pages/copernicus.tsx",
+        "path": "copernicus",
+        "config": {
+          "runtime": "nodejs"
+        }
+      },
+      "pages/sagittarius_a": {
+        "id": "pages/sagittarius_a",
+        "parentId": "components/Canvas",
+        "file": "src/pages/sagittarius_a.tsx",
+        "path": "sagittarius_a",
+        "config": {
+          "runtime": "nodejs"
+        }
+      },
+      "pages/liveview/mars": {
+        "id": "pages/liveview/mars",
+        "parentId": "root",
+        "file": "src/pages/liveview/mars.tsx",
+        "path": "liveview/mars",
+        "config": {
+          "runtime": "nodejs"
+        }
+      },
+      "pages/liveview/moon": {
+        "id": "pages/liveview/moon",
+        "parentId": "root",
+        "file": "src/pages/liveview/moon.tsx",
+        "path": "liveview/moon",
+        "config": {
+          "runtime": "nodejs"
+        }
+      },
+      "api/objects": {
+        "id": "api/objects",
+        "parentId": "root",
+        "file": "src/api/objects.ts",
+        "path": "api/objects",
+        "config": {
+          "runtime": "nodejs"
+        }
+      },
+      "api/object": {
+        "id": "api/object",
+        "parentId": "root",
+        "file": "src/api/object.ts",
+        "path": "api/objects/:id",
+        "config": {
+          "runtime": "nodejs"
+        }
+      },
+      "api/universes": {
+        "id": "api/universes",
+        "parentId": "root",
+        "file": "src/api/universes.ts",
+        "path": "api/universes",
+        "config": {
+          "runtime": "nodejs"
+        }
+      },
+      "api/universe": {
+        "id": "api/universe",
+        "parentId": "root",
+        "file": "src/api/universe.ts",
+        "path": "api/universes/:id",
+        "config": {
+          "runtime": "nodejs"
+        }
+      },
+      "api/landmarks": {
+        "id": "api/landmarks",
+        "parentId": "root",
+        "file": "src/api/landmarks.ts",
+        "path": "api/landmarks",
+        "config": {
+          "runtime": "nodejs"
+        }
+      },
+      "api/nations": {
+        "id": "api/nations",
+        "parentId": "root",
+        "file": "src/api/nations.ts",
+        "path": "api/nations",
+        "config": {
+          "runtime": "nodejs"
+        }
+      }
+    }
+  },
+  "reactRouterConfig": {
+    "appDirectory": "/home/yuju/Documents/Projects/bimasakti/src",
+    "basename": "/",
+    "buildDirectory": "/home/yuju/Documents/Projects/bimasakti/build",
+    "future": {
+      "unstable_enableNodeReadableStream": false,
+      "unstable_optimizeDeps": false
+    },
+    "routes": {
+      "root": {
+        "id": "root",
+        "file": "root.tsx",
+        "path": ""
+      },
+      "pages/home": {
+        "id": "pages/home",
+        "parentId": "root",
+        "file": "./pages/home.tsx",
+        "index": true
+      },
+      "components/Canvas": {
+        "id": "components/Canvas",
+        "parentId": "root",
+        "file": "./components/Canvas.tsx"
+      },
+      "pages/milky_way": {
+        "id": "pages/milky_way",
+        "parentId": "components/Canvas",
+        "file": "./pages/milky_way.tsx",
+        "path": "milky_way"
+      },
+      "pages/solar_system": {
+        "id": "pages/solar_system",
+        "parentId": "components/Canvas",
+        "file": "./pages/solar_system.tsx",
+        "path": "solar_system"
+      },
+      "pages/alpha_centauri": {
+        "id": "pages/alpha_centauri",
+        "parentId": "components/Canvas",
+        "file": "./pages/alpha_centauri.tsx",
+        "path": "alpha_centauri"
+      },
+      "pages/trappist-1": {
+        "id": "pages/trappist-1",
+        "parentId": "components/Canvas",
+        "file": "./pages/trappist-1.tsx",
+        "path": "trappist-1"
+      },
+      "pages/lich": {
+        "id": "pages/lich",
+        "parentId": "components/Canvas",
+        "file": "./pages/lich.tsx",
+        "path": "lich"
+      },
+      "pages/toi-700": {
+        "id": "pages/toi-700",
+        "parentId": "components/Canvas",
+        "file": "./pages/toi-700.tsx",
+        "path": "toi-700"
+      },
+      "pages/copernicus": {
+        "id": "pages/copernicus",
+        "parentId": "components/Canvas",
+        "file": "./pages/copernicus.tsx",
+        "path": "copernicus"
+      },
+      "pages/sagittarius_a": {
+        "id": "pages/sagittarius_a",
+        "parentId": "components/Canvas",
+        "file": "./pages/sagittarius_a.tsx",
+        "path": "sagittarius_a"
+      },
+      "pages/liveview/mars": {
+        "id": "pages/liveview/mars",
+        "parentId": "root",
+        "file": "./pages/liveview/mars.tsx",
+        "path": "liveview/mars"
+      },
+      "pages/liveview/moon": {
+        "id": "pages/liveview/moon",
+        "parentId": "root",
+        "file": "./pages/liveview/moon.tsx",
+        "path": "liveview/moon"
+      },
+      "api/objects": {
+        "id": "api/objects",
+        "parentId": "root",
+        "file": "./api/objects.ts",
+        "path": "api/objects"
+      },
+      "api/object": {
+        "id": "api/object",
+        "parentId": "root",
+        "file": "./api/object.ts",
+        "path": "api/objects/:id"
+      },
+      "api/universes": {
+        "id": "api/universes",
+        "parentId": "root",
+        "file": "./api/universes.ts",
+        "path": "api/universes"
+      },
+      "api/universe": {
+        "id": "api/universe",
+        "parentId": "root",
+        "file": "./api/universe.ts",
+        "path": "api/universes/:id"
+      },
+      "api/landmarks": {
+        "id": "api/landmarks",
+        "parentId": "root",
+        "file": "./api/landmarks.ts",
+        "path": "api/landmarks"
+      },
+      "api/nations": {
+        "id": "api/nations",
+        "parentId": "root",
+        "file": "./api/nations.ts",
+        "path": "api/nations"
+      }
+    },
+    "routeDiscovery": {
+      "mode": "lazy",
+      "manifestPath": "/__manifest"
+    },
+    "serverBuildFile": "index.js",
+    "serverModuleFormat": "esm",
+    "ssr": true,
+    "splitRouteModules": true,
+    "subResourceIntegrity": false,
+    "allowedActionOrigins": false,
+    "unstable_routeConfig": [
+      {
+        "id": "root",
+        "path": "",
+        "file": "root.tsx",
+        "children": [
+          {
+            "file": "./pages/home.tsx",
+            "index": true
+          },
+          {
+            "file": "./components/Canvas.tsx",
+            "children": [
+              {
+                "file": "./pages/milky_way.tsx",
+                "path": "milky_way"
+              },
+              {
+                "file": "./pages/solar_system.tsx",
+                "path": "solar_system"
+              },
+              {
+                "file": "./pages/alpha_centauri.tsx",
+                "path": "alpha_centauri"
+              },
+              {
+                "file": "./pages/trappist-1.tsx",
+                "path": "trappist-1"
+              },
+              {
+                "file": "./pages/lich.tsx",
+                "path": "lich"
+              },
+              {
+                "file": "./pages/toi-700.tsx",
+                "path": "toi-700"
+              },
+              {
+                "file": "./pages/copernicus.tsx",
+                "path": "copernicus"
+              },
+              {
+                "file": "./pages/sagittarius_a.tsx",
+                "path": "sagittarius_a"
+              }
+            ]
+          },
+          {
+            "file": "./pages/liveview/mars.tsx",
+            "path": "liveview/mars"
+          },
+          {
+            "file": "./pages/liveview/moon.tsx",
+            "path": "liveview/moon"
+          },
+          {
+            "file": "./api/objects.ts",
+            "path": "api/objects"
+          },
+          {
+            "file": "./api/object.ts",
+            "path": "api/objects/:id"
+          },
+          {
+            "file": "./api/universes.ts",
+            "path": "api/universes"
+          },
+          {
+            "file": "./api/universe.ts",
+            "path": "api/universes/:id"
+          },
+          {
+            "file": "./api/landmarks.ts",
+            "path": "api/landmarks"
+          },
+          {
+            "file": "./api/nations.ts",
+            "path": "api/nations"
+          }
+        ]
+      }
+    ]
+  },
+  "viteConfig": {
+    "build": {
+      "assetsDir": "assets"
+    }
+  }
+}

@@ -15,6 +15,8 @@ export const INTENSITY_SCALE = 1e+14
 export const LOWREST_SCALE = 3e+7
 export const SHIP_SCALE = 0.05 / SCALE
 
+export const AU_SCALE = 149000000
+
 const universes: Universe[] = [
     {
         id: "milky_way",

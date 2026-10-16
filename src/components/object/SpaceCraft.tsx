@@ -19,8 +19,6 @@ interface GltfProps {
 }
 
 
-const centeredIds = ["iss", "tiangong"]
-
 const WireframeMesh = () => {
     return <mesh scale={2}>
         <sphereGeometry />
@@ -34,13 +32,17 @@ const GltfLoader = ({ data, objectRef }: GltfProps) => {
     const model = useMemo(() => {
         const clone = scene.clone(true)
 
-        if (centeredIds.includes(data.id)) {
-            const box = new Box3().setFromObject(clone)
-            const center = box.getCenter(new Vector3())
+        const box = new Box3().setFromObject(clone)
+        const center = box.getCenter(new Vector3())
+        const size = box.getSize(new Vector3())
+        const maxDim = Math.max(size.x, size.y, size.z)
 
-            clone.position.x -= center.x
-            clone.position.y -= center.y
-            clone.position.z -= center.z
+        if (maxDim > 0) {
+            const scaleFactor = 2 / maxDim
+            clone.scale.setScalar(scaleFactor)
+            clone.position.copy(center).multiplyScalar(-scaleFactor)
+        } else {
+            clone.position.sub(center)
         }
 
         return clone

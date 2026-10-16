@@ -46,9 +46,9 @@ export const Loader = () => {
                     </div>
 
                     {/* Footer Info / Asset Details */}
-                    <div className="w-full flex items-center gap-2 text-xs text-slate-400 mt-3 px-1">
+                    <div className="w-full flex items-center gap-2 text-xs text-tertiary mt-3 px-1">
                         <FaRegFile className="shrink-0 translate-y-px" />
-                        <span className="truncate max-w-55 text-slate-300 mr-auto" title={item}>
+                        <span className="truncate max-w-55 text-secondary mr-auto" title={item}>
                             {itemName}
                         </span>
                         <span className="text-cyan-300/80 font-semibold shrink-0 ml-2">

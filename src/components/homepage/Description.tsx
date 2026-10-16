@@ -10,10 +10,10 @@ const Description = () => {
             <Trans
                 i18nKey="ui.home_description"
                 components={{
-                    highlight: <span className="font-extrabold bg-linear-to-br from-white to-primary bg-clip-text text-transparent" />
+                    highlight: <span className="font-extrabold bg-linear-to-br from-white to-accent bg-clip-text text-transparent" />
                 }}
             >
-                The Indonesian name for the <span className="font-extrabold bg-linear-to-br from-white to-primary bg-clip-text text-transparent">Milky Way</span>, our home galaxy, a vast universe of stars, planets, and endless possibilities waiting to be explored.
+                The Indonesian name for the <span className="font-extrabold bg-linear-to-br from-white to-accent bg-clip-text text-transparent">Milky Way</span>, our home galaxy, a vast universe of stars, planets, and endless possibilities waiting to be explored.
             </Trans>
         </p>
         <div className="flex flex-col md:flex-row items-center justify-center text-sm md:text-lg xl:text-xl font-bold gap-4 xl:gap-8 gap-y-4 flex-wrap">
@@ -21,7 +21,7 @@ const Description = () => {
                 {t("ui.explore_milky_way")}
                 <FaArrowRight className="group-hover:translate-x-1 transition" />
             </Link>
-            <Link to="/solar_system" className="group flex items-center gap-3 px-8 py-3.5 rounded-full font-bold bg-linear-to-br from-white to-primary text-black">
+            <Link to="/solar_system" className="group flex items-center gap-3 px-8 py-3.5 rounded-full font-bold bg-linear-to-br from-white to-accent text-black">
                 {t("ui.explore_solar_system")}
                 <FaArrowRight className="group-hover:translate-x-1 transition" />
             </Link>

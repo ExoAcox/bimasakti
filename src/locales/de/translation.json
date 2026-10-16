@@ -43,7 +43,28 @@
         "back_to_summary": "Zurück zur Übersicht von {{object}}",
         "search_object": "Objekt suchen...",
         "back_to_milky_way": "Zurück zur Milchstraße",
+        "back_to_home": "Zurück zur Startseite",
+        "enter_system": "{{name}} erkunden",
+        "system": "Sternensystem",
+        "systems": "Systeme",
+        "close": "Schließen",
         "object_not_found": "Objekt nicht gefunden",
+        "try_another_keyword": "Versuche einen anderen Suchbegriff",
+        "nations": "Nationen",
+        "cloud": "Wolken",
+        "atmosphere": "Atmosphäre",
+        "aurora": "Aurora",
+        "day_night_mode": "Tag- / Nachtmodus",
+        "topography": "Topographie",
+        "slower": "Langsamer",
+        "faster": "Schneller",
+        "pause": "Pause",
+        "rotate": "Rotieren",
+        "view_mode": "Ansichtsmodus",
+        "reset": "Zurücksetzen",
+        "leave": "Objekt verlassen",
+        "loading_texture": "Textur laden...",
+        "tidally_locked": "Gezeitengebunden",
         "landmarks": "Landmarken",
         "timelines": "Zeitleisten",
         "active": "Aktiv",
@@ -67,7 +88,11 @@
         "red_dwarf_star": "Roter Zwergstern",
         "red_giant_star": "Roter Riesenstern",
         "neutron_star": "Neutronenstern",
-        "blue_main_sequence_star": "Blauer Hauptreihenstern"
+        "blue_main_sequence_star": "Blauer Hauptreihenstern",
+        "fly_by_probe": "Vorbeiflugsonde",
+        "orbiter_probe": "Orbitalsonde",
+        "space_station": "Raumstation",
+        "space_telescope": "Weltraumteleskop"
     },
     "object": {
         "milky_way": {
@@ -606,7 +631,7 @@
             "nickname": "Hubble",
             "description": "Das Hubble-Weltraumteleskop ist ein Weltraumteleskop, das 1990 in eine niedrige Erdumlaufbahn gebracht wurde und die moderne Astronomie revolutioniert hat."
         },
-        "jswt": {
+        "jwst": {
             "name": "James-Webb-Weltraumteleskop",
             "nickname": "JWST",
             "description": "Das James-Webb-Weltraumteleskop (JWST) ist ein Infrarot-Weltraumteleskop zur Erforschung der ersten Galaxien, Sterne und Planeten im Universum."
@@ -643,7 +668,7 @@
         },
         "parker_solar": {
             "name": "Parker Solar Probe",
-            "nickname": "Parker Solar",
+            "nickname": "Parker Solar Probe",
             "description": "Die Parker Solar Probe ist eine NASA-Raumsonde zur Erforschung der Sonne und der Sonnenkorona."
         },
         "voyager_1": {

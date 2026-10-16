@@ -49,25 +49,25 @@ const ModelRenderer = ({ path, rotation }: { path: string, rotation?: [number, n
     const geometry = useMemo(() => {
         if (!rawGeometry) return null
 
-        const geo = rawGeometry.clone()
-        const [x, y, z] = rotation ?? [0, 0, 0]
-        if (x) geo.rotateX(MathUtils.degToRad(x))
-        if (y) geo.rotateY(MathUtils.degToRad(y))
-        if (z) geo.rotateZ(MathUtils.degToRad(z))
+        const unindexedGeo = rawGeometry.index ? rawGeometry.toNonIndexed() : rawGeometry.clone()
 
-        geo.computeVertexNormals()
-
-        const unindexedGeo = geo.index ? geo.toNonIndexed() : geo
         generateSphericalUVs(unindexedGeo)
+
+        const [x, y, z] = rotation ?? [0, 0, 0]
+        if (x) unindexedGeo.rotateX(MathUtils.degToRad(x))
+        if (y) unindexedGeo.rotateY(MathUtils.degToRad(y))
+        if (z) unindexedGeo.rotateZ(MathUtils.degToRad(z))
+
+        unindexedGeo.computeVertexNormals()
 
         const pos = unindexedGeo.attributes.position
         let maxDistSq = 0
         if (pos) {
             for (let i = 0; i < pos.count; i++) {
-                const x = pos.getX(i)
-                const y = pos.getY(i)
-                const z = pos.getZ(i)
-                const distSq = x * x + y * y + z * z
+                const vx = pos.getX(i)
+                const vy = pos.getY(i)
+                const vz = pos.getZ(i)
+                const distSq = vx * vx + vy * vy + vz * vz
                 if (distSq > maxDistSq) maxDistSq = distSq
             }
         }
@@ -77,7 +77,7 @@ const ModelRenderer = ({ path, rotation }: { path: string, rotation?: [number, n
             unindexedGeo.scale(scaleFactor, scaleFactor, scaleFactor)
         }
         return unindexedGeo
-    }, [rawGeometry])
+    }, [rawGeometry, rotation])
 
     if (!geometry) return null
 

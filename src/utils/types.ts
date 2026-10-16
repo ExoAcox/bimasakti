@@ -59,7 +59,8 @@ export interface Star extends Object {
         inner_radius: number
         outer_radius: number
     },
-    variants?: StarVariant[]
+    variants?: StarVariant[],
+    childCount?: number,
 }
 
 export interface Variant extends Partial<Planet> {
@@ -72,7 +73,8 @@ export interface Planet extends Object {
     class: PlanetClass
     satellites?: Satellite[]
     ring?: Ring
-    variants?: Variant[]
+    variants?: Variant[],
+    childCount?: number,
 }
 
 export interface Satellite extends Object {
@@ -94,7 +96,7 @@ export interface Comet extends Object {
 export interface SpaceCraft extends Object {
     type: "spacecraft-flyby" | "spacecraft-orbiter"
     model: string
-    // class: SpaceCraftClass
+    class: SpaceCraftClass
     agencies: string[]
 }
 
@@ -135,16 +137,16 @@ export const StarClass = {
     Blue: "Blue Main-Sequence Star"
 } as const;
 
-// export const SpaceCraftClass = {
-//     FlyBy: "Fly-by Probe",
-//     Orbiter: "Orbiter Probe",
-//     Station: "Space Station",
-//     Telescope: "Space Telescope"
-// } as const
+export const SpaceCraftClass = {
+    FlyBy: "Fly-by Probe",
+    Orbiter: "Orbiter Probe",
+    Station: "Space Station",
+    Telescope: "Space Telescope"
+} as const
 
 export type PlanetClass = (typeof PlanetClass)[keyof typeof PlanetClass];
 export type StarClass = (typeof StarClass)[keyof typeof StarClass];
-// export type SpaceCraftClass = (typeof SpaceCraftClass)[keyof typeof SpaceCraftClass];
+export type SpaceCraftClass = (typeof SpaceCraftClass)[keyof typeof SpaceCraftClass];
 
 export interface Landmark {
     id: string

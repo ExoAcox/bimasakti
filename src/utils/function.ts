@@ -174,6 +174,10 @@ export const timeFormat = (value: number) => {
 export const lengthFormat = (value: number) => {
     if (value < 1) {
         return `${(value * 1000)?.toLocaleString()} m`
+    } else if (value >= 1e+9) {
+        return `${(value / 1e+9)?.toLocaleString()}B km`
+    } else if (value >= 1e+6) {
+        return `${(value / 1e+6)?.toLocaleString()}M km`
     } else {
         return `${value?.toLocaleString()} km`
     }

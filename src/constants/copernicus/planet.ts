@@ -28,7 +28,7 @@ export const planets: Planet[] = [
         orbit_duration: 14.65,
         rotate_duration: 14.65,
         texture: "galileo.png",
-        icon: "jupiter.png",
+        icon: "neptune.png",
         satellites: []
     },
     {
@@ -43,7 +43,7 @@ export const planets: Planet[] = [
         orbit_duration: 44.34,
         rotate_duration: 44.34,
         texture: "brahe.png",
-        icon: "jupiter.png",
+        icon: "neptune.png",
         satellites: []
     },
     {
@@ -58,7 +58,7 @@ export const planets: Planet[] = [
         orbit_duration: 260.7,
         rotate_duration: 260.7,
         texture: "harriot.png",
-        icon: "neptune.png",
+        icon: "jupiter.png",
         satellites: []
     },
     {

@@ -22,7 +22,7 @@ const Card = ({ id, className, imgClassName }: Props) => {
         </div>
         <h5 className="text-lg mt-auto font-bold font-space-grotesk">{t(`object.${id}.title`)}</h5>
         <p className="text-sm">{t(`object.${id}.description`)}</p>
-        <Link to={`/${id}`} className="w-full sm:max-w-64 text-primary text-center border border-primary mt-2 rounded-lg font-semibold py-1 hover:bg-primary hover:text-white">
+        <Link to={`/${id}`} className="w-full sm:max-w-64 text-accent text-center border border-accent mt-2 rounded-lg font-semibold py-1 hover:bg-accent hover:text-slate-950 transition-colors">
             {t("ui.enter")}
         </Link>
     </div>

@@ -156,7 +156,7 @@ const CanvasLayout = () => {
                 </Suspense>
             </Canvas>
 
-            <Header id={data.id} />
+            {/* <Header id={data.id} /> */}
             <NavigationPanel />
             {/* <SettingPanel /> */}
             <UserInterface id={data.id} />

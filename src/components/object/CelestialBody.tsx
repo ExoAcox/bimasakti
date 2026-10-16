@@ -104,12 +104,16 @@ const Object = ({ data, children, childrenComponent, onClick, objectRef, cloudRe
         if (data.rotate_duration && objectRef?.current?.rotation) {
             const isTidalLocked = data.orbit_duration === data.rotate_duration && tidalLock
             if (isTidalLocked) {
-                const [x, y, z] = ((data as PlanetType)?.rotation ?? [0, 0, 0])
-                objectRef.current.rotation.y = MathUtils.degToRad(y)
-                rotationRef.current = MathUtils.degToRad(y)
+                if ((data as PlanetType).model) {
+                    objectRef.current.rotation.set(0, 0, 0)
+                } else {
+                    const [x, y, z] = ((data as PlanetType)?.rotation ?? [0, 0, 0])
+                    objectRef.current.rotation.y = MathUtils.degToRad(y)
+                    rotationRef.current = MathUtils.degToRad(y)
 
-                if (x) objectRef.current.rotation.z = MathUtils.degToRad(x)
-                if (z) objectRef.current.rotation.z = MathUtils.degToRad(z)
+                    if (x) objectRef.current.rotation.z = MathUtils.degToRad(x)
+                    if (z) objectRef.current.rotation.z = MathUtils.degToRad(z)
+                }
             } else {
                 if (rotationRef.current === null) {
                     rotationRef.current = (speed / data.rotate_duration) * speedScale
@@ -244,8 +248,8 @@ const Object = ({ data, children, childrenComponent, onClick, objectRef, cloudRe
 
 
     const labelClass = isSpacecraft
-        ? "hover:text-primary flex items-center gap-1 px-2 py-0.5 rounded-full text-[10px] font-medium transition-all duration-150 border whitespace-nowrap shadow-md bg-neutral-950/90 text-sky-200 border-sky-500/30 hover:bg-neutral-900 hover:border-sky-400 hover:text-white"
-        : clsx("hover:text-primary absolute -translate-y-2/7 -translate-x-1/2 flex flex-col px-1.5 py-1 items-center whitespace-nowrap rounded text-xs font-semibold")
+        ? "hover:text-accent flex items-center gap-1 px-2 py-0.5 rounded-full text-[10px] font-medium transition-all duration-150 border whitespace-nowrap shadow-md bg-neutral-950/90 text-sky-200 border-sky-500/30 hover:bg-neutral-900 hover:border-sky-400 hover:text-white"
+        : clsx("hover:text-accent absolute -translate-y-2/7 -translate-x-1/2 flex flex-col px-1.5 py-1 items-center whitespace-nowrap rounded text-xs font-semibold")
 
     return <group rotation={[0, 0, axis]}>
         <group rotation={[0, rotate, 0]}>

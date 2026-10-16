@@ -136,7 +136,7 @@ const SettingModal = ({ isOpen, close }: Props) => {
                     <label>{t("ui.language")}</label>
                     <div className="flex gap-4">
                         {languages.map(language => {
-                            return <img src={`/icons/${language.icon}`} alt={language.label} className={clsx("py-0.5 px-1 cursor-pointer border rounded-sm", i18n.language === language.id ? "border-primary" : "border-transparent")} onClick={() => i18n.changeLanguage(language.id)} />
+                            return <img src={`/icons/${language.icon}`} alt={language.label} className={clsx("py-0.5 px-1 cursor-pointer border rounded-sm", i18n.language === language.id ? "border-accent" : "border-transparent")} onClick={() => i18n.changeLanguage(language.id)} />
                         })}
                     </div>
                 </div>
