@@ -18,6 +18,7 @@ void main() {
 export const pointGlowFragmentShader = /* glsl */ `
 uniform sampler2D u_texture;
 uniform float u_time;
+uniform bool u_mobile;
 
 varying vec3 vColor;
 
@@ -33,7 +34,7 @@ void main() {
     float pulse = 0.95 + 0.05 * sin(u_time * 1.5);
     
     // Intensity multiplier allowing overlapping mist to bloom softly
-    float intensity = mist * 1.25 * pulse;
+    float intensity = mist * (u_mobile ? 0.50 : 1.25) * pulse;
 
     vec4 texColor = texture2D(u_texture, gl_PointCoord);
 

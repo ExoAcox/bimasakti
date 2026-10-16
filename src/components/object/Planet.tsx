@@ -1,6 +1,6 @@
 import { useRef, Suspense, useDeferredValue, useMemo } from "react"
 import { type Mesh } from "three"
-import { Detailed } from "@react-three/drei"
+import { Detailed, useDetectGPU } from "@react-three/drei"
 
 import { type Planet as PlanetType, type SpaceCraft as SpaceCraftType } from "@types"
 import { useSettingStore, useControlStore } from "@state"
@@ -22,11 +22,13 @@ const PlanetMesh = ({ data }: { data: PlanetType }) => {
     const { focus } = useControlStore()
     const isFocused = data.id === focus
     const isChildParentFocused = useCelestial().isFocused(data.id)
+    const isMobile = useDetectGPU().isMobile
+    const shouldRenderHd = isChildParentFocused && !isMobile
 
     const { topographyVisible } = useControlStore()
     const texturePath = () => {
         if (data.topography_texture && topographyVisible && isFocused) return data.topography_texture
-        return isChildParentFocused && data.texture_hd ? data.texture_hd : data.texture!
+        return shouldRenderHd && data.texture_hd ? data.texture_hd : data.texture!
     }
     const texture = useDeferredValue(texturePath())
 
@@ -36,8 +38,8 @@ const PlanetMesh = ({ data }: { data: PlanetType }) => {
         } else if (data.night_texture) {
             return <NightMaterial
                 textures={[
-                    `/textures/${isChildParentFocused && data.night_texture_hd ? data.texture_hd : data.texture}`,
-                    `/textures/${isChildParentFocused && data.night_texture_hd ? data.night_texture_hd : data.night_texture}`,
+                    `/textures/${shouldRenderHd && data.night_texture_hd ? data.texture_hd : data.texture}`,
+                    `/textures/${shouldRenderHd && data.night_texture_hd ? data.night_texture_hd : data.night_texture}`,
                 ]}
                 intensity={data.night_opacity}
             />
@@ -46,7 +48,7 @@ const PlanetMesh = ({ data }: { data: PlanetType }) => {
         } else {
             return <meshStandardMaterial color={data.color} />
         }
-    }, [topographyVisible, isFocused, data, texture, isChildParentFocused])
+    }, [topographyVisible, isFocused, data.night_texture, data.texture, data.night_texture_hd, data.texture_hd, data.night_opacity, data.color, texture, shouldRenderHd])
 
     const materialRender = useDeferredValue(material)
 

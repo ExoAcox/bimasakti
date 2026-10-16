@@ -46,7 +46,7 @@ const Navbar = () => {
                 {/* Brand Logo */}
                 <Link to="/" className="flex items-center gap-3">
                     <div className="group-hover:rotate-360 transition-transform duration-1000">
-                        <img src="/public/favicon.webp" className="size-10" />
+                        <img src="/icons/logo.webp" className="size-10" />
                     </div>
                     <div className="flex flex-col">
                         <span className="font-space-grotesk font-black text-xl tracking-wider text-white group-hover:text-cyan-300 transition-colors">

@@ -117,7 +117,7 @@ const PanelDetail = () => {
     }
 
     return (
-        <div className={clsx(!isMobile && "fixed top-4 right-4 z-50", "transition-transform duration-300", !isPanelOpen && "translate-x-[calc(100%+1rem)]")}>
+        <div className={clsx(!isMobile && ["fixed top-4 right-4 z-50 transition-transform duration-300", !isPanelOpen && "translate-x-[calc(100%+1rem)]"])}>
 
             <When condition={!isMobile}>
                 <button

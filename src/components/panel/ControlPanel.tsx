@@ -449,8 +449,9 @@ const ControlPanel = () => {
             </div>
 
 
-            <When condition={!isStillObject}>
-                <div className={clsx(isMobile && "w-full justify-center", "flex items-center gap-2")}>
+
+            <div className={clsx(isMobile && "w-full justify-center", "flex items-center gap-2")}>
+                <When condition={!isStillObject}>
                     <When condition={!isMobile}>
                         <div className="h-5 w-px bg-white/10 my-auto" />
                     </When>
@@ -493,38 +494,38 @@ const ControlPanel = () => {
                     </div>
 
                     <div className="h-5 w-px bg-white/10 my-auto" />
+                </When>
 
-                    <div className={SECTION_CLASS}>
-                        <When condition={!isStillObject}>
-                            <button
-                                onClick={() => setModeVisible(!modeVisible)}
-                                className={clsx(
-                                    TOGGLE_BTN_CLASS,
-                                    "hover:bg-green/40",
-                                    modeVisible && "bg-green/40"
-                                )}
-                            >
-                                <AiFillEye className="size-4" />
-                                <span className={TOOLTIP_CLASS}>{t("ui.view_mode", "View Mode")}</span>
-                            </button>
-                        </When>
+                <div className={SECTION_CLASS}>
+                    <When condition={!isStillObject}>
                         <button
-                            onClick={handleReset}
-                            className={clsx(TOGGLE_BTN_CLASS, "hover:bg-yellow/50")}
+                            onClick={() => setModeVisible(!modeVisible)}
+                            className={clsx(
+                                TOGGLE_BTN_CLASS,
+                                "hover:bg-green/40",
+                                modeVisible && "bg-green/40"
+                            )}
                         >
-                            <MdRefresh className="size-4" />
-                            <span className={TOOLTIP_CLASS}>{t("ui.reset", "Reset")}</span>
+                            <AiFillEye className="size-4" />
+                            <span className={TOOLTIP_CLASS}>{t("ui.view_mode", "View Mode")}</span>
                         </button>
-                        <button
-                            onClick={handleLeave}
-                            className={clsx(TOGGLE_BTN_CLASS, "hover:bg-red/50")}
-                        >
-                            <MdClose className="size-4" />
-                            <span className={TOOLTIP_CLASS}>{t("ui.leave", "Leave")}</span>
-                        </button>
-                    </div>
+                    </When>
+                    <button
+                        onClick={handleReset}
+                        className={clsx(TOGGLE_BTN_CLASS, "hover:bg-yellow/50")}
+                    >
+                        <MdRefresh className="size-4" />
+                        <span className={TOOLTIP_CLASS}>{t("ui.reset", "Reset")}</span>
+                    </button>
+                    <button
+                        onClick={handleLeave}
+                        className={clsx(TOGGLE_BTN_CLASS, "hover:bg-red/50")}
+                    >
+                        <MdClose className="size-4" />
+                        <span className={TOOLTIP_CLASS}>{t("ui.leave", "Leave")}</span>
+                    </button>
                 </div>
-            </When>
+            </div>
 
             <When condition={modeVisible}>
                 <div className="absolute -top-3 left-1/2 -translate-x-1/2 -translate-y-full rounded-2xl bg-panel-bg backdrop-blur-2xl p-3 border border-white/15 flex flex-col gap-2.5 min-w-56 shadow-panel z-10">

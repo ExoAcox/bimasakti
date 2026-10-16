@@ -7,6 +7,16 @@ export default defineConfig({
   resolve: {
     tsconfigPaths: true,
   },
+  ssr: {
+    noExternal: ["react-if"],
+  },
+  environments: {
+    ssr: {
+      resolve: {
+        noExternal: ["react-if"],
+      },
+    },
+  },
   build: {
     chunkSizeWarningLimit: 1000,
     rollupOptions: {

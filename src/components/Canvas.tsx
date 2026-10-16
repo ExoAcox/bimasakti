@@ -1,13 +1,13 @@
 /* eslint-disable react-hooks/immutability */
 /* eslint-disable react-hooks/set-state-in-effect */
-import { Bounds, useProgress, useGLTF, Stats, KeyboardControls } from "@react-three/drei"
+import { Bounds, useGLTF, Stats, KeyboardControls } from "@react-three/drei"
 import { Canvas } from "@react-three/fiber"
 import { useState, useEffect, Suspense } from "react"
 import { track } from '@vercel/analytics';
 
 import Scene from "@components/Scene"
 import { useSettingStore, useControlStore } from "@state"
-import { Header, DetailPanel, NavigationPanel, Sidebar, ControlPanel, GalaxySidebar, BottomSheet } from "@components/panel"
+import { DetailPanel, NavigationPanel, Sidebar, ControlPanel, GalaxySidebar, BottomSheet } from "@components/panel"
 import { SkyBox } from "@components/object"
 import { Bloom, EffectComposer } from '@react-three/postprocessing'
 import BlackholeWrapEffect from "@components/effect/BlackholeWrapEffect"

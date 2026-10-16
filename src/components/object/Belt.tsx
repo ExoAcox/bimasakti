@@ -3,6 +3,7 @@ import { randomNumber } from "@function"
 import type { Belt as BeltType } from "@types"
 import { useSettingStore, useControlStore } from "@state"
 import { PointsMaterial } from "three"
+import { useDetectGPU } from "@react-three/drei"
 
 
 interface BeltProps {
@@ -15,14 +16,28 @@ const Belt = ({ data }: BeltProps) => {
     const { focus } = useControlStore()
     const pointRef = useRef<PointsMaterial>(null!)
 
+    const isFocused = data.id === focus
+    const isMobile = useDetectGPU().isMobile
 
-    const count = Math.min(data.count, 1000000)
+    const count = useMemo(() => {
+        let maxCount = 1000000
+        if (isMobile) {
+            if (isFocused) {
+                maxCount = 500000
+            } else {
+                maxCount = 0
+            }
+        }
+
+        return Math.min(data.count, maxCount)
+    }, [data.count, isMobile, isFocused])
+
     const height = data.height / distanceScale
     const innerRadius = data.inner_radius / distanceScale
     const outerRadius = data.outer_radius / distanceScale
     const minSize = data.min_size / sizeScale
     const maxSize = data.max_size / sizeScale
-    const opacity = focus === data.id ? 0.3 : 0.15
+    const opacity = isFocused ? 0.3 : 0.15
 
     const isSphere = data.shape === "sphere" || data.id === "oort"
 

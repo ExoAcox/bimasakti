@@ -1,4 +1,4 @@
-import { useGLTF, useTexture } from "@react-three/drei"
+import { useDetectGPU, useGLTF, useTexture } from "@react-three/drei"
 import { useFrame } from "@react-three/fiber"
 import { useMemo, useRef } from "react"
 import {
@@ -36,12 +36,12 @@ const Galaxy = ({ children, onClick }: Props) => {
 
     const starTexture = useTexture("/textures/star.png")
     const { nodes } = useGLTF("/models/milky_way.glb") as unknown as GLTFResult
-    const isMobile = useMobile()
+    const isMobile = useDetectGPU().isMobile
 
     const { geometry, glowMaterial } = useMemo(() => {
         nodes.Object_2.geometry.center()
         const rawPositions = nodes.Object_2.geometry.attributes.position.array
-        const count = rawPositions.length / (isMobile ? 3 : 1)
+        const count = rawPositions.length / 3
 
         const position = new Float32Array(rawPositions.buffer)
         const colors = new Float32Array(count * 3)
@@ -81,7 +81,7 @@ const Galaxy = ({ children, onClick }: Props) => {
             uniforms: {
                 u_texture: { value: starTexture },
                 u_time: { value: 0 },
-                u_mobile: { value: isMobile }
+                u_mobile: { value: !!isMobile }
             },
             blending: AdditiveBlending,
             transparent: true,

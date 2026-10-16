@@ -32,8 +32,8 @@ const Earth = () => {
                 <sphereGeometry args={[1, 128, 64]} />
                 <NightMaterial
                     textures={[
-                        `/textures/earth_hd.ktx2`,
-                        `/textures/earth_night_hd.ktx2`,
+                        `/textures/earth.ktx2`,
+                        `/textures/earth_night.ktx2`,
                     ]}
                     lightPosition={new Vector3(-30, -30, 100)}
                 />

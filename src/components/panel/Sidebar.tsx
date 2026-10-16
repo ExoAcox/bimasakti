@@ -46,24 +46,26 @@ const SearchResultSection = ({ data }: { data: (CelestialObject | Belt)[] }) => 
 
     if (!data.length) {
         return (
-            <div className="flex flex-col items-center justify-center gap-3 py-9 px-4 rounded-2xl bg-card-bg/40 border border-panel-border/60 text-center my-2">
-                <div className="size-11 rounded-2xl bg-white/4 border border-white/8 flex items-center justify-center text-tertiary">
-                    <PiEmpty className="size-5" />
-                </div>
-                <div className="flex flex-col gap-1">
-                    <span className="text-xs font-semibold font-space-grotesk text-secondary">
-                        {t("ui.object_not_found")}
-                    </span>
-                    <span className="text-[11px] text-tertiary">
-                        {t("ui.try_another_keyword")}
-                    </span>
+            <div className="h-full">
+                <div className="flex flex-col items-center justify-center gap-3 py-9 px-4 rounded-2xl bg-card-bg/40 border border-panel-border/60 text-center my-2">
+                    <div className="size-11 rounded-2xl bg-white/4 border border-white/8 flex items-center justify-center text-tertiary">
+                        <PiEmpty className="size-5" />
+                    </div>
+                    <div className="flex flex-col gap-1">
+                        <span className="text-xs font-semibold font-space-grotesk text-secondary">
+                            {t("ui.object_not_found")}
+                        </span>
+                        <span className="text-[11px] text-tertiary">
+                            {t("ui.try_another_keyword")}
+                        </span>
+                    </div>
                 </div>
             </div>
         );
     }
 
     return (
-        <div className="flex flex-col gap-1 overflow-y-auto pr-1">
+        <div className="flex flex-col h-full gap-1 overflow-y-auto pr-1">
             {data.map(object => {
                 const isFocus = focus === object.id;
                 return (
