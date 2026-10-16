@@ -297,7 +297,9 @@ const ControlPanel = () => {
             )}
         >
             {/* Top Glowing Cosmic Line */}
-            <div className="absolute top-0 inset-x-8 h-[1.5px] bg-linear-to-r from-transparent via-accent/60 to-transparent pointer-events-none" />
+            <When condition={!isMobile}>
+                <div className="absolute top-0 inset-x-8 h-[1.5px] bg-linear-to-r from-transparent via-accent/60 to-transparent pointer-events-none" />
+            </When>
 
             {/* Overlays / Banners */}
             <div className={clsx(isMobile ? "order-last" : "absolute -top-2.5 left-1/2 -translate-x-1/2 -translate-y-full z-10", "flex items-center flex-col gap-2 w-full")}>
@@ -319,8 +321,8 @@ const ControlPanel = () => {
                 </When>
 
                 <When condition={showTimelines}>
-                    <div className="w-full relative flex justify-evenly items-end gap-3 py-2 px-4 max-w-full">
-                        <div className={clsx(!isMobile && "absolute", "absolute bottom-3.5 left-6 right-6 h-[2px] bg-linear-to-r from-transparent via-accent/50 to-transparent z-0 pointer-events-none")} />
+                    <div className="w-full relative flex justify-evenly items-center gap-1.5 sm:gap-3 py-1 sm:py-2 px-2 sm:px-4 max-w-full">
+                        <div className="absolute top-1/2 -translate-y-1/2 left-3 sm:left-6 right-3 sm:right-6 h-[1.5px] sm:h-[2px] bg-linear-to-r from-transparent via-accent/50 to-transparent z-0 pointer-events-none" />
 
                         {timelines.map((_data) => {
                             const isSelected = variant === _data.variant_id;
@@ -329,7 +331,7 @@ const ControlPanel = () => {
                                 <button
                                     key={_data.variant_id}
                                     onClick={() => handleVariant(_data.variant_id)}
-                                    className="group/btn relative z-10 flex flex-col items-center gap-2.5 group/node cursor-pointer shrink-0 transition-transform active:scale-95"
+                                    className="group/btn relative z-10 flex flex-col items-center justify-center p-1 sm:p-1.5 group/node cursor-pointer shrink-0 transition-transform active:scale-95"
                                 >
                                     <div
                                         className={clsx(
@@ -347,7 +349,7 @@ const ControlPanel = () => {
 
                                     <div
                                         className={clsx(
-                                            "size-3.5 rounded-full border-2 transition-all duration-200 flex items-center justify-center",
+                                            "size-2.5 sm:size-3.5 rounded-full border-[1.5px] sm:border-2 transition-all duration-200 flex items-center justify-center",
                                             isSelected
                                                 ? "bg-accent border-white shadow-glow scale-125"
                                                 : "bg-slate-900 border-slate-500 group-hover/node:border-accent group-hover/node:bg-slate-700"

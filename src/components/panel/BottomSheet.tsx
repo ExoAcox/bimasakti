@@ -46,11 +46,10 @@ const BottomSheet = () => {
             </Sheet.Header>
             <Sheet.Content>
                 <When condition={focus}>
-                    <div ref={controlRef}>
-
+                    <div ref={controlRef} className="pb-1">
                         <ControlPanel />
-
                     </div>
+                    <div className="mx-6 h-px bg-linear-to-r from-transparent via-white/10 to-transparent my-1" />
                     <DetailPanel />
                 </When>
             </Sheet.Content>

@@ -134,8 +134,10 @@ const PanelDetail = () => {
                         : "w-84 md:w-96 max-h-[calc(100vh-2rem)] overflow-y-auto pb-6 pt-5 px-5 text-sm rounded-2xl bg-panel-bg backdrop-blur-2xl border border-panel-border relative scrollbar-thin scrollbar-thumb-white/10 scrollbar-track-transparent shadow-panel hover:border-accent/30 transition-all duration-300"
                 )}
             >
-                {/* Top Glowing Cosmic Line */}
-                <div className="absolute top-0 inset-x-8 h-[1.5px] bg-linear-to-r from-transparent via-accent/60 to-transparent pointer-events-none" />
+                {/* Top Glowing Cosmic Line (Desktop Only) */}
+                {!isMobile && (
+                    <div className="absolute top-0 inset-x-8 h-[1.5px] bg-linear-to-r from-transparent via-accent/60 to-transparent pointer-events-none" />
+                )}
 
                 {/* Normal Object Detail View */}
                 <When condition={!focusLandmark}>
