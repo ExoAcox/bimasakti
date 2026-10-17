@@ -8,7 +8,7 @@ import { FaCompass, FaChevronDown, FaChevronUp } from "react-icons/fa";
 import clsx from "clsx";
 import ModalObject from "./ModalObject";
 
-type Category = "all" | "star" | "planet" | "satellite" | "other";
+type Category = "all" | "star" | "planet" | "satellite" | "spacecraft" | "other";
 
 const Featured = () => {
     const [allData, setAllData] = useState<CelestialObject[]>([]);
@@ -32,7 +32,7 @@ const Featured = () => {
         { id: "star", labelKey: "ui.stars" },
         { id: "planet", labelKey: "ui.planets" },
         { id: "satellite", labelKey: "ui.satellites" },
-        { id: "other", labelKey: "ui.spacecraft" },
+        { id: "spacecraft", labelKey: "ui.spacecraft" },
     ];
 
     // Filter by Category and Search Query
@@ -45,8 +45,8 @@ const Featured = () => {
             if (activeCategory === "planet" && item.type !== "planet") return false;
             if (activeCategory === "satellite" && item.type !== "satellite") return false;
             if (
-                activeCategory === "other" &&
-                ["star", "planet", "satellite"].includes(item.type)
+                activeCategory === "spacecraft" &&
+                !["spacecraft-orbiter", "spacecraft-flyby"].includes(item.type)
             ) {
                 return false;
             }
@@ -125,7 +125,7 @@ const Featured = () => {
                             >
                                 {/* <div className="size-6 rounded-full bg-slate-900 border border-white/10 flex items-center justify-center p-0.5 group-hover:border-accent transition-colors"> */}
                                 <img
-                                    className="size-5 object-contain filter drop-shadow-[0_0_4px_rgba(6,182,212,0.5)]"
+                                    className="size-5 object-contain"
                                     src={`/icons/${object.icon || "earth.png"}`}
                                     alt={object.id}
                                 />

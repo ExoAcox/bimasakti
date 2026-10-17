@@ -89,12 +89,12 @@ const Navbar = () => {
                             >
                                 {t("ui.mars_liveview")}
                             </Link>
-                            <div
+                            {/* <div
                                 // to="/liveview/moon"
                                 className="flex line-through items-center justify-between px-4 py-2.5 text-xs font-semibold text-slate-300 hover:text-white hover:bg-cyan-950/40 transition-colors"
                             >
                                 {t("ui.moon_liveview")}
-                            </div>
+                            </div> */}
                         </div>
                     </div>
                 </nav>

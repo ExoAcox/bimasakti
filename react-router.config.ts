@@ -16,6 +16,9 @@ export default {
             "/lich",
             "/toi-700",
             "/copernicus",
+            "/kepler-32",
+            "/wasp-47",
+            "/rho_coronae_borealis",
             "/liveview/mars"
         ];
     },

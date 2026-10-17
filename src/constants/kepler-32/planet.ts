@@ -1,0 +1,80 @@
+import { PlanetClass, type Planet } from "@types"
+
+export const planets: Planet[] = [
+    {
+        id: "kepler-32_f",
+        type: "planet",
+        class: PlanetClass.Terrestrial,
+        parent: "kepler-32",
+        radius: 5160,
+        distance: 1940000,
+        color: "#361c17",
+        axis: 2,
+        rotation: [180, 0, 0],
+        orbit_duration: 0.74,
+        rotate_duration: 0.74,
+        texture: "kepler-32_f.png",
+        icon: "mercury.png",
+        satellites: []
+    },
+    {
+        id: "kepler-32_e",
+        type: "planet",
+        class: PlanetClass.SuperEarth,
+        parent: "kepler-32",
+        radius: 9560,
+        distance: 4830000,
+        color: "#3b3b3b",
+        axis: 5,
+        orbit_duration: 2.90,
+        rotate_duration: 2.90,
+        texture: "kepler-32_e.png",
+        icon: "moon.png",
+        satellites: []
+    },
+    {
+        id: "kepler-32_b",
+        type: "planet",
+        class: PlanetClass.SuperEarth,
+        parent: "kepler-32",
+        radius: 14000,
+        distance: 7760000,
+        color: "#839ca3",
+        axis: 7,
+        orbit_duration: 5.90,
+        rotate_duration: 5.90,
+        texture: "kepler-32_b.png",
+        icon: "neptune.png",
+        satellites: []
+    },
+    {
+        id: "kepler-32_c",
+        type: "planet",
+        class: PlanetClass.SuperEarth,
+        parent: "kepler-32",
+        radius: 12700,
+        distance: 13460000,
+        color: "#75736a",
+        axis: -4,
+        orbit_duration: 8.75,
+        rotate_duration: 8.75,
+        texture: "kepler-32_c.png",
+        icon: "venus.png",
+        satellites: []
+    },
+    {
+        id: "kepler-32_d",
+        type: "planet",
+        class: PlanetClass.SuperEarth,
+        parent: "kepler-32",
+        radius: 17200,
+        distance: 19150000,
+        color: "#bcb39c",
+        axis: 10,
+        orbit_duration: 22.78,
+        rotate_duration: 22.78,
+        texture: "kepler-32_d.png",
+        icon: "venus.png",
+        satellites: []
+    }
+]

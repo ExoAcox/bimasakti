@@ -630,6 +630,89 @@
             "nickname": "Lipperhey",
             "description": "Lipperhey (55 Cancri Ad) ist ein gewaltiger äußerer Gasriese mit prächtigen Ringen und fast der vierfachen Masse von Jupiter, der etwa 14,3 Jahre für einen Umlauf um Copernicus benötigt."
         },
+        "kepler-32": {
+            "name": "Kepler-32",
+            "title": "Kepler-32-System",
+            "nickname": "Kepler-32",
+            "description": "Kepler-32 ist ein Roter Zwergstern im Sternbild Schwan (Cygnus), etwa 988 Lichtjahre entfernt. Er beherbergt fünf kompakte Exoplaneten, die vom Kepler-Weltraumteleskop entdeckt wurden."
+        },
+        "kepler-32_f": {
+            "name": "Kepler-32 f",
+            "nickname": "Kepler-32 f",
+            "description": "Kepler-32 f ist der innerste terrestrische Exoplanet im System, der seinen Stern in nur 17,8 Stunden bei einem Abstand von 0,013 AE umkreist."
+        },
+        "kepler-32_e": {
+            "name": "Kepler-32 e",
+            "nickname": "Kepler-32 e",
+            "description": "Kepler-32 e ist eine Supererde, die Kepler-32 alle 2,9 Tage umrundet und einen etwa 1,5-fachen Erdradius aufweist."
+        },
+        "kepler-32_b": {
+            "name": "Kepler-32 b",
+            "nickname": "Kepler-32 b",
+            "description": "Kepler-32 b ist ein flüchtigkeitsreicher Sub-Neptun mit einer Umlaufzeit von 5,9 Tagen und einem etwa 2,2-fachen Erdradius."
+        },
+        "kepler-32_c": {
+            "name": "Kepler-32 c",
+            "nickname": "Kepler-32 c",
+            "description": "Kepler-32 c ist eine dichte Supererde, die ihren Stern alle 8,75 Tage umkreist und etwa die doppelte Größe der Erde besitzt."
+        },
+        "kepler-32_d": {
+            "name": "Kepler-32 d",
+            "nickname": "Kepler-32 d",
+            "description": "Kepler-32 d ist der größte und äußerste bekannte Exoplanet im Kepler-32-System mit einer Umlaufzeit von 22,8 Tagen und dem 2,7-fachen Erdradius."
+        },
+        "wasp-47": {
+            "name": "WASP-47",
+            "title": "WASP-47-System",
+            "nickname": "WASP-47",
+            "description": "WASP-47 ist ein gelber Zwergstern vom Spektraltyp G im Sternbild Wassermann, etwa 870 Lichtjahre entfernt. Es ist das einzige bekannte Planetensystem, in dem ein heißer Jupiter von nahen Begleitplaneten flankiert wird."
+        },
+        "wasp-47_e": {
+            "name": "WASP-47 e",
+            "nickname": "WASP-47 e",
+            "description": "WASP-47 e ist eine ultrakurzperiodische Supererde, die ihren Stern in nur 18,9 Stunden bei 0,017 AE umrundet, mit einer extrem dichten, glühend heißen Oberfläche."
+        },
+        "wasp-47_b": {
+            "name": "WASP-47 b",
+            "nickname": "WASP-47 b",
+            "description": "WASP-47 b ist ein heißer Jupiter-Gasriese, der seinen Stern alle 4,16 Tage in einem Abstand von 0,052 AE umkreist und eine jupiterähnliche Masse besitzt."
+        },
+        "wasp-47_d": {
+            "name": "WASP-47 d",
+            "nickname": "WASP-47 d",
+            "description": "WASP-47 d ist ein neptungroßer Gasplanet, der sich zwischen dem heißen Jupiter und dem äußeren Riesen befindet und alle 9,03 Tage eine Umkreisung abschließt."
+        },
+        "wasp-47_c": {
+            "name": "WASP-47 c",
+            "nickname": "WASP-47 c",
+            "description": "WASP-47 c ist ein massereicher äußerer Gasriese, der den Stern bei 1,41 AE in einer Umlaufzeit von etwa 588,5 Tagen auf einer exzentrischen Bahn umkreist."
+        },
+        "rho_coronae_borealis": {
+            "name": "Rho Coronae Borealis",
+            "title": "Rho-Coronae-Borealis-System",
+            "nickname": "Rho CrB",
+            "description": "Rho Coronae Borealis ist ein sonnenähnlicher gelber Zwergstern im Sternbild Nördliche Krone (Corona Borealis), etwa 57 Lichtjahre von der Erde entfernt. Er beherbergt ein vielseitiges Multiplanetensystem mit einer inneren Supererde, einem heißen Jupiter und kühleren Gaswelten der Neptun-Klasse."
+        },
+        "rho_coronae_borealis_e": {
+            "name": "Rho Coronae Borealis e",
+            "nickname": "Rho CrB e",
+            "description": "Rho Coronae Borealis e ist eine innere Supererde, die ihren Stern alle 12,9 Tage bei 0,106 AE umkreist und etwa die 3,7-fache Erdmasse mit einer wolkenreichen Atmosphäre besitzt."
+        },
+        "rho_coronae_borealis_b": {
+            "name": "Rho Coronae Borealis b",
+            "nickname": "Rho CrB b",
+            "description": "Rho Coronae Borealis b ist ein massereicher Gasriese, der 1997 entdeckt wurde und das Zentralgestirn alle 39,8 Tage in einem Abstand von 0,225 AE umkreist, mit einer Masse über der von Jupiter."
+        },
+        "rho_coronae_borealis_c": {
+            "name": "Rho Coronae Borealis c",
+            "nickname": "Rho CrB c",
+            "description": "Rho Coronae Borealis c ist ein warmer Super-Neptun mit rund 27,4 Erdmassen, der eine Umkreisung alle 102 Tage in einem Abstand von 0,421 AE vollendet."
+        },
+        "rho_coronae_borealis_d": {
+            "name": "Rho Coronae Borealis d",
+            "nickname": "Rho CrB d",
+            "description": "Rho Coronae Borealis d ist ein äußerer Gasplanet der Neptun-Klasse in moderater Entfernung, der seinen Stern alle 282 Tage bei etwa 0,82 AE umrundet."
+        },
         "s2": {
             "name": "S2 (S0-2)",
             "nickname": "S2 (S0-2)",

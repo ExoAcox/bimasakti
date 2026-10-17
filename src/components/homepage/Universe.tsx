@@ -13,48 +13,10 @@ interface Props {
     specs?: string;
 }
 
-const systemMeta: Record<string, { badge: string; category: string; specs: string }> = {
-    milky_way: {
-        badge: "Home Galaxy",
-        category: "Barred Spiral",
-        specs: "100,000 ly diameter",
-    },
-    solar_system: {
-        badge: "Home System",
-        category: "Planetary System",
-        specs: "8 Planets • 1 Star",
-    },
-    alpha_centauri: {
-        badge: "Nearest System",
-        category: "Triple Star System",
-        specs: "4.37 ly from Earth",
-    },
-    "trappist-1": {
-        badge: "Exoplanet System",
-        category: "Ultra-cool Red Dwarf",
-        specs: "7 Earth-sized Worlds",
-    },
-    "toi-700": {
-        badge: "Habitable Zone",
-        category: "M-Dwarf System",
-        specs: "4 Exoplanets • 101.4 ly",
-    },
-    copernicus: {
-        badge: "Binary System",
-        category: "55 Cancri System",
-        specs: "5 Exoplanets • 41 ly",
-    },
-    lich: {
-        badge: "Pulsar System",
-        category: "PSR B1257+12",
-        specs: "Pulsar Planets • 2,300 ly",
-    },
-};
 
 const Card = ({ id, className, imgClassName }: Props) => {
     const { t } = useTranslation();
     const data = universes.find((universe) => universe.id === id) as UniverseType;
-    const meta = systemMeta[id];
 
     return (
         <div
@@ -150,6 +112,9 @@ const Universe = () => {
                 <Card id="toi-700" className="lg:col-span-4" imgClassName="h-[240px] lg:h-full" />
                 <Card id="copernicus" className="lg:col-span-4" imgClassName="h-[240px] lg:h-full" />
                 <Card id="lich" className="lg:col-span-4" imgClassName="h-[240px] lg:h-full" />
+                <Card id="kepler-32" className="lg:col-span-4" imgClassName="h-[240px] lg:h-full" />
+                <Card id="wasp-47" className="lg:col-span-4" imgClassName="h-[240px] lg:h-full" />
+                <Card id="rho_coronae_borealis" className="lg:col-span-4" imgClassName="h-[240px] lg:h-full" />
             </div>
         </section>)
 }

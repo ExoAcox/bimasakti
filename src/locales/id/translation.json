@@ -693,6 +693,89 @@
             "nickname": "Lipperhey",
             "description": "Lipperhey (55 Cancri Ad) adalah planet raksasa gas masif terluar dengan cincin megah dan massa hampir empat kali Jupiter, membutuhkan waktu sekitar 14,3 tahun untuk mengelilingi Copernicus."
         },
+        "kepler-32": {
+            "name": "Kepler-32",
+            "title": "Sistem Kepler-32",
+            "nickname": "Kepler-32",
+            "description": "Kepler-32 adalah bintang katai merah kelas M yang berjarak sekitar 988 tahun cahaya di rasi bintang Cygnus. Sistem ini memiliki lima eksoplanet kompak yang dikonfirmasi oleh teleskop antariksa Kepler."
+        },
+        "kepler-32_f": {
+            "name": "Kepler-32 f",
+            "nickname": "Kepler-32 f",
+            "description": "Kepler-32 f adalah eksoplanet terestrial terdalam di sistem ini, mengorbit sangat dekat dengan bintangnya hanya dalam 17,8 jam pada jarak 0,013 AU."
+        },
+        "kepler-32_e": {
+            "name": "Kepler-32 e",
+            "nickname": "Kepler-32 e",
+            "description": "Kepler-32 e adalah eksoplanet super-Bumi yang mengorbit Kepler-32 setiap 2,9 hari dengan radius sekitar 1,5 kali radius Bumi."
+        },
+        "kepler-32_b": {
+            "name": "Kepler-32 b",
+            "nickname": "Kepler-32 b",
+            "description": "Kepler-32 b adalah eksoplanet sub-Neptunus yang mengorbit setiap 5,9 hari dan memiliki radius sekitar 2,2 kali ukuran Bumi."
+        },
+        "kepler-32_c": {
+            "name": "Kepler-32 c",
+            "nickname": "Kepler-32 c",
+            "description": "Kepler-32 c adalah eksoplanet super-Bumi padat yang mengorbit bintangnya setiap 8,75 hari dengan radius sekitar dua kali ukuran Bumi."
+        },
+        "kepler-32_d": {
+            "name": "Kepler-32 d",
+            "nickname": "Kepler-32 d",
+            "description": "Kepler-32 d adalah eksoplanet terbesar dan terluar yang diketahui di sistem Kepler-32, mengorbit dalam 22,8 hari dengan radius 2,7 kali ukuran Bumi."
+        },
+        "wasp-47": {
+            "name": "WASP-47",
+            "title": "Sistem WASP-47",
+            "nickname": "WASP-47",
+            "description": "WASP-47 adalah bintang katai kuning tipe G yang berjarak sekitar 870 tahun cahaya di rasi bintang Akuarius. Sistem ini terkenal sebagai satu-satunya sistem keplanetan yang diketahui di mana sebuah planet Jupiter panas diapit oleh pendamping planet berjarak dekat."
+        },
+        "wasp-47_e": {
+            "name": "WASP-47 e",
+            "nickname": "WASP-47 e",
+            "description": "WASP-47 e adalah eksoplanet super-Bumi dengan periode orbit ultra-singkat hanya 18,9 jam pada jarak 0,017 AU, dengan permukaan yang sangat panas dan padat."
+        },
+        "wasp-47_b": {
+            "name": "WASP-47 b",
+            "nickname": "WASP-47 b",
+            "description": "WASP-47 b adalah eksoplanet raksasa gas bertipe Jupiter panas yang mengorbit bintangnya setiap 4,16 hari pada jarak 0,052 AU dengan massa setara Jupiter."
+        },
+        "wasp-47_d": {
+            "name": "WASP-47 d",
+            "nickname": "WASP-47 d",
+            "description": "WASP-47 d adalah eksoplanet gas seukuran Neptunus yang mengorbit di antara Jupiter panas dan raksasa gas luar, menyelesaikan satu orbit setiap 9,03 hari."
+        },
+        "wasp-47_c": {
+            "name": "WASP-47 c",
+            "nickname": "WASP-47 c",
+            "description": "WASP-47 c adalah planet raksasa gas luar masif yang mengorbit pada jarak 1,41 AU dengan periode orbit sekitar 588,5 hari pada lintasan eksentrik."
+        },
+        "rho_coronae_borealis": {
+            "name": "Rho Coronae Borealis",
+            "title": "Sistem Rho Coronae Borealis",
+            "nickname": "Rho CrB",
+            "description": "Rho Coronae Borealis adalah bintang katai kuning serupa Matahari yang berjarak sekitar 57 tahun cahaya di rasi bintang Corona Borealis. Sistem ini memiliki arsitektur multi-planet yang kaya, mulai dari super-Bumi terdalam, Jupiter panas, hingga raksasa gas sekelas Neptunus di bagian luar."
+        },
+        "rho_coronae_borealis_e": {
+            "name": "Rho Coronae Borealis e",
+            "nickname": "Rho CrB e",
+            "description": "Rho Coronae Borealis e adalah eksoplanet super-Bumi bagian dalam yang mengorbit setiap 12,9 hari pada jarak 0,106 AU, dengan massa sekitar 3,7 kali massa Bumi dan lapisan atmosfer berawan."
+        },
+        "rho_coronae_borealis_b": {
+            "name": "Rho Coronae Borealis b",
+            "nickname": "Rho CrB b",
+            "description": "Rho Coronae Borealis b adalah eksoplanet raksasa gas masif yang ditemukan pada tahun 1997, mengorbit bintangnya setiap 39,8 hari pada jarak 0,225 AU dengan massa melampaui Jupiter."
+        },
+        "rho_coronae_borealis_c": {
+            "name": "Rho Coronae Borealis c",
+            "nickname": "Rho CrB c",
+            "description": "Rho Coronae Borealis c adalah planet super-Neptunus hangat dengan massa sekitar 27,4 massa Bumi, menyelesaikan satu orbit setiap 102 hari pada jarak 0,421 AU."
+        },
+        "rho_coronae_borealis_d": {
+            "name": "Rho Coronae Borealis d",
+            "nickname": "Rho CrB d",
+            "description": "Rho Coronae Borealis d adalah planet gas luar sekelas Neptunus beriklim sedang yang mengorbit setiap 282 hari pada jarak sekitar 0,82 AU dari bintang induknya."
+        },
         "s2": {
             "name": "S2 (S0-2)",
             "nickname": "S2 (S0-2)",

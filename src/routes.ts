@@ -16,6 +16,9 @@ export default [
         route("lich", "./pages/lich.tsx"),
         route("toi-700", "./pages/toi-700.tsx"),
         route("copernicus", "./pages/copernicus.tsx"),
+        route("kepler-32", "./pages/kepler-32.tsx"),
+        route("wasp-47", "./pages/wasp-47.tsx"),
+        route("rho_coronae_borealis", "./pages/rho_coronae_borealis.tsx"),
         route("sagittarius_a", "./pages/sagittarius_a.tsx"),
     ]),
 

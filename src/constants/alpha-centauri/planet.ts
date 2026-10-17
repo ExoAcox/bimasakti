@@ -18,6 +18,21 @@ export const planets: Planet[] = [
         satellites: []
     },
     {
+        id: "proxima_centauri_d",
+        type: "planet",
+        class: PlanetClass.Terrestrial,
+        parent: "proxima_centauri",
+        radius: 5100,
+        distance: 4320000,
+        color: "#97979f",
+        axis: 0,
+        orbit_duration: 5.12,
+        rotate_duration: 5.12,
+        texture: "proxima_centauri_d.png",
+        icon: "mercury.png",
+        satellites: []
+    },
+    {
         id: "proxima_centauri_b",
         type: "planet",
         class: PlanetClass.SuperEarth,
@@ -46,21 +61,6 @@ export const planets: Planet[] = [
         rotate_duration: 1.2,
         texture: "proxima_centauri_c.png",
         icon: "neptune.png",
-        satellites: []
-    },
-    {
-        id: "proxima_centauri_d",
-        type: "planet",
-        class: PlanetClass.Terrestrial,
-        parent: "proxima_centauri",
-        radius: 5100,
-        distance: 4320000,
-        color: "#97979f",
-        axis: 0,
-        orbit_duration: 5.12,
-        rotate_duration: 5.12,
-        texture: "proxima_centauri_d.png",
-        icon: "mercury.png",
         satellites: []
     },
 ]

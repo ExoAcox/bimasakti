@@ -691,6 +691,89 @@
             "nickname": "Lipperhey",
             "description": "Lipperhey (55 Cancri Ad) is a massive outer gas giant featuring majestic rings and nearly four times Jupiter's mass, taking about 14.3 years to complete one orbit around Copernicus."
         },
+        "kepler-32": {
+            "name": "Kepler-32",
+            "title": "Kepler-32 System",
+            "nickname": "Kepler-32",
+            "description": "Kepler-32 is an M-dwarf star located approximately 988 light-years away in the constellation Cygnus. It hosts five compact confirmed exoplanets discovered by the Kepler space telescope."
+        },
+        "kepler-32_f": {
+            "name": "Kepler-32 f",
+            "nickname": "Kepler-32 f",
+            "description": "Kepler-32 f is the innermost terrestrial exoplanet in the system, orbiting extremely close to its star in just 17.8 hours at 0.013 AU."
+        },
+        "kepler-32_e": {
+            "name": "Kepler-32 e",
+            "nickname": "Kepler-32 e",
+            "description": "Kepler-32 e is a super-Earth exoplanet orbiting Kepler-32 every 2.9 days with a radius approximately 1.5 times that of Earth."
+        },
+        "kepler-32_b": {
+            "name": "Kepler-32 b",
+            "nickname": "Kepler-32 b",
+            "description": "Kepler-32 b is a volatile-rich sub-Neptune exoplanet with an orbital period of 5.9 days and a radius roughly 2.2 times Earth's radius."
+        },
+        "kepler-32_c": {
+            "name": "Kepler-32 c",
+            "nickname": "Kepler-32 c",
+            "description": "Kepler-32 c is a dense super-Earth exoplanet orbiting its star every 8.75 days with a radius approximately double that of Earth."
+        },
+        "kepler-32_d": {
+            "name": "Kepler-32 d",
+            "nickname": "Kepler-32 d",
+            "description": "Kepler-32 d is the largest and outermost known exoplanet in the Kepler-32 system, orbiting in 22.8 days with a radius 2.7 times that of Earth."
+        },
+        "wasp-47": {
+            "name": "WASP-47",
+            "title": "WASP-47 System",
+            "nickname": "WASP-47",
+            "description": "WASP-47 is a G-type yellow dwarf star located approximately 870 light-years away in the constellation Aquarius. It is renowned for being the only known planetary system where a hot Jupiter is flanked by close planetary companions."
+        },
+        "wasp-47_e": {
+            "name": "WASP-47 e",
+            "nickname": "WASP-47 e",
+            "description": "WASP-47 e is an ultra-short-period super-Earth orbiting closest to the star in just 18.9 hours at 0.017 AU, with an extremely dense, scorched surface."
+        },
+        "wasp-47_b": {
+            "name": "WASP-47 b",
+            "nickname": "WASP-47 b",
+            "description": "WASP-47 b is a hot Jupiter gas giant planet orbiting its host star every 4.16 days at 0.052 AU, with a mass comparable to Jupiter."
+        },
+        "wasp-47_d": {
+            "name": "WASP-47 d",
+            "nickname": "WASP-47 d",
+            "description": "WASP-47 d is a Neptune-sized gas giant planet orbiting between the hot Jupiter and the outer gas giant, completing an orbit every 9.03 days."
+        },
+        "wasp-47_c": {
+            "name": "WASP-47 c",
+            "nickname": "WASP-47 c",
+            "description": "WASP-47 c is a massive outer gas giant orbiting at 1.41 AU with an orbital period of approximately 588.5 days on an eccentric orbit."
+        },
+        "rho_coronae_borealis": {
+            "name": "Rho Coronae Borealis",
+            "title": "Rho Coronae Borealis System",
+            "nickname": "Rho CrB",
+            "description": "Rho Coronae Borealis is a solar-analog yellow dwarf star located approximately 57 light-years away in the constellation Corona Borealis. It hosts a rich multi-planet system featuring an inner super-Earth, a hot Jupiter, and outer Neptune-mass gas worlds."
+        },
+        "rho_coronae_borealis_e": {
+            "name": "Rho Coronae Borealis e",
+            "nickname": "Rho CrB e",
+            "description": "Rho Coronae Borealis e is an inner super-Earth exoplanet orbiting every 12.9 days at 0.106 AU, possessing roughly 3.7 Earth masses with cloudy atmospheric layers."
+        },
+        "rho_coronae_borealis_b": {
+            "name": "Rho Coronae Borealis b",
+            "nickname": "Rho CrB b",
+            "description": "Rho Coronae Borealis b is a massive gas giant discovered in 1997, orbiting its host star every 39.8 days at 0.225 AU with a mass exceeding that of Jupiter."
+        },
+        "rho_coronae_borealis_c": {
+            "name": "Rho Coronae Borealis c",
+            "nickname": "Rho CrB c",
+            "description": "Rho Coronae Borealis c is a warm super-Neptune planet with approximately 27.4 Earth masses, completing an orbit every 102 days at 0.421 AU."
+        },
+        "rho_coronae_borealis_d": {
+            "name": "Rho Coronae Borealis d",
+            "nickname": "Rho CrB d",
+            "description": "Rho Coronae Borealis d is an outer temperate Neptune-class gas planet orbiting in 282 days at approximately 0.82 AU from the central star."
+        },
         "s2": {
             "name": "S2 (S0-2)",
             "nickname": "S2 (S0-2)",

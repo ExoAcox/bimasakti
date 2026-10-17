@@ -32,6 +32,21 @@ export const planets: Planet[] = [
         satellites: []
     },
     {
+        id: "toi-700_e",
+        type: "planet",
+        class: PlanetClass.Terrestrial,
+        parent: "toi-700",
+        radius: 6072,
+        distance: 20050000,
+        color: "#7fa699",
+        axis: -12,
+        orbit_duration: 27.81,
+        rotate_duration: 27.81,
+        texture: "toi-700_e.png",
+        icon: "mercury.png",
+        satellites: []
+    },
+    {
         id: "toi-700_d",
         type: "planet",
         class: PlanetClass.Terrestrial,
@@ -46,21 +61,6 @@ export const planets: Planet[] = [
         texture: "toi-700_d.jpg",
         cloud_texture: "toi-700_d_cloud.png",
         icon: "earth.png",
-        satellites: []
-    },
-    {
-        id: "toi-700_e",
-        type: "planet",
-        class: PlanetClass.Terrestrial,
-        parent: "toi-700",
-        radius: 6072,
-        distance: 20050000,
-        color: "#7fa699",
-        axis: -12,
-        orbit_duration: 27.81,
-        rotate_duration: 27.81,
-        texture: "toi-700_e.png",
-        icon: "mercury.png",
         satellites: []
     },
 

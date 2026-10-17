@@ -7,6 +7,9 @@ import trappist_1 from "./trappist-1"
 import lich from "./lich"
 import toi_700 from "./toi-700"
 import copernicus from "./copernicus"
+import kepler_32 from "./kepler-32"
+import wasp_47 from "./wasp-47"
+import rho_coronae_borealis from "./rho_coronae_borealis"
 
 export const SCALE = 1e+5
 export const TIME_SCALE = 3
@@ -120,9 +123,48 @@ const universes: Universe[] = [
         assetCount: 7,
         stars: copernicus.stars,
         mobile: {}
+    },
+    {
+        id: "kepler-32",
+        image: "kepler-32.webp",
+        position: [0.08, -2.55, 0.72],
+        minDistance: 0.1,
+        maxDistance: 1200,
+        cameraPosition: [60, 60, 60],
+        labelPosition: "top",
+        defaultFocus: "kepler-32",
+        assetCount: 6,
+        stars: kepler_32.stars,
+        mobile: {}
+    },
+    {
+        id: "wasp-47",
+        image: "wasp-47.webp",
+        position: [0.045, -2.62, 0.70],
+        minDistance: 0.1,
+        maxDistance: 50000,
+        cameraPosition: [150, 150, 150],
+        labelPosition: "bottom",
+        defaultFocus: "wasp-47",
+        assetCount: 5,
+        stars: wasp_47.stars,
+        mobile: {}
+    },
+    {
+        id: "rho_coronae_borealis",
+        image: "rho_coronae_borealis.webp",
+        position: [0.07, -2.68, 0.74],
+        minDistance: 0.1,
+        maxDistance: 20000,
+        cameraPosition: [120, 120, 120],
+        labelPosition: "top",
+        defaultFocus: "rho_coronae_borealis",
+        assetCount: 5,
+        stars: rho_coronae_borealis.stars,
+        mobile: {}
     }
 ]
 
 const universe_ids = universes.map(universe => universe.id)
 
-export { universes, universe_ids, solar_system, alpha_centauri, sagittarius_a, trappist_1, lich, toi_700, copernicus }
+export { universes, universe_ids, solar_system, alpha_centauri, sagittarius_a, trappist_1, lich, toi_700, copernicus, kepler_32, wasp_47, rho_coronae_borealis }
