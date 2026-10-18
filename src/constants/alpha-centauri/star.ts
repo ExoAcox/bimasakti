@@ -8,7 +8,8 @@ export const stars: Star[] = [
                 class: StarClass.Yellow,
                 parent: "",
                 radius: 847000,
-                distance: 1589000000, // ~10.62 AU from barycenter
+                distance: 3516000000, // ~23.5 AU (semi-major axis / mutual distance between A & B)
+                barycenterDistance: 1589000000, // ~10.62 AU from barycenter
                 intensity: 1519,
                 color: "#ffe0a0",
                 axis: 7.9, // obliquity to the ecliptic in degrees
@@ -30,7 +31,8 @@ export const stars: Star[] = [
                 class: StarClass.Orange,
                 parent: "",
                 radius: 598000,
-                distance: 1927000000, // ~12.88 AU from barycenter
+                distance: 3516000000, // ~23.5 AU (semi-major axis / mutual distance between A & B)
+                barycenterDistance: -1927000000, // ~12.88 AU from barycenter
                 intensity: 500,
                 color: "#ffaa44",
                 axis: 7.25,
@@ -52,6 +54,7 @@ export const stars: Star[] = [
                 parent: "",
                 radius: 107200,
                 distance: 1930000000000, // ~12,900 AU from barycenter
+                barycenterDistance: 1930000000000,
                 intensity: 1.7,
                 color: "#ff4411",
                 axis: 7.25,

@@ -55,6 +55,7 @@ export interface Star extends Object {
     class: StarClass
     planets: Planet[]
     intensity: number
+    barycenterDistance?: number
     gordilocks?: {
         inner_radius: number
         outer_radius: number
@@ -134,7 +135,8 @@ export const StarClass = {
     Red: "Red Dwarf Star",
     RedGiant: "Red Giant Star",
     Neutron: "Neutron Star",
-    Blue: "Blue Main-Sequence Star"
+    Blue: "Blue Main-Sequence Star",
+    BlueSubgiant: "Blue Subgiant Star"
 } as const;
 
 export const SpaceCraftClass = {

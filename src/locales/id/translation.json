@@ -5,6 +5,7 @@
         "rotation_period": "Periode rotasi",
         "orbital_period": "Periode orbit",
         "distance_from": "Jarak dari",
+        "distance_from_barycenter": "Jarak dari Barisenter",
         "parent_planet": "Planet Induk",
         "parent_object": "Objek Induk",
         "natural_satellites": "Satelit Alami",
@@ -82,7 +83,7 @@
         "featured_objects": "Objek Unggulan",
         "show_more": "Tampilkan Lebih Banyak",
         "show_less": "Tampilkan Lebih Sedikit",
-        "hero_badge": "Simulasi Galaksi 3D Interaktif",
+        "hero_badge": "Simulasi Alam Semesta 3D Interaktif",
         "hero_subtitle": "Jelajahi kosmos melalui mekanika Keplerian waktu nyata, rendering 3D definisi tinggi, dan skala astronomi akurat.",
         "scroll_explore": "Gulir untuk menjelajah",
         "explore_universe": "Jelajahi Kosmos",
@@ -130,6 +131,7 @@
         "red_giant_star": "Bintang Raksasa Merah",
         "neutron_star": "Bintang Neutron",
         "blue_main_sequence_star": "Bintang Deret Utama Biru",
+        "blue_subgiant_star": "Bintang Subraksasa Biru",
         "fly_by_probe": "Wahana Terbang Lintas",
         "orbiter_probe": "Wahana Pengorbit",
         "space_station": "Stasiun Luar Angkasa",
@@ -781,6 +783,47 @@
             "name": "Rho Coronae Borealis d",
             "nickname": "Rho CrB d",
             "description": "Rho Coronae Borealis d adalah planet gas luar sekelas Neptunus beriklim sedang yang mengorbit setiap 282 hari pada jarak sekitar 0,82 AU dari bintang induknya."
+        },
+        "nu_scorpii": {
+            "name": "Nu Scorpii",
+            "title": "Sistem Nu Scorpii",
+            "nickname": "Jabbah",
+            "description": "Nu Scorpii (ν Scorpii), yang secara historis dikenal sebagai Jabbah, adalah sistem bintang tujuh (septuple) hierarkis langka yang berjarak sekitar 470 tahun cahaya di rasi bintang Scorpius. Sistem ini menyinari nebula refleksi biru IC 4592 yang menakjubkan."
+        },
+        "nu_scorpii_aa": {
+            "name": "Nu Scorpii Aa",
+            "nickname": "Nu Scorpii Aa",
+            "description": "Nu Scorpii Aa adalah bintang utama dari subsistem Nu Scorpii AB. Bintang ini merupakan subraksasa biru masif dan terang dengan kelas spektrum B2IV yang menjadi pusat gravitasi sistem inti."
+        },
+        "nu_scorpii_ab": {
+            "name": "Nu Scorpii Ab",
+            "nickname": "Nu Scorpii Ab",
+            "description": "Nu Scorpii Ab adalah pendamping biner spektroskopi jarak dekat bagi Aa, menyelesaikan satu orbit setiap 5,55 hari pada jarak yang sangat dekat sekitar 0,11 AU."
+        },
+        "nu_scorpii_ac": {
+            "name": "Nu Scorpii Ac",
+            "nickname": "Nu Scorpii Ac",
+            "description": "Nu Scorpii Ac adalah bintang pendamping tingkat menengah yang mengorbit pasangan Aa-Ab pada jarak sekitar 5,63 AU dengan periode orbit 8,3 tahun."
+        },
+        "nu_scorpii_b": {
+            "name": "Nu Scorpii B",
+            "nickname": "Nu Scorpii B",
+            "description": "Nu Scorpii B adalah bintang tipe B awal yang mengelilingi subsistem tripel Aa-Ab-Ac pada jarak sekitar 201 AU dengan periode orbit sekitar 675 tahun."
+        },
+        "nu_scorpii_c": {
+            "name": "Nu Scorpii C",
+            "nickname": "Nu Scorpii C",
+            "description": "Nu Scorpii C adalah bintang subraksasa biru tipe B yang memimpin subsistem luas CD, terpisah dari subsistem AB sekitar 5.480 AU."
+        },
+        "nu_scorpii_da": {
+            "name": "Nu Scorpii Da",
+            "nickname": "Nu Scorpii Da",
+            "description": "Nu Scorpii Da adalah bintang deret utama biru yang mengorbit komponen C pada jarak sekitar 300 AU dengan perkiraan periode 3.100 tahun."
+        },
+        "nu_scorpii_db": {
+            "name": "Nu Scorpii Db",
+            "nickname": "Nu Scorpii Db",
+            "description": "Nu Scorpii Db adalah pendamping biner spektroskopi jarak dekat dari Da, mengitari pasangannya setiap 8,2 hari pada jarak sangat dekat 0,15 AU."
         },
         "s2": {
             "name": "S2 (S0-2)",

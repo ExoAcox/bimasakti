@@ -1,11 +1,11 @@
 import { useMemo, useRef } from "react"
-import { Planet, Star } from "@components/object"
+import { OrbitLine, Planet, Star } from "@components/object"
 import { alpha_centauri } from "@constants"
 import { useSettingStore, useControlStore } from "@state"
 import { useFrame, useThree } from "@react-three/fiber"
 import { Html, useBounds } from "@react-three/drei"
 import { seo, useCelestial } from "@function"
-import type { Star as StarType } from "@types"
+import { When } from "react-if"
 
 
 export const meta = () => seo({
@@ -14,7 +14,7 @@ export const meta = () => seo({
 })
 
 const AlphaCentauri = () => {
-    const { distanceScale, sizeScale } = useSettingStore()
+    const { distanceScale, sizeScale, showOrbitLine } = useSettingStore()
     const { focus, setControl } = useControlStore()
     const { stars, planets } = alpha_centauri
 
@@ -52,10 +52,10 @@ const AlphaCentauri = () => {
 
             if (object) {
                 distanceObject = celestial.getCameraDistance(camera, object)
-                scale = Math.max(300, object.userData.radius) / sizeScale * 50
+                scale = Math.max(300, object.userData.radius) / sizeScale * 200
             }
 
-            if (distance > 100000 || distanceObject < scale) {
+            if (distance > 5000000 || distanceObject < scale) {
                 if (alphaALabelRef.current) alphaALabelRef.current.style.visibility = "hidden"
                 if (alphaBLabelRef.current) alphaBLabelRef.current.style.visibility = "hidden"
                 if (alphaLabelRef.current) alphaLabelRef.current.style.visibility = "visible"
@@ -77,22 +77,12 @@ const AlphaCentauri = () => {
             </Html>
 
             {stars.filter(star => star.id.includes("alpha_centauri")).map(star => {
-                const offset = () => {
-                    if (star.id === "alpha_centauri_a") {
-                        return star.distance / 2 * 1 * -1 / distanceScale
-                    }
-                    if (star.id === "alpha_centauri_b") {
-                        return star.distance / 2 * 1 / distanceScale
-                    }
-                    return 0
-                }
+                const distance = star.barycenterDistance! / distanceScale
 
                 const labelRef = star.id === "alpha_centauri_a" ? alphaALabelRef : alphaBLabelRef
 
-
-                return <group position={[offset() ?? 0, 0, 0]}>
+                return <group position={[distance, 0, 0]}>
                     <Star
-                        key={star.id}
                         id={star.id}
                         labelRef={labelRef}
                     >

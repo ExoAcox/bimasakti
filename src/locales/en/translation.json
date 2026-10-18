@@ -6,6 +6,7 @@
         "rotation_period": "Rotation period",
         "orbital_period": "Orbital period",
         "distance_from": "Distance from",
+        "distance_from_barycenter": "Distance from Barycenter",
         "parent_planet": "Parent Planet",
         "parent_object": "Parent Object",
         "natural_satellites": "Natural Satellites",
@@ -84,7 +85,7 @@
         "featured_objects": "Featured Objects",
         "show_more": "Show More",
         "show_less": "Show Less",
-        "hero_badge": "Interactive 3D Galaxy Simulation",
+        "hero_badge": "3D Interactive Universe Simulation",
         "hero_subtitle": "Experience the cosmos through real-time Keplerian mechanics, high-fidelity 3D rendering, and true astronomical scale.",
         "scroll_explore": "Scroll to explore",
         "explore_universe": "Explore Cosmos",
@@ -132,6 +133,7 @@
         "red_giant_star": "Red Giant Star",
         "neutron_star": "Neutron Star",
         "blue_main_sequence_star": "Blue Main-Sequence Star",
+        "blue_subgiant_star": "Blue Subgiant Star",
         "fly_by_probe": "Fly-by Probe",
         "orbiter_probe": "Orbiter Probe",
         "space_station": "Space Station",
@@ -779,6 +781,47 @@
             "name": "Rho Coronae Borealis d",
             "nickname": "Rho CrB d",
             "description": "Rho Coronae Borealis d is an outer temperate Neptune-class gas planet orbiting in 282 days at approximately 0.82 AU from the central star."
+        },
+        "nu_scorpii": {
+            "name": "Nu Scorpii",
+            "title": "Nu Scorpii System",
+            "nickname": "Jabbah",
+            "description": "Nu Scorpii (ν Scorpii), historically known as Jabbah, is a rare hierarchical septuple (7-star) system located approximately 470 light-years away in the constellation Scorpius. It illuminates the ethereal IC 4592 blue reflection nebula."
+        },
+        "nu_scorpii_aa": {
+            "name": "Nu Scorpii Aa",
+            "nickname": "Nu Scorpii Aa",
+            "description": "Nu Scorpii Aa is the primary star of the Nu Scorpii AB sub-system. It is a massive, luminous blue subgiant of spectral class B2IV, anchoring the inner multiple stellar core."
+        },
+        "nu_scorpii_ab": {
+            "name": "Nu Scorpii Ab",
+            "nickname": "Nu Scorpii Ab",
+            "description": "Nu Scorpii Ab is a close spectroscopic binary companion to Aa, completing an orbit every 5.55 days at an ultra-close distance of approximately 0.11 AU."
+        },
+        "nu_scorpii_ac": {
+            "name": "Nu Scorpii Ac",
+            "nickname": "Nu Scorpii Ac",
+            "description": "Nu Scorpii Ac is an intermediate companion star orbiting the Aa-Ab binary core at roughly 5.63 AU with an 8.3-year orbital period."
+        },
+        "nu_scorpii_b": {
+            "name": "Nu Scorpii B",
+            "nickname": "Nu Scorpii B",
+            "description": "Nu Scorpii B is an early B-type star revolving around the triple Aa-Ab-Ac subsystem at a separation of roughly 201 AU with an estimated 675-year orbit."
+        },
+        "nu_scorpii_c": {
+            "name": "Nu Scorpii C",
+            "nickname": "Nu Scorpii C",
+            "description": "Nu Scorpii C is a luminous blue B-type subgiant star heading the wide CD sub-system, separated from the AB subsystem by roughly 5,480 AU."
+        },
+        "nu_scorpii_da": {
+            "name": "Nu Scorpii Da",
+            "nickname": "Nu Scorpii Da",
+            "description": "Nu Scorpii Da is a blue main-sequence star orbiting component C at approximately 300 AU with an estimated period of 3,100 years."
+        },
+        "nu_scorpii_db": {
+            "name": "Nu Scorpii Db",
+            "nickname": "Nu Scorpii Db",
+            "description": "Nu Scorpii Db is a close spectroscopic companion to Da, revolving in a tight 8.2-day orbit at approximately 0.15 AU."
         },
         "s2": {
             "name": "S2 (S0-2)",

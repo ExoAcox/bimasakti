@@ -10,6 +10,7 @@ import copernicus from "./copernicus"
 import kepler_32 from "./kepler-32"
 import wasp_47 from "./wasp-47"
 import rho_coronae_borealis from "./rho_coronae_borealis"
+import nu_scorpii from "./nu_scorpii"
 
 export const SCALE = 1e+5
 export const TIME_SCALE = 3
@@ -162,9 +163,22 @@ const universes: Universe[] = [
         assetCount: 5,
         stars: rho_coronae_borealis.stars,
         mobile: {}
+    },
+    {
+        id: "nu_scorpii",
+        image: "nu_scorpii.webp",
+        position: [0.055, -2.72, 0.71],
+        minDistance: 0.01,
+        maxDistance: 60000000,
+        cameraPosition: [300, 300, 300],
+        labelPosition: "top",
+        defaultFocus: "nu_scorpii_aa",
+        assetCount: 7,
+        stars: nu_scorpii.stars,
+        mobile: {}
     }
 ]
 
 const universe_ids = universes.map(universe => universe.id)
 
-export { universes, universe_ids, solar_system, alpha_centauri, sagittarius_a, trappist_1, lich, toi_700, copernicus, kepler_32, wasp_47, rho_coronae_borealis }
+export { universes, universe_ids, solar_system, alpha_centauri, sagittarius_a, trappist_1, lich, toi_700, copernicus, kepler_32, wasp_47, rho_coronae_borealis, nu_scorpii }

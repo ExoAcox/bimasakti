@@ -3,7 +3,7 @@ import { useControlStore } from "@state"
 import clsx from "clsx";
 import { useCallback, useEffect, useMemo, useState } from "react";
 import { When } from "react-if";
-import { timelineFormat, useCelestial, useMobile, useVariant } from "@function";
+import { handleZoomIn, handleZoomOut, timelineFormat, useCelestial, useMobile, useVariant } from "@function";
 import { Mode, type Planet, type SpaceCraft } from "@types";
 
 
@@ -253,7 +253,6 @@ const ControlPanel = () => {
                 if (keys.c) {
                     console.log('right tilt')
                 }
-
             }
         )
 

@@ -25,6 +25,49 @@ export interface Props {
     labelRef?: React.RefObject<HTMLButtonElement>
 }
 
+const getStarClassColors = (starClass?: StarClass) => {
+    switch (starClass) {
+        case StarClass.Blue:
+        case StarClass.BlueSubgiant:
+            return {
+                flareColor: new Color(0.1, 0.5, 1.5),
+                hotspotColor: new Color(0.7, 1.1, 1.6),
+                innerHeatScale: 0.2
+            }
+        case StarClass.Neutron:
+            return {
+                flareColor: new Color(0.1, 0.9, 1.4),
+                hotspotColor: new Color(0.5, 1.1, 1.5),
+                innerHeatScale: 0.25
+            }
+        case StarClass.Red:
+            return {
+                flareColor: new Color(1.1, 0.35, 0.15),
+                hotspotColor: new Color(1.3, 0.65, 0.35),
+                innerHeatScale: 1
+            }
+        case StarClass.RedGiant:
+            return {
+                flareColor: new Color(1.2, 0.25, 0.1),
+                hotspotColor: new Color(1.4, 0.5, 0.2),
+                innerHeatScale: 1
+            }
+        case StarClass.Orange:
+            return {
+                flareColor: new Color(1.0, 0.65, 0.2),
+                hotspotColor: new Color(1.2, 0.95, 0.55),
+                innerHeatScale: 0.9
+            }
+        case StarClass.Yellow:
+        default:
+            return {
+                flareColor: new Color(1.0, 0.85, 0.4),
+                hotspotColor: new Color(1.2, 1.1, 0.9),
+                innerHeatScale: 1.0
+            }
+    }
+}
+
 const Star = ({ id, children, labelRef }: Props) => {
     const objectRef = useRef<Mesh>(null!)
     const surfaceMatRef = useRef<ShaderMaterial>(null!)
@@ -50,6 +93,9 @@ const Star = ({ id, children, labelRef }: Props) => {
     const color = data.color
     const glowColor = data.color
 
+    const { flareColor, hotspotColor, innerHeatScale } = useMemo(() => {
+        return getStarClassColors(data.class)
+    }, [data.class])
 
     const handleClick = () => {
         setControl({ focus: id })
@@ -61,10 +107,12 @@ const Star = ({ id, children, labelRef }: Props) => {
             fragmentShader: surfaceFragmentShader,
             uniforms: {
                 u_time: { value: 0 },
-                u_color: { value: new Color(color) }
+                u_color: { value: new Color(color) },
+                u_hotspotColor: { value: hotspotColor },
+                u_innerHeatScale: { value: innerHeatScale }
             }
         })
-    }, [color])
+    }, [color, hotspotColor, innerHeatScale])
 
     const glowMaterial = useMemo(() => {
         return new ShaderMaterial({
@@ -87,14 +135,15 @@ const Star = ({ id, children, labelRef }: Props) => {
             fragmentShader: coronaFragmentShader,
             uniforms: {
                 u_time: { value: 0 },
-                u_color: { value: new Color(glowColor) }
+                u_color: { value: new Color(glowColor) },
+                u_flareColor: { value: flareColor }
             },
             blending: AdditiveBlending,
             side: BackSide,
             transparent: true,
             depthWrite: false
         })
-    }, [glowColor])
+    }, [glowColor, flareColor])
 
     useFrame((state) => {
         const elapsedTime = state.clock.getElapsedTime()

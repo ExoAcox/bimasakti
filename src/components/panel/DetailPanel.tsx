@@ -254,7 +254,7 @@ const PanelDetail = () => {
                                 </div>
                             </When>
 
-                            <When condition={data.distance}>
+                            <When condition={Boolean(data.distance)}>
                                 <div className="flex-1 p-2.5 min-w-[60%] col-span-2 rounded-xl bg-white/3 hover:bg-white/6 border border-white/5 transition-colors">
                                     <div className="flex items-center gap-1.5 text-purple-400 mb-1">
                                         <TbArrowsHorizontal className="size-3.5" />
@@ -268,6 +268,26 @@ const PanelDetail = () => {
                                             <>
                                                 <span className="mx-2.5">·</span>
                                                 {(data.distance / AU_SCALE).toLocaleString(undefined, { maximumFractionDigits: 1 })} AU
+                                            </>
+                                        ) : ""}
+                                    </div>
+                                </div>
+                            </When>
+
+                            <When condition={Boolean((data as Star).barycenterDistance)}>
+                                <div className="flex-1 p-2.5 min-w-[60%] col-span-2 rounded-xl bg-white/3 hover:bg-white/6 border border-white/5 transition-colors">
+                                    <div className="flex items-center gap-1.5 text-purple-400 mb-1">
+                                        <TbArrowsHorizontal className="size-3.5" />
+                                        <span className="text-[10px] uppercase font-semibold tracking-wider text-tertiary truncate">
+                                            {t("ui.distance_from_barycenter")}
+                                        </span>
+                                    </div>
+                                    <div className="font-space-grotesk text-xs sm:text-sm font-bold text-white tracking-tight">
+                                        {lengthFormat((data as Star).barycenterDistance!)}
+                                        {Number(((data as Star).barycenterDistance! / AU_SCALE).toFixed(1)) ? (
+                                            <>
+                                                <span className="mx-2.5">·</span>
+                                                {((data as Star).barycenterDistance! / AU_SCALE).toLocaleString(undefined, { maximumFractionDigits: 1 })} AU
                                             </>
                                         ) : ""}
                                     </div>

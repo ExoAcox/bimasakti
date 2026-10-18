@@ -48,8 +48,8 @@ const Navbar = () => {
                     <div className="group-hover:rotate-360 transition-transform duration-1000">
                         <img src="/icons/logo.webp" className="size-10" />
                     </div>
-                    <div className="flex flex-col">
-                        <span className="font-space-grotesk font-black text-xl tracking-wider text-white group-hover:text-cyan-300 transition-colors">
+                    <div className="flex flex-col group/title">
+                        <span className="font-space-grotesk font-black text-xl tracking-wider text-white group-hover/title:text-cyan-300 transition-colors">
                             BIMASAKTI
                         </span>
                         <span className="text-[10px] tracking-wider text-slate-400 font-medium -mt-1">
@@ -75,11 +75,11 @@ const Navbar = () => {
 
                     {/* Liveview Dropdown / Links */}
                     <div className="relative group/liveview">
-                        <button className="flex items-center gap-1.5 px-3.5 py-2 rounded-lg text-sm font-semibold text-slate-300 group-hover:text-white group-hover:bg-white/5 transition-all">
-                            <span className="relative flex size-2">
+                        <button className="flex items-center gap-1.5 px-3.5 py-2 rounded-lg text-sm font-semibold text-slate-300 group-hover/liveview:text-white transition-all">
+                            {/* <span className="relative flex size-2">
                                 <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-rose-400 opacity-75"></span>
                                 <span className="relative inline-flex rounded-full size-2 bg-rose-500"></span>
-                            </span>
+                            </span> */}
                             <span>{t("ui.surface_liveview")}</span>
                         </button>
                         <div className="absolute top-full left-0 mt-1 w-full py-2 rounded-xl bg-slate-950/95 backdrop-blur-xl border border-white/10 shadow-2xl opacity-0 invisible group-hover/liveview:opacity-100 group-hover/liveview:visible transition-all duration-200">

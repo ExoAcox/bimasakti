@@ -10,20 +10,12 @@ import {
     Footer
 } from "@components/homepage";
 import SkyBox from "@components/object/SkyBox";
-import { seo } from "@function";
 import { Html, useProgress } from "@react-three/drei";
 import { Canvas } from "@react-three/fiber";
 import { Bloom, EffectComposer } from "@react-three/postprocessing";
 import clsx from "clsx";
 import { Suspense, useLayoutEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
-
-export const meta = () =>
-    seo({
-        title: "Bimasakti - 3D Interactive Universe Observatory",
-        description:
-            "Explore the Milky Way galaxy, Solar System, and exoplanetary worlds in interactive real-time 3D simulation with Keplerian physics.",
-    });
 
 const Loading = () => {
     return (

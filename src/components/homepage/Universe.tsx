@@ -115,6 +115,7 @@ const Universe = () => {
                 <Card id="kepler-32" className="lg:col-span-4" imgClassName="h-[240px] lg:h-full" />
                 <Card id="wasp-47" className="lg:col-span-4" imgClassName="h-[240px] lg:h-full" />
                 <Card id="rho_coronae_borealis" className="lg:col-span-4" imgClassName="h-[240px] lg:h-full" />
+                <Card id="nu_scorpii" className="lg:col-span-4" imgClassName="h-[240px] lg:h-full" />
             </div>
         </section>)
 }

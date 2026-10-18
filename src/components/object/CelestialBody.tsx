@@ -85,6 +85,10 @@ const Object = ({ data, children, childrenComponent, onClick, objectRef, cloudRe
     const rotationRef = useRef<number | null>(null)
     const cloudRotationRef = useRef<number>(0)
 
+    if (data.id === "alpha_centauri_a") {
+        console.log(isOrbitLineVisible)
+    }
+
     useFrame((state) => {
         if (!data) return
         const elapsedTime = state.clock.getElapsedTime()

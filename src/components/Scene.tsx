@@ -2,11 +2,11 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import { useEffect, useLayoutEffect, useMemo, useRef, useState } from "react"
 import { useSettingStore, useControlStore, defaultControl } from "@state"
-import { OrbitControls, useBounds } from "@react-three/drei"
+import { OrbitControls, useBounds, useKeyboardControls } from "@react-three/drei"
 import type { OrbitControls as OrbitControlsType } from "three-stdlib"
 import { useFrame, useThree } from "@react-three/fiber"
 import { Vector3 } from "three"
-import { useCelestial, useMobile, useVariant } from "@function"
+import { Controls, handleZoomIn, handleZoomOut, useCelestial, useMobile, useVariant } from "@function"
 import { latLngToVector3 } from "@function"
 import { Mode, type CelestialObject, type Planet, type Universe } from "@types"
 
@@ -42,6 +42,7 @@ const Scene = ({ data }: Props) => {
     const { scene, camera } = useThree()
     const celestial = useCelestial()
     const universe = celestial.getUniverse()
+    const [sub] = useKeyboardControls<Controls>()
 
     const focusData = focus ? (celestial.getObjectById(focus) as Planet) : undefined
     const variantData = useVariant(focusData as Planet)
@@ -74,6 +75,23 @@ const Scene = ({ data }: Props) => {
             controlRef.current.update();
         }
     }, [universe, controlRef, camera.position, isMobile])
+
+    useEffect(() => {
+        const unsub = sub(
+            (state) => state,
+            (keys) => {
+                if (keys.plus) {
+                    handleZoomIn()
+                }
+
+                if (keys.minus) {
+                    handleZoomOut()
+                }
+            }
+        )
+
+        return unsub
+    }, [])
 
     // Reset default position
     useEffect(() => {

@@ -5,6 +5,7 @@
         "rotation_period": "Rotationsperiode",
         "orbital_period": "Umlaufzeit",
         "distance_from": "Entfernung von",
+        "distance_from_barycenter": "Abstand zum Baryzentrum",
         "parent_planet": "Mutterplanet",
         "natural_satellites": "Natürliche Satelliten",
         "days": "Tage",
@@ -81,7 +82,7 @@
         "featured_objects": "Ausgewählte Objekte",
         "show_more": "Mehr anzeigen",
         "show_less": "Weniger anzeigen",
-        "hero_badge": "Interaktive 3D-Galaxiesimulation",
+        "hero_badge": "Interaktive 3D-Universumssimulation",
         "hero_subtitle": "Erleben Sie den Kosmos durch Kepler-Mechanik in Echtzeit, hochauflösendes 3D-Rendering und astronomische Maßstäbe.",
         "scroll_explore": "Scrollen zum Erkunden",
         "explore_universe": "Kosmos erkunden",
@@ -129,6 +130,7 @@
         "red_giant_star": "Roter Riesenstern",
         "neutron_star": "Neutronenstern",
         "blue_main_sequence_star": "Blauer Hauptreihenstern",
+        "blue_subgiant_star": "Blauer Unterriesen-Stern",
         "fly_by_probe": "Vorbeiflugsonde",
         "orbiter_probe": "Orbitalsonde",
         "space_station": "Raumstation",
@@ -718,6 +720,47 @@
             "name": "Rho Coronae Borealis d",
             "nickname": "Rho CrB d",
             "description": "Rho Coronae Borealis d ist ein äußerer Gasplanet der Neptun-Klasse in moderater Entfernung, der seinen Stern alle 282 Tage bei etwa 0,82 AE umrundet."
+        },
+        "nu_scorpii": {
+            "name": "Nu Scorpii",
+            "title": "Nu Scorpii System",
+            "nickname": "Jabbah",
+            "description": "Nu Scorpii (ν Scorpii), historisch als Jabbah bekannt, ist ein seltenes hierarchisches Siebenfach-Sternsystem (Septuple), etwa 470 Lichtjahre entfernt im Sternbild Skorpion. Es beleuchtet den blauen Reflexionsnebel IC 4592."
+        },
+        "nu_scorpii_aa": {
+            "name": "Nu Scorpii Aa",
+            "nickname": "Nu Scorpii Aa",
+            "description": "Nu Scorpii Aa ist der Hauptstern des Nu Scorpii AB-Subsystems. Er ist ein massereicher, leuchtstarker blauer Unterriese der Spektralklasse B2IV, der das innere Mehrfachsternsystem dominiert."
+        },
+        "nu_scorpii_ab": {
+            "name": "Nu Scorpii Ab",
+            "nickname": "Nu Scorpii Ab",
+            "description": "Nu Scorpii Ab ist ein naher spektroskopischer Doppelsternbegleiter von Aa mit einer schnellen Umlaufzeit von nur 5,55 Tagen bei etwa 0,11 AE."
+        },
+        "nu_scorpii_ac": {
+            "name": "Nu Scorpii Ac",
+            "nickname": "Nu Scorpii Ac",
+            "description": "Nu Scorpii Ac ist ein mittlerer Begleitstern, der das innere Aa-Ab-Paar im Abstand von etwa 5,63 AE in einer 8,3-jährigen Periode umkreist."
+        },
+        "nu_scorpii_b": {
+            "name": "Nu Scorpii B",
+            "nickname": "Nu Scorpii B",
+            "description": "Nu Scorpii B ist ein früher B-Stern, der das dreifache Aa-Ab-Ac-Zentrum in einer Distanz von etwa 201 AE in rund 675 Jahren umrundet."
+        },
+        "nu_scorpii_c": {
+            "name": "Nu Scorpii C",
+            "nickname": "Nu Scorpii C",
+            "description": "Nu Scorpii C ist ein leuchtkräftiger blauer Unterriese vom Spektraltyp B, der das weite CD-Subsystem anführt und das AB-Subsystem bei etwa 5.480 AE umkreist."
+        },
+        "nu_scorpii_da": {
+            "name": "Nu Scorpii Da",
+            "nickname": "Nu Scorpii Da",
+            "description": "Nu Scorpii Da ist ein blauer Hauptreihenstern, der die Komponente C in etwa 300 AE mit einer geschätzten Periode von 3.100 Jahren umkreist."
+        },
+        "nu_scorpii_db": {
+            "name": "Nu Scorpii Db",
+            "nickname": "Nu Scorpii Db",
+            "description": "Nu Scorpii Db ist ein enger spektroskopischer Begleiter von Da, der seine Bahn alle 8,2 Tage bei einem Abstand von nur 0,15 AE vollendet."
         },
         "s2": {
             "name": "S2 (S0-2)",

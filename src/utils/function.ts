@@ -1,5 +1,5 @@
 import { Camera, MathUtils, Object3D, Vector3 } from "three"
-import { solar_system, alpha_centauri, trappist_1, lich, toi_700, copernicus, kepler_32, wasp_47, rho_coronae_borealis, universes, universe_ids } from "@constants"
+import { solar_system, alpha_centauri, trappist_1, lich, toi_700, copernicus, kepler_32, wasp_47, rho_coronae_borealis, nu_scorpii, universes, universe_ids } from "@constants"
 import { useEffect, useMemo, useRef, useState, type ChangeEvent } from "react";
 import type { Belt, CelestialObject, Landmark, Planet, Satellite, Star } from "@types";
 import { useLocation } from "react-router";
@@ -26,7 +26,8 @@ const universeMapping: UniverseMapping = {
     copernicus,
     "kepler-32": kepler_32,
     "wasp-47": wasp_47,
-    rho_coronae_borealis
+    rho_coronae_borealis,
+    nu_scorpii
 }
 
 export const useCelestial = () => {
@@ -190,14 +191,18 @@ export const timeFormat = (value: number) => {
 }
 
 export const lengthFormat = (value: number) => {
-    if (value < 1) {
-        return `${(value * 1000)?.toLocaleString()} m`
-    } else if (value >= 1e+9) {
-        return `${(value / 1e+9)?.toLocaleString()}B km`
-    } else if (value >= 1e+6) {
-        return `${(value / 1e+6)?.toLocaleString()}M km`
+    const length = Math.abs(value)
+
+    if (length < 1) {
+        return `${(length * 1000)?.toLocaleString()} m`
+    } else if (length >= 1e+12) {
+        return `${(length / 1e+12)?.toLocaleString()}T km`
+    } else if (length >= 1e+9) {
+        return `${(length / 1e+9)?.toLocaleString()}B km`
+    } else if (length >= 1e+6) {
+        return `${(length / 1e+6)?.toLocaleString()}M km`
     } else {
-        return `${value?.toLocaleString()} km`
+        return `${length?.toLocaleString()} km`
     }
 }
 
@@ -295,8 +300,8 @@ export const handleZoomOut = () => {
 };
 
 export const seo = ({ title, description }: { title?: string, description?: string }) => {
-    const titlePage = title ? `${title} | Bimasakti` : "Bimasakti"
-    const descPage = description || "Bimasakti — Explore the Milky Way"
+    const titlePage = `${title ? `${title} | ` : ""}Bimasakti — 3D Interactive Universe Simulation`
+    const descPage = description || "Bimasakti — Explore the Milky Way galaxy, Solar System, and exoplanetary worlds in interactive real-time 3D simulation with Keplerian physics."
 
     return [
         { title: titlePage },
@@ -334,6 +339,8 @@ export enum Controls {
     x = "x",
     c = "c",
     space = "space",
+    plus = "plus",
+    minus = "minus",
 }
 
 export const keyboardMap = [
@@ -347,4 +354,6 @@ export const keyboardMap = [
     { name: Controls.x, keys: ["KeyX"] },
     { name: Controls.c, keys: ["KeyC"] },
     { name: Controls.space, keys: ["Space"] },
+    { name: Controls.plus, keys: ["Equal", "NumpadAdd"] },
+    { name: Controls.minus, keys: ["Minus", "NumpadSubtract"] },
 ]

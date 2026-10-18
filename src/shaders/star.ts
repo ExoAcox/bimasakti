@@ -20,6 +20,8 @@ void main() {
 export const surfaceFragmentShader = /* glsl */ `
 uniform float u_time;
 uniform vec3 u_color;
+uniform vec3 u_hotspotColor;
+uniform float u_innerHeatScale;
 
 varying vec2 vUv;
 varying vec3 vNormal;
@@ -119,7 +121,7 @@ void main() {
     float n = fBm(st + q + vec3(1.82, 1.32, 1.09), 5.0);
 
     // Base plasma color & bright hot spots
-    vec3 color = mix(u_color, vec3(1.2, 1.1, 0.9), n * n * 1.5);
+    vec3 color = mix(u_color, u_hotspotColor, n * n * 1.5);
     vec3 darkPlasma = mix(u_color * 0.4, u_color * u_color, 0.5);
     color = mix(color, darkPlasma, q * 0.5);
 
@@ -133,7 +135,7 @@ void main() {
     float fresnelOuter = pow(clamp(1.0 + dotProd, 0.0, 1.0), 2.0);
 
     // Combine surface plasma with intense HDR inner heat radiation and outer limb glow
-    vec3 innerHeat = u_color * (1.2 + 1.8 * n) * fresnelInner;
+    vec3 innerHeat = u_color * (1.2 + 1.8 * n) * fresnelInner * u_innerHeatScale;
     vec3 outerLimb = (u_color + vec3(0.3)) * 2.0 * fresnelOuter;
 
     vec3 finalColor = color * 1.6 + innerHeat + outerLimb;
@@ -174,6 +176,7 @@ void main() {
 
 export const coronaFragmentShader = /* glsl */ `
 uniform vec3 u_color;
+uniform vec3 u_flareColor;
 uniform float u_time;
 
 varying vec3 vPosition;
@@ -234,7 +237,7 @@ void main() {
     float intensity = fresnelOuter * (0.5 + 0.8 * flareNoise);
     intensity = pow(intensity, 1.3);
 
-    vec3 color = mix(u_color, vec3(1.0, 0.85, 0.4), flareNoise * 0.6);
+    vec3 color = mix(u_color, u_flareColor, flareNoise * 0.6);
 
     gl_FragColor = vec4(color * intensity * 1.5, intensity);
 }

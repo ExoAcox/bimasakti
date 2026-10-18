@@ -30,7 +30,7 @@ const MilkyWay = () => {
     return (
         <>
             <Stars />
-            <Galaxy onClick={() => setFocus("")}>
+            <Galaxy>
                 {
                     universes.map((universe) => {
                         if (universe.id === "milky_way") return null
