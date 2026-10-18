@@ -1,6 +1,6 @@
 import { Camera, MathUtils, Object3D, Vector3 } from "three"
 import { solar_system, alpha_centauri, trappist_1, lich, toi_700, copernicus, kepler_32, wasp_47, rho_coronae_borealis, universes, universe_ids } from "@constants"
-import { useEffect, useMemo, useRef, useState } from "react";
+import { useEffect, useMemo, useRef, useState, type ChangeEvent } from "react";
 import type { Belt, CelestialObject, Landmark, Planet, Satellite, Star } from "@types";
 import { useLocation } from "react-router";
 import { useControlStore } from "@state";
@@ -264,37 +264,35 @@ export const calculateSatelliteDistance = (distance: number, scale: number, pare
     return Math.max(rawVisualDistance, safeMinimumDistance);
 }
 
-export const classPosition = (position: "top" | "bottom" | "left" | "right") => {
-    let root = ""
-    let parent = ""
-    let line = ""
 
-    if (position === "top") {
-        root = "-translate-x-1/2 -translate-y-full"
-        parent = "flex-col items-center"
-        line = "h-3 w-px"
-    }
+export const handleZoomSlider = (e: ChangeEvent<HTMLInputElement>) => {
+    const val = Number(e.target.value);
+    window.dispatchEvent(new CustomEvent("bimasakti:set-zoom", {
+        detail: { value: val / 100 }
+    }));
+};
 
-    if (position === "bottom") {
-        root = "-translate-x-1/2 translate-y-full"
-        parent = "flex-col-reverse items-center"
-        line = "h-3 w-px"
-    }
+export const handleZoomIn = () => {
+    const slider = document.getElementById("sidebar-zoom-slider") as HTMLInputElement | null;
+    if (!slider) return;
+    const currentVal = Number(slider.value);
+    const newVal = Math.min(100, currentVal + 10);
+    slider.value = String(newVal);
+    window.dispatchEvent(new CustomEvent("bimasakti:set-zoom", {
+        detail: { value: newVal / 100 }
+    }));
+};
 
-    if (position === "right") {
-        root = "-translate-y-1/2"
-        parent = "flex-row-reverse items-center"
-        line = "h-px w-3"
-    }
-
-    if (position === "left") {
-        root = "-translate-x-full translate-y-1/2"
-        parent = "flex-row items-center"
-        line = "h-px w-3"
-    }
-
-    return { root, parent, line }
-}
+export const handleZoomOut = () => {
+    const slider = document.getElementById("sidebar-zoom-slider") as HTMLInputElement | null;
+    if (!slider) return;
+    const currentVal = Number(slider.value);
+    const newVal = Math.max(0, currentVal - 10);
+    slider.value = String(newVal);
+    window.dispatchEvent(new CustomEvent("bimasakti:set-zoom", {
+        detail: { value: newVal / 100 }
+    }));
+};
 
 export const seo = ({ title, description }: { title?: string, description?: string }) => {
     const titlePage = title ? `${title} | Bimasakti` : "Bimasakti"

@@ -15,11 +15,11 @@ import {
     type SpaceCraft,
     type Star
 } from "@types";
-import { useCelestial, useMobile } from "@function";
+import { handleZoomIn, handleZoomOut, handleZoomSlider, useCelestial, useMobile } from "@function";
 import { useTranslation } from "react-i18next";
 
 import { IoChevronDown, IoArrowBack } from "react-icons/io5";
-import { TbChevronLeft, TbSearchOff } from "react-icons/tb";
+import { TbChevronLeft, TbPlus, TbMinus } from "react-icons/tb";
 import { MdClose, MdSearch } from "react-icons/md";
 import { GiGalaxy } from "react-icons/gi";
 import { When } from "react-if";
@@ -231,6 +231,7 @@ const Sidebar = () => {
         navigate("/milky_way");
     };
 
+
     useEffect(() => {
         if (isTablet) {
             setOpen(false);
@@ -259,6 +260,47 @@ const Sidebar = () => {
                     )}
                 />
             </button>
+
+            {/* Zoom Slider Control Dock */}
+            <div
+                className="hidden md:flex absolute bottom-6 -right-8 w-8 py-2.5 flex-col items-center gap-1.5 bg-panel-bg backdrop-blur-2xl rounded-r-xl border border-l-0 border-panel-border shadow-panel select-none group/zoom"
+                title={t("ui.zoom_level")}
+            >
+
+                <button
+                    type="button"
+                    onClick={handleZoomIn}
+                    aria-label={t("ui.zoom_in", "Perbesar")}
+                    title={t("ui.zoom_in", "Perbesar")}
+                    className="size-6 flex items-center justify-center rounded-lg text-secondary hover:text-highlight hover:bg-card-hover active:scale-90 transition-all cursor-pointer"
+                >
+                    <TbPlus className="size-3.5" />
+                </button>
+
+                <div className="relative flex items-center justify-center h-28 w-full py-1">
+                    <input
+                        id="sidebar-zoom-slider"
+                        type="range"
+                        min="0"
+                        max="100"
+                        step="1"
+                        defaultValue="50"
+                        onChange={handleZoomSlider}
+                        className="vertical-slider"
+                        aria-label={t("ui.zoom_level")}
+                    />
+                </div>
+
+                <button
+                    type="button"
+                    onClick={handleZoomOut}
+                    aria-label={t("ui.zoom_out", "Perkecil")}
+                    title={t("ui.zoom_out", "Perkecil")}
+                    className="size-6 flex items-center justify-center rounded-lg text-secondary hover:text-highlight hover:bg-card-hover active:scale-90 transition-all cursor-pointer"
+                >
+                    <TbMinus className="size-3.5" />
+                </button>
+            </div>
 
             <div className="w-64 h-full flex flex-col p-4 text-primary bg-panel-bg backdrop-blur-2xl border-r border-panel-border relative">
 

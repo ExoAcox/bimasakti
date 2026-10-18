@@ -18,6 +18,9 @@
       "pages/lich": "nodejs_eyJydW50aW1lIjoibm9kZWpzIn0",
       "pages/toi-700": "nodejs_eyJydW50aW1lIjoibm9kZWpzIn0",
       "pages/copernicus": "nodejs_eyJydW50aW1lIjoibm9kZWpzIn0",
+      "pages/kepler-32": "nodejs_eyJydW50aW1lIjoibm9kZWpzIn0",
+      "pages/wasp-47": "nodejs_eyJydW50aW1lIjoibm9kZWpzIn0",
+      "pages/rho_coronae_borealis": "nodejs_eyJydW50aW1lIjoibm9kZWpzIn0",
       "pages/sagittarius_a": "nodejs_eyJydW50aW1lIjoibm9kZWpzIn0",
       "pages/liveview/mars": "nodejs_eyJydW50aW1lIjoibm9kZWpzIn0",
       "pages/liveview/moon": "nodejs_eyJydW50aW1lIjoibm9kZWpzIn0",
@@ -109,6 +112,33 @@
         "parentId": "components/Canvas",
         "file": "src/pages/copernicus.tsx",
         "path": "copernicus",
+        "config": {
+          "runtime": "nodejs"
+        }
+      },
+      "pages/kepler-32": {
+        "id": "pages/kepler-32",
+        "parentId": "components/Canvas",
+        "file": "src/pages/kepler-32.tsx",
+        "path": "kepler-32",
+        "config": {
+          "runtime": "nodejs"
+        }
+      },
+      "pages/wasp-47": {
+        "id": "pages/wasp-47",
+        "parentId": "components/Canvas",
+        "file": "src/pages/wasp-47.tsx",
+        "path": "wasp-47",
+        "config": {
+          "runtime": "nodejs"
+        }
+      },
+      "pages/rho_coronae_borealis": {
+        "id": "pages/rho_coronae_borealis",
+        "parentId": "components/Canvas",
+        "file": "src/pages/rho_coronae_borealis.tsx",
+        "path": "rho_coronae_borealis",
         "config": {
           "runtime": "nodejs"
         }
@@ -263,6 +293,24 @@
         "file": "./pages/copernicus.tsx",
         "path": "copernicus"
       },
+      "pages/kepler-32": {
+        "id": "pages/kepler-32",
+        "parentId": "components/Canvas",
+        "file": "./pages/kepler-32.tsx",
+        "path": "kepler-32"
+      },
+      "pages/wasp-47": {
+        "id": "pages/wasp-47",
+        "parentId": "components/Canvas",
+        "file": "./pages/wasp-47.tsx",
+        "path": "wasp-47"
+      },
+      "pages/rho_coronae_borealis": {
+        "id": "pages/rho_coronae_borealis",
+        "parentId": "components/Canvas",
+        "file": "./pages/rho_coronae_borealis.tsx",
+        "path": "rho_coronae_borealis"
+      },
       "pages/sagittarius_a": {
         "id": "pages/sagittarius_a",
         "parentId": "components/Canvas",
@@ -368,6 +416,18 @@
               {
                 "file": "./pages/copernicus.tsx",
                 "path": "copernicus"
+              },
+              {
+                "file": "./pages/kepler-32.tsx",
+                "path": "kepler-32"
+              },
+              {
+                "file": "./pages/wasp-47.tsx",
+                "path": "wasp-47"
+              },
+              {
+                "file": "./pages/rho_coronae_borealis.tsx",
+                "path": "rho_coronae_borealis"
               },
               {
                 "file": "./pages/sagittarius_a.tsx",

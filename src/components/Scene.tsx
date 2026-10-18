@@ -25,10 +25,11 @@ const Scene = ({ data }: Props) => {
     const isZooming = useRef(false)
     const targetCamPos = useRef(new Vector3())
     const normalVec = useRef(new Vector3())
-    const isLerpingLandmark = useRef(false)
-    const isResettingCamera = useRef(false)
     const targetResetCamPos = useRef(new Vector3())
     const targetResetControlsTarget = useRef(new Vector3(0, 0, 0))
+    const isResettingCamera = useRef(false)
+    const targetZoomDistance = useRef<number | null>(null)
+    const zoomOffsetVec = useRef(new Vector3())
 
     const bound = useBounds()
     const isMobile = useMobile()
@@ -218,15 +219,79 @@ const Scene = ({ data }: Props) => {
                 isZooming.current = false
             }
         }
+
+        if (targetZoomDistance.current !== null && controlRef.current) {
+            const currentDist = controlRef.current.getDistance()
+            const diff = targetZoomDistance.current - currentDist
+            if (Math.abs(diff) > 0.001) {
+                const newDist = currentDist + diff * 0.25
+                zoomOffsetVec.current.subVectors(state.camera.position, controlRef.current.target)
+                if (zoomOffsetVec.current.lengthSq() < 1e-8) {
+                    zoomOffsetVec.current.set(0, 0, newDist)
+                } else {
+                    zoomOffsetVec.current.setLength(newDist)
+                }
+                state.camera.position.copy(controlRef.current.target).add(zoomOffsetVec.current)
+                controlRef.current.update()
+            } else {
+                targetZoomDistance.current = null
+            }
+        }
     })
+
+    useEffect(() => {
+        const handleSetZoom = (e: Event) => {
+            const customEvent = e as CustomEvent<{ value: number }>
+            if (!controlRef.current) return
+            const t = Math.max(0, Math.min(1, customEvent.detail.value))
+            const minD = Math.max(0.0001, controlRef.current.minDistance)
+            const maxD = Math.max(minD * 1.5, controlRef.current.maxDistance)
+
+            const logMin = Math.log(minD)
+            const logMax = Math.log(maxD)
+            targetZoomDistance.current = Math.exp(logMax - t * (logMax - logMin))
+        }
+
+        const controls = controlRef.current
+        const handleControlsStart = () => {
+            targetZoomDistance.current = null
+        }
+
+        window.addEventListener("bimasakti:set-zoom", handleSetZoom)
+        controls?.addEventListener("start", handleControlsStart)
+
+        return () => {
+            window.removeEventListener("bimasakti:set-zoom", handleSetZoom)
+            controls?.removeEventListener("start", handleControlsStart)
+        }
+    }, [])
 
     useFrame(() => {
         if (controlRef.current && universe.id !== "milky_way") {
             const navigationPanel = document.getElementById("navigation-panel")
             const isMaxZoomOut = controlRef.current.getDistance() >= controlRef.current.maxDistance - 10;
 
-            if (!navigationPanel) return
-            navigationPanel.style.visibility = isMaxZoomOut ? "visible" : "hidden"
+            if (navigationPanel) {
+                navigationPanel.style.visibility = isMaxZoomOut ? "visible" : "hidden"
+            }
+
+            const zoomSlider = document.getElementById("sidebar-zoom-slider") as HTMLInputElement | null
+            if (zoomSlider && document.activeElement !== zoomSlider && targetZoomDistance.current === null) {
+                const currentDist = controlRef.current.getDistance()
+                const minD = Math.max(0.0001, controlRef.current.minDistance)
+                const maxD = Math.max(minD * 1.5, controlRef.current.maxDistance)
+                const logMin = Math.log(minD)
+                const logMax = Math.log(maxD)
+                const span = logMax - logMin
+                if (span > 1e-4) {
+                    const currentLog = Math.log(Math.max(minD, Math.min(maxD, currentDist)))
+                    const t = (logMax - currentLog) / span
+                    const val = Math.round(Math.max(0, Math.min(1, t)) * 100)
+                    if (Number(zoomSlider.value) !== val) {
+                        zoomSlider.value = String(val)
+                    }
+                }
+            }
         }
     })
 

@@ -21,7 +21,7 @@ const NavigationPanel = () => {
 
     const backText = () => {
         if (isGalaxy) {
-            return t("ui.enter_system", { name: t(`object.${data?.id}.name`), defaultValue: `Jelajahi ${t(`object.${data?.id}.name`)}` })
+            return t("ui.enter_system", { name: t(`object.${data?.id}.name`) })
         } else {
             return t("ui.back_to_milky_way", "Kembali ke Bima Sakti")
         }

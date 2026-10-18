@@ -2,54 +2,32 @@
 @import "tailwindcss";
 
 @theme {
-  /* Fonts */
   --font-sans: "Plus Jakarta Sans", sans-serif;
   --font-jakarta-sans: "Plus Jakarta Sans", sans-serif;
   --font-space-grotesk: "Space Grotesk", sans-serif;
 
-  /* Text Colors */
   --color-primary: #ffffff;
-  /* text-primary: Judul & teks utama */
   --color-secondary: var(--color-slate-300);
-  /* text-secondary: Paragraf & deskripsi */
   --color-tertiary: var(--color-slate-400);
-  /* text-tertiary: Label telemetri, unit, placeholder */
-  --color-highlight: var(--color-cyan-300);
-  /* text-highlight: Angka nilai telemetri & sorotan */
 
-  /* Brand & Theme Accents */
+  --color-highlight: var(--color-cyan-300);
   --color-accent: var(--color-cyan-400);
-  /* bg-accent / border-accent: Status aktif & border sorotan */
   --color-accent-glow: rgba(6, 182, 212, 0.25);
 
-  /* General Functional Colors */
   --color-blue: var(--color-sky-400);
-  /* Lapisan awan (cloud) & klasifikasi bintang */
   --color-green: var(--color-green-400);
-  /* View mode & lapisan atmosfer */
   --color-yellow: var(--color-amber-400);
-  /* Landmark pin, asteroid belt & tombol reset */
   --color-red: var(--color-rose-400);
-  /* Tombol leave, jeda (pause) & aksi batal */
 
-  /* Glassmorphic Surfaces & Backgrounds */
   --color-background: rgba(2, 6, 23, 0.85);
-  /* Background panel utama */
   --color-panel-bg: rgba(2, 6, 23, 0.55);
   --color-card-bg: rgba(255, 255, 255, 0.03);
-  /* Kartu telemetri, item list & tombol idle */
   --color-card-hover: rgba(255, 255, 255, 0.08);
-  /* Efek hover kartu */
 
-  /* Borders & Dividers */
   --color-panel-border: rgba(255, 255, 255, 0.10);
-  /* Border panel utama & tombol */
   --color-panel-border-subtle: rgba(255, 255, 255, 0.05);
-  /* Border kartu telemetri & item */
   --color-divider: rgba(255, 255, 255, 0.10);
-  /* Garis pemisah antar seksi */
 
-  /* Elevation & Shadows */
   --shadow-panel: 0 20px 50px rgba(0, 0, 0, 0.70);
   --shadow-glow: 0 0 12px rgba(6, 182, 212, 0.25);
 }
@@ -86,6 +64,84 @@ input {
 
 .slider {
   @apply w-full h-2 bg-gray-200 rounded-lg appearance-none cursor-pointer accent-accent focus:outline-none focus:ring-2 focus:ring-accent [&::-webkit-slider-runnable-track]:bg-gray-200 [&::-webkit-slider-runnable-track]:rounded-lg [&::-webkit-slider-thumb]:appearance-none [&::-webkit-slider-thumb]:w-5 [&::-webkit-slider-thumb]:h-5 [&::-webkit-slider-thumb]:rounded-full [&::-webkit-slider-thumb]:bg-accent [&::-webkit-slider-thumb]:transition-all [&::-webkit-slider-thumb]:hover:scale-110 [&::-moz-range-thumb]:w-5 [&::-moz-range-thumb]:h-5 [&::-moz-range-thumb]:border-none [&::-moz-range-thumb]:rounded-full [&::-moz-range-thumb]:bg-accent [&::-moz-range-thumb]:transition-all [&::-moz-range-thumb]:hover:scale-110
+}
+
+.vertical-slider {
+  writing-mode: vertical-lr;
+  direction: rtl;
+  appearance: none;
+  background: transparent;
+  width: 1.25rem;
+  height: 100%;
+  cursor: pointer;
+  outline: none;
+}
+
+.vertical-slider::-webkit-slider-runnable-track {
+  width: 4px;
+  height: 100%;
+  background: rgba(255, 255, 255, 0.15);
+  border-radius: 9999px;
+  transition: background-color 0.2s;
+}
+
+.vertical-slider:hover::-webkit-slider-runnable-track {
+  background: rgba(6, 182, 212, 0.35);
+}
+
+.vertical-slider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  background: var(--color-accent);
+  box-shadow: 0 0 10px rgba(6, 182, 212, 0.6);
+  border: 2px solid rgba(2, 6, 23, 0.9);
+  margin-left: -5px;
+  cursor: pointer;
+  transition: transform 0.15s, box-shadow 0.15s;
+}
+
+.vertical-slider:hover::-webkit-slider-thumb {
+  transform: scale(1.2);
+  box-shadow: 0 0 14px rgba(6, 182, 212, 0.85);
+}
+
+.vertical-slider:active::-webkit-slider-thumb {
+  transform: scale(1.05);
+}
+
+.vertical-slider::-moz-range-track {
+  width: 4px;
+  height: 100%;
+  background: rgba(255, 255, 255, 0.15);
+  border-radius: 9999px;
+}
+
+.vertical-slider:hover::-moz-range-track {
+  background: rgba(6, 182, 212, 0.35);
+}
+
+.vertical-slider::-moz-range-progress {
+  background: var(--color-accent);
+  border-radius: 9999px;
+}
+
+.vertical-slider::-moz-range-thumb {
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  background: var(--color-accent);
+  box-shadow: 0 0 10px rgba(6, 182, 212, 0.6);
+  border: 2px solid rgba(2, 6, 23, 0.9);
+  cursor: pointer;
+  transition: transform 0.15s, box-shadow 0.15s;
+}
+
+.vertical-slider:hover::-moz-range-thumb {
+  transform: scale(1.2);
+  box-shadow: 0 0 14px rgba(6, 182, 212, 0.85);
 }
 
 @keyframes spin {

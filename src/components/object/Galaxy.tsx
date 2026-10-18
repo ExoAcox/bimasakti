@@ -1,19 +1,20 @@
+/* eslint-disable react-hooks/immutability */
 import { useDetectGPU, useGLTF, useTexture } from "@react-three/drei"
-import { useFrame } from "@react-three/fiber"
-import { useMemo, useRef } from "react"
+import { useFrame, useThree } from "@react-three/fiber"
+import { useEffect, useMemo, useRef } from "react"
 import {
     AdditiveBlending,
     BufferAttribute,
     BufferGeometry,
     Color,
     MathUtils,
+    PerspectiveCamera,
     ShaderMaterial,
     type Group,
     type Mesh,
     type PointsMaterial
 } from "three"
 import type { GLTF } from "three-stdlib"
-import { useMobile } from "@function"
 import { pointGlowVertexShader, pointGlowFragmentShader } from "@shaders/galaxy"
 
 type GLTFResult = GLTF & {
@@ -37,6 +38,14 @@ const Galaxy = ({ children, onClick }: Props) => {
     const starTexture = useTexture("/textures/star.png")
     const { nodes } = useGLTF("/models/milky_way.glb") as unknown as GLTFResult
     const isMobile = useDetectGPU().isMobile
+    const camera = useThree((state) => state.camera)
+
+    useEffect(() => {
+        const perspectiveCamera = camera as PerspectiveCamera
+
+        perspectiveCamera.fov = 75
+        perspectiveCamera.updateProjectionMatrix()
+    }, [camera])
 
     const { geometry, glowMaterial } = useMemo(() => {
         nodes.Object_2.geometry.center()

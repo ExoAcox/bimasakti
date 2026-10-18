@@ -19,7 +19,9 @@
         "speed_scale": "Speed Scale",
         "language": "Language",
         "speed_scale_value": "1 second: {{days}} days",
+        "star": "Star",
         "stars": "Stars",
+        "planet": "Planet",
         "planets": "Planets",
         "dwarf_planets": "Dwarf Planets",
         "satellites": "Satellites",
@@ -40,6 +42,9 @@
         "open_panel": "Open panel",
         "close_sidebar": "Close sidebar",
         "open_sidebar": "Open sidebar",
+        "zoom_level": "Zoom Level",
+        "zoom_in": "Zoom In",
+        "zoom_out": "Zoom Out",
         "focused_landmark": "Focused Landmark",
         "back_to_object": "Back to object",
         "back_to_summary": "Back to {{object}} summary",
@@ -110,6 +115,7 @@
         "quick_telemetry": "Quick Telemetry",
         "footer_tagline": "An interactive 3D universe observatory exploring the Milky Way, Solar System, and distant exoplanetary worlds.",
         "quick_links": "Quick Links",
+        "star_system": "Star System",
         "star_systems": "Star Systems",
         "live_explorations": "Live Explorations",
         "built_with": "Built with Three.js, React Three Fiber & WebGL"
@@ -609,7 +615,7 @@
             "description": "TRAPPIST-1h is the outermost known planet of the TRAPPIST-1 system. It is also the smallest and coldest, orbiting far from the star's warmth."
         },
         "lich": {
-            "name": "Lich",
+            "name": "Lich (PSR B1257+12)",
             "title": "Lich (PSR B1257+12) System",
             "nickname": "Lich",
             "description": "PSR B1257+12, designated Lich, is a millisecond pulsar located 2,300 light-years away in the constellation Virgo. It is famous for hosting the first confirmed extrasolar planetary system."
@@ -656,7 +662,7 @@
             "description": "TOI-700 d is an Earth-sized terrestrial exoplanet orbiting within the conservative habitable zone of TOI-700 every 37.42 days, making it a prime candidate for supporting liquid water."
         },
         "copernicus": {
-            "name": "Copernicus",
+            "name": "Copernicus (55 Cancri)",
             "title": "Copernicus (55 Cancri) System",
             "nickname": "Copernicus",
             "description": "Copernicus (55 Cancri A) is a G-type yellow dwarf star located approximately 41 light-years away in the constellation Cancer. It hosts a rich planetary system with five confirmed exoplanets."
