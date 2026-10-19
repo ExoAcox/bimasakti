@@ -18,11 +18,20 @@ interface Props {
     nightIntensity?: number
 }
 
+const FallbackMesh = () => {
+    return <mesh>
+        <sphereGeometry />
+        <meshStandardMaterial wireframe />
+    </mesh>
+}
+
 const PlanetMesh = ({ data }: { data: PlanetType }) => {
     const { focus } = useControlStore()
     const isFocused = data.id === focus
     const isChildParentFocused = useCelestial().isFocused(data.id)
     const isMobile = useDetectGPU().isMobile
+
+    const shouldRender = isFocused || data.parent === focus
     const shouldRenderHd = isChildParentFocused && !isMobile
 
     const { topographyVisible } = useControlStore()
@@ -47,7 +56,9 @@ const PlanetMesh = ({ data }: { data: PlanetType }) => {
     }, [data.model, data.rotation, isFocused])
 
     const material = useMemo(() => {
-        if (topographyVisible && isFocused) {
+        if (data.type !== "planet" && !shouldRender) {
+            return <meshStandardMaterial color={data.color} />
+        } else if (topographyVisible && isFocused) {
             return <TextureLoader path={texture} />
         } else if (data.night_texture) {
             return <NightMaterial
@@ -62,19 +73,17 @@ const PlanetMesh = ({ data }: { data: PlanetType }) => {
         } else {
             return <meshStandardMaterial color={data.color} />
         }
-    }, [topographyVisible, isFocused, data.night_texture, data.texture, data.night_texture_hd, data.texture_hd, data.night_opacity, data.color, texture, shouldRenderHd])
+    }, [topographyVisible, isFocused, data, texture, shouldRender, shouldRenderHd])
 
     const geometryRender = useDeferredValue(geometry)
     const materialRender = useDeferredValue(material)
 
-    return <mesh castShadow receiveShadow>
-        <Suspense fallback={<sphereGeometry />}>
+    return <Suspense fallback={<FallbackMesh />}>
+        <mesh castShadow receiveShadow>
             {geometryRender}
-        </Suspense>
-        <Suspense fallback={<meshStandardMaterial color={data.color} wireframe />}>
             {materialRender}
-        </Suspense>
-    </mesh>
+        </mesh>
+    </Suspense>
 }
 
 

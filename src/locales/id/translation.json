@@ -45,6 +45,7 @@
         "zoom_in": "Perbesar",
         "zoom_out": "Perkecil",
         "focused_landmark": "Landmark Terfokus",
+        "back_to": "Kembali ke {{universe}}",
         "back_to_object": "Kembali ke objek",
         "back_to_summary": "Kembali ke ringkasan {{object}}",
         "search_object": "Cari objek...",

@@ -80,6 +80,7 @@ const Mars = () => {
 
     return (
         <LiveviewCanvas
+            id="solar_system"
             camera={
                 {
                     position: [CAMERA_ORIGIN.x, CAMERA_ORIGIN.y, CAMERA_ORIGIN.z],

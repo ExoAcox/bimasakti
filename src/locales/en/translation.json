@@ -47,6 +47,7 @@
         "zoom_in": "Zoom In",
         "zoom_out": "Zoom Out",
         "focused_landmark": "Focused Landmark",
+        "back_to": "Back to {{universe}}",
         "back_to_object": "Back to object",
         "back_to_summary": "Back to {{object}} summary",
         "search_object": "Search object...",

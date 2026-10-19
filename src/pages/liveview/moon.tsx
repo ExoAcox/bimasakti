@@ -22,6 +22,7 @@ const EARTH_POSITION: [number, number, number] = [60, 45, 80]
 const Moon = () => {
     return (
         <LiveviewCanvas
+            id="moon"
             camera={{
                 position: [CAMERA_ORIGIN.x, CAMERA_ORIGIN.y, CAMERA_ORIGIN.z],
                 fov: 65,

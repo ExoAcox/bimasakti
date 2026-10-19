@@ -271,7 +271,12 @@ const Object = ({ data, children, childrenComponent, onClick, objectRef, cloudRe
                             <button
                                 ref={labelRef || internalLabelRef}
                                 className={labelClass}
-                                onClick={onClick}>
+                                type="button"
+                                onPointerDown={(e) => e.stopPropagation()}
+                                onClick={(e) => {
+                                    e.stopPropagation();
+                                    onClick();
+                                }}>
                                 <When condition={focusedObject?.parent !== data.id}>
                                     <div className={clsx(isSpacecraft ? "size-3" : "size-4")}>
                                         <img alt="" src={`/icons/${data.icon}`} />

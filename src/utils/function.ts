@@ -126,7 +126,12 @@ export const useVariant = (data: Star | Planet | Satellite) => {
 }
 
 export function useMobile(breakpoint = 768) {
-    const [isMobile, setMobile] = useState(false);
+    const [isMobile, setMobile] = useState(() => {
+        if (typeof window !== "undefined") {
+            return window.matchMedia(`(max-width: ${breakpoint - 1}px)`).matches;
+        }
+        return false;
+    });
 
     useEffect(() => {
         const mediaQuery = window.matchMedia(`(max-width: ${breakpoint - 1}px)`);

@@ -99,7 +99,7 @@ const ControlPanel = () => {
 
     const modeLists = useMemo(() => {
         const liveView = {
-            id: Mode.LiveView, label: "Live View", img: "mode_first_person.webp"
+            id: Mode.LiveView, label: "Terrain View", img: "mode_terrain_view.webp"
         }
 
         return [
