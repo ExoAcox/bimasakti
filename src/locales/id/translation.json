@@ -934,6 +934,16 @@
             "name": "New Horizons",
             "nickname": "New Horizons",
             "description": "New Horizons adalah wahana antariksa NASA yang diluncurkan pada 19 Januari 2006. Wahana ini melakukan penerbangan lintas bersejarah di Pluto dan bulan-bulannya pada Juli 2015, mengambil gambar resolusi tinggi pertama dari planet kerdil tersebut, dan kemudian menjelajahi objek Sabuk Kuiper Arrokoth pada tahun 2019."
+        },
+        "pioneer_10": {
+            "name": "Pioneer 10",
+            "nickname": "Pioneer 10",
+            "description": "Pioneer 10 adalah wahana antariksa tak berawak yang diluncurkan oleh NASA pada 2 Maret 1972. Wahana ini menjadi misi pertama yang melintasi sabuk asteroid, wahana pertama yang melakukan pengamatan langsung terhadap Jupiter, dan objek buatan manusia pertama yang mencapai kecepatan lepas dari Tata Surya."
+        },
+        "pioneer_11": {
+            "name": "Pioneer 11",
+            "nickname": "Pioneer 11",
+            "description": "Pioneer 11 adalah wahana antariksa robotik yang diluncurkan oleh NASA pada 5 April 1973. Wahana ini merupakan wahana kedua yang menyelidiki Jupiter dan Tata Surya bagian luar, serta yang pertama menjelajahi Saturnus dan cincin utamanya dari jarak dekat sebelum menempuh lintasan antarbintang."
         }
     },
     "landmark": {

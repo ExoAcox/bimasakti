@@ -173,7 +173,7 @@ export const spacecraft: SpaceCraft[] = [
         type: "spacecraft-flyby",
         class: SpaceCraftClass.FlyBy,
         parent: "earth",
-        rotation: [0, -90, 0],
+        rotation: [0, -45, 0],
         agencies: ["nasa"],
         radius: 0.0037, // ~3.7m high-gain antenna dish radius (in km)
         distance: 24250000000, // ~24.25 billion km from Earth (~162 AU)
@@ -189,7 +189,7 @@ export const spacecraft: SpaceCraft[] = [
         type: "spacecraft-flyby",
         class: SpaceCraftClass.FlyBy,
         parent: "earth",
-        rotation: [0, -90, 0],
+        rotation: [0, -45, 0],
         agencies: ["nasa"],
         radius: 0.0037, // ~3.7m high-gain antenna dish radius (in km)
         distance: 20300000000, // ~20.3 billion km from Earth (~136 AU)
@@ -205,7 +205,7 @@ export const spacecraft: SpaceCraft[] = [
         type: "spacecraft-flyby",
         class: SpaceCraftClass.FlyBy,
         parent: "earth",
-        rotation: [0, -90, 0],
+        rotation: [0, -45, 0],
         agencies: ["nasa"],
         radius: 0.0025, // ~2.5m spacecraft dimension (in km)
         distance: 8800000000, // ~8.8 billion km from Earth (~58.8 AU)
@@ -214,6 +214,38 @@ export const spacecraft: SpaceCraft[] = [
         orbit_duration: 0,
         rotate_duration: 0,
         model: "new_horizons.glb",
+        icon: "iss.png"
+    },
+    {
+        id: "pioneer_10",
+        type: "spacecraft-flyby",
+        class: SpaceCraftClass.FlyBy,
+        parent: "earth",
+        rotation: [0, 45, 0],
+        agencies: ["nasa"],
+        radius: 0.0027, // ~2.74m high-gain antenna dish dimension (in km)
+        distance: 20500000000, // ~20.5 billion km from Earth (~137 AU)
+        color: "#d4af37",
+        axis: 2.9, // ~2.9° trajectory inclination relative to ecliptic
+        orbit_duration: 0,
+        rotate_duration: 0,
+        model: "pioneer.glb",
+        icon: "iss.png"
+    },
+    {
+        id: "pioneer_11",
+        type: "spacecraft-flyby",
+        class: SpaceCraftClass.FlyBy,
+        parent: "earth",
+        rotation: [0, 45, 0],
+        agencies: ["nasa"],
+        radius: 0.0027, // ~2.74m high-gain antenna dish dimension (in km)
+        distance: 17100000000, // ~17.1 billion km from Earth (~114 AU)
+        color: "#c0a040",
+        axis: 12.6, // ~12.6° trajectory inclination relative to ecliptic
+        orbit_duration: 0,
+        rotate_duration: 0,
+        model: "pioneer.glb",
         icon: "iss.png"
     }
 ]

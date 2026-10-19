@@ -932,6 +932,16 @@
             "name": "New Horizons",
             "nickname": "New Horizons",
             "description": "New Horizons is a NASA space probe launched on January 19, 2006. It performed a historic flyby of Pluto and its moons in July 2015, capturing the first high-resolution images of the dwarf planet, and later explored the Kuiper Belt object Arrokoth in 2019."
+        },
+        "pioneer_10": {
+            "name": "Pioneer 10",
+            "nickname": "Pioneer 10",
+            "description": "Pioneer 10 is an American space probe launched by NASA on March 2, 1972. It became the first mission to travel through the asteroid belt, the first spacecraft to make direct observations of Jupiter, and the first human-built craft to achieve the velocity needed to escape the Solar System."
+        },
+        "pioneer_11": {
+            "name": "Pioneer 11",
+            "nickname": "Pioneer 11",
+            "description": "Pioneer 11 is a robotic space probe launched by NASA on April 5, 1973. It was the second probe to investigate Jupiter and the outer Solar System, and the first to explore Saturn and its main rings up close before embarking on an interstellar trajectory."
         }
     },
     "landmark": {

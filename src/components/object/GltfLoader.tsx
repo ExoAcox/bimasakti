@@ -26,9 +26,18 @@ const GltfLoader = ({ path, rotation, center = true }: Props) => {
 
         const box = new Box3().setFromObject(clone)
         const size = box.getSize(new Vector3())
-        const maxDim = Math.min(size.x, size.y, size.z)
+        const sizeArr = [size.x, size.y, size.z].sort((a, b) => a - b)
+        const dimension = () => {
+            if (sizeArr[0] * 2.3 <= sizeArr[2]) {
+                return sizeArr[2]
+            } else {
+                return sizeArr[0]
+            }
+        }
 
-        const scaleFactor = 1.5 / maxDim
+        console.log(dimension(), sizeArr)
+
+        const scaleFactor = 1.5 / dimension()
         clone.scale.setScalar(scaleFactor)
 
         if (center) {
