@@ -81,7 +81,7 @@ export const planets: Planet[] = [
         ring: {
             inner_radius: 90000,
             outer_radius: 180000,
-            texture: "lipperhey_ring.ktx2"
+            texture: "lipperhey_ring.png"
         },
         satellites: []
     }

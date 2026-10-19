@@ -167,7 +167,7 @@ export const planets: Planet[] = [
         ring: {
             inner_radius: 66900,
             outer_radius: 136770,
-            texture: "saturn_ring.ktx2"
+            texture: "saturn_ring.png"
         },
         get satellites() {
             return satellites.filter((satellite) => satellite.parent === this.id)
@@ -193,7 +193,7 @@ export const planets: Planet[] = [
         ring: {
             inner_radius: 41838,
             outer_radius: 51140,
-            texture: "uranus_ring.ktx2",
+            texture: "uranus_ring.png",
             opacity: 0.5
         },
         get satellites() {
@@ -360,7 +360,7 @@ export const planets: Planet[] = [
         ring: {
             inner_radius: 4050,
             outer_radius: 4250,
-            texture: "saturn_ring.ktx2"
+            texture: "saturn_ring.png"
         },
         get satellites() {
             return satellites.filter((satellite) => satellite.parent === this.id)
