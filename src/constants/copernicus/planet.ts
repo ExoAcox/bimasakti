@@ -12,7 +12,7 @@ export const planets: Planet[] = [
         axis: 3,
         orbit_duration: 0.7365,
         rotate_duration: 0.7365,
-        texture: "janssen.jpg",
+        texture: "janssen.ktx2",
         icon: "mercury.png",
         satellites: []
     },
@@ -27,7 +27,8 @@ export const planets: Planet[] = [
         axis: 10,
         orbit_duration: 14.65,
         rotate_duration: 14.65,
-        texture: "galileo.png",
+        texture: "galileo.ktx2",
+        texture_hd: "galileo_hd.ktx2",
         icon: "neptune.png",
         satellites: []
     },
@@ -42,7 +43,8 @@ export const planets: Planet[] = [
         axis: 8,
         orbit_duration: 44.34,
         rotate_duration: 44.34,
-        texture: "brahe.png",
+        texture: "brahe.ktx2",
+        texture_hd: "brahe_hd.ktx2",
         icon: "neptune.png",
         satellites: []
     },
@@ -57,7 +59,8 @@ export const planets: Planet[] = [
         axis: 14,
         orbit_duration: 260.7,
         rotate_duration: 260.7,
-        texture: "harriot.png",
+        texture: "harriot.ktx2",
+        texture_hd: "harriot_hd.ktx2",
         icon: "jupiter.png",
         satellites: []
     },
@@ -72,12 +75,13 @@ export const planets: Planet[] = [
         axis: 22,
         orbit_duration: 5218,
         rotate_duration: 0.45,
-        texture: "lipperhey.png",
+        texture: "lipperhey.ktx2",
+        texture_hd: "lipperhey_hd.ktx2",
         icon: "saturn.png",
         ring: {
             inner_radius: 90000,
             outer_radius: 180000,
-            texture: "lipperhey_ring.png"
+            texture: "lipperhey_ring.ktx2"
         },
         satellites: []
     }

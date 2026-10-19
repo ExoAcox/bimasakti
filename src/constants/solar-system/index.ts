@@ -70,7 +70,7 @@ const comets: Comet[] = [
         orbit_duration: 27500,
         rotate_duration: 2.2,
         model: "halley.ply",
-        texture: "halley.png",
+        texture: "halley.ktx2",
         icon: "asteroid.png"
     },
     {
@@ -103,7 +103,7 @@ const asteroids: Asteroid[] = [
         orbit_duration: 1325.4,
         rotate_duration: 0.22,
         model: "vesta.ply",
-        texture: "vesta.jpg",
+        texture: "vesta.ktx2",
         icon: "asteroid.png",
         get landmarks() {
             return landmarks.filter((landmark) => landmark.parent === this.id)

@@ -12,7 +12,7 @@ export const planets: Planet[] = [
         axis: 5,
         orbit_duration: 9.98,
         rotate_duration: 9.98,
-        texture: "toi-700_b.jpg",
+        texture: "toi-700_b.ktx2",
         icon: "mercury.png",
         satellites: []
     },
@@ -27,7 +27,7 @@ export const planets: Planet[] = [
         axis: 10,
         orbit_duration: 16.05,
         rotate_duration: 16.05,
-        texture: "toi-700_c.jpg",
+        texture: "toi-700_c.ktx2",
         icon: "neptune.png",
         satellites: []
     },
@@ -42,7 +42,7 @@ export const planets: Planet[] = [
         axis: -12,
         orbit_duration: 27.81,
         rotate_duration: 27.81,
-        texture: "toi-700_e.png",
+        texture: "toi-700_e.ktx2",
         icon: "mercury.png",
         satellites: []
     },
@@ -58,8 +58,9 @@ export const planets: Planet[] = [
         axis: -8,
         orbit_duration: 37.42,
         rotate_duration: 37.42,
-        texture: "toi-700_d.jpg",
-        cloud_texture: "toi-700_d_cloud.png",
+        texture: "toi-700_d.ktx2",
+        texture_hd: "toi-700_d_hd.ktx2",
+        cloud_texture: "toi-700_d_cloud.ktx2",
         icon: "earth.png",
         satellites: []
     },

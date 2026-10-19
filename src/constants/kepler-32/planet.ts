@@ -13,7 +13,7 @@ export const planets: Planet[] = [
         rotation: [180, 0, 0],
         orbit_duration: 0.74,
         rotate_duration: 0.74,
-        texture: "kepler-32_f.png",
+        texture: "kepler-32_f.ktx2",
         icon: "mercury.png",
         satellites: []
     },
@@ -28,7 +28,7 @@ export const planets: Planet[] = [
         axis: 5,
         orbit_duration: 2.90,
         rotate_duration: 2.90,
-        texture: "kepler-32_e.png",
+        texture: "kepler-32_e.ktx2",
         icon: "moon.png",
         satellites: []
     },
@@ -43,7 +43,7 @@ export const planets: Planet[] = [
         axis: 7,
         orbit_duration: 5.90,
         rotate_duration: 5.90,
-        texture: "kepler-32_b.png",
+        texture: "kepler-32_b.ktx2",
         icon: "neptune.png",
         satellites: []
     },
@@ -58,7 +58,7 @@ export const planets: Planet[] = [
         axis: -4,
         orbit_duration: 8.75,
         rotate_duration: 8.75,
-        texture: "kepler-32_c.png",
+        texture: "kepler-32_c.ktx2",
         icon: "venus.png",
         satellites: []
     },
@@ -73,7 +73,7 @@ export const planets: Planet[] = [
         axis: 10,
         orbit_duration: 22.78,
         rotate_duration: 22.78,
-        texture: "kepler-32_d.png",
+        texture: "kepler-32_d.ktx2",
         icon: "venus.png",
         satellites: []
     }

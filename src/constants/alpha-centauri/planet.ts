@@ -13,7 +13,7 @@ export const planets: Planet[] = [
         axis: 23.4,
         orbit_duration: 360,
         rotate_duration: 1.0,
-        texture: "alpha_centauri_a_b.png",
+        texture: "alpha_centauri_a_b.ktx2",
         icon: "mars.png",
         satellites: []
     },
@@ -28,7 +28,7 @@ export const planets: Planet[] = [
         axis: 0,
         orbit_duration: 5.12,
         rotate_duration: 5.12,
-        texture: "proxima_centauri_d.png",
+        texture: "proxima_centauri_d.ktx2",
         icon: "mercury.png",
         satellites: []
     },
@@ -43,8 +43,8 @@ export const planets: Planet[] = [
         axis: 0,
         orbit_duration: 11.186,
         rotate_duration: 11.186,
-        texture: "proxima_centauri_b.png",
-        cloud_texture: "earth_cloud.jpg",
+        texture: "proxima_centauri_b.ktx2",
+        cloud_texture: "earth_cloud.ktx2",
         icon: "earth.png",
         satellites: []
     },
@@ -59,7 +59,7 @@ export const planets: Planet[] = [
         axis: 15,
         orbit_duration: 1928,
         rotate_duration: 1.2,
-        texture: "proxima_centauri_c.png",
+        texture: "proxima_centauri_c.ktx2",
         icon: "neptune.png",
         satellites: []
     },

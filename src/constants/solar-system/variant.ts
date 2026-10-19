@@ -30,7 +30,7 @@ export const variants: Variants = {
         {
             variant_id: "ancient",
             order: -1,
-            texture: "venus_ancient.jpg",
+            texture: "venus_ancient.ktx2",
             texture_hd: undefined,
             cloud_texture: "earth_cloud.ktx2",
             landmarks: []
@@ -39,7 +39,7 @@ export const variants: Variants = {
             variant_id: "terraform",
             order: 1,
             color: "#2b82c5",
-            texture: "venus_terraform.jpg",
+            texture: "venus_terraform.ktx2",
             texture_hd: undefined,
             cloud_texture: "earth_cloud.ktx2",
             icon: "earth.png",
@@ -51,7 +51,7 @@ export const variants: Variants = {
         {
             variant_id: "65_mbc",
             order: -65 * 1e+6,
-            texture: "earth_0065.jpg",
+            texture: "earth_0065.ktx2",
             texture_hd: undefined,
             night_texture: undefined,
             topography_texture: undefined,
@@ -61,7 +61,7 @@ export const variants: Variants = {
         {
             variant_id: "90_mbc",
             order: -90 * 1e+6,
-            texture: "earth_0090.jpg",
+            texture: "earth_0090.ktx2",
             texture_hd: undefined,
             night_texture: undefined,
             topography_texture: undefined,
@@ -71,7 +71,7 @@ export const variants: Variants = {
         {
             variant_id: "105_mbc",
             order: -105 * 1e+6,
-            texture: "earth_0105.jpg",
+            texture: "earth_0105.ktx2",
             texture_hd: undefined,
             night_texture: undefined,
             topography_texture: undefined,
@@ -81,7 +81,7 @@ export const variants: Variants = {
         {
             variant_id: "120_mbc",
             order: -120 * 1e+6,
-            texture: "earth_0120.jpg",
+            texture: "earth_0120.ktx2",
             texture_hd: undefined,
             night_texture: undefined,
             topography_texture: undefined,
@@ -91,7 +91,7 @@ export const variants: Variants = {
         {
             variant_id: "150_mbc",
             order: -150 * 1e+6,
-            texture: "earth_0150.jpg",
+            texture: "earth_0150.ktx2",
             texture_hd: undefined,
             night_texture: undefined,
             topography_texture: undefined,
@@ -101,7 +101,7 @@ export const variants: Variants = {
         {
             variant_id: "170_mbc",
             order: -170 * 1e+6,
-            texture: "earth_0170.jpg",
+            texture: "earth_0170.ktx2",
             texture_hd: undefined,
             night_texture: undefined,
             topography_texture: undefined,
@@ -111,7 +111,7 @@ export const variants: Variants = {
         {
             variant_id: "200_mbc",
             order: -200 * 1e+6,
-            texture: "earth_0200.jpg",
+            texture: "earth_0200.ktx2",
             texture_hd: undefined,
             night_texture: undefined,
             topography_texture: undefined,
@@ -121,7 +121,7 @@ export const variants: Variants = {
         {
             variant_id: "220_mbc",
             order: -220 * 1e+6,
-            texture: "earth_0220.jpg",
+            texture: "earth_0220.ktx2",
             texture_hd: undefined,
             night_texture: undefined,
             topography_texture: undefined,
@@ -131,7 +131,7 @@ export const variants: Variants = {
         {
             variant_id: "240_mbc",
             order: -240 * 1e+6,
-            texture: "earth_0240.jpg",
+            texture: "earth_0240.ktx2",
             texture_hd: undefined,
             night_texture: undefined,
             topography_texture: undefined,
@@ -145,7 +145,7 @@ export const variants: Variants = {
             order: -4500 * 1e+6,
             radius: 3390,
             rotate_duration: 14.0,
-            texture: "theia.jpg",
+            texture: "theia.ktx2",
             texture_hd: undefined,
             topography_texture: undefined,
             landmarks: []

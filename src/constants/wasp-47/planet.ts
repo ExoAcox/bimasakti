@@ -12,7 +12,7 @@ export const planets: Planet[] = [
         axis: 2,
         orbit_duration: 0.79,
         rotate_duration: 0.79,
-        texture: "wasp-47_e.png",
+        texture: "wasp-47_e.ktx2",
         icon: "mars.png",
         satellites: []
     },
@@ -27,7 +27,7 @@ export const planets: Planet[] = [
         axis: 5,
         orbit_duration: 4.16,
         rotate_duration: 4.16,
-        texture: "wasp-47_b.png",
+        texture: "wasp-47_b.ktx2",
         icon: "neptune.png",
         satellites: []
     },
@@ -42,7 +42,7 @@ export const planets: Planet[] = [
         axis: 8,
         orbit_duration: 9.03,
         rotate_duration: 9.03,
-        texture: "wasp-47_d.png",
+        texture: "wasp-47_d.ktx2",
         icon: "jupiter.png",
         satellites: []
     },
@@ -57,7 +57,7 @@ export const planets: Planet[] = [
         axis: 12,
         orbit_duration: 588.5,
         rotate_duration: 588.5,
-        texture: "wasp-47_c.png",
+        texture: "wasp-47_c.ktx2",
         icon: "neptune.png",
         satellites: []
     }

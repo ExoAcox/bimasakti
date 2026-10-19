@@ -43,7 +43,7 @@ export const satellites: Satellite[] = [
         rotation: [90, 0, 0],
         orbit_duration: 0.32,
         rotate_duration: 0.32, // Tidally locked
-        texture: "phobos.png",
+        texture: "phobos.ktx2",
         model: "phobos.ply",
         icon: "asteroid.png"
     },
@@ -58,7 +58,7 @@ export const satellites: Satellite[] = [
         rotation: [90, 0, 0],
         orbit_duration: 1.26,
         rotate_duration: 1.26, // Tidally locked
-        texture: "deimos.png",
+        texture: "deimos.ktx2",
         model: "deimos.ply",
         icon: "asteroid.png"
     },
@@ -73,7 +73,7 @@ export const satellites: Satellite[] = [
         axis: 0.04,
         orbit_duration: 1.77,
         rotate_duration: 1.77, // Tidally locked
-        texture: "io.webp",
+        texture: "io.ktx2",
         icon: "pluto.png",
         get landmarks() {
             return landmarks.filter((landmark) => landmark.parent === this.id)
@@ -89,7 +89,7 @@ export const satellites: Satellite[] = [
         axis: 0.47,
         orbit_duration: 3.55,
         rotate_duration: 3.55, // Tidally locked
-        texture: "europa.webp",
+        texture: "europa.ktx2",
         icon: "moon.png"
     },
     {
@@ -102,7 +102,7 @@ export const satellites: Satellite[] = [
         axis: 0.2,
         orbit_duration: 7.16,
         rotate_duration: 7.16, // Tidally locked
-        texture: "ganymede.webp",
+        texture: "ganymede.ktx2",
         icon: "moon.png"
     },
     {
@@ -115,7 +115,7 @@ export const satellites: Satellite[] = [
         axis: 0.28,
         orbit_duration: 16.69,
         rotate_duration: 16.69, // Tidally locked
-        texture: "callisto.webp",
+        texture: "callisto.ktx2",
         icon: "mercury.png"
     },
     // Saturn
@@ -129,7 +129,7 @@ export const satellites: Satellite[] = [
         axis: 1.5,
         orbit_duration: 0.94,
         rotate_duration: 0.94, // Tidally locked
-        texture: "mimas.jpg",
+        texture: "mimas.ktx2",
         icon: "moon.png",
         get landmarks() {
             return landmarks.filter((landmark) => landmark.parent === this.id)
@@ -145,7 +145,7 @@ export const satellites: Satellite[] = [
         axis: 0.02,
         orbit_duration: 1.37,
         rotate_duration: 1.37, // Tidally locked
-        texture: "enceladus.webp",
+        texture: "enceladus.ktx2",
         icon: "moon.png"
     },
     {
@@ -158,7 +158,7 @@ export const satellites: Satellite[] = [
         axis: 1.09,
         orbit_duration: 1.89,
         rotate_duration: 1.89, // Tidally locked
-        texture: "tethys.webp",
+        texture: "tethys.ktx2",
         icon: "mercury.png"
     },
     {
@@ -171,7 +171,7 @@ export const satellites: Satellite[] = [
         axis: 0.02,
         orbit_duration: 2.74,
         rotate_duration: 2.74, // Tidally locked
-        texture: "dione.webp",
+        texture: "dione.ktx2",
         icon: "moon.png"
     },
     {
@@ -184,7 +184,7 @@ export const satellites: Satellite[] = [
         axis: 0.35,
         orbit_duration: 4.52,
         rotate_duration: 4.52, // Tidally locked
-        texture: "rhea.webp",
+        texture: "rhea.ktx2",
         icon: "mercury.png"
     },
     {
@@ -197,8 +197,8 @@ export const satellites: Satellite[] = [
         axis: 0.3,
         orbit_duration: 15.95,
         rotate_duration: 15.95, // Tidally locked
-        texture: "titan.webp",
-        cloud_texture: "titan_cloud.png",
+        texture: "titan.ktx2",
+        cloud_texture: "titan_cloud.ktx2",
         atmosphere: 0.5,
         icon: "venus.png",
         get landmarks() {
@@ -215,7 +215,7 @@ export const satellites: Satellite[] = [
         axis: 15.47,
         orbit_duration: 79.33,
         rotate_duration: 79.33, // Tidally locked
-        texture: "iapetus.webp",
+        texture: "iapetus.ktx2",
         icon: "mercury.png"
     },
     // Uranus
@@ -229,7 +229,7 @@ export const satellites: Satellite[] = [
         axis: 4.34,
         orbit_duration: 1.41,
         rotate_duration: 1.41, // Tidally locked
-        texture: "miranda.webp",
+        texture: "miranda.ktx2",
         icon: "moon.png"
     },
     {
@@ -242,7 +242,7 @@ export const satellites: Satellite[] = [
         axis: 0.04,
         orbit_duration: 2.52,
         rotate_duration: 2.52, // Tidally locked
-        texture: "ariel.webp",
+        texture: "ariel.ktx2",
         icon: "moon.png"
     },
     {
@@ -255,7 +255,7 @@ export const satellites: Satellite[] = [
         axis: 0.13,
         orbit_duration: 4.14,
         rotate_duration: 4.14, // Tidally locked
-        texture: "umbriel.webp",
+        texture: "umbriel.ktx2",
         icon: "moon.png"
     },
     {
@@ -268,7 +268,8 @@ export const satellites: Satellite[] = [
         axis: 0.34,
         orbit_duration: 8.71,
         rotate_duration: 8.71, // Tidally locked
-        texture: "titania.webp",
+        texture: "titania.ktx2",
+        texture_hd: "titania_hd.ktx2",
         icon: "moon.png"
     },
     {
@@ -281,7 +282,8 @@ export const satellites: Satellite[] = [
         axis: 0.06,
         orbit_duration: 13.46,
         rotate_duration: 13.46, // Tidally locked
-        texture: "oberon.webp",
+        texture: "oberon.ktx2",
+        texture_hd: "oberon_hd.ktx2",
         icon: "moon.png"
     },
     // Neptune
@@ -295,7 +297,7 @@ export const satellites: Satellite[] = [
         axis: 0.08,
         orbit_duration: 1.12,
         rotate_duration: 1.12, // Tidally locked
-        texture: "proteus.webp",
+        texture: "proteus.ktx2",
         model: "proteus.ply",
         icon: "asteroid.png"
     },
@@ -309,7 +311,7 @@ export const satellites: Satellite[] = [
         axis: 157.0,
         orbit_duration: 5.88,
         rotate_duration: 5.88, // Tidally locked
-        texture: "triton.png",
+        texture: "triton.ktx2",
         icon: "moon.png"
     },
     {
@@ -322,7 +324,7 @@ export const satellites: Satellite[] = [
         axis: 7.09,
         orbit_duration: 360.14,
         rotate_duration: 0.48, // 11.5 hours
-        texture: "nereid.webp",
+        texture: "nereid.ktx2",
         icon: "moon.png"
     },
     // Pluto
@@ -336,7 +338,7 @@ export const satellites: Satellite[] = [
         axis: 0,
         orbit_duration: 6.39,
         rotate_duration: 6.39, // Tidally locked
-        texture: "charon.webp",
+        texture: "charon.ktx2",
         icon: "moon.png"
     },
     // Gonggong

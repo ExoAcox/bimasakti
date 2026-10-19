@@ -13,7 +13,7 @@ export const stars: Star[] = [
         axis: 12.5,
         rotate_duration: 10.0,
         orbit_duration: 5862, // ~16.05 years
-        texture: "sun.jpg",
+        texture: "sun.ktx2",
         icon: "sun.png",
         planets: []
     },
@@ -29,7 +29,7 @@ export const stars: Star[] = [
         axis: 8.4,
         rotate_duration: 7.0,
         orbit_duration: 3616, // ~9.9 years
-        texture: "sun.jpg",
+        texture: "sun.ktx2",
         icon: "sun.png",
         planets: []
     },
@@ -45,7 +45,7 @@ export const stars: Star[] = [
         axis: 15.2,
         rotate_duration: 8.5,
         orbit_duration: 3616, // ~9.9 years
-        texture: "sun.jpg",
+        texture: "sun.ktx2",
         icon: "sun.png",
         planets: []
     },
@@ -61,7 +61,7 @@ export const stars: Star[] = [
         axis: 6.8,
         rotate_duration: 9.0,
         orbit_duration: 4675, // ~12.8 years
-        texture: "sun.jpg",
+        texture: "sun.ktx2",
         icon: "sun.png",
         planets: []
     },
@@ -77,7 +77,7 @@ export const stars: Star[] = [
         axis: 22.0,
         rotate_duration: 11.2,
         orbit_duration: 13149, // ~36 years
-        texture: "sun.jpg",
+        texture: "sun.ktx2",
         icon: "sun.png",
         planets: []
     },
@@ -93,7 +93,7 @@ export const stars: Star[] = [
         axis: 10.0,
         rotate_duration: 6.5,
         orbit_duration: 2774, // ~7.6 years
-        texture: "sun.jpg",
+        texture: "sun.ktx2",
         icon: "sun.png",
         planets: []
     }

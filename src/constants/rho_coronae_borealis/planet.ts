@@ -12,8 +12,9 @@ export const planets: Planet[] = [
         axis: 3,
         orbit_duration: 12.904,
         rotate_duration: 12.904,
-        texture: "rho_coronae_borealis_e.jpg",
-        cloud_texture: "rho_coronae_borealis_e_cloud.png",
+        texture: "rho_coronae_borealis_e.ktx2",
+        texture_hd: "rho_coronae_borealis_e_hd.ktx2",
+        cloud_texture: "rho_coronae_borealis_e_cloud.ktx2",
         icon: "mars.png",
         satellites: []
     },
@@ -28,7 +29,8 @@ export const planets: Planet[] = [
         axis: 6,
         orbit_duration: 39.849,
         rotate_duration: 39.849,
-        texture: "rho_coronae_borealis_b.jpg",
+        texture: "rho_coronae_borealis_b.ktx2",
+        texture_hd: "rho_coronae_borealis_b_hd.ktx2",
         icon: "mercury.png",
         satellites: []
     },
@@ -43,7 +45,8 @@ export const planets: Planet[] = [
         axis: 9,
         orbit_duration: 102.0,
         rotate_duration: 102.0,
-        texture: "rho_coronae_borealis_c.jpg",
+        texture: "rho_coronae_borealis_c.ktx2",
+        texture_hd: "rho_coronae_borealis_c_hd.ktx2",
         icon: "neptune.png",
         satellites: []
     },
@@ -58,7 +61,8 @@ export const planets: Planet[] = [
         axis: 12,
         orbit_duration: 282.0,
         rotate_duration: 282.0,
-        texture: "rho_coronae_borealis_d.jpg",
+        texture: "rho_coronae_borealis_d.ktx2",
+        texture_hd: "rho_coronae_borealis_d_hd.ktx2",
         icon: "jupiter.png",
         satellites: []
     }

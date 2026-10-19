@@ -155,10 +155,10 @@ const Navbar = () => {
                     {/* Explore CTA */}
                     <Link
                         to="/milky_way"
-                        className="hidden group sm:flex items-center gap-2 px-5 py-2 rounded-xl font-space-grotesk font-bold text-xs uppercase tracking-wider bg-linear-to-r from-cyan-500 to-sky-400 hover:from-accent hover:to-sky-300 text-slate-950 shadow-[0_0_20px_rgba(6,182,212,0.3)] hover:shadow-[0_0_25px_rgba(6,182,212,0.6)] hover:scale-[1.02] active:scale-[0.98] transition-all"
+                        className="hidden group/explore sm:flex items-center gap-2 px-5 py-2 rounded-xl font-space-grotesk font-bold text-xs uppercase tracking-wider bg-linear-to-r from-cyan-500 to-sky-400 hover:from-accent hover:to-sky-300 text-slate-950 shadow-[0_0_20px_rgba(6,182,212,0.3)] hover:shadow-[0_0_25px_rgba(6,182,212,0.6)] hover:scale-[1.02] active:scale-[0.98] transition-all"
                     >
                         <span>{t("ui.explore_now")}</span>
-                        <FaArrowRight className="size-3 group-hover:translate-x-1 transition-transform" />
+                        <FaArrowRight className="size-3 group-hover/explore:translate-x-1 transition-transform" />
                     </Link>
                 </div>
             </div>

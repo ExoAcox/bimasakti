@@ -167,7 +167,7 @@ export const planets: Planet[] = [
         ring: {
             inner_radius: 66900,
             outer_radius: 136770,
-            texture: "saturn_ring.png"
+            texture: "saturn_ring.ktx2"
         },
         get satellites() {
             return satellites.filter((satellite) => satellite.parent === this.id)
@@ -193,7 +193,7 @@ export const planets: Planet[] = [
         ring: {
             inner_radius: 41838,
             outer_radius: 51140,
-            texture: "uranus_ring.png",
+            texture: "uranus_ring.ktx2",
             opacity: 0.5
         },
         get satellites() {
@@ -233,7 +233,8 @@ export const planets: Planet[] = [
         orbit_duration: 90560,
         rotate_duration: 6.39, // Tidally locked with Charon
         childCount: 5,
-        texture: "pluto.webp",
+        texture: "pluto.ktx2",
+        texture_hd: "pluto_hd.ktx2",
         icon: "pluto.png",
         get satellites() {
             return satellites.filter((satellite) => satellite.parent === this.id)
@@ -254,7 +255,7 @@ export const planets: Planet[] = [
         orbit_duration: 1682,
         rotate_duration: 0.378,
         childCount: 0,
-        texture: "ceres.jpg",
+        texture: "ceres.ktx2",
         icon: "moon.png",
         satellites: [],
         get landmarks() {
@@ -273,7 +274,7 @@ export const planets: Planet[] = [
         orbit_duration: 104210,
         rotate_duration: 0.163,
         childCount: 2,
-        texture: "haumea.jpg",
+        texture: "haumea.ktx2",
         model: "haumea.ply",
         icon: "moon.png",
         satellites: []
@@ -290,7 +291,7 @@ export const planets: Planet[] = [
         orbit_duration: 112897,
         rotate_duration: 0.937,
         childCount: 1,
-        texture: "makemake.jpg",
+        texture: "makemake.ktx2",
         icon: "mercury.png",
         satellites: []
     },
@@ -306,7 +307,7 @@ export const planets: Planet[] = [
         orbit_duration: 203830,
         rotate_duration: 1.08,
         childCount: 1,
-        texture: "eris.jpg",
+        texture: "eris.ktx2",
         icon: "moon.png",
         satellites: []
     },
@@ -322,7 +323,7 @@ export const planets: Planet[] = [
         orbit_duration: 90250,
         rotate_duration: 0.549,
         childCount: 1,
-        texture: "orcus.jpg",
+        texture: "orcus.ktx2",
         icon: "moon.png",
         satellites: []
     },
@@ -338,7 +339,7 @@ export const planets: Planet[] = [
         orbit_duration: 99640,
         rotate_duration: 0.25,
         childCount: 1,
-        texture: "salacia.jpg",
+        texture: "salacia.ktx2",
         icon: "mercury.png",
         satellites: []
     },
@@ -354,12 +355,12 @@ export const planets: Planet[] = [
         orbit_duration: 104380,
         rotate_duration: 0.736,
         childCount: 1,
-        texture: "quaoar.jpg",
+        texture: "quaoar.ktx2",
         icon: "mercury.png",
         ring: {
             inner_radius: 4050,
             outer_radius: 4250,
-            texture: "saturn_ring.png"
+            texture: "saturn_ring.ktx2"
         },
         get satellites() {
             return satellites.filter((satellite) => satellite.parent === this.id)
@@ -377,7 +378,7 @@ export const planets: Planet[] = [
         orbit_duration: 202300,
         rotate_duration: 0.933,
         childCount: 1,
-        texture: "gonggong.jpg",
+        texture: "gonggong.ktx2",
         icon: "mercury.png",
         get satellites() {
             return satellites.filter((satellite) => satellite.parent === this.id)
@@ -396,7 +397,7 @@ export const planets: Planet[] = [
         orbit_duration: 4161000,
         rotate_duration: 0.427,
         childCount: 0,
-        texture: "sedna.jpg",
+        texture: "sedna.ktx2",
         icon: "mars.png",
         satellites: []
     },
