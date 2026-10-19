@@ -57,7 +57,7 @@ const universes: Universe[] = [
         cameraPosition: [1000, 1000, 1000],
         labelPosition: "right",
         defaultFocus: "sun",
-        assetCount: 57,
+        assetCount: 59,
         stars: solar_system.stars,
         mobile: {}
     },

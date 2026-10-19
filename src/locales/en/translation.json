@@ -568,12 +568,32 @@
         "halley": {
             "name": "Halley",
             "nickname": "Halley",
-            "description": "Halley's Comet is a short-period comet visible from Earth every 75–76 years. It is the only known short-period comet that is regularly visible to the naked eye from Earth."
+            "description": "1P/Halley is a short-period comet visible from Earth every 75–76 years. It is the only known short-period comet that is regularly visible to the naked eye from Earth."
+        },
+        "itokawa": {
+            "name": "Itokawa",
+            "nickname": "Itokawa",
+            "description": "25143 Itokawa is a small near-Earth asteroid characterized as a rubble pile, consisting of loose rock and boulders held together by weak gravity. It was visited in 2005 by Japan's JAXA Hayabusa spacecraft, which returned surface samples to Earth in 2010."
+        },
+        "eros": {
+            "name": "Eros",
+            "nickname": "Eros",
+            "description": "433 Eros is an elongated S-type near-Earth asteroid and Mars-crosser, famously visited by NASA's NEAR Shoemaker spacecraft which entered orbit and landed on its surface in 2001. Discovered in 1898, it was the first near-Earth asteroid ever discovered."
         },
         "vesta": {
             "name": "Vesta",
             "nickname": "Vesta",
-            "description": "Vesta is one of the largest asteroids in the Solar System, located in the Main Asteroid Belt. With a mean diameter of about 525 kilometers, Vesta is the brightest asteroid visible from Earth and a preserved protoplanet from the early Solar System."
+            "description": "4 Vesta is one of the largest asteroids in the Solar System, located in the Main Asteroid Belt. With a mean diameter of about 525 kilometers, Vesta is the brightest asteroid visible from Earth and a preserved protoplanet from the early Solar System."
+        },
+        "pallas": {
+            "name": "Pallas",
+            "nickname": "Pallas",
+            "description": "2 Pallas is the second asteroid to have been discovered and one of the largest in the Solar System, located in the Main Asteroid Belt. Named after the Greek goddess of wisdom, Pallas is unique for its highly tilted orbital inclination of nearly 35 degrees and its heavily cratered, carbon-rich surface."
+        },
+        "churyumov-gerasimenko": {
+            "name": "Churyumov-Gerasimenko",
+            "nickname": "Churyumov-Gerasimenko",
+            "description": "67P/Churyumov-Gerasimenko is a Jupiter-family comet famous for being the destination of the ESA Rosetta mission and Philae lander in 2014. It consists of two distinct lobes connected by a narrow neck, formed by a gentle collision of two cometesimals in the early Solar System."
         },
         "trappist-1": {
             "name": "TRAPPIST-1",

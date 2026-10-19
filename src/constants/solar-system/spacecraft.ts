@@ -23,7 +23,7 @@ export const spacecraft: SpaceCraft[] = [
         class: SpaceCraftClass.Station,
         parent: "earth",
         agencies: ["cnsa"],
-        rotation: [0, 0, -90],
+        rotation: [0, 45, -90],
         radius: 0.055,
         distance: 6761, // ~390km altitude
         color: "#c8c8d0",

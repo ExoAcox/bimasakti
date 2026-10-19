@@ -512,7 +512,32 @@
         "halley": {
             "name": "Halley",
             "nickname": "Halley",
-            "description": "Der Halleysche Komet ist ein kurzperiodischer Komet, der alle 75–76 Jahre von der Erde aus sichtbar ist. Er ist der einzige bekannte kurzperiodische Komet, der regelmäßig mit bloßem Auge von der Erde aus sichtbar ist."
+            "description": "1P/Halley ist ein kurzperiodischer Komet, der alle 75–76 Jahre von der Erde aus sichtbar ist. Er ist der einzige bekannte kurzperiodische Komet, der regelmäßig mit bloßem Auge von der Erde aus sichtbar ist."
+        },
+        "itokawa": {
+            "name": "Itokawa",
+            "nickname": "Itokawa",
+            "description": "25143 Itokawa ist ein kleiner erdnaher Asteroid vom S-Typ, der als loser Trümmerhaufen (Rubble Pile) aus Felsbrocken besteht. Er wurde 2005 vom japanischen Raumfahrzeug Hayabusa der JAXA besucht, das erstmals Materialproben von einem Asteroiden sammelte und 2010 zur Erde zurückbrachte."
+        },
+        "eros": {
+            "name": "Eros",
+            "nickname": "Eros",
+            "description": "433 Eros ist ein länglicher erdnaher Asteroid vom S-Typ und ein Marsbahnkreuzer. Er wurde berühmt durch die NASA-Raumsonde NEAR Shoemaker, die ihn 2001 umkreiste und auf ihm landete. Entdeckt im Jahr 1898 war Eros der allererste bekannte erdnahe Asteroid."
+        },
+        "vesta": {
+            "name": "Vesta",
+            "nickname": "Vesta",
+            "description": "4 Vesta ist einer der größten Asteroiden im Sonnensystem und befindet sich im Hauptasteroidengürtel. Mit einem mittleren Durchmesser von etwa 525 Kilometern ist Vesta der hellste von der Erde aus sichtbare Asteroid und ein erhaltener Protoplanet aus dem frühen Sonnensystem."
+        },
+        "pallas": {
+            "name": "Pallas",
+            "nickname": "Pallas",
+            "description": "2 Pallas ist der zweite entdeckte Asteroid und einer der größten im Sonnensystem, gelegen im Hauptasteroidengürtel. Benannt nach der griechischen Göttin der Weisheit, zeichnet sich Pallas durch eine ungewöhnlich hohe Bahnneigung von fast 35 Grad sowie eine stark verkraterte, kohlenstoffreiche Oberfläche aus."
+        },
+        "churyumov_gerasimenko": {
+            "name": "Churyumov-Gerasimenko",
+            "nickname": "Churyumov-Gerasimenko",
+            "description": "67P/Churyumov-Gerasimenko ist ein Komet der Jupiter-Familie, der als Ziel der ESA-Mission Rosetta und des Landers Philae im Jahr 2014 weltberühmt wurde. Er besitzt zwei markante Lappen, die durch einen schmalen Hals verbunden sind und durch eine sanfte Kollision zweier Kometesimale im frühen Sonnensystem entstanden."
         },
         "trappist-1": {
             "name": "TRAPPIST-1",

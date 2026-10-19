@@ -70,11 +70,27 @@ const comets: Comet[] = [
         orbit_duration: 27500,
         rotate_duration: 2.2,
         model: "halley.ply",
+        texture: "halley.png",
+        icon: "asteroid.png"
+    },
+    {
+        id: "churyumov-gerasimenko",
+        type: "comet",
+        parent: "sun",
+        radius: 2.0,
+        distance: 185980000,
+        longest_distance: 850400000,
+        color: "#999999",
+        axis: 7.04,
+        orbit_duration: 2345,
+        rotate_duration: 0.517,
+        model: "churyumov-gerasimenko.glb",
         icon: "asteroid.png"
     }
 ]
 
 const asteroids: Asteroid[] = [
+
     {
         id: "vesta",
         type: "asteroid",
@@ -92,7 +108,48 @@ const asteroids: Asteroid[] = [
         get landmarks() {
             return landmarks.filter((landmark) => landmark.parent === this.id)
         }
-    }
+    },
+    {
+        id: "pallas",
+        type: "asteroid",
+        parent: "sun",
+        radius: 256,
+        distance: 414400000,
+        rotation: [90, 0, 0],
+        color: "#a59d94",
+        axis: 34.8,
+        orbit_duration: 1686,
+        rotate_duration: 0.3255,
+        model: "pallas.ply",
+        texture: "pallas.ktx2",
+        icon: "asteroid.png"
+    },
+    {
+        id: "eros",
+        type: "asteroid",
+        parent: "sun",
+        radius: 8.4,
+        distance: 218100000,
+        color: "#bfa89b",
+        axis: 89,
+        orbit_duration: 643.2,
+        rotate_duration: 0.2196,
+        model: "eros.glb",
+        icon: "asteroid.png"
+    },
+    {
+        id: "itokawa",
+        type: "asteroid",
+        parent: "sun",
+        radius: 0.165,
+        distance: 198100000,
+        color: "#a8a29a",
+        axis: 178,
+        orbit_duration: 556.4,
+        rotate_duration: 0.5055,
+        model: "itokawa.glb",
+        icon: "asteroid.png"
+    },
 ]
 
 export default { stars, belts, comets, asteroids, planets, satellites, spacecraft, landmarks }

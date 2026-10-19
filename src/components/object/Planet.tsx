@@ -4,9 +4,9 @@ import { Detailed, useDetectGPU } from "@react-three/drei"
 
 import { type Planet as PlanetType, type SpaceCraft as SpaceCraftType } from "@types"
 import { useSettingStore, useControlStore } from "@state"
-import { CelestialBody, PlanetCloud, PlanetRing, LandmarkMarker, TextureLoader, SpaceCraft, Aurora, Atmosphere, NightMaterial, PlyLoader } from "@components/object"
+import { CelestialBody, PlanetCloud, PlanetRing, LandmarkMarker, TextureLoader, SpaceCraft, Aurora, Atmosphere, NightMaterial, PlyLoader, GltfLoader } from "@components/object"
 import { LOWREST_SCALE } from "@constants"
-import { Else, If, Then, When } from "react-if"
+import { When } from "react-if"
 import nations from "@constants/solar-system/nation"
 import NationMarker from "./NationMarker"
 import { useCelestial, userDataFormat, useVariant } from "@function"
@@ -32,6 +32,20 @@ const PlanetMesh = ({ data }: { data: PlanetType }) => {
     }
     const texture = useDeferredValue(texturePath())
 
+    const geometry = useMemo(() => {
+        if (data.model && isFocused) {
+            const format = data.model.split(".")[1]
+
+            if (format === "ply") {
+                return <PlyLoader path={data.model} rotation={data.rotation} />
+            } else {
+                return <GltfLoader path={data.model} rotation={data.rotation} />
+            }
+        } else {
+            return <sphereGeometry args={isFocused ? [1, 128, 64] : [1, 64, 32]} />
+        }
+    }, [data.model, data.rotation, isFocused])
+
     const material = useMemo(() => {
         if (topographyVisible && isFocused) {
             return <TextureLoader path={texture} />
@@ -50,18 +64,14 @@ const PlanetMesh = ({ data }: { data: PlanetType }) => {
         }
     }, [topographyVisible, isFocused, data.night_texture, data.texture, data.night_texture_hd, data.texture_hd, data.night_opacity, data.color, texture, shouldRenderHd])
 
+    const geometryRender = useDeferredValue(geometry)
     const materialRender = useDeferredValue(material)
 
     return <mesh castShadow receiveShadow>
-        <If condition={data.model}>
-            <Then>
-                <PlyLoader path={data.model!} rotation={data.rotation} />
-            </Then>
-            <Else>
-                <sphereGeometry args={isFocused ? [1, 128, 64] : [1, 64, 32]} />
-            </Else>
-        </If>
-        <Suspense fallback={<meshStandardMaterial color={data.color} />}>
+        <Suspense fallback={<sphereGeometry />}>
+            {geometryRender}
+        </Suspense>
+        <Suspense fallback={<meshStandardMaterial color={data.color} wireframe />}>
             {materialRender}
         </Suspense>
     </mesh>

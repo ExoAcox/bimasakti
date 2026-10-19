@@ -570,12 +570,32 @@
         "halley": {
             "name": "Halley",
             "nickname": "Halley",
-            "description": "Komet Halley adalah komet periodik pendek yang terlihat dari Bumi setiap 75–76 tahun. Komet ini adalah satu-satunya komet periodik pendek yang diketahui dan dapat dilihat dengan mata telanjang dari Bumi secara teratur."
+            "description": "1P/Halley adalah komet periodik pendek yang terlihat dari Bumi setiap 75–76 tahun. Komet ini adalah satu-satunya komet periodik pendek yang diketahui dan dapat dilihat dengan mata telanjang dari Bumi secara teratur."
+        },
+        "itokawa": {
+            "name": "Itokawa",
+            "nickname": "Itokawa",
+            "description": "25143 Itokawa adalah asteroid dekat-Bumi kecil yang tergolong sebagai tumpukan puing (rubble pile), tersusun dari batuan lepas yang terikat oleh gravitasi lemah. Itokawa menjadi target misi Hayabusa milik JAXA pada tahun 2005, yang berhasil mengumpulkan sampel permukaan dan membawanya kembali ke Bumi pada tahun 2010."
+        },
+        "eros": {
+            "name": "Eros",
+            "nickname": "Eros",
+            "description": "433 Eros adalah asteroid dekat-Bumi tipe-S yang memanjang dan melintasi orbit Mars, terkenal karena dikunjungi oleh wahana NEAR Shoemaker milik NASA yang mengorbit dan mendarat di permukaannya pada tahun 2001. Ditemukan pada tahun 1898, Eros merupakan asteroid dekat-Bumi pertama yang pernah ditemukan."
         },
         "vesta": {
             "name": "Vesta",
             "nickname": "Vesta",
-            "description": "Vesta adalah salah satu asteroid terbesar di Tata Surya, terletak di Sabuk Asteroid Utama. Dengan diameter rata-rata sekitar 525 kilometer, Vesta adalah asteroid paling terang yang dapat dilihat dari Bumi dan merupakan sisa protoplanet utuh dari pembentukan Tata Surya."
+            "description": "4 Vesta adalah salah satu asteroid terbesar di Tata Surya, terletak di Sabuk Asteroid Utama. Dengan diameter rata-rata sekitar 525 kilometer, Vesta adalah asteroid paling terang yang dapat dilihat dari Bumi dan merupakan sisa protoplanet utuh dari pembentukan Tata Surya."
+        },
+        "pallas": {
+            "name": "Pallas",
+            "nickname": "Pallas",
+            "description": "2 Pallas adalah asteroid kedua yang ditemukan dan salah satu yang terbesar di Tata Surya, terletak di Sabuk Asteroid Utama. Dinamai dari dewi kebijaksanaan Yunani, Pallas unik karena memiliki kemiringan orbit yang sangat tinggi hampir 35 derajat dan permukaan kaya karbon yang dipenuhi kawah."
+        },
+        "churyumov-gerasimenko": {
+            "name": "Churyumov-Gerasimenko",
+            "nickname": "Churyumov-Gerasimenko",
+            "description": "67P/Churyumov-Gerasimenko adalah komet keluarga Jupiter yang terkenal sebagai tujuan misi Rosetta dari ESA dan pendarat Philae pada tahun 2014. Komet ini memiliki bentuk dua lobus khas yang terhubung oleh leher sempit, terbentuk dari tabrakan lembut dua kometesimal di awal Tata Surya."
         },
         "trappist-1": {
             "name": "TRAPPIST-1",
