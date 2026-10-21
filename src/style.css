@@ -189,26 +189,6 @@ input {
   transform: rotate(3deg) translate(0px, -4px);
 }
 
-#nprogress .spinner {
-  display: block;
-  position: fixed;
-  z-index: 99999;
-  top: 15px;
-  right: 15px;
-}
-
-#nprogress .spinner-icon {
-  width: 18px;
-  height: 18px;
-  box-sizing: border-box;
-  border: solid 2px transparent;
-  border-top-color: var(--color-accent);
-  border-left-color: var(--color-accent);
-  border-radius: 50%;
-  animation: nprogress-spinner 400ms linear infinite;
-  box-shadow: 0 0 10px var(--color-accent-glow);
-}
-
 .nprogress-custom-parent {
   overflow: hidden;
   position: relative;
@@ -223,6 +203,7 @@ input {
   0% {
     transform: rotate(0deg);
   }
+
   100% {
     transform: rotate(360deg);
   }
