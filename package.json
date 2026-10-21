@@ -1,6 +1,14 @@
 {
   "name": "bimasakti",
-  "private": true,
+  "version": "1.0.0",
+  "description": "Interactive 3D universe, Keplerian orbital mechanics, and planetary simulation web application built with WebGL and React",
+  "homepage": "https://bimasakti.space",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/ExoAcox/bimasakti.git"
+  },
+  "license": "MIT",
+  "author": "Anas <anasarifin1995@gmail.com>",
   "type": "module",
   "scripts": {
     "build": "npm run typecheck && react-router build",
