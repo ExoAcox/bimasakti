@@ -33,6 +33,7 @@ export const variants: Variants = {
             texture: "venus_ancient.ktx2",
             texture_hd: undefined,
             cloud_texture: "earth_cloud.ktx2",
+            cloud_texture_hd: "earth_cloud_hd.ktx2",
             landmarks: []
         },
         {
@@ -42,6 +43,7 @@ export const variants: Variants = {
             texture: "venus_terraform.ktx2",
             texture_hd: undefined,
             cloud_texture: "earth_cloud.ktx2",
+            cloud_texture_hd: "earth_cloud_hd.ktx2",
             icon: "earth.png",
             aurora: 1,
             landmarks: []
@@ -158,6 +160,7 @@ export const variants: Variants = {
             texture: "mars_terraform.ktx2",
             texture_hd: "mars_terraform_hd.ktx2",
             cloud_texture: "earth_cloud.ktx2",
+            cloud_texture_hd: "earth_cloud_hd.ktx2",
             cloud_opacity: 0.5,
             atmosphere: 0.5,
             aurora: 0.5,
@@ -170,6 +173,7 @@ export const variants: Variants = {
             texture: "mars_terraform_2.ktx2",
             texture_hd: "mars_terraform_2_hd.ktx2",
             cloud_texture: "earth_cloud.ktx2",
+            cloud_texture_hd: "earth_cloud_hd.ktx2",
             icon: "earth.png",
             atmosphere: 1,
             aurora: 1,
@@ -184,6 +188,7 @@ export const variants: Variants = {
             night_texture: "mars_night.ktx2",
             night_opacity: 0.25,
             cloud_texture: "earth_cloud.ktx2",
+            cloud_texture_hd: "earth_cloud_hd.ktx2",
             icon: "earth.png",
             atmosphere: 1,
             aurora: 1,

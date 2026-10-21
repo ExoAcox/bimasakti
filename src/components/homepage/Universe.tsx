@@ -1,9 +1,11 @@
 import { universes } from "@constants";
-import type { Universe as UniverseType } from "@types";
+import { PlanetClass, type Universe as UniverseType } from "@types";
 import clsx from "clsx";
 import { Trans, useTranslation } from "react-i18next";
 import { Link } from "react-router";
-import { FaArrowRight, FaCompass } from "react-icons/fa";
+import { FaArrowRight, FaCompass, FaRegStar } from "react-icons/fa";
+import { IoPlanetOutline } from "react-icons/io5";
+import { When } from "react-if";
 
 interface Props {
     id: string;
@@ -17,6 +19,9 @@ interface Props {
 const Card = ({ id, className, imgClassName }: Props) => {
     const { t } = useTranslation();
     const data = universes.find((universe) => universe.id === id) as UniverseType;
+
+    const starCount = data.stars.length
+    const planetCount = data.stars.reduce((acc, star) => acc + star.planets.filter(planet => planet.class !== PlanetClass.Dwarf).length, 0)
 
     return (
         <div
@@ -58,18 +63,33 @@ const Card = ({ id, className, imgClassName }: Props) => {
 
             {/* Content Details */}
             <div className="flex flex-col gap-2">
-                <h4 className="text-lg sm:text-xl font-bold font-space-grotesk text-white group-hover:text-cyan-300 transition-colors">
+                <h4 className="text-lg sm:text-xl font-bold font-space-grotesk text-primary group-hover:text-highlight transition-colors">
                     {t(`object.${id}.title`)}
                 </h4>
-                <p className="text-xs sm:text-sm text-slate-400 line-clamp-3 leading-relaxed mb-4">
+                <p className="text-xs sm:text-sm text-tertiary line-clamp-3 leading-relaxed mb-4">
                     {t(`object.${id}.description`)}
                 </p>
 
                 {/* CTA Action */}
                 <div className="mt-auto pt-3 border-t border-white/5 flex items-center justify-between">
-                    <span className="text-[11px] font-mono text-slate-500 uppercase tracking-widest">
-                        {data?.assetCount ? `${data.assetCount} 3D Assets` : "Simulated"}
-                    </span>
+                    <div className="flex items-center gap-2 text-[10px] font-mono text-tertiary">
+                        <span className="flex items-center gap-1">
+                            <FaRegStar className="size-3 -mt-0.75 shrink-0" />
+                            <When condition={id === "milky_way"}>
+                                <span>{universes.filter(universe => universe.id !== "milky_way").length} {t("ui.systems")}</span>
+                            </When>
+                            <When condition={id !== "milky_way"}>
+                                <span>{starCount} {starCount === 1 ? t("ui.star") : t("ui.stars")}</span>
+                            </When>
+                        </span>
+                        <When condition={id !== "milky_way"}>
+                            <span>•</span>
+                            <span className="flex items-center gap-1">
+                                <IoPlanetOutline className="size-3 shrink-0" />
+                                <span>{planetCount} {planetCount === 1 ? t("ui.planet") : t("ui.planets")}</span>
+                            </span>
+                        </When>
+                    </div>
                     <Link
                         to={`/${id}`}
                         className="group/btn inline-flex items-center gap-2 px-4 py-2 rounded-lg text-xs font-space-grotesk font-bold uppercase tracking-wider text-cyan-300 bg-cyan-950/40 border border-cyan-500/30 hover:bg-cyan-500 hover:text-slate-950 hover:border-accent transition-all duration-200"

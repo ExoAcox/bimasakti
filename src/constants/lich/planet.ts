@@ -31,6 +31,7 @@ export const planets: Planet[] = [
         texture: "poltergeist.ktx2",
         texture_hd: "poltergeist_hd.ktx2",
         cloud_texture: "poltergeist_cloud.ktx2",
+        cloud_texture_hd: "poltergeist_cloud_hd.ktx2",
         icon: "venus.png",
         satellites: []
     },

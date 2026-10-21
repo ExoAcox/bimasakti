@@ -45,6 +45,7 @@ export const planets: Planet[] = [
         rotate_duration: 11.186,
         texture: "proxima_centauri_b.ktx2",
         cloud_texture: "earth_cloud.ktx2",
+        cloud_texture_hd: "earth_cloud_hd.ktx2",
         icon: "earth.png",
         satellites: []
     },

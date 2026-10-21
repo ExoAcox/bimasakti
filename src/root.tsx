@@ -11,6 +11,7 @@ import type { Route } from "./+types/root";
 import "./utils/i18n"
 import "./style.css";
 import { seo } from "@function";
+import { ProgressBar } from "@components/ProgressBar";
 
 export const meta = () => seo({})
 
@@ -25,6 +26,7 @@ export function Layout({ children }: { children: React.ReactNode }) {
         <Links />
       </head>
       <body>
+        <ProgressBar />
         {children}
         <ScrollRestoration />
         <Scripts />

@@ -61,6 +61,7 @@ export const planets: Planet[] = [
         texture: "toi-700_d.ktx2",
         texture_hd: "toi-700_d_hd.ktx2",
         cloud_texture: "toi-700_d_cloud.ktx2",
+        cloud_texture_hd: "toi-700_d_cloud_hd.ktx2",
         icon: "earth.png",
         satellites: []
     },

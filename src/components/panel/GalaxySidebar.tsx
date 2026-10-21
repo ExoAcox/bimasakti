@@ -95,10 +95,10 @@ const Sidebar = () => {
                 <div className="flex items-center justify-between mb-4 px-1">
                     <span className="font-space-grotesk font-bold text-sm text-primary uppercase flex items-center gap-2">
                         <GiGalaxy className="size-4 text-accent" />
-                        {t("object.milky_way.name", "Bima Sakti")}
+                        {t("object.milky_way.name")}
                     </span>
                     <span className="text-[10px] font-mono px-2 py-0.5 rounded-full bg-accent/10 border border-accent/20 text-accent font-medium">
-                        {data.length} {t("ui.systems", "Sistem")}
+                        {data.length} {t("ui.systems")}
                     </span>
                 </div>
 

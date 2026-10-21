@@ -21,6 +21,7 @@ export interface Object {
     night_texture_hd?: string
     night_opacity?: number
     cloud_texture?: string
+    cloud_texture_hd?: string
     cloud_opacity?: number
     topography_texture?: string
     artificial_satellites?: SpaceCraft[]

@@ -74,6 +74,7 @@ export const planets: Planet[] = [
         night_texture: "earth_night.ktx2",
         night_texture_hd: "earth_night_hd.ktx2",
         cloud_texture: "earth_cloud.ktx2",
+        cloud_texture_hd: "earth_cloud_hd.ktx2",
         topography_texture: "earth_topography.ktx2",
         aurora: 1,
         atmosphere: 1,

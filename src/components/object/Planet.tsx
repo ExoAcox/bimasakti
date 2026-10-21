@@ -105,7 +105,7 @@ const Planet = ({
 
     const handleClick = () => {
         const object = celestial.getObjectById(focus) as PlanetType | undefined
-
+        console.log(object?.radius, object?.distance)
         if (data.id === object?.parent && object?.radius < 1 && object?.distance < 10000) return;
 
         setControl({ focus: data.id })

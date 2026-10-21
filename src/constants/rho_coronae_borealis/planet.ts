@@ -15,6 +15,7 @@ export const planets: Planet[] = [
         texture: "rho_coronae_borealis_e.ktx2",
         texture_hd: "rho_coronae_borealis_e_hd.ktx2",
         cloud_texture: "rho_coronae_borealis_e_cloud.ktx2",
+        cloud_texture_hd: "rho_coronae_borealis_e_cloud_hd.ktx2",
         icon: "mars.png",
         satellites: []
     },

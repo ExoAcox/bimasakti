@@ -47,6 +47,7 @@ export const planets: Planet[] = [
         texture: "trappist-1_d.ktx2",
         texture_hd: "trappist-1_d_hd.ktx2",
         cloud_texture: "trappist-1_d_cloud.ktx2",
+        cloud_texture_hd: "trappist-1_d_cloud_hd.ktx2",
         icon: "earth.png",
         satellites: []
     },
@@ -63,6 +64,7 @@ export const planets: Planet[] = [
         rotate_duration: 6.10,
         texture: "trappist-1_e.ktx2",
         cloud_texture: "trappist-1_e_cloud.ktx2",
+        cloud_texture_hd: "trappist-1_e_cloud_hd.ktx2",
         icon: "earth.png",
         satellites: []
     },
@@ -80,6 +82,7 @@ export const planets: Planet[] = [
         rotation: [0, 180, 0],
         texture: "trappist-1_f.ktx2",
         cloud_texture: "trappist-1_f_cloud.ktx2",
+        cloud_texture_hd: "trappist-1_f_cloud_hd.ktx2",
         icon: "moon.png",
         satellites: []
     },
@@ -97,6 +100,7 @@ export const planets: Planet[] = [
         texture: "trappist-1_g.ktx2",
         texture_hd: "trappist-1_g_hd.ktx2",
         cloud_texture: "trappist-1_g_cloud.ktx2",
+        cloud_texture_hd: "trappist-1_g_cloud_hd.ktx2",
         icon: "neptune.png",
         satellites: []
     },

@@ -216,7 +216,7 @@ const Object = ({ data, children, childrenComponent, onClick, objectRef, cloudRe
             }
         }
 
-        internalLabelRef.current.style.visibility = isVisible ? "visible" : "hidden"
+        internalLabelRef.current.style.display = isVisible ? "flex" : "none"
 
         if (data.type !== "spacecraft-orbiter") {
             internalLabelRef.current.style.background = focus === data.id ? "rgba(0,0,0,0.75)" : "transparent"
