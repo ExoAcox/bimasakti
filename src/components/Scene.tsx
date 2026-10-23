@@ -285,29 +285,31 @@ const Scene = ({ data }: Props) => {
     }, [])
 
     useFrame(() => {
-        if (controlRef.current && universe.id) {
+        if (controlRef.current && universe.id !== "milky_way") {
             const navigationPanel = document.getElementById("navigation-panel")
             const isMaxZoomOut = controlRef.current.getDistance() >= controlRef.current.maxDistance - 10;
 
             if (navigationPanel) {
                 navigationPanel.style.visibility = isMaxZoomOut ? "visible" : "hidden"
             }
+        }
+    })
 
-            const zoomSlider = document.getElementById("sidebar-zoom-slider") as HTMLInputElement | null
-            if (zoomSlider && document.activeElement !== zoomSlider && targetZoomDistance.current === null) {
-                const currentDist = controlRef.current.getDistance()
-                const minD = Math.max(0.0001, controlRef.current.minDistance)
-                const maxD = Math.max(minD * 1.5, controlRef.current.maxDistance)
-                const logMin = Math.log(minD)
-                const logMax = Math.log(maxD)
-                const span = logMax - logMin
-                if (span > 1e-4) {
-                    const currentLog = Math.log(Math.max(minD, Math.min(maxD, currentDist)))
-                    const t = (logMax - currentLog) / span
-                    const val = Math.round(Math.max(0, Math.min(1, t)) * 100)
-                    if (Number(zoomSlider.value) !== val) {
-                        zoomSlider.value = String(val)
-                    }
+    useFrame(() => {
+        const zoomSlider = document.getElementById("sidebar-zoom-slider") as HTMLInputElement | null
+        if (zoomSlider && document.activeElement !== zoomSlider && targetZoomDistance.current === null) {
+            const currentDist = controlRef.current.getDistance()
+            const minD = Math.max(0.0001, controlRef.current.minDistance)
+            const maxD = Math.max(minD * 1.5, controlRef.current.maxDistance)
+            const logMin = Math.log(minD)
+            const logMax = Math.log(maxD)
+            const span = logMax - logMin
+            if (span > 1e-4) {
+                const currentLog = Math.log(Math.max(minD, Math.min(maxD, currentDist)))
+                const t = (logMax - currentLog) / span
+                const val = Math.round(Math.max(0, Math.min(1, t)) * 100)
+                if (Number(zoomSlider.value) !== val) {
+                    zoomSlider.value = String(val)
                 }
             }
         }

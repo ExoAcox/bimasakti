@@ -128,8 +128,6 @@ const CanvasLayout = () => {
                         <SkyBox />
                     </When>
 
-                    {/* <Physics gravity={[0, 0, 0]} debug> */}
-
                     <Bounds>
                         <Switch>
                             <Case condition={mode !== Mode.Object}>
@@ -142,7 +140,6 @@ const CanvasLayout = () => {
 
                         <Outlet />
                     </Bounds>
-                    {/* </Physics> */}
 
                     <EffectComposer>
                         <BlackholeWrapEffect />
@@ -157,9 +154,7 @@ const CanvasLayout = () => {
                 </Suspense>
             </Canvas>
 
-            {/* <Header id={data.id} /> */}
             <NavigationPanel />
-            {/* <SettingPanel /> */}
             <UserInterface id={data.id} />
         </KeyboardControls>
     </div>
