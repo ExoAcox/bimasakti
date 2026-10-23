@@ -66,19 +66,19 @@ const Featured = () => {
     const displayedData = isExpanded ? filteredData : filteredData.slice(0, 24);
 
     return (
-        <section id="featured" className="my-20 md:my-28 px-4 sm:px-6">
+        <section id="featured" className="my-20 md:my-28">
             <div className="relative rounded-3xl bg-slate-950/60 backdrop-blur-2xl border border-white/10 p-4 sm:p-8 shadow-[0_20px_50px_rgba(0,0,0,0.6)]">
                 {/* Section Header */}
                 <div className="flex flex-col md:flex-row md:items-end justify-between gap-6">
-                    <div>
-                        <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-cyan-500/10 border border-cyan-500/20 text-cyan-300 font-space-grotesk text-[10px] sm:text-xs md:text-sm font-medium uppercase tracking-widest mb-3">
+
+                    {/* <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-cyan-500/10 border border-cyan-500/20 text-cyan-300 font-space-grotesk text-[10px] sm:text-xs md:text-sm font-medium uppercase tracking-widest mb-3">
                             <FaCompass className="size-3" />
                             <span>{t("ui.celestial_catalog")}</span>
-                        </div>
-                        <h3 className="text-2xl sm:text-4xl font-black font-space-grotesk text-white">
-                            {t("ui.featured_objects")}
-                        </h3>
-                    </div>
+                        </div> */}
+                    <h3 className="text-2xl sm:text-3xl font-bold font-space-grotesk text-white">
+                        {t("ui.featured_objects")}
+                    </h3>
+
 
                     {/* Search Bar */}
                     <div className="relative w-full md:w-72">

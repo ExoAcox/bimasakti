@@ -107,13 +107,13 @@ const Universe = () => {
     const { t } = useTranslation();
 
     return (
-        <section id="systems" className="my-20 md:my-28 px-4 sm:px-6">
-            <div className="mb-10 sm:mb-14 text-center max-w-3xl mx-auto">
-                <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-cyan-500/10 border border-cyan-500/20 text-cyan-300 font-space-grotesk text-[10px] sm:text-xs md:text-sm font-medium uppercase tracking-widest mb-3">
+        <section id="systems">
+            <div className="mb-10 sm:mb-14 max-w-3xl flex flex-col items-center mx-auto">
+                {/* <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-cyan-500/10 border border-cyan-500/20 text-cyan-300 font-space-grotesk text-[10px] sm:text-xs md:text-sm font-medium uppercase tracking-widest mb-3">
                     <FaCompass className="size-3" />
                     <span>{t("ui.cosmic_destinations")}</span>
-                </div>
-                <h3 className="text-3xl sm:text-4xl md:text-5xl font-black font-space-grotesk text-white mb-4 tracking-tight">
+                </div> */}
+                <h3 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl text-center font-bold font-space-grotesk leading-tight text-white mb-4 tracking-tight max-w-xs sm:max-w-md lg:max-w-xl">
                     <Trans
                         i18nKey="ui.universe_section_title"
                         components={{ br: <br className="hidden sm:inline" /> }}
@@ -121,7 +121,7 @@ const Universe = () => {
                         Explore the Members of <br className="hidden sm:inline" /> Milky Way Family
                     </Trans>
                 </h3>
-                <p className="text-sm sm:text-base text-slate-400 leading-relaxed">
+                <p className="text-sm sm:text-base text-slate-400 leading-relaxed text-center">
                     {t("ui.universe_section_desc")}
                 </p>
                 <div className="h-px w-24 bg-linear-to-r from-transparent via-cyan-500 to-transparent mx-auto mt-6" />

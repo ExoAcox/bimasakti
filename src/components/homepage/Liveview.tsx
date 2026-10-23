@@ -6,7 +6,7 @@ const LiveviewBanner = () => {
     const { t } = useTranslation();
 
     return (
-        <section className="my-20 md:my-28 px-4 sm:px-6">
+        <section className="my-20 md:my-28">
             <div className="relative rounded-3xl bg-linear-to-br from-slate-950 via-slate-900 to-slate-950 border border-cyan-500/20 p-4 sm:p-8 md:p-12 xl:p-16 overflow-hidden shadow-[0_20px_50px_rgba(0,0,0,0.6)]">
                 {/* Background Ambient Lighting */}
                 <div className="absolute top-0 right-1/4 size-96 bg-rose-500/10 rounded-full blur-3xl pointer-events-none" />
@@ -14,14 +14,14 @@ const LiveviewBanner = () => {
 
                 {/* Header */}
                 <div className="relative z-10 max-w-2xl mb-10">
-                    <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-rose-500/15 border border-rose-500/30 text-rose-300 font-space-grotesk text-[10px] sm:text-xs md:text-sm font-medium uppercase tracking-wider mb-3">
+                    {/* <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-rose-500/15 border border-rose-500/30 text-rose-300 font-space-grotesk text-[10px] sm:text-xs md:text-sm font-medium uppercase tracking-wider mb-3">
                         <span className="relative flex size-2">
                             <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-rose-400 opacity-75"></span>
                             <span className="relative inline-flex rounded-full size-2 bg-rose-500"></span>
                         </span>
                         <span>{t("ui.surface_liveview")}</span>
-                    </div>
-                    <h3 className="text-3xl sm:text-4xl font-black font-space-grotesk text-white mb-3">
+                    </div> */}
+                    <h3 className="text-3xl sm:text-3xl font-bold font-space-grotesk text-white mb-3">
                         {t("ui.liveview_title")}
                     </h3>
                     <p className="text-sm sm:text-base text-slate-400 leading-relaxed">
