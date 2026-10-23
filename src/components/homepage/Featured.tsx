@@ -73,7 +73,7 @@ const Featured = () => {
                     <div>
                         <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-cyan-500/10 border border-cyan-500/20 text-cyan-300 font-space-grotesk text-[10px] sm:text-xs md:text-sm font-medium uppercase tracking-widest mb-3">
                             <FaCompass className="size-3" />
-                            <span>Celestial Catalog</span>
+                            <span>{t("ui.celestial_catalog")}</span>
                         </div>
                         <h3 className="text-2xl sm:text-4xl font-black font-space-grotesk text-white">
                             {t("ui.featured_objects")}
@@ -110,7 +110,7 @@ const Featured = () => {
                         </button>
                     ))}
                     <span className="ml-auto text-xs font-mono text-slate-500 hidden sm:inline">
-                        {filteredData.length} objects
+                        {filteredData.length} {t("ui.objects")}
                     </span>
                 </div>
 

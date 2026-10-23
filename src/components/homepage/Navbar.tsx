@@ -54,7 +54,7 @@ const Navbar = () => {
                             BIMASAKTI
                         </span>
                         <span className="text-[10px] tracking-wider text-slate-400 font-medium -mt-1">
-                            Universe Simulation
+                            {t("ui.universe_simulation")}
                         </span>
                     </div>
                 </Link>

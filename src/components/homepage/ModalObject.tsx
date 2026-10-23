@@ -34,7 +34,7 @@ const ModalObject = ({ data, onClose }: Props) => {
         };
     }, []);
 
-    const targetUniverse = celestial.getUniverseByObjectId(data.id);
+    // const targetUniverse = celestial.getUniverseByObjectId(data.id);
 
     return (
         <div
@@ -50,8 +50,8 @@ const ModalObject = ({ data, onClose }: Props) => {
                 {/* Close Button */}
                 <button
                     onClick={onClose}
-                    className="absolute top-5 right-5 size-9 rounded-full bg-white/5 border border-white/10 hover:border-white/30 text-slate-300 hover:text-white flex items-center justify-center transition-all cursor-pointer"
-                    aria-label="Close details"
+                    className="absolute top-5 right-5 size-9 rounded-full bg-card-bg border border-panel-border hover:border-tertiary/50 text-secondary hover:bg-tertiary/10 flex items-center justify-center transition-all cursor-pointer"
+                    aria-label={t("ui.close")}
                 >
                     <MdClose className="size-5" />
                 </button>

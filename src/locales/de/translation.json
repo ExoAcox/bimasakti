@@ -117,7 +117,26 @@
         "star_system": "Sternensystem",
         "star_systems": "Sternensysteme",
         "live_explorations": "Live-Erkundungen",
-        "built_with": "Erstellt mit Three.js, React Three Fiber & WebGL"
+        "built_with": "Erstellt mit Three.js, React Three Fiber & WebGL",
+        "universe_simulation": "Universumssimulation",
+        "cosmic_destinations": "Kosmische Ziele",
+        "universe_section_desc": "Tauchen Sie ein in unsere galaktische Nachbarschaft, vom vertrauten Sonnensystem bis zu exotischen Dreifachsternsystemen, Exoplaneten in habitablen Zonen und Pulsarwelten.",
+        "celestial_catalog": "Himmelskatalog",
+        "objects": "Objekte",
+        "visit": "Besuchen",
+        "coming_soon": "Demnächst",
+        "mars_surface_title": "Marsoberfläche",
+        "mars_surface_subtitle": "Liveview der Roten Planetenoberfläche",
+        "mars_surface_desc": "Erkunden Sie realistische Mars-Höhenmodelle, atmosphärische Staubstreuung, dynamische Tag-Nacht-Sonnenstände und die Monde Phobos und Deimos am roten Himmel.",
+        "moon_surface_title": "Mondoberfläche",
+        "moon_surface_subtitle": "Mondoberflächen-Liveview & Erdaufgang",
+        "moon_surface_desc": "Stehen Sie auf Mondboden, sehen Sie die Erde ewig am schwarzen Himmel hängen und beobachten Sie scharfe Schatten über Kraterrändern im Vakuum-Sonnenlicht.",
+        "footer_dedication": "Der Astronomie und Weltraumforschung gewidmet.",
+        "open_source_notice": "Dieses Projekt ist Open Source",
+        "ignore_axis": "Achse ignorieren",
+        "pause_orbit_when_focus": "Orbit bei Fokus pausieren",
+        "speed_scale_value": "1 Sekunde: {{days}} Tage",
+        "present": "Gegenwart"
     },
     "class": {
         "terrestrial_planet": "Terrestrischer Planet",
@@ -887,6 +906,64 @@
             "name": "Pioneer 11",
             "nickname": "Pioneer 11",
             "description": "Pioneer 11 ist eine unbemannte NASA-Raumsonde, die am 5. April 1973 gestartet wurde. Sie erforschte als zweite Sonde Jupiter und passierte 1979 als allererste Raumsonde Saturn und dessen Ringsystem aus nächster Nähe, bevor sie eine Flugbahn in den interstellaren Raum einschlug."
+        },
+        "asteriod": {
+            "name": "Asteroidengürtel",
+            "title": "Asteroidengürtel",
+            "nickname": "Asteroidengürtel",
+            "description": "Der Asteroidengürtel ist eine torusförmige Region im Sonnensystem, die sich grob zwischen den Umlaufbahnen der Planeten Mars und Jupiter befindet."
+        },
+        "kuiper": {
+            "name": "Kuipergürtel",
+            "title": "Kuipergürtel",
+            "nickname": "Kuipergürtel",
+            "description": "Der Kuipergürtel ist eine zirkumstellare Scheibe im äußeren Sonnensystem, die sich von der Neptunbahn aus nach außen erstreckt."
+        },
+        "oort": {
+            "name": "Oortsche Wolke",
+            "title": "Oortsche Wolke",
+            "nickname": "Oortsche Wolke",
+            "description": "Die Oortsche Wolke ist eine theoretische kugelförmige Ansammlung von eisigen Planetesimalen am äußersten Rand des Sonnensystems."
+        },
+        "gonggong": {
+            "name": "Gonggong",
+            "nickname": "Gonggong",
+            "description": "Gonggong ist ein großer Zwergplanetenkandidat in der Scattered Disc jenseits von Neptun. Bekannt für seine rötliche Oberfläche durch organische Verbindungen (Tholine) und Wassereis, besitzt er einen bekannten Mond namens Xiangliu."
+        },
+        "xiangliu": {
+            "name": "Xiangliu",
+            "nickname": "Xiangliu",
+            "description": "Xiangliu ist der einzige bekannte Mond des Zwergplaneten Gonggong. Benannt nach einem neunköpfigen Schlangenungeheuer der chinesischen Mythologie, umkreist er Gonggong in einer Entfernung von etwa 24.000 Kilometern."
+        },
+        "quaoar": {
+            "name": "Quaoar",
+            "nickname": "Quaoar",
+            "description": "Quaoar ist ein Kuipergürtel-Objekt, das für sein seltenes, dichtes Ringsystem weit außerhalb seiner Roche-Grenze bekannt ist. Er wird von seinem kleinen Mond Weywot begleitet und besitzt eine Oberfläche aus Wassereis und Methan."
+        },
+        "weywot": {
+            "name": "Weywot",
+            "nickname": "Weywot",
+            "description": "Weywot ist der einzige bekannte Mond von Quaoar. Benannt nach dem Himmelsgott der Tongva, gilt Weywot als Fragment einer gigantischen Kollision in Quaoars Vergangenheit."
+        },
+        "sedna": {
+            "name": "Sedna",
+            "nickname": "Sedna",
+            "description": "Sedna ist eines der am weitesten entfernten bekannten Objekte im Sonnensystem mit einer extrem langgestreckten Umlaufbahn von über 11.000 Jahren, die von 76 AE am sonnennächsten Punkt bis zu fast 1.000 AE reicht."
+        },
+        "orcus": {
+            "name": "Orcus",
+            "nickname": "Orcus",
+            "description": "Orcus ist ein großes Kuipergürtel-Objekt, das oft als \"Anti-Pluto\" bezeichnet wird, da sein Orbit die gleiche Periode und Neigung wie Pluto aufweist, jedoch in entgegengesetzter Phase."
+        },
+        "salacia": {
+            "name": "Salacia",
+            "nickname": "Salacia",
+            "description": "Salacia ist ein großes Objekt im Kuipergürtel und ein Zwergplanetenkandidat mit einer außergewöhnlich dunklen Oberfläche und einer Albedo von nur etwa 4 %."
+        },
+        "churyumov-gerasimenko": {
+            "name": "Churyumov-Gerasimenko",
+            "nickname": "Churyumov-Gerasimenko",
+            "description": "67P/Tschurjumow-Gerassimenko ist ein Komet der Jupiter-Familie, der als Ziel der ESA-Mission Rosetta und des Landers Philae im Jahr 2014 berühmt wurde. Er besteht aus zwei Lappen, die durch einen schmalen Hals verbunden sind."
         }
     },
     "nation": {

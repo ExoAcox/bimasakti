@@ -57,7 +57,7 @@ const PlanetMesh = ({ data }: { data: PlanetType }) => {
 
     const material = useMemo(() => {
         if (data.type !== "planet" && !shouldRender) {
-            return <meshStandardMaterial color={data.color} />
+            return <meshStandardMaterial color={data.color} wireframe />
         } else if (topographyVisible && isFocused) {
             return <TextureLoader path={texture} />
         } else if (data.night_texture) {

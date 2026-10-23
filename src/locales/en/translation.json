@@ -120,7 +120,22 @@
         "star_system": "Star System",
         "star_systems": "Star Systems",
         "live_explorations": "Live Explorations",
-        "built_with": "Built with Three.js, React Three Fiber & WebGL"
+        "built_with": "Built with Three.js, React Three Fiber & WebGL",
+        "universe_simulation": "Universe Simulation",
+        "cosmic_destinations": "Cosmic Destinations",
+        "universe_section_desc": "Dive into our galactic neighborhood, from our familiar Solar System to exotic triple star systems, habitable zone exoplanets, and dead pulsar worlds.",
+        "celestial_catalog": "Celestial Catalog",
+        "objects": "objects",
+        "visit": "Visit",
+        "coming_soon": "Coming Soon",
+        "mars_surface_title": "Mars Surface",
+        "mars_surface_subtitle": "Red Planet Surface Liveview",
+        "mars_surface_desc": "Explore realistic Martian elevation, atmospheric dust scattering, dynamic day-night sun positions, and moons Phobos and Deimos passing across the red sky.",
+        "moon_surface_title": "Moon Surface",
+        "moon_surface_subtitle": "Lunar Surface Liveview & Earthrise",
+        "moon_surface_desc": "Stand on lunar soil, witness planet Earth hanging perpetually in the black sky, and observe stark vacuum sunlight casting razor-sharp shadows over crater ridges.",
+        "footer_dedication": "Dedicated to astronomy and space exploration.",
+        "open_source_notice": "This project is open source"
     },
     "class": {
         "terrestrial_planet": "Terrestrial Planet",

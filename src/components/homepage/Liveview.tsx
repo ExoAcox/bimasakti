@@ -1,7 +1,6 @@
 import { useTranslation } from "react-i18next";
 import { Link } from "react-router";
 import { FaArrowRight } from "react-icons/fa";
-import { TbSun, TbMoonStars } from "react-icons/tb";
 
 const LiveviewBanner = () => {
     const { t } = useTranslation();
@@ -39,28 +38,26 @@ const LiveviewBanner = () => {
                     >
                         <div className="flex items-center justify-between mb-6">
                             <div className="flex items-center gap-3">
-                                <div className="size-11 rounded-xl bg-rose-500/15 border border-rose-500/30 flex items-center justify-center text-rose-300">
-                                    <TbSun className="size-6" />
-                                </div>
-                                <div>
+                                <img className="size-11" alt="mars" src="/icons/mars.png" />
+                                <div className="flex flex-col gap-0.5">
                                     <h4 className="text-xl font-bold font-space-grotesk text-white group-hover:text-rose-300 transition-colors">
-                                        Mars Surface
+                                        {t("ui.mars_surface_title")}
                                     </h4>
                                     <span className="text-xs text-slate-400">
-                                        Red Planet Ground Expedition
+                                        {t("ui.mars_surface_subtitle")}
                                     </span>
                                 </div>
                             </div>
                         </div>
 
                         <p className="text-xs sm:text-sm text-slate-400 leading-relaxed mb-6">
-                            Explore realistic Martian elevation, atmospheric dust scattering, dynamic day-night sun positions, and moons Phobos and Deimos passing across the red sky.
+                            {t("ui.mars_surface_desc")}
                         </p>
 
                         <div className="pt-4 border-t border-white/5 flex items-center justify-end">
 
                             <Link to="/liveview/mars" className="inline-flex items-center gap-2 text-xs mr-1 font-space-grotesk font-bold uppercase hover:text-rose-300 hover:translate-x-2 transition-transform">
-                                <span>VISIT  {t("ui.mars_liveview")}</span>
+                                <span>{t("ui.visit")} {t("ui.mars_liveview")}</span>
                                 <FaArrowRight className="size-3" />
                             </Link>
                         </div>
@@ -72,28 +69,26 @@ const LiveviewBanner = () => {
                     >
                         <div className="flex items-center justify-between mb-6">
                             <div className="flex items-center gap-3">
-                                <div className="size-11 rounded-xl bg-cyan-500/15 border border-cyan-500/30 flex items-center justify-center text-cyan-300">
-                                    <TbMoonStars className="size-6" />
-                                </div>
-                                <div>
+                                <img className="size-11" alt="moon" src="/icons/moon.png" />
+                                <div className="flex flex-col gap-0.5">
                                     <h4 className="text-xl font-bold font-space-grotesk text-white group-hover:text-cyan-300 transition-colors">
-                                        Moon Surface
+                                        {t("ui.moon_surface_title")}
                                     </h4>
                                     <span className="text-xs text-slate-400">
-                                        Lunar Regolith & Earthrise
+                                        {t("ui.moon_surface_subtitle")}
                                     </span>
                                 </div>
                             </div>
                         </div>
 
                         <p className="text-xs sm:text-sm text-slate-400 leading-relaxed mb-6">
-                            Stand on lunar soil, witness planet Earth hanging perpetually in the black sky, and observe stark vacuum sunlight casting razor-sharp shadows over crater ridges.
+                            {t("ui.moon_surface_desc")}
                         </p>
 
                         <div className="pt-4 border-t border-white/5 flex items-center justify-end">
 
-                            <span className="inline-flex items-center gap-2 text-xs font-space-grotesk font-bold uppercase text-cyan-300 group-hover:translate-x-1 transition-transform">
-                                <span>Coming Soon</span>
+                            <span className="inline-flex items-center gap-2 text-xs font-space-grotesk font-bold uppercase text-cyan-300 transition-transform">
+                                <span>{t("ui.coming_soon")}</span>
                                 {/* <FaArrowRight className="size-3" /> */}
                             </span>
                         </div>

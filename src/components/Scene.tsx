@@ -285,7 +285,7 @@ const Scene = ({ data }: Props) => {
     }, [])
 
     useFrame(() => {
-        if (controlRef.current && universe.id !== "milky_way") {
+        if (controlRef.current && universe.id) {
             const navigationPanel = document.getElementById("navigation-panel")
             const isMaxZoomOut = controlRef.current.getDistance() >= controlRef.current.maxDistance - 10;
 
