@@ -27,7 +27,7 @@ const WireframeMesh = () => {
 const SpaceCraft = ({ data }: Props) => {
     const objectRef = useRef<Mesh>(null!)
 
-    const { focus, artificialSatelliteVisible, setControl } = useControlStore()
+    const { focus, focusIndex, artificialSatelliteVisible, setControl } = useControlStore()
     const { sizeScale, distanceScale } = useSettingStore()
 
     const isFocused = data.id === focus
@@ -36,6 +36,10 @@ const SpaceCraft = ({ data }: Props) => {
     const center = centeredIds.includes(data.id)
 
     const handleClick = () => {
+        if (isFocused) {
+            return setControl({ focusIndex: focusIndex + 1 })
+        }
+
         setControl({ focus: data.id })
     }
 

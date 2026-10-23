@@ -130,6 +130,7 @@ export const satellites: Satellite[] = [
         orbit_duration: 0.94,
         rotate_duration: 0.94, // Tidally locked
         texture: "mimas.ktx2",
+        texture_hd: "mimas_hd.ktx2",
         icon: "moon.png",
         get landmarks() {
             return landmarks.filter((landmark) => landmark.parent === this.id)

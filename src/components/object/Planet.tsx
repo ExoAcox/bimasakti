@@ -96,7 +96,7 @@ const Planet = ({
 
     const celestial = useCelestial()
     const { sizeScale, distanceScale } = useSettingStore()
-    const { focus, variant, landmarkVisible, nationVisible, cloudVisible, atmosphereVisible, setControl } = useControlStore()
+    const { focus, focusIndex, variant, landmarkVisible, nationVisible, cloudVisible, atmosphereVisible, setControl } = useControlStore()
     const distance = LOWREST_SCALE / distanceScale
 
     const data = useVariant(rawData) as PlanetType
@@ -104,8 +104,11 @@ const Planet = ({
     const isFocused = data.id === focus
 
     const handleClick = () => {
+        if (isFocused) {
+            return setControl({ focusIndex: focusIndex + 1 })
+        }
+
         const object = celestial.getObjectById(focus) as PlanetType | undefined
-        console.log(object?.radius, object?.distance)
         if (data.id === object?.parent && object?.radius < 1 && object?.distance < 10000) return;
 
         setControl({ focus: data.id })

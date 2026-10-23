@@ -611,6 +611,11 @@
             "nickname": "Pallas",
             "description": "2 Pallas adalah asteroid kedua yang ditemukan dan salah satu yang terbesar di Tata Surya, terletak di Sabuk Asteroid Utama. Dinamai dari dewi kebijaksanaan Yunani, Pallas unik karena memiliki kemiringan orbit yang sangat tinggi hampir 35 derajat dan permukaan kaya karbon yang dipenuhi kawah."
         },
+        "arrokoth": {
+            "name": "Arrokoth",
+            "nickname": "Arrokoth",
+            "description": "486958 Arrokoth (sebelumnya Ultima Thule) adalah objek biner kontak trans-Neptunus yang terletak di Sabuk Kuiper. Dikunjungi oleh wahana antariksa New Horizons milik NASA pada Januari 2019, Arrokoth adalah objek tata surya terjauh dan paling primitif yang pernah dieksplorasi dari dekat."
+        },
         "churyumov-gerasimenko": {
             "name": "Churyumov-Gerasimenko",
             "nickname": "Churyumov-Gerasimenko",

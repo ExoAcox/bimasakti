@@ -76,7 +76,7 @@ const Star = ({ id, children, labelRef }: Props) => {
 
     const celestial = useCelestial()
     const { distanceScale, sizeScale } = useSettingStore()
-    const { focus, setControl } = useControlStore()
+    const { focus, focusIndex, setControl } = useControlStore()
 
     const universe = celestial.getUniverse()
     const rawData = celestial.getObjectById(id) as StarType
@@ -98,6 +98,10 @@ const Star = ({ id, children, labelRef }: Props) => {
     }, [data.class])
 
     const handleClick = () => {
+        if (isFocused) {
+            return setControl({ focusIndex: focusIndex + 1 })
+        }
+
         setControl({ focus: id })
     }
 

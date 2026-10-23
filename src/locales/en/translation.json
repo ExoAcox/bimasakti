@@ -606,6 +606,11 @@
             "nickname": "Pallas",
             "description": "2 Pallas is the second asteroid to have been discovered and one of the largest in the Solar System, located in the Main Asteroid Belt. Named after the Greek goddess of wisdom, Pallas is unique for its highly tilted orbital inclination of nearly 35 degrees and its heavily cratered, carbon-rich surface."
         },
+        "arrokoth": {
+            "name": "Arrokoth",
+            "nickname": "Arrokoth",
+            "description": "486958 Arrokoth (formerly Ultima Thule) is a trans-Neptunian contact binary object located in the Kuiper Belt. Visited by NASA's New Horizons spacecraft in January 2019, it is the most distant and primitive solar system object ever explored up close."
+        },
         "churyumov-gerasimenko": {
             "name": "Churyumov-Gerasimenko",
             "nickname": "Churyumov-Gerasimenko",

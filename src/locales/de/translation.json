@@ -554,6 +554,11 @@
             "nickname": "Pallas",
             "description": "2 Pallas ist der zweite entdeckte Asteroid und einer der größten im Sonnensystem, gelegen im Hauptasteroidengürtel. Benannt nach der griechischen Göttin der Weisheit, zeichnet sich Pallas durch eine ungewöhnlich hohe Bahnneigung von fast 35 Grad sowie eine stark verkraterte, kohlenstoffreiche Oberfläche aus."
         },
+        "arrokoth": {
+            "name": "Arrokoth",
+            "nickname": "Arrokoth",
+            "description": "486958 Arrokoth (früher Ultima Thule) ist ein transneptunischer Kontakt-Doppelkörper im Kuipergürtel. Im Januar 2019 von der NASA-Raumsonde New Horizons besucht, ist er das am weitesten entfernte und primitivste Objekt des Sonnensystems, das jemals aus der Nähe erforscht wurde."
+        },
         "churyumov_gerasimenko": {
             "name": "Churyumov-Gerasimenko",
             "nickname": "Churyumov-Gerasimenko",

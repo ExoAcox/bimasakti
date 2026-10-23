@@ -150,6 +150,22 @@ const asteroids: Asteroid[] = [
         model: "itokawa.glb",
         icon: "asteroid.png"
     },
+    {
+        id: "arrokoth",
+        type: "asteroid",
+        parent: "sun",
+        radius: 9.9,
+        distance: 6377000000,
+        longest_distance: 6961000000,
+        rotation: [90, 0, 0],
+        color: "#a65e4e",
+        axis: 2.45,
+        orbit_duration: 108735,
+        rotate_duration: 0.663,
+        model: "arrokoth.ply",
+        texture: "arrokoth.ktx2",
+        icon: "asteroid.png"
+    },
 ]
 
 export default { stars, belts, comets, asteroids, planets, satellites, spacecraft, landmarks }
