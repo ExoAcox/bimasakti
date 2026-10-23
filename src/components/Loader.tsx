@@ -1,23 +1,12 @@
 import { useCelestial } from "@function"
-import { useProgress } from "@react-three/drei"
-import { useThree } from "@react-three/fiber"
-import { useEffect, useLayoutEffect, useMemo, useRef, useState } from "react"
-import ReactDOM from "react-dom/client"
-import { FaRegFile } from "react-icons/fa"
+import { Html, useProgress } from "@react-three/drei"
+import { useMemo } from "react"
+
+import { FaRegFile } from "react-icons/fa";
 
 export const Loader = () => {
-    const { gl } = useThree()
-    const [progressState, setProgressState] = useState(() => useProgress.getState())
+    const { item, loaded, total } = useProgress()
 
-    useEffect(() => {
-        return useProgress.subscribe((state) => {
-            requestAnimationFrame(() => {
-                setProgressState(state)
-            })
-        })
-    }, [])
-
-    const { item, loaded, total } = progressState
     const universe = useCelestial().getUniverse()
 
     const itemName = useMemo(() => {
@@ -29,21 +18,15 @@ export const Loader = () => {
 
     const knownTotalAssets = universe?.assetCount || 0
     const displayTotal = Math.max(total, knownTotalAssets)
-    const formattedProgress = displayTotal > 0 ? Math.min(Math.round((loaded / displayTotal) * 100), 99) : 0
+    const formattedProgress = Math.min(Math.round((loaded / displayTotal) * 100), 99)
 
-    const [container] = useState(() => {
-        if (typeof document === "undefined") return null
-        const div = document.createElement("div")
-        div.style.cssText = "position:absolute;top:0;left:0;width:100%;height:100%;pointer-events:none;z-index:9999;"
-        return div
-    })
+    return (
+        <Html center style={{ width: "100vw", height: "100vh", pointerEvents: "none" }}>
+            <div className="fixed inset-0 z-100 flex flex-col items-center justify-center select-none text-white/90 pointer-events-auto overflow-hidden">
 
-    const rootRef = useRef<ReactDOM.Root | null>(null)
+                <div className="relative z-10 flex flex-col items-center max-w-md w-[90vw] p-8 rounded-3xl bg-slate-900/50 border border-white/10  backdrop-blur-md">
 
-    const content = useMemo(
-        () => (
-            <div className="fixed inset-0 z-50 flex flex-col items-center justify-center select-none overflow-hidden">
-                <div className="relative z-10 flex flex-col items-center max-w-md w-[90vw] p-8 rounded-3xl bg-slate-900/80 border border-panel-border backdrop-blur-xl shadow-2xl">
+
                     {/* Percentage Display */}
                     <div className="mb-2 flex items-baseline gap-1 font-space-grotesk">
                         <span className="text-7xl font-extrabold tracking-tight drop-shadow-[0_0_20px_rgba(56,189,248,0.1)]">
@@ -53,11 +36,13 @@ export const Loader = () => {
                     </div>
 
                     {/* Progress Bar Track */}
-                    <div className="w-full h-1.5 rounded-full overflow-hidden relative bg-white/10 my-3">
+                    <div className="w-full h-1 rounded-full  overflow-hidden relative shadow-inner my-2">
                         <div
-                            className="h-full rounded-full transition-all duration-300 ease-out bg-accent shadow-glow"
+                            className="h-full rounded-full transition-all duration-300 ease-out relative"
                             style={{ width: `${formattedProgress}%` }}
-                        />
+                        >
+                            <div className="absolute inset-0 bg-white/20" />
+                        </div>
                     </div>
 
                     {/* Footer Info / Asset Details */}
@@ -66,42 +51,14 @@ export const Loader = () => {
                         <span className="truncate max-w-55 text-secondary mr-auto" title={item}>
                             {itemName}
                         </span>
-                        <span className="text-highlight font-semibold shrink-0 ml-2">
+                        <span className="text-cyan-300/80 font-semibold shrink-0 ml-2">
                             {loaded} / {displayTotal}
                         </span>
                     </div>
                 </div>
             </div>
-        ),
-        [displayTotal, formattedProgress, item, itemName, loaded],
+        </Html>
     )
-
-    useLayoutEffect(() => {
-        if (!container) return
-
-        const target = gl.domElement.parentElement || document.body
-        target.appendChild(container)
-        const root = ReactDOM.createRoot(container)
-        rootRef.current = root
-        root.render(content)
-
-        return () => {
-            setTimeout(() => {
-                root.unmount()
-                if (container.parentNode) {
-                    container.parentNode.removeChild(container)
-                }
-            }, 0)
-        }
-    }, [container, content, formattedProgress, gl])
-
-    useEffect(() => {
-        if (rootRef.current) {
-            rootRef.current.render(content)
-        }
-    }, [content])
-
-    return null
 }
 
 export default Loader
