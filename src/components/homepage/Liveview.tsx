@@ -71,7 +71,7 @@ const LiveviewBanner = () => {
                             <div className="flex items-center gap-3">
                                 <img className="size-11" alt="moon" src="/icons/moon.png" />
                                 <div className="flex flex-col gap-0.5">
-                                    <h4 className="text-xl font-bold font-space-grotesk text-white group-hover:text-cyan-300 transition-colors">
+                                    <h4 className="text-xl font-bold font-space-grotesk text-cyan-300 transition-colors">
                                         {t("ui.moon_surface_title")}
                                     </h4>
                                     <span className="text-xs text-slate-400">

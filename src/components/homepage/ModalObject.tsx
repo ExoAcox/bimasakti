@@ -60,12 +60,11 @@ const ModalObject = ({ data, onClose }: Props) => {
     return (
         <div
             className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/70 backdrop-blur-md"
-            onClick={onClose}
             role="dialog"
             aria-modal="true"
         >
             <div
-                className="relative w-fit max-w-[90dvw] max-h-[70dvh] overflow-y-auto rounded-3xl bg-background border border-panel-border p-5 sm:p-7 flex gap-6 shadow-panel scrollbar-thin"
+                className="relative w-fit max-w-[90dvw] max-h-[70dvh] overflow-y-auto rounded-3xl bg-background border border-panel-border p-4 sm:p-6 flex flex-col md:flex-row gap-6 shadow-panel scrollbar-thin"
                 onClick={(e) => e.stopPropagation()}
             >
                 {/* Close Button */}
@@ -81,7 +80,7 @@ const ModalObject = ({ data, onClose }: Props) => {
                 <ModalObjectViewer data={data} />
 
                 {/* Header Information */}
-                <div className="flex flex-col gap-4 max-w-100">
+                <div className="flex flex-col gap-4 max-w-100 md:max-w-72 lg:max-w-100">
                     <div className="flex items-center gap-4 pr-10">
                         <div className="flex flex-col gap-1">
                             <span className="text-[11px] font-space-grotesk font-semibold w-fit uppercase tracking-wider px-2.5 py-1 rounded-full bg-card-bg text-highlight border border-panel-border">
@@ -104,11 +103,9 @@ const ModalObject = ({ data, onClose }: Props) => {
                     </div>
 
                     {/* Description Body */}
-                    <div className="overflow-y-auto pr-2 scrollbar-thin max-h-36">
-                        <p className="text-sm text-secondary leading-relaxed">
-                            {t(`object.${data.id}.description`)}
-                        </p>
-                    </div>
+                    <p className="text-sm text-secondary leading-relaxed">
+                        {t(`object.${data.id}.description`)}
+                    </p>
 
                     {/* Telemetry Matrix Grid */}
                     <div id="detail-telemetry-section" className="pt-2">

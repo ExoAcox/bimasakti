@@ -288,7 +288,7 @@ const ModalObjectViewer = ({ data }: Props) => {
     const [isAutoRotating, setIsAutoRotating] = useState(true);
 
     return (
-        <div className="relative aspect-square w-100 sm:h-full rounded-2xl overflow-hidden bg-radial from-slate-900/80 via-slate-950/90 to-slate-950 border border-panel-border group">
+        <div className="relative aspect-square w-full min-h-72 md:w-100 md:h-full rounded-2xl overflow-hidden bg-radial from-slate-900/80 via-slate-950/90 to-slate-950 border border-panel-border group">
             {/* Ambient background glow */}
             <div
                 className="absolute inset-0 pointer-events-none opacity-20 blur-3xl"
@@ -314,7 +314,7 @@ const ModalObjectViewer = ({ data }: Props) => {
             </div>
 
             {/* Interactive hint */}
-            <div className="absolute bottom-2.5 left-1/2 -translate-x-1/2 z-10 pointer-events-none text-[11px] font-space-grotesk text-tertiary/70">
+            <div className="absolute whitespace-nowrap bottom-2.5 left-1/2 -translate-x-1/2 z-10 pointer-events-none text-[11px] font-space-grotesk text-tertiary/70">
                 Drag to rotate • Scroll to zoom
             </div>
 

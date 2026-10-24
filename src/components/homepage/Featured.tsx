@@ -64,7 +64,7 @@ const Featured = () => {
         });
     }, [allData, activeCategory, searchQuery, t]);
 
-    const displayedData = isExpanded ? filteredData : filteredData.slice(0, 24);
+    const displayedData = isExpanded ? filteredData : filteredData.slice(0, 20);
 
     return (
         <section id="featured" className="my-20 md:my-28">
@@ -138,7 +138,7 @@ const Featured = () => {
                 </div>
 
                 {/* Show More / Show Less Button */}
-                {filteredData.length > 24 && (
+                {filteredData.length > 20 && (
                     <div className="mt-8 pt-6 border-t border-white/5 flex justify-center">
                         <button
                             onClick={() => setIsExpanded(!isExpanded)}

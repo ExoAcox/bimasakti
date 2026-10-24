@@ -1,9 +1,10 @@
+import { useState } from "react";
 import { universes } from "@constants";
 import { PlanetClass, type Universe as UniverseType } from "@types";
 import clsx from "clsx";
 import { Trans, useTranslation } from "react-i18next";
 import { Link } from "react-router";
-import { FaArrowRight, FaCompass, FaRegStar } from "react-icons/fa";
+import { FaArrowRight, FaCompass, FaRegStar, FaChevronUp } from "react-icons/fa";
 import { IoPlanetOutline } from "react-icons/io5";
 import { When } from "react-if";
 
@@ -103,8 +104,21 @@ const Card = ({ id, className, imgClassName }: Props) => {
     );
 };
 
+const REMAINING_SYSTEMS = [
+    "toi-700",
+    "copernicus",
+    "lich",
+    "kepler-32",
+    "wasp-47",
+    "rho_coronae_borealis",
+    "nu_scorpii",
+    "hd_110067",
+    "cervantes",
+];
+
 const Universe = () => {
     const { t } = useTranslation();
+    const [isExpanded, setIsExpanded] = useState(false);
 
     return (
         <section id="systems">
@@ -126,22 +140,89 @@ const Universe = () => {
                 </p>
                 <div className="h-px w-24 bg-linear-to-r from-transparent via-cyan-500 to-transparent mx-auto mt-6" />
             </div>
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-4 ">
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-4">
                 <Card id="milky_way" className="lg:col-span-4 lg:row-span-2" imgClassName="h-[240px] lg:h-full" />
                 <Card id="solar_system" className="lg:col-span-8" imgClassName="h-[240px] lg:h-[320px]" />
                 <Card id="alpha_centauri" className="lg:col-span-4" imgClassName="h-[240px] lg:h-full" />
                 <Card id="trappist-1" className="lg:col-span-4" imgClassName="h-[240px] lg:h-full" />
-                <Card id="toi-700" className="lg:col-span-4" imgClassName="h-[240px] lg:h-full" />
-                <Card id="copernicus" className="lg:col-span-4" imgClassName="h-[240px] lg:h-full" />
-                <Card id="lich" className="lg:col-span-4" imgClassName="h-[240px] lg:h-full" />
-                <Card id="kepler-32" className="lg:col-span-4" imgClassName="h-[240px] lg:h-full" />
-                <Card id="wasp-47" className="lg:col-span-4" imgClassName="h-[240px] lg:h-full" />
-                <Card id="rho_coronae_borealis" className="lg:col-span-4" imgClassName="h-[240px] lg:h-full" />
-                <Card id="nu_scorpii" className="lg:col-span-4" imgClassName="h-[240px] lg:h-full" />
-                <Card id="hd_110067" className="lg:col-span-4" imgClassName="h-[240px] lg:h-full" />
-                <Card id="cervantes" className="lg:col-span-4" imgClassName="h-[240px] lg:h-full" />
+
+                {isExpanded &&
+                    REMAINING_SYSTEMS.map((id) => (
+                        <Card
+                            key={id}
+                            id={id}
+                            className="lg:col-span-4"
+                            imgClassName="h-[240px] lg:h-full"
+                        />
+                    ))}
             </div>
-        </section>)
-}
+
+            {!isExpanded && (
+                <div className="mt-4 rounded-2xl bg-slate-950/70 backdrop-blur-xl border border-white/10 hover:border-accent/40 p-5 sm:p-6 transition-all duration-300 shadow-panel group relative overflow-hidden">
+                    {/* Ambient Glow */}
+                    <div className="absolute -right-20 -bottom-20 w-80 h-80 bg-accent/10 rounded-full blur-3xl pointer-events-none group-hover:bg-accent/15 transition-colors" />
+
+                    <div className="relative z-10 flex flex-col xl:flex-row items-start xl:items-center justify-between gap-6">
+                        {/* Left Info: Radar Badge, Title, Desc */}
+                        <div className="flex flex-col gap-2 max-w-xl">
+                            <h4 className="text-xl sm:text-2xl font-bold font-space-grotesk text-primary group-hover:text-highlight transition-colors">
+                                {t("ui.systems_waiting_title", { count: REMAINING_SYSTEMS.length })}
+                            </h4>
+
+                            <p className="text-xs sm:text-sm text-tertiary leading-relaxed">
+                                {t("ui.systems_waiting_desc")}
+                            </p>
+                        </div>
+
+                        {/* Right: Stacked Thumbnails & Unfold Button */}
+                        <div className="flex flex-col sm:flex-row items-start sm:items-center gap-5 w-full xl:w-auto justify-between xl:justify-end">
+                            {/* Overlapping Thumbnails */}
+                            <div className="flex items-center -space-x-3 py-1">
+                                {REMAINING_SYSTEMS.slice(0, 5).map((cardId) => {
+                                    const u = universes.find((item) => item.id === cardId);
+                                    if (!u) return null;
+                                    return (
+                                        <img
+                                            key={cardId}
+                                            src={`/images/${u.image}`}
+                                            alt={cardId}
+                                            className="size-11 sm:size-12 rounded-full object-cover shadow-md ring-white/10 hover:border-accent/40 transition-all hover:scale-110 hover:z-20"
+                                            title={t(`object.${cardId}.title`)}
+                                        />
+                                    );
+                                })}
+                                <div className="size-11 sm:size-12 rounded-full bg-slate-900  flex items-center justify-center text-xs font-mono font-bold text-highlight shadow-md z-1">
+                                    +{REMAINING_SYSTEMS.length - 5}
+                                </div>
+                            </div>
+
+                            {/* Unfold CTA Button */}
+                            <button
+                                onClick={() => setIsExpanded(true)}
+                                className="w-full sm:w-auto group/button inline-flex items-center justify-center gap-2.5 px-6 py-3 rounded-xl font-space-grotesk font-bold text-xs uppercase tracking-wider bg-accent hover:bg-highlight text-slate-950 shadow-glow transition-all hover:scale-105 active:scale-95 cursor-pointer shrink-0"
+                            >
+                                <span>{t("ui.unfold_catalog")}</span>
+                                <FaArrowRight className="size-3 group-hover/button:translate-x-1 transition-transform" />
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            )}
+
+            {/* Show Less Footer Button */}
+            {isExpanded && (
+                <div className="mt-4 md:mt-8 flex justify-center">
+                    <button
+                        onClick={() => setIsExpanded(false)}
+                        className="group inline-flex items-center gap-2.5 px-6 py-2.5 rounded-full bg-card-bg hover:bg-card-hover border border-panel-border  text-xs font-space-grotesk font-bold uppercase tracking-wider text-secondary hover:text-primary transition-all duration-300 shadow-panel cursor-pointer"
+                    >
+                        <span>{t("ui.show_less")}</span>
+                        <FaChevronUp className="size-3 text-highlight group-hover:-translate-y-0.5 transition-transform" />
+                    </button>
+                </div>
+            )}
+        </section>
+    );
+};
 
 export default Universe
