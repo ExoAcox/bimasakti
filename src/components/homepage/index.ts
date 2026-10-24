@@ -5,4 +5,5 @@ export { default as Universe } from "./Universe";
 export { default as Liveview } from "./Liveview";
 export { default as Featured } from "./Featured";
 export { default as ModalObject } from "./ModalObject";
+export { default as ModalObjectViewer } from "./ModalObjectViewer";
 export { default as Footer } from "./Footer";

@@ -90,12 +90,8 @@ const CanvasLayout = () => {
 
     const data = useCelestial().getUniverse()
     const { setSetting } = useSettingStore()
-    const { mode, focus, setControl } = useControlStore()
+    const { mode, focus } = useControlStore()
 
-    useEffect(() => {
-        const queryFocus = searchParams.get("focus")
-        setControl({ focus: queryFocus || "" })
-    }, [searchParams, setControl])
 
     useEffect(() => {
         if (focus) track('focus', { object: focus, universe: data.id })

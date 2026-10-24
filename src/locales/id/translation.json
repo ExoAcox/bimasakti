@@ -4,8 +4,7 @@
         "radius": "Radius",
         "rotation_period": "Periode rotasi",
         "orbital_period": "Periode orbit",
-        "distance_from": "Jarak dari",
-        "distance_from_barycenter": "Jarak dari Barisenter",
+        "distance_from": "Jarak dari {{object}}",
         "parent_planet": "Planet Induk",
         "parent_object": "Objek Induk",
         "natural_satellites": "Satelit Alami",
@@ -136,7 +135,8 @@
         "open_source_notice": "Proyek ini bersifat sumber terbuka",
         "ignore_axis": "Abaikan Sumbu",
         "pause_orbit_when_focus": "Jeda Orbit Saat Fokus",
-        "present": "Saat Ini"
+        "present": "Saat Ini",
+        "barycenter": "Barisenter"
     },
     "class": {
         "terrestrial_planet": "Planet Terestrial",
@@ -186,10 +186,6 @@
             "name": "Matahari",
             "nickname": "Matahari",
             "description": "Matahari adalah bintang di pusat tata surya kita, yang mencakup 99,8% dari total massa tata surya. Matahari berbentuk bola plasma panas yang hampir sempurna, dipanaskan hingga pijar oleh reaksi fusi nuklir di intinya, memancarkan energi terutama dalam bentuk cahaya, radiasi ultraviolet, dan inframerah, serta menjadi sumber energi utama bagi kehidupan di Bumi.",
-            "red_giant": {
-                "name": "Matahari Raksasa Merah",
-                "description": "Dalam sekitar 5 miliar tahun ke depan, Matahari akan kehabisan bahan bakar hidrogen di intinya dan membengkak menjadi Raksasa Merah. Ukurannya akan mengembang puluhan hingga ratusan kali lipat, menelan planet-planet terdekat dan mengubah zona laik huni tata surya secara drastis."
-            },
             "variants": {
                 "dyson_sphere": {
                     "name": "Dyson Sphere Matahari",

@@ -5,8 +5,8 @@
         "diameter": "Diameter",
         "rotation_period": "Rotation period",
         "orbital_period": "Orbital period",
-        "distance_from": "Distance from",
-        "distance_from_barycenter": "Distance from Barycenter",
+        "distance_from": "Distance from {{object}}",
+        "barycenter": "Barycenter",
         "parent_planet": "Parent Planet",
         "parent_object": "Parent Object",
         "natural_satellites": "Natural Satellites",
@@ -135,7 +135,8 @@
         "moon_surface_subtitle": "Lunar Surface Liveview & Earthrise",
         "moon_surface_desc": "Stand on lunar soil, witness planet Earth hanging perpetually in the black sky, and observe stark vacuum sunlight casting razor-sharp shadows over crater ridges.",
         "footer_dedication": "Dedicated to astronomy and space exploration.",
-        "open_source_notice": "This project is open source"
+        "open_source_notice": "This project is open source",
+        "belts": "Asteroid Belt"
     },
     "class": {
         "terrestrial_planet": "Terrestrial Planet",

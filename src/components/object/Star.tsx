@@ -25,7 +25,7 @@ export interface Props {
     labelRef?: React.RefObject<HTMLButtonElement>
 }
 
-const getStarClassColors = (starClass?: StarClass) => {
+export const getStarClassColors = (starClass?: StarClass) => {
     switch (starClass) {
         case StarClass.Blue:
         case StarClass.BlueSubgiant:

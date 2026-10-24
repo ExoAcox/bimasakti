@@ -4,8 +4,7 @@
         "radius": "Radius",
         "rotation_period": "Rotationsperiode",
         "orbital_period": "Umlaufzeit",
-        "distance_from": "Entfernung von",
-        "distance_from_barycenter": "Abstand zum Baryzentrum",
+        "distance_from": "Entfernung von {{object}}",
         "parent_planet": "Mutterplanet",
         "natural_satellites": "Natürliche Satelliten",
         "days": "Tage",
@@ -136,7 +135,8 @@
         "ignore_axis": "Achse ignorieren",
         "pause_orbit_when_focus": "Orbit bei Fokus pausieren",
         "speed_scale_value": "1 Sekunde: {{days}} Tage",
-        "present": "Gegenwart"
+        "present": "Gegenwart",
+        "barycenter": "Baryzentrum"
     },
     "class": {
         "terrestrial_planet": "Terrestrischer Planet",
@@ -559,11 +559,6 @@
             "name": "Arrokoth",
             "nickname": "Arrokoth",
             "description": "486958 Arrokoth (früher Ultima Thule) ist ein transneptunischer Kontakt-Doppelkörper im Kuipergürtel. Im Januar 2019 von der NASA-Raumsonde New Horizons besucht, ist er das am weitesten entfernte und primitivste Objekt des Sonnensystems, das jemals aus der Nähe erforscht wurde."
-        },
-        "churyumov_gerasimenko": {
-            "name": "Churyumov-Gerasimenko",
-            "nickname": "Churyumov-Gerasimenko",
-            "description": "67P/Churyumov-Gerasimenko ist ein Komet der Jupiter-Familie, der als Ziel der ESA-Mission Rosetta und des Landers Philae im Jahr 2014 weltberühmt wurde. Er besitzt zwei markante Lappen, die durch einen schmalen Hals verbunden sind und durch eine sanfte Kollision zweier Kometesimale im frühen Sonnensystem entstanden."
         },
         "trappist-1": {
             "name": "TRAPPIST-1",
@@ -1634,6 +1629,533 @@
         },
         "ZW": {
             "name": "Simbabwe"
+        },
+        "EH": {
+            "name": "Westsahara"
+        },
+        "TW": {
+            "name": "Taiwan"
+        },
+        "XK": {
+            "name": "Kosovo"
+        }
+    },
+    "landmark": {
+        "mount_everest": {
+            "name": "Mount Everest",
+            "description": "Der höchste Berg der Erde über dem Meeresspiegel (8.848 m), im Himalaya an der Grenze zwischen Nepal und Tibet gelegen."
+        },
+        "mount_aconcagua": {
+            "name": "Aconcagua",
+            "description": "Der höchste Berg Südamerikas (6.961 m), gelegen in den Anden in Argentinien."
+        },
+        "mount_denali": {
+            "name": "Denali",
+            "description": "Der höchste Berggipfel Nordamerikas (6.190 m), gelegen in der Alaskakette, USA."
+        },
+        "mount_kilimanjaro": {
+            "name": "Kilimandscharo",
+            "description": "Das höchste freistehende Bergmassiv der Welt und der höchste Gipfel Afrikas (5.895 m), gelegen in Tansania."
+        },
+        "mount_elbrus": {
+            "name": "Elbrus",
+            "description": "Ein erloschener Vulkan und der höchste Gipfel Europas (5.642 m), gelegen im Kaukasus, Russland."
+        },
+        "mount_vinson": {
+            "name": "Vinson-Massiv",
+            "description": "Der höchste Gipfel der Antarktis (4.892 m), gelegen im Ellsworthgebirge."
+        },
+        "mount_cartenz": {
+            "name": "Carstensz-Pyramide",
+            "description": "Der höchste Berg Ozeaniens/Australasiens (4.884 m), gelegen im Jayawijaya-Gebirge in Papua, Indonesien."
+        },
+        "mount_k2": {
+            "name": "K2",
+            "description": "Der zweithöchste Berg der Erde (8.611 m), gelegen im Karakorum an der Grenze zwischen Pakistan und China."
+        },
+        "mont_blanc": {
+            "name": "Mont Blanc",
+            "description": "Der höchste Gipfel der Alpen und Westeuropas (4.807 m), an der Grenze zwischen Frankreich und Italien gelegen."
+        },
+        "mauna_loa": {
+            "name": "Mauna Loa",
+            "description": "Der volumen- und flächenmäßig größte aktive Schildvulkan der Erde auf der Insel Hawaii."
+        },
+        "patagonian_desert": {
+            "name": "Patagonische Wüste",
+            "description": "Die größte Wüste Südamerikas, die sich über die Region Patagonien in Argentinien und Chile erstreckt."
+        },
+        "atacama_desert": {
+            "name": "Atacama-Wüste",
+            "description": "Die trockenste nichtpolare Wüste der Erde in Chile, berühmt für ihre marsähnliche Landschaft und bedeutende astronomische Observatorien."
+        },
+        "gobi_desert": {
+            "name": "Wüste Gobi",
+            "description": "Eine ausgedehnte Kältewüste in Zentralasien, die Teile von China und der Mongolei umfasst, berühmt für ihre Seidenstraßen-Geschichte und Dinosaurierfossilien."
+        },
+        "arabian_desert": {
+            "name": "Arabische Wüste",
+            "description": "Eine riesige Wüstenlandschaft auf der Arabischen Halbinsel mit der weltweit größten zusammenhängenden Sandwüste, der Rub al-Chali."
+        },
+        "great_basin_desert": {
+            "name": "Große Beckenwüste",
+            "description": "Die größte Wüste Nordamerikas, Teil der Region des Großen Beckens in den Vereinigten Staaten."
+        },
+        "kalahari_desert": {
+            "name": "Kalahari",
+            "description": "Eine große, halbwüstenartige Sanddornensavanne im südlichen Afrika, die sich über Botswana, Namibia und Südafrika erstreckt."
+        },
+        "great_victoria_desert": {
+            "name": "Große Victoria-Wüste",
+            "description": "Die größte Wüste Australiens, geprägt von roten Sanddünen und Salzseen."
+        },
+        "caspian_sea": {
+            "name": "Kaspisches Meer",
+            "description": "Das flächenmäßig größte Binnengewässer der Erde, gelegen zwischen Europa und Asien."
+        },
+        "atlantic_ocean": {
+            "name": "Atlantischer Ozean",
+            "description": "Der zweitgrößte Ozean der Erde, der Amerika von Europa und Afrika trennt."
+        },
+        "pacific_ocean": {
+            "name": "Pazifischer Ozean",
+            "description": "Der größte und tiefste Ozean der Erde, der sich vom Arktischen Ozean im Norden bis zum Südlichen Ozean im Süden erstreckt."
+        },
+        "indian_ocean": {
+            "name": "Indischer Ozean",
+            "description": "Der drittgrößte Ozean der Welt, begrenzt von Asien, Afrika, Australien und dem Südlichen Ozean."
+        },
+        "mediterranean_sea": {
+            "name": "Mittelmeer",
+            "description": "Ein mit dem Atlantik verbundenes Meer, umgeben vom Mittelmeerraum und fast vollständig von Land umschlossen."
+        },
+        "baltic_sea": {
+            "name": "Ostsee",
+            "description": "Ein Randmeer des Atlantischen Ozeans in Nordeuropa, umgeben von Dänemark, Estland, Finnland, Deutschland, Lettland, Litauen, Polen, Russland und Schweden."
+        },
+        "black_sea": {
+            "name": "Schwarzes Meer",
+            "description": "Ein Binnenmeer zwischen Südosteuropa und Vorderasien, über das Mittelmeer mit dem Atlantik verbunden."
+        },
+        "red_sea": {
+            "name": "Rotes Meer",
+            "description": "Ein Meeresarm des Indischen Ozeans zwischen Afrika und Asien, bekannt für seinen hohen Salzgehalt und die reiche Unterwasserwelt."
+        },
+        "persian_gulf": {
+            "name": "Persischer Golf",
+            "description": "Ein Binnenmeer in Vorderasien, das über die Straße von Hormus mit dem Golf von Oman verbunden ist."
+        },
+        "gulf_of_mexico": {
+            "name": "Golf von Mexiko",
+            "description": "Ein Meeresbecken und Randmeer des Atlantischen Ozeans, weitgehend vom nordamerikanischen Kontinent umschlossen."
+        },
+        "greenland": {
+            "name": "Grönland",
+            "description": "Die größte Insel der Welt, gelegen zwischen Arktischem und Atlantischem Ozean, größtenteils von einem massiven Eisschild bedeckt."
+        },
+        "antarctic_desert": {
+            "name": "Antarktische Wüste",
+            "description": "Die größte und kälteste Wüste der Welt, die den Kontinent Antarktika mit extrem geringen Niederschlägen und minimaler Luftfeuchtigkeit bedeckt."
+        },
+        "victoria_falls": {
+            "name": "Victoriafälle",
+            "description": "Ein spektakulärer Wasserfall des Sambesi an der Grenze zwischen Sambia und Simbabwe, einer der breitesten Wasservorhänge der Erde."
+        },
+        "niagara_falls": {
+            "name": "Niagarafälle",
+            "description": "Eine berühmte Gruppe dreier mächtiger Wasserfälle an der Grenze zwischen den Vereinigten Staaten und Kanada."
+        },
+        "point_nemo": {
+            "name": "Point Nemo",
+            "description": "Der ozeanische Pol der Unzugänglichkeit, der am weitesten von jeglichem Festland entfernte Ort auf den Weltmeeren im Südpazifik."
+        },
+        "amazon_rainforest": {
+            "name": "Amazonas-Regenwald",
+            "description": "Der größte tropische Regenwald der Erde, der weite Teile des Amazonasbeckens in Südamerika umfasst und reich an biologischer Vielfalt ist."
+        },
+        "congo_rainforest": {
+            "name": "Kongo-Regenwald",
+            "description": "Der zweitgrößte tropische Regenwald der Welt im Kongobecken in Zentralafrika mit immenser Artenvielfalt."
+        },
+        "chicxulub_crater": {
+            "name": "Chicxulub-Krater",
+            "description": "Ein uralter Asteroideneinschlagskrater unter der Halbinsel Yucatán in Mexiko. Der gewaltige Einschlag löste vor 66 Millionen Jahren das Aussterben der Dinosaurier aus."
+        },
+        "sahara_desert": {
+            "name": "Sahara",
+            "description": "Die größte Trockenwüste der Erde, die den Großteil Nordafrikas einnimmt und für ihre endlosen Sanddünen und hyperarides Klima bekannt ist."
+        },
+        "nile_river": {
+            "name": "Nil",
+            "description": "Der längste Fluss Afrikas und einer der längsten der Welt, der nach Norden ins Mittelmeer fließt und die Wiege der altägyptischen Zivilisation bildete."
+        },
+        "grand_canyon": {
+            "name": "Grand Canyon",
+            "description": "Eine gewaltige, steile Schlucht des Colorado River in Arizona, USA, die Jahrmilliarden geologischer Gesteinsschichten freilegt."
+        },
+        "mariana_trench": {
+            "name": "Marianengraben",
+            "description": "Die tiefste bekannte Tiefseerinne der Erde mit fast 11.000 Metern Tiefe im Challengertief im westlichen Pazifik."
+        },
+        "pyramids_giza": {
+            "name": "Pyramiden von Gizeh",
+            "description": "Ein antiker Pyramidenkomplex in Ägypten, erbaut als Grabmäler für Pharaonen, einschließlich der weltberühmten Cheops-Pyramide."
+        },
+        "great_barrier_reef": {
+            "name": "Great Barrier Reef",
+            "description": "Das größte Korallenriffsystem der Erde im Korallenmeer vor der Küste von Queensland, Australien."
+        },
+        "himalaya_mountains": {
+            "name": "Himalaya",
+            "description": "Ein gewaltiges Hochgebirge in Asien, das den indischen Subkontinent vom tibetischen Hochland trennt und die höchsten Gipfel der Erde beherbergt."
+        },
+        "alps_mountains": {
+            "name": "Alpen",
+            "description": "Das höchste und ausgedehnteste Gebirge, das vollständig in Europa liegt, und sich über acht Alpenstaaten erstreckt."
+        },
+        "andes_mountains": {
+            "name": "Anden",
+            "description": "Die längste kontinentale Gebirgskette der Welt, die sich entlang der Westküste Südamerikas erstreckt."
+        },
+        "rocky_mountains": {
+            "name": "Rocky Mountains",
+            "description": "Ein großes Gebirgssystem im westlichen Nordamerika, das sich über 4.800 Kilometer von Kanada bis in die USA erstreckt."
+        },
+        "caucasus_mountains": {
+            "name": "Kaukasus",
+            "description": "Ein Gebirgssystem an der Nahtstelle zwischen Europa und Asien zwischen dem Schwarzen und dem Kaspischen Meer."
+        },
+        "atlas_mountains": {
+            "name": "Atlasgebirge",
+            "description": "Ein Gebirgszug in Nordafrika durch Marokko, Algerien und Tunesien, der die Mittelmeer- und Atlantikküste von der Sahara trennt."
+        },
+        "ural_mountains": {
+            "name": "Ural",
+            "description": "Ein Gebirgszug, der von Nord nach Süd durch Westrussland verläuft und traditionell als Grenze zwischen Europa und Asien gilt."
+        },
+        "lake_victoria": {
+            "name": "Victoriasee",
+            "description": "Der flächenmäßig größte See Afrikas und der zweitgrößte Süßwassersee der Erde, gelegen in Ostafrika."
+        },
+        "zagros_mountains": {
+            "name": "Zagros-Gebirge",
+            "description": "Ein Gebirgszug im Iran, Irak und der Südosttürkei, der sich über 1.600 Kilometer entlang des Iranischen Hochlands erstreckt."
+        },
+        "indonesian_archipelago": {
+            "name": "Indonesischer Archipel",
+            "description": "Die größte Inselgruppe der Welt zwischen Pazifik und Indischem Ozean mit über 17.000 Inseln."
+        },
+        "karakoram_mountains": {
+            "name": "Karakorum",
+            "description": "Ein Hochgebirge im Grenzgebiet von Pakistan, Indien und China mit einer der höchsten Dichten an Achttausendern, einschließlich des K2."
+        },
+        "yangtze_river": {
+            "name": "Jangtsekiang",
+            "description": "Der längste Fluss Asiens und der drittlängste der Welt, der vollständig innerhalb Chinas in das Ostchinesische Meer fließt."
+        },
+        "great_dividing_range": {
+            "name": "Great Dividing Range",
+            "description": "Australiens bedeutendster Gebirgszug, der sich über 3.500 Kilometer parallel zur australischen Ostküste erstreckt."
+        },
+        "bay_of_bengal": {
+            "name": "Golf von Bengalen",
+            "description": "Die größte Bucht der Welt im Nordosten des Indischen Ozeans, begrenzt von Indien, Bangladesch, Myanmar und den Andamanen."
+        },
+        "hudson_bay": {
+            "name": "Hudson Bay",
+            "description": "Ein riesiges Binnenmeer im Nordosten Kanadas, verbunden mit dem Arktischen und dem Atlantischen Ozean."
+        },
+        "mount_olympus": {
+            "name": "Olympus Mons",
+            "description": "Ein gigantischer Schildvulkan auf dem Mars, der höchste Vulkan und Berg im gesamten Sonnensystem (~21,9 km Höhe)."
+        },
+        "valles_marineris": {
+            "name": "Valles Marineris",
+            "description": "Ein riesiges Canyonsystem auf dem Mars, das über 4.000 km lang ist und den Grand Canyon der Erde weit übertrifft."
+        },
+        "gale_crater": {
+            "name": "Gale-Krater",
+            "description": "Ein großer Einschlagskrater auf dem Mars und Landeplatz des NASA-Rovers Curiosity mit dem zentralen Berg Mount Sharp."
+        },
+        "jezero_crater": {
+            "name": "Jezero-Krater",
+            "description": "Ein uralter See und Flussdelta auf dem Mars, Landeplatz des NASA-Rovers Perseverance auf der Suche nach Spuren einstigen mikrobiellen Lebens."
+        },
+        "perseverance_valley": {
+            "name": "Perseverance Valley",
+            "description": "Ein erodiertes Tal am Rand des Endeavour-Kraters auf dem Mars, das letzte Erkundungsgebiet des historischen NASA-Rovers Opportunity."
+        },
+        "hellas_planitia": {
+            "name": "Hellas Planitia",
+            "description": "Ein gewaltiges Einschlagsbecken mit rund 2.300 km Durchmesser auf der südlichen Mars-Hemisphäre, einer der größten Krater im Sonnensystem."
+        },
+        "ascraeus_mons": {
+            "name": "Ascraeus Mons",
+            "description": "Der nördlichste und höchste Vulkan des Tharsis-Montes-Trios (~18 km Höhe) auf dem Mars."
+        },
+        "pavonis_mons": {
+            "name": "Pavonis Mons",
+            "description": "Der mittlere Schildvulkan des Tharsis-Montes-Trios (~14 km Höhe), fast direkt auf dem Äquator des Mars gelegen."
+        },
+        "arsia_mons": {
+            "name": "Arsia Mons",
+            "description": "Der südlichste Vulkan des Tharsis-Montes-Trios (~12 km Höhe) mit einer riesigen Caldera und uralten Vulkanschloten."
+        },
+        "medusa_fossae": {
+            "name": "Medusae-Fossae-Formation",
+            "description": "Eine ausgedehnte geologische Formation entlang des Marsäquators aus winderodierten Vulkanasche-Ablagerungen mit möglichen Wassereisvorkommen im Untergrund."
+        },
+        "nili_fossae": {
+            "name": "Nili Fossae",
+            "description": "Ein komplexes tektonisches Grabensystem auf dem Mars, reich an Tonmineralen und Olivin, was auf eine einstige wasserreiche Umwelt hinweist."
+        },
+        "noctis_labyrinthus": {
+            "name": "Noctis Labyrinthus",
+            "description": "Ein labyrinthartiges System tiefer Canyons zwischen Valles Marineris und dem Tharsis-Plateau auf dem Mars, entstanden durch tektonische Dehnung."
+        },
+        "meridiani_planum": {
+            "name": "Meridiani Planum",
+            "description": "Eine ausgedehnte Ebene am Marsäquator mit reichen Hämatitvorkommen, ausführlich erforscht vom NASA-Rover Opportunity."
+        },
+        "hale_crater": {
+            "name": "Hale-Krater",
+            "description": "Ein 125 km breiter Einschlagskrater in Margaritifer Terra mit markanten Terrassenwänden und Hinweisen auf saisonal fließendes Salzwasser (RSL)."
+        },
+        "aram_chaos": {
+            "name": "Aram Chaos",
+            "description": "Ein uralter, 280 km breiter Krater, der in chaotisches Terrain eingestürzt ist und reich an Hämatit sowie wasserhaltigen Sulfaten ist."
+        },
+        "aurorae_chaos": {
+            "name": "Aurorae Chaos",
+            "description": "Ein massives chaotisches Terrain östlich von Valles Marineris, geformt durch katastrophale Ausbrüche urzeitlichen Grundwassers."
+        },
+        "aureum_chaos": {
+            "name": "Aureum Chaos",
+            "description": "Ein erodiertes chaotisches Schluchtensystem mit geschichteten Tafelbergen, entstanden durch gewaltige urzeitliche Fluten."
+        },
+        "planum_boreum": {
+            "name": "Planum Boreum",
+            "description": "Die Nordpolebene des Mars aus dauerhaften Wassereis- und Kohlendioxidschichten mit spiralförmigen Tälern (Chasma Boreale)."
+        },
+        "alba_mons": {
+            "name": "Alba Mons",
+            "description": "Ein einzigartiger Vulkan auf dem Mars mit der größten Grundfläche (~1.600 km Durchmesser), aber sehr flachen Hängen durch dünnflüssige Lava."
+        },
+        "elysium_mons": {
+            "name": "Elysium Mons",
+            "description": "Der Hauptvulkan der Elysium-Vulkanprovinz (~13,9 km Höhe), der weit über die Ebene Elysium Planitia aufragt."
+        },
+        "planum_australe": {
+            "name": "Planum Australe",
+            "description": "Die Südpolebene des Mars mit dicken Schichten aus Wassereis und saisonalem Trockeneis, bekannt für CO2-Geysire, die spinnenartige Muster erzeugen."
+        },
+        "utopia_planitia": {
+            "name": "Utopia Planitia",
+            "description": "Eine riesige Ebene in einem riesigen Einschlagsbecken auf der Nordhalbkugel des Mars, Landestelle von Viking 2 (1976) und dem chinesischen Rover Zhurong (2021)."
+        },
+        "great_red_spot": {
+            "name": "Großer Roter Fleck",
+            "description": "Ein gigantischer, langlebiger antizyklonaler Wirbelsturm in der Atmosphäre des Jupiter, größer als die Erde und seit Jahrhunderten aktiv."
+        },
+        "boosaule_montes": {
+            "name": "Boösaule Montes",
+            "description": "Das höchste bekannte nicht-vulkanische Gebirge im Sonnensystem (~18,2 km Höhe) auf dem Jupitermond Io."
+        },
+        "dis_mons": {
+            "name": "Dis Mons",
+            "description": "Eine markante vulkanische Gebirgsstruktur auf der schwefelreichen Oberfläche des Jupitermonds Io."
+        },
+        "lei_kung_fluctus": {
+            "name": "Lei Kung Fluctus",
+            "description": "Ein ausgedehntes Lavafeld (Fluctus) auf der Nordhalbkugel von Io, benannt nach Lei Gong, dem Donnergott der chinesischen Mythologie."
+        },
+        "great_dark_spot": {
+            "name": "Großer Dunkler Fleck",
+            "description": "Ein riesiger antizyklonaler Wirbelsturm in Neptuns Atmosphäre, 1989 erstmals von der NASA-Sonde Voyager 2 beobachtet."
+        },
+        "saturn_hexagon": {
+            "name": "Saturn-Hexagon",
+            "description": "Ein beständiges sechseckiges Wolkenmuster um den Nordpol des Saturns mit einer Ausdehnung von fast 30.000 km."
+        },
+        "kraken_mare": {
+            "name": "Kraken Mare",
+            "description": "Das größte Methanmeer auf der Oberfläche des Saturnmonds Titan, bestehend hauptsächlich aus flüssigem Methan und Ethan."
+        },
+        "ligeia_mare": {
+            "name": "Ligeia Mare",
+            "description": "Das zweitgrößte flüssige Kohlenwasserstoffmeer auf Titan, gelegen in der Nordpolregion des Mondes."
+        },
+        "punga_mare": {
+            "name": "Punga Mare",
+            "description": "Das drittgrößte bekannte Kohlenwasserstoffmeer auf Titan, nahe dem Nordpol gelegen und mit dem Kraken Mare verbunden."
+        },
+        "tranquility_base": {
+            "name": "Statio Tranquillitatis",
+            "description": "Der historische Landeplatz von Apollo 11 im Jahr 1969 auf dem Mond, an dem Menschen (Neil Armstrong & Buzz Aldrin) erstmals eine andere Welt betraten."
+        },
+        "tycho_crater": {
+            "name": "Tycho-Krater",
+            "description": "Ein markanter junger Einschlagskrater im südlichen Hochland des Mondes mit einem von der Erde aus weithin sichtbaren Strahlensystem."
+        },
+        "copernicus_crater": {
+            "name": "Kopernikus-Krater",
+            "description": "Ein auffälliger Einschlagskrater im Oceanus Procellarum mit ausgeprägtem Zentralberg und hellem Strahlensystem."
+        },
+        "mare_imbrium": {
+            "name": "Mare Imbrium",
+            "description": "Eine gewaltige, dunkle Lavaebene auf der Mondvorderseite, entstanden durch urzeitliche Einschläge und Vulkanismus."
+        },
+        "plato_crater": {
+            "name": "Plato-Krater",
+            "description": "Ein markanter, 100 km breiter Einschlagskrater am Nordrand des Mare Imbrium mit einem ebenen, dunklen Lavaboden."
+        },
+        "montes_apenninus": {
+            "name": "Mond-Apenninen",
+            "description": "Ein Gebirgszug auf dem Mond mit bis zu 5 km hohen Gipfeln, der den südöstlichen Rand des Mare-Imbrium-Beckens bildet."
+        },
+        "mare_serenitatis": {
+            "name": "Mare Serenitatis",
+            "description": "Ein 674 km breites kreisförmiges Mondmeer nordöstlich des Mare Imbrium."
+        },
+        "mare_tranquillitatis": {
+            "name": "Mare Tranquillitatis",
+            "description": "Eine berühmte Basaltebene und Landeplatz von Apollo 11 (Tranquility Base), die durch hohe Titankonzentrationen bläulich schimmert."
+        },
+        "mare_crisium": {
+            "name": "Mare Crisium",
+            "description": "Ein isoliertes, 556 km breites kreisförmiges Mondmeer nahe dem nordöstlichen Rand der Mondvorderseite."
+        },
+        "mare_fecunditatis": {
+            "name": "Mare Fecunditatis",
+            "description": "Ein großes, 840 km breites Mondmeerbecken im Südosten der Mondvorderseite, entstanden in der nektarischen Periode."
+        },
+        "mare_nectaris": {
+            "name": "Mare Nectaris",
+            "description": "Ein kleineres Mondmeer südlich des Mare Tranquillitatis, eingerahmt von den Pyrenäen-Bergen und dem Krater Fracastorius."
+        },
+        "mare_vaporum": {
+            "name": "Mare Vaporum",
+            "description": "Ein 245 km breites Mondmeer südwestlich des Mare Serenitatis nahe dem Zentrum der Mondvorderseite."
+        },
+        "mare_nubium": {
+            "name": "Mare Nubium",
+            "description": "Ein uraltes, 715 km breites kreisförmiges Mondmeer im Nubium-Becken im Südwesten der Mondvorderseite."
+        },
+        "langrenus_crater": {
+            "name": "Langrenus-Krater",
+            "description": "Ein markanter, 132 km breiter Einschlagskrater am Ostrand des Mare Fecunditatis mit Terrassenwänden und hellen Zentralbergen."
+        },
+        "stevinus_crater": {
+            "name": "Stevinus-Krater",
+            "description": "Ein 75 km breiter Einschlagskrater im südöstlichen Hochland des Mondes mit steilen Innenwänden und hellen Strahlenausläufern."
+        },
+        "mare_humorum": {
+            "name": "Mare Humorum",
+            "description": "Ein kreisförmiges, 389 km breites Mondmeerbecken, umgeben vom Krater Gassendi und konzentrischen Rillensystemen."
+        },
+        "mare_frigoris": {
+            "name": "Mare Frigoris",
+            "description": "Ein langgestrecktes nördliches Mondmeer, das sich weit nördlich von Mare Imbrium und Mare Serenitatis erstreckt."
+        },
+        "oceanus_procellarum": {
+            "name": "Oceanus Procellarum",
+            "description": "Ein riesiger Mondozean mit über 2.500 km Ausdehnung am Westrand der Mondvorderseite, die größte Basaltebene des Mondes."
+        },
+        "aristarchus_crater": {
+            "name": "Aristarchus-Krater",
+            "description": "Der hellste Einschlagskrater auf der Mondoberfläche (40 km Durchmesser) auf dem hochgelegenen Aristarchus-Plateau im Oceanus Procellarum."
+        },
+        "kepler_crater": {
+            "name": "Kepler-Krater",
+            "description": "Ein markanter junger, 31 km breiter Einschlagskrater im Oceanus Procellarum mit einem hellen Strahlensystem."
+        },
+        "mare_cognitum": {
+            "name": "Mare Cognitum",
+            "description": "Ein 376 km breites Mondmeer im Oceanus Procellarum, Ort des historischen Einschlags von Ranger 7 (1964) und der Landung von Apollo 12 (1969)."
+        },
+        "mare_insularum": {
+            "name": "Mare Insularum",
+            "description": "Ein 513 km breites Mondmeer südlich des Mare Imbrium und östlich des Oceanus Procellarum, Heimat der Krater Kopernikus und Kepler."
+        },
+        "zeeman_crater": {
+            "name": "Zeeman-Krater",
+            "description": "Ein gewaltiger, 190 km breiter Einschlagskrater nahe dem Südpol auf der Mondrückseite mit außergewöhnlich hohen Kraterwänden."
+        },
+        "tsiolkovskiy_crater": {
+            "name": "Ziolkowski-Krater",
+            "description": "Ein spektakulärer, 185 km breiter Krater auf der Mondrückseite mit dunklem Basaltboden und hohem Zentralberg."
+        },
+        "mouton_mons": {
+            "name": "Mons Mouton",
+            "description": "Ein hoher Tafelberg nahe dem Mondsüdpol, benannt nach der NASA-Mathematikerin Melba Mouton und Hauptziel für die Erforschung von Mondeis."
+        },
+        "south_pole_aitken": {
+            "name": "Südpol-Aitken-Becken",
+            "description": "Das älteste und größte bekannte Einschlagsbecken des Mondes (2.500 km Durchmesser) auf der Mondrückseite."
+        },
+        "mare_orientale": {
+            "name": "Mare Orientale",
+            "description": "Ein riesiges Multiring-Einschlagsbecken an der Westgrenze zwischen Vorder- und Rückseite des Mondes."
+        },
+        "mare_smythii": {
+            "name": "Mare Smythii",
+            "description": "Ein kreisförmiges Mondmeer am Äquator am östlichen Rand des Mondes."
+        },
+        "mare_marginis": {
+            "name": "Mare Marginis",
+            "description": "Ein Mondmeer am östlichen Rand des Mondes, direkt nördlich des Mare Smythii gelegen."
+        },
+        "maat_mons": {
+            "name": "Maat Mons",
+            "description": "Der höchste Vulkan auf der Venus (8 km Höhe) mit Hinweisen auf geologisch junge vulkanische Aktivität."
+        },
+        "ishtar_terra": {
+            "name": "Ishtar Terra",
+            "description": "Eines der beiden großen Hochlandkontinente auf der Venus nahe dem Nordpol, Heimat des Maxwell-Gebirges."
+        },
+        "aphrodite_terra": {
+            "name": "Aphrodite Terra",
+            "description": "Die größte Hochlandregion auf der Venus entlang des Äquators, in der Fläche etwa vergleichbar mit Afrika auf der Erde."
+        },
+        "beta_regio": {
+            "name": "Beta Regio",
+            "description": "Eine vulkanische Hochlandregion auf der Venus mit den massiven Schildvulkanen Theia Mons und Rhea Mons sowie dem Grabenbruch Devana Chasma."
+        },
+        "eistla_regio": {
+            "name": "Eistla Regio",
+            "description": "Eine vulkanische Hochlandregion auf der Venus mit großen Schildvulkanen wie Sif Mons und Gula Mons sowie markanten Corona-Strukturen."
+        },
+        "maxwell_montes": {
+            "name": "Maxwell Montes",
+            "description": "Das höchste Gebirge auf der Venus (~11 km Höhe) auf dem Hochlandmassiv Ishtar Terra."
+        },
+        "van_eyck_crater": {
+            "name": "Van-Eyck-Krater",
+            "description": "Ein stark erodierter Einschlagskrater auf Merkur (~271 km Durchmesser) nordöstlich des Caloris-Beckens, benannt nach dem flämischen Maler Jan van Eyck."
+        },
+        "caloris_basin": {
+            "name": "Caloris-Becken",
+            "description": "Ein kolossales, 1.550 km breites Einschlagsbecken auf Merkur, umgeben von Gebirgsringen durch den Einschlag eines Riesenasteroiden."
+        },
+        "vivaldi_crater": {
+            "name": "Vivaldi-Krater",
+            "description": "Ein markanter Ringgebirgskrater auf Merkur (~213 km Durchmesser) mit durchgehendem inneren Gebirgsring, benannt nach Antonio Vivaldi."
+        },
+        "tombaugh_regio": {
+            "name": "Tombaugh Regio",
+            "description": "Die berühmte herzförmige Ebene auf der Oberfläche des Zwergplaneten Pluto, die hauptsächlich aus Stickstoffeis besteht."
+        },
+        "occator_crater": {
+            "name": "Occator-Krater",
+            "description": "Ein Krater auf dem Zwergplaneten Ceres, berühmt für geheimnisvolle helle Natriumcarbonat-Ablagerungen (Cerealia Facula)."
+        },
+        "rheasilvia_peak": {
+            "name": "Rheasilvia-Zentralberg",
+            "description": "Ein gewaltiger Einschlagskrater (505 km) auf dem Asteroiden Vesta mit einem 22 km hohen Zentralberg, einem der höchsten Berge im Sonnensystem."
+        },
+        "herschel_crater": {
+            "name": "Herschel-Krater",
+            "description": "Ein gigantischer Einschlagskrater auf dem Saturnmond Mimas mit 139 km Durchmesser (fast ein Drittel des Monddurchmessers), der Mimas das Aussehen des Todessterns verleiht."
         }
     }
 }

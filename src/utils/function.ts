@@ -1,5 +1,5 @@
 import { Camera, MathUtils, Object3D, Vector3 } from "three"
-import { solar_system, alpha_centauri, trappist_1, lich, toi_700, copernicus, kepler_32, wasp_47, rho_coronae_borealis, nu_scorpii, hd_110067, cervantes, universes, universe_ids } from "@constants"
+import { solar_system, alpha_centauri, trappist_1, lich, toi_700, copernicus, kepler_32, wasp_47, rho_coronae_borealis, nu_scorpii, hd_110067, cervantes, universes, universe_ids, AU_SCALE } from "@constants"
 import { useEffect, useMemo, useRef, useState, type ChangeEvent } from "react";
 import type { Belt, CelestialObject, Landmark, Planet, Satellite, Star } from "@types";
 import { useLocation } from "react-router";
@@ -210,6 +210,18 @@ export const lengthFormat = (value: number) => {
         return `${(length / 1e+6)?.toLocaleString()}M km`
     } else {
         return `${length?.toLocaleString()} km`
+    }
+}
+
+export const auLengthFormat = (value: number) => {
+    const length = Math.abs(value)
+
+    if (Number((length / AU_SCALE).toFixed(1)) >= 0.1) {
+        return `${(length / AU_SCALE)?.toLocaleString(undefined, {
+            maximumFractionDigits: 1,
+        })} AU`
+    } else {
+        return ""
     }
 }
 

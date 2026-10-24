@@ -9,6 +9,7 @@ import { Vector3 } from "three"
 import { Controls, handleZoomIn, handleZoomOut, useCelestial, useMobile, useVariant } from "@function"
 import { latLngToVector3 } from "@function"
 import { Mode, type CelestialObject, type Planet, type Universe } from "@types"
+import { useSearchParams } from "react-router"
 
 interface Props {
     data: Universe
@@ -33,6 +34,7 @@ const Scene = ({ data }: Props) => {
 
     const bound = useBounds()
     const isMobile = useMobile()
+    const [searchParams] = useSearchParams()
 
     const { sizeScale, pauseOrbitWhenFocus } = useSettingStore()
     const { mode, focus, focusIndex, focusLandmark, resetControl, setControl } = useControlStore()
@@ -47,8 +49,14 @@ const Scene = ({ data }: Props) => {
     const focusData = focus ? (celestial.getObjectById(focus) as Planet) : undefined
     const variantData = useVariant(focusData as Planet)
 
-    useEffect(() => {
-        setControl(defaultControl)
+    useLayoutEffect(() => {
+        const queryFocus = searchParams.get("focus")
+        const object = celestial.getObjectById(queryFocus || "")
+
+        setControl({
+            ...defaultControl,
+            focus: object ? object.id : ""
+        })
     }, [universe])
 
     const minDistance = useMemo(() => {

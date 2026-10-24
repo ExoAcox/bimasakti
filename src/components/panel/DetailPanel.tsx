@@ -1,7 +1,7 @@
 /* eslint-disable react-hooks/set-state-in-effect */
 import clsx from "clsx";
 import { useControlStore } from "@state";
-import { useCelestial, lengthFormat, timeFormat, useVariant, useMobile } from "@function";
+import { useCelestial, lengthFormat, timeFormat, useVariant, useMobile, auLengthFormat } from "@function";
 import { type Belt, type CelestialObject, type Planet, type SpaceCraft, type Star } from "@types";
 
 import { useTranslation } from "react-i18next";
@@ -23,7 +23,6 @@ import {
     TbMoonStars
 } from "react-icons/tb";
 import { BiArrowBack } from "react-icons/bi";
-import { AU_SCALE } from "@constants";
 
 const PanelDetail = () => {
     const [isPanelOpen, setPanelOpen] = useState(true);
@@ -52,6 +51,8 @@ const PanelDetail = () => {
     if (!data) return null;
 
     const parentPlanet = (data.parent ? celestial.getObjectById(data.parent) : {}) as Planet;
+    const distance = (data as Star)?.barycenterDistance ?? 0 + data.distance
+
 
     const handleClick = () => {
         setPanelOpen(!isPanelOpen);
@@ -259,35 +260,15 @@ const PanelDetail = () => {
                                     <div className="flex items-center gap-1.5 text-purple-400 mb-1">
                                         <TbArrowsHorizontal className="size-3.5" />
                                         <span className="text-[10px] uppercase font-semibold tracking-wider text-tertiary truncate">
-                                            {t("ui.distance_from")} {data.parent ? t(`object.${data.parent}.name`) : t("object.sun.name")}
+                                            {t("ui.distance_from", { object: data.parent ? t(`object.${data.parent}.name`) : t("ui.barycenter") })}
                                         </span>
                                     </div>
                                     <div className="font-space-grotesk text-xs sm:text-sm font-bold text-white tracking-tight">
-                                        {lengthFormat(data.distance)}
-                                        {Number((data.distance / AU_SCALE).toFixed(1)) ? (
+                                        {lengthFormat(distance)}
+                                        {auLengthFormat(distance) ? (
                                             <>
                                                 <span className="mx-2.5">·</span>
-                                                {(data.distance / AU_SCALE).toLocaleString(undefined, { maximumFractionDigits: 1 })} AU
-                                            </>
-                                        ) : ""}
-                                    </div>
-                                </div>
-                            </When>
-
-                            <When condition={Boolean((data as Star).barycenterDistance)}>
-                                <div className="flex-1 p-2.5 min-w-[60%] col-span-2 rounded-xl bg-white/3 hover:bg-white/6 border border-white/5 transition-colors">
-                                    <div className="flex items-center gap-1.5 text-purple-400 mb-1">
-                                        <TbArrowsHorizontal className="size-3.5" />
-                                        <span className="text-[10px] uppercase font-semibold tracking-wider text-tertiary truncate">
-                                            {t("ui.distance_from_barycenter")}
-                                        </span>
-                                    </div>
-                                    <div className="font-space-grotesk text-xs sm:text-sm font-bold text-white tracking-tight">
-                                        {lengthFormat((data as Star).barycenterDistance!)}
-                                        {Number(((data as Star).barycenterDistance! / AU_SCALE).toFixed(1)) ? (
-                                            <>
-                                                <span className="mx-2.5">·</span>
-                                                {((data as Star).barycenterDistance! / AU_SCALE).toLocaleString(undefined, { maximumFractionDigits: 1 })} AU
+                                                {auLengthFormat(distance)}
                                             </>
                                         ) : ""}
                                     </div>

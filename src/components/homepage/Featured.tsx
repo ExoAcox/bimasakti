@@ -3,10 +3,11 @@ import { useCelestial } from "@function";
 import type { CelestialObject } from "@types";
 import { useEffect, useMemo, useState } from "react";
 import { useTranslation } from "react-i18next";
-import { MdSearch } from "react-icons/md";
+import { MdClose, MdSearch } from "react-icons/md";
 import { FaCompass, FaChevronDown, FaChevronUp } from "react-icons/fa";
 import clsx from "clsx";
 import ModalObject from "./ModalObject";
+import { When } from "react-if";
 
 type Category = "all" | "star" | "planet" | "satellite" | "spacecraft" | "other";
 
@@ -70,11 +71,6 @@ const Featured = () => {
             <div className="relative rounded-3xl bg-slate-950/60 backdrop-blur-2xl border border-white/10 p-4 sm:p-8 shadow-[0_20px_50px_rgba(0,0,0,0.6)]">
                 {/* Section Header */}
                 <div className="flex flex-col md:flex-row md:items-end justify-between gap-6">
-
-                    {/* <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-cyan-500/10 border border-cyan-500/20 text-cyan-300 font-space-grotesk text-[10px] sm:text-xs md:text-sm font-medium uppercase tracking-widest mb-3">
-                            <FaCompass className="size-3" />
-                            <span>{t("ui.celestial_catalog")}</span>
-                        </div> */}
                     <h3 className="text-2xl sm:text-3xl font-bold font-space-grotesk text-white">
                         {t("ui.featured_objects")}
                     </h3>
@@ -82,14 +78,17 @@ const Featured = () => {
 
                     {/* Search Bar */}
                     <div className="relative w-full md:w-72">
-                        <MdSearch className="absolute left-3.5 top-1/2 -translate-y-1/2 size-5 text-slate-400" />
+                        <MdSearch className="absolute left-3 top-1/2 -translate-y-1/2 size-5 text-slate-400" />
                         <input
                             type="text"
                             value={searchQuery}
                             onChange={(e) => setSearchQuery(e.target.value)}
                             placeholder={t("ui.search_celestial")}
-                            className="w-full pl-10 pr-4 py-2.5 rounded-xl bg-white/5 border border-white/10 focus:border-accent text-xs text-white placeholder-slate-400 focus:outline-none focus:ring-1 focus:ring-accent transition-all"
+                            className="w-full px-10 py-2.5 rounded-xl bg-white/5 border border-white/10 focus:border-accent text-xs text-white placeholder-slate-400 focus:outline-none focus:ring-1 focus:ring-accent/50 transition-all"
                         />
+                        <When condition={searchQuery}>
+                            <MdClose onClick={() => setSearchQuery("")} className="absolute right-3 top-1/2 -translate-y-1/2 size-5 text-slate-400 cursor-pointer hover:text-red/80" />
+                        </When>
                     </div>
                 </div>
 
