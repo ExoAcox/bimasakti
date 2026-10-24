@@ -20,7 +20,7 @@ const KTX2Loader = ({ path, opacity }: { path: string, opacity: number }) => {
     return <meshStandardMaterial
         color="#ffffff"
         opacity={opacity}
-        alphaMap={texture}
+        map={texture}
         transparent={true}
         depthWrite={false}
         roughness={1.0}
@@ -37,7 +37,7 @@ const ImageLoader = ({ path, opacity }: { path: string, opacity: number }) => {
     return <meshStandardMaterial
         color="#ffffff"
         opacity={opacity}
-        alphaMap={texture}
+        map={texture}
         transparent={true}
         depthWrite={false}
         roughness={1.0}

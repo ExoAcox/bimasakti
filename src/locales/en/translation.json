@@ -143,6 +143,7 @@
         "ice_giant_planet": "Ice Giant Planet",
         "dwarf_planet": "Dwarf Planet",
         "super_earth_planet": "Super-Earth Planet",
+        "gas_dwarf_planet": "Gas Dwarf Planet",
         "yellow_dwarf_star": "Yellow Dwarf Star",
         "orange_dwarf_star": "Orange Dwarf Star",
         "red_dwarf_star": "Red Dwarf Star",
@@ -863,6 +864,83 @@
             "name": "Nu Scorpii Db",
             "nickname": "Nu Scorpii Db",
             "description": "Nu Scorpii Db is a close spectroscopic companion to Da, revolving in a tight 8.2-day orbit at approximately 0.15 AU."
+        },
+        "hd_110067": {
+            "name": "HD 110067",
+            "title": "HD 110067 System",
+            "nickname": "HD 110067",
+            "description": "HD 110067 is a bright orange dwarf star (K0V) located approximately 105 light-years away in the constellation Coma Berenices. It hosts a remarkable system of six sub-Neptune exoplanets locked in a rare, pristine resonant chain."
+        },
+        "hd_110067_b": {
+            "name": "HD 110067 b",
+            "nickname": "HD 110067 b",
+            "description": "HD 110067 b is the innermost sub-Neptune exoplanet orbiting every 9.11 days at 0.079 AU, with a radius about 1.94 times that of Earth."
+        },
+        "hd_110067_c": {
+            "name": "HD 110067 c",
+            "nickname": "HD 110067 c",
+            "description": "HD 110067 c is a sub-Neptune exoplanet in a 3:2 orbital resonance with planet b, completing an orbit every 13.67 days with a radius 2.49 times Earth."
+        },
+        "hd_110067_d": {
+            "name": "HD 110067 d",
+            "nickname": "HD 110067 d",
+            "description": "HD 110067 d is the third planet in the resonant chain, orbiting every 20.52 days in a 3:2 resonance with planet c, with a radius 2.05 times Earth."
+        },
+        "hd_110067_e": {
+            "name": "HD 110067 e",
+            "nickname": "HD 110067 e",
+            "description": "HD 110067 e is a sub-Neptune exoplanet orbiting every 30.79 days in a 3:2 resonance with planet d, having a radius approximately 1.94 times Earth."
+        },
+        "hd_110067_f": {
+            "name": "HD 110067 f",
+            "nickname": "HD 110067 f",
+            "description": "HD 110067 f is the largest planet in the system with a radius 2.85 times Earth, orbiting every 41.06 days in a 4:3 resonance with planet e."
+        },
+        "hd_110067_g": {
+            "name": "HD 110067 g",
+            "nickname": "HD 110067 g",
+            "description": "HD 110067 g is the outermost known sub-Neptune exoplanet in the system, orbiting in 54.77 days in a 4:3 resonance with planet f, with a radius 2.61 times Earth."
+        },
+        "cervantes": {
+            "name": "Cervantes (Mu Arae)",
+            "title": "Cervantes (Mu Arae) System",
+            "nickname": "Cervantes",
+            "description": "Cervantes (Mu Arae / HD 160691) is a solar-type yellow star located approximately 50.6 light-years away in the constellation Ara. It is orbited by four known exoplanets named after characters from Miguel de Cervantes' Don Quixote."
+        },
+        "dulcinea": {
+            "name": "Dulcinea",
+            "nickname": "Dulcinea",
+            "description": "Dulcinea (Mu Arae c) is the innermost exoplanet in the system, orbiting in just 9.64 days at 0.091 AU. Historically celebrated as one of the first discovered hot Neptune / super-Earth exoplanets."
+        },
+        "rocinante": {
+            "name": "Rocinante",
+            "nickname": "Rocinante",
+            "description": "Rocinante (Mu Arae d) is a gas giant with at least half the mass of Jupiter, completing an orbit every 310.55 days at approximately 0.92 AU."
+        },
+        "quijote": {
+            "name": "Quijote",
+            "nickname": "Quijote",
+            "description": "Quijote (Mu Arae b) is a massive Jovian gas giant with roughly 1.7 Jupiter masses orbiting at 1.50 AU in a 643-day period, within the system's habitable zone."
+        },
+        "sancho": {
+            "name": "Sancho",
+            "nickname": "Sancho",
+            "description": "Sancho (Mu Arae e) is the outermost known planet in the Cervantes system, a ringed gas giant orbiting every 4,206 days at approximately 5.23 AU."
+        },
+        "campeador": {
+            "name": "Campeador",
+            "nickname": "Campeador",
+            "description": "Campeador (Rocinante I) is a fictional moon orbiting the gas giant Rocinante at a distance of 421,600 km with a 1.37-day orbital period, possessing a dense cloudy atmosphere."
+        },
+        "delamancha": {
+            "name": "Dela Mancha",
+            "nickname": "Dela Mancha",
+            "description": "Dela Mancha (Quijote I) is a large fictional moon orbiting the Jovian gas giant Quijote at 802,685 km in 3.59 days, featuring a dynamic cloudy atmosphere."
+        },
+        "panza": {
+            "name": "Panza",
+            "nickname": "Panza",
+            "description": "Panza (Sancho I) is an inner fictional moon orbiting the majestic ringed gas giant Sancho at 503,247 km in 1.27 days."
         },
         "s2": {
             "name": "S2 (S0-2)",

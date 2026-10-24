@@ -194,10 +194,11 @@ const Section = ({ children, data, initialOpen }: SectionProps) => {
 
 const Sidebar = () => {
     const { t } = useTranslation();
-    const [isOpen, setOpen] = useState(true);
+    const isTablet = useMobile(1080);
+
+    const [isOpen, setOpen] = useState(!isTablet);
     const [search, setSearch] = useState("");
 
-    const isTablet = useMobile(1080);
     const { focus, setControl } = useControlStore();
     const navigate = useNavigate();
 

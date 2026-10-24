@@ -19,6 +19,9 @@ export default {
             "/kepler-32",
             "/wasp-47",
             "/rho_coronae_borealis",
+            "/nu_scorpii",
+            "/hd_110067",
+            "/cervantes",
             "/liveview/mars"
         ];
     },

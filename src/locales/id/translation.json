@@ -144,6 +144,7 @@
         "ice_giant_planet": "Planet Raksasa Es",
         "dwarf_planet": "Planet Katai",
         "super_earth_planet": "Planet Bumi Super",
+        "gas_dwarf_planet": "Planet Katai Gas",
         "yellow_dwarf_star": "Bintang Katai Kuning",
         "orange_dwarf_star": "Bintang Katai Oranye",
         "red_dwarf_star": "Bintang Katai Merah",
@@ -868,6 +869,83 @@
             "name": "Nu Scorpii Db",
             "nickname": "Nu Scorpii Db",
             "description": "Nu Scorpii Db adalah pendamping biner spektroskopi jarak dekat dari Da, mengitari pasangannya setiap 8,2 hari pada jarak sangat dekat 0,15 AU."
+        },
+        "hd_110067": {
+            "name": "HD 110067",
+            "title": "Sistem HD 110067",
+            "nickname": "HD 110067",
+            "description": "HD 110067 adalah bintang katai jingga (K0V) yang terletak sekitar 105 tahun cahaya di rasi bintang Coma Berenices. Sistem ini menampung enam eksoplanet sub-Neptunus yang terkunci dalam rantai resonansi orbital langka dan murni."
+        },
+        "hd_110067_b": {
+            "name": "HD 110067 b",
+            "nickname": "HD 110067 b",
+            "description": "HD 110067 b adalah eksoplanet sub-Neptunus terdalam yang mengorbit setiap 9,11 hari pada jarak 0,079 AU dengan radius sekitar 1,94 kali radius Bumi."
+        },
+        "hd_110067_c": {
+            "name": "HD 110067 c",
+            "nickname": "HD 110067 c",
+            "description": "HD 110067 c adalah eksoplanet sub-Neptunus dalam resonansi orbital 3:2 dengan planet b, menyelesaikan satu orbit setiap 13,67 hari dengan radius 2,49 kali Bumi."
+        },
+        "hd_110067_d": {
+            "name": "HD 110067 d",
+            "nickname": "HD 110067 d",
+            "description": "HD 110067 d adalah planet ketiga dalam rantai resonansi, mengorbit setiap 20,52 hari dalam resonansi 3:2 dengan planet c, dengan radius 2,05 kali Bumi."
+        },
+        "hd_110067_e": {
+            "name": "HD 110067 e",
+            "nickname": "HD 110067 e",
+            "description": "HD 110067 e adalah eksoplanet sub-Neptunus yang mengorbit setiap 30,79 hari dalam resonansi 3:2 dengan planet d, dengan radius sekitar 1,94 kali Bumi."
+        },
+        "hd_110067_f": {
+            "name": "HD 110067 f",
+            "nickname": "HD 110067 f",
+            "description": "HD 110067 f adalah planet terbesar dalam sistem dengan radius 2,85 kali Bumi, mengorbit setiap 41,06 hari dalam resonansi 4:3 dengan planet e."
+        },
+        "hd_110067_g": {
+            "name": "HD 110067 g",
+            "nickname": "HD 110067 g",
+            "description": "HD 110067 g adalah eksoplanet sub-Neptunus terluar yang diketahui di sistem ini, mengorbit dalam 54,77 hari dalam resonansi 4:3 dengan planet f, dengan radius 2,61 kali Bumi."
+        },
+        "cervantes": {
+            "name": "Cervantes (Mu Arae)",
+            "title": "Sistem Cervantes (Mu Arae)",
+            "nickname": "Cervantes",
+            "description": "Cervantes (Mu Arae / HD 160691) adalah bintang tipe matahari berjarak sekitar 50,6 tahun cahaya di rasi bintang Ara. Bintang ini diorbit oleh empat eksoplanet yang dinamai dari tokoh-tokoh mahakarya Don Quixote karya Miguel de Cervantes."
+        },
+        "dulcinea": {
+            "name": "Dulcinea",
+            "nickname": "Dulcinea",
+            "description": "Dulcinea (Mu Arae c) adalah eksoplanet terdalam di sistem ini, mengorbit dalam waktu 9,64 hari pada jarak 0,091 AU. Planet ini merupakan salah satu Neptunus panas / Bumi super pertama yang pernah ditemukan."
+        },
+        "rocinante": {
+            "name": "Rocinante",
+            "nickname": "Rocinante",
+            "description": "Rocinante (Mu Arae d) adalah raksasa gas dengan massa setidaknya setengah massa Jupiter, menyelesaikan orbitnya setiap 310,55 hari pada jarak sekitar 0,92 AU."
+        },
+        "quijote": {
+            "name": "Quijote",
+            "nickname": "Quijote",
+            "description": "Quijote (Mu Arae b) adalah raksasa gas masif berukuran sekitar 1,7 massa Jupiter yang mengorbit di zona laik huni pada jarak 1,50 AU dengan periode 643 hari."
+        },
+        "sancho": {
+            "name": "Sancho",
+            "nickname": "Sancho",
+            "description": "Sancho (Mu Arae e) adalah planet terluar yang diketahui di sistem Cervantes, sebuah raksasa gas bercincin megah yang mengorbit setiap 4.206 hari pada jarak 5,23 AU."
+        },
+        "campeador": {
+            "name": "Campeador",
+            "nickname": "Campeador",
+            "description": "Campeador (Rocinante I) adalah bulan fiksi yang mengorbit raksasa gas Rocinante pada jarak 421.600 km dengan periode orbit 1,37 hari dan atmosfer berawan tebal."
+        },
+        "delamancha": {
+            "name": "Dela Mancha",
+            "nickname": "Dela Mancha",
+            "description": "Dela Mancha (Quijote I) adalah bulan fiksi besar yang mengorbit raksasa gas Quijote pada jarak 802.685 km dalam waktu 3,59 hari dengan atmosfer berawan yang dinamis."
+        },
+        "panza": {
+            "name": "Panza",
+            "nickname": "Panza",
+            "description": "Panza (Sancho I) adalah bulan fiksi bagian dalam yang mengorbit raksasa gas bercincin Sancho pada jarak 503.247 km dalam 1,27 hari."
         },
         "s2": {
             "name": "S2 (S0-2)",

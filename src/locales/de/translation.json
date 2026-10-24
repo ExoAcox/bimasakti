@@ -144,6 +144,7 @@
         "ice_giant_planet": "Eisriesen-Planet",
         "dwarf_planet": "Zwergplanet",
         "super_earth_planet": "Supererde-Planet",
+        "gas_dwarf_planet": "Gaszwerg-Planet",
         "yellow_dwarf_star": "Gelber Zwergstern",
         "orange_dwarf_star": "Oranger Zwergstern",
         "red_dwarf_star": "Roter Zwergstern",
@@ -811,6 +812,83 @@
             "name": "Nu Scorpii Db",
             "nickname": "Nu Scorpii Db",
             "description": "Nu Scorpii Db ist ein enger spektroskopischer Begleiter von Da, der seine Bahn alle 8,2 Tage bei einem Abstand von nur 0,15 AE vollendet."
+        },
+        "hd_110067": {
+            "name": "HD 110067",
+            "title": "HD 110067-System",
+            "nickname": "HD 110067",
+            "description": "HD 110067 ist ein heller oranger Zwergstern (K0V), etwa 105 Lichtjahre entfernt im Sternbild Haar der Berenike (Coma Berenices). Er beherbergt sechs Sub-Neptun-Exoplaneten in einer seltenen, ungestörten Resonanzkette."
+        },
+        "hd_110067_b": {
+            "name": "HD 110067 b",
+            "nickname": "HD 110067 b",
+            "description": "HD 110067 b ist der innerste Sub-Neptun-Exoplanet, der seinen Stern alle 9,11 Tage bei 0,079 AE umkreist und etwa den 1,94-fachen Erdradius besitzt."
+        },
+        "hd_110067_c": {
+            "name": "HD 110067 c",
+            "nickname": "HD 110067 c",
+            "description": "HD 110067 c ist ein Sub-Neptun in einer 3:2-Bahnresonanz mit Planet b, der alle 13,67 Tage einen Orbit vollendet und den 2,49-fachen Erdradius aufweist."
+        },
+        "hd_110067_d": {
+            "name": "HD 110067 d",
+            "nickname": "HD 110067 d",
+            "description": "HD 110067 d ist der dritte Planet in der Resonanzkette, der alle 20,52 Tage in einer 3:2-Resonanz zu Planet c kreist und den 2,05-fachen Erdradius besitzt."
+        },
+        "hd_110067_e": {
+            "name": "HD 110067 e",
+            "nickname": "HD 110067 e",
+            "description": "HD 110067 e ist ein Sub-Neptun-Exoplanet mit einer Umlaufzeit von 30,79 Tagen in einer 3:2-Resonanz mit Planet d und etwa 1,94-fachem Erdradius."
+        },
+        "hd_110067_f": {
+            "name": "HD 110067 f",
+            "nickname": "HD 110067 f",
+            "description": "HD 110067 f ist mit dem 2,85-fachen Erdradius der größte Planet im System und umkreist seinen Stern alle 41,06 Tage in einer 4:3-Resonanz mit Planet e."
+        },
+        "hd_110067_g": {
+            "name": "HD 110067 g",
+            "nickname": "HD 110067 g",
+            "description": "HD 110067 g ist der äußerste bekannte Sub-Neptun im System, der in 54,77 Tagen in einer 4:3-Resonanz zu Planet f kreist und den 2,61-fachen Erdradius aufweist."
+        },
+        "cervantes": {
+            "name": "Cervantes (Mu Arae)",
+            "title": "Cervantes-System (Mu Arae)",
+            "nickname": "Cervantes",
+            "description": "Cervantes (Mu Arae / HD 160691) ist ein sonnenähnlicher gelber Stern, der etwa 50,6 Lichtjahre entfernt im Sternbild Altar (Ara) liegt. Er wird von vier Exoplaneten umkreist, die nach Figuren aus Miguel de Cervantes' Don Quijote benannt sind."
+        },
+        "dulcinea": {
+            "name": "Dulcinea",
+            "nickname": "Dulcinea",
+            "description": "Dulcinea (Mu Arae c) ist der innerste Exoplanet des Systems und vollendet seinen Orbit in 9,64 Tagen bei 0,091 AE. Er gilt als einer der ersten entdeckten heißen Neptune bzw. Supererden."
+        },
+        "rocinante": {
+            "name": "Rocinante",
+            "nickname": "Rocinante",
+            "description": "Rocinante (Mu Arae d) ist ein Gasriese mit mindestens der halben Jupitermasse, der seinen Stern alle 310,55 Tage in einem Abstand von etwa 0,92 AE umkreist."
+        },
+        "quijote": {
+            "name": "Quijote",
+            "nickname": "Quijote",
+            "description": "Quijote (Mu Arae b) ist ein massereicher Gasriese mit etwa 1,7 Jupitermassen, der in der habitablen Zone bei 1,50 AE mit einer Periode von 643 Tagen kreist."
+        },
+        "sancho": {
+            "name": "Sancho",
+            "nickname": "Sancho",
+            "description": "Sancho (Mu Arae e) ist der äußerste bekannte Planet des Cervantes-Systems, ein beringter Gasriese mit einer Umlaufzeit von 4.206 Tagen bei rund 5,23 AE."
+        },
+        "campeador": {
+            "name": "Campeador",
+            "nickname": "Campeador",
+            "description": "Campeador (Rocinante I) ist ein fiktiver Mond, der den Gasriesen Rocinante in einem Abstand von 421.600 km mit einer Umlaufzeit von 1,37 Tagen und einer dichten Wolkenatmosphäre umkreist."
+        },
+        "delamancha": {
+            "name": "Dela Mancha",
+            "nickname": "Dela Mancha",
+            "description": "Dela Mancha (Quijote I) ist ein großer fiktiver Mond, der den Gasriesen Quijote in 802.685 km Entfernung innerhalb von 3,59 Tagen mit einer dynamischen Atmosphäre umkreist."
+        },
+        "panza": {
+            "name": "Panza",
+            "nickname": "Panza",
+            "description": "Panza (Sancho I) ist ein innerer fiktiver Mond, der den beringten Gasriesen Sancho in 503.247 km Entfernung in 1,27 Tagen umrundet."
         },
         "s2": {
             "name": "S2 (S0-2)",

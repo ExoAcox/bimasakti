@@ -22,6 +22,8 @@
       "pages/wasp-47": "nodejs_eyJydW50aW1lIjoibm9kZWpzIn0",
       "pages/rho_coronae_borealis": "nodejs_eyJydW50aW1lIjoibm9kZWpzIn0",
       "pages/nu_scorpii": "nodejs_eyJydW50aW1lIjoibm9kZWpzIn0",
+      "pages/hd_110067": "nodejs_eyJydW50aW1lIjoibm9kZWpzIn0",
+      "pages/cervantes": "nodejs_eyJydW50aW1lIjoibm9kZWpzIn0",
       "pages/sagittarius_a": "nodejs_eyJydW50aW1lIjoibm9kZWpzIn0",
       "pages/liveview/mars": "nodejs_eyJydW50aW1lIjoibm9kZWpzIn0",
       "pages/liveview/moon": "nodejs_eyJydW50aW1lIjoibm9kZWpzIn0",
@@ -149,6 +151,24 @@
         "parentId": "components/Canvas",
         "file": "src/pages/nu_scorpii.tsx",
         "path": "nu_scorpii",
+        "config": {
+          "runtime": "nodejs"
+        }
+      },
+      "pages/hd_110067": {
+        "id": "pages/hd_110067",
+        "parentId": "components/Canvas",
+        "file": "src/pages/hd_110067.tsx",
+        "path": "hd_110067",
+        "config": {
+          "runtime": "nodejs"
+        }
+      },
+      "pages/cervantes": {
+        "id": "pages/cervantes",
+        "parentId": "components/Canvas",
+        "file": "src/pages/cervantes.tsx",
+        "path": "cervantes",
         "config": {
           "runtime": "nodejs"
         }
@@ -327,6 +347,18 @@
         "file": "./pages/nu_scorpii.tsx",
         "path": "nu_scorpii"
       },
+      "pages/hd_110067": {
+        "id": "pages/hd_110067",
+        "parentId": "components/Canvas",
+        "file": "./pages/hd_110067.tsx",
+        "path": "hd_110067"
+      },
+      "pages/cervantes": {
+        "id": "pages/cervantes",
+        "parentId": "components/Canvas",
+        "file": "./pages/cervantes.tsx",
+        "path": "cervantes"
+      },
       "pages/sagittarius_a": {
         "id": "pages/sagittarius_a",
         "parentId": "components/Canvas",
@@ -448,6 +480,14 @@
               {
                 "file": "./pages/nu_scorpii.tsx",
                 "path": "nu_scorpii"
+              },
+              {
+                "file": "./pages/hd_110067.tsx",
+                "path": "hd_110067"
+              },
+              {
+                "file": "./pages/cervantes.tsx",
+                "path": "cervantes"
               },
               {
                 "file": "./pages/sagittarius_a.tsx",

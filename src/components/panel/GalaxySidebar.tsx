@@ -16,7 +16,7 @@ const Sidebar = () => {
     const navigate = useNavigate()
     const isMobile = useMobile()
 
-    const [isOpen, setOpen] = useState(true)
+    const [isOpen, setOpen] = useState(!isMobile)
     const { focus, setFocus } = useGalaxyStore()
 
     const handleClick = (id: string) => {

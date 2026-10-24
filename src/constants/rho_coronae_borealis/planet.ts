@@ -16,7 +16,8 @@ export const planets: Planet[] = [
         texture_hd: "rho_coronae_borealis_e_hd.ktx2",
         cloud_texture: "rho_coronae_borealis_e_cloud.ktx2",
         cloud_texture_hd: "rho_coronae_borealis_e_cloud_hd.ktx2",
-        icon: "mars.png",
+        cloud_opacity: 0.8,
+        icon: "venus.png",
         satellites: []
     },
     {
@@ -64,7 +65,12 @@ export const planets: Planet[] = [
         rotate_duration: 282.0,
         texture: "rho_coronae_borealis_d.ktx2",
         texture_hd: "rho_coronae_borealis_d_hd.ktx2",
-        icon: "jupiter.png",
+        icon: "saturn.png",
+        ring: {
+            inner_radius: 35000,
+            outer_radius: 70000,
+            texture: "rho_coronae_borealis_d_ring.png"
+        },
         satellites: []
     }
 ]

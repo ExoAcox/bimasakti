@@ -127,7 +127,8 @@ export const PlanetClass = {
     GasGiant: "Gas Giant Planet",
     IceGiant: "Ice Giant Planet",
     Dwarf: "Dwarf Planet",
-    SuperEarth: "Super-Earth Planet"
+    SuperEarth: "Super-Earth Planet",
+    GasDwarf: "Gas Dwarf Planet"
 } as const;
 
 export const StarClass = {

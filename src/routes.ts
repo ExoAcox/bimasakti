@@ -20,6 +20,8 @@ export default [
         route("wasp-47", "./pages/wasp-47.tsx"),
         route("rho_coronae_borealis", "./pages/rho_coronae_borealis.tsx"),
         route("nu_scorpii", "./pages/nu_scorpii.tsx"),
+        route("hd_110067", "./pages/hd_110067.tsx"),
+        route("cervantes", "./pages/cervantes.tsx"),
         route("sagittarius_a", "./pages/sagittarius_a.tsx"),
     ]),
 
