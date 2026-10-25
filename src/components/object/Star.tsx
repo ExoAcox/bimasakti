@@ -1,12 +1,12 @@
 
 
 
-import { Suspense, useMemo, useRef } from "react"
+import { Suspense, useEffect, useMemo, useRef } from "react"
 import { Color, ShaderMaterial, AdditiveBlending, BackSide, Mesh } from "three"
 import { useFrame } from "@react-three/fiber"
 import { useSettingStore, useControlStore } from "@state"
 import { StarClass, type Star as StarType } from "@types"
-import { CelestialBody, GordilocksZone, Pulsar, SpaceCraft } from "@components/object"
+import { CelestialBody, GordilocksZone, Pulsar, SpaceCraft, StarDisk } from "@components/object"
 import { useCelestial, userDataFormat, useVariant } from "@function"
 import {
     surfaceVertexShader,
@@ -98,12 +98,16 @@ const Star = ({ id, children, labelRef }: Props) => {
     }, [data.class])
 
     const handleClick = () => {
-        if (isFocused) {
+        if (data.id === focus) {
             return setControl({ focusIndex: focusIndex + 1 })
         }
 
         setControl({ focus: id })
     }
+
+    useEffect(() => {
+        console.log(focus)
+    }, [focus])
 
     const surfaceMaterial = useMemo(() => {
         return new ShaderMaterial({
@@ -204,6 +208,10 @@ const Star = ({ id, children, labelRef }: Props) => {
 
                 <When condition={data.class === StarClass.Neutron}>
                     <Pulsar radius={scale} color={color} />
+                </When>
+
+                <When condition={data.protoplanetaryDisk}>
+                    <StarDisk />
                 </When>
             </group>
 

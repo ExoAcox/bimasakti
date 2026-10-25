@@ -22,6 +22,7 @@ export { default as Atmosphere } from "./Atmosphere"
 export { default as Asteroid } from "./Asteroid"
 export { default as Galaxy } from "./Galaxy"
 export { default as GltfLoader } from "./GltfLoader"
+export { default as StarDisk } from "./StarDisk"
 
 
 

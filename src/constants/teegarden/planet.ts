@@ -1,0 +1,60 @@
+import { PlanetClass, type Planet } from "@types"
+
+export const planets: Planet[] = [
+    {
+        id: "teegarden_b",
+        type: "planet",
+        class: PlanetClass.Terrestrial,
+        parent: "teegarden",
+        radius: 6690,
+        distance: 3770000,
+        color: "#4b7a94",
+        axis: 7,
+        rotation: [0, 180, 0],
+        orbit_duration: 4.91,
+        rotate_duration: 4.91,
+        texture: "teegarden_b.ktx2",
+        texture_hd: "teegarden_b_hd.ktx2",
+        cloud_texture: "teegarden_b_cloud.ktx2",
+        cloud_texture_hd: "teegarden_b_cloud_hd.ktx2",
+        icon: "mercury.png",
+        satellites: []
+    },
+    {
+        id: "teegarden_c",
+        type: "planet",
+        class: PlanetClass.Terrestrial,
+        parent: "teegarden",
+        radius: 6630,
+        distance: 6630000,
+        color: "#528ca8",
+        rotation: [0, 180, 0],
+        axis: -6,
+        orbit_duration: 11.41,
+        rotate_duration: 11.41,
+        texture: "teegarden_c.ktx2",
+        texture_hd: "teegarden_c_hd.ktx2",
+        cloud_texture: "teegarden_c_cloud.ktx2",
+        cloud_texture_hd: "teegarden_c_cloud_hd.ktx2",
+        icon: "mercury.png",
+        satellites: []
+    },
+    {
+        id: "teegarden_d",
+        type: "planet",
+        class: PlanetClass.Terrestrial,
+        parent: "teegarden",
+        radius: 5990,
+        distance: 11830000,
+        color: "#856a5d",
+        axis: 12,
+        orbit_duration: 26.13,
+        rotate_duration: 26.13,
+        texture: "teegarden_d.ktx2",
+        texture_hd: "teegarden_d_hd.ktx2",
+        cloud_texture: "teegarden_d_cloud.ktx2",
+        cloud_texture_hd: "teegarden_d_cloud_hd.ktx2",
+        icon: "moon.png",
+        satellites: []
+    }
+]

@@ -13,6 +13,9 @@ import rho_coronae_borealis from "./rho_coronae_borealis"
 import nu_scorpii from "./nu_scorpii"
 import hd_110067 from "./hd_110067"
 import cervantes from "./cervantes"
+import toi_500 from "./toi-500"
+import teegarden from "./teegarden"
+import vega from "./vega"
 
 export const SCALE = 1e+5
 export const TIME_SCALE = 3
@@ -204,9 +207,48 @@ const universes: Universe[] = [
         assetCount: 8,
         stars: cervantes.stars,
         mobile: {}
+    },
+    {
+        id: "toi-500",
+        image: "toi-500.webp",
+        position: [0.095, -2.62, 0.69],
+        minDistance: 0.1,
+        maxDistance: 25000,
+        cameraPosition: [120, 120, 120],
+        labelPosition: "right",
+        defaultFocus: "toi-500",
+        assetCount: 5,
+        stars: toi_500.stars,
+        mobile: {}
+    },
+    {
+        id: "teegarden",
+        image: "teegarden.webp",
+        position: [0.041, -2.735, 0.715],
+        minDistance: 0.1,
+        maxDistance: 1500,
+        cameraPosition: [80, 80, 80],
+        labelPosition: "top",
+        defaultFocus: "teegarden",
+        assetCount: 4,
+        stars: teegarden.stars,
+        mobile: {}
+    },
+    {
+        id: "vega",
+        image: "vega.webp",
+        position: [0.048, -2.69, 0.73],
+        minDistance: 0.1,
+        maxDistance: 3500,
+        cameraPosition: [100, 100, 100],
+        labelPosition: "right",
+        defaultFocus: "vega",
+        assetCount: 3,
+        stars: vega.stars,
+        mobile: {}
     }
 ]
 
 const universe_ids = universes.map(universe => universe.id)
 
-export { universes, universe_ids, solar_system, alpha_centauri, sagittarius_a, trappist_1, lich, toi_700, copernicus, kepler_32, wasp_47, rho_coronae_borealis, nu_scorpii, hd_110067, cervantes }
+export { universes, universe_ids, solar_system, alpha_centauri, sagittarius_a, trappist_1, lich, toi_700, copernicus, kepler_32, wasp_47, rho_coronae_borealis, nu_scorpii, hd_110067, cervantes, toi_500, teegarden, vega }

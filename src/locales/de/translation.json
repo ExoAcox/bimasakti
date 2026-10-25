@@ -626,6 +626,59 @@
             "nickname": "Phobetor",
             "description": "Phobetor (PSR B1257+12 d) ist eine Supererde, die Lich im Abstand von 0,47 AE mit einer Umlaufzeit von etwa 98,2 Tagen umkreist."
         },
+        "toi-500": {
+            "name": "TOI-500 (GJ 9224)",
+            "title": "TOI-500 System",
+            "nickname": "TOI-500",
+            "description": "TOI-500 (GJ 9224) ist ein heller oranger K-Zwergstern im Sternbild Achterdeck des Schiffs (Puppis), etwa 155 Lichtjahre entfernt. Er beherbergt ein kompaktes Vier-Planeten-System mit sanfter Migrationsgeschichte."
+        },
+        "toi-500_b": {
+            "name": "TOI-500 b",
+            "nickname": "TOI-500 b",
+            "description": "TOI-500 b ist ein ultrakurzperiodischer Gesteinsplanet mit einer Umlaufzeit von nur 13 Stunden. Bei Oberflächentemperaturen von über 1.350 °C ist seine glühende Oberfläche ein Ozean aus geschmolzener Lava."
+        },
+        "toi-500_c": {
+            "name": "TOI-500 c",
+            "nickname": "TOI-500 c",
+            "description": "TOI-500 c ist eine dichte Supererde, die TOI-500 alle 6,64 Tage umkreist und etwa den 2,1-fachen Erdradius aufweist."
+        },
+        "toi-500_d": {
+            "name": "TOI-500 d",
+            "nickname": "TOI-500 d",
+            "description": "TOI-500 d ist ein massereicher Sub-Neptun / Gasplanet mit einer Umlaufzeit von 26,23 Tagen, der die dynamische Architektur des Systems stabilisiert."
+        },
+        "toi-500_e": {
+            "name": "TOI-500 e",
+            "nickname": "TOI-500 e",
+            "description": "TOI-500 e ist der äußerste bekannte Planet im TOI-500-System mit einer Umlaufzeit von 61,3 Tagen und etwa der vierfachen Größe der Erde."
+        },
+        "teegarden": {
+            "name": "Teegarden",
+            "title": "Teegarden System",
+            "nickname": "Teegarden",
+            "description": "Teegarden ist ein kühler M-Zwergstern in nur 12,5 Lichtjahren Entfernung im Sternbild Widder (Aries). Er beherbergt drei erdgroße terrestrische Exoplaneten, von denen zwei in der habitablen Zone liegen."
+        },
+        "teegarden_b": {
+            "name": "Teegarden b",
+            "nickname": "Teegarden b",
+            "description": "Teegarden b ist ein erdgroßer Gesteinsplanet in der konservativen habitablen Zone mit einer Umlaufzeit von 4,91 Tagen und einem der höchsten bekannten Earth Similarity Indices (ESI)."
+        },
+        "teegarden_c": {
+            "name": "Teegarden c",
+            "nickname": "Teegarden c",
+            "description": "Teegarden c ist ein gemäßigter Gesteinsplanet in der äußeren habitablen Zone, der Teegardens Stern alle 11,41 Tage umrundet und potenziell flüssiges Wasser beherbergen könnte."
+        },
+        "teegarden_d": {
+            "name": "Teegarden d",
+            "nickname": "Teegarden d",
+            "description": "Teegarden d ist ein im Jahr 2024 entdeckter Gesteinsplanet mit einer Umlaufzeit von 26,13 Tagen jenseits des äußeren Randes der habitablen Zone."
+        },
+        "vega": {
+            "name": "Wega",
+            "title": "Wega-System",
+            "nickname": "Wega",
+            "description": "Wega (Alpha Lyrae) ist ein leuchtkräftiger blau-weißer Hauptreihenstern im Sternbild Leier (Lyra), etwa 25 Lichtjahre entfernt. Sie ist von einer ausgeprägten Trümmerscheibe umgeben und rotiert extrem schnell in nur 12,5 Stunden um die eigene Achse."
+        },
         "toi-700": {
             "name": "TOI-700",
             "title": "TOI-700 System",
@@ -1046,6 +1099,11 @@
             "name": "Churyumov-Gerasimenko",
             "nickname": "Churyumov-Gerasimenko",
             "description": "67P/Tschurjumow-Gerassimenko ist ein Komet der Jupiter-Familie, der als Ziel der ESA-Mission Rosetta und des Landers Philae im Jahr 2014 berühmt wurde. Er besteht aus zwei Lappen, die durch einen schmalen Hals verbunden sind."
+        },
+        "vega_b": {
+            "name": "Vega b",
+            "nickname": "Vega b",
+            "description": "Vega b ist ein Exoplanetenkandidat vom Typ Gaszwerg, der den hellen Stern Wega im Abstand von 0,063 AE alle 2,43 Tage umkreist. Seine obere Atmosphäre ist extremen Temperaturen durch die intensive Strahlung ausgesetzt."
         }
     },
     "nation": {

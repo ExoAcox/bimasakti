@@ -22,6 +22,9 @@ export default [
         route("nu_scorpii", "./pages/nu_scorpii.tsx"),
         route("hd_110067", "./pages/hd_110067.tsx"),
         route("cervantes", "./pages/cervantes.tsx"),
+        route("toi-500", "./pages/toi-500.tsx"),
+        route("teegarden", "./pages/teegarden.tsx"),
+        route("vega", "./pages/vega.tsx"),
         route("sagittarius_a", "./pages/sagittarius_a.tsx"),
     ]),
 

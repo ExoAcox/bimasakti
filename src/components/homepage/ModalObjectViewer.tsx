@@ -255,7 +255,7 @@ const CelestialObject = ({ data }: { data: CelestialObject }) => {
     );
 };
 
-const Scene = ({ data }: { data: CelestialObject }) => {
+const Scene = ({ data, isRotate }: { data: CelestialObject, isRotate: boolean }) => {
     const objectRef = useRef<Group>(null!)
 
     const tilt = useMemo(() => {
@@ -263,7 +263,7 @@ const Scene = ({ data }: { data: CelestialObject }) => {
     }, [data.axis]);
 
     useFrame((_, delta) => {
-        if (objectRef.current) {
+        if (objectRef.current && isRotate) {
             objectRef.current.rotation.y += delta * 0.1;
         }
     });
@@ -285,11 +285,10 @@ const FallbackMesh = ({ color }: { color: string }) => {
 };
 
 const ModalObjectViewer = ({ data }: Props) => {
-    const [isAutoRotating, setIsAutoRotating] = useState(true);
+    const [isRotate, setIsRotate] = useState(true);
 
     return (
         <div className="relative aspect-square w-full min-h-72 md:w-100 md:h-full rounded-2xl overflow-hidden bg-radial from-slate-900/80 via-slate-950/90 to-slate-950 border border-panel-border group">
-            {/* Ambient background glow */}
             <div
                 className="absolute inset-0 pointer-events-none opacity-20 blur-3xl"
                 style={{
@@ -297,15 +296,14 @@ const ModalObjectViewer = ({ data }: Props) => {
                 }}
             />
 
-            {/* Controls Overlay */}
             <div className="absolute top-3 left-3 z-10 flex items-center gap-1.5">
                 <button
-                    onClick={() => setIsAutoRotating(!isAutoRotating)}
+                    onClick={() => setIsRotate(!isRotate)}
                     className="p-1.5 rounded-lg bg-card-bg hover:bg-card-hover backdrop-blur-md border border-panel-border text-secondary hover:text-primary transition-all text-xs flex items-center justify-center cursor-pointer"
-                    title={isAutoRotating ? "Pause Auto-Rotate" : "Start Auto-Rotate"}
+                    title={isRotate ? "Pause Auto-Rotate" : "Start Auto-Rotate"}
                     aria-label="Toggle auto rotate"
                 >
-                    {isAutoRotating ? (
+                    {isRotate ? (
                         <MdOutlinePause className="size-4" />
                     ) : (
                         <MdOutlinePlayArrow className="size-4" />
@@ -325,9 +323,6 @@ const ModalObjectViewer = ({ data }: Props) => {
                 gl={{ antialias: true, alpha: true }}
             >
                 <Environment preset="sunset" />
-                {/* <ambientLight intensity={5} color="white" />
-                <directionalLight position={[5, 3, 5]} intensity={2.4} />
-                <directionalLight position={[-5, -2, -3]} intensity={0.5} /> */}
 
                 <OrbitControls
                     enableZoom={true}
@@ -337,7 +332,7 @@ const ModalObjectViewer = ({ data }: Props) => {
                 />
 
                 <Suspense fallback={<FallbackMesh color={data.color} />}>
-                    <Scene data={data} />
+                    <Scene data={data} isRotate={isRotate} />
                 </Suspense>
 
                 <EffectComposer>

@@ -684,6 +684,59 @@
             "nickname": "Phobetor",
             "description": "Phobetor (PSR B1257+12 d) adalah eksoplanet super-Bumi yang mengorbit Lich pada jarak 0,47 AU dengan periode orbit sekitar 98,2 hari."
         },
+        "toi-500": {
+            "name": "TOI-500 (GJ 9224)",
+            "title": "Sistem TOI-500",
+            "nickname": "TOI-500",
+            "description": "TOI-500 (GJ 9224) adalah bintang katai jingga kelas K yang berjarak sekitar 155 tahun cahaya di rasi bintang Puppis. Bintang ini memiliki sistem empat planet kompak yang terbentuk melalui jalur migrasi ber-eksentrisitas rendah yang mulus."
+        },
+        "toi-500_b": {
+            "name": "TOI-500 b",
+            "nickname": "TOI-500 b",
+            "description": "TOI-500 b adalah eksoplanet terestrial periode ultra-pendek mirip Bumi yang mengorbit bintang induknya hanya dalam 13 jam. Suhu permukaannya mencapai lebih dari 1.350°C, menjadikannya dunia lava pijar yang membara."
+        },
+        "toi-500_c": {
+            "name": "TOI-500 c",
+            "nickname": "TOI-500 c",
+            "description": "TOI-500 c adalah eksoplanet super-Bumi yang mengorbit TOI-500 setiap 6,64 hari dengan radius sekitar 2,1 kali ukuran Bumi."
+        },
+        "toi-500_d": {
+            "name": "TOI-500 d",
+            "nickname": "TOI-500 d",
+            "description": "TOI-500 d adalah planet gas raksasa/sub-Neptunus yang menyelesaikan satu orbit setiap 26,23 hari, menjadi penyeimbang gravitasi utama dalam rantai resonansi sistem."
+        },
+        "toi-500_e": {
+            "name": "TOI-500 e",
+            "nickname": "TOI-500 e",
+            "description": "TOI-500 e adalah planet terluar yang terkonfirmasi dalam sistem TOI-500, dengan periode orbit 61,3 hari dan radius sekitar empat kali ukuran Bumi."
+        },
+        "teegarden": {
+            "name": "Teegarden",
+            "title": "Sistem Teegarden",
+            "nickname": "Teegarden",
+            "description": "Teegarden adalah bintang katai merah ultra-dingin kelas M yang berjarak hanya 12,5 tahun cahaya di rasi bintang Aries. Sistem ini menampung setidaknya tiga eksoplanet terestrial seukuran Bumi, dengan dua di antaranya berada di zona laik huni."
+        },
+        "teegarden_b": {
+            "name": "Teegarden b",
+            "nickname": "Teegarden b",
+            "description": "Teegarden b adalah eksoplanet terestrial seukuran Bumi yang mengorbit di dalam zona laik huni konservatif setiap 4,91 hari. Planet ini memiliki salah satu Indeks Kemiripan Bumi (ESI) tertinggi yang pernah ditemukan."
+        },
+        "teegarden_c": {
+            "name": "Teegarden c",
+            "nickname": "Teegarden c",
+            "description": "Teegarden c adalah eksoplanet berbatu beriklim sejuk yang mengorbit di zona laik huni luar setiap 11,41 hari, dengan potensi suhu yang mendukung keberadaan air cair."
+        },
+        "teegarden_d": {
+            "name": "Teegarden d",
+            "nickname": "Teegarden d",
+            "description": "Teegarden d adalah eksoplanet terestrial yang ditemukan pada tahun 2024, mengorbit setiap 26,13 hari di luar tepi terluar zona laik huni sistem."
+        },
+        "vega": {
+            "name": "Vega",
+            "title": "Sistem Vega",
+            "nickname": "Vega",
+            "description": "Vega (Alpha Lyrae) adalah bintang deret utama biru-putih yang sangat terang berjarak sekitar 25 tahun cahaya di rasi bintang Lyra. Bintang ini dikelilingi oleh piringan puing sirkumstellar yang menonjol dan berotasi sangat cepat hanya dalam 12,5 jam."
+        },
         "toi-700": {
             "name": "TOI-700",
             "title": "Sistem TOI-700",
@@ -1046,6 +1099,11 @@
             "name": "Pioneer 11",
             "nickname": "Pioneer 11",
             "description": "Pioneer 11 adalah wahana antariksa robotik yang diluncurkan oleh NASA pada 5 April 1973. Wahana ini merupakan wahana kedua yang menyelidiki Jupiter dan Tata Surya bagian luar, serta yang pertama menjelajahi Saturnus dan cincin utamanya dari jarak dekat sebelum menempuh lintasan antarbintang."
+        },
+        "vega_b": {
+            "name": "Vega b",
+            "nickname": "Vega b",
+            "description": "Vega b adalah kandidat eksoplanet gas dwarf yang mengorbit bintang terang Vega pada jarak 0,063 SA setiap 2,43 hari. Atmosfer atasnya mengalami suhu ekstrem akibat radiasi bintang yang sangat intens."
         }
     },
     "landmark": {

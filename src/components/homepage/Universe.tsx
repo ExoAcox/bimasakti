@@ -114,6 +114,9 @@ const REMAINING_SYSTEMS = [
     "nu_scorpii",
     "hd_110067",
     "cervantes",
+    "toi-500",
+    "teegarden",
+    "vega",
 ];
 
 const Universe = () => {
@@ -199,7 +202,7 @@ const Universe = () => {
                             {/* Unfold CTA Button */}
                             <button
                                 onClick={() => setIsExpanded(true)}
-                                className="w-full sm:w-auto group/button inline-flex items-center justify-center gap-2.5 px-6 py-3 rounded-xl font-space-grotesk font-bold text-xs uppercase tracking-wider bg-accent hover:bg-highlight text-slate-950 shadow-glow transition-all hover:scale-105 active:scale-95 cursor-pointer shrink-0"
+                                className="w-full sm:w-auto group/button inline-flex items-center justify-center gap-2.5 px-6 py-3 rounded-xl font-space-grotesk font-bold text-xs uppercase tracking-wider text-cyan-300 bg-cyan-950/40 border border-cyan-500/30 hover:bg-cyan-500 hover:text-slate-950 hover:border-accent transition-all cursor-pointer shrink-0"
                             >
                                 <span>{t("ui.unfold_catalog")}</span>
                                 <FaArrowRight className="size-3 group-hover/button:translate-x-1 transition-transform" />

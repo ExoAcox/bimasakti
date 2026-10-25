@@ -4,7 +4,7 @@ import type { CelestialObject } from "@types";
 import { useEffect, useMemo, useState } from "react";
 import { useTranslation } from "react-i18next";
 import { MdClose, MdSearch } from "react-icons/md";
-import { FaCompass, FaChevronDown, FaChevronUp } from "react-icons/fa";
+import { FaChevronDown, FaChevronUp } from "react-icons/fa";
 import clsx from "clsx";
 import ModalObject from "./ModalObject";
 import { When } from "react-if";
@@ -68,10 +68,10 @@ const Featured = () => {
 
     return (
         <section id="featured" className="my-20 md:my-28">
-            <div className="relative rounded-3xl bg-slate-950/60 backdrop-blur-2xl border border-white/10 p-4 sm:p-8 shadow-[0_20px_50px_rgba(0,0,0,0.6)]">
+            <div className="relative rounded-3xl bg-slate-950/60 backdrop-blur-2xl border border-white/10 p-4 pt-6 sm:p-8 shadow-[0_20px_50px_rgba(0,0,0,0.6)]">
                 {/* Section Header */}
                 <div className="flex flex-col md:flex-row md:items-end justify-between gap-6">
-                    <h3 className="text-2xl sm:text-3xl font-bold font-space-grotesk text-white">
+                    <h3 className="text-2xl sm:text-3xl text-center sm:text-left font-bold font-space-grotesk text-white">
                         {t("ui.featured_objects")}
                     </h3>
 

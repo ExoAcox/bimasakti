@@ -22,6 +22,9 @@ export default {
             "/nu_scorpii",
             "/hd_110067",
             "/cervantes",
+            "/toi-500",
+            "/teegarden",
+            "/vega",
             "/liveview/mars"
         ];
     },

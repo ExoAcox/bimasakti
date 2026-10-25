@@ -57,6 +57,7 @@ export interface Star extends Object {
     planets: Planet[]
     intensity: number
     barycenterDistance?: number
+    protoplanetaryDisk?: boolean
     gordilocks?: {
         inner_radius: number
         outer_radius: number

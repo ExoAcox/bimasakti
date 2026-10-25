@@ -684,6 +684,59 @@
             "nickname": "Phobetor",
             "description": "Phobetor (PSR B1257+12 d) is a super-Earth exoplanet orbiting Lich at 0.47 AU with an orbital period of about 98.2 days."
         },
+        "toi-500": {
+            "name": "TOI-500 (GJ 9224)",
+            "title": "TOI-500 System",
+            "nickname": "TOI-500",
+            "description": "TOI-500 (GJ 9224) is a bright K-type dwarf star located about 155 light-years away in the constellation Puppis. It hosts a compact four-planet system characterized by a smooth, low-eccentricity migration pathway."
+        },
+        "toi-500_b": {
+            "name": "TOI-500 b",
+            "nickname": "TOI-500 b",
+            "description": "TOI-500 b is an ultra-short-period rocky Earth analogue orbiting its host star in just 13 hours. With extreme surface temperatures exceeding 1,350°C, its scorched surface is largely molten lava."
+        },
+        "toi-500_c": {
+            "name": "TOI-500 c",
+            "nickname": "TOI-500 c",
+            "description": "TOI-500 c is a dense super-Earth exoplanet orbiting TOI-500 every 6.64 days with a radius roughly 2.1 times that of Earth."
+        },
+        "toi-500_d": {
+            "name": "TOI-500 d",
+            "nickname": "TOI-500 d",
+            "description": "TOI-500 d is a massive sub-Neptune / gas planet completing an orbit every 26.23 days, acting as a gravitational anchor in the system's resonant chain."
+        },
+        "toi-500_e": {
+            "name": "TOI-500 e",
+            "nickname": "TOI-500 e",
+            "description": "TOI-500 e is the outermost known planet in the TOI-500 system, completing an orbit every 61.3 days with a radius approximately four times that of Earth."
+        },
+        "teegarden": {
+            "name": "Teegarden",
+            "title": "Teegarden System",
+            "nickname": "Teegarden",
+            "description": "Teegarden is an ultra-cool M-dwarf star located just 12.5 light-years away in the constellation Aries. It hosts at least three Earth-sized terrestrial exoplanets, including two located inside the habitable zone."
+        },
+        "teegarden_b": {
+            "name": "Teegarden b",
+            "nickname": "Teegarden b",
+            "description": "Teegarden b is an Earth-sized terrestrial exoplanet orbiting within the star's conservative habitable zone every 4.91 days. It boasts one of the highest Earth Similarity Indices (ESI) known."
+        },
+        "teegarden_c": {
+            "name": "Teegarden c",
+            "nickname": "Teegarden c",
+            "description": "Teegarden c is a temperate rocky exoplanet orbiting in the outer habitable zone every 11.41 days, with temperatures potentially allowing for liquid surface water."
+        },
+        "teegarden_d": {
+            "name": "Teegarden d",
+            "nickname": "Teegarden d",
+            "description": "Teegarden d is a terrestrial exoplanet discovered in 2024 completing an orbit every 26.13 days, situated beyond the outer edge of the habitable zone."
+        },
+        "vega": {
+            "name": "Vega",
+            "title": "Vega System",
+            "nickname": "Vega",
+            "description": "Vega (Alpha Lyrae) is a luminous blue-white main-sequence star located roughly 25 light-years away in the constellation Lyra. It is surrounded by a prominent circumstellar debris disk and rotates rapidly on its axis in just 12.5 hours."
+        },
         "toi-700": {
             "name": "TOI-700",
             "title": "TOI-700 System",
@@ -1046,6 +1099,11 @@
             "name": "Pioneer 11",
             "nickname": "Pioneer 11",
             "description": "Pioneer 11 is a robotic space probe launched by NASA on April 5, 1973. It was the second probe to investigate Jupiter and the outer Solar System, and the first to explore Saturn and its main rings up close before embarking on an interstellar trajectory."
+        },
+        "vega_b": {
+            "name": "Vega b",
+            "nickname": "Vega b",
+            "description": "Vega b is a candidate gas dwarf exoplanet orbiting the bright star Vega at a distance of 0.063 AU every 2.43 days. Its upper atmosphere experiences blistering temperatures from Vega's intense stellar radiation."
         }
     },
     "landmark": {
