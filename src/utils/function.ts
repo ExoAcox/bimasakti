@@ -1,5 +1,5 @@
 import { Camera, MathUtils, Object3D, Vector3 } from "three"
-import { solar_system, alpha_centauri, trappist_1, lich, toi_700, copernicus, kepler_32, wasp_47, rho_coronae_borealis, nu_scorpii, hd_110067, cervantes, toi_500, teegarden, vega, universes, universe_ids, AU_SCALE } from "@constants"
+import { solar_system, alpha_centauri, sagittarius_a, trappist_1, lich, toi_700, copernicus, kepler_32, wasp_47, rho_coronae_borealis, nu_scorpii, hd_110067, cervantes, toi_500, teegarden, vega, universes, universe_ids, AU_SCALE } from "@constants"
 import { useEffect, useMemo, useRef, useState, type ChangeEvent } from "react";
 import type { Belt, CelestialObject, Landmark, Planet, Satellite, Star } from "@types";
 import { useLocation } from "react-router";
@@ -17,7 +17,7 @@ type UniverseMapping = {
 };
 
 const universeMapping: UniverseMapping = {
-    // sagittarius_a,
+    sagittarius_a,
     solar_system,
     alpha_centauri,
     "trappist-1": trappist_1,

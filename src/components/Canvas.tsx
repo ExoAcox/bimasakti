@@ -43,9 +43,7 @@ const UserInterface = ({ id }: { id: string }) => {
 
     return (
         <When condition={id !== "milky_way"}>
-            <When condition={id !== "sagittarius_a"}>
-                <Sidebar />
-            </When>
+            <Sidebar />
 
             <When condition={isMobile}>
                 <BottomSheet />

@@ -6,8 +6,9 @@ import { Suspense, useEffect, useRef } from "react"
 import { useSettingStore, useControlStore } from "@state"
 import { CelestialBody, GltfLoader } from "@components/object"
 import { LOWREST_SCALE } from "@constants"
-import { userDataFormat } from "@function"
+import { useCelestial, userDataFormat } from "@function"
 import { When } from "react-if"
+import { useThree } from "@react-three/fiber"
 
 interface Props {
     data: SpaceCraftType
@@ -30,6 +31,9 @@ const SpaceCraft = ({ data }: Props) => {
     const { focus, focusIndex, artificialSatelliteVisible, setControl } = useControlStore()
     const { sizeScale, distanceScale } = useSettingStore()
 
+    const celestial = useCelestial()
+    const camera = useThree(state => state.camera)
+
     const isFocused = data.id === focus
     const scale = Math.max(data.radius / sizeScale, 5e-8)
     const distance = LOWREST_SCALE / distanceScale
@@ -37,10 +41,16 @@ const SpaceCraft = ({ data }: Props) => {
 
     const handleClick = () => {
         if (isFocused) {
-            return setControl({ focusIndex: focusIndex + 1 })
+            const distance = celestial.getCameraDistance(camera, objectRef.current)
+
+            if (scale * 10 < distance) {
+                return setControl({ focusIndex: focusIndex + 1 })
+            }
+        } else {
+            setControl({ focus: data.id })
         }
 
-        setControl({ focus: data.id })
+
     }
 
     useEffect(() => {

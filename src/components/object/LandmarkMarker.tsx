@@ -114,7 +114,7 @@ const LandmarkMarker = ({ landmark, visible = true, lonOffset = 0, custom = fals
         const parentScale = parent.scale.x
         const isZoomedIn = dist < parentScale * 6.0
 
-        buttonRef.current.style.visibility = (isFacingCamera && isZoomedIn) ? "visible" : "hidden"
+        buttonRef.current.style.display = (isFacingCamera && isZoomedIn) ? "flex" : "none"
     })
 
     if (!visible) return null

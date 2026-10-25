@@ -177,6 +177,7 @@ export interface Universe {
     image: string
     stars: Star[]
     position: Vector3,
+    distanceFromEarth: number,
     minDistance: number,
     maxDistance: number,
     cameraPosition: Vector3,

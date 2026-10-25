@@ -8,6 +8,7 @@ export const blackHoleLensingFragmentShader = /* glsl */ `
 uniform vec2 uPosition;
 uniform float uRatio;
 uniform float uDistance;
+uniform float uRadius;
 uniform float uRad;
 uniform float uMul;
 uniform float uK;
@@ -22,105 +23,82 @@ void mainImage(const in vec4 inputColor, const in vec2 uv, out vec4 outputColor)
 
     vec2 offset = uv - uPosition;
     vec2 ratio = vec2(uRatio, 1.0);
+    // Aspect-corrected radial distance from black hole center
     float rad = length(offset / ratio);
     
-    // Gravitational lensing deformation equation (inverse square distance calculation from blackholejs)
-    float distSq = pow(rad * pow(max(uDistance, 0.001), 0.5), 2.0);
-    float deformation = 0.0;
-    if (distSq > 0.000001) {
-        deformation = (1.0 / distSq) * uRad * uMul;
+    // Dynamic event horizon radius:
+    // Uses projected screen radius if available, otherwise falls back gracefully
+    float rEH = uRadius > 0.0 ? uRadius : sqrt((uRad * uMul) / (max(uK, 0.001) * max(uDistance, 0.001)));
+    rEH = max(rEH, 0.0001);
+
+    // 1. Inside Event Horizon (if 2D cutout is enabled):
+    if (uEH == 1 && rad <= rEH) {
+        outputColor = vec4(0.0, 0.0, 0.0, 1.0);
+        return;
     }
 
-    vec2 distortedUv = uv - offset * deformation;
+    // 2. Gravitational Lensing (relativistically bounded deflection):
+    // Deflection is scale-invariant with respect to the black hole size (rad / rEH)
+    float normalizedDist = rad / rEH; // > 1.0 outside horizon
+    float invDistSq = 1.0 / (normalizedDist * normalizedDist);
+
+    // Smooth exponential decay so deformation attenuates cleanly at distance
+    float falloff = exp(-max(normalizedDist - 1.0, 0.0) * 0.4);
+
+    // Bounded deformation factor (capped strictly to [0.0, 0.85] to prevent extreme coordinate shifts)
+    float deformation = clamp(invDistSq * 0.45 * falloff, 0.0, 0.85);
+
+    // Deflect coordinates inward towards black hole center (authentic gravitational lensing pinch)
+    vec2 distortedOffset = offset * (1.0 - deformation);
+    vec2 distortedUv = uPosition + distortedOffset;
+
+    // Strict clamping to inputBuffer viewport to eliminate edge streaking and out-of-bounds sampling
+    distortedUv = clamp(distortedUv, vec2(0.0001), vec2(0.9999));
     vec4 color = texture2D(inputBuffer, distortedUv);
-
-    // Event horizon dark cutout
-    if (uEH == 1) {
-        if (deformation >= uK) {
-            color = vec4(0.0, 0.0, 0.0, 1.0);
-        } else if (deformation > uK * 0.6) {
-            float f = smoothstep(uK * 1.6, uK, deformation);
-            color = mix(color, vec4(0.0, 0.0, 0.0, 1.0), f);
-        }
-    }
 
     outputColor = color;
 }
 `
 
-/**
- * Accretion Disk Shaders
- */
-export const accretionDiskVertexShader = /* glsl */ `
-varying vec2 vUv;
-varying vec3 vNormal;
+export const blackholePointVertexShader = /* glsl */ `
+uniform float u_time;
+uniform float u_size;
+attribute vec3 color;
+attribute float a_size;
+
+varying vec3 vColor;
 
 void main() {
-    vUv = uv;
-    vNormal = normalize(normalMatrix * normal);
-    gl_Position = projectionMatrix * modelViewMatrix * vec4(position, 1.0);
+    vColor = color;
+    vec4 mvPosition = modelViewMatrix * vec4(position, 1.0);
+    
+    // Scale point size for distance with safe clamping
+    float pSize = (a_size * u_size) * (2000.0 / max(-mvPosition.z, 0.1));
+    gl_PointSize = clamp(pSize, 2.0, 160.0);
+    gl_Position = projectionMatrix * mvPosition;
 }
 `
 
-export const accretionDiskFragmentShader = /* glsl */ `
+export const blackholePointFragmentShader = /* glsl */ `
+uniform sampler2D u_texture;
 uniform float u_time;
-uniform vec3 u_color;
-varying vec2 vUv;
+uniform float u_intensity;
 
-float hash(vec2 p) {
-    p = fract(p * vec2(123.34, 456.21));
-    p += dot(p, p + 45.32);
-    return fract(p.x * p.y);
-}
-
-float noise(vec2 p) {
-    vec2 i = floor(p);
-    vec2 f = fract(p);
-    f = f * f * (3.0 - 2.0 * f);
-    float a = hash(i);
-    float b = hash(i + vec2(1.0, 0.0));
-    float c = hash(i + vec2(0.0, 1.0));
-    float d = hash(i + vec2(1.0, 1.0));
-    return mix(mix(a, b, f.x), mix(c, d, f.x), f.y);
-}
-
-float fbm(vec2 p) {
-    float v = 0.0;
-    float a = 0.5;
-    vec2 shift = vec2(100.0);
-    for (int i = 0; i < 4; ++i) {
-        v += a * noise(p);
-        p = p * 2.0 + shift;
-        a *= 0.5;
-    }
-    return v;
-}
+varying vec3 vColor;
 
 void main() {
-    // vUv.x is angle fraction (0..1), vUv.y is radial distance (0..1 from inner to outer ring)
-    float r = vUv.y;
-    float angle = vUv.x * 6.28318530718;
+    vec2 centerCoord = gl_PointCoord - vec2(0.5);
+    float dist = length(centerCoord);
+    if (dist > 0.5) discard;
 
-    float speed = 1.2;
-    float spiral = angle * 4.0 + (1.0 / (r + 0.08)) * 2.5 - u_time * speed;
-    float n = fbm(vec2(spiral, r * 10.0 - u_time * 0.4));
+    // Smooth exponential Gaussian falloff
+    float mist = exp(-dist * 6.0);
+    float pulse = 0.95 + 0.05 * sin(u_time * 2.0);
+    float intensity = mist * u_intensity * pulse;
 
-    float radialIntensity = sin(r * 3.14159);
-    radialIntensity = pow(radialIntensity, 0.7);
+    vec4 texColor = texture2D(u_texture, gl_PointCoord);
+    float alpha = mist * max(texColor.a, 0.6);
 
-    // Relativistic Doppler beaming asymmetry
-    float doppler = 0.65 + 0.35 * cos(angle + 0.4);
-
-    vec3 hotColor = vec3(1.0, 0.96, 0.85);
-    vec3 midColor = u_color;
-    vec3 coolColor = vec3(0.85, 0.15, 0.02);
-
-    vec3 color = mix(hotColor, midColor, smoothstep(0.0, 0.35, r));
-    color = mix(color, coolColor, smoothstep(0.35, 1.0, r));
-
-    float finalAlpha = radialIntensity * (0.35 + 0.65 * n) * doppler;
-    vec3 finalColor = color * (1.6 + n * 1.4) * doppler;
-
-    gl_FragColor = vec4(finalColor, clamp(finalAlpha, 0.0, 1.0));
+    gl_FragColor = vec4(vColor * intensity, alpha);
 }
 `

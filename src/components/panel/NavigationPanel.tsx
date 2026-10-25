@@ -5,6 +5,7 @@ import { useTranslation } from "react-i18next"
 import { useNavigate } from "react-router"
 import { IoArrowForward, IoArrowBack, IoPlanetOutline } from "react-icons/io5"
 import { MdClose } from "react-icons/md"
+import { When } from "react-if"
 
 const NavigationPanel = () => {
     const { t } = useTranslation()
@@ -50,12 +51,11 @@ const NavigationPanel = () => {
     return (
         <div
             id="navigation-panel"
-            className="invisible fixed left-1/2 -translate-x-1/2 bottom-5 w-[calc(100vw-2rem)] sm:w-auto sm:min-w-md sm:max-w-xl flex flex-col text-sm bg-panel-bg backdrop-blur-2xl border border-panel-border rounded-2xl p-5 z-50 text-primary"
+            className="invisible fixed left-1/2 -translate-x-1/2 bottom-5 w-[calc(100vw-2rem)] md:w-auto md:min-w-lg md:max-w-xl flex flex-col text-sm bg-panel-bg backdrop-blur-2xl border border-panel-border rounded-2xl p-5 z-50 text-primary"
         >
             <div className="flex flex-col gap-3">
-                {/* Header: Title, Badge, and Close Button */}
                 <div className="flex items-start justify-between gap-3">
-                    <div className="flex flex-col gap-1 min-w-0">
+                    <div className="flex flex-col flex-wrap gap-4 gap-y-1 min-w-0">
                         {/* <div className="flex items-center gap-2">
                             <span className="inline-flex items-center gap-1.5 px-2 py-0.5 rounded-full text-[10px] font-mono uppercase tracking-wider border font-medium text-accent bg-accent/10 border-accent/20">
                                 <IoPlanetOutline className="size-3" />
@@ -65,6 +65,10 @@ const NavigationPanel = () => {
                         <h1 className="text-lg sm:text-xl font-bold font-space-grotesk tracking-tight text-primary truncate">
                             {t(`object.${data?.id}.name`)}
                         </h1>
+
+                        <When condition={data.distanceFromEarth}>
+                            <span className="text-cyan-300/90 font-mono text-[10px]">{data.distanceFromEarth} light years from earth</span>
+                        </When>
                     </div>
 
                     {isGalaxy && (

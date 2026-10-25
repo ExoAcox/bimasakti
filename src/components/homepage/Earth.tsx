@@ -14,7 +14,6 @@ const data = planets.find(planet => planet.id === "earth")! as Planet
 
 const Earth = () => {
     const earthRef = useRef<Mesh>(null!)
-    const cloudRef = useRef<Mesh>(null!)
 
     const axis = MathUtils.degToRad(data.axis)
     const isMobile = useDetectGPU().isMobile
@@ -23,7 +22,6 @@ const Earth = () => {
         if (!earthRef.current) return
 
         earthRef.current.rotation.y += delta * 0.06
-        cloudRef.current.rotation.y += delta * 0.07
     })
 
     return <>
@@ -43,8 +41,6 @@ const Earth = () => {
 
             <PlanetCloud
                 data={data}
-                cloudRef={cloudRef}
-                scale={1.001}
                 forceFocus
             />
 

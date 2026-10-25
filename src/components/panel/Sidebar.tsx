@@ -8,6 +8,7 @@ import {
     PlanetClass,
     type Asteroid,
     type Belt,
+    type Blackhole,
     type CelestialObject,
     type Comet,
     type Planet,
@@ -204,6 +205,7 @@ const Sidebar = () => {
 
     const celestial = useCelestial();
     const universe = celestial.getUniverse();
+    const blackholes = celestial.getObjectsByType("blackhole") as Blackhole[];
     const stars = celestial.getObjectsByType("star") as Star[];
     const comets = celestial.getObjectsByType("comet") as Comet[];
     const asteroids = celestial.getObjectsByType("asteroid") as Asteroid[];
@@ -338,6 +340,7 @@ const Sidebar = () => {
 
                 <When condition={!search}>
                     <div className="flex-1 flex flex-col gap-3.5 overflow-y-auto pr-1 scrollbar-thin scrollbar-thumb-white/10 scrollbar-track-transparent">
+                        <Section data={blackholes} initialOpen>{t("ui.blackholes")}</Section>
                         <Section data={stars} initialOpen>{t("ui.stars")}</Section>
                         <Section data={planets} initialOpen>{t("ui.planets")}</Section>
                         <Section data={dwarfPlanets}>{t("ui.dwarf_planets")}</Section>

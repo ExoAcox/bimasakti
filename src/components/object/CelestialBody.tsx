@@ -16,7 +16,6 @@ interface Props {
     onClick: () => void,
     children?: React.ReactNode
     objectRef?: React.RefObject<Mesh | null>,
-    cloudRef?: React.RefObject<Mesh | null>,
     labelRef?: React.RefObject<HTMLButtonElement>
     childrenComponent?: React.ReactNode
     visible?: boolean
@@ -29,7 +28,7 @@ const planetPos = new Vector3()
 const labelPos = new Vector3()
 const closestPoint = new Vector3()
 
-const Object = ({ data, children, childrenComponent, onClick, objectRef, cloudRef, labelRef, visible = true }: Props) => {
+const Object = ({ data, children, childrenComponent, onClick, objectRef, labelRef, visible = true }: Props) => {
     const orbitRef = useRef<Group>(null!)
     const internalLabelRef = useRef<HTMLButtonElement>(null!)
 
@@ -83,7 +82,6 @@ const Object = ({ data, children, childrenComponent, onClick, objectRef, cloudRe
     const virtualTimeRef = useRef(0)
     const lastElapsedTimeRef = useRef<number | null>(null)
     const rotationRef = useRef<number | null>(null)
-    const cloudRotationRef = useRef<number>(0)
 
     if (data.id === "alpha_centauri_a") {
         console.log(isOrbitLineVisible)
@@ -127,13 +125,6 @@ const Object = ({ data, children, childrenComponent, onClick, objectRef, cloudRe
                 }
                 objectRef.current.rotation.y = rotationRef.current
             }
-        }
-
-        if (data.rotate_duration && data.cloud_texture && cloudRef?.current) {
-            const cloudDeltaSpeed = ((deltaT * (tidalLock && isFocused ? 1 : effectiveRotateSpeed)) / 50) * Math.PI * 2
-            const cloudDeltaRotation = (cloudDeltaSpeed / data.rotate_duration) * speedScale
-            cloudRotationRef.current += cloudDeltaRotation
-            cloudRef.current.rotation.y = cloudRotationRef.current
         }
 
         if (!data.orbit_duration || mode !== Mode.Object) return

@@ -3,7 +3,7 @@
 
 import { Suspense, useEffect, useMemo, useRef } from "react"
 import { Color, ShaderMaterial, AdditiveBlending, BackSide, Mesh } from "three"
-import { useFrame } from "@react-three/fiber"
+import { useFrame, useThree } from "@react-three/fiber"
 import { useSettingStore, useControlStore } from "@state"
 import { StarClass, type Star as StarType } from "@types"
 import { CelestialBody, GordilocksZone, Pulsar, SpaceCraft, StarDisk } from "@components/object"
@@ -77,6 +77,7 @@ const Star = ({ id, children, labelRef }: Props) => {
     const celestial = useCelestial()
     const { distanceScale, sizeScale } = useSettingStore()
     const { focus, focusIndex, setControl } = useControlStore()
+    const camera = useThree(state => state.camera)
 
     const universe = celestial.getUniverse()
     const rawData = celestial.getObjectById(id) as StarType
@@ -99,15 +100,15 @@ const Star = ({ id, children, labelRef }: Props) => {
 
     const handleClick = () => {
         if (data.id === focus) {
-            return setControl({ focusIndex: focusIndex + 1 })
+            const distance = celestial.getCameraDistance(camera, objectRef.current)
+
+            if (scale * 10 < distance) {
+                return setControl({ focusIndex: focusIndex + 1 })
+            }
+        } else {
+            setControl({ focus: id })
         }
-
-        setControl({ focus: id })
     }
-
-    useEffect(() => {
-        console.log(focus)
-    }, [focus])
 
     const surfaceMaterial = useMemo(() => {
         return new ShaderMaterial({

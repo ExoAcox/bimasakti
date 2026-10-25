@@ -10,6 +10,7 @@ import { When } from "react-if"
 import nations from "@constants/solar-system/nation"
 import NationMarker from "./NationMarker"
 import { useCelestial, userDataFormat, useVariant } from "@function"
+import { useThree } from "@react-three/fiber"
 
 interface Props {
     data: PlanetType
@@ -92,7 +93,6 @@ const Planet = ({
     children
 }: Props) => {
     const objectRef = useRef<Mesh>(null!)
-    const cloudRef = useRef<Mesh>(null!)
 
     const celestial = useCelestial()
     const { sizeScale, distanceScale } = useSettingStore()
@@ -103,15 +103,21 @@ const Planet = ({
     const scale = data.radius / sizeScale
     const isFocused = data.id === focus
 
+    const camera = useThree(state => state.camera)
+
     const handleClick = () => {
         if (isFocused) {
-            return setControl({ focusIndex: focusIndex + 1 })
+            const distance = celestial.getCameraDistance(camera, objectRef.current)
+
+            if (scale * 10 < distance) {
+                return setControl({ focusIndex: focusIndex + 1 })
+            }
+        } else {
+            const object = celestial.getObjectById(focus) as PlanetType | undefined
+            if (data.id === object?.parent && object?.radius < 1 && object?.distance < 10000) return;
+
+            setControl({ focus: data.id })
         }
-
-        const object = celestial.getObjectById(focus) as PlanetType | undefined
-        if (data.id === object?.parent && object?.radius < 1 && object?.distance < 10000) return;
-
-        setControl({ focus: data.id })
     }
 
     if (!data) return null
@@ -127,7 +133,6 @@ const Planet = ({
             data={data}
             objectRef={objectRef}
             onClick={handleClick}
-            cloudRef={cloudRef}
             childrenComponent={children}
         >
             <group
@@ -173,17 +178,16 @@ const Planet = ({
                         <Aurora data={data} />
                     </When>
                 </When>
-            </group>
 
-            <When condition={showCloud}>
-                <Detailed distances={[0, distance]}>
-                    <PlanetCloud
-                        data={data}
-                        cloudRef={cloudRef}
-                    />
-                    <mesh />
-                </Detailed>
-            </When>
+                <When condition={showCloud}>
+                    <Detailed distances={[0, distance]}>
+                        <PlanetCloud
+                            data={data}
+                        />
+                        <mesh />
+                    </Detailed>
+                </When>
+            </group>
 
             {data.artificial_satellites?.map(craft => (
                 <SpaceCraft

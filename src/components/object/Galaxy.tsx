@@ -40,6 +40,8 @@ const Galaxy = ({ children, onClick }: Props) => {
     const isMobile = useDetectGPU().isMobile
     const camera = useThree((state) => state.camera)
 
+    const intensity = isMobile ? 0.50 : 1.25
+
     useEffect(() => {
         const perspectiveCamera = camera as PerspectiveCamera
 
@@ -90,7 +92,7 @@ const Galaxy = ({ children, onClick }: Props) => {
             uniforms: {
                 u_texture: { value: starTexture },
                 u_time: { value: 0 },
-                u_mobile: { value: !!isMobile }
+                u_intensity: { value: intensity }
             },
             blending: AdditiveBlending,
             transparent: true,
@@ -98,7 +100,7 @@ const Galaxy = ({ children, onClick }: Props) => {
         })
 
         return { geometry: geo, glowMaterial: mat }
-    }, [isMobile, nodes, starTexture])
+    }, [intensity, nodes.Object_2.geometry, starTexture])
 
     useFrame((state) => {
         if (materialRef.current) {
