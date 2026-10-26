@@ -4,7 +4,7 @@ import LiveviewScene from "@components/LiveviewScene"
 import { SkyBox } from "@components/object"
 import { seo } from "@function"
 import clsx from "clsx"
-import { Suspense, useMemo, useState } from "react"
+import { Suspense, useEffect, useMemo, useState } from "react"
 import { TbMoonStars, TbSun, TbSunLow, TbSunset2 } from "react-icons/tb"
 import { When } from "react-if"
 import { MathUtils, Vector3 } from "three"
@@ -31,6 +31,32 @@ const SCENES = [
 
 const Mars = () => {
     const [scene, setScene] = useState<string>("day")
+
+    useEffect(() => {
+        const audio = new Audio("/audio/mars.aac")
+        audio.volume = 0.5
+        audio.loop = true
+
+        const playAudio = () => {
+            audio.play().catch(() => { })
+        }
+
+        playAudio()
+
+        const handleInteraction = () => {
+            if (audio.paused) playAudio()
+        }
+
+        window.addEventListener("pointerdown", handleInteraction, { once: true })
+        window.addEventListener("keydown", handleInteraction, { once: true })
+
+        return () => {
+            window.removeEventListener("pointerdown", handleInteraction)
+            window.removeEventListener("keydown", handleInteraction)
+            audio.pause()
+            audio.src = ""
+        }
+    }, [])
 
     const fogConfig = useMemo(() => {
         switch (scene) {

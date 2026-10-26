@@ -184,24 +184,39 @@ const Blackhole = ({ id, children }: Props) => {
                         <AccretionPoints
                             src="/models/sgr_a_ring.glb"
                             scale={1.0}
-                            // texturePath="/textures/blob-orange.png"
                             intensity={2}
                             size={24.0}
                         />
                         <AccretionPoints
                             src="/models/sgr_a_torus.glb"
                             scale={1.8}
-                            // texturePath="/textures/blob-blue.png"
-                            intensity={2.2}
+                            intensity={1.5}
                             size={36.0}
                         />
                         <AccretionPoints
                             src="/models/sgr_a_spirals_inner.glb"
                             scale={3.2}
-                            texturePath="/textures/star.png"
-                            intensity={2.0}
+                            intensity={1.0}
                             size={32.0}
                         />
+
+                        <group rotation={[0, Math.PI / 2, 0]}>
+                            <AccretionPoints
+                                src="/models/sgr_a_spirals_inner.glb"
+                                scale={3.2}
+                                intensity={1.0}
+                                size={32.0}
+                            />
+                        </group>
+
+                        <group rotation={[0, Math.PI / 4, 0]}>
+                            <AccretionPoints
+                                src="/models/sgr_a_spirals_inner.glb"
+                                scale={3.2}
+                                intensity={1.0}
+                                size={32.0}
+                            />
+                        </group>
                     </group>
                 </When>
             </group>

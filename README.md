@@ -37,7 +37,7 @@ The application will be running locally at `http://localhost:5173`.
 
 ```text
 bimasakti/
-├── public/                 # Static assets (textures, 3D models, icons, geojson)
+├── public/                 # Static assets (textures, 3D models, icons, images)
 │   ├── models/             # 3D meshes (spacecraft, satellites)
 │   └── textures/           # Planet surfaces, clouds, bump maps
 ├── src/
@@ -65,7 +65,6 @@ bimasakti/
 │   ├── root.tsx            # Root layout & HTML shell
 │   ├── routes.ts           # Route registry
 │   └── style.css           # Global CSS & Tailwind CSS v4 design tokens
-├── Dockerfile              # Multi-stage production container build
 ├── package.json
 └── tsconfig.json           # Path aliases (@components, @constants, @state, etc.)
 ```
