@@ -182,7 +182,7 @@
         },
         "sagittarius_a": {
             "name": "Sagittarius A*",
-            "title": "Sagittarius A*",
+            "title": "Sagittarius A* Cluster",
             "nickname": "Sagittarius A*",
             "description": "Sagittarius A* adalah lubang hitam supermasif yang terletak di Pusat Galaksi Bima Sakti. Ini adalah sumber radio astronomi yang sangat kompak dan terang."
         },
@@ -664,7 +664,7 @@
             "description": "TRAPPIST-1h adalah planet terluar yang diketahui di sistem TRAPPIST-1. Planet ini juga yang terkecil dan terdingin, mengorbit jauh dari kehangatan bintangnya."
         },
         "lich": {
-            "name": "Lich",
+            "name": "Lich (PSR B1257+12)",
             "title": "Sistem Lich (PSR B1257+12)",
             "nickname": "Lich",
             "description": "PSR B1257+12, dinamai Lich, adalah milidetik pulsar yang terletak 2.300 tahun cahaya di rasi bintang Virgo. Sistem ini terkenal karena menjadi rumah bagi sistem eksoplanet pertama yang terkonfirmasi."
@@ -686,7 +686,7 @@
         },
         "toi-500": {
             "name": "TOI-500 (GJ 9224)",
-            "title": "Sistem TOI-500",
+            "title": "Sistem TOI-500 (GJ 9224)",
             "nickname": "TOI-500",
             "description": "TOI-500 (GJ 9224) adalah bintang katai jingga kelas K yang berjarak sekitar 155 tahun cahaya di rasi bintang Puppis. Bintang ini memiliki sistem empat planet kompak yang terbentuk melalui jalur migrasi ber-eksentrisitas rendah yang mulus."
         },
@@ -732,8 +732,8 @@
             "description": "Teegarden d adalah eksoplanet terestrial yang ditemukan pada tahun 2024, mengorbit setiap 26,13 hari di luar tepi terluar zona laik huni sistem."
         },
         "vega": {
-            "name": "Vega",
-            "title": "Sistem Vega",
+            "name": "Vega (Alpha Lyrae)",
+            "title": "Sistem Vega (Alpha Lyrae)",
             "nickname": "Vega",
             "description": "Vega (Alpha Lyrae) adalah bintang deret utama biru-putih yang sangat terang berjarak sekitar 25 tahun cahaya di rasi bintang Lyra. Bintang ini dikelilingi oleh piringan puing sirkumstellar yang menonjol dan berotasi sangat cepat hanya dalam 12,5 jam."
         },
@@ -764,7 +764,7 @@
             "description": "TOI-700 d adalah eksoplanet terestrial seukuran Bumi yang mengorbit di dalam zona laik huni konservatif TOI-700 setiap 37,42 hari, menjadikannya kandidat kuat dunia yang berpotensi mendukung air cair."
         },
         "copernicus": {
-            "name": "Copernicus",
+            "name": "Copernicus (55 Cancri)",
             "title": "Sistem Copernicus (55 Cancri)",
             "nickname": "Copernicus",
             "description": "Copernicus (55 Cancri A) adalah bintang katai kuning kelas G yang berjarak sekitar 41 tahun cahaya di rasi bintang Cancer. Bintang ini memiliki sistem keplanetan yang kaya dengan lima eksoplanet terkonfirmasi."
@@ -885,7 +885,7 @@
         "nu_scorpii": {
             "name": "Nu Scorpii",
             "title": "Sistem Nu Scorpii",
-            "nickname": "Jabbah",
+            "nickname": "Nu Scorpii",
             "description": "Nu Scorpii (ν Scorpii), yang secara historis dikenal sebagai Jabbah, adalah sistem bintang tujuh (septuple) hierarkis langka yang berjarak sekitar 470 tahun cahaya di rasi bintang Scorpius. Sistem ini menyinari nebula refleksi biru IC 4592 yang menakjubkan."
         },
         "nu_scorpii_aa": {
@@ -1002,8 +1002,8 @@
         },
         "s2": {
             "name": "S2 (S0-2)",
-            "nickname": "S2 (S0-2)",
-            "description": "S2 adalah bintang deret utama tipe B yang mengorbit lubang hitam supermasif Sagittarius A* dengan periode 16,05 tahun. Pengamatan orbitnya membuktikan presesi Schwarzschild dan efek pergeseran merah gravitasi dari Teori Relativitas Umum Einstein."
+            "nickname": "S2",
+            "description": "S2 adalah bintang tipe B paling terkenal yang mengorbit Sagittarius A* dalam periode 16,05 tahun. Orbitnya memberikan bukti kunci presesi Schwarzschild dan pergeseran merah gravitasi sesuai prediksi Relativitas Umum Einstein."
         },
         "s4716": {
             "name": "S4716",
@@ -1017,18 +1017,18 @@
         },
         "s55": {
             "name": "S55 (S0-102)",
-            "nickname": "S55 (S0-102)",
+            "nickname": "S55",
             "description": "S55 adalah bintang yang mengorbit Sagittarius A* dengan periode orbit sekitar 12,8 tahun."
         },
         "s14": {
             "name": "S14 (S0-16)",
-            "nickname": "S14 (S0-16)",
-            "description": "S14 adalah bintang yang memiliki pendekatan sangat dekat dengan Sagittarius A* hingga 45 AU."
+            "nickname": "S14",
+            "description": "S14 adalah bintang deret utama tipe B dengan orbit 55,3 tahun yang sangat eksentrik di sekitar Sagittarius A*, mendekat hingga 56 AU saat perisentrum."
         },
         "s4711": {
             "name": "S4711",
             "nickname": "S4711",
-            "description": "S4711 adalah bintang berkecepatan tinggi dengan periode orbit 7,6 tahun di sekitar Sagittarius A*."
+            "description": "S4711 adalah bintang tipe B dengan periode orbit sangat pendek yakni 7,6 tahun mengelilingi Sagittarius A*, melintas pada jarak perisentrum 143,7 AU."
         },
         "hubble": {
             "name": "Hubble Space Telescope",
@@ -1104,6 +1104,26 @@
             "name": "Vega b",
             "nickname": "Vega b",
             "description": "Vega b adalah kandidat eksoplanet gas dwarf yang mengorbit bintang terang Vega pada jarak 0,063 SA setiap 2,43 hari. Atmosfer atasnya mengalami suhu ekstrem akibat radiasi bintang yang sangat intens."
+        },
+        "s301": {
+            "name": "S301",
+            "nickname": "S301",
+            "description": "S301 adalah bintang berkecepatan tinggi yang mengorbit Sagittarius A* dan ditemukan pada tahun 2026. Bintang ini memegang rekor pendekatan terdekat ke lubang hitam supermasif hanya sejauh 11,5 AU dengan kecepatan mencapai ~8,5% kecepatan cahaya."
+        },
+        "s4714": {
+            "name": "S4714",
+            "nickname": "S4714",
+            "description": "S4714 adalah bintang kluster S ekstrem yang mengorbit Sagittarius A* dengan periode orbit 12 tahun dan jarak perisentrum sekitar 12,6 AU, melaju hingga kecepatan ~8% kecepatan cahaya."
+        },
+        "s175": {
+            "name": "S175",
+            "nickname": "S175",
+            "description": "S175 adalah bintang kluster S dengan orbit eksentrik berperiode 96,2 tahun yang mendekat hingga 45 AU dari Sagittarius A* dengan kecepatan melampaui 4,2% kecepatan cahaya."
+        },
+        "s38": {
+            "name": "S38 (S0-38)",
+            "nickname": "S38",
+            "description": "S38 adalah bintang raksasa yang mengorbit Sagittarius A* dengan periode orbit 19,2 tahun, mencapai jarak perisentrum sekitar 208,4 AU."
         }
     },
     "landmark": {

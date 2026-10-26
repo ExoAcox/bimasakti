@@ -63,7 +63,7 @@ const NavigationPanel = () => {
                             </span>
                         </div> */}
                         <h1 className="text-lg sm:text-xl font-bold font-space-grotesk tracking-tight text-primary truncate">
-                            {t(`object.${data?.id}.name`)}
+                            {t(`object.${data?.id}.title`)}
                         </h1>
 
                         <When condition={data.distanceFromEarth}>

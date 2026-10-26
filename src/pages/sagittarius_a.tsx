@@ -12,7 +12,12 @@ const SagittariusA = () => {
 
     return (
         <Blackhole id="sagittarius_a">
-
+            {stars.map((star) => (
+                <Star
+                    key={star.id}
+                    id={star.id}
+                />
+            ))}
         </Blackhole>
     )
 }

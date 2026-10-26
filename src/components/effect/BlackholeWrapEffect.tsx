@@ -5,6 +5,7 @@ import { useFrame, useThree } from "@react-three/fiber"
 import { wrapEffect } from "@react-three/postprocessing"
 import { blackHoleLensingFragmentShader } from "@shaders/blackhole"
 import { useCelestial } from "@function"
+import { useControlStore } from "@state"
 
 export class BlackHoleLensingEffectImpl extends Effect {
     constructor() {
@@ -31,6 +32,7 @@ export const BlackHoleLensingEffect = () => {
     const { camera, size, scene } = useThree()
     const celestial = useCelestial()
     const currentUniverse = celestial.getUniverse()
+    const { focus } = useControlStore()
 
     // Persistent vectors to prevent allocations in useFrame (AGENTS.md rule 6.1)
     const worldPosRef = useRef(new Vector3())
@@ -102,6 +104,10 @@ export const BlackHoleLensingEffect = () => {
 
         const uRadius = uniforms.get("uRadius")
         if (uRadius) uRadius.value = screenRadius
+
+        const isSgrAFocused = focus === "sagittarius_a" || !focus
+        const uEH = uniforms.get("uEH")
+        if (uEH) uEH.value = isSgrAFocused ? 1 : 0
 
         const uActive = uniforms.get("uActive")
         if (uActive) uActive.value = 1.0

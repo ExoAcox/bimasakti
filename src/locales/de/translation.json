@@ -182,7 +182,7 @@
         },
         "sagittarius_a": {
             "name": "Sagittarius A*",
-            "title": "Sagittarius A*",
+            "title": "Sagittarius A* Cluster",
             "nickname": "Sagittarius A*",
             "description": "Sagittarius A* ist ein supermassereiches Schwarzes Loch im galaktischen Zentrum der Milchstraße. Es ist eine sehr kompakte und helle astronomische Radioquelle."
         },
@@ -606,7 +606,7 @@
             "description": "TRAPPIST-1h ist der äußerste bekannte Planet des TRAPPIST-1-Systems. Er ist auch der kleinste und kälteste Planet und kreist weit entfernt von der Wärme des Sterns."
         },
         "lich": {
-            "name": "Lich",
+            "name": "Lich (PSR B1257+12)",
             "title": "Lich (PSR B1257+12) System",
             "nickname": "Lich",
             "description": "PSR B1257+12, genannt Lich, ist ein Millisekundenpulsar im Sternbild Jungfrau, etwa 2.300 Lichtjahre entfernt. Es ist berühmt dafür, das erste bestätigte Exoplanetensystem zu beherbergen."
@@ -628,7 +628,7 @@
         },
         "toi-500": {
             "name": "TOI-500 (GJ 9224)",
-            "title": "TOI-500 System",
+            "title": "TOI-500 (GJ 9224 System",
             "nickname": "TOI-500",
             "description": "TOI-500 (GJ 9224) ist ein heller oranger K-Zwergstern im Sternbild Achterdeck des Schiffs (Puppis), etwa 155 Lichtjahre entfernt. Er beherbergt ein kompaktes Vier-Planeten-System mit sanfter Migrationsgeschichte."
         },
@@ -674,8 +674,8 @@
             "description": "Teegarden d ist ein im Jahr 2024 entdeckter Gesteinsplanet mit einer Umlaufzeit von 26,13 Tagen jenseits des äußeren Randes der habitablen Zone."
         },
         "vega": {
-            "name": "Wega",
-            "title": "Wega-System",
+            "name": "Wega (Alpha Lyrae)",
+            "title": "Wega (Alpha Lyrae) System",
             "nickname": "Wega",
             "description": "Wega (Alpha Lyrae) ist ein leuchtkräftiger blau-weißer Hauptreihenstern im Sternbild Leier (Lyra), etwa 25 Lichtjahre entfernt. Sie ist von einer ausgeprägten Trümmerscheibe umgeben und rotiert extrem schnell in nur 12,5 Stunden um die eigene Achse."
         },
@@ -706,7 +706,7 @@
             "description": "TOI-700 d ist ein erdgroßer Gesteinsplanet in der konservativen habitablen Zone von TOI-700 mit einer Umlaufzeit von 37,42 Tagen und ein vielversprechender Kandidat für flüssiges Wasser."
         },
         "copernicus": {
-            "name": "Copernicus",
+            "name": "Copernicus (55 Cancri)",
             "title": "Copernicus-System (55 Cancri)",
             "nickname": "Copernicus",
             "description": "Copernicus (55 Cancri A) ist ein Gelber Zwergstern der Spektralklasse G im Sternbild Krebs, etwa 41 Lichtjahre entfernt. Er besitzt ein bemerkenswertes Planetensystem mit fünf bestätigten Exoplaneten."
@@ -827,7 +827,7 @@
         "nu_scorpii": {
             "name": "Nu Scorpii",
             "title": "Nu Scorpii System",
-            "nickname": "Jabbah",
+            "nickname": "Nu Scorpii",
             "description": "Nu Scorpii (ν Scorpii), historisch als Jabbah bekannt, ist ein seltenes hierarchisches Siebenfach-Sternsystem (Septuple), etwa 470 Lichtjahre entfernt im Sternbild Skorpion. Es beleuchtet den blauen Reflexionsnebel IC 4592."
         },
         "nu_scorpii_aa": {
@@ -944,8 +944,8 @@
         },
         "s2": {
             "name": "S2 (S0-2)",
-            "nickname": "S2 (S0-2)",
-            "description": "S2 ist ein B-Typ-Hauptreihenstern, der das supermassereiche Schwarze Loch Sagittarius A* in einem Zeitraum von 16,05 Jahren umkreist."
+            "nickname": "S2",
+            "description": "S2 ist der bekannteste B-Stern, der Sagittarius A* in einer 16,05-jährigen Periode umkreist. Seine Umlaufbahn lieferte entscheidende Beweise für die Schwarzschild-Präzession und die gravitative Rotverschiebung nach Einsteins Allgemeiner Relativitätstheorie."
         },
         "s4716": {
             "name": "S4716",
@@ -959,18 +959,18 @@
         },
         "s55": {
             "name": "S55 (S0-102)",
-            "nickname": "S55 (S0-102)",
+            "nickname": "S55",
             "description": "S55 ist ein Stern, der Sagittarius A* mit einer Umlaufzeit von etwa 12,8 Jahren umkreist."
         },
         "s14": {
             "name": "S14 (S0-16)",
-            "nickname": "S14 (S0-16)",
-            "description": "S14 ist ein Stern mit einer sehr nahen Annäherung an Sagittarius A* von bis zu 45 AE."
+            "nickname": "S14",
+            "description": "S14 ist ein B-Hauptreihenstern auf einer hochexzentrischen 55,3-jährigen Umlaufbahn um Sagittarius A*, der sich im Periastron auf 56 AE nähert."
         },
         "s4711": {
             "name": "S4711",
             "nickname": "S4711",
-            "description": "S4711 ist ein Hochgeschwindigkeitsstern mit einer kurzen Umlaufzeit von 7,6 Jahren um Sagittarius A*."
+            "description": "S4711 ist ein B-Stern auf einer engen 7,6-jährigen Umlaufbahn um Sagittarius A*, der im Periastron in einer Entfernung von 143,7 AE vorbeizieht."
         },
         "hubble": {
             "name": "Hubble-Weltraumteleskop",
@@ -1104,6 +1104,26 @@
             "name": "Vega b",
             "nickname": "Vega b",
             "description": "Vega b ist ein Exoplanetenkandidat vom Typ Gaszwerg, der den hellen Stern Wega im Abstand von 0,063 AE alle 2,43 Tage umkreist. Seine obere Atmosphäre ist extremen Temperaturen durch die intensive Strahlung ausgesetzt."
+        },
+        "s301": {
+            "name": "S301",
+            "nickname": "S301",
+            "description": "S301 ist ein sich schnell bewegender Stern, der Sagittarius A* umkreist und 2026 entdeckt wurde. Er hält den Rekord für die nächste Annäherung an das supermassereiche Schwarze Loch bei nur 11,5 AE und erreicht Geschwindigkeiten von bis zu 8,5 % der Lichtgeschwindigkeit."
+        },
+        "s4714": {
+            "name": "S4714",
+            "nickname": "S4714",
+            "description": "S4714 ist ein extremer Stern des S-Haufens, der Sagittarius A* mit einer Umlaufzeit von 12 Jahren und einer Periastron-Distanz von etwa 12,6 AE umkreist und Geschwindigkeiten von etwa 8 % der Lichtgeschwindigkeit erreicht."
+        },
+        "s175": {
+            "name": "S175",
+            "nickname": "S175",
+            "description": "S175 ist ein exzentrischer Stern des S-Haufens mit einer 96,2-jährigen Umlaufbahn, der sich bis auf 45 AE an Sagittarius A* annähert und auf über 4,2 % der Lichtgeschwindigkeit beschleunigt."
+        },
+        "s38": {
+            "name": "S38 (S0-38)",
+            "nickname": "S38",
+            "description": "S38 ist ein Riesenstern, der Sagittarius A* mit einer Periode von 19,2 Jahren umkreist und eine Periastron-Distanz von etwa 208,4 AE erreicht."
         }
     },
     "nation": {

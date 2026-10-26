@@ -48,9 +48,10 @@ const universes: Universe[] = [
         position: [0, 0, 0],
         distanceFromEarth: 26000,
         minDistance: 1e-6,
-        maxDistance: 100000,
+        maxDistance: 3e+6,
         cameraPosition: [1500, 2000, 4000],
         labelPosition: "top",
+        defaultFocus: "sagittarius_a",
         assetCount: 7,
         stars: [],
         mobile: {}

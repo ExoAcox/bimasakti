@@ -182,7 +182,7 @@
         },
         "sagittarius_a": {
             "name": "Sagittarius A*",
-            "title": "Sagittarius A* Supermassive Black Hole",
+            "title": "Sagittarius A* Cluster",
             "nickname": "Sagittarius A*",
             "description": "Sagittarius A* is a supermassive black hole located at the Galactic Center of the Milky Way galaxy. It is a highly compact and bright astronomical radio source."
         },
@@ -686,7 +686,7 @@
         },
         "toi-500": {
             "name": "TOI-500 (GJ 9224)",
-            "title": "TOI-500 System",
+            "title": "TOI-500 (GJ 9224) System",
             "nickname": "TOI-500",
             "description": "TOI-500 (GJ 9224) is a bright K-type dwarf star located about 155 light-years away in the constellation Puppis. It hosts a compact four-planet system characterized by a smooth, low-eccentricity migration pathway."
         },
@@ -732,8 +732,8 @@
             "description": "Teegarden d is a terrestrial exoplanet discovered in 2024 completing an orbit every 26.13 days, situated beyond the outer edge of the habitable zone."
         },
         "vega": {
-            "name": "Vega",
-            "title": "Vega System",
+            "name": "Vega (Alpha Lyrae)",
+            "title": "Vega (Alpha Lyrae) System",
             "nickname": "Vega",
             "description": "Vega (Alpha Lyrae) is a luminous blue-white main-sequence star located roughly 25 light-years away in the constellation Lyra. It is surrounded by a prominent circumstellar debris disk and rotates rapidly on its axis in just 12.5 hours."
         },
@@ -885,7 +885,7 @@
         "nu_scorpii": {
             "name": "Nu Scorpii",
             "title": "Nu Scorpii System",
-            "nickname": "Jabbah",
+            "nickname": "Nu Scorpii",
             "description": "Nu Scorpii (ν Scorpii), historically known as Jabbah, is a rare hierarchical septuple (7-star) system located approximately 470 light-years away in the constellation Scorpius. It illuminates the ethereal IC 4592 blue reflection nebula."
         },
         "nu_scorpii_aa": {
@@ -1002,8 +1002,8 @@
         },
         "s2": {
             "name": "S2 (S0-2)",
-            "nickname": "S2 (S0-2)",
-            "description": "S2 is a B-type main sequence star orbiting the supermassive black hole Sagittarius A* in a 16.05-year period. Its orbit provided key evidence for Schwarzschild precession and gravitational redshift predicted by Einstein's General Relativity."
+            "nickname": "S2",
+            "description": "S2 is the most famously studied B-type star orbiting Sagittarius A* in a 16.05-year period. Its orbit provided landmark empirical confirmation of Einstein's General Relativity, including gravitational redshift and Schwarzschild precession."
         },
         "s4716": {
             "name": "S4716",
@@ -1017,18 +1017,18 @@
         },
         "s55": {
             "name": "S55 (S0-102)",
-            "nickname": "S55 (S0-102)",
+            "nickname": "S55",
             "description": "S55 is a star orbiting Sagittarius A* with an orbital period of approximately 12.8 years."
         },
         "s14": {
             "name": "S14 (S0-16)",
-            "nickname": "S14 (S0-16)",
-            "description": "S14 is a star featuring a close pericenter approach to Sagittarius A* down to 45 AU."
+            "nickname": "S14",
+            "description": "S14 is a B-type main sequence star on a highly eccentric 55.3-year orbit around Sagittarius A*, approaching within 56 AU at pericenter."
         },
         "s4711": {
             "name": "S4711",
             "nickname": "S4711",
-            "description": "S4711 is a high-velocity star orbiting Sagittarius A* with a short 7.6-year period."
+            "description": "S4711 is a B-type star on a tightly bound 7.6-year orbit around Sagittarius A*, passing at a pericenter distance of 143.7 AU."
         },
         "hubble": {
             "name": "Hubble Space Telescope",
@@ -1104,6 +1104,26 @@
             "name": "Vega b",
             "nickname": "Vega b",
             "description": "Vega b is a candidate gas dwarf exoplanet orbiting the bright star Vega at a distance of 0.063 AU every 2.43 days. Its upper atmosphere experiences blistering temperatures from Vega's intense stellar radiation."
+        },
+        "s301": {
+            "name": "S301",
+            "nickname": "S301",
+            "description": "S301 is a fast-moving star orbiting Sagittarius A* discovered in 2026. It holds the record for the closest approach to the supermassive black hole at just 11.5 AU, reaching speeds up to 8.5% the speed of light at pericenter."
+        },
+        "s4714": {
+            "name": "S4714",
+            "nickname": "S4714",
+            "description": "S4714 is an extreme S-cluster star orbiting Sagittarius A* with an orbital period of 12 years and a pericenter distance of approximately 12.6 AU, reaching velocities around 8% the speed of light."
+        },
+        "s175": {
+            "name": "S175",
+            "nickname": "S175",
+            "description": "S175 is an eccentric S-cluster star on a 96.2-year orbit that plunges down to 45 AU from Sagittarius A*, accelerating to over 4.2% the speed of light."
+        },
+        "s38": {
+            "name": "S38 (S0-38)",
+            "nickname": "S38",
+            "description": "S38 is a giant star orbiting Sagittarius A* with an orbital period of 19.2 years, reaching a pericenter distance of approximately 208.4 AU."
         }
     },
     "landmark": {

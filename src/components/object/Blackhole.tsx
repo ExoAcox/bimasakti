@@ -167,73 +167,63 @@ const Blackhole = ({ id, children }: Props) => {
 
     return (
         <CelestialBody data={data} objectRef={objectRef} onClick={handleClick}>
-            <group scale={scale} >
-                <group ref={objectRef} name={data.id} userData={userDataFormat(data)} >
-                    <mesh
-                        renderOrder={10}
-                        onClick={(e) => {
-                            e.stopPropagation()
-                            handleClick()
-                        }}
-                    >
-                        <sphereGeometry args={[1, 64, 32]} />
-                        <meshBasicMaterial color="#000000" colorWrite={false} />
-                    </mesh>
+            <group ref={objectRef} name={data.id} userData={userDataFormat(data)} scale={scale}>
+                <mesh
+                    onClick={(e) => {
+                        e.stopPropagation()
+                        handleClick()
+                    }}
+                >
+                    <sphereGeometry args={[1, 64, 32]} />
+                    <meshBasicMaterial color="#000000" />
+                </mesh>
 
-
-
-                    <group ref={diskRef} rotation={[Math.PI, 0, 0]}>
-                        <AccretionPoints
-                            src="/models/sgr_a_ring.glb"
-                            scale={1.0}
-                            // texturePath="/textures/blob-orange.png"
-                            intensity={2}
-                            size={24.0}
-                        />
-                        <AccretionPoints
-                            src="/models/sgr_a_torus.glb"
-                            scale={1.8}
-                            // texturePath="/textures/blob-blue.png"
-                            intensity={2.2}
-                            size={36.0}
-                        />
-                        <AccretionPoints
-                            src="/models/sgr_a_spirals_inner.glb"
-                            scale={3.2}
-                            texturePath="/textures/star.png"
-                            intensity={2.0}
-                            size={32.0}
-                        />
-                    </group>
-
-
-
-
-
-
-                </group>
-
-                <group ref={jetsRef}>
+                <group ref={diskRef} rotation={[Math.PI, 0, 0]}>
                     <AccretionPoints
-                        src="/models/sgr_a_jets.glb"
-                        scale={5}
+                        src="/models/sgr_a_ring.glb"
+                        scale={1.0}
+                        // texturePath="/textures/blob-orange.png"
+                        intensity={2}
+                        size={24.0}
+                    />
+                    <AccretionPoints
+                        src="/models/sgr_a_torus.glb"
+                        scale={1.8}
+                        // texturePath="/textures/blob-blue.png"
+                        intensity={2.2}
+                        size={36.0}
+                    />
+                    <AccretionPoints
+                        src="/models/sgr_a_spirals_inner.glb"
+                        scale={3.2}
                         texturePath="/textures/star.png"
-                        intensity={3.8}
+                        intensity={2.0}
                         size={32.0}
                     />
                 </group>
 
-                <group ref={pulsarRef}>
-                    <Pulsar radius={scale / 1500} color={"#bae6fd"} tilt={3} />
-                    <Pulsar radius={scale / 1500} color={"#bae6fd"} tilt={3} rotation={45} />
-                    <Pulsar radius={scale / 1500} color={"#bae6fd"} tilt={3} rotation={90} />
-                    <Pulsar radius={scale / 1500} color={"#bae6fd"} tilt={3} rotation={135} />
-                    <Pulsar radius={scale / 1500} color={"#bae6fd"} tilt={3} rotation={180} />
-                    <Pulsar radius={scale / 1500} color={"#bae6fd"} tilt={3} rotation={225} />
-                    <Pulsar radius={scale / 1500} color={"#bae6fd"} tilt={3} rotation={270} />
-                    <Pulsar radius={scale / 1500} color={"#bae6fd"} tilt={3} rotation={315} />
-                </group>
 
+            </group>
+
+            <group ref={jetsRef}>
+                <AccretionPoints
+                    src="/models/sgr_a_jets.glb"
+                    scale={scale * 5}
+                    texturePath="/textures/star.png"
+                    intensity={3.8}
+                    size={32.0}
+                />
+            </group>
+
+            <group ref={pulsarRef}>
+                <Pulsar radius={scale / 10} color={"#bae6fd"} tilt={3} />
+                <Pulsar radius={scale / 10} color={"#bae6fd"} tilt={3} rotation={45} />
+                <Pulsar radius={scale / 10} color={"#bae6fd"} tilt={3} rotation={90} />
+                <Pulsar radius={scale / 10} color={"#bae6fd"} tilt={3} rotation={135} />
+                <Pulsar radius={scale / 10} color={"#bae6fd"} tilt={3} rotation={180} />
+                <Pulsar radius={scale / 10} color={"#bae6fd"} tilt={3} rotation={225} />
+                <Pulsar radius={scale / 10} color={"#bae6fd"} tilt={3} rotation={270} />
+                <Pulsar radius={scale / 10} color={"#bae6fd"} tilt={3} rotation={315} />
             </group>
 
             {children}

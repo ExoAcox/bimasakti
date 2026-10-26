@@ -1,4 +1,5 @@
 import { type Blackhole } from "@types"
+import { stars } from "./star"
 
 const blackholes: Blackhole[] = [{
     id: "sagittarius_a",
@@ -12,7 +13,7 @@ const blackholes: Blackhole[] = [{
     orbit_duration: 0,
     icon: "blackhole.png",
     model: "sagittarius_a.glb",
-    stars: []
+    stars: stars
 }]
 
-export default { blackholes }
+export default { blackholes, stars }
