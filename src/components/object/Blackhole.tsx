@@ -14,6 +14,7 @@ import { useSettingStore, useControlStore } from "@state"
 import type { Blackhole as BlackholeType } from "@types"
 import { blackholePointFragmentShader, blackholePointVertexShader } from "@shaders/blackhole"
 import { CelestialBody, Pulsar } from "."
+import { When } from "react-if"
 
 
 
@@ -143,7 +144,7 @@ const Blackhole = ({ id, children }: Props) => {
     const pulsarRef = useRef<Group>(null!)
 
     const { sizeScale } = useSettingStore()
-    const { rotateSpeed, setControl } = useControlStore()
+    const { rotateSpeed, diskVisible, plasmaBeamVisible, setControl } = useControlStore()
     const data = useCelestial().getObjectById(id) as BlackholeType
     const scale = data.radius / sizeScale
 
@@ -178,53 +179,55 @@ const Blackhole = ({ id, children }: Props) => {
                     <meshBasicMaterial color="#000000" />
                 </mesh>
 
-                <group ref={diskRef} rotation={[Math.PI, 0, 0]}>
+                <When condition={diskVisible}>
+                    <group ref={diskRef} rotation={[Math.PI, 0, 0]}>
+                        <AccretionPoints
+                            src="/models/sgr_a_ring.glb"
+                            scale={1.0}
+                            // texturePath="/textures/blob-orange.png"
+                            intensity={2}
+                            size={24.0}
+                        />
+                        <AccretionPoints
+                            src="/models/sgr_a_torus.glb"
+                            scale={1.8}
+                            // texturePath="/textures/blob-blue.png"
+                            intensity={2.2}
+                            size={36.0}
+                        />
+                        <AccretionPoints
+                            src="/models/sgr_a_spirals_inner.glb"
+                            scale={3.2}
+                            texturePath="/textures/star.png"
+                            intensity={2.0}
+                            size={32.0}
+                        />
+                    </group>
+                </When>
+            </group>
+
+            <When condition={plasmaBeamVisible}>
+                <group ref={jetsRef}>
                     <AccretionPoints
-                        src="/models/sgr_a_ring.glb"
-                        scale={1.0}
-                        // texturePath="/textures/blob-orange.png"
-                        intensity={2}
-                        size={24.0}
-                    />
-                    <AccretionPoints
-                        src="/models/sgr_a_torus.glb"
-                        scale={1.8}
-                        // texturePath="/textures/blob-blue.png"
-                        intensity={2.2}
-                        size={36.0}
-                    />
-                    <AccretionPoints
-                        src="/models/sgr_a_spirals_inner.glb"
-                        scale={3.2}
+                        src="/models/sgr_a_jets.glb"
+                        scale={scale * 5}
                         texturePath="/textures/star.png"
-                        intensity={2.0}
+                        intensity={3.8}
                         size={32.0}
                     />
                 </group>
 
-
-            </group>
-
-            <group ref={jetsRef}>
-                <AccretionPoints
-                    src="/models/sgr_a_jets.glb"
-                    scale={scale * 5}
-                    texturePath="/textures/star.png"
-                    intensity={3.8}
-                    size={32.0}
-                />
-            </group>
-
-            <group ref={pulsarRef}>
-                <Pulsar radius={scale / 10} color={"#bae6fd"} tilt={3} />
-                <Pulsar radius={scale / 10} color={"#bae6fd"} tilt={3} rotation={45} />
-                <Pulsar radius={scale / 10} color={"#bae6fd"} tilt={3} rotation={90} />
-                <Pulsar radius={scale / 10} color={"#bae6fd"} tilt={3} rotation={135} />
-                <Pulsar radius={scale / 10} color={"#bae6fd"} tilt={3} rotation={180} />
-                <Pulsar radius={scale / 10} color={"#bae6fd"} tilt={3} rotation={225} />
-                <Pulsar radius={scale / 10} color={"#bae6fd"} tilt={3} rotation={270} />
-                <Pulsar radius={scale / 10} color={"#bae6fd"} tilt={3} rotation={315} />
-            </group>
+                <group ref={pulsarRef}>
+                    <Pulsar radius={scale / 10} color={"#bae6fd"} tilt={3} />
+                    <Pulsar radius={scale / 10} color={"#bae6fd"} tilt={3} rotation={45} />
+                    <Pulsar radius={scale / 10} color={"#bae6fd"} tilt={3} rotation={90} />
+                    <Pulsar radius={scale / 10} color={"#bae6fd"} tilt={3} rotation={135} />
+                    <Pulsar radius={scale / 10} color={"#bae6fd"} tilt={3} rotation={180} />
+                    <Pulsar radius={scale / 10} color={"#bae6fd"} tilt={3} rotation={225} />
+                    <Pulsar radius={scale / 10} color={"#bae6fd"} tilt={3} rotation={270} />
+                    <Pulsar radius={scale / 10} color={"#bae6fd"} tilt={3} rotation={315} />
+                </group>
+            </When>
 
             {children}
         </CelestialBody>

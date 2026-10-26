@@ -4,7 +4,7 @@ import clsx from "clsx";
 import { useCallback, useEffect, useMemo, useState } from "react";
 import { When } from "react-if";
 import { handleZoomIn, handleZoomOut, timelineFormat, useCelestial, useMobile, useVariant } from "@function";
-import { Mode, type Planet, type SpaceCraft } from "@types";
+import { Mode, StarClass, type Blackhole, type Planet, type SpaceCraft, type Star } from "@types";
 
 
 import { PiFastForwardFill, PiRewindFill, PiPlayFill, PiPauseFill } from "react-icons/pi";
@@ -14,11 +14,12 @@ import { TbSatelliteFilled } from "react-icons/tb";
 import { HiLocationMarker } from "react-icons/hi";
 import { CgTerrain } from "react-icons/cg";
 import { MdBrightnessMedium, MdClose, MdHistory, MdRefresh } from "react-icons/md";
-import { SiUnitednations, SiGoogleearth } from "react-icons/si";
+import { SiUnitednations, SiGoogleearth, SiSaturn } from "react-icons/si";
 import { useTranslation } from "react-i18next";
 import { useKeyboardControls, useProgress } from "@react-three/drei";
 import { Controls } from "@function";
 import { useNavigate } from "react-router";
+import { GiRingedBeam, GiSinusoidalBeam } from "react-icons/gi";
 
 // Reusable style classes for consistent UI design
 const SECTION_CLASS = "flex items-center gap-1.5 flex-wrap justify-center";
@@ -56,6 +57,9 @@ const ACTIVE_TOPOGRAPHY_CLASS = "bg-orange-500/20 border-orange-400/50  hover:bg
 const BTN_TIMELINE_CLASS = "hover:border-indigo-400/40 hover:bg-indigo-500/10";
 const ACTIVE_TIMELINE_CLASS = "bg-indigo-500/20 border-indigo-400/50 hover:bg-indigo-500/30";
 
+const BTN_DISKORJET_CLASS = "hover:border-indigo-400/40 hover:bg-indigo-500/10";
+const ACTIVE_DISKORJET_CLASS = "bg-indigo-500/20 border-indigo-400/50 hover:bg-indigo-500/30";
+
 const NAV_BTN_CLASS = clsx(
     BUTTON_BASE_CLASS,
     "size-9 rounded-xl border border-transparent text-secondary hover:text-cyan-300 hover:bg-cyan-500/10 hover:border-accent/30 active:scale-90"
@@ -80,7 +84,7 @@ const MODE_LIST: { id: Mode, label: string, img: string }[] = [
 ]
 
 const ControlPanel = () => {
-    const { mode, focus, focusIndex, focusInput, focusLandmark, tidalLock, landmarkVisible, nationVisible, rotateSpeed, cloudVisible, atmosphereVisible, artificialSatelliteVisible, topographyVisible, dayNightMode, variant, setControl, resetControl } = useControlStore()
+    const { mode, focus, focusIndex, focusInput, focusLandmark, tidalLock, landmarkVisible, nationVisible, rotateSpeed, cloudVisible, atmosphereVisible, diskVisible, plasmaBeamVisible, artificialSatelliteVisible, topographyVisible, dayNightMode, variant, setControl, resetControl } = useControlStore()
     const [lastVariant, setLastVariant] = useState<{ orbit_duration: number, rotate_duration: number } | undefined>()
     const [lastRotateSpeed, setLastRotateSpeed] = useState(rotateSpeed)
     const [timelinesVisible, setTimelineVisible] = useState(true)
@@ -177,6 +181,14 @@ const ControlPanel = () => {
 
     const handleSatellite = () => {
         setControl({ artificialSatelliteVisible: !artificialSatelliteVisible })
+    }
+
+    const handleDisk = () => {
+        setControl({ diskVisible: !diskVisible })
+    }
+
+    const handlePlasmaBeam = () => {
+        setControl({ plasmaBeamVisible: !plasmaBeamVisible })
     }
 
     const handleDayNight = () => {
@@ -423,6 +435,26 @@ const ControlPanel = () => {
                     >
                         <MdBrightnessMedium className="size-4" />
                         <span className={TOOLTIP_CLASS}>{t("ui.day_night_mode", "Day / Night Mode")}</span>
+                    </button>
+                </When>
+
+                <When condition={(data as unknown as Blackhole).type === "blackhole" || (data as unknown as Star).class === StarClass.Neutron}>
+                    <button
+                        onClick={handlePlasmaBeam}
+                        className={clsx(TOGGLE_BTN_CLASS, BTN_DISKORJET_CLASS, plasmaBeamVisible && ACTIVE_DISKORJET_CLASS)}
+                    >
+                        <GiRingedBeam className="size-4" />
+                        <span className={TOOLTIP_CLASS}>{t("ui.disk_or_jet", "Plasma Beam")}</span>
+                    </button>
+                </When>
+
+                <When condition={(data as unknown as Blackhole).type === "blackhole" || (data as unknown as Star).protoplanetaryDisk}>
+                    <button
+                        onClick={handleDisk}
+                        className={clsx(TOGGLE_BTN_CLASS, BTN_DISKORJET_CLASS, diskVisible && ACTIVE_DISKORJET_CLASS)}
+                    >
+                        <SiSaturn className="size-4" />
+                        <span className={TOOLTIP_CLASS}>{t("ui.disk_or_jet", "Disk")}</span>
                     </button>
                 </When>
 

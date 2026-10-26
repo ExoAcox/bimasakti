@@ -47,6 +47,8 @@ export interface ControlStore {
     landmarkVisible: boolean
     nationVisible: boolean
     artificialSatelliteVisible: boolean
+    diskVisible: boolean
+    plasmaBeamVisible: boolean
     dayNightMode: boolean
     resetControl: (data?: CelestialObject | Belt) => void
     setControl: (values: Partial<Omit<ControlStore, "setControl" | "resetControl">>) => void
@@ -69,6 +71,8 @@ export const defaultControl = {
     atmosphereVisible: true,
     landmarkVisible: true,
     nationVisible: false,
+    diskVisible: true,
+    plasmaBeamVisible: true,
     artificialSatelliteVisible: true,
 }
 

@@ -76,7 +76,7 @@ const Star = ({ id, children, labelRef }: Props) => {
 
     const celestial = useCelestial()
     const { distanceScale, sizeScale } = useSettingStore()
-    const { focus, focusIndex, setControl } = useControlStore()
+    const { focus, focusIndex, diskVisible, plasmaBeamVisible, setControl } = useControlStore()
     const camera = useThree(state => state.camera)
 
     const universe = celestial.getUniverse()
@@ -169,6 +169,9 @@ const Star = ({ id, children, labelRef }: Props) => {
 
     if (!data) return null
 
+    const showPlasmaBeam = data.class === StarClass.Neutron && plasmaBeamVisible
+    const showDisk = data.protoplanetaryDisk && diskVisible
+
     return (
         <CelestialBody data={data} onClick={handleClick} objectRef={objectRef} childrenComponent={children} labelRef={labelRef}>
             <pointLight intensity={isDysonSohere ? 1000 : intensity / 5 * 2} color="white" />
@@ -207,11 +210,11 @@ const Star = ({ id, children, labelRef }: Props) => {
                     </mesh>
                 </group>
 
-                <When condition={data.class === StarClass.Neutron}>
+                <When condition={showPlasmaBeam}>
                     <Pulsar radius={scale} color={color} />
                 </When>
 
-                <When condition={data.protoplanetaryDisk}>
+                <When condition={showDisk}>
                     <StarDisk />
                 </When>
             </group>
