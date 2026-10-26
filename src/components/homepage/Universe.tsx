@@ -82,7 +82,14 @@ const Card = ({ id, className, imgClassName }: Props) => {
                                 <span>{starCount} {starCount === 1 ? t("ui.star") : t("ui.stars")}</span>
                             </When>
                         </span>
-                        <When condition={id !== "milky_way"}>
+                        <When condition={id === "sagittarius_a"}>
+                            <span>•</span>
+                            <span className="flex items-center gap-1">
+                                <IoPlanetOutline className="size-3 shrink-0" />
+                                <span>1 {t("ui.blackhole", "Black Hole")}</span>
+                            </span>
+                        </When>
+                        <When condition={id !== "milky_way" && id !== "sagittarius_a"}>
                             <span>•</span>
                             <span className="flex items-center gap-1">
                                 <IoPlanetOutline className="size-3 shrink-0" />
@@ -104,6 +111,7 @@ const Card = ({ id, className, imgClassName }: Props) => {
 };
 
 const REMAINING_SYSTEMS = [
+    "trappist-1",
     "toi-700",
     "copernicus",
     "lich",
@@ -142,7 +150,7 @@ const Universe = ({ standalone }: { standalone?: boolean }) => {
                 <Card id="milky_way" className="lg:col-span-4 lg:row-span-2" imgClassName="h-[240px] lg:h-full" />
                 <Card id="solar_system" className="lg:col-span-8" imgClassName="h-[240px] lg:h-[320px]" />
                 <Card id="alpha_centauri" className="lg:col-span-4" imgClassName="h-[240px] lg:h-full" />
-                <Card id="trappist-1" className="lg:col-span-4" imgClassName="h-[240px] lg:h-full" />
+                <Card id="sagittarius_a" className="lg:col-span-4" imgClassName="h-[240px] lg:h-full" />
 
                 <When condition={isExpanded || standalone}>
                     {REMAINING_SYSTEMS.map((id) => (
