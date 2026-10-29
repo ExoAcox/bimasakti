@@ -35,8 +35,6 @@ const GltfLoader = ({ path, rotation, center = true }: Props) => {
             }
         }
 
-        console.log(dimension(), sizeArr)
-
         const scaleFactor = 1.5 / dimension()
         clone.scale.setScalar(scaleFactor)
 

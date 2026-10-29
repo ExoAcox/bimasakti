@@ -116,7 +116,10 @@ export const satellites: Satellite[] = [
         orbit_duration: 16.69,
         rotate_duration: 16.69, // Tidally locked
         texture: "callisto.ktx2",
-        icon: "mercury.png"
+        icon: "mercury.png",
+        get landmarks() {
+            return landmarks.filter((landmark) => landmark.parent === this.id)
+        }
     },
     // Saturn
     {

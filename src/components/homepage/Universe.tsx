@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { universes } from "@constants";
+import { universes, universe_ids } from "@constants";
 import { PlanetClass, type Universe as UniverseType } from "@types";
 import clsx from "clsx";
 import { Trans, useTranslation } from "react-i18next";
@@ -110,21 +110,8 @@ const Card = ({ id, className, imgClassName }: Props) => {
     );
 };
 
-const REMAINING_SYSTEMS = [
-    "trappist-1",
-    "toi-700",
-    "copernicus",
-    "lich",
-    "kepler-32",
-    "wasp-47",
-    "rho_coronae_borealis",
-    "nu_scorpii",
-    "hd_110067",
-    "cervantes",
-    "toi-500",
-    "teegarden",
-    "vega",
-];
+const FEATURED_SYSTEMS = ["milky_way", "solar_system", "alpha_centauri", "sagittarius_a"];
+const REMAINING_SYSTEMS = universe_ids.filter((id) => !FEATURED_SYSTEMS.includes(id));
 
 const Universe = ({ standalone }: { standalone?: boolean }) => {
     const { t } = useTranslation();

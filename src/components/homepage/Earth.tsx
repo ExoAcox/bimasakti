@@ -27,8 +27,8 @@ const Earth = () => {
     return <>
         <ambientLight />
         <directionalLight position={[3, 3, 3]} />
-        <group rotation={[0, 0, axis]} scale={3}>
-            <mesh castShadow receiveShadow ref={earthRef}>
+        <group rotation={[0, 0, axis]} scale={3} ref={earthRef}>
+            <mesh castShadow receiveShadow >
                 <sphereGeometry args={[1, 128, 64]} />
                 <NightMaterial
                     textures={[

@@ -107,6 +107,9 @@ const PanelDetail = () => {
         if (celestialType === "comet") {
             return { label: t("ui.comet", "Comet"), color: "text-red bg-red/10 border-red/20" };
         }
+        if (celestialType === "interstellar-object") {
+            return { label: t("ui.interstellar_object", "Interstellar Object"), color: "text-red bg-red/10 border-red/20" };
+        }
 
         return { label: "", color: "" };
     }

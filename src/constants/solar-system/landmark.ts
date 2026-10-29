@@ -817,5 +817,13 @@ export const landmarks: Landmark[] = [
         parent: "mimas",
         latitude: -1.38,
         longitude: -111.76
+    },
+
+    // Callisto
+    {
+        id: "valhalla_crater",
+        parent: "callisto",
+        latitude: 18.3,
+        longitude: -57.0
     }
 ]

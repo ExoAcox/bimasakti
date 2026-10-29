@@ -4,7 +4,13 @@
     <loc>https://bimasakti.space</loc>
   </url>
   <url>
+    <loc>https://bimasakti.space/universe</loc>
+  </url>
+  <url>
     <loc>https://bimasakti.space/milky_way</loc>
+  </url>
+  <url>
+    <loc>https://bimasakti.space/sagittarius_a</loc>
   </url>
   <url>
     <loc>https://bimasakti.space/solar_system</loc>
@@ -52,6 +58,18 @@
     <loc>https://bimasakti.space/vega</loc>
   </url>
   <url>
+    <loc>https://bimasakti.space/kepler-47</loc>
+  </url>
+  <url>
+    <loc>https://bimasakti.space/corot-7</loc>
+  </url>
+  <url>
+    <loc>https://bimasakti.space/k2-72</loc>
+  </url>
+  <url>
     <loc>https://bimasakti.space/liveview/mars</loc>
+  </url>
+  <url>
+    <loc>https://bimasakti.space/liveview/moon</loc>
   </url>
 </urlset>

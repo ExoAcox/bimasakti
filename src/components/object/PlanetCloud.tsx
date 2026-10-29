@@ -55,7 +55,7 @@ const PlanetCloud = ({ data, forceFocus = false }: Props) => {
 
     useFrame((_, delta) => {
         if (cloudRef.current) {
-            cloudRef.current.rotation.y += delta * 0.05
+            cloudRef.current.rotation.y += delta * 0.02
         }
     });
 

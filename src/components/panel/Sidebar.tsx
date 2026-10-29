@@ -11,6 +11,7 @@ import {
     type Blackhole,
     type CelestialObject,
     type Comet,
+    type InterstellarObject,
     type Planet,
     type Satellite,
     type SpaceCraft,
@@ -217,6 +218,8 @@ const Sidebar = () => {
     const spacecraftFlyby = celestial.getObjectsByType("spacecraft-flyby") as SpaceCraft[];
     const spacecraftOrbiter = celestial.getObjectsByType("spacecraft-orbiter") as SpaceCraft[];
     const spacecraft = [...spacecraftFlyby, ...spacecraftOrbiter];
+    const interstellarObjects = celestial.getObjectsByType("interstellar-object") as InterstellarObject[];
+    const others = [...interstellarObjects, ...belts]
 
     const handleClick = () => {
         setOpen(!isOpen);
@@ -241,7 +244,7 @@ const Sidebar = () => {
         }
     }, [focus, isTablet]);
 
-    const allObjects = [...stars, ...comets, ...asteroids, ...belts, ...allPlanets, ...satellites, ...spacecraft];
+    const allObjects = [...stars, ...comets, ...asteroids, ...interstellarObjects, ...belts, ...allPlanets, ...satellites, ...spacecraft];
 
     const filteredObjects = allObjects.filter((object) => {
         const name = t(`object.${object.id}.nickname`).toLowerCase();
@@ -348,7 +351,7 @@ const Sidebar = () => {
                         <Section data={spacecraft}>{t("ui.spacecraft")}</Section>
                         <Section data={asteroids}>{t("ui.asteroids")}</Section>
                         <Section data={comets}>{t("ui.comets")}</Section>
-                        <Section data={belts}>{t("ui.others")}</Section>
+                        <Section data={others}>{t("ui.others")}</Section>
                     </div>
                 </When>
 

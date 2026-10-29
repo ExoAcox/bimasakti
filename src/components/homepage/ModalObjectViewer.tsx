@@ -181,24 +181,10 @@ const CelestialObject = ({ data }: { data: CelestialObject }) => {
     }
 
     if (data.type === "blackhole") {
-        return (
-            <group>
-                <mesh>
-                    <sphereGeometry args={[1, 64, 32]} />
-                    <meshBasicMaterial color="#000000" />
-                </mesh>
-                <mesh rotation={[-Math.PI / 3, 0, 0]}>
-                    <ringGeometry args={[1.2, 2.5, 64]} />
-                    <meshStandardMaterial
-                        color="#ff8800"
-                        emissive="#ff5500"
-                        emissiveIntensity={2}
-                        side={2}
-                        transparent
-                        opacity={0.8}
-                    />
-                </mesh>
-            </group>
+        return (<mesh>
+            <sphereGeometry args={[1, 64, 32]} />
+            <meshBasicMaterial color="#000000" />
+        </mesh>
         );
     }
 

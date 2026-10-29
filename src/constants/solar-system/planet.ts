@@ -278,6 +278,12 @@ export const planets: Planet[] = [
         texture: "haumea.ktx2",
         model: "haumea.ply",
         icon: "moon.png",
+        ring: {
+            inner_radius: 2250,
+            outer_radius: 2350,
+            opacity: 0.5,
+            texture: "saturn_ring.png"
+        },
         satellites: []
     },
     {
@@ -361,6 +367,7 @@ export const planets: Planet[] = [
         ring: {
             inner_radius: 4050,
             outer_radius: 4250,
+            opacity: 0.5,
             texture: "saturn_ring.png"
         },
         get satellites() {
@@ -400,6 +407,23 @@ export const planets: Planet[] = [
         childCount: 0,
         texture: "sedna.ktx2",
         icon: "mars.png",
+        satellites: []
+    },
+    {
+        id: "2026_ed138",
+        type: "planet",
+        class: PlanetClass.Dwarf,
+        parent: "sun",
+        radius: 525,
+        distance: 6446000000,
+        color: "#b05e4d",
+        axis: 24.43,
+        orbit_duration: 103249,
+        rotate_duration: 0.5,
+        childCount: 0,
+        texture: "2026_ed138.ktx2",
+        texture_hd: "2026_ed138_hd.ktx2",
+        icon: "moon.png",
         satellites: []
     },
 ]

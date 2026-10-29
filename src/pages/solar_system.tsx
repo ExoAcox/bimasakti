@@ -1,4 +1,4 @@
-import { Planet, Satellite, Star, Comet, Asteroid, Belt } from "@components/object"
+import { Planet, Satellite, Star, Comet, Asteroid, Belt, InterstellarObject } from "@components/object"
 import { solar_system } from "@constants"
 import { seo } from "@function"
 import { useControlStore } from "@state"
@@ -11,7 +11,7 @@ export const meta = () => seo({
 })
 
 const SolarSystem = () => {
-    const { planets, comets, asteroids, belts } = solar_system
+    const { planets, comets, asteroids, belts, interstellar_objects } = solar_system
     const { focus, variant } = useControlStore()
 
     const isRedGiant = focus === "sun" && variant === "red_giant"
@@ -51,6 +51,13 @@ const SolarSystem = () => {
             <Asteroid
                 key={asteroid.id}
                 data={asteroid}
+            />
+        ))}
+
+        {interstellar_objects.map(object => (
+            <InterstellarObject
+                key={object.id}
+                data={object}
             />
         ))}
 

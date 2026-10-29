@@ -1,7 +1,7 @@
 import type { Vector3 } from "@react-three/fiber"
 
-export type CelestialType = "blackhole" | "star" | "planet" | "asteroid" | "comet" | "satellite" | "spacecraft-flyby" | "spacecraft-orbiter"
-export type CelestialObject = Blackhole | Star | Planet | Asteroid | Comet | Satellite | SpaceCraft
+export type CelestialType = "blackhole" | "star" | "planet" | "asteroid" | "comet" | "satellite" | "interstellar-object" | "spacecraft-flyby" | "spacecraft-orbiter"
+export type CelestialObject = Blackhole | Star | Planet | Asteroid | Comet | Satellite | SpaceCraft | InterstellarObject
 
 export interface Object {
     id: string
@@ -94,6 +94,11 @@ export interface Comet extends Object {
     type: "comet"
     model: string
     longest_distance: number
+}
+
+export interface InterstellarObject extends Object {
+    type: "interstellar-object"
+    model: string
 }
 
 export interface SpaceCraft extends Object {

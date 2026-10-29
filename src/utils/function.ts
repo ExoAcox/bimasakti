@@ -1,5 +1,5 @@
 import { Camera, MathUtils, Object3D, Vector3 } from "three"
-import { solar_system, alpha_centauri, sagittarius_a, trappist_1, lich, toi_700, copernicus, kepler_32, wasp_47, rho_coronae_borealis, nu_scorpii, hd_110067, cervantes, toi_500, teegarden, vega, universes, universe_ids, AU_SCALE } from "@constants"
+import { solar_system, alpha_centauri, sagittarius_a, trappist_1, lich, toi_700, copernicus, kepler_32, wasp_47, rho_coronae_borealis, nu_scorpii, hd_110067, cervantes, toi_500, teegarden, vega, kepler_47, corot_7, k2_72, universes, universe_ids, AU_SCALE } from "@constants"
 import { useEffect, useMemo, useRef, useState, type ChangeEvent } from "react";
 import type { Belt, CelestialObject, Landmark, Planet, Satellite, Star } from "@types";
 import { useLocation } from "react-router";
@@ -32,7 +32,10 @@ const universeMapping: UniverseMapping = {
     cervantes,
     "toi-500": toi_500,
     teegarden,
-    vega
+    vega,
+    "kepler-47": kepler_47,
+    "corot-7": corot_7,
+    "k2-72": k2_72
 }
 
 export const useCelestial = () => {
@@ -45,7 +48,7 @@ export const useCelestial = () => {
     const objects: (CelestialObject | Belt)[] = []
 
     universe_ids.forEach(universe => {
-        if (universe === "milky_way") return
+        if (universe === "milky_way" || !universeMapping[universe]) return
         if (universe === currentUniverse) {
             const keys = Object.keys(universeMapping[currentUniverse])
             keys.filter(key => key !== "landmarks").forEach(key => {
@@ -63,7 +66,7 @@ export const useCelestial = () => {
         const objects: CelestialObject[] = []
 
         universe_ids.forEach(universe => {
-            if (universe === "milky_way") return
+            if (universe === "milky_way" || !universeMapping[universe]) return
             const keys = Object.keys(universeMapping[universe])
             keys.filter(key => !["belts", "landmarks"].includes(key)).forEach(key => {
                 objects.push(...(universeMapping[universe][key] as (CelestialObject)[]))

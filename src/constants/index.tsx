@@ -16,6 +16,9 @@ import cervantes from "./cervantes"
 import toi_500 from "./toi-500"
 import teegarden from "./teegarden"
 import vega from "./vega"
+import kepler_47 from "./kepler-47"
+import corot_7 from "./corot-7"
+import k2_72 from "./k2-72"
 
 export const SCALE = 1e+5
 export const TIME_SCALE = 3
@@ -264,9 +267,52 @@ const universes: Universe[] = [
         assetCount: 3,
         stars: vega.stars,
         mobile: {}
+    },
+    {
+        id: "kepler-47",
+        image: "kepler-47.webp",
+        position: [0.082, -2.54, 0.73],
+        distanceFromEarth: 3400,
+        minDistance: 0.1,
+        maxDistance: 12000,
+        cameraPosition: [150, 150, 150],
+        labelPosition: "top",
+        defaultFocus: "kepler-47_a",
+        assetCount: 5,
+        stars: kepler_47.stars,
+        mobile: {}
+    },
+    {
+        id: "corot-7",
+        image: "corot-7.webp",
+        position: [0.032, -2.78, 0.68],
+        distanceFromEarth: 489,
+        minDistance: 0.1,
+        maxDistance: 3000,
+        cameraPosition: [60, 60, 60],
+        labelPosition: "bottom",
+        defaultFocus: "corot-7",
+        assetCount: 4,
+        stars: corot_7.stars,
+        mobile: {}
+    },
+    {
+        id: "k2-72",
+        image: "k2-72.webp",
+        position: [0.055, -2.71, 0.68],
+        distanceFromEarth: 217,
+        minDistance: 0.1,
+        maxDistance: 3500,
+        cameraPosition: [80, 80, 80],
+        labelPosition: "top",
+        defaultFocus: "k2-72",
+        assetCount: 5,
+        stars: k2_72.stars,
+        mobile: {}
     }
 ]
 
 const universe_ids = universes.map(universe => universe.id)
 
-export { universes, universe_ids, solar_system, alpha_centauri, sagittarius_a, trappist_1, lich, toi_700, copernicus, kepler_32, wasp_47, rho_coronae_borealis, nu_scorpii, hd_110067, cervantes, toi_500, teegarden, vega }
+export { universes, universe_ids, solar_system, alpha_centauri, sagittarius_a, trappist_1, lich, toi_700, copernicus, kepler_32, wasp_47, rho_coronae_borealis, nu_scorpii, hd_110067, cervantes, toi_500, teegarden, vega, kepler_47, corot_7, k2_72 }
+

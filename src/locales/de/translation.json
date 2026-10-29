@@ -26,6 +26,8 @@
         "spacecraft": "Raumfahrzeuge",
         "comets": "Kometen",
         "comet": "Komet",
+        "interstellar_objects": "Interstellare Objekte",
+        "interstellar_object": "Interstellares Objekt",
         "asteroids": "Asteroiden",
         "asteroid": "Asteroid",
         "belts": "Asteroidengürtel",
@@ -772,6 +774,84 @@
             "nickname": "Kepler-32 d",
             "description": "Kepler-32 d ist der größte und äußerste bekannte Exoplanet im Kepler-32-System mit einer Umlaufzeit von 22,8 Tagen und dem 2,7-fachen Erdradius."
         },
+        "kepler-47": {
+            "name": "Kepler-47",
+            "title": "Kepler-47-System",
+            "nickname": "Kepler-47",
+            "description": "Kepler-47 ist ein faszinierendes Doppelsternsystem in etwa 3.400 Lichtjahren Entfernung im Sternbild Schwan. Es ist das erste entdeckte zirkumbinäre Multiplanetensystem, in dem mehrere Exoplaneten um ein zentrales Sternenpaar kreisen."
+        },
+        "kepler-47_a": {
+            "name": "Kepler-47 A",
+            "nickname": "Kepler-47 A",
+            "description": "Kepler-47 A ist der Hauptstern des Doppelsternsystems, ein sonnenähnlicher gelber Hauptreihenzwerg der Spektralklasse G mit etwa 1,04 Sonnenmassen und 0,96 Sonnenradien."
+        },
+        "kepler-47_b_star": {
+            "name": "Kepler-47 B",
+            "nickname": "Kepler-47 B",
+            "description": "Kepler-47 B ist der Begleitstern, ein kühler Roter Zwerg der Spektralklasse M mit etwa 0,36 Sonnenmassen und 0,35 Sonnenradien, der Kepler-47 A alle 7,45 Tage umkreist."
+        },
+        "kepler-47_b": {
+            "name": "Kepler-47 b",
+            "nickname": "Kepler-47 b",
+            "description": "Kepler-47 b ist der innerste bekannte zirkumbinäre Planet des Systems, ein Gaszwerg (Sub-Neptun), der das Sternenpaar alle 49,5 Tage im Abstand von 0,30 AE umkreist."
+        },
+        "kepler-47_d": {
+            "name": "Kepler-47 d",
+            "nickname": "Kepler-47 d",
+            "description": "Kepler-47 d ist ein 2019 entdeckter massereicher Sub-Saturn-Gasriese, der zwischen den Planeten b und c alle 187,4 Tage in etwa 0,70 AE Entfernung kreist."
+        },
+        "kepler-47_c": {
+            "name": "Kepler-47 c",
+            "nickname": "Kepler-47 c",
+            "description": "Kepler-47 c ist ein Gasriese von der Größe Neptuns, der sich in der habitablen Zone des Systems befindet und das Sternenpaar alle 303,2 Tage bei 0,99 AE umkreist."
+        },
+        "corot-7": {
+            "name": "CoRoT-7",
+            "title": "CoRoT-7-System",
+            "nickname": "CoRoT-7",
+            "description": "CoRoT-7 ist ein orangefarbener Hauptreihenzwerg der Spektralklasse K in etwa 489 Lichtjahren Entfernung im Sternbild Einhorn. Er ist berühmt als Wirtsstern der ersten bestätigten felsigen Supererde, CoRoT-7 b."
+        },
+        "corot-7_b": {
+            "name": "CoRoT-7 b",
+            "nickname": "CoRoT-7 b",
+            "description": "CoRoT-7 b ist eine glühend heiße Supererde mit einer extrem kurzen Umlaufzeit von nur 20,5 Stunden. Durch die gebundene Rotation schmilzt die Tagseite zu einem Magmaozean mit mineralischen Dampfwolken."
+        },
+        "corot-7_c": {
+            "name": "CoRoT-7 c",
+            "nickname": "CoRoT-7 c",
+            "description": "CoRoT-7 c ist eine dichte Supererde, die durch die Radialgeschwindigkeitsmethode entdeckt wurde und ihren Wirtsstern alle 3,7 Tage im Abstand von 0,046 AE umkreist."
+        },
+        "corot-7_d": {
+            "name": "CoRoT-7 d",
+            "nickname": "CoRoT-7 d",
+            "description": "CoRoT-7 d ist ein Kandidat für einen Gaszwerg / Sub-Neptun mit einer Umlaufzeit von etwa 8,97 Tagen in einer Entfernung von 0,08 AE."
+        },
+        "k2-72": {
+            "name": "K2-72",
+            "title": "K2-72-System",
+            "nickname": "K2-72",
+            "description": "K2-72 (EPIC 206209135) ist ein kühler Roter Zwergstern (Spektralklasse M2V), der sich rund 217 Lichtjahre entfernt im Sternbild Wassermann befindet. Er beherbergt ein kompaktes System aus vier bestätigten erdgroßen Gesteins-Exoplaneten, die im Rahmen der K2-Mission der NASA entdeckt wurden."
+        },
+        "k2-72_b": {
+            "name": "K2-72 b",
+            "nickname": "K2-72 b",
+            "description": "K2-72 b ist der innerste Planet des Systems, eine felsige terrestrische Welt, die ihren Stern alle 5,58 Tage im Abstand von 0,040 AE umkreist und hohen Oberflächentemperaturen ausgesetzt ist."
+        },
+        "k2-72_d": {
+            "name": "K2-72 d",
+            "nickname": "K2-72 d",
+            "description": "K2-72 d ist ein erdgroßer Gesteinsplanet, der den Stern alle 7,76 Tage in einem Abstand von etwa 0,050 AE umkreist."
+        },
+        "k2-72_c": {
+            "name": "K2-72 c",
+            "nickname": "K2-72 c",
+            "description": "K2-72 c ist ein terrestrischer Planet, der den Stern alle 15,19 Tage in 0,078 AE Entfernung nahe dem inneren Rand der habitablen Zone umkreist."
+        },
+        "k2-72_e": {
+            "name": "K2-72 e",
+            "nickname": "K2-72 e",
+            "description": "K2-72 e ist ein erdgroßer Exoplanet, der sich in der habitablen Zone des Sterns befindet und ihn alle 24,16 Tage im Abstand von 0,106 AE umkreist, was ihn zu einem vielversprechenden Kandidaten für flüssiges Wasser macht."
+        },
         "wasp-47": {
             "name": "WASP-47",
             "title": "WASP-47-System",
@@ -1095,10 +1175,20 @@
             "nickname": "Salacia",
             "description": "Salacia ist ein großes Objekt im Kuipergürtel und ein Zwergplanetenkandidat mit einer außergewöhnlich dunklen Oberfläche und einer Albedo von nur etwa 4 %."
         },
+        "2026_ed138": {
+            "name": "2026 ED138",
+            "nickname": "2026 ED138",
+            "description": "2026 ED138 ist ein großes transneptunisches Objekt und ein Zwergplanetenkandidat im klassischen Kuipergürtel, entdeckt im Oktober 2026 anhand von Daten des Vera C. Rubin Observatoriums. Mit einem geschätzten Durchmesser zwischen 600 und 1.500 km umkreist es die Sonne in rund 43 AE Entfernung bei mäßiger Bahnneigung."
+        },
         "churyumov-gerasimenko": {
             "name": "Churyumov-Gerasimenko",
             "nickname": "Churyumov-Gerasimenko",
             "description": "67P/Tschurjumow-Gerassimenko ist ein Komet der Jupiter-Familie, der als Ziel der ESA-Mission Rosetta und des Landers Philae im Jahr 2014 berühmt wurde. Er besteht aus zwei Lappen, die durch einen schmalen Hals verbunden sind."
+        },
+        "oumuamua": {
+            "name": "'Oumuamua",
+            "nickname": "'Oumuamua",
+            "description": "1I/'Oumuamua ist das erste bekannte interstellare Objekt, das beim Durchqueren des Sonnensystems beobachtet wurde. Es wurde im Oktober 2017 von Robert Weryk mit dem Pan-STARRS-Teleskop am Haleakala-Observatorium entdeckt. Es bewegt sich auf einer offenen hyperbolischen Flugbahn mit einer Bahnneigung von fast 123 Grad; seine extrem längliche Form und rötliche Färbung zeugen von Jahrmilliarden interstellarer kosmischer Strahlung."
         },
         "vega_b": {
             "name": "Vega b",
@@ -2238,6 +2328,10 @@
         "herschel_crater": {
             "name": "Herschel-Krater",
             "description": "Ein gigantischer Einschlagskrater auf dem Saturnmond Mimas mit 139 km Durchmesser (fast ein Drittel des Monddurchmessers), der Mimas das Aussehen des Todessterns verleiht."
+        },
+        "valhalla_crater": {
+            "name": "Valhalla-Krater",
+            "description": "Der größte Multiring-Einschlagskrater auf dem Jupitermond Callisto und im gesamten Sonnensystem mit einem Durchmesser von etwa 3.800 km, bestehend aus einer hellen Zentralregion und gewaltigen konzentrischen Ringen."
         }
     }
 }

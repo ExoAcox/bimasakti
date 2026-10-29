@@ -11,6 +11,7 @@
     },
     "routeIdToServerBundleId": {
       "pages/home": "nodejs_eyJydW50aW1lIjoibm9kZWpzIn0",
+      "pages/universe": "nodejs_eyJydW50aW1lIjoibm9kZWpzIn0",
       "pages/milky_way": "nodejs_eyJydW50aW1lIjoibm9kZWpzIn0",
       "pages/solar_system": "nodejs_eyJydW50aW1lIjoibm9kZWpzIn0",
       "pages/alpha_centauri": "nodejs_eyJydW50aW1lIjoibm9kZWpzIn0",
@@ -19,11 +20,17 @@
       "pages/toi-700": "nodejs_eyJydW50aW1lIjoibm9kZWpzIn0",
       "pages/copernicus": "nodejs_eyJydW50aW1lIjoibm9kZWpzIn0",
       "pages/kepler-32": "nodejs_eyJydW50aW1lIjoibm9kZWpzIn0",
+      "pages/kepler-47": "nodejs_eyJydW50aW1lIjoibm9kZWpzIn0",
+      "pages/corot-7": "nodejs_eyJydW50aW1lIjoibm9kZWpzIn0",
+      "pages/k2-72": "nodejs_eyJydW50aW1lIjoibm9kZWpzIn0",
       "pages/wasp-47": "nodejs_eyJydW50aW1lIjoibm9kZWpzIn0",
       "pages/rho_coronae_borealis": "nodejs_eyJydW50aW1lIjoibm9kZWpzIn0",
       "pages/nu_scorpii": "nodejs_eyJydW50aW1lIjoibm9kZWpzIn0",
       "pages/hd_110067": "nodejs_eyJydW50aW1lIjoibm9kZWpzIn0",
       "pages/cervantes": "nodejs_eyJydW50aW1lIjoibm9kZWpzIn0",
+      "pages/toi-500": "nodejs_eyJydW50aW1lIjoibm9kZWpzIn0",
+      "pages/teegarden": "nodejs_eyJydW50aW1lIjoibm9kZWpzIn0",
+      "pages/vega": "nodejs_eyJydW50aW1lIjoibm9kZWpzIn0",
       "pages/sagittarius_a": "nodejs_eyJydW50aW1lIjoibm9kZWpzIn0",
       "pages/liveview/mars": "nodejs_eyJydW50aW1lIjoibm9kZWpzIn0",
       "pages/liveview/moon": "nodejs_eyJydW50aW1lIjoibm9kZWpzIn0",
@@ -46,6 +53,15 @@
         "parentId": "root",
         "file": "src/pages/home.tsx",
         "index": true,
+        "config": {
+          "runtime": "nodejs"
+        }
+      },
+      "pages/universe": {
+        "id": "pages/universe",
+        "parentId": "root",
+        "file": "src/pages/universe.tsx",
+        "path": "universe",
         "config": {
           "runtime": "nodejs"
         }
@@ -128,6 +144,33 @@
           "runtime": "nodejs"
         }
       },
+      "pages/kepler-47": {
+        "id": "pages/kepler-47",
+        "parentId": "components/Canvas",
+        "file": "src/pages/kepler-47.tsx",
+        "path": "kepler-47",
+        "config": {
+          "runtime": "nodejs"
+        }
+      },
+      "pages/corot-7": {
+        "id": "pages/corot-7",
+        "parentId": "components/Canvas",
+        "file": "src/pages/corot-7.tsx",
+        "path": "corot-7",
+        "config": {
+          "runtime": "nodejs"
+        }
+      },
+      "pages/k2-72": {
+        "id": "pages/k2-72",
+        "parentId": "components/Canvas",
+        "file": "src/pages/k2-72.tsx",
+        "path": "k2-72",
+        "config": {
+          "runtime": "nodejs"
+        }
+      },
       "pages/wasp-47": {
         "id": "pages/wasp-47",
         "parentId": "components/Canvas",
@@ -169,6 +212,33 @@
         "parentId": "components/Canvas",
         "file": "src/pages/cervantes.tsx",
         "path": "cervantes",
+        "config": {
+          "runtime": "nodejs"
+        }
+      },
+      "pages/toi-500": {
+        "id": "pages/toi-500",
+        "parentId": "components/Canvas",
+        "file": "src/pages/toi-500.tsx",
+        "path": "toi-500",
+        "config": {
+          "runtime": "nodejs"
+        }
+      },
+      "pages/teegarden": {
+        "id": "pages/teegarden",
+        "parentId": "components/Canvas",
+        "file": "src/pages/teegarden.tsx",
+        "path": "teegarden",
+        "config": {
+          "runtime": "nodejs"
+        }
+      },
+      "pages/vega": {
+        "id": "pages/vega",
+        "parentId": "components/Canvas",
+        "file": "src/pages/vega.tsx",
+        "path": "vega",
         "config": {
           "runtime": "nodejs"
         }
@@ -276,6 +346,12 @@
         "file": "./pages/home.tsx",
         "index": true
       },
+      "pages/universe": {
+        "id": "pages/universe",
+        "parentId": "root",
+        "file": "./pages/universe.tsx",
+        "path": "universe"
+      },
       "components/Canvas": {
         "id": "components/Canvas",
         "parentId": "root",
@@ -329,6 +405,24 @@
         "file": "./pages/kepler-32.tsx",
         "path": "kepler-32"
       },
+      "pages/kepler-47": {
+        "id": "pages/kepler-47",
+        "parentId": "components/Canvas",
+        "file": "./pages/kepler-47.tsx",
+        "path": "kepler-47"
+      },
+      "pages/corot-7": {
+        "id": "pages/corot-7",
+        "parentId": "components/Canvas",
+        "file": "./pages/corot-7.tsx",
+        "path": "corot-7"
+      },
+      "pages/k2-72": {
+        "id": "pages/k2-72",
+        "parentId": "components/Canvas",
+        "file": "./pages/k2-72.tsx",
+        "path": "k2-72"
+      },
       "pages/wasp-47": {
         "id": "pages/wasp-47",
         "parentId": "components/Canvas",
@@ -358,6 +452,24 @@
         "parentId": "components/Canvas",
         "file": "./pages/cervantes.tsx",
         "path": "cervantes"
+      },
+      "pages/toi-500": {
+        "id": "pages/toi-500",
+        "parentId": "components/Canvas",
+        "file": "./pages/toi-500.tsx",
+        "path": "toi-500"
+      },
+      "pages/teegarden": {
+        "id": "pages/teegarden",
+        "parentId": "components/Canvas",
+        "file": "./pages/teegarden.tsx",
+        "path": "teegarden"
+      },
+      "pages/vega": {
+        "id": "pages/vega",
+        "parentId": "components/Canvas",
+        "file": "./pages/vega.tsx",
+        "path": "vega"
       },
       "pages/sagittarius_a": {
         "id": "pages/sagittarius_a",
@@ -435,6 +547,10 @@
             "index": true
           },
           {
+            "file": "./pages/universe.tsx",
+            "path": "universe"
+          },
+          {
             "file": "./components/Canvas.tsx",
             "children": [
               {
@@ -470,6 +586,18 @@
                 "path": "kepler-32"
               },
               {
+                "file": "./pages/kepler-47.tsx",
+                "path": "kepler-47"
+              },
+              {
+                "file": "./pages/corot-7.tsx",
+                "path": "corot-7"
+              },
+              {
+                "file": "./pages/k2-72.tsx",
+                "path": "k2-72"
+              },
+              {
                 "file": "./pages/wasp-47.tsx",
                 "path": "wasp-47"
               },
@@ -488,6 +616,18 @@
               {
                 "file": "./pages/cervantes.tsx",
                 "path": "cervantes"
+              },
+              {
+                "file": "./pages/toi-500.tsx",
+                "path": "toi-500"
+              },
+              {
+                "file": "./pages/teegarden.tsx",
+                "path": "teegarden"
+              },
+              {
+                "file": "./pages/vega.tsx",
+                "path": "vega"
               },
               {
                 "file": "./pages/sagittarius_a.tsx",

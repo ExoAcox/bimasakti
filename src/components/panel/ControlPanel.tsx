@@ -19,10 +19,10 @@ import { useTranslation } from "react-i18next";
 import { useKeyboardControls, useProgress } from "@react-three/drei";
 import { Controls } from "@function";
 import { useNavigate } from "react-router";
-import { GiRingedBeam, GiSinusoidalBeam } from "react-icons/gi";
+import { GiRingedBeam } from "react-icons/gi";
 
 // Reusable style classes for consistent UI design
-const SECTION_CLASS = "flex items-center gap-1.5 flex-wrap justify-center";
+const SECTION_CLASS = "hidden has-[*]:flex items-center gap-1.5 flex-wrap justify-center";
 
 const BUTTON_BASE_CLASS =
     "relative group/btn flex items-center justify-center transition-all duration-200 focus:outline-none disabled:opacity-30 disabled:pointer-events-none cursor-pointer";
@@ -99,7 +99,7 @@ const ControlPanel = () => {
     const rawData = useCelestial().getObjectById(focus) as Planet
     const data = useVariant(rawData) as Planet
     const showTimelines = data?.variants?.length && timelinesVisible
-    const isStillObject = ["spacecraft-orbiter", "spacecraft-flyby", "belt"].includes(data.type)
+    const isStillObject = ["spacecraft-orbiter", "spacecraft-flyby", "belt", "interstellar-object"].includes(data.type)
 
     const modeLists = useMemo(() => {
         const liveView = {

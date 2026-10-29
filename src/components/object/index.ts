@@ -23,6 +23,7 @@ export { default as Asteroid } from "./Asteroid"
 export { default as Galaxy } from "./Galaxy"
 export { default as GltfLoader } from "./GltfLoader"
 export { default as StarDisk } from "./StarDisk"
+export { default as InterstellarObject } from "./InterstellarObject"
 
 
 

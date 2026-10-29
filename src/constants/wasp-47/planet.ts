@@ -58,7 +58,12 @@ export const planets: Planet[] = [
         orbit_duration: 588.5,
         rotate_duration: 588.5,
         texture: "wasp-47_c.ktx2",
-        icon: "neptune.png",
+        icon: "saturn.png",
+        ring: {
+            inner_radius: 95000,
+            outer_radius: 175000,
+            texture: "wasp-47_c_ring.png"
+        },
         satellites: []
     }
 ]

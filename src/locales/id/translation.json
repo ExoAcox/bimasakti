@@ -27,6 +27,8 @@
         "spacecraft": "Wahana Antariksa",
         "comets": "Komet",
         "comet": "Komet",
+        "interstellar_objects": "Objek Antarbintang",
+        "interstellar_object": "Objek Antarbintang",
         "asteroids": "Asteroid",
         "asteroid": "Asteroid",
         "blackhole": "Lubang Hitam",
@@ -552,6 +554,11 @@
             "nickname": "Salacia",
             "description": "Salacia adalah objek Sabuk Kuiper besar dan kandidat planet kerdil. Salacia memiliki permukaan yang sangat gelap dengan albedo sekitar 4%, menunjukkan kurangnya es volatil terang seperti metana."
         },
+        "2026_ed138": {
+            "name": "2026 ED138",
+            "nickname": "2026 ED138",
+            "description": "2026 ED138 adalah objek trans-Neptunus besar dan kandidat planet kerdil di Sabuk Kuiper klasik, ditemukan pada Oktober 2026 dari data Observatorium Vera C. Rubin. Dengan perkiraan diameter antara 600 hingga 1.500 km, objek ini mengorbit Matahari pada jarak sekitar 43 AU dengan inklinasi orbit moderat."
+        },
         "alpha_centauri_a": {
             "name": "Alpha Centauri A",
             "nickname": "Alpha Centauri A",
@@ -621,6 +628,11 @@
             "name": "Churyumov-Gerasimenko",
             "nickname": "Churyumov-Gerasimenko",
             "description": "67P/Churyumov-Gerasimenko adalah komet keluarga Jupiter yang terkenal sebagai tujuan misi Rosetta dari ESA dan pendarat Philae pada tahun 2014. Komet ini memiliki bentuk dua lobus khas yang terhubung oleh leher sempit, terbentuk dari tabrakan lembut dua kometesimal di awal Tata Surya."
+        },
+        "oumuamua": {
+            "name": "'Oumuamua",
+            "nickname": "'Oumuamua",
+            "description": "1I/'Oumuamua adalah objek antarbintang pertama yang terdeteksi melintasi Tata Surya. Ditemukan pada Oktober 2017 oleh Robert Weryk menggunakan teleskop Pan-STARRS di Observatorium Haleakala, objek ini melintasi Tata Surya dalam lintasan hiperbolik terbuka dengan kemiringan hampir 123 derajat. Bentuknya yang sangat memanjang dan warnanya yang kemerahan mencerminkan iradiasi kosmik miliaran tahun di ruang antarbintang."
         },
         "trappist-1": {
             "name": "TRAPPIST-1",
@@ -829,6 +841,84 @@
             "name": "Kepler-32 d",
             "nickname": "Kepler-32 d",
             "description": "Kepler-32 d adalah eksoplanet terbesar dan terluar yang diketahui di sistem Kepler-32, mengorbit dalam 22,8 hari dengan radius 2,7 kali ukuran Bumi."
+        },
+        "kepler-47": {
+            "name": "Kepler-47",
+            "title": "Sistem Kepler-47",
+            "nickname": "Kepler-47",
+            "description": "Kepler-47 adalah sistem bintang biner menakjubkan yang berjarak sekitar 3.400 tahun cahaya di rasi Cygnus. Sistem ini merupakan sistem sirkumbiner multi-planet pertama yang pernah ditemukan, di mana beberapa eksoplanet mengorbit sepasang bintang pusat bersama-sama."
+        },
+        "kepler-47_a": {
+            "name": "Kepler-47 A",
+            "nickname": "Kepler-47 A",
+            "description": "Kepler-47 A adalah bintang primer dalam sistem biner ini, sebuah bintang katai kuning deret utama tipe-G yang mirip dengan Matahari kita, dengan massa sekitar 1,04 massa matahari dan radius 0,96 radius matahari."
+        },
+        "kepler-47_b_star": {
+            "name": "Kepler-47 B",
+            "nickname": "Kepler-47 B",
+            "description": "Kepler-47 B adalah bintang sekunder, sebuah bintang katai merah dingin (tipe-M) dengan massa sekitar 0,36 massa matahari dan radius 0,35 radius matahari, mengorbit Kepler-47 A setiap 7,45 hari."
+        },
+        "kepler-47_b": {
+            "name": "Kepler-47 b",
+            "nickname": "Kepler-47 b",
+            "description": "Kepler-47 b adalah planet sirkumbiner terdalam yang diketahui di sistem ini, sebuah katai gas (sub-Neptunus) yang mengorbit pasangan biner setiap 49,5 hari pada jarak 0,30 SA."
+        },
+        "kepler-47_d": {
+            "name": "Kepler-47 d",
+            "nickname": "Kepler-47 d",
+            "description": "Kepler-47 d adalah raksasa gas sub-Saturnus yang ditemukan pada tahun 2019, mengorbit di antara planet b dan c setiap 187,4 hari pada jarak sekitar 0,70 SA."
+        },
+        "kepler-47_c": {
+            "name": "Kepler-47 c",
+            "nickname": "Kepler-47 c",
+            "description": "Kepler-47 c adalah raksasa gas seukuran Neptunus yang mengorbit di zona laik huni sistem setiap 303,2 hari pada jarak 0,99 SA, menerima fluks radiasi yang mirip dengan Bumi."
+        },
+        "corot-7": {
+            "name": "CoRoT-7",
+            "title": "Sistem CoRoT-7",
+            "nickname": "CoRoT-7",
+            "description": "CoRoT-7 adalah bintang katai oranye deret utama yang berjarak sekitar 489 tahun cahaya di rasi Monoceros. Bintang ini terkenal sebagai bintang induk dari eksoplanet super-Bumi berbatu pertama yang terkonfirmasi, CoRoT-7 b."
+        },
+        "corot-7_b": {
+            "name": "CoRoT-7 b",
+            "nickname": "CoRoT-7 b",
+            "description": "CoRoT-7 b adalah super-Bumi berbatu membara dengan periode orbit ultra-singkat hanya 20,5 jam. Terkunci secara pasang surut (tidally locked), sisi siangnya berupa lautan magma mendidih dengan awan uap mineral dan aktivitas vulkanik ekstrem."
+        },
+        "corot-7_c": {
+            "name": "CoRoT-7 c",
+            "nickname": "CoRoT-7 c",
+            "description": "CoRoT-7 c adalah eksoplanet super-Bumi padat yang ditemukan melalui kecepatan radial, menyelesaikan orbit mengelilingi bintang induknya setiap 3,7 hari pada jarak 0,046 SA."
+        },
+        "corot-7_d": {
+            "name": "CoRoT-7 d",
+            "nickname": "CoRoT-7 d",
+            "description": "CoRoT-7 d adalah kandidat eksoplanet katai gas / sub-Neptunus yang mengorbit dengan periode sekitar 8,97 hari pada jarak 0,08 SA."
+        },
+        "k2-72": {
+            "name": "K2-72",
+            "title": "Sistem K2-72",
+            "nickname": "K2-72",
+            "description": "K2-72 (EPIC 206209135) adalah bintang katai merah dingin (tipe spektrum M2V) yang berjarak sekitar 217 tahun cahaya di rasi Aquarius. Bintang ini menampung sistem kompak berisi empat eksoplanet terestrial terkonfirmasi yang ditemukan selama misi K2 NASA."
+        },
+        "k2-72_b": {
+            "name": "K2-72 b",
+            "nickname": "K2-72 b",
+            "description": "K2-72 b adalah planet terdalam di sistem ini, sebuah dunia berbatu terestrial yang mengorbit setiap 5,58 hari pada jarak 0,040 SA dengan suhu permukaan yang terik akibat kedekatannya dengan bintang induk."
+        },
+        "k2-72_d": {
+            "name": "K2-72 d",
+            "nickname": "K2-72 d",
+            "description": "K2-72 d adalah eksoplanet berbatu seukuran Bumi yang mengorbit setiap 7,76 hari pada jarak sekitar 0,050 SA, berada di antara orbit planet b dan c."
+        },
+        "k2-72_c": {
+            "name": "K2-72 c",
+            "nickname": "K2-72 c",
+            "description": "K2-72 c adalah planet terestrial yang mengorbit setiap 15,19 hari pada jarak 0,078 SA di dekat batas dalam zona laik huni bintang, menerima fluks radiasi yang sebanding dengan Venus."
+        },
+        "k2-72_e": {
+            "name": "K2-72 e",
+            "nickname": "K2-72 e",
+            "description": "K2-72 e adalah eksoplanet seukuran Bumi yang mengorbit tepat di dalam zona laik huni bintang setiap 24,16 hari pada jarak 0,106 SA, menjadikannya salah satu kandidat paling menjanjikan untuk keberadaan air cair."
         },
         "wasp-47": {
             "name": "WASP-47",
@@ -1642,6 +1732,10 @@
         "herschel_crater": {
             "name": "Kawah Herschel",
             "description": "Kawah dampak raksasa di satelit Saturnus, Mimas, berdiameter 139 km (hampir sepertiga diameter total Mimas) yang memberikannya penampilan ikonik mirip Death Star."
+        },
+        "valhalla_crater": {
+            "name": "Kawah Valhalla",
+            "description": "Kawah tubrukan multiring terbesar di bulan Jupiter, Callisto, sekaligus di Tata Surya, membentang sekitar 3.800 km dengan wilayah pusat yang terang dikelilingi oleh cincin-cincin konsentris raksasa."
         }
     },
     "nation": {

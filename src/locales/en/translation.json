@@ -30,6 +30,8 @@
         "spacecraft": "Space Craft",
         "comets": "Comets",
         "comet": "Comet",
+        "interstellar_objects": "Interstellar Objects",
+        "interstellar_object": "Interstellar Object",
         "asteroids": "Asteroids",
         "asteroid": "Asteroid",
         "blackhole": "Black Hole",
@@ -552,6 +554,11 @@
             "nickname": "Salacia",
             "description": "Salacia is a large Kuiper Belt object and borderline dwarf planet candidate. It has an exceptionally dark surface with an albedo of around 4%, indicating a lack of bright volatile ices like methane."
         },
+        "2026_ed138": {
+            "name": "2026 ED138",
+            "nickname": "2026 ED138",
+            "description": "2026 ED138 is a large trans-Neptunian object and dwarf planet candidate in the classical Kuiper Belt, discovered in October 2026 using data from the Vera C. Rubin Observatory. With an estimated diameter between 600 and 1,500 km, it orbits the Sun at approximately 43 AU with a moderate orbital inclination."
+        },
         "alpha_centauri_a": {
             "name": "Alpha Centauri A",
             "nickname": "Alpha Centauri A",
@@ -621,6 +628,11 @@
             "name": "Churyumov-Gerasimenko",
             "nickname": "Churyumov-Gerasimenko",
             "description": "67P/Churyumov-Gerasimenko is a Jupiter-family comet famous for being the destination of the ESA Rosetta mission and Philae lander in 2014. It consists of two distinct lobes connected by a narrow neck, formed by a gentle collision of two cometesimals in the early Solar System."
+        },
+        "oumuamua": {
+            "name": "'Oumuamua",
+            "nickname": "'Oumuamua",
+            "description": "1I/'Oumuamua is the first known interstellar object detected passing through the Solar System. Discovered by Robert Weryk using the Pan-STARRS telescope in October 2017, its open hyperbolic trajectory and extreme elongated cigar-like shape signify an origin from beyond our planetary system."
         },
         "trappist-1": {
             "name": "TRAPPIST-1",
@@ -829,6 +841,84 @@
             "name": "Kepler-32 d",
             "nickname": "Kepler-32 d",
             "description": "Kepler-32 d is the largest and outermost known exoplanet in the Kepler-32 system, orbiting in 22.8 days with a radius 2.7 times that of Earth."
+        },
+        "kepler-47": {
+            "name": "Kepler-47",
+            "title": "Kepler-47 System",
+            "nickname": "Kepler-47",
+            "description": "Kepler-47 is a fascinating binary star system located approximately 3,400 light-years away in the constellation Cygnus. It is the first multi-planet circumbinary system discovered, where multiple exoplanets orbit around a central pair of stars."
+        },
+        "kepler-47_a": {
+            "name": "Kepler-47 A",
+            "nickname": "Kepler-47 A",
+            "description": "Kepler-47 A is the primary star of the binary system, a G-type yellow main-sequence dwarf star similar to our Sun with approximately 1.04 solar masses and 0.96 solar radii."
+        },
+        "kepler-47_b_star": {
+            "name": "Kepler-47 B",
+            "nickname": "Kepler-47 B",
+            "description": "Kepler-47 B is the secondary star, a cool red dwarf star (M-type) with approximately 0.36 solar masses and 0.35 solar radii, orbiting Kepler-47 A every 7.45 days."
+        },
+        "kepler-47_b": {
+            "name": "Kepler-47 b",
+            "nickname": "Kepler-47 b",
+            "description": "Kepler-47 b is the innermost known circumbinary planet in the system, a gas dwarf (sub-Neptune) orbiting the binary pair every 49.5 days at a distance of 0.30 AU."
+        },
+        "kepler-47_d": {
+            "name": "Kepler-47 d",
+            "nickname": "Kepler-47 d",
+            "description": "Kepler-47 d is a massive sub-Saturn gas giant discovered in 2019, orbiting between planets b and c every 187.4 days at approximately 0.70 AU."
+        },
+        "kepler-47_c": {
+            "name": "Kepler-47 c",
+            "nickname": "Kepler-47 c",
+            "description": "Kepler-47 c is a Neptune-sized gas giant orbiting within the system's habitable zone every 303.2 days at 0.99 AU, receiving solar energy similar to Earth."
+        },
+        "corot-7": {
+            "name": "CoRoT-7",
+            "title": "CoRoT-7 System",
+            "nickname": "CoRoT-7",
+            "description": "CoRoT-7 is an orange main-sequence dwarf star located approximately 489 light-years away in the constellation Monoceros. It is famously known as the host star of the first confirmed rocky super-Earth exoplanet, CoRoT-7 b."
+        },
+        "corot-7_b": {
+            "name": "CoRoT-7 b",
+            "nickname": "CoRoT-7 b",
+            "description": "CoRoT-7 b is a scorching rocky super-Earth with an ultra-short orbital period of just 20.5 hours. It is tidally locked to its star, creating a blistering dayside magma ocean with mineral vapor clouds and extreme volcanic activity."
+        },
+        "corot-7_c": {
+            "name": "CoRoT-7 c",
+            "nickname": "CoRoT-7 c",
+            "description": "CoRoT-7 c is a dense super-Earth exoplanet discovered via radial velocity, completing an orbit around the host star every 3.7 days at a distance of 0.046 AU."
+        },
+        "corot-7_d": {
+            "name": "CoRoT-7 d",
+            "nickname": "CoRoT-7 d",
+            "description": "CoRoT-7 d is a candidate sub-Neptune / gas dwarf exoplanet orbiting with a period of approximately 8.97 days at 0.08 AU."
+        },
+        "k2-72": {
+            "name": "K2-72",
+            "title": "K2-72 System",
+            "nickname": "K2-72",
+            "description": "K2-72 (EPIC 206209135) is a cool red dwarf star (spectral type M2V) located approximately 217 light-years away in the constellation Aquarius. It hosts a compact system of four confirmed terrestrial-sized exoplanets discovered during NASA's K2 mission."
+        },
+        "k2-72_b": {
+            "name": "K2-72 b",
+            "nickname": "K2-72 b",
+            "description": "K2-72 b is the innermost planet of the system, a rocky terrestrial world orbiting every 5.58 days at 0.040 AU, with high surface temperatures due to stellar proximity."
+        },
+        "k2-72_d": {
+            "name": "K2-72 d",
+            "nickname": "K2-72 d",
+            "description": "K2-72 d is an Earth-sized rocky exoplanet orbiting every 7.76 days at approximately 0.050 AU, subjected to warm conditions between planets b and c."
+        },
+        "k2-72_c": {
+            "name": "K2-72 c",
+            "nickname": "K2-72 c",
+            "description": "K2-72 c is a terrestrial planet orbiting every 15.19 days at 0.078 AU near the inner boundary of the star's habitable zone, receiving solar flux comparable to Venus."
+        },
+        "k2-72_e": {
+            "name": "K2-72 e",
+            "nickname": "K2-72 e",
+            "description": "K2-72 e is an Earth-sized planet orbiting comfortably within the star's habitable zone every 24.16 days at 0.106 AU, making it one of the most promising candidates for liquid water."
         },
         "wasp-47": {
             "name": "WASP-47",
@@ -1642,6 +1732,10 @@
         "herschel_crater": {
             "name": "Herschel Crater",
             "description": "A giant impact crater on Saturn's moon Mimas spanning 139 km across—nearly one-third of the moon's diameter—giving Mimas its iconic resemblance to the Death Star."
+        },
+        "valhalla_crater": {
+            "name": "Valhalla Crater",
+            "description": "The largest multi-ring impact crater on Jupiter's moon Callisto and in the Solar System, spanning approximately 3,800 km across with a bright central region surrounded by massive concentric rings."
         }
     },
     "nation": {
