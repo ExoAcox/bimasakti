@@ -12,6 +12,7 @@ import "./utils/i18n"
 import "./style.css";
 import { seo } from "@function";
 import { ProgressBar } from "@components/ProgressBar";
+import { Analytics } from "@vercel/analytics/react";
 
 export const meta = () => seo({})
 
@@ -30,6 +31,7 @@ export function Layout({ children }: { children: React.ReactNode }) {
         {children}
         <ScrollRestoration />
         <Scripts />
+        <Analytics />
       </body>
     </html>
   );

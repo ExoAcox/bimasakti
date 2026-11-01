@@ -43,7 +43,7 @@ const ImageLoader = ({ path, opacity }: { path: string, opacity: number }) => {
 
 const PlanetCloud = ({ data, forceFocus = false }: Props) => {
     const celestial = useCelestial()
-    const isFocused = forceFocus || celestial.isFocused
+    const isFocused = forceFocus || celestial.isFocused(data.id)
     const cloudRef = useRef<Mesh>(null!)
 
     const path = isFocused && data.cloud_texture_hd ? data.cloud_texture_hd : data.cloud_texture!
