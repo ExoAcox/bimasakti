@@ -1,7 +1,7 @@
 import { redirect } from "react-router";
 
 export const clientLoader = () => {
-    return redirect("/solar_system");
+    return redirect("/milky_way");
 };
 
 const Redirect = () => {

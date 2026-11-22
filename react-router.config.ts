@@ -8,7 +8,7 @@ export default {
     async prerender() {
         return [
             "/",
-            "/universe",
+            // "/universe",
             "/sagittarius_a",
             "/milky_way",
             "/solar_system",

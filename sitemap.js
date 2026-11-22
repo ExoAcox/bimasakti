@@ -5,7 +5,7 @@ const baseUrl = "https://bimasakti.space";
 
 const urls = [
   "",
-  "/universe",
+  // "/universe",
   ...universe_ids.map(url => "/" + url),
   "/liveview/mars",
   "/liveview/moon"
